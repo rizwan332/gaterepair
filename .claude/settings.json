@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:stargateandfence.com)",
+      "WebFetch(domain:dallasautomaticgate.com)",
+      "WebFetch(domain:www.aautomaticgaterepair.com)",
+      "WebFetch(domain:www.gaterepairdallas.com)",
+      "WebFetch(domain:automaticgaterepairdallas.org)",
+      "WebFetch(domain:www.jjgates.com)",
+      "WebFetch(domain:www.automaticgatetech.net)",
+      "WebFetch(domain:www.gateservicellc.com)",
+      "WebFetch(domain:4suregates.com)",
+      "WebFetch(domain:www.gaterepairpro.com)",
+      "Bash(cd \"/c/Users/Dell/.claude/projects/d--SEO-baed-website-gaterepair/memory\" && if [ -f MEMORY.md ]; then cat MEMORY.md; else echo \"NO_MEMORY_MD\"; fi)",
+      "Read(//c/Users/Dell/.claude/projects/d--SEO-baed-website-gaterepair/memory/**)",
+      "WebFetch(domain:www.angi.com)",
+      "WebFetch(domain:www.automaticgaterepairdallas.com)",
+      "Bash(npm -v)",
+      "Bash(ffmpeg -version)",
+      "Bash(git --version)",
+      "Bash(npm install *)",
+      "Bash(npx tsx *)",
+      "Bash(mkdir -p public/brand)",
+      "Bash(cp wordpress-uploads/2026/05/Logo.png public/brand/logo-dark.png)",
+      "Bash(cp wordpress-uploads/2026/05/Logo-V2.png public/brand/logo-mark.png)",
+      "Bash(cp wordpress-uploads/2026/05/cropped-Shield-Gate-Repair-Siteicon-192x192.png public/brand/icon-192.png)",
+      "Bash(node -e ' *)",
+      "Bash(npx tsc *)",
+      "Bash(npx tsx -e ' *)",
+      "PowerShell(cd D:\\\\SEO-baed-website-gaterepair; Start-Sleep -Seconds 4; foreach \\($p in @\\('/','/brands/faac','/services/gate-motor-repair','/gate-repair-plano-tx','/pricing','/service-areas','/contact','/gallery'\\)\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3100$p\" -UseBasicParsing -TimeoutSec 25; \"{0,-34} {1}  {2,7} bytes\" -f $p, $r.StatusCode, $r.Content.Length } catch { \"{0,-34} FAILED: {1}\" -f $p, $_.Exception.Message } })",
+      "Bash(kill %1)",
+      "Bash(npx next *)",
+      "PowerShell(cd D:\\\\SEO-baed-website-gaterepair; Start-Sleep -Seconds 5; $ok=0; $bad=@\\(\\); foreach \\($p in @\\('/','/contact','/brands/faac','/services/gate-motor-repair','/gate-repair-plano-tx','/pricing','/service-areas','/gallery','/brands','/services'\\)\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3100$p\" -UseBasicParsing -TimeoutSec 25; $ok++ } catch { $bad += $p } }; \"routes OK: $ok / 10\"; if \\($bad\\) { \"FAILED: \" + \\($bad -join ', '\\) }; \"\"; \"--- image srcset check \\(homepage\\) ---\"; $h=\\(Invoke-WebRequest -Uri \"http://localhost:3100/\" -UseBasicParsing\\).Content; $srcs = [regex]::Matches\\($h,'src=\"\\(/images/[^\"]+\\)\"'\\) | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique; \"referenced images: \" + $srcs.Count; $fail=0; foreach \\($s in $srcs\\) { try { Invoke-WebRequest -Uri \"http://localhost:3100$s\" -UseBasicParsing -Method Head -TimeoutSec 10 | Out-Null } catch { $fail++; \"MISSING: $s\" } }; \"broken: $fail\")",
+      "PowerShell($conns = Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue; if \\($conns\\) { $conns | ForEach-Object { \"killing PID \" + $_.OwningProcess; Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue } } else { \"nothing listening on 3100\" }; Start-Sleep -Seconds 2; Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | Measure-Object | ForEach-Object { \"still listening: \" + $_.Count })",
+      "Bash(python -)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 3; $c = @\\(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue\\).Count; \"listeners on 3100: $c\")",
+      "PowerShell(cd D:\\\\SEO-baed-website-gaterepair; $h=\\(Invoke-WebRequest -Uri \"http://localhost:3100/\" -UseBasicParsing\\).Content; \"contains /images/: \" + \\($h -match '/images/'\\); \"picture tags: \" + \\([regex]::Matches\\($h,'<picture'\\)\\).Count; \"img tags: \" + \\([regex]::Matches\\($h,'<img'\\)\\).Count; \"\"; \\([regex]::Matches\\($h,'<\\(picture|img|source\\)[^>]{0,220}'\\)\\) | Select-Object -First 4 | ForEach-Object { $_.Value; \"\" })",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; \"port freed\")",
+      "Bash(git push *)"
+    ]
+  }
+}

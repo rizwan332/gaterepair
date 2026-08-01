@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+build/
+.env
+.env.local
+
+# Machine-local Claude Code permissions — not shared.
+.claude/settings.local.json
+*.tsbuildinfo
+next-env.d.ts
+
+# Source media — 1GB+, not versioned. Processed output lands in public/images.
+wordpress-uploads/
+uploads-*.zip
+
+.DS_Store
+Thumbs.db

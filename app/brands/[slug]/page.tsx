@@ -1,0 +1,187 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { AlertTriangle, Wrench, ArrowRight } from 'lucide-react'
+import { brands, brandBySlug } from '@/content/brands'
+import { media } from '@/content/media-manifest'
+import { videosFor } from '@/content/video-manifest'
+import { business } from '@/content/business'
+import { PageHero } from '@/components/sections/page-hero'
+import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { FaqAccordion } from '@/components/sections/faq-accordion'
+import { ClosingCTA } from '@/components/sections/closing-cta'
+import { LazyVideo } from '@/components/ui/lazy-video'
+import { tier1Cities } from '@/content/cities'
+import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
+
+export function generateStaticParams() {
+  return brands.map((b) => ({ slug: b.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const brand = brandBySlug(slug)
+  if (!brand) return {}
+
+  return {
+    title: `${brand.name} Gate Operator Repair Dallas | Shield Gate Repair`,
+    description: `We repair ${brand.name} gate operators most Dallas companies will not touch. Real repair photos and video, same-day service across Dallas–Fort Worth. Call ${business.phone.display}.`,
+    alternates: { canonical: `/brands/${brand.slug}` },
+  }
+}
+
+export default async function BrandPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const brand = brandBySlug(slug)
+  if (!brand) notFound()
+
+  const images = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
+  const brandVideos = brand.mediaCategory ? videosFor(brand.mediaCategory) : []
+
+  return (
+    <>
+      <PageHero
+        eyebrow={brand.contested ? 'Brands we service' : 'Specialist repair'}
+        title={brand.headline}
+        intro={brand.intro}
+        image={images[0]}
+      />
+
+      {/* The proof goes immediately after the claim. On the uncontested brands
+          this video is the entire competitive argument — no other DFW company
+          has brand-specific repair footage of any kind. */}
+      {brandVideos.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-8 max-w-2xl font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+              A Shield Technician Repairing a {brand.name} Operator
+            </h2>
+            <div className="grid gap-5 md:grid-cols-2">
+              {brandVideos.map((video) => (
+                <LazyVideo key={video.slug} video={video} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="section bg-ink-50">
+        <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">
+              Why {brand.name} operators get replaced when they should be repaired
+            </h2>
+            <p className="prose-measure mt-5 leading-relaxed text-ink-700">{brand.whyDifferent}</p>
+          </div>
+
+          <div>
+            <h2 className="mb-5 inline-flex items-center gap-2.5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
+              <AlertTriangle className="size-6 text-gold-500" aria-hidden />
+              What usually goes wrong
+            </h2>
+            <ul className="space-y-3">
+              {brand.commonFailures.map((failure) => (
+                <li key={failure} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-800">
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
+                  {failure}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {brand.models.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-6 inline-flex items-center gap-2.5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
+              <Wrench className="size-6 text-gold-500" aria-hidden />
+              {brand.name} models we service
+            </h2>
+            <ul className="flex flex-wrap gap-2.5">
+              {brand.models.map((model) => (
+                <li
+                  key={model}
+                  className="rounded-lg border border-ink-100 bg-ink-50 px-4 py-2 text-sm font-medium text-ink-800"
+                >
+                  {model}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-500">
+              Not listed? Call us anyway. This covers the units we see most often in Dallas&ndash;Fort Worth,
+              not everything we can work on.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {images.length > 0 && (
+        <PhotoGallery
+          tone="muted"
+          title={`Real ${brand.name} repairs we've completed`}
+          intro="Every photo below is a Shield technician on an actual job. No stock imagery."
+          images={images}
+        />
+      )}
+
+      <FaqAccordion faqs={brand.faqs} title={`${brand.name} repair questions`} />
+
+      <section className="section bg-ink-50">
+        <div className="container-page">
+          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">
+            {brand.name} repair across Dallas&ndash;Fort Worth
+          </h2>
+          <ul className="flex flex-wrap gap-2.5">
+            {tier1Cities.map((city) => (
+              <li key={city.slug}>
+                <Link
+                  href={`/gate-repair-${city.slug}-tx`}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
+                >
+                  {city.name}
+                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <ClosingCTA />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            serviceSchema({
+              name: `${brand.name} Gate Operator Repair`,
+              description: brand.intro,
+              url: `/brands/${brand.slug}`,
+            }),
+            faqSchema(brand.faqs),
+            breadcrumbSchema([
+              { name: 'Home', url: '/' },
+              { name: 'Brands', url: '/brands' },
+              { name: brand.name, url: `/brands/${brand.slug}` },
+            ]),
+            ...brandVideos.map((v) =>
+              videoSchema({
+                title: v.title,
+                description: v.description || `${brand.name} gate operator repair by Shield Gate Repair in Dallas–Fort Worth.`,
+                thumbnailUrl: `${v.poster}.jpg`,
+                contentUrl: v.src,
+                durationSeconds: v.durationSeconds,
+                uploadDate: '2026-08-01',
+              }),
+            ),
+          ]),
+        }}
+      />
+    </>
+  )
+}
