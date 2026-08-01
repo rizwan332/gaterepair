@@ -1,59 +1,122 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowUpRight, Play } from 'lucide-react'
 import { brands } from '@/content/brands'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
+import { media } from '@/content/media-manifest'
+import { videosFor } from '@/content/video-manifest'
+import { ResponsiveImage } from '@/components/ui/responsive-image'
+import { Reveal } from '@/components/ui/reveal'
 
 /**
  * Brands we service.
  *
- * The competitive point of this section: FAAC, All-O-Matic and Ramset have no
- * dedicated page anywhere in the DFW market, and the client has real repair
- * photography and video for all three. Where competitors do have brand pages
- * (LiftMaster, Viking, Elite, Eagle), none of them has brand-specific imagery.
+ * Previously ten identical text tiles — a section called "brands" showing no
+ * brand evidence at all. We cannot use manufacturer logos without a licence and
+ * would not want to imply a dealer relationship the client does not hold, so
+ * the tiles now carry a photograph of *that manufacturer's operator* from the
+ * job library instead. That turns a generic grid into proof, which is the whole
+ * competitive argument here.
  *
- * The trademark disclaimer is not boilerplate — one competitor is a genuine
- * authorized LiftMaster dealer, and implying a dealer relationship the client
- * does not hold would be a real problem.
+ * FAAC, All-O-Matic and Ramset lead deliberately: no DFW competitor has a page
+ * for any of the three, and the client has both photography and video for all
+ * of them. The three brands with no photography are grouped separately and
+ * styled compactly, so their thinness reads as deliberate rather than broken.
  */
 export function BrandsGrid() {
   const isDealer = fact(business.authorizedDealer)
+  const withMedia = brands.filter((b) => b.mediaCategory && media[b.mediaCategory]?.length)
+  const withoutMedia = brands.filter((b) => !b.mediaCategory || !media[b.mediaCategory]?.length)
 
   return (
-    <section className="section bg-ink-50">
+    <section className="section bg-white">
       <div className="container-page">
-        <div className="mb-10 max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">
-            Brands we service
-          </p>
-          <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-            We Fix the Operators Nobody Else Wants to Touch
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-700">
-            Most gate companies replace the whole operator because diagnosing it is harder than selling you a
-            new one. We repair control boards, limit switches, hydraulic pumps and gearboxes on all of these
-            &mdash; and we have the photos and video to prove it.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">
+              Operators we repair
+            </p>
+            <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl lg:text-5xl">
+              We Fix the Operators Nobody Else Wants to Touch
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-700">
+              Most gate companies replace the whole operator because diagnosing it is harder than selling
+              you a new one. We repair control boards, limit switches, hydraulic pumps and gearboxes on all
+              of these &mdash; and every tile below is a photograph of that manufacturer&rsquo;s equipment,
+              not a logo.
+            </p>
+          </div>
+        </Reveal>
 
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {brands.map((brand) => (
-            <li key={brand.slug}>
-              <Link
-                href={`/brands/${brand.slug}`}
-                className="group flex h-full flex-col justify-between gap-3 rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 transition-all duration-200 hover:border-ink-200 hover:shadow-[var(--shadow-lift)]"
-              >
-                <span className="font-display text-lg font-semibold text-ink-950">{brand.name}</span>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-500 transition-colors group-hover:text-gold-600">
-                  {brand.contested ? 'Repair & service' : 'Specialist repair'}
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                </span>
-              </Link>
-            </li>
-          ))}
+        <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {withMedia.map((brand, i) => {
+            const image = media[brand.mediaCategory!]?.[0]
+            const hasVideo = videosFor(brand.mediaCategory!).length > 0
+            return (
+              <Reveal as="li" key={brand.slug} delay={Math.min(i, 4) * 0.05}>
+                <Link
+                  href={`/brands/${brand.slug}`}
+                  className="group relative flex h-full min-h-[15rem] flex-col justify-end overflow-hidden rounded-[var(--radius-card)] bg-ink-950 p-5"
+                >
+                  {image && (
+                    <div className="absolute inset-0">
+                      <ResponsiveImage
+                        image={image}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, 50vw"
+                        className="object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-85"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_9_11/0.94)_0%,rgb(8_9_11/0.55)_50%,rgb(8_9_11/0.2)_100%)]" />
+                    </div>
+                  )}
+                  <div className="relative">
+                    {!brand.contested && (
+                      <span className="mb-2.5 inline-block rounded-full bg-gold-500 px-2.5 py-0.5 text-[0.6875rem] font-bold uppercase tracking-wide text-ink-950">
+                        Nobody else covers this
+                      </span>
+                    )}
+                    <p className="font-display text-xl font-bold text-white">{brand.name}</p>
+                    <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-ink-300">
+                      {hasVideo && <Play className="size-3 fill-gold-400 text-gold-400" aria-hidden />}
+                      {media[brand.mediaCategory!]!.length} photos
+                      {hasVideo && ' + video'}
+                      <ArrowUpRight
+                        className="size-3.5 text-gold-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        aria-hidden
+                      />
+                    </p>
+                  </div>
+                </Link>
+              </Reveal>
+            )
+          })}
         </ul>
 
-        <p className="mt-6 text-xs leading-relaxed text-ink-500">
+        {withoutMedia.length > 0 && (
+          <Reveal>
+            <div className="mt-8">
+              <p className="mb-3 text-sm font-medium text-ink-600">We also service:</p>
+              <ul className="flex flex-wrap gap-2.5">
+                {withoutMedia.map((brand) => (
+                  <li key={brand.slug}>
+                    <Link
+                      href={`/brands/${brand.slug}`}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
+                    >
+                      {brand.name}
+                      <ArrowUpRight className="size-3.5 text-ink-400" aria-hidden />
+                    </Link>
+                  </li>
+                ))}
+                <li className="inline-flex items-center rounded-lg border border-dashed border-ink-200 px-4 py-2 text-sm text-ink-500">
+                  Apollo · US Automatic · Chamberlain · and others
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+        )}
+
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-ink-500">
           {isDealer
             ? 'Brand names are the property of their respective owners.'
             : 'Brands we service. Brand names are the property of their respective owners — Shield Gate Repair is an independent repair company and is not an authorized dealer for these manufacturers.'}

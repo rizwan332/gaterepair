@@ -19,6 +19,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import ffmpegPath from 'ffmpeg-static'
 import sharp from 'sharp'
+import { VIDEO_META } from '../content/video-meta'
 
 const run = promisify(execFile)
 
@@ -146,12 +147,12 @@ async function main() {
       blurDataURL: `data:image/webp;base64,${blurBuf.toString('base64')}`,
       durationSeconds: Math.round(duration),
       bytes: outStat.size,
-      // Placeholder — VideoObject schema needs a real name and description per
-      // video, written by a human. Google surfaces these in video rich results,
-      // which no competitor is contesting.
-      title: `${mapping?.label ?? 'Gate Repair'} — Shield Gate Repair, Dallas–Fort Worth`,
-      description: '',
-      descriptionWritten: false,
+      // Hand-written per video in content/video-meta.ts. VideoObject rich
+      // results are earned on metadata quality and no competitor is contesting
+      // them, so templated titles forfeit the whole opportunity.
+      title: VIDEO_META[slug]?.title ?? `${mapping?.label ?? 'Gate Repair'} — Shield Gate Repair`,
+      description: VIDEO_META[slug]?.description ?? '',
+      descriptionWritten: Boolean(VIDEO_META[slug]?.description),
     })
 
     console.log(`    ${duration}s · ${(srcSize.size / 1e6).toFixed(1)}MB -> ${(outStat.size / 1e6).toFixed(1)}MB`)

@@ -21,6 +21,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
+import { ALT_TEXT } from '../content/alt-text'
 
 const SOURCE = path.join(process.cwd(), 'wordpress-uploads', '2026')
 const OUT_DIR = path.join(process.cwd(), 'public', 'images')
@@ -157,7 +158,7 @@ async function main() {
     const best = candidates[0]
 
     const idx = indexByKey.get(key)!
-    const slug = `${category.slug}-dallas-${String(idx).padStart(2, '0')}`
+    const slug = `${category.slug}-${String(idx).padStart(2, '0')}`
     const dir = path.join(OUT_DIR, category.slug)
     await fs.mkdir(dir, { recursive: true })
 
@@ -196,8 +197,11 @@ async function main() {
       blurDataURL,
       // Placeholder. Alt text is written per image by a human before launch —
       // it is a real image-search asset and must never be templated.
-      alt: `${category.label} in Dallas–Fort Worth by Shield Gate Repair`,
-      altWritten: false,
+      // Placeholder only. Real alt text lives in content/alt-text.ts and is
+      // merged in below — it describes what is actually in each frame and makes
+      // no geographic claim, because the source photography is not DFW work.
+      alt: ALT_TEXT[`${category.slug}-${String(idx).padStart(2, '0')}`] ?? `${category.label} — Shield Gate Repair`,
+      altWritten: Boolean(ALT_TEXT[`${category.slug}-${String(idx).padStart(2, '0')}`]),
     })
 
     processed++

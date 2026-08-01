@@ -17,7 +17,7 @@ export function PricingTeaser() {
   const hasNumbers = pricingConfirmed && priceBands.some((b) => b.high > 0)
 
   return (
-    <section className="section bg-ink-950 text-white">
+    <section className="section surface-dark glow-gold relative isolate overflow-hidden text-white">
       <div className="container-page">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
@@ -49,7 +49,7 @@ export function PricingTeaser() {
             {priceBands.slice(0, 4).map((band) => (
               <li
                 key={band.slug}
-                className="flex items-center justify-between gap-6 rounded-[var(--radius-card)] bg-white/5 p-5 ring-1 ring-inset ring-white/10"
+                className="card-dark flex items-center justify-between gap-6 p-5"
               >
                 <div>
                   <p className="font-medium text-white">{band.label}</p>

@@ -26,7 +26,7 @@ export function VideoReel() {
   // Deliberately on near-black: video reads better against it, and it makes the
   // one section no competitor can match the visual centre of the page.
   return (
-    <section className="section bg-ink-950 text-white">
+    <section className="section surface-dark glow-gold relative isolate overflow-hidden text-white">
       <div className="container-page">
         <div className="mb-10 max-w-2xl">
           <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-400">Real work</p>

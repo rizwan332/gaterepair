@@ -6,6 +6,7 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { StickyCallBar } from '@/components/layout/sticky-call-bar'
 import { DesktopCallRail } from '@/components/layout/desktop-call-rail'
 import { PendingFactsBanner } from '@/components/dev/pending-facts-banner'
+import { Analytics } from '@/components/analytics'
 import { organizationSchema } from '@/lib/schema'
 import './globals.css'
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StickyCallBar />
         <DesktopCallRail />
         <PendingFactsBanner />
+        <Analytics />
 
         <script
           type="application/ld+json"

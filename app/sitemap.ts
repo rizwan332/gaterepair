@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/brands', priority: 0.9 },
     { path: '/pricing', priority: 0.9 },
     { path: '/service-areas', priority: 0.8 },
+    { path: '/reviews', priority: 0.8 },
     { path: '/gallery', priority: 0.7 },
     { path: '/contact', priority: 0.8 },
   ]

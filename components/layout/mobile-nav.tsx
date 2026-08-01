@@ -79,6 +79,7 @@ export function MobileNav() {
               </Section>
               <Section title="More">
                 <Item href="/pricing" onClick={() => setOpen(false)}>Pricing</Item>
+                <Item href="/reviews" onClick={() => setOpen(false)}>Reviews</Item>
                 <Item href="/gallery" onClick={() => setOpen(false)}>Our Work</Item>
                 <Item href="/service-areas" onClick={() => setOpen(false)}>Service Areas</Item>
                 <Item href="/contact" onClick={() => setOpen(false)}>Contact</Item>

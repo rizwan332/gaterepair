@@ -43,6 +43,7 @@ export function SiteHeader() {
             items={brands.map((b) => ({ label: b.name, href: `/brands/${b.slug}` }))}
           />
           <NavLink href="/pricing">Pricing</NavLink>
+          <NavLink href="/reviews">Reviews</NavLink>
           <NavLink href="/gallery">Our Work</NavLink>
           <NavLink href="/service-areas">Service Areas</NavLink>
         </nav>

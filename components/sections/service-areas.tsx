@@ -37,7 +37,7 @@ export function ServiceAreas() {
             <li key={city.slug}>
               <Link
                 href={`/gate-repair-${city.slug}-tx`}
-                className="group flex items-center justify-between gap-4 rounded-[var(--radius-card)] border border-ink-100 bg-white px-5 py-4 transition-all duration-200 hover:border-ink-200 hover:shadow-[var(--shadow-card)]"
+                className="card-light group flex items-center justify-between gap-4 px-5 py-4"
               >
                 <span className="inline-flex items-center gap-2.5">
                   <MapPin className="size-4 shrink-0 text-ink-400" aria-hidden />

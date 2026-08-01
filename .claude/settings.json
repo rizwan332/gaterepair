@@ -36,7 +36,8 @@
       "PowerShell(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 3; $c = @\\(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue\\).Count; \"listeners on 3100: $c\")",
       "PowerShell(cd D:\\\\SEO-baed-website-gaterepair; $h=\\(Invoke-WebRequest -Uri \"http://localhost:3100/\" -UseBasicParsing\\).Content; \"contains /images/: \" + \\($h -match '/images/'\\); \"picture tags: \" + \\([regex]::Matches\\($h,'<picture'\\)\\).Count; \"img tags: \" + \\([regex]::Matches\\($h,'<img'\\)\\).Count; \"\"; \\([regex]::Matches\\($h,'<\\(picture|img|source\\)[^>]{0,220}'\\)\\) | Select-Object -First 4 | ForEach-Object { $_.Value; \"\" })",
       "PowerShell(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; \"port freed\")",
-      "Bash(git push *)"
+      "PowerShell(Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 2; \"freed\")",
+      "Bash(grep -n \"slug = \\\\`\" scripts/process-assets.ts)"
     ]
   }
 }

@@ -126,7 +126,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <PhotoGallery
           tone="muted"
           title={`Real ${service.name.toLowerCase()} jobs`}
-          intro="Photographs from actual Shield call-outs across Dallas–Fort Worth. No stock imagery."
+          intro="Photographs from our own job archive — real equipment, real repairs."
           images={images}
         />
       )}

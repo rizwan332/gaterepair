@@ -43,7 +43,7 @@ const nextConfig: NextConfig = {
       { source: '/gate-repair-dallas-fort-worth', destination: '/service-areas', permanent: true },
       { source: '/shield-gate-repair', destination: '/', permanent: true },
       { source: '/about-us', destination: '/', permanent: true },
-      { source: '/testimonials', destination: '/gallery', permanent: true },
+      { source: '/testimonials', destination: '/reviews', permanent: true },
       { source: '/locations', destination: '/service-areas', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
     ]

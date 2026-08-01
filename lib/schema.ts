@@ -129,6 +129,28 @@ export function videoSchema(opts: {
   }
 }
 
+/**
+ * Review markup.
+ *
+ * Only ever called when `reviewsConfirmed` is true. Emitting Review or
+ * AggregateRating markup over placeholder or unverifiable content is a
+ * structured-data violation that can earn a manual action — and in a trade
+ * built on trust it is the wrong trade to make even if it worked.
+ */
+export function reviewSchema(
+  reviews: { author: string; date: string; rating: number; body: string }[],
+): Json[] {
+  return reviews.map((r) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: { '@id': `${BASE}/#business` },
+    author: { '@type': 'Person', name: r.author },
+    datePublished: r.date,
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+    reviewBody: r.body,
+  }))
+}
+
 export function localBusinessForCity(city: { name: string; county: string; slug: string }): Json {
   return {
     '@context': 'https://schema.org',

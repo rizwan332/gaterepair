@@ -75,8 +75,8 @@ export const mediaCategories = {
 export const media: Record<string, MediaImage[]> = {
   "access-control": [
     {
-      "slug": "access-control-dallas-01",
-      "src": "/images/access-control/access-control-dallas-01",
+      "slug": "access-control-01",
+      "src": "/images/access-control/access-control-01",
       "widths": [
         400,
         800
@@ -84,24 +84,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 999,
       "height": 666,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoQAAsAA4BaJbACdAC5gK2AAP4I/Kha9Ax1RhJ+3gpH+aBb3F4v6SwChgqTkBJ2jhLJX/UY9zOpjtec4bCcbCqwZJ0u0J4g2c6JgAAA",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A telephone entry call box mounted on a post at a gated entrance",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-02",
-      "src": "/images/access-control/access-control-dallas-02",
+      "slug": "access-control-02",
+      "src": "/images/access-control/access-control-02",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJYwC7ADwoQKu4wAA/tXFFqlRhNH0LG7rFEn+lQQjxx5SkKbv00DeCNVlW6V5nfh6QLxvjAAAAA==",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A keypad mounted at driver height beside a driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-03",
-      "src": "/images/access-control/access-control-dallas-03",
+      "slug": "access-control-03",
+      "src": "/images/access-control/access-control-03",
       "widths": [
         400,
         800,
@@ -112,12 +112,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3683,
       "height": 2455,
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAsAA4BaJagCdAEfpelCRzYAAPZ3F3Ee4YRUCx1dQiYzlpxoY6jXrIINqoKbhGg9R2Z6QUWTEv3HbwmpswJaIBrXeEMitTMqq9Ufi0jEtacXoPWFJa/kwAA=",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The interior of a telephone entry unit showing its circuit board and wiring",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-04",
-      "src": "/images/access-control/access-control-dallas-04",
+      "slug": "access-control-04",
+      "src": "/images/access-control/access-control-04",
       "widths": [
         400,
         800
@@ -125,12 +125,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 924,
       "height": 616,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAsAA4BaJYwAAtqKvtXmAAAA/quw3U5wiNe0APCsDidy9G/o+Rtn3lU+ENL5lgKuxW1Pw+E2SMVRBPsKzrVrB6htb7J/7NmBFpWus/FPwJGxgAA=",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A card reader mounted on a pedestal at a controlled vehicle entrance",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-05",
-      "src": "/images/access-control/access-control-dallas-05",
+      "slug": "access-control-05",
+      "src": "/images/access-control/access-control-05",
       "widths": [
         400,
         800,
@@ -139,12 +139,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1595,
       "height": 1064,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAsAA4BaJQBOgCPzRKOyUehgAOJxNM4tcmRby3WdB3UnmFWXmxKquX6HWvdro5h7xMGQj3hi9Qu6BJ89fH7MA/JuwdfBu1MH6zhjSvPUmV+T4jpoAA==",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate access controller and power supply in a wall-mounted enclosure",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-06",
-      "src": "/images/access-control/access-control-dallas-06",
+      "slug": "access-control-06",
+      "src": "/images/access-control/access-control-06",
       "widths": [
         400,
         800,
@@ -155,72 +155,72 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3024,
       "height": 2016,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAsAA4BaJZgC7AYvDm5rhuRWAAD+mxKkobLKo4LN86afhMAU7SPMZUozkMqLtBnqRtbReR4cv1n0Sn+yfdLlKd+U5m3t1WlgZtUWfH6nqQAA",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A vehicle loop detector module fitted in a control cabinet",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-07",
-      "src": "/images/access-control/access-control-dallas-07",
+      "slug": "access-control-07",
+      "src": "/images/access-control/access-control-07",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAsAA4BaJZQAAtr8rw7OAAD+yrOzzM61BDRBvjxsyRH7c+b10f/njIHpzMZL9cDnfsrQj2ZyV13pWgHyETKnPDyMG6kebOMlIAAA",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A call box handset and directory display at an apartment entrance",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-08",
-      "src": "/images/access-control/access-control-dallas-08",
+      "slug": "access-control-08",
+      "src": "/images/access-control/access-control-08",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAA4BaJagCdADJwdnK1sgAAPshICa/hY9+PK2Calk0JMJ/iGjd7w6z4+cSiydvAf/p6VuDPAeZmwBz9nBerGMfb9iuMBXyxvEb9IoAAA==",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Wiring terminated inside an access control enclosure during a repair",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-09",
-      "src": "/images/access-control/access-control-dallas-09",
+      "slug": "access-control-09",
+      "src": "/images/access-control/access-control-09",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwAgCdASoQAAsAA4BaJbACw7dwBwuoBww5AAD+5Ep8MMBs9zUV9MbXYrQSetOaDuqvkR7Wgo7peglyMiCezTyOqbmWZcXCss3+0YzZmqWtunoAvn+anYEqlj5+QkZGGq2M4L9JgAA=",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An intercom station mounted beside a pedestrian gate",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-10",
-      "src": "/images/access-control/access-control-dallas-10",
+      "slug": "access-control-10",
+      "src": "/images/access-control/access-control-10",
       "widths": [
         400
       ],
       "width": 676,
       "height": 451,
       "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQAgCdASoQAAsAA4BaJYgCsAYulwJKnPwVSAAA/t2xxnktqxcAq5OquD6ce/72ZnE+OnJReWHd8ZLCd69DH67/NEIN/KEUpu92+r4qVsTr4VLCbWzc9vBDXKzcnanRnUKp/3l+6AA=",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A keypad with worn buttons before replacement",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-11",
-      "src": "/images/access-control/access-control-dallas-11",
+      "slug": "access-control-11",
+      "src": "/images/access-control/access-control-11",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQAAsAA4BaJbACdADPYo9qI4eKAADMetUsX+tjmowq36x5jwfVkhs4H6UxGBeqTHe0bxMDBK7ANiPOrmeoRgaeISnZw0u0DjuxaR8nqsyR4qCqrJJEv9JKjb35MrxDJAbBcPoAAAA=",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A newly fitted access control keypad and mounting post at a driveway entrance",
+      "altWritten": true
     },
     {
-      "slug": "access-control-dallas-12",
-      "src": "/images/access-control/access-control-dallas-12",
+      "slug": "access-control-12",
+      "src": "/images/access-control/access-control-12",
       "widths": [
         400,
         800
@@ -228,26 +228,26 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1031,
       "height": 688,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAsAA4BaJZwAAp/Yfy4kAAD+ifrdZgS5z2pke/5XsYDD6lZxke2e44YsYSw9SUZgBQJUGVfxZiL2Dh45SHAPShYAAA==",
-      "alt": "Access Control Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A telephone entry system opened for programming during a service visit",
+      "altWritten": true
     }
   ],
   "all-o-matic": [
     {
-      "slug": "all-o-matic-dallas-01",
-      "src": "/images/all-o-matic/all-o-matic-dallas-01",
+      "slug": "all-o-matic-01",
+      "src": "/images/all-o-matic/all-o-matic-01",
       "widths": [
         400
       ],
       "width": 600,
       "height": 400,
       "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAsAA4BaJZQAAxbBk7lUgAD+7xftyisPgvqXmUQdinsBIUwaDMkH4hdyra5CJ7eqE0/UwpG/MAAA",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An All-O-Matic slide gate operator housing beside a driveway gate track",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-02",
-      "src": "/images/all-o-matic/all-o-matic-dallas-02",
+      "slug": "all-o-matic-02",
+      "src": "/images/all-o-matic/all-o-matic-02",
       "widths": [
         400,
         800
@@ -255,12 +255,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 878,
       "height": 585,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAsAA4BaJZwAAb5Ar0AqQAD+7A7YlFt5YgzNRZ42+QTE8qPKjL8Ixjb8R0NgkEsI7XWIutR5Jy6RarHA/hHpsvAAAA==",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The chain drive and sprocket of an All-O-Matic slide operator with the cover removed",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-03",
-      "src": "/images/all-o-matic/all-o-matic-dallas-03",
+      "slug": "all-o-matic-03",
+      "src": "/images/all-o-matic/all-o-matic-03",
       "widths": [
         400,
         800
@@ -268,24 +268,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAsAA4BaJYwAAq4FqWhwAAD+psMard5+go2QLbUewZ1XxjtJ2r0RVlUs+dOIbqesTpX76sHr3nN8csLae7y93Pytu49RaV6ZDS1Nfz4YQAAA",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An All-O-Matic operator opened for inspection, showing the limit switch cams and drive assembly",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-04",
-      "src": "/images/all-o-matic/all-o-matic-dallas-04",
+      "slug": "all-o-matic-04",
+      "src": "/images/all-o-matic/all-o-matic-04",
       "widths": [
         400
       ],
       "width": 576,
       "height": 384,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAwAgCdASoQAAsAA4BaJZwC7AEfTd3yPA+R0AD+7SCQ3Tbxf3DFpyVH1Gw/0c7DwfC1zWC2rpG4KUXYI67714GNS2516/Or8AA=",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A technician's multimeter resting on the control board of an opened gate operator during electrical testing",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-05",
-      "src": "/images/all-o-matic/all-o-matic-dallas-05",
+      "slug": "all-o-matic-05",
+      "src": "/images/all-o-matic/all-o-matic-05",
       "widths": [
         400,
         800,
@@ -296,12 +296,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoQAAsAA4BaJQBOgMXS5ajPJFVvugAA9oWWXFffYYgqvCJTY7bi9vraY0q+LxvohMDHsieugfHvnb/D1puldPqvENcWyT8y7UhV6ZP5xczBEsXupMAAAA==",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate operator dismantled on site with hand tools, a drill and a removed motor laid out on the driveway",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-06",
-      "src": "/images/all-o-matic/all-o-matic-dallas-06",
+      "slug": "all-o-matic-06",
+      "src": "/images/all-o-matic/all-o-matic-06",
       "widths": [
         400,
         800,
@@ -312,12 +312,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3413,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAQCdASoQAAsAA4BaJQBOgB6QG8JAAP5OWaSEIqQD5Xqe4rcmMx2tSK2Go+BHwFowXFH8poAZmfEcAQ3jULZgi1OoMgxsrRaQd+pEvkFguBT5JaFE6Qk1GCkAAA==",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The motor and gearbox removed from an All-O-Matic operator, set on the ground beside the housing",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-07",
-      "src": "/images/all-o-matic/all-o-matic-dallas-07",
+      "slug": "all-o-matic-07",
+      "src": "/images/all-o-matic/all-o-matic-07",
       "widths": [
         400,
         800
@@ -325,50 +325,50 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAQCdASoQAAsAA4BaJbACdAEGvI4AAPqeim8KamxXP+VU9kIknYzuIy0Zx2MkW39oz1se4+sW9YQWM1qv3zRJlh09BClTwV5rKLCLqOFjWr9ZgHD5uaVQAAA=",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An All-O-Matic swing gate operator arm attached to a metal gate leaf",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-08",
-      "src": "/images/all-o-matic/all-o-matic-dallas-08",
+      "slug": "all-o-matic-08",
+      "src": "/images/all-o-matic/all-o-matic-08",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAsAA4BaJQBOgCB0mlo8xOYAAP5BoejZxsqFglTidJ55ReQVs9CPXuW5d9vS7gDH0jXWLGr6jPsKAtmHoXuRRT8PGIgYUohCaeETAAA=",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Wiring terminals and the transformer inside an All-O-Matic operator enclosure",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-09",
-      "src": "/images/all-o-matic/all-o-matic-dallas-09",
+      "slug": "all-o-matic-09",
+      "src": "/images/all-o-matic/all-o-matic-09",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAQCdASoQAAsAA4BaJYgAAjQaM9sgAP4ly+wihfKx5sH1a3mACf+9g7IWewCBFyD4VqK5vpSfUj4rvl4LAcJbUJpjGtvJCddZg7yId/KAAA==",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A replacement chain fitted to an All-O-Matic slide gate operator",
+      "altWritten": true
     },
     {
-      "slug": "all-o-matic-dallas-10",
-      "src": "/images/all-o-matic/all-o-matic-dallas-10",
+      "slug": "all-o-matic-10",
+      "src": "/images/all-o-matic/all-o-matic-10",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAsAA4BaJYgC7AEQ5X2urpEUQAD+6Phxfe5qeQP7KLLopNOhdJ/2/DcKhZwO2zOh7+XPwlAxj97yoGB3OCBRxvDyUBK984YDcG/jgAA=",
-      "alt": "All-O-Matic Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An All-O-Matic operator reassembled and closed after service, mounted on its concrete pad",
+      "altWritten": true
     }
   ],
   "automatic-gate-repair": [
     {
-      "slug": "automatic-gate-repair-dallas-01",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-01",
+      "slug": "automatic-gate-repair-01",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-01",
       "widths": [
         400,
         800
@@ -376,12 +376,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 900,
       "height": 600,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAsAA4BaJZQC7ADp8Hh6/Z8AAP5YRm/DGKQc/vqCgGyKGOeat69xxAvl3v5OwUeIgfgY1GYKulDITLY9Q36LVXo0ppbv/kMnQ1ZD4AA=",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An automatic driveway gate part-way through its opening cycle",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-02",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-02",
+      "slug": "automatic-gate-repair-02",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-02",
       "widths": [
         400,
         800
@@ -389,24 +389,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1152,
       "height": 768,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAwAgCdASoQAAsAA4BaJZQC7ADSJ6wNU4OUAAD+oQAmQIDMV2eo0Z/P3C7hCMCgQMvrl4FACzNTg9pU/OZ4bS3hSKINIvRuAAA=",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate operator and its control enclosure mounted beside a driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-03",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-03",
+      "slug": "automatic-gate-repair-03",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-03",
       "widths": [
         400
       ],
       "width": 576,
       "height": 384,
       "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAsAA4BaJZQAAu0e2KVBgqAA/tz+9wh3PjblgHro1u53QTVZDcZndpZau6fR5QLUAAAA",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The inside of a gate operator with the control board exposed for testing",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-04",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-04",
+      "slug": "automatic-gate-repair-04",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-04",
       "widths": [
         400,
         800
@@ -414,12 +414,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwAgCdASoQAAsAA4BaJZACdAEQ0tleoLIjwAD+QD//25is9kpJ9kRlqmAuxk3c7OHvy+C1rTjp5tXdzdhk5J4iyfGpL+pBk+FX0/YqXK6wSsffwhcyNFRSNzB9uVNgAAA=",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A safety sensor bracket knocked out of alignment on a gate post",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-05",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-05",
+      "slug": "automatic-gate-repair-05",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-05",
       "widths": [
         400,
         800,
@@ -430,12 +430,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAsAA4BaJaACdAEPhD1A31S0AP6EEHE+GotTVbt/rYOSV5W+Y/rV7DdBFvuV/XSbjbaZwWgCswrLQa/X7t6with90WFSs18jrgaAAAA=",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate roller and track inspected for wear during a repair visit",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-06",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-06",
+      "slug": "automatic-gate-repair-06",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-06",
       "widths": [
         400,
         800,
@@ -446,12 +446,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3736,
       "height": 2491,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAsAA4BaJZACdGuAAsrnwAacMAD3jd/3yvL+EruxqnJJKlflzgVV/xNB+49IhKbOOPo27yUB6eMncLtNh6xytUpADOmjTYEW32d5vpamAeAAAAA=",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A replacement capacitor fitted to a gate operator motor",
+      "altWritten": true
     },
     {
-      "slug": "automatic-gate-repair-dallas-07",
-      "src": "/images/automatic-gate-repair/automatic-gate-repair-dallas-07",
+      "slug": "automatic-gate-repair-07",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-07",
       "widths": [
         400,
         800,
@@ -462,26 +462,26 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZgCdAEN22mcFYAA9HQ+oJJ30GyvYitlKw81ljkvmz9ZllXd2pb7DLcDl54g/7HxXZGjTWZQeM7OP8uOyqmANonoZAAA",
-      "alt": "Automatic Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An automatic gate closing fully against its stop after adjustment",
+      "altWritten": true
     }
   ],
   "commercial-gate-repair": [
     {
-      "slug": "commercial-gate-repair-dallas-01",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-01",
+      "slug": "commercial-gate-repair-01",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-01",
       "widths": [
         400
       ],
       "width": 799,
       "height": 533,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAsAA4BaJYwCsAD1aDGStnJAAM3dp4AGbkG6c8qnRk+ED1OEROUJRsXnC5EptzdMDr9o1SaiMt/uDkpCXBdwL391naAIAAA=",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A commercial slide gate across a business entrance",
+      "altWritten": true
     },
     {
-      "slug": "commercial-gate-repair-dallas-02",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-02",
+      "slug": "commercial-gate-repair-02",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-02",
       "widths": [
         400,
         800
@@ -489,12 +489,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAsAA4BaJYwCdACeCG02AAD+6V6+BoX6B8N9Uv1t11qSI+q5vu16RsnzBtrK5jG7TxHD7NcCGPGUvLKSDQeV9QLdo8e9db83Jt72YO7UWRxQulWfAAAA",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A cantilever gate at an industrial yard, partly open",
+      "altWritten": true
     },
     {
-      "slug": "commercial-gate-repair-dallas-03",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-03",
+      "slug": "commercial-gate-repair-03",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-03",
       "widths": [
         400,
         800
@@ -502,12 +502,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoQAAsAA4BaJYwCdAEfvxxvp95MwAD+yXdjUqZvDt9zlTVcdU84t5H9fR2Qw27Bx4kDDHCOTekNug0gAr9slfGqqFx8KHEN259YJ1l03v8/TFWmOhAAAA==",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A heavy-duty gate operator serving a high-cycle commercial entrance",
+      "altWritten": true
     },
     {
-      "slug": "commercial-gate-repair-dallas-04",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-04",
+      "slug": "commercial-gate-repair-04",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-04",
       "widths": [
         400,
         800
@@ -515,12 +515,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJQBOgCHpMdFiCQAA/pTMhqqzMWzzC+PYphhQA3KuKyuvW1rrM71yi5iCc9hntGiU3mn/t7LsV71ygSy1b2U+pScl0ojACankNQAA",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A barrier arm raised at a controlled parking entrance",
+      "altWritten": true
     },
     {
-      "slug": "commercial-gate-repair-dallas-05",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-05",
+      "slug": "commercial-gate-repair-05",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-05",
       "widths": [
         400,
         800
@@ -528,38 +528,38 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABwAgCdASoQAAsAA4BaJZACdGuAAtM9FQ8l6YQAAPaXhaIqwmYEcFQ73cE+ni1tw6qY3xnMZk8XH9MvK7EUFP+fERiLAZR0h22AAA==",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A worn drive chain and sprocket on a commercial slide gate operator",
+      "altWritten": true
     },
     {
-      "slug": "commercial-gate-repair-dallas-06",
-      "src": "/images/commercial-gate-repair/commercial-gate-repair-dallas-06",
+      "slug": "commercial-gate-repair-06",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-06",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJYwCsAD0OqnkeUAA77ConKidBby7JvuJyON8kO5qkEGxQ2QTTABZnddbPtKLzU7LfdzWe3bQAA==",
-      "alt": "Commercial Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A commercial gate control cabinet opened for diagnosis",
+      "altWritten": true
     }
   ],
   "elite": [
     {
-      "slug": "elite-dallas-01",
-      "src": "/images/elite/elite-dallas-01",
+      "slug": "elite-01",
+      "src": "/images/elite/elite-01",
       "widths": [
         400
       ],
       "width": 600,
       "height": 400,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJYgC7AEDu+n5bTV2qAD+x3tDShwmMqVtTBpo1KF9ZnVulr+097rehulrG45XCQiB6B4Y4qd05fYMOrvSMMzJSAAAAA==",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Elite slide gate operator installed beside a residential driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-02",
-      "src": "/images/elite/elite-dallas-02",
+      "slug": "elite-02",
+      "src": "/images/elite/elite-02",
       "widths": [
         400,
         800
@@ -567,12 +567,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAsAA4BaJQBdgBwsW0dlGAAA+6X6LasMkL25PTkSNyzKC0eMNdJWVnizfMQrXmYuv5RSFJ/X1LXQo+xqFgSQAAA=",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The interior of an Elite gate operator showing the control board and transformer",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-03",
-      "src": "/images/elite/elite-dallas-03",
+      "slug": "elite-03",
+      "src": "/images/elite/elite-03",
       "widths": [
         400,
         800
@@ -580,12 +580,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAwAgCdASoQAAsAA4BaJQBdgMWWqn2OhmKoAAD7w6g/E8KIPPt7DTy/o9PXa/f7yFPMX+tGuljlsHPlFZ5WNP51xLPJJ4PwuvGlRJm2bZ0gY1BQy1c6ZFKV17XxVHWEEBu6GvAA",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Elite swing gate operator arm connected to a metal gate frame",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-04",
-      "src": "/images/elite/elite-dallas-04",
+      "slug": "elite-04",
+      "src": "/images/elite/elite-04",
       "widths": [
         400,
         800
@@ -593,24 +593,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwAgCdASoQAAsAA4BaJagCdAYwxt/FKRD5QAD+7RcHKpF2AKev3/Acm9652fkqnthMrX/raG407LmU9ychLrNiJGoW+cRAo8UtblRugkqdUrLS7v1AtiVmS1/Tz++uI28eSlu+Z0PKkAAA",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Elite operator opened for service with the drive chain visible",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-05",
-      "src": "/images/elite/elite-dallas-05",
+      "slug": "elite-05",
+      "src": "/images/elite/elite-05",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAsAA4BaJQBOgMXrurZOQceUAP4vhbwbusfUjxDAr+hf8OYPxMJEgc5rLEF0Eu0eICyHbtPRzmF74tz6hL1FAA87lzqMi6wmAAAA",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Limit switch adjustment on an Elite gate operator during a service call",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-06",
-      "src": "/images/elite/elite-dallas-06",
+      "slug": "elite-06",
+      "src": "/images/elite/elite-06",
       "widths": [
         400,
         800
@@ -618,12 +618,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAA4BaJQBOgCPg8Lzz/VEAAM4oZlVkPqLIAXSbQExV1FBqu6PxCj1lQvgBmX66MeyKsfWp+CuEnNMYWLcJf0kXelwp0ytuGgMTKgEgAA==",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Elite gate operator mounted on a concrete pad at a driveway entrance",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-07",
-      "src": "/images/elite/elite-dallas-07",
+      "slug": "elite-07",
+      "src": "/images/elite/elite-07",
       "widths": [
         400,
         800
@@ -631,12 +631,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBOgCLIfwrIKXTUAAD+anWO7NKM5fPjNWXggCT6o3QLC1fFlN3RCh7WIzJOJ4tCs+vHPzM6RcuXXAgjSKyE3KAAAA==",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Wiring and terminal connections inside an Elite operator enclosure",
+      "altWritten": true
     },
     {
-      "slug": "elite-dallas-08",
-      "src": "/images/elite/elite-dallas-08",
+      "slug": "elite-08",
+      "src": "/images/elite/elite-08",
       "widths": [
         400,
         800
@@ -644,26 +644,26 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAsAA4BaJQBOgCB0Lid23rgA/uQ4bDerDQaSdWyMpss6dPfZ4E87bUZU/UwImJ7MLgoNkPm04ymFe5b5okjMkAwXoaVAAAA=",
-      "alt": "Elite Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Elite slide operator with its cover refitted after repair",
+      "altWritten": true
     }
   ],
   "eagle": [
     {
-      "slug": "eagle-dallas-01",
-      "src": "/images/eagle/eagle-dallas-01",
+      "slug": "eagle-01",
+      "src": "/images/eagle/eagle-01",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAA4BaJQBOgMYT7XzJ1LiNAAD+iTRFoAa+I4RErxmV+YJHbtpp0PcErg+/GROsm1ZZkRE+6YL5Ax/aEZK5j0haX9j0NEFHa9YdhHKuFeKzWU1Rsyfojt7PktUT/AAAAA==",
-      "alt": "Eagle Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Eagle gate operator housing beside a sliding driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "eagle-dallas-02",
-      "src": "/images/eagle/eagle-dallas-02",
+      "slug": "eagle-02",
+      "src": "/images/eagle/eagle-02",
       "widths": [
         400,
         800,
@@ -674,36 +674,36 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAsAA4BaJZQAAq85hqUo7IAA/gGG2ZwwEI0ZqVvOzjpzOLiFeDreBaBoyqSvTH7YeuA2es5c8ayvv+RscSqgYF0UqP5Id/lH7wMAAAA=",
-      "alt": "Eagle Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The control board inside an Eagle gate operator enclosure",
+      "altWritten": true
     },
     {
-      "slug": "eagle-dallas-03",
-      "src": "/images/eagle/eagle-dallas-03",
+      "slug": "eagle-03",
+      "src": "/images/eagle/eagle-03",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAA4BaJQBOgMYT7XzJ1LiNAAD+iTRFoAa+I4RErxmV+YJHbtpp0PcErg+/GROsm1ZZkRE+6YL5Ax/aEZK5j0haX9j0NEFHa9YdhHKuFeKzWU1Rsyfojt7PktUT/AAAAA==",
-      "alt": "Eagle Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Eagle swing gate operator connected to an iron gate post",
+      "altWritten": true
     },
     {
-      "slug": "eagle-dallas-04",
-      "src": "/images/eagle/eagle-dallas-04",
+      "slug": "eagle-04",
+      "src": "/images/eagle/eagle-04",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAsAA4BaJYwC06C8J0+fKEQAAPuqKxxOF4bFB67tNfhRt5iyBNdGBG8hnp4NIZ8GyG5kWboKUrw90ozU6kyUxkAbgZwAAAA=",
-      "alt": "Eagle Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The drive chain and sprocket of an Eagle slide gate operator",
+      "altWritten": true
     },
     {
-      "slug": "eagle-dallas-05",
-      "src": "/images/eagle/eagle-dallas-05",
+      "slug": "eagle-05",
+      "src": "/images/eagle/eagle-05",
       "widths": [
         400,
         800,
@@ -714,26 +714,26 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3024,
       "height": 2016,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoQAAsAA4BaJQAAQAJrQnnYAP2l1WxKeqdbnKMOn4eh5u7uKANZIcjiK8KGQeDloZImLJw4i0w6ELgh758qz1+AAAA=",
-      "alt": "Eagle Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An Eagle operator reassembled after a control board replacement",
+      "altWritten": true
     }
   ],
   "electric-gate-repair": [
     {
-      "slug": "electric-gate-repair-dallas-01",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-01",
+      "slug": "electric-gate-repair-01",
+      "src": "/images/electric-gate-repair/electric-gate-repair-01",
       "widths": [
         400
       ],
       "width": 579,
       "height": 386,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAsAA4BaJQAAXRsPl/cIbgAA/oQafkAS0LnzLnqQF7LQ0Kokxe2otXtbwLsfhStcSTv1jGh75wZXFSMVcALOxMJ/q7SYsglX4YX9abqBPQUAAAA=",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An electric driveway gate with its operator and power supply mounted alongside",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-02",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-02",
+      "slug": "electric-gate-repair-02",
+      "src": "/images/electric-gate-repair/electric-gate-repair-02",
       "widths": [
         400,
         800
@@ -741,24 +741,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoQAAsAA4BaJYwCdAEW0qlO+Z2AAOAmtF2q0W9JkKx7iQFPL+6ByL88DYcYQ3TBzGcvdwRAHZw6zqHei9sE3iaSX9/gAA==",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A transformer and wiring inside a gate operator power enclosure",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-03",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-03",
+      "slug": "electric-gate-repair-03",
+      "src": "/images/electric-gate-repair/electric-gate-repair-03",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAsAA4BaJYgAAjZdjRYNoAD9PTJZvuyPvAiatd0mzb4GD2Jl7rgAGG/GBvbXe94Y62KTkHwTmTAPgUca4J2Bo85/0o2Aqj6Xol0AAAA=",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Corroded wiring terminals inside a gate control box before repair",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-04",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-04",
+      "slug": "electric-gate-repair-04",
+      "src": "/images/electric-gate-repair/electric-gate-repair-04",
       "widths": [
         400,
         800
@@ -766,12 +766,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJQBOgBufSRxKmOAA/mszXKQFOMd4NxDLcD5fY649Vx4S0KMK8NccwQIX1QbpTMoJSHPdb9kRZ4jJoi1NVD4GYrcBCuevAop64AAA",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A buried cable run exposed at a gate post during fault tracing",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-05",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-05",
+      "slug": "electric-gate-repair-05",
+      "src": "/images/electric-gate-repair/electric-gate-repair-05",
       "widths": [
         400,
         800,
@@ -782,12 +782,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 2048,
       "height": 1365,
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoQAAsAA4BaJZQCdADJB3k7qAAA/k8Xf74o0Kc7AI6ckxc1guOC3ewtZiJR5/rcZ7TKo47JU7DI9bino6vIqmDOGEWcfUnSsbAqSUPxOHg1c+oxkptpYAAA",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A multimeter testing voltage at a gate operator control board",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-06",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-06",
+      "slug": "electric-gate-repair-06",
+      "src": "/images/electric-gate-repair/electric-gate-repair-06",
       "widths": [
         400,
         800
@@ -795,12 +795,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAA4BaJZQCdAD0HVFPErwAAP6yPbc4DnJb5hzzicUxt7yB4QaoqXfSKOTtDL1vWV7HuwwPsfQoDU3vdmJcC7hRfOkVeDiyUHuE2IAAAA==",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A battery backup unit fitted inside a gate operator housing",
+      "altWritten": true
     },
     {
-      "slug": "electric-gate-repair-dallas-07",
-      "src": "/images/electric-gate-repair/electric-gate-repair-dallas-07",
+      "slug": "electric-gate-repair-07",
+      "src": "/images/electric-gate-repair/electric-gate-repair-07",
       "widths": [
         400,
         800
@@ -808,14 +808,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAsAA4BaJZAC7AYubQjZXB4gAP7Q+c1tnypELD+5nW0g4JRDJubfUTwt4qNFgzrnybXUhb4sBgS3dzawmdHZhhb5qFfNit/6tVB11X14sPEVa9VSyzkQPHp0AAAA",
-      "alt": "Electric Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An electric gate operating correctly after an electrical fault was repaired",
+      "altWritten": true
     }
   ],
   "emergency-gate-repair": [
     {
-      "slug": "emergency-gate-repair-dallas-01",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-01",
+      "slug": "emergency-gate-repair-01",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-01",
       "widths": [
         400,
         800
@@ -823,12 +823,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 800,
       "height": 533,
       "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoQAAsAA4BaJaACdAECpmc+CH4HgAD+yOYBQ/0Bx2buEtN/GwcqDMZXoB1jvHAyTUiMlYUvJnaI7J1ORdbpsQvd91igd+A+1SIv7lFWftQ6WjGLXncQxYRYYeEAAA==",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate stuck part-way open across a driveway, blocking vehicle access",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-02",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-02",
+      "slug": "emergency-gate-repair-02",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-02",
       "widths": [
         400,
         800,
@@ -839,12 +839,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3024,
       "height": 2016,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZQCdAClV/S7OAAA/tFsrPa5Q+/MPxFnINLw550aUN1btoNozo1NB5iYTkyn65m1OpIzfjuAZLc+fP9cI26+ZYLpIAAA",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate operator opened on site during an emergency call-out",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-03",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-03",
+      "slug": "emergency-gate-repair-03",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-03",
       "widths": [
         400,
         800,
@@ -855,12 +855,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3414,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoQAAsAA4BaJYwCw7BwDmAAAOJ/YNs5w5Q7mT5jIiq/JxZklyvBlRcUtfj8FAWim8o3OjWKNxP7Q3ZxsxEQuLG0GS84DKvkEog81hAA",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster swing gate operator and its control box mounted beside a stone gate pillar",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-04",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-04",
+      "slug": "emergency-gate-repair-04",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-04",
       "widths": [
         400,
         800
@@ -868,24 +868,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAsAA4BaJbACdAEOV4KAAADyl/HyQWXc9PBSCkCpRa5D4GoODptH4fQ8XONNyolPC1rTdgqCn0xnC1ObYEejBsBuokfxIvLjbSgA",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A damaged gate leaf pulled out of alignment after impact",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-05",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-05",
+      "slug": "emergency-gate-repair-05",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-05",
       "widths": [
         400
       ],
       "width": 576,
       "height": 384,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAA4BaJYwCdADC4EEQ8gAA/tziP7m2/xbf58NvzdthfBl8b8qo8kT72JizbNvNyU7+YJFkTItE2vBfT1q9hV0VtFhCDy/+vCjH56ugAA==",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Tools and replacement parts laid out beside a gate operator during an urgent repair",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-06",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-06",
+      "slug": "emergency-gate-repair-06",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-06",
       "widths": [
         400,
         800
@@ -893,12 +893,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAsAA4BaJQBYdsXr7P6fUEt4wADOO21WInvKSAmtTcTX21PPYh4Pzxo6/JecjDuUMYiIVsWllG9Z35lHq9LgDAHW+vFYNJ1lZraoHqgb16pFGHeQ3QAA",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate operator control board showing a fault, with the enclosure open",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-07",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-07",
+      "slug": "emergency-gate-repair-07",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-07",
       "widths": [
         400,
         800
@@ -906,12 +906,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAsAA4BaJQBYdhwwQrQwcmAA/qqEE/bdcVrMZe/VM/9e+P7Pb6q9y+chkv4FyphmBJBaowfrahPjwqqHuHdAAAA=",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate released to manual operation so the driveway can be used before repair",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-08",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-08",
+      "slug": "emergency-gate-repair-08",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-08",
       "widths": [
         400,
         800,
@@ -922,12 +922,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAsAA4BaJZQAAjPgY+2WmAD+lBgYQ2PLHEp8njJ9O0xmt2Iash2hCW5VGASS48IvVrP/NuVj0ezHGXfTL6umXF6tXh/n4vn4e+sgAAA=",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A slide gate off its track at a driveway entrance",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-09",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-09",
+      "slug": "emergency-gate-repair-09",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-09",
       "widths": [
         400,
         800,
@@ -938,12 +938,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAQCdASoQAAsAA4BaJYwAAd7UEaAA/rI7HWIe9rl1j0Hbu2BUU7kBd9dvddaxF7GPVqyPEu/0zDJPB1m+1Ghwsf7X/mhjBr4032csOC7fPaHAAAA=",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A burnt-out gate operator motor removed and set aside for replacement",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-10",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-10",
+      "slug": "emergency-gate-repair-10",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-10",
       "widths": [
         400,
         800,
@@ -954,12 +954,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3414,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAwAgCdASoQAAsAA4BaJZQC7AEQUKPPhoDEAAD+o2BioGqpswEpwY1kZ2MvaRIgVPsToUp+np5IZKSOe8t27Dl1RxItHBdizyAAAA==",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A repaired gate closing correctly under power after an emergency service visit",
+      "altWritten": true
     },
     {
-      "slug": "emergency-gate-repair-dallas-11",
-      "src": "/images/emergency-gate-repair/emergency-gate-repair-dallas-11",
+      "slug": "emergency-gate-repair-11",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-11",
       "widths": [
         400,
         800,
@@ -970,14 +970,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoQAAsAA4BaJQBOgCIcrfkDQIuvAAD+J68EYdmxAiRY2QSmUIafhhC0Wm7urkJDx3ZrA9ottNlOchRYk4u5k72jfb0taFD9+34ugAAA",
-      "alt": "Emergency Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A technician's tool bag and multimeter beside an open gate operator housing",
+      "altWritten": true
     }
   ],
   "faac": [
     {
-      "slug": "faac-dallas-01",
-      "src": "/images/faac/faac-dallas-01",
+      "slug": "faac-01",
+      "src": "/images/faac/faac-01",
       "widths": [
         400,
         800,
@@ -986,12 +986,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1200,
       "height": 800,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAsAA4BaJQAAVWP9Yd1T+AAA/q2jjrKc+Bky3XxkUKKIIUGrrlhGU2fLPu5zRBtarLJKYN68UlSNSAXWpzf2c01O4mX4AAA=",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A FAAC sliding gate operator mounted at the base of a dark aluminium slide gate, with the drive rack visible along the gate frame",
+      "altWritten": true
     },
     {
-      "slug": "faac-dallas-02",
-      "src": "/images/faac/faac-dallas-02",
+      "slug": "faac-02",
+      "src": "/images/faac/faac-02",
       "widths": [
         400,
         800
@@ -999,12 +999,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACQAQCdASoQAAsAA4BaJQAAQ3shRgAA/q2jjrKc+Bky3Xx29EffmgygenefxOi0H8FR9n2DO2/noIBVmJI6zDYEIidmNM+5yFmQfz3Ey/AAAA==",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Close view of a FAAC operator housing opened for service, showing the hydraulic pump and control board inside",
+      "altWritten": true
     },
     {
-      "slug": "faac-dallas-03",
-      "src": "/images/faac/faac-dallas-03",
+      "slug": "faac-03",
+      "src": "/images/faac/faac-03",
       "widths": [
         400,
         800,
@@ -1015,12 +1015,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAsAA4BaJQBdgNNoVtm5Lq2aAADJT8VfMCkVE75JMy+pud6v6UUxi3ywO8Gsmh6B7NndI3ai1jV5wrB3IgTXJlASxgG2TeoRpsikbbKfxAAA",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A FAAC swing gate operator arm connected to a metal driveway gate post",
+      "altWritten": true
     },
     {
-      "slug": "faac-dallas-04",
-      "src": "/images/faac/faac-dallas-04",
+      "slug": "faac-04",
+      "src": "/images/faac/faac-04",
       "widths": [
         400,
         800,
@@ -1031,12 +1031,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3414,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAA4BaJYwAAscA6qLLEVKAAP7jwGN62qvxOlbvvlHI8GxwDHBlcuKeJpBM4mNTvEe38qsbZw9QRJTyisx7N1ZWaVMKYrYaNF9zBCAAAA==",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A dark metal estate driveway gate closed between stone pillars, fitted with a concealed gate operator",
+      "altWritten": true
     },
     {
-      "slug": "faac-dallas-05",
-      "src": "/images/faac/faac-dallas-05",
+      "slug": "faac-05",
+      "src": "/images/faac/faac-05",
       "widths": [
         400,
         800,
@@ -1047,12 +1047,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 2048,
       "height": 1366,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAsAA4BaJYwAAiZaiS70AAD+48Bjetqoh+eRXyIZCTLttuIcTE98mV0BybiHmu+CopacqC/bP+gwRO09Ps2sSu9bDoc+r7yyK0AA",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A FAAC control board and wiring terminals inside a weatherproof enclosure during diagnosis",
+      "altWritten": true
     },
     {
-      "slug": "faac-dallas-06",
-      "src": "/images/faac/faac-dallas-06",
+      "slug": "faac-06",
+      "src": "/images/faac/faac-06",
       "widths": [
         400,
         800,
@@ -1063,14 +1063,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAsAA4BaJYgC7AD2A0qi9EfAAM2dOZqo+O+nTWTyleAlB1exGFJIcvFvQQNw+3xUdX0W0DD1utO52TyzX9G425NGd+sk/gBuG3AUwKgX6Sw21t9ZAAAA",
-      "alt": "FAAC Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A FAAC hydraulic ram fitted to the leaf of a swing gate, viewed from the driveway side",
+      "altWritten": true
     }
   ],
   "gate-installation": [
     {
-      "slug": "gate-installation-dallas-01",
-      "src": "/images/gate-installation/gate-installation-dallas-01",
+      "slug": "gate-installation-01",
+      "src": "/images/gate-installation/gate-installation-01",
       "widths": [
         400,
         800
@@ -1078,12 +1078,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 964,
       "height": 642,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAsAA4BaJYwCdAEO/Z7GQ0YAAM3zw/GUBFOQRSEV78w+sKf8mL/w71ZpssLXkt1TJlX34Uu0ez+1l/z/NH6Pik7alMAAAAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A newly installed automatic driveway gate closed across a residential entrance",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-02",
-      "src": "/images/gate-installation/gate-installation-dallas-02",
+      "slug": "gate-installation-02",
+      "src": "/images/gate-installation/gate-installation-02",
       "widths": [
         400,
         800,
@@ -1092,12 +1092,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1348,
       "height": 899,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoQAAsAA4BaJZwAAuKgZaWAAP7zEXJhlRNjClTHIRDFs+PrisVJTBEvbXumYMkJmH7RxQEL3g8iSXStpSsoHVsAAAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Concrete footings poured and set for new gate posts before the gate is hung",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-03",
-      "src": "/images/gate-installation/gate-installation-dallas-03",
+      "slug": "gate-installation-03",
+      "src": "/images/gate-installation/gate-installation-03",
       "widths": [
         400,
         800,
@@ -1108,12 +1108,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3608,
       "height": 2406,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAsAA4BaJZQC7AYwn2ov+OctAAD+mYVRmvB0qRzUG7gZzGcD9Tffnv7jZdI0uOQtaECRRtKV1yZEvJ19Rj5FmJ6+VEY9Ycb3Zcocm1H77BQAAAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A pair of metal driveway gates hung on new posts, partly open",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-04",
-      "src": "/images/gate-installation/gate-installation-dallas-04",
+      "slug": "gate-installation-04",
+      "src": "/images/gate-installation/gate-installation-04",
       "widths": [
         400,
         800,
@@ -1124,12 +1124,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQAAsAA4BaJYwCdAEfbiYG5JLAAADeKnJ23iqniUNuc3+BNTdDErUSNhvyC6Cn95Ae8UAnt6kxeKwtuhjmRxZXPPHDv8AA",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A horizontal-slat wood and steel driveway gate closed across a paved entrance",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-05",
-      "src": "/images/gate-installation/gate-installation-dallas-05",
+      "slug": "gate-installation-05",
+      "src": "/images/gate-installation/gate-installation-05",
       "widths": [
         400,
         800,
@@ -1140,12 +1140,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3476,
       "height": 2317,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwAgCdASoQAAsAA4BaJYgCdGuAAs3RomBHU2ogAN5X3pTSjAB2Dw0BNtYbWd1gglQHaDNnnu3bdw2iRnHWRr9cqvFDPIjFqEByWhUtnijWSVhNURucW1HyFAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Conduit run into a gate post ready for the operator power and safety wiring",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-06",
-      "src": "/images/gate-installation/gate-installation-dallas-06",
+      "slug": "gate-installation-06",
+      "src": "/images/gate-installation/gate-installation-06",
       "widths": [
         400,
         800,
@@ -1156,12 +1156,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3476,
       "height": 2317,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAsAA4BaJZgCdGuAAt4jUiFHAAD0djZ+tDpW0z0g1Xl3VRV3CsUEBXOBQepqImXudJb7/DvNYHlcoKnLSUwT4/YC1bATkdGKnAXKAAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An installer levelling a gate leaf on its hinges during installation",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-07",
-      "src": "/images/gate-installation/gate-installation-dallas-07",
+      "slug": "gate-installation-07",
+      "src": "/images/gate-installation/gate-installation-07",
       "widths": [
         400,
         800,
@@ -1172,12 +1172,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3737,
       "height": 2491,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAA4BaJZgCdAEJ2tOqKAD+0PScBVhmdvw3DKdQiaL1LFjfp2fw905uQFe1dI+0lAHO5ks4QHAAMdnTuCfCo/ysiSHMoRAAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A slide gate track set into a driveway ahead of gate installation",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-08",
-      "src": "/images/gate-installation/gate-installation-dallas-08",
+      "slug": "gate-installation-08",
+      "src": "/images/gate-installation/gate-installation-08",
       "widths": [
         400,
         800,
@@ -1188,12 +1188,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAsAA4BaJaAC7ADwfVRKfG/MAP6qgjeoSDLcgLveP302yD2jY0Iu78s+MfsnQGh2EP++PY0YaV9jzR1gx7lNWlWP4X4h7DlVZAAA",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A completed sliding driveway gate in its fully open position",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-09",
-      "src": "/images/gate-installation/gate-installation-dallas-09",
+      "slug": "gate-installation-09",
+      "src": "/images/gate-installation/gate-installation-09",
       "widths": [
         400,
         800,
@@ -1204,12 +1204,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAA4BaJQBOgCHhS3XIAAD4Y3JdlLHGTL85M5pJtjGstZiphjmFrk/IhJcJ8xXUb4GJYePHmnz+F+3pJ7EEflhAZqIj19AAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A new gate operator mounted and wired on its concrete pad",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-10",
-      "src": "/images/gate-installation/gate-installation-dallas-10",
+      "slug": "gate-installation-10",
+      "src": "/images/gate-installation/gate-installation-10",
       "widths": [
         400,
         800,
@@ -1220,12 +1220,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAA4BaJYgCdADwhyFyCAAA/Btfmzj3KkJx3TQy3/8GN89uG7FUSNEymxFiHBMChVKAP7Wwn4seF3suEGNK2Za25MZlbN6qS1FPIOIAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An ornamental iron driveway gate installed between masonry pillars",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-11",
-      "src": "/images/gate-installation/gate-installation-dallas-11",
+      "slug": "gate-installation-11",
+      "src": "/images/gate-installation/gate-installation-11",
       "widths": [
         400,
         800,
@@ -1234,12 +1234,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1474,
       "height": 983,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAsAA4BaJQBOgCLG+VXtuXwAAP40OijX4XiDDhfm+Qv10u984mnBr3uN+9bVYCeJ9Eu/WAjsO2Fl/FttxJE0iaKsp56KgAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A keypad and call box mounted on a post at a new gate entrance",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-12",
-      "src": "/images/gate-installation/gate-installation-dallas-12",
+      "slug": "gate-installation-12",
+      "src": "/images/gate-installation/gate-installation-12",
       "widths": [
         400,
         800,
@@ -1250,12 +1250,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAsAA4BaJZQC7AD0pVYqsFwUAM4+6F2pnQ8j6gwJRPdsFGtX+qxHSyCzqUqQOdyembazuDzvJd85xZ2QL/6cdhPG8BjTEewAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A double swing gate installed at a residential driveway, viewed from the street",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-13",
-      "src": "/images/gate-installation/gate-installation-dallas-13",
+      "slug": "gate-installation-13",
+      "src": "/images/gate-installation/gate-installation-13",
       "widths": [
         400,
         800,
@@ -1266,12 +1266,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3414,
       "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQAgCdASoQAAsAA4BaJZQAD5CQ5D/0P10ENuAA/u0LsXDNqh2BEJIUXivFM1b7MQi1tmuV53B2cUU29p44q7HQhRzxV8JnNhqEI29EVZZAuEOpe8GWe2zrrqZHQCxpewAAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Safety photo-eyes installed either side of a new gate opening",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-14",
-      "src": "/images/gate-installation/gate-installation-dallas-14",
+      "slug": "gate-installation-14",
+      "src": "/images/gate-installation/gate-installation-14",
       "widths": [
         400,
         800,
@@ -1282,12 +1282,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4983,
       "height": 3322,
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoQAAsAA4BaJbACdADb+V+sRwAA/rI+t6bnN+LNkXwt7so8uObTB++fLbA4YDk2HfZjuikr31u13ashcFs0k6Hzb3MBF1vaSI7yKH82cddl5fa5gpJ9IAAA",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A finished automatic gate installation with the operator and control enclosure in place",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-15",
-      "src": "/images/gate-installation/gate-installation-dallas-15",
+      "slug": "gate-installation-15",
+      "src": "/images/gate-installation/gate-installation-15",
       "widths": [
         400,
         800,
@@ -1296,12 +1296,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 881,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAsAA4BaJQBOj+ADCR1nx96AWAD5UtvLE1Hhkm2mTSrf/AvJULu0Tv7eVi+I6n95vgbA1bgQqRfl09sO5Qh0zbKfTYjNK+nRhMh17kGY9fSnAAA=",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A welded steel gate frame being fitted before infill panels are added",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-16",
-      "src": "/images/gate-installation/gate-installation-dallas-16",
+      "slug": "gate-installation-16",
+      "src": "/images/gate-installation/gate-installation-16",
       "widths": [
         400,
         800,
@@ -1310,12 +1310,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 880,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBdgCLwAhnrVDuvcAD2vka/oZsIAKzV24AsMQby7CjUpT5yzgt83k3EmBinYqBuKSyHmXyVjGqj1WGKtf19dNwAAA==",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A newly installed cantilever gate at a commercial yard entrance",
+      "altWritten": true
     },
     {
-      "slug": "gate-installation-dallas-17",
-      "src": "/images/gate-installation/gate-installation-dallas-17",
+      "slug": "gate-installation-17",
+      "src": "/images/gate-installation/gate-installation-17",
       "widths": [
         400,
         800,
@@ -1326,14 +1326,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAsAA4BaJYwAAudD+eFf6xuAAP39PX261SZnKeU7PB43lOVrMbtvbobXtp9zCbH86ZZ5rZTGWcuoxeREQ1hgE7AiBtANBt5CgAAA",
-      "alt": "Gate Installation in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A completed driveway gate with its access control keypad installed at driver height",
+      "altWritten": true
     }
   ],
   "liftmaster": [
     {
-      "slug": "liftmaster-dallas-01",
-      "src": "/images/liftmaster/liftmaster-dallas-01",
+      "slug": "liftmaster-01",
+      "src": "/images/liftmaster/liftmaster-01",
       "widths": [
         400,
         800
@@ -1341,24 +1341,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 800,
       "height": 533,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAsAA4BaJZACw7DQ3byqQAD+u0WoK897wpKSVYY9cnqGqeaMx8ihUztznzotzz2xVFKUSj2mc4+LKmN0XWVn+I9Dv6HyIL3DX22axT3wJgAA",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster slide gate operator in a black weatherproof housing beside an ornamental iron driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-02",
-      "src": "/images/liftmaster/liftmaster-dallas-02",
+      "slug": "liftmaster-02",
+      "src": "/images/liftmaster/liftmaster-02",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAsAA4BaJZgCdADQab5/AADc5N1+74ZLA0jpj5bZRoxoPzwoVjoc2TDVkVtG5+hGZF4SfCLv/IwyCKcSAAAA",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster control board inside its enclosure, with wiring landed on the terminal strip",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-03",
-      "src": "/images/liftmaster/liftmaster-dallas-03",
+      "slug": "liftmaster-03",
+      "src": "/images/liftmaster/liftmaster-03",
       "widths": [
         400,
         800
@@ -1366,12 +1366,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAQCdASoQAAsAA4BaJZAC7AC/6vfgAP5+Ru30apZLujuSXQEwFT2xxVx9CgrzNy/wGkn8akFeZxGlt31LPC1lQqsGvbZGrqL2jMzj3wa4BjushLrteWfrEvoXjrFPqEajAAAA",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster SL3000 slide operator installed at the edge of a driveway, with the gate rolled back on its track",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-04",
-      "src": "/images/liftmaster/liftmaster-dallas-04",
+      "slug": "liftmaster-04",
+      "src": "/images/liftmaster/liftmaster-04",
       "widths": [
         400,
         800
@@ -1379,12 +1379,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAsAA4BaJZQAAxRrgW2IAAD5E3fvaZq1iF7+mIxfCXJsahgRH3Ui0qPJtSbs15xNNxghM7qnbRapju+ks8BpuJ2Tqtz1YBQAAA==",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster swing gate operator arm connected to a wrought iron gate leaf",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-05",
-      "src": "/images/liftmaster/liftmaster-dallas-05",
+      "slug": "liftmaster-05",
+      "src": "/images/liftmaster/liftmaster-05",
       "widths": [
         400,
         800,
@@ -1394,12 +1394,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1600,
       "height": 1068,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAQCdASoQAAsAA4BaJQBOgB7D3YVAAM4CttR/Vy31GIdusHXh80mOMeCxMbY0W6sY1iCmxlQt9gZUM8zavjOXfFV1di4Jxt8G3snAawAAAA==",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster operator with its cover removed, exposing the motor, chain and limit switches",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-06",
-      "src": "/images/liftmaster/liftmaster-dallas-06",
+      "slug": "liftmaster-06",
+      "src": "/images/liftmaster/liftmaster-06",
       "widths": [
         400,
         800,
@@ -1410,36 +1410,36 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4559,
       "height": 3039,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoQAAsAA4BaJYgCdAEWaWqRVmwA/qnhfiOOFlWnE3GHZSbhDXBQWPN1xn2So6kO3ovnxyLruHKFnHtgBMWW6OrGELw7TMOl2+z9iXWeaAGVQjY5+4AAAA==",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The battery backup compartment of a LiftMaster gate operator opened for inspection",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-07",
-      "src": "/images/liftmaster/liftmaster-dallas-07",
+      "slug": "liftmaster-07",
+      "src": "/images/liftmaster/liftmaster-07",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAsAA4BaJZQCw7DwP2A/KtAAAPY6rpQMSElduzuUmQ4fGFiRCDLpwn0FIO/5fQBclWI9HQljVoLW0Y1c7xpRZTHWp2gA",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster operator mounted beside a decorative iron gate at a residential driveway entrance",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-08",
-      "src": "/images/liftmaster/liftmaster-dallas-08",
+      "slug": "liftmaster-08",
+      "src": "/images/liftmaster/liftmaster-08",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAA4BaJQBOgBjJxi5w9YAA/mtUfk0XbLeq9Nc5w8UXz8Jqb5IumFUbgh9KifiijzSnnuf/M3ki/E8BKUq4HEghz5CvNI/VQMST3gAAAA==",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A photo-eye safety sensor mounted on a gate post, aligned across a driveway opening",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-09",
-      "src": "/images/liftmaster/liftmaster-dallas-09",
+      "slug": "liftmaster-09",
+      "src": "/images/liftmaster/liftmaster-09",
       "widths": [
         400,
         800,
@@ -1450,12 +1450,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAQCdASoQAAsAA4BaJZwAAcPdKfpAAPyj1bl7jcImduRvcHZMCHgOUVXb1n2p2AA2ikh8KkgNjknSmwoOvJ96x19FixPBsRZBGa7Vv3IvSiGkurAYFRjgAAA=",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster gate operator housing showing weather damage and corrosion before repair",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-10",
-      "src": "/images/liftmaster/liftmaster-dallas-10",
+      "slug": "liftmaster-10",
+      "src": "/images/liftmaster/liftmaster-10",
       "widths": [
         400,
         800,
@@ -1466,12 +1466,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAsAA4BaJZwAAv9vUXeL3AAA/t4Dz3hNFjF/uhYWgW9di2ruHfAqxa/xa6hsVRDI3GH99fjzoWZy8rbIM/wAAAA=",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A replacement LiftMaster control board fitted into a gate operator enclosure",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-11",
-      "src": "/images/liftmaster/liftmaster-dallas-11",
+      "slug": "liftmaster-11",
+      "src": "/images/liftmaster/liftmaster-11",
       "widths": [
         400,
         800,
@@ -1480,12 +1480,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 880,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAsAA4BaJQBOgBwygWOMZoAA9ijX4e+r1e2j675jIz/RV9HzvHsfF6DpPd0YkCgX1FBNp14OFVnoTrPKuY6AN9g4hGztD57ahd+30AA=",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster operator installed on a concrete pad next to a sliding driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-12",
-      "src": "/images/liftmaster/liftmaster-dallas-12",
+      "slug": "liftmaster-12",
+      "src": "/images/liftmaster/liftmaster-12",
       "widths": [
         400,
         800,
@@ -1496,12 +1496,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4774,
       "height": 3183,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQAgCdASoQAAsAA4BaJZACdH8AFc5+rLPSNRAA+p6Fd8Si+CM+lfO7wiTBSRPWvbKnxQ0vS94s1vyL77CUXbRARrUkxuJdwRBnFAXirFRtZWrAAAA=",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The drive chain and idler pulley of a LiftMaster slide gate operator",
+      "altWritten": true
     },
     {
-      "slug": "liftmaster-dallas-13",
-      "src": "/images/liftmaster/liftmaster-dallas-13",
+      "slug": "liftmaster-13",
+      "src": "/images/liftmaster/liftmaster-13",
       "widths": [
         400,
         800
@@ -1509,26 +1509,26 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAsAA4BaJYwC7AEQSh7ZwB3oAPsjx70wWwicUA9btZWgXmdTkSEUjQbyeJaPplxmBIppyoh7oUR9toNMumygB8agHRAA",
-      "alt": "LiftMaster Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A LiftMaster swing operator and its wall-mounted control box beside a stone gate pillar",
+      "altWritten": true
     }
   ],
   "ramset": [
     {
-      "slug": "ramset-dallas-01",
-      "src": "/images/ramset/ramset-dallas-01",
+      "slug": "ramset-01",
+      "src": "/images/ramset/ramset-01",
       "widths": [
         400
       ],
       "width": 540,
       "height": 360,
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoQAAsAA4BaJQBOgCLk+NOjv6AAzj9lPS923TDJUs2Vg4eqyy6iGP/NeodhVhMtz2Ogmj+P/YPQqufLMAEAwD2MhDWmd8dkULcaoGc6lYq0lspFa2AAAA==",
-      "alt": "Ramset Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A gate operator mounted on a concrete pad at the end of a sliding driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "ramset-dallas-02",
-      "src": "/images/ramset/ramset-dallas-02",
+      "slug": "ramset-02",
+      "src": "/images/ramset/ramset-02",
       "widths": [
         400,
         800
@@ -1536,12 +1536,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAsAA4BaJQBWACHiEIE8/TbwAAD9U5ivNZm6j6gOU/szitVqKE2gSUIjwkCQppi8y3qifq2qEXaq1ImFnrGCmUOIcMIGoqmAFuiDc0FLvAAA",
-      "alt": "Ramset Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A swing gate operator fitted to a brown metal driveway gate beside a parked car",
+      "altWritten": true
     },
     {
-      "slug": "ramset-dallas-03",
-      "src": "/images/ramset/ramset-dallas-03",
+      "slug": "ramset-03",
+      "src": "/images/ramset/ramset-03",
       "widths": [
         400,
         800
@@ -1549,24 +1549,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 984,
       "height": 657,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAsAA4BaJZQCdACVrYLjEADdAhfwg7qvZtbOD4gLYNvr9saqQQpQsu/u8jVNYBYIiQtfuLb93kV3vFcrfTrrrxY/OW8z+jEXm+6rwh8AAA==",
-      "alt": "Ramset Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The control board of a commercial gate operator with the enclosure door open",
+      "altWritten": true
     },
     {
-      "slug": "ramset-dallas-04",
-      "src": "/images/ramset/ramset-dallas-04",
+      "slug": "ramset-04",
+      "src": "/images/ramset/ramset-04",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoQAAsAA4BaJQBWAMXSpEH6f/xOiUAA/Wt/otElH5G4CE0y63B8V5Sqer8urS+RUeMZn8dOc+yy7Xcht4Euoh7nbYgL7+uNe0bc410/QJUvr7l8uwCxJGe4AAA=",
-      "alt": "Ramset Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A barrier arm operator installed at a vehicle entrance",
+      "altWritten": true
     },
     {
-      "slug": "ramset-dallas-05",
-      "src": "/images/ramset/ramset-dallas-05",
+      "slug": "ramset-05",
+      "src": "/images/ramset/ramset-05",
       "widths": [
         400,
         800,
@@ -1577,14 +1577,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJaACdADwVViFyAAA/ffcoxPOj9oMxOBnLDogwuMP2T5JXFrP6mwoCs1mAOzdtvvstBjiu8UVQn0eL942cm586vO+7cU13XddgAAA",
-      "alt": "Ramset Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A high-cycle slide gate operator with its chain and drive sprocket exposed for inspection",
+      "altWritten": true
     }
   ],
   "iron-gate-repair": [
     {
-      "slug": "iron-gate-repair-dallas-01",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-01",
+      "slug": "iron-gate-repair-01",
+      "src": "/images/iron-gate-repair/iron-gate-repair-01",
       "widths": [
         400,
         800
@@ -1592,12 +1592,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAsAA4BaJYwC7AEQSh7ZwB3oAPsjx70wWwicUA9btZWgXmdTkSEUjQbyeJaPplxmBIppyoh7oUR9toNMumygB8agHRAA",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A wrought iron driveway gate with decorative scrollwork, closed across an entrance",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-02",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-02",
+      "slug": "iron-gate-repair-02",
+      "src": "/images/iron-gate-repair/iron-gate-repair-02",
       "widths": [
         400,
         800,
@@ -1608,12 +1608,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQAgCdASoQAAsAA4BaJZgCdAD2PxWnaH7OEAAAzKEmN5T7fD4Tu0EHlZez6EmtmgDXVlah4u+Fgu1W9Q4xwj0hMMhXGlyOpUtHDXcq3FzJmZgD4AA=",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A cracked weld at the corner of an iron gate frame before repair",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-03",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-03",
+      "slug": "iron-gate-repair-03",
+      "src": "/images/iron-gate-repair/iron-gate-repair-03",
       "widths": [
         400,
         800,
@@ -1624,24 +1624,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAsAA4BaJaACdADLwOzx7sAA/qXfOk36ILf+Wcwl1N52I1nSmQ1JSMY8it/CY0IWYM+6Wu2LTT6jHNpAE8QF7L17GewuDSAAAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An iron gate leaf sagging on worn hinges and dragging on the driveway",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-04",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-04",
+      "slug": "iron-gate-repair-04",
+      "src": "/images/iron-gate-repair/iron-gate-repair-04",
       "widths": [
         400
       ],
       "width": 768,
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAsAA4BaJQBOgBRvH/IGAAD+VtWsZJBj/8dfQtiBbKN/dys1RuVuJSjAofjJtC9514Q5eBenohdR3yqq1RmQ5PfIAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A repaired and repainted section of an ornamental iron gate",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-05",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-05",
+      "slug": "iron-gate-repair-05",
+      "src": "/images/iron-gate-repair/iron-gate-repair-05",
       "widths": [
         400,
         800,
@@ -1652,12 +1652,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 5120,
       "height": 3413,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAsAA4BaJZwAAl1vBkjfQAD+qgtXmCvaQn4J1fiuZN7oQXqm1jTAUOCEv6ls55bPtmWXfVNDq80iy4kVj5tM9X8rRpmgEUQ2p6oKmEAAAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Rust damage at the bottom rail of an iron gate before cutting out and replacing",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-06",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-06",
+      "slug": "iron-gate-repair-06",
+      "src": "/images/iron-gate-repair/iron-gate-repair-06",
       "widths": [
         400,
         800
@@ -1665,12 +1665,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoQAAsAA4BaJQAATPxCQu3oAP7YZBDzxB/geTussPbUIWC+7Hsp0M1I/9cOsWp88Xvj2BWED6gM94gA",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A new hinge welded into an iron gate post during repair",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-07",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-07",
+      "slug": "iron-gate-repair-07",
+      "src": "/images/iron-gate-repair/iron-gate-repair-07",
       "widths": [
         400,
         800
@@ -1678,12 +1678,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 864,
       "height": 576,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAsAA4BaJQBOgMXc31g1paDUAAD9s1tgKjXOIhJzqHMpD7+IzBE/fIBGo+JGPGClJDqImPWvp4GdoJ8QtkNcbqJQJJxSxE4UnEQAAAA=",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "An ornamental iron pedestrian gate alongside a larger driveway gate",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-08",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-08",
+      "slug": "iron-gate-repair-08",
+      "src": "/images/iron-gate-repair/iron-gate-repair-08",
       "widths": [
         400,
         800,
@@ -1692,12 +1692,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1348,
       "height": 899,
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAsAA4BaJZwAAvoxhatMWAD+7y4YOQV/6T3rj7NRPKK6O4XQlx2PiE4pq43Nwhv0V8yfH8ZITnLCBbAAAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A straightened iron gate leaf rehung and closing square against its post",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-09",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-09",
+      "slug": "iron-gate-repair-09",
+      "src": "/images/iron-gate-repair/iron-gate-repair-09",
       "widths": [
         400,
         800,
@@ -1708,12 +1708,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 4032,
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAA4BaJYwAAn1/56wAAP7luYdv8q+/FsFFKj91ujetx6QXqj8KoBR9Hvvxo1TwWQMaV//wsHBCrhQgg7lrDzIddFomxSD3Orn8GdDgAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "Grinding and finishing a weld repair on an iron gate frame",
+      "altWritten": true
     },
     {
-      "slug": "iron-gate-repair-dallas-10",
-      "src": "/images/iron-gate-repair/iron-gate-repair-dallas-10",
+      "slug": "iron-gate-repair-10",
+      "src": "/images/iron-gate-repair/iron-gate-repair-10",
       "widths": [
         400,
         800,
@@ -1724,14 +1724,14 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAA4BaJYwCdAC0sywAAP6p+xTENPtcX2fbG+fQf2hSPYgd2UgDFVp1zp9AAVrNOl+fHH9CLuruGhABdUMq6ruGCKUh5SAH/ClyCUAgAA==",
-      "alt": "Iron Gate Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A refinished wrought iron gate after weld repair and repainting",
+      "altWritten": true
     }
   ],
   "viking": [
     {
-      "slug": "viking-dallas-01",
-      "src": "/images/viking/viking-dallas-01",
+      "slug": "viking-01",
+      "src": "/images/viking/viking-01",
       "widths": [
         400,
         800
@@ -1739,12 +1739,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAsAA4BaJZQAD49p+33BYAAAzj6fAW9nhrXA5mJ8Js8eQh0lGFl9XU0/e1BHhSfgersZPA0dVUTG5/y/V+QSuVs52hCOuxgGtMTSAAA=",
-      "alt": "Viking Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A Viking gate operator installed at a residential driveway entrance",
+      "altWritten": true
     },
     {
-      "slug": "viking-dallas-02",
-      "src": "/images/viking/viking-dallas-02",
+      "slug": "viking-02",
+      "src": "/images/viking/viking-02",
       "widths": [
         400,
         800,
@@ -1755,12 +1755,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 3840,
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAsAA4BaJYwCdAEf/7fcWgAA/rI9t91qp/xkYznd3ECT7Alzk4PKdU+bZbTu0HzpOxbQiNygVIaTS+8NHZ/pjXz5N1gA",
-      "alt": "Viking Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "The control board and battery of a Viking DC gate operator inside its housing",
+      "altWritten": true
     },
     {
-      "slug": "viking-dallas-03",
-      "src": "/images/viking/viking-dallas-03",
+      "slug": "viking-03",
+      "src": "/images/viking/viking-03",
       "widths": [
         400,
         800
@@ -1768,12 +1768,12 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1024,
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABQAgCdASoQAAsAA4BaJZACdAEUrnPKoYMTxAAA/mDrI/nMuqVWNmLvVbih7EkQu98D+L4a/6JY5NMr3SCkwljeSd0FadA9pewH/MBlhvOAAA==",
-      "alt": "Viking Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A Viking swing gate operator arm attached to a heavy metal gate leaf",
+      "altWritten": true
     },
     {
-      "slug": "viking-dallas-04",
-      "src": "/images/viking/viking-dallas-04",
+      "slug": "viking-04",
+      "src": "/images/viking/viking-04",
       "widths": [
         400,
         800,
@@ -1782,20 +1782,20 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1200,
       "height": 800,
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoQAAsAA4BaJZwAAfcZywgTIAD9b4mwa7SR2pr63VAJseFjB5SSU0laynpVVC5GWykOA9UcjvVtt0BFm5ds58XcmAA=",
-      "alt": "Viking Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A Viking operator with its cover removed for diagnosis",
+      "altWritten": true
     },
     {
-      "slug": "viking-dallas-05",
-      "src": "/images/viking/viking-dallas-05",
+      "slug": "viking-05",
+      "src": "/images/viking/viking-05",
       "widths": [
         400
       ],
       "width": 600,
       "height": 400,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAsAA4BaJZQAArCDtpiGCAD+wk/MhqCRFtP3viATvv3rwXbl8pGCHdgpzZmTLsAIr4n9CMsqXYS+Hs9JPPakBA3+BAAA",
-      "alt": "Viking Gate Operator Repair in Dallas–Fort Worth by Shield Gate Repair",
-      "altWritten": false
+      "alt": "A solar charging panel mounted near a gate operator on a rural driveway",
+      "altWritten": true
     }
   ]
 }

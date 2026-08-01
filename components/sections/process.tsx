@@ -1,5 +1,6 @@
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
+import { Reveal } from '@/components/ui/reveal'
 
 /**
  * What actually happens when you call.
@@ -42,27 +43,44 @@ export function Process() {
   ]
 
   return (
-    <section className="section bg-ink-50">
-      <div className="container-page">
-        <div className="mb-12 max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">How it works</p>
-          <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-            What Happens When You Call
-          </h2>
-        </div>
+    <section className="section surface-dark glow-gold relative isolate overflow-hidden text-white">
+      <div className="container-page relative">
+        <Reveal>
+          <div className="mb-14 max-w-2xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-400">How it works</p>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
+              What Happens When You Call
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-300">
+              Six commitments, not six stock icons. Every competitor in this market runs an
+              &ldquo;inspection &rarr; diagnosis &rarr; repair&rdquo; graphic; none of them says what you
+              actually receive at each step, which is the only part that reduces anxiety.
+            </p>
+          </div>
+        </Reveal>
 
-        <ol className="grid gap-x-8 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* A connected timeline rather than a grid of equal boxes. The hairline
+            threading the markers is what makes this read as a process instead
+            of six unrelated cards. */}
+        <ol className="relative">
+          <span
+            className="absolute left-[1.4375rem] top-3 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-gold-500/60 via-white/15 to-transparent md:block"
+            aria-hidden
+          />
           {steps.map((step, i) => (
-            <li key={step.title} className="relative pl-14">
-              <span
-                className="absolute left-0 top-0 inline-flex size-10 items-center justify-center rounded-full bg-ink-900 font-display text-sm font-semibold text-gold-400"
-                aria-hidden
-              >
-                {i + 1}
-              </span>
-              <h3 className="mb-2 pt-1.5 font-display text-lg font-semibold text-ink-950">{step.title}</h3>
-              <p className="text-[0.9375rem] leading-relaxed text-ink-700">{step.body}</p>
-            </li>
+            <Reveal as="li" key={step.title} delay={Math.min(i, 4) * 0.05}>
+              <div className="relative flex gap-6 pb-10 last:pb-0 md:gap-8">
+                <span className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-ink-950 ring-1 ring-inset ring-white/15">
+                  <span className="font-display text-sm font-bold text-gold-400 tabular">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </span>
+                <div className="min-w-0 pt-2.5">
+                  <h3 className="font-display text-xl font-semibold text-white">{step.title}</h3>
+                  <p className="mt-2 max-w-2xl leading-relaxed text-ink-300">{step.body}</p>
+                </div>
+              </div>
+            </Reveal>
           ))}
         </ol>
       </div>

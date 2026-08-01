@@ -26,9 +26,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAkAA4BaJZQC7ADdqYbI3AAA4DQPou74LyGLBtzZC2aO7I0Xwqi4c6yb7a6kAPSm682x31HNGQU8g70MciCd9D2oP1wAAAA=",
     "durationSeconds": 13,
     "bytes": 836388,
-    "title": "All-O-Matic Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "All-O-Matic Gate Operator Repair — Clutch and Limit Adjustment",
+    "description": "An All-O-Matic operator stalling part-way through travel. The clutch and limit cams are checked and adjusted, and the gate is run through several full cycles to confirm the fix holds under load.",
+    "descriptionWritten": true
   },
   {
     "slug": "all-o-matic-gate-motor-repair-video-2",
@@ -39,9 +39,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJZACxC8AE0N+AAD+wcTLozFkjKzctPrraeSCcgzC++kIYjvEUWcbeDj3yxHKfo9ydYfl50AAAA==",
     "durationSeconds": 17,
     "bytes": 1482063,
-    "title": "All-O-Matic Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "All-O-Matic Slide Operator — Chain and Drive Inspection",
+    "description": "Inspection of the chain, sprocket and drive assembly on an All-O-Matic slide gate operator. Chain stretch and sprocket wear are the most common mechanical failures on these units and are far cheaper to catch early than to leave running.",
+    "descriptionWritten": true
   },
   {
     "slug": "automatic-gate-repair-services-video",
@@ -52,9 +52,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJYwAAfFAvo8AAP7b611wC/F2VrkvPuHJoSpuOfSghk+mfT+7Z877t6B/IwfiIi++pw+HnWI538iUyRucioAA",
     "durationSeconds": 13,
     "bytes": 1461660,
-    "title": "Automatic Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Automatic Gate Repair — Safety Sensor Fault",
+    "description": "A gate that opens but refuses to close is almost always a safety sensor seeing an obstruction that is not there. This shows the photo-eyes being realigned and the gate returned to normal operation.",
+    "descriptionWritten": true
   },
   {
     "slug": "automatic-gate-repair-services-video-2",
@@ -65,9 +65,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJQBOgB7Hs9nd6AAA4jIXMKC3Ov/220Hmy/rH5TGxYhYEDRCyzMyJ75Pg0jZ11E0Yft0LoSUFbuzXAAA=",
     "durationSeconds": 47,
     "bytes": 4602700,
-    "title": "Automatic Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Automatic Gate Repair — Full Repair Walkthrough",
+    "description": "A complete automatic gate repair, start to finish: fault identified, cause explained, repair carried out and the gate run through several full cycles to confirm it holds.",
+    "descriptionWritten": true
   },
   {
     "slug": "client-testimonial",
@@ -78,9 +78,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJZQAAjAGDUOQqAD9UyqZCucByYustpRtHuYnKhZZMtQ+rMZb2kKA36FsbMFOqpzWENw4gpWgIJ1IvwAAAA==",
     "durationSeconds": 27,
     "bytes": 2425164,
-    "title": "Customer Testimonial — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Customer Testimonial — Shield Gate Repair",
+    "description": "A Shield Gate Repair customer describing the work carried out on their gate, in their own words. Written reviews are easy to fake, which is why nobody fully believes them any more.",
+    "descriptionWritten": true
   },
   {
     "slug": "commercial-gate-repair-services-video",
@@ -91,9 +91,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJZQCdAD1pQdkgAD+CLqqxrxLifWR9/HWUyFAPeT5YQbOCZUftmn9o2GGl0Zjj0I2MI6A81tVBNQj8QP4AA==",
     "durationSeconds": 10,
     "bytes": 1068012,
-    "title": "Commercial Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Commercial Gate Repair — High-Cycle Entrance",
+    "description": "A commercial entrance gate serving hundreds of cycles a day. When the same part fails repeatedly the operator is usually under-specified for the duty cycle, or the gate is making it work far harder than it should.",
+    "descriptionWritten": true
   },
   {
     "slug": "commercial-gate-repair-services-video-2",
@@ -104,9 +104,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAQCdASoQABAAA4BaJZwAAxPEx1Cv4AD+ifglf30lGbkjWdXQCUQB8+kGgXmMZ2SGJSzMgudycAqMuRiGaW5+QHWGgEJ6IzFK+S4b58GiKy7z1FzFjDp+OrCY3/BfsyLZr1UeoJQ5AAAA",
     "durationSeconds": 37,
     "bytes": 1003534,
-    "title": "Commercial Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Commercial Gate Repair — Loop Detector Fault",
+    "description": "A commercial gate ignoring approaching vehicles. The fault is in the buried loop and detector rather than the operator — a distinction that gets misdiagnosed constantly and is usually the fastest thing to put right.",
+    "descriptionWritten": true
   },
   {
     "slug": "eagle-gate-motor-repair-video",
@@ -117,9 +117,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAkAA4BaJZQAAqH7GLVvZoAA4m/3LPbeated/V+vrTUrV8aNIL7Rtov24Q5eatok770tc2dWknWOdTI+I6W/zq8gO41H1drygAAA",
     "durationSeconds": 28,
     "bytes": 2980739,
-    "title": "Eagle Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Eagle Gate Operator Repair — Fault Diagnosis and Fix",
+    "description": "An Eagle gate operator diagnosed and repaired on site. Eagle units are reliable enough that when they do fail it is usually a single serviceable component with a long life ahead of it once replaced.",
+    "descriptionWritten": true
   },
   {
     "slug": "electric-gate-repair-services-video",
@@ -130,9 +130,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAkAA4BaJQBOgCFKrx7AAAD+rHAYShwLuwcCTxjNTzoBSCOBNeMFJoouq/Z6l0bquoo3iW4rkhgOySCANBEgqqyQR0zrIAA=",
     "durationSeconds": 16,
     "bytes": 1120637,
-    "title": "Electric Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Electric Gate Repair — Tracing an Electrical Fault",
+    "description": "Tracing an intermittent fault on an electric gate: supply voltage checked at source and at the operator, terminals inspected for corrosion, and accessories isolated to find a short — rather than replacing parts one at a time.",
+    "descriptionWritten": true
   },
   {
     "slug": "electric-gate-repair-services-video-2",
@@ -143,9 +143,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAkAA4BaJYwC7AEREXoGTgAA/kkfkSAc6PxQ7Zt+pqxP6A4sS8Uztalv/PeB6S145yDRY6nL9r5AgFOuTLbDXSAAAA==",
     "durationSeconds": 16,
     "bytes": 1584808,
-    "title": "Electric Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Electric Gate Repair — Transformer and Power Supply Check",
+    "description": "Testing the transformer and power supply on an electric gate that had stopped responding entirely. Shows why the power path is checked before the control board is suspected.",
+    "descriptionWritten": true
   },
   {
     "slug": "elite-gate-motor-repair-video",
@@ -156,9 +156,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJYwAAfFAvo8AAP7b611wC/F2VrkvPuHJoSpuOfSghk+mfT+7Z877t6B/IwfiIi++pw+HnWI538iUyRucioAA",
     "durationSeconds": 13,
     "bytes": 1460161,
-    "title": "Elite Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Elite Gate Operator Repair — Control Board Replacement",
+    "description": "Replacing a failed control board in an Elite gate operator. The old board is tested to confirm the diagnosis before anything is replaced, so the customer is not paying for a guess.",
+    "descriptionWritten": true
   },
   {
     "slug": "elite-gate-motor-repair-video-2",
@@ -169,9 +169,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAkAA4BaJYwCdAD2BS6jv/UAAP7kTeNIuGavUaqGQseYCZPUnQlD3KJFTfo2QB9NAnaxeZ6NWjQV4fdKtwIFDaUsTAafr1oDQAAA",
     "durationSeconds": 12,
     "bytes": 1705192,
-    "title": "Elite Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Elite Slide Gate Operator — Drive and Travel Check",
+    "description": "An Elite slide operator run through full travel after service, checking limit positions, safety devices and chain tension. This is the final step on every repair before the technician leaves.",
+    "descriptionWritten": true
   },
   {
     "slug": "emergency-gate-repair-services-video",
@@ -182,9 +182,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAkAA4BaJZQC7ADOnliIuwAA/nkJXN/L1NNRRbWV6SmywUwQ4leHp8HQALFx8DU4YNO3mN3/8ZU4JEZ56C/YNtzwCV4AAAA=",
     "durationSeconds": 46,
     "bytes": 4181805,
-    "title": "Emergency Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Emergency Gate Repair — Same-Day Call-Out",
+    "description": "An emergency call-out on a gate stuck open. A gate stuck open is a security problem, not an inconvenience, and is treated as urgent regardless of the underlying cause.",
+    "descriptionWritten": true
   },
   {
     "slug": "emergency-gate-repair-services-video-2",
@@ -195,9 +195,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJZACdADGd8QIAAD0OcZAjFlPfJQ6KWOao+y5oxlzZt21fB2k67eC2o2Kay5XujrxKV2K3gAAAA==",
     "durationSeconds": 14,
     "bytes": 960426,
-    "title": "Emergency Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Emergency Gate Repair — Manual Release and Temporary Secure",
+    "description": "How a gate is released to manual operation so a property can be used before the repair is complete, and how a gate is left in a secure state when a part has to be ordered.",
+    "descriptionWritten": true
   },
   {
     "slug": "faac-gate-motor-repair-video",
@@ -208,9 +208,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAQCdASoQAAkAA4BaJZQAAcKszAAA9DnGK/ePG8IdunQglmD8bSOoaQuW9WVLJ9/+wbfrvWuK8NCkwPby4goAAAA=",
     "durationSeconds": 46,
     "bytes": 2738672,
-    "title": "FAAC Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "FAAC Gate Operator Repair — Hydraulic Service",
+    "description": "FAAC builds hydraulic gate operators that most companies will not service, quoting a full replacement instead. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.",
+    "descriptionWritten": true
   },
   {
     "slug": "gate-installation-services-video",
@@ -221,9 +221,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAkAA4BaJQBOgMWblyqJWoAA/qyrka73lYo4zSr8SGcEnTaeaeaubS697NyVTl6wSqR0/ygCporbYfnN5C6/afq4mGLWfdLEJO0iDSgAAA==",
     "durationSeconds": 20,
     "bytes": 1968875,
-    "title": "Gate Installation — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Automatic Gate Installation — Site Preparation and Footings",
+    "description": "The part of a gate installation nobody sees and everything depends on: footings set to depth, conduit run properly and power brought to the gate correctly the first time. Skipping this is how a gate becomes an annual repair call.",
+    "descriptionWritten": true
   },
   {
     "slug": "gate-installation-services-video-2",
@@ -234,9 +234,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJQBOgCLNAL2lgAD2vlB8/NYve7bP13hhjnLuh12NybuukR0Xpn9bOrqwo/EPyujXnOXkFOXgAA==",
     "durationSeconds": 18,
     "bytes": 1884531,
-    "title": "Gate Installation — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Automatic Gate Installation — Operator Fitting and Commissioning",
+    "description": "Fitting and commissioning the operator on a new gate installation: alignment set, limits programmed, safety devices installed to standard and the whole system handed over working.",
+    "descriptionWritten": true
   },
   {
     "slug": "gate-motor-repair-services-video",
@@ -247,9 +247,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZwAAwDfApPZIIgA/qN2i9/A1/4pj2Y4ufcGushX5j36BCKN4WyOju+huMzDaIlwAA==",
     "durationSeconds": 15,
     "bytes": 1365550,
-    "title": "Gate Motor Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Gate Motor Repair — How We Diagnose a Dead Operator",
+    "description": "The diagnostic sequence for a gate that will not move: gate released and pushed by hand to rule out a mechanical bind, then power at the board, capacitor under load, limit switch travel and safety devices — in that order.",
+    "descriptionWritten": true
   },
   {
     "slug": "gate-motor-repair-services-video-2",
@@ -260,9 +260,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoQAAkAA4BaJQBdgBowKKhAAPuX+XwgcRfK08c4lkD0wrjjzmxdWP6FxzUjkzeBzPVNJRlp0UTyRdmotqkAAA==",
     "durationSeconds": 21,
     "bytes": 1092201,
-    "title": "Gate Motor Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Gate Motor Repair — Capacitor Test and Replacement",
+    "description": "A gate motor that hums but will not move is far more often a failed capacitor than a dead motor. This shows the capacitor being tested under load and replaced, one of the least expensive repairs on a gate.",
+    "descriptionWritten": true
   },
   {
     "slug": "iron-gate-repair-services-video",
@@ -273,9 +273,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAgCdASoQAAkAA4BaJYwC7IExgpiuf2uPkiSAAPlpdL4RZnPOCCd2gem7C4MxnR+aEyeP8HLBFyQpWUvJBCDsQYnDrEEoZDyxulCfLnAAAA==",
     "durationSeconds": 20,
     "bytes": 2420048,
-    "title": "Iron Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Iron Gate Repair — Weld Repair on a Cracked Frame",
+    "description": "A cracked weld at an iron gate frame joint cut out, re-welded, ground back and refinished so the repair is not visible. Custom ironwork is almost always worth repairing rather than replacing.",
+    "descriptionWritten": true
   },
   {
     "slug": "iron-gate-repair-services-video-2",
@@ -286,9 +286,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJZQAAxfWokiGHIAA/uuQ2iHWrQpzy90h8OydFO6gMLZVzZgtRXosGo2h2JXvRonmmaEKLunNfg1QAAA=",
     "durationSeconds": 45,
     "bytes": 4433012,
-    "title": "Iron Gate Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Iron Gate Repair — Fixing a Sagging Gate",
+    "description": "A sagging iron gate dragging on the driveway. The hinges and the post are assessed together with the gate, because straightening the leaf without addressing the post means it will drag again within a season.",
+    "descriptionWritten": true
   },
   {
     "slug": "liftmaster-gate-motor-repair-video",
@@ -299,9 +299,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJYwCdADJs0xwAAD+ox6C6yQHFl/iH1j59IZ+1yml3KWb3/WZZJDEWkp+nTJuXXy6YwTq8qsh6eGNwXAAAA==",
     "durationSeconds": 44,
     "bytes": 4854805,
-    "title": "LiftMaster Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "LiftMaster Gate Operator Repair — Full Service Call",
+    "description": "A complete LiftMaster gate operator repair from diagnosis to test cycle. The technician isolates the fault at the control board, replaces the failed component and runs the gate through full travel before leaving. Most LiftMaster faults are a board, a capacitor or a limit switch — not the whole operator.",
+    "descriptionWritten": true
   },
   {
     "slug": "liftmaster-gate-motor-repair-video-2",
@@ -312,9 +312,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJYwCsAEYGmAljbwA/tGa8dENXQb1Kmt+4c+zWQCCkGdPryvDdKeQzY2WjqsmgH2ss2Hy4tg5uohHGS+GDWguoJNkAA==",
     "durationSeconds": 21,
     "bytes": 3224328,
-    "title": "LiftMaster Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Inside a LiftMaster Operator — Board and Limit Switch Diagnosis",
+    "description": "Close-up of a LiftMaster operator opened on site. Shows how the control board, limit switches and drive chain are checked in sequence, and why the gate itself is moved by hand first to separate a mechanical bind from an electrical fault.",
+    "descriptionWritten": true
   },
   {
     "slug": "ramset-gate-motor-repair-video",
@@ -325,9 +325,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZQCdAEO4g6zS8AA8m0YlaxR7HF+Uq02kWRSpV161+e63NaHsqxckad4pwOV5LN4AA==",
     "durationSeconds": 44,
     "bytes": 3984991,
-    "title": "Ramset Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Ramset Gate Operator Repair — High-Cycle Commercial Unit",
+    "description": "A Ramset operator on a high-cycle commercial entrance. Shows why parts that last a decade on a residential driveway wear out in months on a gate running hundreds of cycles a day, and what to check when the same component keeps failing.",
+    "descriptionWritten": true
   },
   {
     "slug": "viking-gate-motor-repair-video",
@@ -338,9 +338,9 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADwAwCdASoQABwAPu1iqk2ppaQiMAgBMB2JQBOgDGBJCBNeX691SoGAAP1dxd4ohgYdyyenWzTfulKVIJESsDVV+TTLBjbn5zbua9SAJ00TEFqQxLsvkk37YTUUgRBfQlethWIDLKDb9NBv8x00bCyKxW36IOUp9hy1DD8WIS9gdOJ4uKLGljR6fN3Qg/487/kabCl1Nj03EpsgkTCM5QWR0MAAAA==",
     "durationSeconds": 8,
     "bytes": 1146363,
-    "title": "Viking Gate Operator Repair — Shield Gate Repair, Dallas–Fort Worth",
-    "description": "",
-    "descriptionWritten": false
+    "title": "Viking Gate Operator Repair — DC Power and Battery Diagnosis",
+    "description": "Viking operators typically run on DC with battery and solar or trickle charging, so a gate that has become slow or unreliable is often a power problem rather than an operator fault. This shows the charging system being load-tested before anything mechanical is condemned.",
+    "descriptionWritten": true
   }
 ]
 

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/hero'
-import { TrustBar } from '@/components/sections/trust-bar'
 import { VideoReel } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { WhyShield } from '@/components/sections/why-shield'
+import { Reviews } from '@/components/sections/reviews'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { PricingTeaser } from '@/components/sections/pricing-teaser'
 import { Process } from '@/components/sections/process'
@@ -19,16 +19,22 @@ export const metadata: Metadata = {
 }
 
 /**
- * Homepage section order is deliberate: trust before features, and video high
- * rather than buried. Of the 14 DFW competitors audited, none embeds video and
- * none publishes pricing — those two sections are the differentiators, so they
- * appear before the conventional services grid rather than after it.
+ * Section order is deliberate.
+ *
+ * Proof comes first: Reviews sits directly under the hero, with the customer
+ * testimonial video as its centrepiece, then the video reel. The previous order
+ * pushed every trust signal below three feature sections — which reproduced the
+ * exact failure the old WordPress site was rejected for.
+ *
+ * The standalone trust bar is gone. It rendered two chips and duplicated the
+ * hero's proof row, so it read as an unfinished component rather than a
+ * credential strip.
  */
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
+      <Reviews />
       <VideoReel />
       <BrandsGrid />
       <WhyShield />

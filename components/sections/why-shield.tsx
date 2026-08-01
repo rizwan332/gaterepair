@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Reveal } from '@/components/ui/reveal'
 import { Clock, Wrench, Receipt, Scale, ShieldCheck, FileCheck } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -73,17 +74,19 @@ export function WhyShield() {
         </div>
 
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map(({ icon: Icon, title, body }) => (
-            <li
+          {cards.map(({ icon: Icon, title, body }, i) => (
+            <Reveal
+              as="li"
+              delay={Math.min(i, 3) * 0.05}
               key={title}
-              className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-7 transition-shadow duration-200 hover:shadow-[var(--shadow-card)]"
+              className="card-light h-full p-7"
             >
               <span className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
                 <Icon className="size-5" aria-hidden />
               </span>
               <h3 className="mb-2.5 font-display text-lg font-semibold text-ink-950">{title}</h3>
               <p className="text-[0.9375rem] leading-relaxed text-ink-700">{body}</p>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

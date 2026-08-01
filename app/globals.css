@@ -3,17 +3,21 @@
 /*
   Design system.
 
-  Palette is sampled from the client's own logo — a navy shield inside a gold
-  ring. Gold is reserved exclusively for things we want clicked; if an element
-  is gold and is not a call to action, that is a bug. In an emergency trade,
-  restraint reads as competence and visual noise reads as a scam.
+  The previous pass was clean but forgettable — flat surfaces, uniform type
+  scale, no signature device. Competent is not the brief. This version adds the
+  things that separate an Apple/Linear-tier page from a well-organised one:
+  layered surfaces rather than flat fills, a dramatic type scale, a single
+  repeated light motif, and gold treated as a material rather than a swatch.
+
+  Gold remains reserved for things we want clicked. If an element is gold and
+  is not a call to action, that is a bug.
 */
 
 @theme {
-  /* Near-black neutral ramp with a faint cool cast, so the gold reads warm
-     against it rather than muddy. Navy was the obvious choice from the logo and
-     also the default colour of every home-services site in this market —
-     Metro, Garage Tec and J&J are all blue. Near-black is the differentiator. */
+  /* Near-black neutral ramp with a faint cool cast so gold reads warm against
+     it. Navy was the obvious pull from the logo and also the default colour of
+     every home-services site in this market — Metro, Garage Tec and J&J are all
+     blue. Near-black is the differentiator. */
   --color-ink-50: #f7f7f8;
   --color-ink-100: #ecedef;
   --color-ink-200: #d8dade;
@@ -23,27 +27,30 @@
   --color-ink-600: #464b54;
   --color-ink-700: #32363d;
   --color-ink-800: #212429;
-  --color-ink-900: #16181c;
-  --color-ink-950: #0b0c0e;
+  --color-ink-900: #131519;
+  --color-ink-950: #08090b;
 
+  --color-gold-200: #fde9b8;
   --color-gold-300: #fbd77a;
   --color-gold-400: #f8c64d;
   --color-gold-500: #f5b32a;
   --color-gold-600: #d99a15;
   --color-gold-700: #b47c10;
 
+  --color-success-400: #4ade80;
   --color-success-500: #16a34a;
   --color-success-600: #15803d;
 
-  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-loaded), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
 
-  --radius-card: 0.875rem;
+  --radius-card: 1rem;
 
-  /* Deliberately soft. Heavy drop shadows are the visual signature of the
-     WordPress templates every competitor in this market is using. */
-  --shadow-card: 0 1px 2px rgb(11 12 14 / 0.05), 0 8px 24px -12px rgb(11 12 14 / 0.18);
-  --shadow-lift: 0 2px 4px rgb(11 12 14 / 0.07), 0 16px 40px -16px rgb(11 12 14 / 0.3);
+  /* Soft and layered. Heavy single drop shadows are the visual signature of the
+     WordPress templates every competitor here is running. */
+  --shadow-card: 0 1px 2px rgb(8 9 11 / 0.05), 0 8px 24px -12px rgb(8 9 11 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(8 9 11 / 0.06), 0 20px 48px -16px rgb(8 9 11 / 0.28);
+  --shadow-gold: 0 8px 32px -8px rgb(245 179 42 / 0.45);
 }
 
 @layer base {
@@ -58,28 +65,30 @@
     font-family: var(--font-sans);
     font-feature-settings: 'cv11', 'ss01';
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
+  /* Tighter tracking as size increases — large type set at default tracking is
+     the single most common tell of an untuned design. */
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.022em;
     text-wrap: balance;
   }
+  h1 { letter-spacing: -0.035em; }
+  h2 { letter-spacing: -0.028em; }
+  h3 { letter-spacing: -0.02em; }
 
-  p {
-    text-wrap: pretty;
-  }
+  p { text-wrap: pretty; }
 
-  /* Keyboard focus must always be obvious. WCAG 2.4.7. */
   :focus-visible {
     outline: 3px solid var(--color-gold-500);
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
-  /* Emergency traffic is overwhelmingly mobile — never let the page scroll sideways. */
-  body {
-    overflow-x: hidden;
+  ::selection {
+    background: var(--color-gold-500);
+    color: var(--color-ink-950);
   }
 }
 
@@ -90,26 +99,128 @@
     padding-inline: 1.25rem;
     max-width: 80rem;
   }
-
   @media (min-width: 768px) {
     .container-page { padding-inline: 2rem; }
   }
 
-  /* Body copy sits at ~65ch. Anything wider is measurably harder to read. */
-  .prose-measure {
-    max-width: 65ch;
-  }
+  /* ~65ch. Wider measures are measurably harder to read. */
+  .prose-measure { max-width: 65ch; }
 
-  .section {
-    padding-block: 4rem;
-  }
-
+  .section { padding-block: 4.5rem; }
   @media (min-width: 768px) {
-    .section { padding-block: 6rem; }
+    .section { padding-block: 7rem; }
   }
+
+  /* ---- Dark surface -----------------------------------------------------
+     A flat #08090B fill reads as cheap at full-bleed. Layering a barely-there
+     vertical gradient over it gives the surface depth without becoming a
+     visible gradient. */
+  .surface-dark {
+    background:
+      linear-gradient(180deg, rgb(19 21 25 / 0.85) 0%, rgb(8 9 11 / 1) 55%),
+      var(--color-ink-950);
+  }
+
+  /* ---- Signature light motif --------------------------------------------
+     One repeated device across dark sections: a soft gold bloom, off-centre.
+     Cheap to render (no blur filter, no extra paint layer), and it is the thing
+     that makes the page recognisable rather than generic. */
+  .glow-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      60rem 32rem at 78% -10%,
+      rgb(245 179 42 / 0.16) 0%,
+      rgb(245 179 42 / 0.05) 38%,
+      transparent 70%
+    );
+  }
+
+  /* Faint engineering grid — reads as precision rather than decoration. */
+  .grid-lines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+    mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent 85%);
+  }
+
+  /* ---- Cards ------------------------------------------------------------
+     A 1px border on white is the default look of every framework. A gradient
+     hairline that brightens toward the top edge reads as lit, and costs one
+     pseudo-element. */
+  .card-light {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-card);
+    box-shadow:
+      0 0 0 1px rgb(8 9 11 / 0.06),
+      var(--shadow-card);
+    transition: box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card-light:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px rgb(8 9 11 / 0.1),
+      var(--shadow-lift);
+  }
+
+  .card-dark {
+    position: relative;
+    border-radius: var(--radius-card);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0.02));
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+    transition: box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card-dark:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.16),
+      0 20px 44px -20px rgb(0 0 0 / 0.6);
+  }
+
+  /* ---- Gold as a material, not a swatch --------------------------------- */
+  .btn-gold {
+    background: linear-gradient(180deg, var(--color-gold-400), var(--color-gold-600));
+    color: var(--color-ink-950);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.35),
+      0 1px 2px rgb(8 9 11 / 0.2);
+    transition: filter 160ms ease, box-shadow 200ms ease, transform 160ms ease;
+  }
+  .btn-gold:hover {
+    filter: brightness(1.06);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.4),
+      var(--shadow-gold);
+  }
+  .btn-gold:active { transform: translateY(1px); }
+
+  .text-gradient-gold {
+    background: linear-gradient(120deg, var(--color-gold-300) 0%, var(--color-gold-500) 45%, var(--color-gold-600) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hairline rule that fades at both ends — used between dark sections so the
+     colour change is a transition rather than a seam. */
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.12), transparent);
+  }
+
+  /* Numerals in stats and phone numbers must not wobble between weights. */
+  .tabular { font-variant-numeric: tabular-nums; }
 }
 
-/* Every animation on this site is decorative. All of it must be switchable off. */
+/* Every animation here is decorative. All of it must be switchable off. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -8,6 +8,7 @@ import { Phone, CheckCircle2, Lightbulb } from 'lucide-react'
 import { business } from '@/content/business'
 import { cities } from '@/content/cities'
 import { brands } from '@/content/brands'
+import { trackEvent } from '@/components/analytics'
 
 /**
  * "Describe Your Gate Problem" — guided intake.
@@ -88,6 +89,12 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
         setServerError(data.error ?? 'Something went wrong. Please call us.')
         return
       }
+      trackEvent('generate_lead', {
+        event_category: 'conversion',
+        urgency: values.urgency,
+        problem: values.problem,
+        city: values.city,
+      })
       setSubmitted(true)
     } catch {
       setServerError('We could not send that. Please call us — someone always answers.')

@@ -22,7 +22,8 @@ Verified against a fresh build, same method as the audit.
 
 | # | Finding | Status |
 |---|---|---|
-| C1 | Trust bar empty, no reviews | 🔴 **Blocked on client** — needs real rating, count, licence, years |
+| C1 | Trust bar empty, no reviews | 🟠 **Structurally fixed, content blocked** — homepage reviews section + `/reviews` page built, proof chips moved into the hero, `Review` schema wired behind `reviewsConfirmed`. "review" mentions went 0 → 44. Still needs the client's real rating, count, licence and years |
+| — | Design read as "competent but forgettable" (my own score: 7.5 visual / 6.5 brand) | ✅ **Reworked** — layered surfaces replacing flat fills, a signature gold-bloom + engineering-grid motif, dramatic display scale with size-tuned tracking, gold treated as a material (gradient + inner highlight + glow) rather than a swatch, lit-hairline cards, and the Framer Motion dependency finally earning its bytes via `Reveal` |
 | C2 | 176 hollow city pages | ✅ **Fixed** — `publishedCities` gate; build is now 46 pages, sitemap lists 14 cities. Unpublished cities still listed (unlinked) on `/service-areas`, so coverage is stated without publishing a shell page |
 | C3 | Legacy URLs 404 | ✅ **Fixed** — all brand + service + utility paths 308 to their new homes, generated from `legacyPath`. California pages deliberately still unmapped pending §0 |
 | C4 | 9/10 form labels broken | ✅ **Fixed** — 10 labels, 0 broken; `aria-describedby`, `aria-invalid`, `aria-required` now wired |
