@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { AlertTriangle, Wrench, ArrowRight } from 'lucide-react'
 import { brands, brandBySlug } from '@/content/brands'
+import { BRAND_DEPTH } from '@/content/brand-depth'
 import { media } from '@/content/media-manifest'
 import { videosFor } from '@/content/video-manifest'
 import { business } from '@/content/business'
@@ -39,6 +40,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const brand = brandBySlug(slug)
   if (!brand) notFound()
 
+  const depth = BRAND_DEPTH[brand.slug]
+  const faqs = [...brand.faqs, ...(depth?.extraFaqs ?? [])]
   const images = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
   const brandVideos = brand.mediaCategory ? videosFor(brand.mediaCategory) : []
 
@@ -129,7 +132,83 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         />
       )}
 
-      <FaqAccordion faqs={brand.faqs} title={`${brand.name} repair questions`} />
+      {depth?.characteristics && depth.characteristics.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-4 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+              What makes {brand.name} different to work on
+            </h2>
+            <p className="prose-measure mb-12 text-lg text-ink-700">
+              Knowing how a manufacturer&rsquo;s equipment actually behaves is the difference between a
+              targeted repair and a replacement quote.
+            </p>
+            <div className="space-y-12">
+              {depth.characteristics.map((passage) => (
+                <article key={passage.heading} className="border-l-2 border-gold-500/40 pl-6 md:pl-8">
+                  <h3 className="mb-4 font-display text-xl font-semibold text-ink-950 sm:text-2xl">
+                    {passage.heading}
+                  </h3>
+                  <div className="prose-measure space-y-4">
+                    {passage.body.map((para, i) => (
+                      <p key={i} className="leading-relaxed text-ink-700">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {depth?.modelNotes && depth.modelNotes.length > 0 && (
+        <section className="section bg-ink-50">
+          <div className="container-page">
+            <h2 className="mb-10 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+              Notes by model family
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {depth.modelNotes.map((passage) => (
+                <article key={passage.heading} className="card-light p-6">
+                  <h3 className="mb-3 font-display text-lg font-semibold text-ink-950">
+                    {passage.heading}
+                  </h3>
+                  {passage.body.map((para, i) => (
+                    <p key={i} className="text-[0.9375rem] leading-relaxed text-ink-700">
+                      {para}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {depth?.partsAvailability && depth.partsAvailability.length > 0 && (
+        <section className="section surface-dark glow-gold relative isolate overflow-hidden text-white">
+          <div className="container-page relative">
+            <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl">
+              {brand.name} parts and availability
+            </h2>
+            <p className="prose-measure mb-10 text-lg text-ink-300">
+              &ldquo;We&rsquo;d have to order that&rdquo; discovered on the day is how a same-visit repair
+              becomes two visits. Here is what we actually carry.
+            </p>
+            <ul className="max-w-3xl space-y-4">
+              {depth.partsAvailability.map((line) => (
+                <li key={line} className="flex gap-4">
+                  <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
+                  <span className="leading-relaxed text-ink-200">{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <FaqAccordion faqs={faqs} title={`${brand.name} repair questions`} />
 
       <section className="section bg-ink-50">
         <div className="container-page">
@@ -163,7 +242,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
               description: brand.intro,
               url: `/brands/${brand.slug}`,
             }),
-            faqSchema(brand.faqs),
+            faqSchema(faqs),
             breadcrumbSchema([
               { name: 'Home', url: '/' },
               { name: 'Brands', url: '/brands' },

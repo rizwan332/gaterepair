@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     'Real price ranges for gate motor, control board, sensor and off-track repair across DFW. ' +
     'No phone call required to find out what it costs.',
   alternates: { canonical: '/pricing' },
+  // Unlisted until real bands exist. A page promising transparency and showing
+  // twelve em-dashes damages trust more than having no pricing page at all.
+  robots: { index: false, follow: true },
 }
 
 const faqs = [

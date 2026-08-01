@@ -3,6 +3,7 @@ import { business } from '@/content/business'
 import { services } from '@/content/services'
 import { brands } from '@/content/brands'
 import { publishedCities } from '@/content/cities'
+import { projects } from '@/content/projects'
 
 /**
  * Only published cities appear. Cities that exist in the service area but have
@@ -18,9 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '', priority: 1.0 },
     { path: '/services', priority: 0.9 },
     { path: '/brands', priority: 0.9 },
-    { path: '/pricing', priority: 0.9 },
     { path: '/service-areas', priority: 0.8 },
     { path: '/reviews', priority: 0.8 },
+    { path: '/projects', priority: 0.9 },
+    { path: '/emergency', priority: 0.95 },
+    { path: '/faq', priority: 0.85 },
+    { path: '/warranty', priority: 0.7 },
+    { path: '/about', priority: 0.7 },
     { path: '/gallery', priority: 0.7 },
     { path: '/contact', priority: 0.8 },
   ]
@@ -45,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // FAAC, All-O-Matic and Ramset are uncontested in this market — they get
       // the higher crawl priority.
       priority: b.contested ? 0.8 : 0.9,
+    })),
+    ...projects.map((p) => ({
+      url: `${base}/projects/${p.slug}`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.8,
     })),
     ...publishedCities.map((c) => ({
       url: `${base}/gate-repair-${c.slug}-tx`,

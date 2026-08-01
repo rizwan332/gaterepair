@@ -36,6 +36,19 @@ export const business = {
     country: 'US',
   },
 
+  /**
+   * Direct "write a review" link from the Google Business Profile.
+   *
+   * Get it from the GBP dashboard → Ask for reviews → copy link. It deep-links
+   * straight into the review dialog, which roughly doubles completion versus
+   * sending someone to the profile and asking them to find the button.
+   */
+  googleReviewUrl: {
+    confirmed: false,
+    value: '',
+    note: 'GBP → Ask for reviews → copy link. Required before the review request system can send anything.',
+  } as Fact<string>,
+
   social: {
     // TODO: confirm — meeting notes reference a YouTube channel with usable footage
     youtube: null as string | null,

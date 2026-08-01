@@ -8,6 +8,9 @@
 
 export type Symptom = { seeing: string; means: string }
 
+/** A named sub-topic rendered as an H3 with its own passage of prose. */
+export type Passage = { heading: string; body: string[] }
+
 export type Service = {
   slug: string
   legacyPath: string | null
@@ -20,7 +23,20 @@ export type Service = {
   intro: string
   /** No DFW competitor publishes a symptom table. This is how people search. */
   symptoms: Symptom[]
+  /**
+   * Root causes behind the symptoms, as H3 passages.
+   *
+   * These carry most of the page's weight. Star Gate — the best-written
+   * competitor in this market — runs ~1,100 words on its strongest service
+   * page with no H3 structure at all. Passage-level headings are what let
+   * Google surface a specific answer rather than the whole page.
+   */
+  causes?: Passage[]
   process: string[]
+  /** Practical advice a homeowner can act on without paying anyone. */
+  maintenance?: Passage[]
+  /** When repair stops being the economical choice. */
+  repairVsReplace?: string[]
   faqs: { q: string; a: string }[]
   relatedBrands: string[]
   priority: number

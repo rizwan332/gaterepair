@@ -34,11 +34,15 @@ export function WhyShield() {
       title: 'Price before we start',
       body: (
         <>
-          We diagnose, we quote, you decide. The number we say is the number you pay. See our{' '}
-          <Link href="/pricing" className="font-medium text-ink-900 underline decoration-gold-400 underline-offset-2 hover:text-ink-700">
-            published price ranges
-          </Link>{' '}
-          — no other Dallas gate company publishes theirs.
+          We diagnose, we quote, you decide. The number we say is the number you pay — and you get it
+          before any work starts.{' '}
+          <Link
+            href="/contact"
+            className="font-medium text-ink-900 underline decoration-gold-400 underline-offset-2 hover:text-ink-700"
+          >
+            Request a free estimate
+          </Link>
+          .
         </>
       ),
     },

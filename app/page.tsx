@@ -5,7 +5,6 @@ import { BrandsGrid } from '@/components/sections/brands-grid'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
 import { ServicesGrid } from '@/components/sections/services-grid'
-import { PricingTeaser } from '@/components/sections/pricing-teaser'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
 import { ClosingCTA } from '@/components/sections/closing-cta'
@@ -39,7 +38,6 @@ export default function HomePage() {
       <BrandsGrid />
       <WhyShield />
       <ServicesGrid />
-      <PricingTeaser />
       <Process />
       <ServiceAreas />
       <ClosingCTA />

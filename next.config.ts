@@ -46,6 +46,7 @@ const nextConfig: NextConfig = {
       { source: '/testimonials', destination: '/reviews', permanent: true },
       { source: '/locations', destination: '/service-areas', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
+      { source: '/emergency-gate-repair-services', destination: '/emergency', permanent: true },
     ]
   },
 }

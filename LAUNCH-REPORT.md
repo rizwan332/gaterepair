@@ -54,20 +54,56 @@
 - **Analytics:** GA4 + global `tel:`/`sms:` click tracking + `generate_lead` event, `afterInteractive`, renders nothing without `NEXT_PUBLIC_GA_ID`
 - **Schema:** LocalBusiness, Service, FAQPage, BreadcrumbList, VideoObject (25, now with real descriptions), Review — gated behind `reviewsConfirmed`
 
+### Content depth — measured, second pass
+
+**Client confirmed:** the company operated in California first and is now expanding into Dallas–Fort Worth. The photography is therefore genuine company work, not stock or third-party — it simply is not DFW work. It can be presented as the company's portfolio; it cannot be captioned as local jobs. `MEDIA-PROVENANCE.md` updated accordingly.
+
+**Service pages — all 8 now exceed Star Gate's 1,100-word best page:**
+
+| Page | Before | After | H3s |
+|---|---:|---:|---:|
+| Gate motor & operator repair | 794 | **2,099** | 7 |
+| Gate installation | ~790 | **1,454** | 7 |
+| Commercial & HOA | ~790 | **1,375** | 8 |
+| Emergency repair | ~790 | **1,342** | 7 |
+| Automatic gate repair | ~790 | **1,339** | 7 |
+| Iron gate & welding | ~790 | **1,329** | 8 |
+| Electric gate repair | ~790 | **1,324** | 8 |
+| Access control & intercom | ~790 | **1,306** | 9 |
+
+Each gained `causes` (H3 passages on root causes), `maintenance` (what an owner can do vs what needs a technician), `repairVsReplace`, and 2–3 additional FAQs. Source: `content/service-depth.ts`.
+
+**Brand pages:**
+
+| Page | Before | After | H3s |
+|---|---:|---:|---:|
+| FAAC (flagship, uncontested) | 728 | **1,566** | 7 |
+| LiftMaster | ~700 | **1,181** | 7 |
+| All-O-Matic (uncontested) | ~700 | **1,095** | 4 |
+| Ramset (uncontested) | ~700 | **1,051** | 4 |
+| DoorKing | 421 | **858** | 4 |
+| Viking | ~700 | 814 | 3 |
+| Elite | ~700 | 772 | 3 |
+| HySecurity | 421 | 743 | 4 |
+| Eagle | ~700 | 653 | 2 |
+| Linear | 421 | 627 | 3 |
+
+Source: `content/brand-depth.ts`.
+
+**`/pricing` unlisted** — removed from desktop nav, mobile nav, sitemap and homepage; page set `robots: noindex`; the "Price before we start" card now links to Request a Free Estimate.
+
 ### Honestly NOT completed
 
 | Item | Status |
 |---|---|
-| Service pages to 1,600 words + H3 hierarchy | **Not done.** Still 794 words, 0 H3s |
-| Brand pages to 1,400 words | **Not done.** FAAC still 728 words |
+| Brand pages: Elite, Viking, Eagle, Linear, HySecurity | **Partial.** 627–814 words — improved but below the 1,300 target |
 | City pages to 1,400–1,600 words | **Not done.** Plano still 957 |
-| Gallery filtering/pagination | **Not done.** Still 484 KB |
-| Projects / case studies | Not built |
+| Gallery filtering/pagination | **Not done.** Still 484 KB, unfiltered |
+| `/faq`, `/projects`, `/warranty`, `/about`, `/emergency` | **Not built** |
 | Before/after slider | Not built |
-| `/faq` hub, blog | Not built |
 | Google Maps on city pages | Not built |
 
-These are the remaining High-priority items and they are the reason I cannot say "no remaining High findings".
+These remain High priority and are the reason I still cannot claim "no remaining High findings".
 
 ---
 

@@ -90,6 +90,15 @@ export function SiteFooter() {
             {license && <> · Texas License {license}</>}
           </p>
           <div className="flex gap-5">
+            <Link href="/about" className="hover:text-ink-200">
+              About
+            </Link>
+            <Link href="/warranty" className="hover:text-ink-200">
+              Warranty
+            </Link>
+            <Link href="/faq" className="hover:text-ink-200">
+              FAQs
+            </Link>
             <Link href="/privacy-policy" className="hover:text-ink-200">
               Privacy Policy
             </Link>

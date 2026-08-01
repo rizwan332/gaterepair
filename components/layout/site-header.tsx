@@ -42,10 +42,19 @@ export function SiteHeader() {
             href="/brands"
             items={brands.map((b) => ({ label: b.name, href: `/brands/${b.slug}` }))}
           />
-          <NavLink href="/pricing">Pricing</NavLink>
-          <NavLink href="/reviews">Reviews</NavLink>
-          <NavLink href="/gallery">Our Work</NavLink>
+          <NavLink href="/projects">Case Studies</NavLink>
           <NavLink href="/service-areas">Service Areas</NavLink>
+          <NavDropdown
+            label="Company"
+            href="/about"
+            items={[
+              { label: 'About us', href: '/about' },
+              { label: 'Customer reviews', href: '/reviews' },
+              { label: 'Our work', href: '/gallery' },
+              { label: 'Our warranty', href: '/warranty' },
+              { label: 'FAQs', href: '/faq' },
+            ]}
+          />
         </nav>
 
         <div className="flex items-center gap-2">
