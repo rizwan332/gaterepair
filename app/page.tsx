@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/hero'
 import { VideoReel } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { BrandMarquee } from '@/components/sections/brand-marquee'
+import { FeaturedWork } from '@/components/sections/featured-work'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
@@ -41,6 +42,8 @@ export default function HomePage() {
       {/* Video testimonials lead the social proof — the client has these and
           does not have Google reviews. Renders nothing until confirmed. */}
       <VideoTestimonials />
+      {/* The client's own three homepage photographs. */}
+      <FeaturedWork />
       <Reviews />
       <VideoReel />
       <BrandsGrid />

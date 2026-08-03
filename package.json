@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "assets": "tsx scripts/process-assets.ts",
+    "assets:alt": "tsx scripts/sync-alt-text.ts",
     "assets:video": "tsx scripts/process-videos.ts",
     "validate:cities": "tsx scripts/validate-cities.ts"
   },

@@ -26,7 +26,17 @@ import { videos } from '@/content/video-manifest'
  *    exact failure the old WordPress site was rejected for.
  */
 export function Hero() {
-  const hero = media['gate-installation']?.[3] ?? media['gate-installation']?.[0]
+  // The client picked the homepage imagery himself (3 Aug 2026). `homepage-03`
+  // is the technician mid-repair on an All-O-Matic controller — the right hero
+  // for a company whose whole argument is that it repairs rather than replaces,
+  // and the only one of the three with no identifying background detail.
+  //
+  // ⚠️ That source is 1320px wide, so the pipeline tops out at 1200. On a wide
+  // desktop the hero upscales and will look soft. Ask the client for the
+  // original camera file (2400px+) and this fixes itself on the next
+  // `npm run assets`.
+  const hero =
+    media['homepage']?.[2] ?? media['gate-installation']?.[3] ?? media['gate-installation']?.[0]
   const rating = fact(business.rating)
   const license = fact(business.license)
   const years = fact(business.yearsInBusiness)

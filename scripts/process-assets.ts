@@ -24,6 +24,19 @@ import sharp from 'sharp'
 import { ALT_TEXT } from '../content/alt-text'
 
 const SOURCE = path.join(process.cwd(), 'wordpress-uploads', '2026')
+
+/**
+ * Images the client sends us directly, outside the WordPress dump.
+ *
+ * The dump is a one-off export and is gitignored (~1GB). Anything the client
+ * hands over afterwards has nowhere to live in that model, so it lives here and
+ * IS committed — these are a handful of files, they are the only copy we have,
+ * and losing them means going back to the client to ask again.
+ *
+ * Filenames follow the same `<Category-Match>` convention the dump uses, so the
+ * existing category matcher picks them up with no special-casing.
+ */
+const CLIENT_SOURCE = path.join(process.cwd(), 'client-assets')
 const OUT_DIR = path.join(process.cwd(), 'public', 'images')
 const MANIFEST = path.join(process.cwd(), 'content', 'media-manifest.ts')
 
@@ -52,9 +65,29 @@ const CATEGORIES = [
   { match: 'Eagle-Gate-Motor-Repair', slug: 'eagle', label: 'Eagle Gate Operator Repair', kind: 'brand' },
   { match: 'Commercial-Gate-Repair-Services', slug: 'commercial-gate-repair', label: 'Commercial Gate Repair', kind: 'service' },
   { match: 'Ramset-Gate-Motor-Repair', slug: 'ramset', label: 'Ramset Gate Operator Repair', kind: 'brand' },
+  // Client-selected homepage imagery, supplied 3 Aug 2026. Kept as its own
+  // category so the homepage does not silently pick up a different photo when
+  // the shared service categories are re-indexed.
+  { match: 'Homepage', slug: 'homepage', label: 'Featured Work', kind: 'service' },
 ] as const
 
 type Category = (typeof CATEGORIES)[number]
+
+/**
+ * Photographs the client asked to be taken off the site (3 Aug 2026).
+ *
+ * Keyed on the *source* identity rather than the output slug, and applied after
+ * index assignment rather than before, so excluding one image does not renumber
+ * the others. Renumbering would silently repoint every alt-text entry and every
+ * hard-coded `media[cat][n]` lookup at a different photograph — a much worse
+ * failure than a gap in the sequence.
+ *
+ * A gap here is intentional. Do not "tidy" it.
+ */
+const EXCLUDED_KEYS = new Set([
+  'SGR-Gate-Installation-Services-14', // wooden fence beside a black gate
+  'SGR-Gate-Installation-Services-17', // gate panel loaded on a flatbed trailer
+])
 
 /**
  * Reduces every WordPress derivative filename back to the identity of the
@@ -109,6 +142,17 @@ async function main() {
   const files = await walk(SOURCE)
   console.log(`  ${files.length} image files found`)
 
+  // Client-supplied images are optional — the directory may not exist on a
+  // fresh clone, and that must not fail the build.
+  let clientFiles: string[] = []
+  try {
+    clientFiles = await walk(CLIENT_SOURCE)
+    console.log(`  ${clientFiles.length} client-supplied images found in client-assets/`)
+  } catch {
+    console.log('  no client-assets/ directory — skipping')
+  }
+  files.push(...clientFiles)
+
   // Group every derivative under the identity of its source photograph.
   const groups = new Map<string, string[]>()
   for (const file of files) {
@@ -132,9 +176,17 @@ async function main() {
   const manifest: Record<string, ManifestEntry[]> = {}
   let processed = 0
   let skipped = 0
+  let excluded = 0
 
   for (const [key, members] of [...groups].sort(([a], [b]) => a.localeCompare(b))) {
     const category = categoryFor(key)!
+
+    // Client-rejected photograph. Indices were already assigned above, so the
+    // surrounding slugs keep their numbers and only this one goes missing.
+    if (EXCLUDED_KEYS.has(key)) {
+      excluded++
+      continue
+    }
 
     // Pick the highest-resolution member. File size is a poor proxy — a
     // low-quality large JPEG can outweigh a well-compressed original — so read
@@ -211,7 +263,10 @@ async function main() {
   await writeManifest(manifest)
 
   const total = Object.values(manifest).reduce((n, list) => n + list.length, 0)
-  console.log(`\nDone. ${total} images emitted, ${skipped} unreadable sources skipped.`)
+  console.log(
+    `\nDone. ${total} images emitted, ${skipped} unreadable sources skipped, ` +
+      `${excluded} excluded at the client's request.`,
+  )
   for (const c of CATEGORIES) {
     console.log(`  ${String(manifest[c.slug]?.length ?? 0).padStart(4)}  ${c.slug}`)
   }

@@ -100,10 +100,11 @@ export const ALT_TEXT: Record<string, string> = {
   'gate-installation-11': 'A keypad and call box mounted on a post at a new gate entrance',
   'gate-installation-12': 'A double swing gate installed at a residential driveway, viewed from the street',
   'gate-installation-13': 'Safety photo-eyes installed either side of a new gate opening',
-  'gate-installation-14': 'A finished automatic gate installation with the operator and control enclosure in place',
+  // 14 and 17 removed at the client's request, 3 Aug 2026. The gap is
+  // deliberate — see EXCLUDED_KEYS in scripts/process-assets.ts. Renumbering
+  // would repoint every entry below at a different photograph.
   'gate-installation-15': 'A welded steel gate frame being fitted before infill panels are added',
   'gate-installation-16': 'A newly installed cantilever gate at a commercial yard entrance',
-  'gate-installation-17': 'A completed driveway gate with its access control keypad installed at driver height',
 
   // ---- Emergency gate repair (11) ---------------------------------------
   'emergency-gate-repair-01': 'A gate stuck part-way open across a driveway, blocking vehicle access',
@@ -169,4 +170,14 @@ export const ALT_TEXT: Record<string, string> = {
   'commercial-gate-repair-04': 'A barrier arm raised at a controlled parking entrance',
   'commercial-gate-repair-05': 'A worn drive chain and sprocket on a commercial slide gate operator',
   'commercial-gate-repair-06': 'A commercial gate control cabinet opened for diagnosis',
+
+  // ---- Homepage — client's own picks, 3 Aug 2026 (3) ---------------------
+  // Rule 1 applies here as much as anywhere: two of these three have visible
+  // background detail that is not North Texas. Described by what is in frame.
+  'homepage-01':
+    'A tall black solid-panel swing gate closed across a driveway entrance, with a LiftMaster swing operator arm mounted along the lower rail and a control box on the wall beside it',
+  'homepage-02':
+    'A decorative wrought-iron double driveway gate with ornamental scrollwork, fitted with a LiftMaster operator arm at the base of each leaf',
+  'homepage-03':
+    'A Shield Gate Repair technician in a high-visibility vest crouched at an opened gate control pedestal, testing the wiring terminals by hand, with an All-O-Matic slide operator in the foreground',
 }

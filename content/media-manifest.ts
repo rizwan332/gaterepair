@@ -69,6 +69,10 @@ export const mediaCategories = {
   "ramset": {
     "label": "Ramset Gate Operator Repair",
     "kind": "brand"
+  },
+  "homepage": {
+    "label": "Featured Work",
+    "kind": "service"
   }
 } as const
 
@@ -1270,22 +1274,6 @@ export const media: Record<string, MediaImage[]> = {
       "altWritten": true
     },
     {
-      "slug": "gate-installation-14",
-      "src": "/images/gate-installation/gate-installation-14",
-      "widths": [
-        400,
-        800,
-        1200,
-        1600,
-        2000
-      ],
-      "width": 4983,
-      "height": 3322,
-      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoQAAsAA4BaJbACdADb+V+sRwAA/rI+t6bnN+LNkXwt7so8uObTB++fLbA4YDk2HfZjuikr31u13ashcFs0k6Hzb3MBF1vaSI7yKH82cddl5fa5gpJ9IAAA",
-      "alt": "A finished automatic gate installation with the operator and control enclosure in place",
-      "altWritten": true
-    },
-    {
       "slug": "gate-installation-15",
       "src": "/images/gate-installation/gate-installation-15",
       "widths": [
@@ -1311,22 +1299,6 @@ export const media: Record<string, MediaImage[]> = {
       "height": 880,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBdgCLwAhnrVDuvcAD2vka/oZsIAKzV24AsMQby7CjUpT5yzgt83k3EmBinYqBuKSyHmXyVjGqj1WGKtf19dNwAAA==",
       "alt": "A newly installed cantilever gate at a commercial yard entrance",
-      "altWritten": true
-    },
-    {
-      "slug": "gate-installation-17",
-      "src": "/images/gate-installation/gate-installation-17",
-      "widths": [
-        400,
-        800,
-        1200,
-        1600,
-        2000
-      ],
-      "width": 4032,
-      "height": 2688,
-      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAsAA4BaJYwAAudD+eFf6xuAAP39PX261SZnKeU7PB43lOVrMbtvbobXtp9zCbH86ZZ5rZTGWcuoxeREQ1hgE7AiBtANBt5CgAAA",
-      "alt": "A completed driveway gate with its access control keypad installed at driver height",
       "altWritten": true
     }
   ],
@@ -1579,6 +1551,50 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJaACdADwVViFyAAA/ffcoxPOj9oMxOBnLDogwuMP2T5JXFrP6mwoCs1mAOzdtvvstBjiu8UVQn0eL942cm586vO+7cU13XddgAAA",
       "alt": "A high-cycle slide gate operator with its chain and drive sprocket exposed for inspection",
       "altWritten": true
+    }
+  ],
+  "homepage": [
+    {
+      "slug": "homepage-01",
+      "src": "/images/homepage/homepage-01",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "width": 1320,
+      "height": 975,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAwAA4BaJQBOj+ADEq7ZLbBRAAD+lQ57NvOoJ06hPmyoBoz0kHOKDdCTHE1VpF7TdDnRa/rtwkFjwbmTkjGtMBu8UJHuQB27tH0HntRpbsIMAAA=",
+      "alt": "Featured Work — Shield Gate Repair",
+      "altWritten": false
+    },
+    {
+      "slug": "homepage-02",
+      "src": "/images/homepage/homepage-02",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "width": 1320,
+      "height": 959,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAwAA4BaJbACdADwSNRusapYAP4JJWeHoJDKze33/n59j5ThjAEPvZyCco61GMQWAGm2k1xirL905imPn68KWXEDSxAVmj3mDvdKVwcVZ68wVA+RDowAAAA=",
+      "alt": "Featured Work — Shield Gate Repair",
+      "altWritten": false
+    },
+    {
+      "slug": "homepage-03",
+      "src": "/images/homepage/homepage-03",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "width": 1320,
+      "height": 974,
+      "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABwAQCdASoQAAwAA4BaJZwAAOrQEAD9Ib4B5y+CGFcKzVMQfzlWHgr+Zs5j3jAZ1YzLqEPd6uhmTbX11qNuCTrfC7mQAA==",
+      "alt": "Featured Work — Shield Gate Repair",
+      "altWritten": false
     }
   ],
   "iron-gate-repair": [
