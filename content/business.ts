@@ -78,11 +78,10 @@ export const business = {
     note: 'Carrier name / bonded status for the "Licensed & Insured" badge.',
   } as Fact<string>,
 
-  yearsInBusiness: {
-    confirmed: false,
-    value: 0,
-    note: 'Competitors claim 20+, 31, and "since 2005".',
-  } as Fact<number>,
+  // Confirmed by client 3 Aug 2026 in the supplied About Us copy: "For over 16
+  // years, Shield Gate Repair has proudly served the DFW Metroplex". Rendered
+  // as "16+" — never round it up.
+  yearsInBusiness: { confirmed: true, value: 16 } as Fact<number>,
 
   warrantyTerm: {
     confirmed: false,

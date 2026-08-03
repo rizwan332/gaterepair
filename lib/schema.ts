@@ -20,6 +20,7 @@ type Json = Record<string, unknown>
 export function organizationSchema(): Json {
   const rating = fact(business.rating)
   const address = fact(business.address)
+  const years = fact(business.yearsInBusiness)
 
   const node: Json = {
     '@context': 'https://schema.org',
@@ -33,6 +34,10 @@ export function organizationSchema(): Json {
       'Automatic gate repair, installation and service across the Dallas–Fort Worth metroplex. Residential, ' +
       'commercial, HOA and industrial.',
     areaServed: { '@type': 'AdministrativeArea', name: business.serviceArea.primary },
+    // The client's About copy says "over 16 years", so the founding year is at
+    // most 2010. Year only — a full date would claim a precision we do not
+    // have. Omitted entirely while the fact is unconfirmed.
+    ...(years && years > 0 ? { foundingDate: String(new Date().getFullYear() - years) } : {}),
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',

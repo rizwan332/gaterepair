@@ -25,15 +25,13 @@ export const metadata: Metadata = {
  * The client's instruction on 3 Aug 2026 was "change the story please we are
  * not located in California". Every California reference is gone.
  *
- * ⚠️ PLACEHOLDER COPY. The client said he was supplying exact About Us text;
- * we do not have it yet. What is below is written to satisfy the constraint —
- * it establishes experience without naming a former market, and without
- * claiming the portfolio work happened in Dallas, which would be a
- * straightforwardly false statement about identifiable jobs. Replace wholesale
- * when the client's text arrives.
+ * The opening section is the client's own supplied copy, used verbatim. It is
+ * the one block on this site that should not be edited for tone or length
+ * without asking him first — he wrote it, and it is the company's own
+ * description of itself.
  *
- * `yearsInBusiness` is still unconfirmed, so the copy is written to read
- * correctly whether or not a number is present.
+ * It also confirms `yearsInBusiness` (16), which was previously unconfirmed and
+ * therefore suppressed everywhere it appeared.
  */
 export default function AboutPage() {
   const years = fact(business.yearsInBusiness)
@@ -55,29 +53,24 @@ export default function AboutPage() {
           <div className="prose-measure space-y-5 text-lg leading-relaxed text-ink-800">
             <Reveal>
               <h2 className="mb-5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
-                Who we are
+                About Shield Gate Repair
               </h2>
             </Reveal>
+            {/* Client's copy, supplied 3 Aug 2026. Verbatim — do not reword,
+                trim or "improve" it. Paragraph breaks are his. */}
             <p>
-              Shield Gate Repair serves the Dallas&ndash;Fort Worth Metroplex &mdash; residential estates,
-              apartment communities, commercial yards, ranch entrances and everything in between. Swing
-              gates, slide gates, barrier arms, access control and the operators that drive all of them.
+              For over 16 years, Shield Gate Repair has proudly served the DFW Metroplex and surrounding
+              areas, providing reliable automatic gate repair services for homeowners and businesses.
             </p>
             <p>
-              Our technicians have spent years on automatic gates, and that is the part that matters when
-              yours stops working at nine on a Sunday night. Same technicians, same approach, same refusal
-              to sell you an operator when a control board would do.
+              Our experienced technicians service all major gate brands and are committed to delivering
+              honest recommendations, quality workmanship, and long-lasting repairs. Whether it&rsquo;s a
+              sliding gate, swing gate, gate opener, or access control system, we have the knowledge and
+              equipment to get it working properly.
             </p>
             <p>
-              Every photograph and every case study on this site documents real work by our own team. We do
-              not buy stock photography of somebody else&rsquo;s gate and present it as ours, and we do not
-              relabel a job to make a story tidier. What you see is what our technicians actually did.
-            </p>
-            <p className="font-medium text-ink-950">
-              What makes a gate technician worth calling is not a portfolio. It is knowing that a humming LiftMaster is a
-              capacitor, that an All-O-Matic clutch slipping means the gate is binding, and that a DoorKing
-              entry panel goes silent months after a VoIP migration. That knowledge works identically in
-              North Texas.
+              When you choose Shield Gate Repair, you&rsquo;re choosing a company that values
+              professionalism, reliability, and customer satisfaction on every job.
             </p>
           </div>
         </div>
