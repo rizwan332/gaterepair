@@ -326,6 +326,13 @@
 .leaflet-bar a:last-child { border-radius: 0 0 0.75rem 0.75rem; }
 .leaflet-bar a:hover { background: var(--color-ink-50); }
 
+/* Applied only when we fall back to OSM's full-colour tiles, so the fallback
+   still reads as the muted basemap the design expects. Filters the tile pane
+   only — pins and popups live in other panes and keep their colour. */
+.map-tiles-muted .leaflet-tile-pane {
+  filter: grayscale(0.85) brightness(1.06);
+}
+
 .leaflet-control-attribution {
   background: rgb(255 255 255 / 0.85);
   font-size: 0.6875rem;

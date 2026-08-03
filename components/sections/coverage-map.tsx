@@ -44,6 +44,7 @@ export function CoverageMap({ cities }: { cities: MapCity[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<LeafletMap | null>(null)
   const markersRef = useRef<Record<string, CircleMarker>>({})
+  const initialisingRef = useRef(false)
   const [visible, setVisible] = useState(false)
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -73,7 +74,14 @@ export function CoverageMap({ cities }: { cities: MapCity[] }) {
   }, [visible])
 
   useEffect(() => {
-    if (!visible || mapRef.current || cities.length === 0) return
+    if (!visible || cities.length === 0) return
+    // Set synchronously, before the first await. StrictMode runs this effect
+    // twice in development, and both passes would otherwise reach L.map() with
+    // mapRef still null — Leaflet throws "Map container is already initialized"
+    // on the second, the catch below swallows it, and the spinner never clears.
+    if (initialisingRef.current) return
+    initialisingRef.current = true
+
     let cancelled = false
 
     ;(async () => {
@@ -92,12 +100,31 @@ export function CoverageMap({ cities }: { cities: MapCity[] }) {
 
         L.control.zoom({ position: 'topright' }).addTo(map)
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        const carto = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
           subdomains: 'abcd',
           maxZoom: 19,
-        }).addTo(map)
+        })
+
+        // If CARTO is blocked — corporate proxy, ad blocker, regional outage —
+        // fall back to OSM's own tiles rather than showing an empty grey box.
+        // Desaturated in CSS so the fallback still reads as a muted basemap.
+        let swapped = false
+        let tileErrors = 0
+        carto.on('tileerror', () => {
+          if (swapped || ++tileErrors < 4) return
+          swapped = true
+          map.removeLayer(carto)
+          map.getContainer().classList.add('map-tiles-muted')
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19,
+          }).addTo(map)
+        })
+
+        carto.addTo(map)
 
         for (const city of cities) {
           const color = colors[city.county] ?? OTHER_COLOR
@@ -145,14 +172,31 @@ export function CoverageMap({ cities }: { cities: MapCity[] }) {
           { padding: [40, 40] },
         )
 
+        // The container is sized by CSS that may settle a frame after Leaflet
+        // measures it. Without this the tile grid is computed against the wrong
+        // dimensions and renders as a partial strip of map with grey around it.
+        requestAnimationFrame(() => {
+          if (!cancelled) map.invalidateSize()
+        })
+
         if (!cancelled) setReady(true)
-      } catch {
+      } catch (err) {
+        // Surfaced, not silently swallowed. A blank map with no console output
+        // is the hardest kind of bug to report and the hardest to act on.
+        console.error('[coverage-map] failed to initialise', err)
         if (!cancelled) setFailed(true)
       }
     })()
 
     return () => {
       cancelled = true
+      // Leaflet stamps the DOM node with _leaflet_id and refuses to initialise
+      // it again. Without remove(), any unmount/remount — a route change, a
+      // Fast Refresh — permanently breaks the map until a hard reload.
+      mapRef.current?.remove()
+      mapRef.current = null
+      markersRef.current = {}
+      initialisingRef.current = false
     }
   }, [visible, cities, colors])
 
