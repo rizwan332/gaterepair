@@ -52,7 +52,7 @@ export function ServiceAreaMap({ city }: { city: City }) {
   const countyCount = cities.filter((c) => c.county === city.county).length
 
   return (
-    <section className="section-y">
+    <section className="section">
       <div className="container-page">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr]">
           <figure className="overflow-hidden rounded-2xl border border-ink-100 bg-gradient-to-br from-sky-50 via-white to-gold-50/40 shadow-[var(--shadow-lift)]">

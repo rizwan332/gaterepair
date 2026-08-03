@@ -252,6 +252,87 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
+/* ---------------------------------------------------------------------------
+   Leaflet overrides.
+
+   Leaflet ships a 2011-era default skin — sharp corners, blue system links,
+   heavy borders. Left alone the map reads as a widget bolted onto the page.
+   These pull it into the same type, radius and shadow language as everything
+   else, without touching Leaflet's positioning maths.
+--------------------------------------------------------------------------- */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-ink-50);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.875rem;
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--color-ink-100);
+  padding: 0;
+}
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0.9rem 1rem;
+}
+.leaflet-popup-tip {
+  box-shadow: none;
+  border: 1px solid var(--color-ink-100);
+}
+
+.map-pop-city {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink-950);
+  line-height: 1.2;
+}
+.map-pop-meta {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--color-ink-500);
+}
+.map-pop-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink-950);
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold-400);
+  text-underline-offset: 3px;
+}
+.map-pop-link:hover { text-decoration-color: var(--color-gold-600); }
+
+/* Zoom buttons: 44px hit targets. The Leaflet default is 26px, which fails
+   every touch-target guideline and is genuinely hard to hit while driving-
+   adjacent one-handed phone use, which is most of this site's traffic. */
+.leaflet-touch .leaflet-bar a,
+.leaflet-bar a {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  font-size: 1.25rem;
+  color: var(--color-ink-800);
+  border-bottom-color: var(--color-ink-100);
+}
+.leaflet-bar {
+  border: 1px solid var(--color-ink-200);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.leaflet-bar a:first-child { border-radius: 0.75rem 0.75rem 0 0; }
+.leaflet-bar a:last-child { border-radius: 0 0 0.75rem 0.75rem; }
+.leaflet-bar a:hover { background: var(--color-ink-50); }
+
+.leaflet-control-attribution {
+  background: rgb(255 255 255 / 0.85);
+  font-size: 0.6875rem;
+  color: var(--color-ink-500);
+}
+.leaflet-control-attribution a { color: var(--color-ink-700); }
+
 /* Every animation here is decorative. All of it must be switchable off. */
 @media (prefers-reduced-motion: reduce) {
   *,
