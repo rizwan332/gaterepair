@@ -6,6 +6,7 @@ import { BrandMarquee } from '@/components/sections/brand-marquee'
 import { FeaturedWork } from '@/components/sections/featured-work'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
+import { reviewsConfirmed } from '@/content/reviews'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { Process } from '@/components/sections/process'
@@ -39,12 +40,15 @@ export default function HomePage() {
       {/* Directly under the hero: the brand row is a credibility signal, and it
           is the fastest one on the page to read. */}
       <BrandMarquee />
-      {/* Video testimonials lead the social proof — the client has these and
-          does not have Google reviews. Renders nothing until confirmed. */}
+      {/* Video testimonials ARE the social proof here. The written-review
+          section that used to follow rendered placeholder cards behind an
+          "awaiting real review data" warning — the client has no Google reviews
+          and says the videos are better, and he is right. It comes back
+          automatically if reviewsConfirmed is ever flipped. */}
       <VideoTestimonials />
       {/* The client's own three homepage photographs. */}
       <FeaturedWork />
-      <Reviews />
+      {reviewsConfirmed && <Reviews />}
       <VideoReel />
       <BrandsGrid />
       <WhyShield />
