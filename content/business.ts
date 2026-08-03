@@ -22,9 +22,12 @@ export const business = {
   url: 'https://shieldgaterepair.com',
 
   // ---- Confirmed by client, 1 Aug 2026 ----
+  // Client replaced the 800 number with a local DFW number on 3 Aug 2026. A
+  // local area code outperforms a toll-free one for local service intent —
+  // it reads as "someone nearby" rather than a call centre.
   phone: {
-    display: '+1 (800) 770-9642',
-    href: 'tel:+18007709642',
+    display: '(214) 735-4314',
+    href: 'tel:+12147354314',
   },
   email: 'office@shieldgaterepair.com',
   availability: 'Available 24/7 Emergency Gate Repair Service',

@@ -22,13 +22,15 @@ export const metadata: Metadata = {
 /**
  * About page.
  *
- * Handles the California→Texas expansion directly rather than hoping nobody
- * notices. Two reasons:
+ * The client's instruction on 3 Aug 2026 was "change the story please we are
+ * not located in California". Every California reference is gone.
  *
- *  1. It is true, and the photography makes it discoverable anyway.
- *  2. Framed correctly it is an *asset*. "New company in Dallas" is a weakness;
- *     "established operation expanding into Dallas with the same technicians" is
- *     experience. Hiding it would forfeit that and risk looking evasive.
+ * ⚠️ PLACEHOLDER COPY. The client said he was supplying exact About Us text;
+ * we do not have it yet. What is below is written to satisfy the constraint —
+ * it establishes experience without naming a former market, and without
+ * claiming the portfolio work happened in Dallas, which would be a
+ * straightforwardly false statement about identifiable jobs. Replace wholesale
+ * when the client's text arrives.
  *
  * `yearsInBusiness` is still unconfirmed, so the copy is written to read
  * correctly whether or not a number is present.
@@ -53,26 +55,26 @@ export default function AboutPage() {
           <div className="prose-measure space-y-5 text-lg leading-relaxed text-ink-800">
             <Reveal>
               <h2 className="mb-5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
-                Where we came from
+                Who we are
               </h2>
             </Reveal>
             <p>
-              Shield Gate Repair built its business in California, servicing automatic gates across Los
-              Angeles, Orange, Ventura and Santa Barbara counties &mdash; residential estates, apartment
-              communities, commercial yards and everything in between.
+              Shield Gate Repair serves the Dallas&ndash;Fort Worth Metroplex &mdash; residential estates,
+              apartment communities, commercial yards, ranch entrances and everything in between. Swing
+              gates, slide gates, barrier arms, access control and the operators that drive all of them.
             </p>
             <p>
-              We are now bringing that operation to Dallas&ndash;Fort Worth. Same technicians, same
-              approach, same refusal to sell an operator when a control board would do.
+              Our technicians have spent years on automatic gates, and that is the part that matters when
+              yours stops working at nine on a Sunday night. Same technicians, same approach, same refusal
+              to sell you an operator when a control board would do.
             </p>
             <p>
-              We say this plainly for a reason. Every photograph and every case study on this site
-              documents real work by our own team &mdash; and most of it was carried out during our
-              California operations. We are not going to caption a job in Santa Barbara as a Dallas
-              driveway to make the story tidier. Texas work will appear here as we complete it.
+              Every photograph and every case study on this site documents real work by our own team. We do
+              not buy stock photography of somebody else&rsquo;s gate and present it as ours, and we do not
+              relabel a job to make a story tidier. What you see is what our technicians actually did.
             </p>
             <p className="font-medium text-ink-950">
-              What travels between markets is not photographs. It is knowing that a humming LiftMaster is a
+              What makes a gate technician worth calling is not a portfolio. It is knowing that a humming LiftMaster is a
               capacitor, that an All-O-Matic clutch slipping means the gate is binding, and that a DoorKing
               entry panel goes silent months after a VoIP migration. That knowledge works identically in
               North Texas.

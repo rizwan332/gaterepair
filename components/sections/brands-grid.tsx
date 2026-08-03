@@ -109,7 +109,7 @@ export function BrandsGrid() {
                   </li>
                 ))}
                 <li className="inline-flex items-center rounded-lg border border-dashed border-ink-200 px-4 py-2 text-sm text-ink-500">
-                  Apollo · US Automatic · Chamberlain · and others
+                  Apollo · Chamberlain · and others
                 </li>
               </ul>
             </div>

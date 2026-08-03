@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/hero'
 import { VideoReel } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
+import { BrandMarquee } from '@/components/sections/brand-marquee'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
@@ -33,6 +35,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      {/* Directly under the hero: the brand row is a credibility signal, and it
+          is the fastest one on the page to read. */}
+      <BrandMarquee />
+      {/* Video testimonials lead the social proof — the client has these and
+          does not have Google reviews. Renders nothing until confirmed. */}
+      <VideoTestimonials />
       <Reviews />
       <VideoReel />
       <BrandsGrid />

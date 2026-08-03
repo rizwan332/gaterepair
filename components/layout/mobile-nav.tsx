@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { Menu, X, Phone } from 'lucide-react'
 import { business } from '@/content/business'
@@ -9,6 +10,9 @@ import { brands } from '@/content/brands'
 
 export function MobileNav() {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   // A drawer that leaves the page scrollable behind it feels broken on iOS.
   useEffect(() => {
@@ -37,8 +41,13 @@ export function MobileNav() {
         <Menu className="size-6" aria-hidden />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-[60] lg:hidden">
+      {/* Portalled to <body> on purpose. The header this lives in sets
+          `backdrop-blur`, and a backdrop-filter ancestor becomes the containing
+          block for position:fixed descendants — so rendering the drawer in
+          place clipped it to the header's ~100px box. On a phone that reads as
+          "the menu does not open", which is exactly what the client reported. */}
+      {mounted && open && createPortal(
+        <div className="fixed inset-0 z-[100] lg:hidden">
           <div
             className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
@@ -99,7 +108,8 @@ export function MobileNav() {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   )

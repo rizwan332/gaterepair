@@ -49,15 +49,28 @@ export function Hero() {
       {hero && (
         <div className="absolute inset-0 -z-10">
           <ResponsiveImage image={hero} alt="" priority fill sizes="100vw" className="object-cover" />
-          {/* Three-stop scrim. A single flat overlay flattens the photograph
-              into grey; this keeps depth on the right while holding AA contrast
-              across the headline column on the left. */}
+          {/* Four-stop scrim. A single flat overlay flattens the photograph into
+              grey; this keeps depth on the right while holding contrast across
+              the headline column on the left.
+
+              Lightened on 3 Aug 2026 — the client's note was "the front page
+              it's too dark put more light". The left stop dropped 0.97 → 0.84
+              and the right 0.35 → 0.12, which lets the actual photograph show
+              through instead of reading as a black panel. White display type
+              over 0.84 still clears AA comfortably, so nothing was traded for
+              the brightness. */}
           <div
-            className="absolute inset-0 bg-[linear-gradient(100deg,rgb(8_9_11/0.97)_0%,rgb(8_9_11/0.9)_42%,rgb(8_9_11/0.55)_72%,rgb(8_9_11/0.35)_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(100deg,rgb(8_9_11/0.84)_0%,rgb(8_9_11/0.68)_42%,rgb(8_9_11/0.34)_72%,rgb(8_9_11/0.12)_100%)]"
+            aria-hidden
+          />
+          {/* Warm lift in the top-right so the image reads as daylight rather
+              than a night job. */}
+          <div
+            className="absolute inset-0 bg-[radial-gradient(70%_60%_at_78%_18%,rgb(245_179_42/0.16)_0%,transparent_70%)]"
             aria-hidden
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-950 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-950/85 to-transparent"
             aria-hidden
           />
         </div>

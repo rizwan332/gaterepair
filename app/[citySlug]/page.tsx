@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, Clock, Navigation } from 'lucide-react'
-import { cities, publishedCities, cityBySlug, type City } from '@/content/cities'
+import { cities, publishedCities, cityBySlug, countyPeers, type City } from '@/content/cities'
 import { services } from '@/content/services'
 import { brands } from '@/content/brands'
 import { media } from '@/content/media-manifest'
@@ -10,6 +10,7 @@ import { business } from '@/content/business'
 import { PageHero } from '@/components/sections/page-hero'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { ServiceAreaMap } from '@/components/sections/service-area-map'
 import { VideoReel } from '@/components/sections/video-reel'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
 
@@ -70,7 +71,11 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   if (!city || !publishedCities.includes(city)) notFound()
 
   const heroImage = media['automatic-gate-repair']?.[2] ?? media['gate-installation']?.[0]
-  const nearby = (city.nearbyCities ?? []).map(cityBySlug).filter(Boolean) as City[]
+  // Curated neighbours where we have them; otherwise the city's genuine county
+  // peers. Every page ends up with real internal links either way — that was
+  // the point of the client's "internal linking" deliverable.
+  const curated = (city.nearbyCities ?? []).map(cityBySlug).filter(Boolean) as City[]
+  const nearby = curated.length > 0 ? curated : countyPeers(city, 10)
 
   return (
     <>
@@ -218,6 +223,8 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
           </ul>
         </div>
       </section>
+
+      <ServiceAreaMap city={city} />
 
       <VideoReel />
 

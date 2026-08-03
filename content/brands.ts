@@ -378,6 +378,54 @@ export const brands: Brand[] = [
       },
     ],
   },
+  {
+    // Added at the client's explicit request, 3 Aug 2026. No legacy WordPress
+    // page existed for this brand, so there is no 301 to preserve.
+    slug: 'us-automatic',
+    legacyPath: '/us-automatic-gate-motor-repair/',
+    name: 'US Automatic',
+    mediaCategory: null,
+    contested: false,
+    priority: 11,
+    headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
+    intro:
+      'US Automatic builds solar-powered gate operators for rural and acreage properties — the Ranger and Patriot ' +
+      'lines you see on ranch entrances across North Texas. They run off-grid, which means most failures trace ' +
+      'back to power, not the motor.',
+    whyDifferent:
+      'A solar operator is a power system with a gate attached. When one stops working the instinct is to blame ' +
+      'the operator, but the usual culprit is a battery at the end of its life, a panel that has drifted out of ' +
+      'sun, or a charge controller that has quit. Diagnosing it as a power problem first is the difference ' +
+      'between a battery swap and an unnecessary replacement — which matters on rural properties where the ' +
+      'nearest mains power may be a long way from the gate.',
+    commonFailures: [
+      'Battery degradation — the most common cause by a wide margin',
+      'Solar panel output loss from shading, dirt or panel angle drift',
+      'Charge controller failure',
+      'Control board damage from lightning and power surges',
+      'Limit switch drift on Ranger and Patriot units',
+      'Gate arm and linkage wear on long driveway gates',
+    ],
+    models: ['Ranger', 'Ranger Solar', 'Patriot I', 'Patriot II', 'Patriot RSL', 'Sentry'],
+    faqs: [
+      {
+        q: 'My solar gate has stopped working. Is the operator dead?',
+        a: 'Usually not. On solar units the battery is the part that wears out, typically every three to five years in Texas heat, and a weak battery behaves exactly like a failed operator — the gate opens slowly, stops partway, or does nothing at all. We test the battery, panel output and charge controller before we touch the operator itself.',
+      },
+      {
+        q: 'Why does my gate work in summer but not winter?',
+        a: 'Shorter days and a lower sun angle mean the panel generates less, and cold reduces battery capacity at the same time. If the system was marginal in summer it will fail in winter. The fix is usually a larger battery, a repositioned or additional panel, or both.',
+      },
+      {
+        q: 'Do you service gates on rural properties outside the main metro?',
+        a: 'Yes. A large share of US Automatic units in our area are on acreage and ranch entrances well outside the city limits, and those are exactly the properties where a failed gate is most disruptive. Call and we will confirm coverage for your address.',
+      },
+      {
+        q: 'Can you convert a solar gate to mains power?',
+        a: 'Sometimes, if there is a practical route for a power run. Often it is cheaper and less disruptive to correct the solar sizing instead. We will tell you which makes sense for your gate rather than defaulting to the bigger job.',
+      },
+    ],
+  },
 ]
 
 export const brandBySlug = (slug: string) => brands.find((b) => b.slug === slug)

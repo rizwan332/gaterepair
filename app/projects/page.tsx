@@ -89,13 +89,16 @@ export default function ProjectsPage() {
             })}
           </ul>
 
-          {/* Honest about provenance rather than quietly implying otherwise.
-              The company operated in California and is expanding into DFW; the
-              documented work is California work. See MEDIA-PROVENANCE.md. */}
+          {/* The client asked for California to come off the site (3 Aug 2026),
+              so the former market is no longer named. What stays is the part we
+              cannot drop without it becoming a false claim: these are our team's
+              jobs, and they are not represented as Dallas jobs. Saying "our
+              technicians did this work" is true; captioning an identifiable
+              driveway as a Dallas address would not be. See MEDIA-PROVENANCE.md. */}
           <p className="mt-10 max-w-3xl text-sm leading-relaxed text-ink-500">
-            These case studies document work carried out by our team during our California operations. We
-            are now serving Dallas–Fort Worth with the same technicians and the same approach. Dallas
-            projects will be added here as they are completed.
+            These case studies document work carried out by our own technicians. We serve Dallas&ndash;Fort
+            Worth with the same team and the same approach, and new local projects are added here as they
+            are completed.
           </p>
         </div>
       </section>

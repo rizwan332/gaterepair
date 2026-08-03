@@ -639,17 +639,42 @@ export const cities: City[] = [...tier1Cities, ...tier2Cities, ...tier3Cities]
 /**
  * Cities that have their own page.
  *
- * A city only gets a page once it carries real localised content. Publishing
- * the other 176 as templated shells — hero, services grid, brands grid, CTA,
- * with nothing but the name changed — is the exact pattern Google's
- * scaled-content-abuse policy targets, and it would put the 14 genuinely good
- * pages at risk alongside them. The remaining cities are still fully linked and
- * discoverable from /service-areas; they are simply not standalone pages yet.
+ * Every city on the client's list gets a page — the client asked for this
+ * directly on 3 Aug 2026, overriding the earlier decision to publish only the
+ * 14 enriched pages.
  *
- * Promotion is a data change: fill in `localAngle`, `neighborhoods`,
- * `responseBand` and `faqs`, and the page appears.
+ * The risk that decision was managing is real and has not gone away: Google's
+ * scaled-content-abuse policy targets sets of near-identical pages generated
+ * from a template with only the place name swapped. What keeps these pages on
+ * the right side of it is that the thin ones are not pretending to be thick.
+ * A Tier 2/3 page states its county, links its genuine county neighbours,
+ * shows the service-area map, and stops. It does not pad to 1,500 words with
+ * invented neighborhoods, zip codes, landmarks or response times — fabricating
+ * verifiable facts about a real place is both worse for the user and a larger
+ * ranking risk than a short page.
+ *
+ * Depth is still the goal. Promotion is a data change: fill in `localAngle`,
+ * `neighborhoods`, `responseBand` and `faqs` and the page thickens on its own.
  */
-export const publishedCities: City[] = cities.filter((c) => isPublishable(c) && Boolean(c.localAngle))
+export const publishedCities: City[] = cities
+
+/** Cities with the full enriched profile — used to flag depth in reporting. */
+export const enrichedCities: City[] = cities.filter((c) => isPublishable(c) && Boolean(c.localAngle))
+
+/**
+ * Other cities in the same county, for internal linking.
+ *
+ * County membership is a real, checkable relationship, which is what makes
+ * these links worth having — they are not "related cities" invented to spread
+ * link equity. Falls back to nothing rather than reaching for a neighbouring
+ * county when a city is the only one we serve in its own.
+ */
+export function countyPeers(city: City, limit = 8): City[] {
+  return cities
+    .filter((c) => c.county === city.county && c.slug !== city.slug)
+    .sort((a, b) => a.tier - b.tier || a.name.localeCompare(b.name))
+    .slice(0, limit)
+}
 
 export const cityBySlug = (slug: string) => cities.find((c) => c.slug === slug)
 
