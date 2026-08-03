@@ -5,8 +5,7 @@ import { cities, citiesByCounty, enrichedCities } from '@/content/cities'
 import { CITY_COORDINATES } from '@/content/city-coordinates'
 import { business } from '@/content/business'
 import { ClosingCTA } from '@/components/sections/closing-cta'
-import { CoverageMap, type MapCity } from '@/components/sections/coverage-map'
-import { CityFinder } from '@/components/sections/city-finder'
+import { CoverageExplorer, type ExplorerCity } from '@/components/sections/coverage-explorer'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export default function ServiceAreasPage() {
   // Cities we could not geocode are omitted from the map rather than pinned at
   // a guessed location. They are still listed in full below, so nothing is
   // hidden from the visitor — only from the map.
-  const mapCities: MapCity[] = cities
+  const mapCities: ExplorerCity[] = cities
     .filter((c) => CITY_COORDINATES[c.slug])
     .map((c) => ({
       slug: c.slug,
@@ -75,23 +74,9 @@ export default function ServiceAreasPage() {
         </div>
       </section>
 
-      <section className="section bg-white">
-        <div className="container-page">
-          <div className="mb-8 max-w-2xl">
-            <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">
-              Where we work
-            </h2>
-            <p className="mt-3 leading-relaxed text-ink-700">
-              Every pin is a city we service, coloured by county. Tap one for the local page.
-            </p>
-          </div>
-
-          <CoverageMap cities={mapCities} />
-        </div>
-      </section>
-
-      {/* Search + full list. This is the accessible path to everything on the
-          map, and on a phone it is faster than pinch-zooming to find a town. */}
+      {/* Map and list side by side, sharing one piece of state. Separately
+          each is weaker: the map is a picture you cannot query, and the list is
+          190 names with no sense of where any of them are. */}
       <section className="section bg-ink-50">
         <div className="container-page">
           <div className="mb-8 max-w-2xl">
@@ -99,18 +84,12 @@ export default function ServiceAreasPage() {
               Find your city
             </h2>
             <p className="mt-3 leading-relaxed text-ink-700">
-              {cities.length} cities across {countyCount} counties. Every one has its own page.
+              {cities.length} cities across {countyCount} counties, every one with its own page.
+              Search the list, filter by county, or tap a pin.
             </p>
           </div>
 
-          <CityFinder
-            cities={cities.map((c) => ({
-              slug: c.slug,
-              name: c.name,
-              county: c.county,
-              responseBand: c.responseBand,
-            }))}
-          />
+          <CoverageExplorer cities={mapCities} />
         </div>
       </section>
 
