@@ -34,7 +34,7 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex size-11 items-center justify-center rounded-xl text-ink-900 hover:bg-ink-50 lg:hidden"
+        className="inline-flex size-11 items-center justify-center rounded-xl text-ink-900 hover:bg-ink-50 xl:hidden"
         aria-label="Open menu"
         aria-expanded={open}
       >
@@ -47,7 +47,7 @@ export function MobileNav() {
           place clipped it to the header's ~100px box. On a phone that reads as
           "the menu does not open", which is exactly what the client reported. */}
       {mounted && open && createPortal(
-        <div className="fixed inset-0 z-[100] lg:hidden">
+        <div className="fixed inset-0 z-[100] xl:hidden">
           <div
             className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}

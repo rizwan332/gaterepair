@@ -57,7 +57,10 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">
+        {/* xl, not lg. Six top-level items plus the phone number and CTA do not
+            fit at 1024px — "Service Areas" and "Contact Us" wrapped to two lines
+            with the caret orphaned. Below xl the mobile drawer takes over. */}
+        <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
           <NavDropdown
             label="Services"
             href="/services"
@@ -118,7 +121,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="rounded-lg px-2.5 py-2 text-[0.9375rem] font-medium text-ink-800 transition-colors hover:bg-ink-50 hover:text-ink-950"
+      className="whitespace-nowrap rounded-lg px-2.5 py-2 text-[0.9375rem] font-medium text-ink-800 transition-colors hover:bg-ink-50 hover:text-ink-950"
     >
       {children}
     </Link>
@@ -148,7 +151,7 @@ function NavDropdown({
     <div className="group relative">
       <Link
         href={href}
-        className="inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-[0.9375rem] font-medium text-ink-800 transition-colors hover:bg-ink-50 hover:text-ink-950"
+        className="inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-[0.9375rem] font-medium text-ink-800 transition-colors hover:bg-ink-50 hover:text-ink-950"
       >
         {label}
         <ChevronDown

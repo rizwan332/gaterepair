@@ -3,6 +3,7 @@ import { PageHero } from '@/components/sections/page-hero'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { media } from '@/content/media-manifest'
+import { brands } from '@/content/brands'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function BrandsPage() {
       <PageHero
         eyebrow="Brands"
         title="Gate Operator Brands We Repair"
-        intro="Ten operator brands, with real repair photography and video for most of them. If another company has told you your operator can only be replaced, it is worth a second opinion."
+        intro={`${brands.length} operator brands, with real repair photography and video for most of them. If another company has told you your operator can only be replaced, it is worth a second opinion.`}
         image={media['liftmaster']?.[0]}
       />
       <BrandsGrid />
