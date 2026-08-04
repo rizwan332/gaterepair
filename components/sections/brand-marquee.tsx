@@ -1,41 +1,30 @@
-import fs from 'node:fs'
-import path from 'node:path'
 import Image from 'next/image'
 import Link from 'next/link'
-import { brands } from '@/content/brands'
+import { navBrands } from '@/content/brands'
+import { logoFor } from '@/lib/brand-logos'
 
 /**
  * Animated brand row.
  *
- * The client pointed at a competitor's scrolling logo strip and asked for the
- * same thing with real manufacturer logos. Two constraints shape this:
+ * Logos are the client's own, taken from Shield Gate Repair's existing
+ * California site and normalised by scripts/process-logos.ts. Any brand
+ * without a file falls back to a typographic wordmark rather than a gap or a
+ * placeholder box — US Automatic is currently the only one, since the CA site
+ * does not carry it.
  *
- *  1. We do not have licensed logo files. Naming a manufacturer you genuinely
- *     repair is nominative fair use; shipping their artwork is a different
- *     question, and the answer has to come from the client, not from us
- *     grabbing files off a manufacturer site.
- *  2. A row of mismatched logos scraped at different resolutions looks worse
- *     than clean typography, and this section exists to build credibility.
+ * Shown in full colour. An earlier pass desaturated them at rest, which is a
+ * common treatment and was wrong here: these are the proof that we service
+ * equipment other companies decline, and a washed-out row undersells exactly
+ * the thing the section exists to say.
  *
- * So the row renders a typographic wordmark per brand and automatically
- * upgrades to the real thing: drop `public/logos/<slug>.svg` (or .png/.webp)
- * in place and that brand switches to the image on the next build. No code
- * change, no manifest to update — the directory IS the manifest.
+ * Sizing is by height with a width cap, because the source logos range from
+ * wide wordmarks to near-square marks. The text fallback is deliberately
+ * smaller than a heading — at 2xl it dwarfed the real logos beside it.
  */
 
-const LOGO_DIR = path.join(process.cwd(), 'public', 'logos')
-const EXTENSIONS = ['svg', 'webp', 'png']
-
-/** Resolved at build time. Returns the public path, or null to use a wordmark. */
-function logoFor(slug: string): string | null {
-  for (const ext of EXTENSIONS) {
-    if (fs.existsSync(path.join(LOGO_DIR, `${slug}.${ext}`))) return `/logos/${slug}.${ext}`
-  }
-  return null
-}
 
 export function BrandMarquee() {
-  const items = brands.map((b) => ({ ...b, logo: logoFor(b.slug) }))
+  const items = navBrands.map((b) => ({ ...b, logo: logoFor(b.slug) }))
   // Duplicated once so the track can translate a full 50% and loop seamlessly.
   const track = [...items, ...items]
 
@@ -63,18 +52,20 @@ export function BrandMarquee() {
               // so brand names are not announced twice.
               aria-hidden={i >= items.length}
               tabIndex={i >= items.length ? -1 : undefined}
-              className="group flex h-12 shrink-0 items-center opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 focus-visible:opacity-100 focus-visible:grayscale-0"
+              className="group flex h-12 shrink-0 items-center opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 focus-visible:opacity-100"
             >
               {brand.logo ? (
                 <Image
                   src={brand.logo}
                   alt={brand.name}
-                  width={160}
-                  height={48}
-                  className="h-9 w-auto object-contain md:h-11"
+                  width={420}
+                  height={120}
+                  // Height-normalised source, so a common CSS height gives a
+                  // consistent optical size. max-w caps the widest wordmarks.
+                  className="h-9 w-auto max-w-[125px] object-contain md:h-11 md:max-w-[150px]"
                 />
               ) : (
-                <span className="whitespace-nowrap font-display text-2xl font-bold tracking-tight text-ink-700 transition-colors group-hover:text-ink-950 md:text-3xl">
+                <span className="whitespace-nowrap font-display text-lg font-bold tracking-tight text-ink-600 transition-colors group-hover:text-ink-900 md:text-xl">
                   {brand.name}
                 </span>
               )}
