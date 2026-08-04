@@ -124,6 +124,14 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      // method="post" matters even though submission is handled in JS. If
+      // someone taps Send before React hydrates — easy on a slow phone, which
+      // is most of this site's traffic — the browser performs a NATIVE submit.
+      // The default method is GET, which puts their name, phone number and
+      // email straight into the URL, and from there into browser history, the
+      // Referer header on the next request, and any access log in between.
+      // POST keeps the values in the request body.
+      method="post"
       className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-6 shadow-[var(--shadow-card)] sm:p-8"
       noValidate
     >
