@@ -66,7 +66,11 @@ export function BrandsGrid() {
                         sizes="(min-width: 1024px) 25vw, 50vw"
                         className="object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-85"
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_9_11/0.94)_0%,rgb(8_9_11/0.55)_50%,rgb(8_9_11/0.2)_100%)]" />
+                      {/* Was 0.94 at the base, which buried the photograph under near-solid
+                          black — in the one section whose whole argument is that these
+                          are real photos of real equipment. Enough scrim to hold the
+                          label legible, and no more. */}
+                      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_9_11/0.82)_0%,rgb(8_9_11/0.34)_52%,rgb(8_9_11/0.04)_100%)]" />
                     </div>
                   )}
                   <div className="relative">

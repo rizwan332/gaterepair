@@ -42,16 +42,20 @@ export function Process() {
     },
   ]
 
+  // Light. This used to be a second full-bleed near-black block, which meant the
+  // page hit a wall of dark roughly every other section. Dark now appears once
+  // (the video wall, where it genuinely helps video read) plus the hero scrim —
+  // punctuation rather than background.
   return (
-    <section className="section surface-dark glow-gold relative isolate overflow-hidden text-white">
+    <section className="section relative isolate overflow-hidden bg-gradient-to-b from-white via-sky-50 to-white">
       <div className="container-page relative">
         <Reveal>
           <div className="mb-14 max-w-2xl">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-400">How it works</p>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">How it works</p>
             <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
               What Happens When You Call
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-ink-300">
+            <p className="mt-5 text-lg leading-relaxed text-ink-700">
               Six commitments, not six stock icons. Every competitor in this market runs an
               &ldquo;inspection &rarr; diagnosis &rarr; repair&rdquo; graphic; none of them says what you
               actually receive at each step, which is the only part that reduces anxiety.
@@ -70,14 +74,14 @@ export function Process() {
           {steps.map((step, i) => (
             <Reveal as="li" key={step.title} delay={Math.min(i, 4) * 0.05}>
               <div className="relative flex gap-6 pb-10 last:pb-0 md:gap-8">
-                <span className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-ink-950 ring-1 ring-inset ring-white/15">
+                <span className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-ink-950 ring-1 ring-inset ring-black/10">
                   <span className="font-display text-sm font-bold text-gold-400 tabular">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </span>
                 <div className="min-w-0 pt-2.5">
-                  <h3 className="font-display text-xl font-semibold text-white">{step.title}</h3>
-                  <p className="mt-2 max-w-2xl leading-relaxed text-ink-300">{step.body}</p>
+                  <h3 className="font-display text-xl font-semibold text-ink-950">{step.title}</h3>
+                  <p className="mt-2 max-w-2xl leading-relaxed text-ink-700">{step.body}</p>
                 </div>
               </div>
             </Reveal>
