@@ -152,10 +152,13 @@ export function brevoConfigured(): boolean {
 }
 
 export async function sendLeadNotification(lead: LeadEmail): Promise<SendResult> {
-  const apiKey = process.env.BREVO_API_KEY
-  const to = process.env.LEAD_NOTIFY_TO
-  const senderEmail = process.env.BREVO_SENDER_EMAIL ?? to
-  const senderName = process.env.BREVO_SENDER_NAME ?? 'Shield Gate Repair Website'
+  // Trimmed. Pasting a key into a hosting dashboard very easily carries a
+  // trailing newline or space, and an HTTP header with stray whitespace is
+  // rejected as an invalid credential — indistinguishable from a wrong key.
+  const apiKey = process.env.BREVO_API_KEY?.trim()
+  const to = process.env.LEAD_NOTIFY_TO?.trim()
+  const senderEmail = process.env.BREVO_SENDER_EMAIL?.trim() ?? to
+  const senderName = process.env.BREVO_SENDER_NAME?.trim() ?? 'Shield Gate Repair Website'
 
   if (!apiKey || !to || !senderEmail) return { ok: false, reason: 'not-configured' }
 

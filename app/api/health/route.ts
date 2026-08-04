@@ -22,13 +22,20 @@ export const dynamic = 'force-dynamic'
  * cause every send to fail silently.
  */
 async function checkBrevo() {
-  const apiKey = process.env.BREVO_API_KEY
-  const sender = process.env.BREVO_SENDER_EMAIL ?? process.env.LEAD_NOTIFY_TO
+  const apiKey = process.env.BREVO_API_KEY?.trim()
+  const sender = process.env.BREVO_SENDER_EMAIL?.trim() ?? process.env.LEAD_NOTIFY_TO?.trim()
 
+  const raw = process.env.BREVO_API_KEY ?? ''
   const result: Record<string, unknown> = {
     apiKey: Boolean(apiKey),
     notifyTo: Boolean(process.env.LEAD_NOTIFY_TO),
     senderEmail: Boolean(process.env.BREVO_SENDER_EMAIL),
+    // Shape checks, so a wrong *kind* of credential is obvious. Brevo v3 API
+    // keys start "xkeysib-"; an SMTP password does not, and pasting one here
+    // is the usual cause of "Key not found".
+    keyLooksLikeV3: apiKey ? apiKey.startsWith('xkeysib-') : false,
+    keyHadWhitespace: raw !== raw.trim(),
+    keyLength: apiKey?.length ?? 0,
     keyValid: false as boolean | string,
     senderVerified: 'not checked' as boolean | string,
   }
