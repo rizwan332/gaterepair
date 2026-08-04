@@ -30,12 +30,32 @@ async function checkBrevo() {
     apiKey: Boolean(apiKey),
     notifyTo: Boolean(process.env.LEAD_NOTIFY_TO),
     senderEmail: Boolean(process.env.BREVO_SENDER_EMAIL),
-    // Shape checks, so a wrong *kind* of credential is obvious. Brevo v3 API
-    // keys start "xkeysib-"; an SMTP password does not, and pasting one here
-    // is the usual cause of "Key not found".
+    // Shape checks, so a wrong *kind* of credential is obvious. Brevo issues
+    // two credentials that look almost identical and are not interchangeable:
+    //
+    //   API key  xkeysib-<64 hex>-<16>   89 chars — REST API (what we use)
+    //   SMTP key xsmtpsib-<64 hex>-<16>  90 chars — SMTP relay on port 587 only
+    //
+    // Sending an SMTP key to the REST API returns "Key not found", which reads
+    // as a revoked key and sends you looking in the wrong place entirely.
     keyLooksLikeV3: apiKey ? apiKey.startsWith('xkeysib-') : false,
     keyHadWhitespace: raw !== raw.trim(),
     keyLength: apiKey?.length ?? 0,
+    ...(apiKey && apiKey.startsWith('xsmtpsib-')
+      ? {
+          diagnosis:
+            'BREVO_API_KEY holds an SMTP key (xsmtpsib-…), which only works for SMTP relay. ' +
+            'This code uses the REST API and needs an API key (xkeysib-…). ' +
+            'Generate one at https://app.brevo.com/settings/keys/api',
+        }
+      : {}),
+    ...(apiKey && !apiKey.startsWith('xkeysib-') && !apiKey.startsWith('xsmtpsib-')
+      ? {
+          diagnosis:
+            'BREVO_API_KEY does not look like a Brevo credential — a v3 API key starts "xkeysib-". ' +
+            'Generate one at https://app.brevo.com/settings/keys/api',
+        }
+      : {}),
     keyValid: false as boolean | string,
     senderVerified: 'not checked' as boolean | string,
   }
