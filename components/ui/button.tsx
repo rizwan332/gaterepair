@@ -50,7 +50,12 @@ export function Button({
     className,
   )
 
-  if (external || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http')) {
+  // Any non-HTTP scheme must render a plain anchor. next/link treats an
+  // unknown href as an internal route: it prefetches it, 404s, and can
+  // intercept the click instead of handing off to the device. `sms:` was
+  // missing from this list, which broke the Text Us button on /emergency.
+  const isExternalScheme = /^(tel:|sms:|mailto:|https?:)/.test(href)
+  if (external || isExternalScheme) {
     return (
       <a href={href} className={classes} {...rest}>
         {children}

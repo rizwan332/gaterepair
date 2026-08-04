@@ -8,6 +8,7 @@ import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
 import { reviewsConfirmed } from '@/content/reviews'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { publishedTestimonials } from '@/content/testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
@@ -45,7 +46,7 @@ export default function HomePage() {
           "awaiting real review data" warning — the client has no Google reviews
           and says the videos are better, and he is right. It comes back
           automatically if reviewsConfirmed is ever flipped. */}
-      <VideoTestimonials />
+      <VideoTestimonials items={publishedTestimonials.slice(0, 3)} tone="tint" />
       {/* The client's own three homepage photographs. */}
       <FeaturedWork />
       {reviewsConfirmed && <Reviews />}

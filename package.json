@@ -11,7 +11,8 @@
     "assets:alt": "tsx scripts/sync-alt-text.ts",
     "assets:video": "tsx scripts/process-videos.ts",
     "validate:cities": "tsx scripts/validate-cities.ts",
-    "geocode": "tsx scripts/geocode-cities.ts"
+    "geocode": "tsx scripts/geocode-cities.ts",
+    "check:links": "tsx scripts/check-links.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -15,6 +15,8 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
+import { publishedTestimonials } from '@/content/testimonials'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -216,6 +218,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+
+      <VideoTestimonials
+        items={publishedTestimonials.slice(0, 3)}
+        eyebrow="Customer videos"
+        intro="Real customers describing the repair in their own words, filmed on site."
+        tone="tint"
+      />
 
       <FaqAccordion faqs={faqs} title={`${service.name} questions`} />
 

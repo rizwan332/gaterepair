@@ -17,6 +17,14 @@ export type Brand = {
   name: string
   /** Photo category in media-manifest.ts. Null = no photos in the library yet. */
   mediaCategory: string | null
+  /**
+   * Image slug to lead the page with, when it should not simply be the first in
+   * the category. Used where one photograph is materially better evidence than
+   * the rest — typically the only one where the manufacturer's name is legible
+   * on the housing, which is the thing a visitor is trying to match against
+   * their own gate.
+   */
+  featuredImage?: string
   /** Competitive position — drives build priority, not page copy. */
   contested: boolean
   priority: number
@@ -195,6 +203,10 @@ export const brands: Brand[] = [
   },
   {
     slug: 'elite',
+    // Client-supplied 4 Aug 2026: the only Elite photo where the manufacturer
+    // name is legible on the housing. Leads the page because matching the badge
+    // on your own gate is exactly what a visitor arrives here to do.
+    featuredImage: 'elite-09',
     legacyPath: '/elite-gate-motor-repair/',
     name: 'Elite',
     mediaCategory: 'elite',
@@ -384,7 +396,10 @@ export const brands: Brand[] = [
     slug: 'us-automatic',
     legacyPath: '/us-automatic-gate-motor-repair/',
     name: 'US Automatic',
-    mediaCategory: null,
+    // Client supplied five photographs on 4 Aug 2026 — ranch and acreage
+    // installs, including an opened enclosure showing the battery and charge
+    // wiring, which is the single most useful image on the page.
+    mediaCategory: 'us-automatic',
     contested: false,
     priority: 11,
     headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
@@ -429,5 +444,21 @@ export const brands: Brand[] = [
 ]
 
 export const brandBySlug = (slug: string) => brands.find((b) => b.slug === slug)
+
+/**
+ * Navigation order, set by the client on 4 Aug 2026: LiftMaster first, then
+ * US Automatic, then everything else.
+ *
+ * Kept separate from `brands` because that array is ordered by competitive
+ * priority (FAAC, All-O-Matic and Ramset lead because no DFW competitor has a
+ * page for them) and the brand pages still build from it. Menu order and page
+ * order are different decisions and should not fight each other.
+ */
+const NAV_FIRST = ['liftmaster', 'us-automatic'] as const
+
+export const navBrands: Brand[] = [
+  ...NAV_FIRST.map((slug) => brands.find((b) => b.slug === slug)).filter(Boolean as never as (b: Brand | undefined) => b is Brand),
+  ...brands.filter((b) => !NAV_FIRST.includes(b.slug as (typeof NAV_FIRST)[number])),
+]
 /** FAAC, All-O-Matic and Ramset — nobody in DFW has a page for these. */
 export const uncontestedBrands = brands.filter((b) => !b.contested && b.mediaCategory)

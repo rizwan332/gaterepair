@@ -7,6 +7,8 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { media } from '@/content/media-manifest'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { publishedTestimonials } from '@/content/testimonials'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
   title: 'Gate Repair Cost in Dallas–Fort Worth (2026 Price Guide)',
@@ -123,6 +125,14 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
+
+      <VideoTestimonials
+        items={publishedTestimonials.slice(0, 3)}
+        eyebrow="Customer videos"
+        title="What it is actually like to use us"
+        intro="Prices are only half the question. These are customers describing the job itself."
+        tone="tint"
+      />
 
       <FaqAccordion faqs={faqs} title="Pricing questions" />
 

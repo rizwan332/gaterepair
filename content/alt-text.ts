@@ -71,6 +71,10 @@ export const ALT_TEXT: Record<string, string> = {
   'elite-06': 'An Elite gate operator mounted on a concrete pad at a driveway entrance',
   'elite-07': 'Wiring and terminal connections inside an Elite operator enclosure',
   'elite-08': 'An Elite slide operator with its cover refitted after repair',
+  // Client-supplied 4 Aug 2026 — the only image in the library where the
+  // manufacturer's name is legible on the housing, which is why it leads.
+  'elite-09':
+    'An Elite gate operator in a grey housing with the Elite name on the front, installed beside an ornamental iron gate and white fence',
 
   // ---- Viking (5) --------------------------------------------------------
   'viking-01': 'A Viking gate operator installed at a residential driveway entrance',
@@ -180,4 +184,18 @@ export const ALT_TEXT: Record<string, string> = {
     'A decorative wrought-iron double driveway gate with ornamental scrollwork, fitted with a LiftMaster operator arm at the base of each leaf',
   'homepage-03':
     'A Shield Gate Repair technician in a high-visibility vest crouched at an opened gate control pedestal, testing the wiring terminals by hand, with an All-O-Matic slide operator in the foreground',
+  'homepage-04':
+    'A metal driveway gate closed across a concrete drive beside a wooden fence, in front of a brick house flying a United States flag',
+
+  // ---- US Automatic — client's own photographs, 4 Aug 2026 (5) ------------
+  'us-automatic-01':
+    'A wide metal ranch gate closed across a gravel driveway, with the gate operator and its control enclosure mounted on the left-hand post',
+  'us-automatic-02':
+    'A gate operator in a black weatherproof enclosure mounted on the post of a metal ranch gate, with the drive arm connected to the gate frame',
+  'us-automatic-03':
+    'A black metal gate beside a brick wall with its control enclosure open, showing the operator wiring and components inside',
+  'us-automatic-04':
+    'An opened gate control enclosure showing the battery, charge wiring and control board, with a multimeter resting on top during electrical testing',
+  'us-automatic-05':
+    'A metal gate at the entrance to a long tree-lined driveway, with the operator control box mounted on the right-hand post',
 }

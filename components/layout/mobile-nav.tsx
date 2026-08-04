@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Menu, X, Phone } from 'lucide-react'
 import { business } from '@/content/business'
 import { services } from '@/content/services'
-import { brands } from '@/content/brands'
+import { navBrands } from '@/content/brands'
 
 export function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -79,22 +79,25 @@ export function MobileNav() {
                   </Item>
                 ))}
               </Section>
+              {/* navBrands, not brands — LiftMaster then US Automatic then the
+                  rest, matching the desktop menu and the client's order. */}
               <Section title="Brands We Service">
-                {brands.map((b) => (
+                {navBrands.map((b) => (
                   <Item key={b.slug} href={`/brands/${b.slug}`} onClick={() => setOpen(false)}>
                     {b.name}
                   </Item>
                 ))}
               </Section>
-              <Section title="More">
-                <Item href="/projects" onClick={() => setOpen(false)}>Case Studies</Item>
-                <Item href="/reviews" onClick={() => setOpen(false)}>Reviews</Item>
-                <Item href="/gallery" onClick={() => setOpen(false)}>Our Work</Item>
+              <Section title="Company">
+                <Item href="/testimonials" onClick={() => setOpen(false)}>Testimonials</Item>
                 <Item href="/service-areas" onClick={() => setOpen(false)}>Service Areas</Item>
                 <Item href="/about" onClick={() => setOpen(false)}>About us</Item>
+                <Item href="/projects" onClick={() => setOpen(false)}>Case Studies</Item>
+                <Item href="/gallery" onClick={() => setOpen(false)}>Our Work</Item>
                 <Item href="/warranty" onClick={() => setOpen(false)}>Our warranty</Item>
+                <Item href="/pricing" onClick={() => setOpen(false)}>Pricing</Item>
                 <Item href="/faq" onClick={() => setOpen(false)}>FAQs</Item>
-                <Item href="/contact" onClick={() => setOpen(false)}>Contact</Item>
+                <Item href="/contact" onClick={() => setOpen(false)}>Contact Us</Item>
               </Section>
             </nav>
 

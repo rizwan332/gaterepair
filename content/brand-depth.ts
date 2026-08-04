@@ -253,6 +253,114 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     ],
   },
 
+  /**
+   * US Automatic — solar and DC-powered operators for rural and acreage gates.
+   *
+   * ⚠️ Written 4 Aug 2026 after the client asked for the "Solar & Electrical
+   * instructions/content" to be corrected. He did not say which specific claims
+   * were wrong, so this was rewritten from the ground up around the one thing
+   * that is true of every solar operator and gets missed: it is a 12V DC power
+   * system with a gate attached, and most "the operator is dead" calls are a
+   * power-budget problem, not a motor problem.
+   *
+   * If he had particular corrections in mind, they need to come back to us —
+   * flagged in the handover notes rather than guessed at.
+   */
+  'us-automatic': {
+    characteristics: [
+      {
+        heading: 'A solar gate is a power system with a gate attached',
+        body: [
+          'US Automatic builds DC operators designed to run off-grid, and that single design decision explains almost every service call these units generate. A mains-powered operator has effectively unlimited power available on demand. A solar operator has a battery, a panel that refills it, and a fixed number of cycles a day it can support before the battery runs down faster than the panel can recover it.',
+          'So when a solar gate stops working, the useful first question is almost never "what is wrong with the motor?" — it is "is there enough power getting to it?". Diagnosing in that order is the difference between a battery replacement and an unnecessary operator replacement, which matters a great deal on a rural property where running mains power to the gate may be hundreds of feet of trenching.',
+        ],
+      },
+      {
+        heading: 'The battery is the part that wears out',
+        body: [
+          'These systems run a sealed lead-acid or AGM battery, and in North Texas heat that battery is a consumable. High ambient temperature is what kills lead-acid capacity, and a battery that would last five years in a mild climate frequently has three or four here — less if it sits in an unshaded enclosure in full summer sun.',
+          'A tired battery does not fail cleanly. It behaves exactly like a failing operator: the gate opens slowly, stalls part-way, opens but will not close, works in the afternoon and not at dawn, or runs fine for one cycle and refuses the second. Every one of those symptoms will also be produced by a genuine motor or board fault, which is why the battery and charge system get tested first rather than assumed good.',
+          'A battery should be tested under load, not just measured at rest. A worn cell can show close to a healthy resting voltage and still collapse the moment the motor draws current.',
+        ],
+      },
+      {
+        heading: 'Panel output: shade, angle and dirt',
+        body: [
+          'The panel has to actually collect what the system budgeted for. Three things quietly stop it, and none of them look like a fault:',
+          'Shade is the most common. A panel sited when the trees were smaller may now spend hours of the day in shadow. Partial shading matters more than people expect — shading part of a panel can cut its output disproportionately, not just proportionally.',
+          'Angle and orientation drift. Panels get knocked by mowing equipment, livestock, wind or a gate strike, and a panel that no longer faces the right way collects less all day, every day.',
+          'Dirt. Dust, pollen and bird droppings on the glass reduce output, and in a rural setting that accumulates faster than anyone expects. Cleaning the panel is a genuine service item, not a token gesture.',
+        ],
+      },
+      {
+        heading: 'Why it worked all summer and failed in winter',
+        body: [
+          'This is the most common seasonal complaint on solar gates and it has a straightforward explanation: the two variables move against each other. Winter days are shorter and the sun sits lower, so the panel generates less. At the same time, cold reduces the usable capacity of a lead-acid battery.',
+          'A system that was marginal in July will fail in January. That is a sizing problem rather than a fault, and the fix is a larger battery, a larger or better-sited panel, or both — not a new operator.',
+        ],
+      },
+      {
+        heading: 'Electrical faults specific to rural installations',
+        body: [
+          'Long driveways mean long cable runs, and long DC runs lose voltage. An operator that behaves oddly at the far end of a several-hundred-foot run may be receiving noticeably less voltage than the supply is providing, and the answer is cable gauge rather than a replacement board.',
+          'Lightning and surge damage is disproportionately common on these installs. A gate operator on open acreage is often the tallest earthed metal object for some distance, and a nearby strike can take out a control board or a charge controller without leaving a mark on anything else.',
+          'Corrosion at terminals is the quiet one. Enclosures on rural gates take weather, dust and insects, and a green or powdery terminal adds resistance exactly where the system can least afford it. A significant share of "electrical faults" on these units are a connection rather than a component.',
+        ],
+      },
+      {
+        heading: 'Charge controller and wiring polarity',
+        body: [
+          'Between the panel and the battery sits a charge controller, and when it fails the battery either stops being charged or is overcharged and cooked. Either way the symptom presents as a flat battery, so replacing the battery without testing the controller produces a repair that fails again within months.',
+          'Polarity matters on DC systems in a way it does not on AC. A battery or panel reconnected backwards after unrelated work can damage the controller or board immediately. On any unit that failed straight after someone else worked on it, that is worth checking before anything more exotic.',
+        ],
+      },
+    ],
+    modelNotes: [
+      {
+        heading: 'Ranger, Patriot and Sentry',
+        body: [
+          'The Ranger and Patriot families cover most residential and acreage installations, in single and dual-leaf configurations, with solar and AC-charged variants of the same operator. Sentry units appear on lighter-duty gates.',
+          'Because the same operator is sold in both solar and AC-charged form, establishing which one is actually installed is the first step — the mechanical repair is identical and the power-side diagnosis is completely different.',
+        ],
+      },
+      {
+        heading: 'Arms, linkages and gate condition',
+        body: [
+          'Long, heavy farm and ranch gates put continuous load on the arm and its mounting. Sag in the gate itself, a dragging wheel, a post that has moved, or a hinge that has worn all increase the force the operator must produce — which on a solar system directly shortens battery life as well as wearing the operator.',
+          'On a DC system, a mechanical problem shows up as a power problem. Fixing the gate is frequently the real fix for a battery that "will not hold charge".',
+        ],
+      },
+    ],
+    partsAvailability: [
+      'Batteries: standard sealed lead-acid and AGM sizes, carried on the truck.',
+      'Charge controllers and control boards: commonly available, some ordered.',
+      'Solar panels and mounting hardware: available, sized to the installation rather than replaced like for like where the original was undersized.',
+      'Arms, linkages and mounting hardware: available; gate hardware itself is usually a stock item.',
+    ],
+    extraFaqs: [
+      {
+        q: 'My solar gate has stopped working. Does the whole operator need replacing?',
+        a: 'Usually not. On solar units the battery is the consumable, and in Texas heat it typically needs replacing every three to four years. A weak battery produces exactly the symptoms of a failed operator — slow travel, stalling part-way, opening but not closing. We test the battery under load, the panel output and the charge controller before we consider the operator itself.',
+      },
+      {
+        q: 'Why does my gate work fine in summer but not in winter?',
+        a: 'Shorter days and a lower sun angle mean the panel generates less, and cold weather reduces battery capacity at the same time. Both move against you at once, so a system that was only just adequate in summer fails in winter. That is a sizing issue rather than a fault: the fix is a larger battery, a better-sited or larger panel, or both.',
+      },
+      {
+        q: 'How many times a day can a solar gate open?',
+        a: 'It depends on battery capacity, panel output and how hard your gate is to move — a heavy sagging gate draws far more per cycle than a well-hung one. If your gate cannot keep up with your traffic, that is a sizing calculation we can do rather than something you have to live with.',
+      },
+      {
+        q: 'Can you convert a solar gate to mains power?',
+        a: 'Sometimes, if there is a practical route for a power run. On a long rural driveway the trenching often costs more than correcting the solar sizing, so we will tell you which actually makes sense for your property rather than defaulting to the bigger job.',
+      },
+      {
+        q: 'Do you cover rural properties outside the main metro?',
+        a: 'Yes. A large share of the US Automatic units in our area are on acreage and ranch entrances well outside the city limits, and those are exactly the properties where a failed gate is most disruptive. Call with your address and we will confirm coverage straight away.',
+      },
+    ],
+  },
+
   elite: {
     characteristics: [
       {

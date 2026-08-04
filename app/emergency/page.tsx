@@ -13,6 +13,8 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { Reveal } from '@/components/ui/reveal'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { publishedTestimonials } from '@/content/testimonials'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
   title: '24/7 Emergency Gate Repair | Dallas–Fort Worth | Call Now',
@@ -192,6 +194,14 @@ export default function EmergencyPage() {
           </div>
         </section>
       )}
+
+      <VideoTestimonials
+        items={publishedTestimonials.slice(0, 3)}
+        eyebrow="Customer videos"
+        title="Customers we got to fast"
+        intro="Filmed on site after the repair, in their own words."
+        tone="tint"
+      />
 
       <FaqAccordion faqs={faqs} title="Emergency gate repair questions" />
 

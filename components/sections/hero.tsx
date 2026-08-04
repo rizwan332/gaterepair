@@ -31,12 +31,19 @@ export function Hero() {
   // for a company whose whole argument is that it repairs rather than replaces,
   // and the only one of the three with no identifying background detail.
   //
-  // ⚠️ That source is 1320px wide, so the pipeline tops out at 1200. On a wide
-  // desktop the hero upscales and will look soft. Ask the client for the
-  // original camera file (2400px+) and this fixes itself on the next
-  // `npm run assets`.
+  // `homepage-04` is the shot he originally sent as a 160px screenshot
+  // (client-assets/reference/Home-Page.webp) and re-supplied on 4 Aug 2026 at
+  // 5712px: a Texas brick house, a US flag, and a real driveway gate. It is the
+  // only hero candidate that is unambiguously North Texas, and at full
+  // resolution it is the only one that holds up on a wide desktop.
+  //
+  // Falls back through the earlier picks so the hero never renders empty if the
+  // media library is regenerated before this image is processed.
   const hero =
-    media['homepage']?.[2] ?? media['gate-installation']?.[3] ?? media['gate-installation']?.[0]
+    media['homepage']?.[3] ??
+    media['homepage']?.[2] ??
+    media['gate-installation']?.[3] ??
+    media['gate-installation']?.[0]
   const rating = fact(business.rating)
   const license = fact(business.license)
   const years = fact(business.yearsInBusiness)

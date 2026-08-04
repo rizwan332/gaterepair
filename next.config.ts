@@ -43,7 +43,11 @@ const nextConfig: NextConfig = {
       { source: '/gate-repair-dallas-fort-worth', destination: '/service-areas', permanent: true },
       { source: '/shield-gate-repair', destination: '/', permanent: true },
       { source: '/about-us', destination: '/', permanent: true },
-      { source: '/testimonials', destination: '/reviews', permanent: true },
+      // /testimonials was a legacy WordPress redirect to /reviews. It is now a
+      // real page — the client's video testimonials live there — so the
+      // redirect is inverted: /reviews keeps its inbound links and 301s to the
+      // page that actually holds the proof.
+      { source: '/reviews', destination: '/testimonials', permanent: true },
       { source: '/locations', destination: '/service-areas', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
       { source: '/emergency-gate-repair-services', destination: '/emergency', permanent: true },

@@ -70,6 +70,10 @@ export const mediaCategories = {
     "label": "Ramset Gate Operator Repair",
     "kind": "brand"
   },
+  "us-automatic": {
+    "label": "US Automatic Gate Operator Repair",
+    "kind": "brand"
+  },
   "homepage": {
     "label": "Featured Work",
     "kind": "service"
@@ -649,6 +653,22 @@ export const media: Record<string, MediaImage[]> = {
       "height": 684,
       "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAsAA4BaJQBOgCB0Lid23rgA/uQ4bDerDQaSdWyMpss6dPfZ4E87bUZU/UwImJ7MLgoNkPm04ymFe5b5okjMkAwXoaVAAAA=",
       "alt": "An Elite slide operator with its cover refitted after repair",
+      "altWritten": true
+    },
+    {
+      "slug": "elite-09",
+      "src": "/images/elite/elite-09",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdACBXRGaWI9oiIgSgagAA8T/4mGTgb1YwTLGUwnzGh580/11LJiVG//y3YTwmEm/h3lyKuNi6XBqLlIbk8HQbzxrxUinUiHx5Y6CyXpD9OA2/PM2+yhGT2l2gHbMKs638IkF2yRUDvFUqwQQURmgAAA==",
+      "alt": "An Elite gate operator in a grey housing with the Elite name on the front, installed beside an ornamental iron gate and white fence",
       "altWritten": true
     }
   ],
@@ -1565,8 +1585,8 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 975,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAwAA4BaJQBOj+ADEq7ZLbBRAAD+lQ57NvOoJ06hPmyoBoz0kHOKDdCTHE1VpF7TdDnRa/rtwkFjwbmTkjGtMBu8UJHuQB27tH0HntRpbsIMAAA=",
-      "alt": "Featured Work — Shield Gate Repair",
-      "altWritten": false
+      "alt": "A tall black solid-panel swing gate closed across a driveway entrance, with a LiftMaster swing operator arm mounted along the lower rail and a control box on the wall beside it",
+      "altWritten": true
     },
     {
       "slug": "homepage-02",
@@ -1579,8 +1599,8 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 959,
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAwAA4BaJbACdADwSNRusapYAP4JJWeHoJDKze33/n59j5ThjAEPvZyCco61GMQWAGm2k1xirL905imPn68KWXEDSxAVmj3mDvdKVwcVZ68wVA+RDowAAAA=",
-      "alt": "Featured Work — Shield Gate Repair",
-      "altWritten": false
+      "alt": "A decorative wrought-iron double driveway gate with ornamental scrollwork, fitted with a LiftMaster operator arm at the base of each leaf",
+      "altWritten": true
     },
     {
       "slug": "homepage-03",
@@ -1593,8 +1613,24 @@ export const media: Record<string, MediaImage[]> = {
       "width": 1320,
       "height": 974,
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABwAQCdASoQAAwAA4BaJZwAAOrQEAD9Ib4B5y+CGFcKzVMQfzlWHgr+Zs5j3jAZ1YzLqEPd6uhmTbX11qNuCTrfC7mQAA==",
-      "alt": "Featured Work — Shield Gate Repair",
-      "altWritten": false
+      "alt": "A Shield Gate Repair technician in a high-visibility vest crouched at an opened gate control pedestal, testing the wiring terminals by hand, with an All-O-Matic slide operator in the foreground",
+      "altWritten": true
+    },
+    {
+      "slug": "homepage-04",
+      "src": "/images/homepage/homepage-04",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAwAA4BaJZACdAEfAcXzqLIAAP7sl5BFYOO444q9Rsv8A4+2H/IhvvJQf8u8noxBm9wdCpFlF3Xj5CQnbj9aX0xj50jED5dDHsbrm7OyHT0L++VrCMm6WFrQGgAA",
+      "alt": "A metal driveway gate closed across a concrete drive beside a wooden fence, in front of a brick house flying a United States flag",
+      "altWritten": true
     }
   ],
   "iron-gate-repair": [
@@ -1741,6 +1777,88 @@ export const media: Record<string, MediaImage[]> = {
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAA4BaJYwCdAC0sywAAP6p+xTENPtcX2fbG+fQf2hSPYgd2UgDFVp1zp9AAVrNOl+fHH9CLuruGhABdUMq6ruGCKUh5SAH/ClyCUAgAA==",
       "alt": "A refinished wrought iron gate after weld repair and repainting",
+      "altWritten": true
+    }
+  ],
+  "us-automatic": [
+    {
+      "slug": "us-automatic-01",
+      "src": "/images/us-automatic/us-automatic-01",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAwAA4BaJYwCsAEXtZdzk30AAP7s7hiBYZXGgEtWSDlXtbjlE5Z+HPDqtV2wDpd0OSOxUXvimVLp8KLvIXlR/n3gDj77045x0S8u4AgAAA==",
+      "alt": "A wide metal ranch gate closed across a gravel driveway, with the gate operator and its control enclosure mounted on the left-hand post",
+      "altWritten": true
+    },
+    {
+      "slug": "us-automatic-02",
+      "src": "/images/us-automatic/us-automatic-02",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYwCdACGqX4OYsetdgAD+eTqzCgibU0U4OKjvAijX1AwETyu4jcVi506jw+AMsulZiLGq60IgPagcxeDhUT+DBFG/G3BOnCotzg/eFRoORPjK7XV5UATnGrC/ZtJsSJ29aYrWChUb8AAA",
+      "alt": "A gate operator in a black weatherproof enclosure mounted on the post of a metal ranch gate, with the drive arm connected to the gate frame",
+      "altWritten": true
+    },
+    {
+      "slug": "us-automatic-03",
+      "src": "/images/us-automatic/us-automatic-03",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoQAAwAA4BaJYgC7AD7AWmVhoEAAPzs9E8oS/WxILpTOnmGHMrZcR0U3cTl98PfUWx3hvdyWD4xn56JXaZwio1g9/r3tSC/8OwN2cFibO4aQbkz8wGCdx57DyAAAA==",
+      "alt": "A black metal gate beside a brick wall with its control enclosure open, showing the operator wiring and components inside",
+      "altWritten": true
+    },
+    {
+      "slug": "us-automatic-04",
+      "src": "/images/us-automatic/us-automatic-04",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQBdg7wAOiu63xokhHbfQB4AA/h6qTohjY9fz7XT9YWpPCm6tiY3Fn14o5TINh1fC5tICpJ687Gq/kujiTA/aB3id8MQvFC7MScI4flGcYMEx2Vmv9Kja/BxEKhu31p2WjEv7+Sh0LKAAAAA=",
+      "alt": "An opened gate control enclosure showing the battery, charge wiring and control board, with a multimeter resting on top during electrical testing",
+      "altWritten": true
+    },
+    {
+      "slug": "us-automatic-05",
+      "src": "/images/us-automatic/us-automatic-05",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAkAA4BaJYwCdAYulhv+gpAAAM3zx6AZxDIszEP5P39AstIs7ryIuuKcRn2YMJJTeA4BWxr/KaFkz+wTP8qoObcdyNXdBvCvfgYAZBIAAA==",
+      "alt": "A metal gate at the entrance to a long tree-lined driveway, with the operator control box mounted on the right-hand post",
       "altWritten": true
     }
   ],

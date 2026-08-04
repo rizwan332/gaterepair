@@ -65,6 +65,14 @@ const CATEGORIES = [
   { match: 'Eagle-Gate-Motor-Repair', slug: 'eagle', label: 'Eagle Gate Operator Repair', kind: 'brand' },
   { match: 'Commercial-Gate-Repair-Services', slug: 'commercial-gate-repair', label: 'Commercial Gate Repair', kind: 'service' },
   { match: 'Ramset-Gate-Motor-Repair', slug: 'ramset', label: 'Ramset Gate Operator Repair', kind: 'brand' },
+  // Client-supplied 4 Aug 2026. Must be matched BEFORE the generic categories
+  // above would ever catch it, and kept distinct from 'automatic-gate-repair'.
+  {
+    match: 'US-Automatic-Gate-Motor-Repair',
+    slug: 'us-automatic',
+    label: 'US Automatic Gate Operator Repair',
+    kind: 'brand',
+  },
   // Client-selected homepage imagery, supplied 3 Aug 2026. Kept as its own
   // category so the homepage does not silently pick up a different photo when
   // the shared service categories are re-indexed.

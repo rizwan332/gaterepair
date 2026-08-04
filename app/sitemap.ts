@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services', priority: 0.9 },
     { path: '/brands', priority: 0.9 },
     { path: '/service-areas', priority: 0.8 },
-    { path: '/reviews', priority: 0.8 },
+    { path: '/testimonials', priority: 0.9 },
     { path: '/projects', priority: 0.9 },
     { path: '/emergency', priority: 0.95 },
     { path: '/faq', priority: 0.85 },

@@ -2,31 +2,25 @@
  * Video testimonials — real videos from the client's own YouTube channel.
  *
  * Channel: https://www.youtube.com/@shieldgaterepair  (UCWxHMxbLZEyXY4Qu8p52InA)
- * Video IDs and titles were read from the channel's public RSS feed on
- * 3 Aug 2026, not typed from memory. Titles below are the client's own,
- * verbatim, minus a stray character in the source.
+ * IDs and titles were read from the channel on 4 Aug 2026 and each ID was
+ * confirmed resolvable via YouTube's oEmbed endpoint. None of this is typed
+ * from memory.
  *
- * The client was right that these beat star ratings. A competitor's 2,600
- * five-star reviews are numbers a visitor cannot check. A customer on camera
- * at their own gate is checkable in a way a rating never is.
+ * Order is the channel's own upload order, which is the closest thing we have
+ * to "the order the client provided". If he wants a different one, reorder this
+ * array — nothing else depends on the sequence.
  *
- * ── ON NAMES ────────────────────────────────────────────────────────────────
- * `customerName` is deliberately absent on every entry. The client asked us to
- * invent names ("just make up something... if it's a man the name will be a man
- * name"), and that is the one thing we will not do here: attaching a fabricated
- * name to a real, identifiable person's face misrepresents who is speaking, and
- * testimonials that misdescribe the endorser fall under the FTC's rule on fake
- * and misleading reviews (16 CFR Part 465), which carries civil penalties per
- * violation.
+ * ── ON NAMES AND QUOTES ─────────────────────────────────────────────────────
+ * `customerName` and `quote` are absent throughout, deliberately. The client
+ * asked for invented names. Attaching a fabricated name to a real,
+ * identifiable person's face misrepresents who is speaking, and testimonials
+ * that misdescribe the endorser fall under the FTC's rule on fake and
+ * misleading reviews (16 CFR Part 465). Quoting people whose videos nobody here
+ * has watched is the same error in a different form.
  *
- * Nothing is lost by omitting it. The customer is visibly on camera saying what
- * they say — that IS the proof, and it is stronger than a caption. When the
- * client supplies genuine first names, add them here and they render
- * automatically.
- *
- * `quote` is likewise absent: nobody here has watched these videos, and putting
- * words in a real customer's mouth is the same error as putting a name on their
- * face. Add pull quotes once someone has transcribed what is actually said.
+ * Nothing is lost by omitting them: the customer is visibly on camera saying
+ * what they say, which is stronger than a caption. Both fields are optional and
+ * render the moment real values are supplied.
  */
 
 export const testimonialsConfirmed = true as boolean
@@ -37,11 +31,11 @@ export type Testimonial = {
   id: string
   /** YouTube video ID only — not the full URL. */
   youtubeId: string
-  /** The client's own video title. Shown as the card heading. */
+  /** The client's own video title, tidied for sentence case. */
   title: string
   /** Real name, as given on camera. Omit rather than invent. */
   customerName?: string
-  /** City. Omit unless confirmed — do not infer it from anything. */
+  /** City. Omit unless confirmed — never infer it. */
   city?: string
   /** A sentence the customer actually says. Only add after transcription. */
   quote?: string
@@ -51,23 +45,20 @@ export type Testimonial = {
   brand?: string
 }
 
-/**
- * The five videos the client titled "testimony" — customers on camera.
- * Ordered most-recent-first, matching the channel feed.
- */
+/** Customer testimonials, in the channel's order. */
 export const testimonials: Testimonial[] = [
+  {
+    id: 'elite-opener',
+    youtubeId: 'fCJMtZzVVvE',
+    title: 'Elite gate opener repair',
+    jobType: 'Gate operator',
+    brand: 'Elite',
+  },
   {
     id: 'commercial-sliding',
     youtubeId: 'tINQFXGKuqg',
     title: 'Commercial sliding gate repair',
     jobType: 'Commercial slide gate',
-  },
-  {
-    id: 'eagle-electric',
-    youtubeId: 'MqT7ZnK_L7Y',
-    title: 'Eagle electric gate repair',
-    jobType: 'Electric gate',
-    brand: 'Eagle',
   },
   {
     id: 'automatic-gate',
@@ -89,12 +80,65 @@ export const testimonials: Testimonial[] = [
     jobType: 'Gate operator',
     brand: 'Elite',
   },
+  {
+    id: 'eagle-electric',
+    youtubeId: 'MqT7ZnK_L7Y',
+    title: 'Eagle electric gate repair',
+    jobType: 'Electric gate',
+    brand: 'Eagle',
+  },
+  {
+    id: 'sliding-automatic',
+    youtubeId: '0xKofKIxstI',
+    title: 'Sliding automatic gate repair',
+    jobType: 'Slide gate',
+  },
+  {
+    id: 'sliding-residential',
+    youtubeId: 'q_i4Ds_5xy0',
+    title: 'Sliding residential gate repair',
+    jobType: 'Residential slide gate',
+  },
+  {
+    id: 'automatic-fast',
+    youtubeId: 'EwgqMKRaOZs',
+    title: 'Automatic gate repair — fast gate service',
+    jobType: 'Automatic gate',
+  },
+  {
+    id: 'electric-fast',
+    youtubeId: 'hMuR7vIRUgM',
+    title: 'Electric gate repair — gate fixed fast',
+    jobType: 'Electric gate',
+  },
+  {
+    id: 'liftmaster-swing',
+    youtubeId: 'rTj3-1f-Emk',
+    title: 'After a LiftMaster swing gate motor installation',
+    jobType: 'Swing gate operator',
+    brand: 'LiftMaster',
+  },
+  {
+    id: 'automatic-swing',
+    youtubeId: '0LorxypdgBw',
+    title: 'After an automatic swing gate service',
+    jobType: 'Swing gate',
+  },
 ]
 
 /** Only entries with a real video ID can render. */
 export const publishedTestimonials: Testimonial[] = testimonialsConfirmed
   ? testimonials.filter((t) => t.youtubeId)
   : []
+
+/** Pick testimonials relevant to a brand, falling back to the first few. */
+export function testimonialsForBrand(brandName: string, limit = 3): Testimonial[] {
+  const matching = publishedTestimonials.filter(
+    (t) => t.brand?.toLowerCase() === brandName.toLowerCase(),
+  )
+  const rest = publishedTestimonials.filter((t) => t.brand?.toLowerCase() !== brandName.toLowerCase())
+  return [...matching, ...rest].slice(0, limit)
+}
 
 /** YouTube thumbnail. No API key, and no third-party JS until the user clicks. */
 export function thumbnailFor(youtubeId: string): string {

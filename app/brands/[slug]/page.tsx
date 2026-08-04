@@ -14,6 +14,8 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
+import { testimonialsForBrand } from '@/content/testimonials'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -42,7 +44,15 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
   const depth = BRAND_DEPTH[brand.slug]
   const faqs = [...brand.faqs, ...(depth?.extraFaqs ?? [])]
-  const images = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
+  const allImages = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
+  // Promote the designated lead image to the front so it becomes both the page
+  // hero and the first gallery tile, without duplicating it.
+  const images = brand.featuredImage
+    ? [
+        ...allImages.filter((i) => i.slug === brand.featuredImage),
+        ...allImages.filter((i) => i.slug !== brand.featuredImage),
+      ]
+    : allImages
   const brandVideos = brand.mediaCategory ? videosFor(brand.mediaCategory) : []
 
   return (
@@ -207,6 +217,14 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           </div>
         </section>
       )}
+
+      <VideoTestimonials
+        items={testimonialsForBrand(brand.name, 3)}
+        eyebrow="Customer videos"
+        title={`${brand.name} customers, on camera`}
+        intro="Real Shield Gate Repair customers describing the job in their own words."
+        tone="tint"
+      />
 
       <FaqAccordion faqs={faqs} title={`${brand.name} repair questions`} />
 

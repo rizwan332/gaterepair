@@ -89,9 +89,12 @@ export function SiteFooter() {
             © {new Date().getFullYear()} {business.name}. All rights reserved.
             {license && <> · Texas License {license}</>}
           </p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link href="/about" className="hover:text-ink-200">
               About
+            </Link>
+            <Link href="/testimonials" className="hover:text-ink-200">
+              Testimonials
             </Link>
             <Link href="/warranty" className="hover:text-ink-200">
               Warranty

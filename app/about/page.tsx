@@ -11,6 +11,8 @@ import { videos } from '@/content/video-manifest'
 import { projects } from '@/content/projects'
 import { brands } from '@/content/brands'
 import { breadcrumbSchema, organizationSchema } from '@/lib/schema'
+import { publishedTestimonials } from '@/content/testimonials'
+import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
   title: 'About Shield Gate Repair | Gate Specialists Serving Dallas–Fort Worth',
@@ -197,7 +199,7 @@ export default function AboutPage() {
             {[
               { href: '/projects', label: 'See our case studies' },
               { href: '/warranty', label: 'Read our warranty' },
-              { href: '/reviews', label: 'Customer reviews' },
+              { href: '/testimonials', label: 'Customer testimonials' },
               { href: '/service-areas', label: 'Where we work' },
             ].map((link) => (
               <Link
@@ -212,6 +214,14 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <VideoTestimonials
+        items={publishedTestimonials.slice(0, 3)}
+        eyebrow="Customer videos"
+        title="Do not take our word for it"
+        intro="Everything above is us describing ourselves. These are customers describing us."
+        tone="tint"
+      />
 
       <ClosingCTA />
 
