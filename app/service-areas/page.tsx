@@ -9,8 +9,8 @@ import { CoverageExplorer, type ExplorerCity } from '@/components/sections/cover
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: `Service Areas | Gate Repair Across ${cities.length} North Texas Cities | Shield Gate Repair`,
-  description: `Automatic gate repair across ${cities.length} cities in Dallas–Fort Worth and North Texas. Interactive coverage map. Open 24/7. Call ${business.phone.display}.`,
+  title: `Service Areas | Gate Repair Across ${cities.length} Dallas–Fort Worth Cities | Shield Gate Repair`,
+  description: `Automatic gate repair across ${cities.length} cities in the Dallas–Fort Worth Metroplex. Interactive coverage map. Open 24/7. Call ${business.phone.display}.`,
   alternates: { canonical: '/service-areas' },
 }
 
@@ -43,7 +43,7 @@ export default function ServiceAreasPage() {
             Service areas
           </p>
           <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.05] text-ink-950 sm:text-5xl lg:text-6xl">
-            Gate repair across {cities.length} North Texas cities
+            Gate repair across {cities.length} Dallas–Fort Worth cities
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-700">
             From Dallas and Fort Worth out to Weatherford, Sherman, Stephenville and Gun Barrel City.

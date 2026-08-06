@@ -19,7 +19,7 @@ export function ServiceAreas() {
           <div className="max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">Where we work</p>
             <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-              Serving {cities.length}+ Cities Across North Texas
+              Serving {cities.length}+ Cities Across Dallas–Fort Worth
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink-700">
               From Dallas and Fort Worth out to Weatherford, Denton, Sherman and Stephenville. Here are the

@@ -94,7 +94,7 @@ export const priceBands: PriceBand[] = [
     low: 0,
     high: 0,
     symptom: 'The gate has come off its track or is dragging and binding.',
-    note: 'PLACEHOLDER — common in North Texas where clay soil shifts gate posts seasonally.',
+    note: 'PLACEHOLDER — common in Dallas–Fort Worth where clay soil shifts gate posts seasonally.',
     typicalVisit: '1–3 hours',
   },
   {

@@ -278,7 +278,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'The battery is the part that wears out',
         body: [
-          'These systems run a sealed lead-acid or AGM battery, and in North Texas heat that battery is a consumable. High ambient temperature is what kills lead-acid capacity, and a battery that would last five years in a mild climate frequently has three or four here — less if it sits in an unshaded enclosure in full summer sun.',
+          'These systems run a sealed lead-acid or AGM battery, and in Dallas–Fort Worth heat that battery is a consumable. High ambient temperature is what kills lead-acid capacity, and a battery that would last five years in a mild climate frequently has three or four here — less if it sits in an unshaded enclosure in full summer sun.',
           'A tired battery does not fail cleanly. It behaves exactly like a failing operator: the gate opens slowly, stalls part-way, opens but will not close, works in the afternoon and not at dawn, or runs fine for one cycle and refuses the second. Every one of those symptoms will also be produced by a genuine motor or board fault, which is why the battery and charge system get tested first rather than assumed good.',
           'A battery should be tested under load, not just measured at rest. A worn cell can show close to a healthy resting voltage and still collapse the moment the motor draws current.',
         ],

@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import { ArrowUpRight, Play } from 'lucide-react'
 import { brands } from '@/content/brands'
-import { business } from '@/content/business'
-import { fact } from '@/lib/business'
 import { media } from '@/content/media-manifest'
 import { videosFor } from '@/content/video-manifest'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
@@ -24,7 +22,6 @@ import { Reveal } from '@/components/ui/reveal'
  * styled compactly, so their thinness reads as deliberate rather than broken.
  */
 export function BrandsGrid() {
-  const isDealer = fact(business.authorizedDealer)
   const withMedia = brands.filter((b) => b.mediaCategory && media[b.mediaCategory]?.length)
   const withoutMedia = brands.filter((b) => !b.mediaCategory || !media[b.mediaCategory]?.length)
 
@@ -120,11 +117,6 @@ export function BrandsGrid() {
           </Reveal>
         )}
 
-        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-ink-500">
-          {isDealer
-            ? 'Brand names are the property of their respective owners.'
-            : 'Brands we service. Brand names are the property of their respective owners — Shield Gate Repair is an independent repair company and is not an authorized dealer for these manufacturers.'}
-        </p>
       </div>
     </section>
   )

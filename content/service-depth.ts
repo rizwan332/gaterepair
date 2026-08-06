@@ -11,7 +11,7 @@
  * own self-contained answer, which is what lets Google surface a specific
  * passage rather than the whole page. Length alone would just be padding.
  *
- * Geographic rule: North Texas *conditions* (expansive clay, summer heat, storm
+ * Geographic rule: Dallas–Fort Worth *conditions* (expansive clay, summer heat, storm
  * season) are legitimate to discuss — they are facts about the service area.
  * Specific past jobs are not claimed, because the photo library is California
  * work. See MEDIA-PROVENANCE.md.
@@ -35,7 +35,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         body: [
           'A single-phase gate motor cannot start on its own. It needs a capacitor to give the windings a phase shift and get the rotor turning. When that capacitor degrades — and they all degrade, typically within eight to twelve years — the motor still receives power but can no longer break away from standstill. What you hear is a hum, sometimes a click, and nothing moves.',
           'It is worth knowing this because a humming motor is the symptom most often misdiagnosed as a dead operator. A capacitor is one of the least expensive parts on a gate and takes minutes to swap. If someone quotes you a replacement operator for a gate that hums, get a second opinion before you agree to it.',
-          'Heat accelerates the failure. In North Texas a capacitor spends four months a year in an enclosure sitting in direct afternoon sun, which is why we see a seasonal spike in exactly this fault every August.',
+          'Heat accelerates the failure. In Dallas–Fort Worth a capacitor spends four months a year in an enclosure sitting in direct afternoon sun, which is why we see a seasonal spike in exactly this fault every August.',
         ],
       },
       {
@@ -59,7 +59,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         body: [
           'This is the single most expensive misdiagnosis in the trade. An operator is sized to move a gate that swings or rolls freely. When hinges wear, rollers flat-spot, a track fills with grit, or a post moves, the gate becomes progressively harder to move — and the operator strains on every cycle until something in it gives out.',
           'Replace the operator without fixing the gate and the new one fails the same way, usually within a year. This is why we release the operator and move the gate by hand before touching anything electrical. If it does not move freely, we have found the real fault regardless of what the board is reporting.',
-          'North Texas makes this common. Expansive clay soil swells through a wet spring and shrinks hard through a dry August, and gate posts move with it. A gate that closed perfectly in April can be binding by August with nothing having been touched.',
+          'Dallas–Fort Worth makes this common. Expansive clay soil swells through a wet spring and shrinks hard through a dry August, and gate posts move with it. A gate that closed perfectly in April can be binding by August with nothing having been touched.',
         ],
       },
       {
@@ -258,7 +258,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       {
         heading: 'Corrosion and moisture ingress',
         body: [
-          'Outdoor enclosures rely on gaskets that perish. Once moisture is inside, terminals corrode, boards develop tracking faults and connections that test fine on a dry day fail on a wet one. Storm season in North Texas makes this a seasonal pattern rather than a random one.',
+          'Outdoor enclosures rely on gaskets that perish. Once moisture is inside, terminals corrode, boards develop tracking faults and connections that test fine on a dry day fail on a wet one. Storm season in Dallas–Fort Worth makes this a seasonal pattern rather than a random one.',
           'The repair is not just replacing the corroded part but restoring the enclosure seal, otherwise the same fault returns.',
         ],
       },
@@ -329,7 +329,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       {
         heading: 'Post movement in expansive clay',
         body: [
-          'Much of North Texas sits on expansive clay that swells when wet and shrinks hard through a dry summer. Gate posts move with it — sometimes a surprising amount over a single season.',
+          'Much of Dallas–Fort Worth sits on expansive clay that swells when wet and shrinks hard through a dry summer. Gate posts move with it — sometimes a surprising amount over a single season.',
           'The result is a gate that closed square in spring and binds by August with nothing having been touched. Straightening or adjusting the gate without addressing the post means the same problem returns the following year. Where footings have moved significantly, resetting them is the durable repair.',
         ],
       },
@@ -370,7 +370,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
     extraFaqs: [
       {
         q: 'My iron gate is dragging. Is the gate bent?',
-        a: 'More often the hinges have worn or the post has moved. North Texas clay shifts gate posts seasonally and decades-old hinges develop play. Straightening or forcing the gate without fixing the post or the hinge means it will be dragging again within a season.',
+        a: 'More often the hinges have worn or the post has moved. Dallas–Fort Worth clay shifts gate posts seasonally and decades-old hinges develop play. Straightening or forcing the gate without fixing the post or the hinge means it will be dragging again within a season.',
       },
       {
         q: 'Can you match the finish on an older gate?',
@@ -497,7 +497,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       {
         heading: 'Surge damage',
         body: [
-          'Access control sits at the end of long cable runs across open ground, which makes it unusually exposed to storm surge. Damaged controllers after a storm are common in North Texas, and surge protection is worth fitting at the same time as the repair rather than waiting for the next one.',
+          'Access control sits at the end of long cable runs across open ground, which makes it unusually exposed to storm surge. Damaged controllers after a storm are common in Dallas–Fort Worth, and surge protection is worth fitting at the same time as the repair rather than waiting for the next one.',
         ],
       },
     ],
@@ -543,7 +543,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       {
         heading: 'Why footings decide whether the gate lasts',
         body: [
-          'Almost everything that goes wrong with a gate in its first five years traces back to the groundwork. Posts carry enormous leverage — a long leaf multiplies its own weight into the footing every time it swings — and North Texas clay is actively hostile to shallow foundations.',
+          'Almost everything that goes wrong with a gate in its first five years traces back to the groundwork. Posts carry enormous leverage — a long leaf multiplies its own weight into the footing every time it swings — and Dallas–Fort Worth clay is actively hostile to shallow foundations.',
           'Footings set to proper depth and diameter for the soil are the difference between a gate that stays square for twenty years and one that needs adjusting every season. It is also the part of the job that is invisible once finished, which is exactly why it is the part most often economised on.',
         ],
       },

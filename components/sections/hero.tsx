@@ -33,7 +33,7 @@ export function Hero() {
   // `homepage-04` is the shot he originally sent as a 160px screenshot
   // (client-assets/reference/Home-Page.webp) and re-supplied on 4 Aug 2026 at
   // 5712px: a Texas brick house, a US flag, and a real driveway gate. It is the
-  // only hero candidate that is unambiguously North Texas, and at full
+  // only hero candidate that is unambiguously Dallas–Fort Worth, and at full
   // resolution it is the only one that holds up on a wide desktop.
   //
   // Falls back through the earlier picks so the hero never renders empty if the
@@ -116,7 +116,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-2xl font-display text-xl font-semibold leading-snug text-white sm:text-2xl">
-            Residential &amp; Commercial Gate Repair Throughout North Texas
+            Residential &amp; Commercial Gate Repair Throughout Dallas–Fort Worth
           </p>
 
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-200">

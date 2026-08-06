@@ -14,7 +14,7 @@
  * launch — publishing an arrival time you cannot hit destroys the trust the
  * number exists to build. `content/business.ts -> address` is still unconfirmed.
  *
- * ⚠️ `gateProfile` is populated for Tier 1 from general North Texas knowledge as
+ * ⚠️ `gateProfile` is populated for Tier 1 from general Dallas–Fort Worth knowledge as
  * a starting draft. These must be replaced with the client's technician
  * interview answers (see CITY-PAGES.md §5) — that is the content no competitor
  * can replicate.
@@ -302,7 +302,7 @@ export const tier1Cities: City[] = [
     faqs: [
       {
         q: 'My iron gate is dragging on the driveway. Is the gate bent?',
-        a: 'More often the hinges have worn or the post has moved. North Texas clay shifts posts seasonally, and decades-old hinges develop play. Straightening or forcing the gate without fixing the post or hinge means it will be dragging again within a season.',
+        a: 'More often the hinges have worn or the post has moved. Dallas–Fort Worth clay shifts posts seasonally, and decades-old hinges develop play. Straightening or forcing the gate without fixing the post or hinge means it will be dragging again within a season.',
       },
       {
         q: 'Do you cover all of Arlington?',
@@ -421,7 +421,7 @@ export const tier1Cities: City[] = [
     tier: 1,
     zips: ['76201', '76205', '76207', '76208', '76209', '76210'],
     neighborhoods: ['Rayzor Ranch', 'Robson Ranch', 'Country Club', 'Oakmont', 'Southridge'],
-    landmarks: ['Denton Square', 'University of North Texas', 'Ray Roberts Lake', 'Clear Creek Natural Heritage Center'],
+    landmarks: ['Denton Square', 'University of Dallas–Fort Worth', 'Ray Roberts Lake', 'Clear Creek Natural Heritage Center'],
     majorRoads: ['I-35E', 'I-35W', 'US-380', 'Loop 288'],
     nearbyCities: ['argyle', 'corinth', 'sanger', 'krum', 'lake-dallas', 'ponder'],
     responseBand: '',

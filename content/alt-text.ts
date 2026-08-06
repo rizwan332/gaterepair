@@ -266,7 +266,7 @@ export const ALT_TEXT: Record<string, string> = {
 
   // ---- Homepage — client's own picks, 3 Aug 2026 (3) ---------------------
   // Rule 1 applies here as much as anywhere: two of these three have visible
-  // background detail that is not North Texas. Described by what is in frame.
+  // background detail that is not Dallas–Fort Worth. Described by what is in frame.
   'homepage-01':
     'A tall black solid-panel swing gate closed across a driveway entrance, with a LiftMaster swing operator arm mounted along the lower rail and a control box on the wall beside it',
   'homepage-02':

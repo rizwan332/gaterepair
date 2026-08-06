@@ -83,7 +83,7 @@ export const services: Service[] = [
       },
       {
         q: 'My gate worked this morning and now it does not. What changed?',
-        a: 'In North Texas, heat and ground movement are the usual culprits. Thermal cutouts trip on hot afternoons when a motor is already working harder than it should, and clay soil shifts gate posts between wet and dry seasons so a gate that closed cleanly in spring starts binding in August.',
+        a: 'In Dallas–Fort Worth, heat and ground movement are the usual culprits. Thermal cutouts trip on hot afternoons when a motor is already working harder than it should, and clay soil shifts gate posts between wet and dry seasons so a gate that closed cleanly in spring starts binding in August.',
       },
     ],
     relatedBrands: ['liftmaster', 'faac', 'all-o-matic', 'elite', 'viking', 'eagle', 'ramset'],
@@ -219,7 +219,7 @@ export const services: Service[] = [
       'Wrought iron gates sag, crack at the welds, and rust from the bottom rail up. All of it is repairable, and ' +
       'repairing is almost always cheaper than replacing a custom gate you cannot buy off a shelf.',
     symptoms: [
-      { seeing: 'Gate is sagging or dragging on the ground', means: 'Hinge wear or post movement — very common in North Texas clay' },
+      { seeing: 'Gate is sagging or dragging on the ground', means: 'Hinge wear or post movement — very common in Dallas–Fort Worth clay' },
       { seeing: 'Cracked welds at the frame joints', means: 'Metal fatigue from years of cycling, usually re-weldable' },
       { seeing: 'Rust at the bottom rail', means: 'Water sitting in the hollow section — cut, replace and reseal' },
       { seeing: 'Gate post leaning', means: 'Footing movement, needs resetting rather than patching' },
@@ -235,7 +235,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: 'My iron gate has started dragging. Is the gate bent?',
-        a: 'Usually the post has moved, not the gate. North Texas clay expands and contracts hard between wet spring and dry summer, and gate posts move with it. Straightening the gate without addressing the post means it will drag again next season.',
+        a: 'Usually the post has moved, not the gate. Dallas–Fort Worth clay expands and contracts hard between wet spring and dry summer, and gate posts move with it. Straightening the gate without addressing the post means it will drag again next season.',
       },
       {
         q: 'Can you match the finish on an older gate?',
@@ -340,7 +340,7 @@ export const services: Service[] = [
     process: [
       'Site assessment — soil, slope, drainage, power availability, gate weight',
       'Specify the operator to the gate and the duty cycle, not to a price point',
-      'Set footings to depth for North Texas clay',
+      'Set footings to depth for Dallas–Fort Worth clay',
       'Run conduit and power properly the first time',
       'Install safety devices to current standards',
       'Full commissioning, programming and handover',

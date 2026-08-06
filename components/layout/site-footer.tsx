@@ -111,12 +111,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Trademark hygiene. Never implies a dealer relationship the client
-            does not hold — see content/business.ts authorizedDealer. */}
-        <p className="mt-6 text-xs leading-relaxed text-ink-500">
-          Brand names are the property of their respective owners and are used here only to describe the
-          equipment we service. {business.name} is an independent repair company.
-        </p>
       </div>
     </footer>
   )

@@ -434,7 +434,7 @@ export const brands: Brand[] = [
     headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
     intro:
       'US Automatic builds both solar and electric gate operators — the Ranger and Patriot lines you see on ' +
-      'ranch entrances, acreage driveways and mains-powered residential gates across North Texas. We repair ' +
+      'ranch entrances, acreage driveways and mains-powered residential gates across Dallas–Fort Worth. We repair ' +
       'both, and the first job is working out which kind of fault you actually have.',
     whyDifferent:
       'On a solar install the operator is a power system with a gate attached, and the usual culprit is a battery ' +
@@ -488,7 +488,7 @@ export const brands: Brand[] = [
     priority: 11,
     headline: 'Apollo Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'Apollo builds the solar-capable swing and slide operators found on a great many North Texas acreage ' +
+      'Apollo builds the solar-capable swing and slide operators found on a great many Dallas–Fort Worth acreage ' +
       'properties, usually paired with a battery and a small panel. We repair them rather than replacing them.',
     whyDifferent:
       'Apollo installs are typically off-grid, which means most faults are power faults rather than operator ' +
@@ -523,7 +523,7 @@ export const brands: Brand[] = [
     priority: 12,
     headline: 'Mighty Mule Gate Opener Repair in Dallas–Fort Worth',
     intro:
-      'Mighty Mule openers are the most common homeowner-installed operators in North Texas. We service and ' +
+      'Mighty Mule openers are the most common homeowner-installed operators in Dallas–Fort Worth. We service and ' +
       'repair them, including the solar and battery-backed installations.',
     whyDifferent:
       'These are light-duty operators, frequently fitted to gates heavier than they were rated for. That matters ' +
@@ -558,7 +558,7 @@ export const brands: Brand[] = [
     priority: 13,
     headline: 'Ghost Controls Gate Opener Repair in Dallas–Fort Worth',
     intro:
-      'Ghost Controls automatic gate openers are common on residential and ranch driveways across North Texas, ' +
+      'Ghost Controls automatic gate openers are common on residential and ranch driveways across Dallas–Fort Worth, ' +
       'almost always running on solar and battery. We repair them.',
     whyDifferent:
       'Ghost Controls units are DC operators designed around a battery, so battery health governs everything the ' +

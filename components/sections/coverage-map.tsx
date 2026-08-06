@@ -254,7 +254,7 @@ export function CoverageMap({
         ref={containerRef}
         className="size-full"
         role="region"
-        aria-label={`Interactive coverage map of ${cities.length} cities we service across North Texas. Every city is also listed as a link beside this map.`}
+        aria-label={`Interactive coverage map of ${cities.length} cities we service across Dallas–Fort Worth. Every city is also listed as a link beside this map.`}
       />
 
       {!ready && !failed && (

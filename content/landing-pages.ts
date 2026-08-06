@@ -80,7 +80,7 @@ export const landingPages: LandingPage[] = [
       },
       {
         title: 'Dead after a storm',
-        body: 'North Texas surges take out control boards regularly. The board is a replaceable part on this operator and does not require a new unit.',
+        body: 'Dallas–Fort Worth surges take out control boards regularly. The board is a replaceable part on this operator and does not require a new unit.',
       },
       {
         title: 'Remotes or keypad stopped working',
@@ -123,7 +123,7 @@ export const landingPages: LandingPage[] = [
     mediaCategory: 'liftmaster',
     problem: [
       'Your LiftMaster gate opener has stopped doing what it should — not opening, not closing, opening partway, or making noise without moving.',
-      'LiftMaster is the most common gate operator in North Texas, and it is also one of the most repairable. The parts that fail on these units are boards, capacitors, limit switches and batteries, and every one of them is replaceable.',
+      'LiftMaster is the most common gate operator in Dallas–Fort Worth, and it is also one of the most repairable. The parts that fail on these units are boards, capacitors, limit switches and batteries, and every one of them is replaceable.',
     ],
     modelDescription: [
       'LiftMaster builds both residential and commercial gate operators across swing and slide, including the LA400 and LA500 linear actuators, the CSW and CSL commercial swing and slide units, and the older Elite-branded lines that share much of the same hardware.',
@@ -163,7 +163,7 @@ export const landingPages: LandingPage[] = [
     h1: 'US Automatic Ranger Repair in Dallas–Fort Worth',
     title: 'US Automatic Ranger Repair Dallas–Fort Worth | Shield Gate Repair',
     metaDescription:
-      'US Automatic Ranger gate opener slow, stopping partway or dead? We repair Ranger solar and electric operators across North Texas. Open 24/7. Call now.',
+      'US Automatic Ranger gate opener slow, stopping partway or dead? We repair Ranger solar and electric operators across Dallas–Fort Worth. Open 24/7. Call now.',
     subhead: 'Solar and electric Ranger operators on ranch and acreage driveways.',
     brandSlug: 'us-automatic',
     mediaCategory: 'us-automatic',
@@ -172,7 +172,7 @@ export const landingPages: LandingPage[] = [
       'On these operators the fault is usually in the power system rather than the operator. That is good news: batteries, panels and charge controllers are all straightforward replacements.',
     ],
     modelDescription: [
-      'US Automatic builds both solar and electric gate operators, and the Ranger line is common on ranch and acreage entrances across North Texas where the gate sits a long way from mains power.',
+      'US Automatic builds both solar and electric gate operators, and the Ranger line is common on ranch and acreage entrances across Dallas–Fort Worth where the gate sits a long way from mains power.',
       'A solar Ranger is a power system with a gate attached. The operator draws from a battery, the panel keeps the battery charged, and a charge controller manages it. If any part of that chain underperforms, the gate behaves exactly like a failing operator — slow travel, partial opening, or nothing at all. On a mains-powered Ranger the same symptoms point somewhere quite different, which is why establishing which system you have comes first.',
     ],
     commonIssues: [
@@ -347,7 +347,7 @@ export const landingPages: LandingPage[] = [
     h1: 'Apollo Gate Repair in Dallas–Fort Worth',
     title: 'Apollo Gate Opener Repair Dallas–Fort Worth | Shield Gate Repair',
     metaDescription:
-      'Apollo solar gate opener slow, stopping partway or dead? We repair Apollo swing and slide operators across North Texas. Open 24/7. Call Shield Gate Repair.',
+      'Apollo solar gate opener slow, stopping partway or dead? We repair Apollo swing and slide operators across Dallas–Fort Worth. Open 24/7. Call Shield Gate Repair.',
     subhead: 'Solar and battery-powered Apollo operators on acreage driveways.',
     brandSlug: 'apollo',
     mediaCategory: null,
@@ -356,7 +356,7 @@ export const landingPages: LandingPage[] = [
       'On these operators the fault is usually in the power system rather than the operator itself — which means the repair is normally straightforward and considerably cheaper than a replacement.',
     ],
     modelDescription: [
-      'Apollo builds solar-capable swing and slide gate operators found on a great many North Texas acreage properties, usually paired with a battery and a small panel. The 1500, 1600 and 7000 series are the ones we see most.',
+      'Apollo builds solar-capable swing and slide gate operators found on a great many Dallas–Fort Worth acreage properties, usually paired with a battery and a small panel. The 1500, 1600 and 7000 series are the ones we see most.',
       'Because these installs are typically off-grid, most faults are power faults. A dying battery, an undersized panel or an array that is now shaded by grown trees produces exactly the symptoms of a failing control board, so the charging system has to be measured under load before anything is condemned.',
     ],
     commonIssues: [
