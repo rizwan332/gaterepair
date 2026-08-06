@@ -69,6 +69,22 @@ export const ALT_TEXT: Record<string, string> = {
   'ramset-03': 'The control board of a commercial gate operator with the enclosure door open',
   'ramset-04': 'A barrier arm operator installed at a vehicle entrance',
   'ramset-05': 'A high-cycle slide gate operator with its chain and drive sprocket exposed for inspection',
+  // Client-supplied 6 Aug 2026 — the broken-roller case study, shot in sequence
+  // on one job.
+  'ramset-06':
+    'A tall dark slide gate raised on a floor jack so the worn roller beneath it can be reached, with the ground track visible alongside',
+  'ramset-07':
+    'A Ramset slide gate operator and its control enclosure at the end of the gate run, beside the open gate',
+  'ramset-08':
+    'The gate held clear of its track during the repair, with the operator and toolbox on the driveway behind',
+  'ramset-09':
+    'The base of the slide gate lifted away from the track, showing the roller mounting and the operator housing behind',
+  'ramset-10':
+    'A floor jack positioned under the leading edge of the slide gate to take its weight while the rollers are replaced',
+  'ramset-11':
+    'The completed slide gate closed square on its track after the rollers were replaced',
+  'ramset-12':
+    'The gate track and roller assembly at ground level with hand tools and a cordless driver laid out during the repair',
 
   // ---- LiftMaster (13) ---------------------------------------------------
   'liftmaster-01': 'A LiftMaster slide gate operator in a black weatherproof housing beside an ornamental iron driveway gate',
@@ -211,6 +227,30 @@ export const ALT_TEXT: Record<string, string> = {
   'commercial-gate-repair-04': 'A barrier arm raised at a controlled parking entrance',
   'commercial-gate-repair-05': 'A worn drive chain and sprocket on a commercial slide gate operator',
   'commercial-gate-repair-06': 'A commercial gate control cabinet opened for diagnosis',
+  // Client-supplied 6 Aug 2026 — the 35ft impact-damaged gate case study,
+  // photographed in sequence across the repair.
+  'commercial-gate-repair-07':
+    'A long steel picket slide gate closed across the entrance to a distribution warehouse, with loading dock doors behind it',
+  'commercial-gate-repair-08':
+    'The full length of the damaged gate laid flat on the ground, showing the deformation along the frame after the impact',
+  'commercial-gate-repair-09':
+    'The impact-damaged slide gate in position at the warehouse entrance before repair',
+  'commercial-gate-repair-10':
+    'A crew lifting the long steel gate with a telehandler in the yard of a distribution facility',
+  'commercial-gate-repair-11':
+    'The gate frame propped against a warehouse wall with a forklift alongside during the repair',
+  'commercial-gate-repair-12':
+    'A low view along the repaired gate showing the picket infill and the track it runs on',
+  'commercial-gate-repair-13':
+    'A heavy steel gate post with its mounting bracket, viewed from below against the sky',
+  'commercial-gate-repair-14':
+    'The completed slide gate open across the warehouse entrance, with the yard and shipping containers beyond',
+  'commercial-gate-repair-15':
+    'Technicians working on the gate on the ground beside a telehandler and forklift at the loading yard',
+  'commercial-gate-repair-16':
+    'A replacement heavy-duty steel post fixed to the wall at the end of the gate run',
+  'commercial-gate-repair-17':
+    'A long view down the repaired steel picket gate standing closed and square on its track, with the office building and yard beyond',
 
   // ---- DoorKing — client's own photographs, 6 Aug 2026 (5) ---------------
   'doorking-01':

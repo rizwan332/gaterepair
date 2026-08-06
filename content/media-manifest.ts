@@ -679,6 +679,179 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJYwCsAD0OqnkeUAA77ConKidBby7JvuJyON8kO5qkEGxQ2QTTABZnddbPtKLzU7LfdzWe3bQAA==",
       "alt": "A commercial gate control cabinet opened for diagnosis",
       "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-07",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-07",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAwAA4BaJZwAAvau2BfL28xAAP7AcK8S+YyT67+vCLI+zCiBep8w8Eo4DauoGhTuMuOLNMNnYBe6Tz5cAWWrWBqBjd9SAAA=",
+      "alt": "A long steel picket slide gate closed across the entrance to a distribution warehouse, with loading dock doors behind it",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-08",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-08",
+      "widths": [
+        400,
+        800
+      ],
+      "width": 899,
+      "height": 1599,
+      "blurDataURL": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADQAwCdASoQABwAPu1iqU2ppaOiMAgBMB2JQBYdg8fHcT24E0ELARAA/kJ1haGS7/6/wZ3JHN7KgAc59EWLRaDa+HT/WkA2icAe9YbEdxfvonMcgf/aprsPi+nyxxVxvFQ/2122WALBSysO7B6jUXZNXl5wd8XyXUKY9HD77njgidJ+5Jwcebf2Bt/Rs6RI9bBZNDX/UKjxl4wA",
+      "alt": "The full length of the damaged gate laid flat on the ground, showing the deformation along the frame after the impact",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-09",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-09",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoQAAwAA4BaJZwAAqqO13AAAP68nm+m7Ol5MINpGu94loI7cdN7x4ZEs9i4mkxuUW0iF+/fDF87pkMNZY1Q4VAQAAA=",
+      "alt": "The impact-damaged slide gate in position at the warehouse entrance before repair",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-10",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-10",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAwAA4BaJQBOgBjn//+LIAD+W/Ckcy/nMGWNchRG2FaSvpOTcyoi9UvfQQStTsG+e+SbuJbu/OZZoqX2qn3CKMMHWWLCm1VY8ByeAAA=",
+      "alt": "A crew lifting the long steel gate with a telehandler in the yard of a distribution facility",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-11",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-11",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQC7ABIvzPh3Lu78AAD33fqxh1tbM0geBBHf0cPjk56+oKZBYU0x1Y6aMr2yujtppI/OAIpR3okTO/osMaGALqEhLNW9AFf+X4LckFj6CSHCMABwfEBS7WK3e2ny+vctFGDfAAA=",
+      "alt": "The gate frame propped against a warehouse wall with a forklift alongside during the repair",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-12",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZwAAW+L6o0ymZQAA/u9jHmoAiYIKfR2ok0L5UPp/HlqXP7QKUCNilqOpzlnvZYq7zMwU28ug3qjzjGHA8nlvwLyfXORwAAA=",
+      "alt": "A low view along the repaired gate showing the picket infill and the track it runs on",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-13",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAwCdASoQABUAPu1iqU2ppaQiMAgBMB2JZwDKABk4DnBqkpBjRLyIAPwrWn/no2n4m7nnGDlNbKlk0lHGoJjH5Zp5fDsN5TdL4igDcp3kCXvYYE1DNLJKaMtNJiRxgv8wvju5TWcVpCLGcZ/SKA5YFwyrKKAA",
+      "alt": "A heavy steel gate post with its mounting bracket, viewed from below against the sky",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-14",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAwAA4BaJZwCdAEKVTA3AAD+xDWdyDjBHNdxZ/PtqrMo3isptuHVDqECWc0tnjQh3ZYrGuEggAAA",
+      "alt": "The completed slide gate open across the warehouse entrance, with the yard and shipping containers beyond",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-15",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3024,
+      "height": 1814,
+      "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoQAAoAA4BaJZQCdAEUoUxdL3AAAPzZXMw8Y2sUXRaxE42uYgKsRivrYXBHnZ4ZyzCeajlwf5DgxgAA",
+      "alt": "Technicians working on the gate on the ground beside a telehandler and forklift at the loading yard",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-16",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgC2yBc9nZ0MbGNMoPsSxwAA/t1OkNUPwVwQgpQUClkRfYw28WezdEVIx3vBmZxRrpSibqZEM0w/k0sROyk06pIW8wsbDIz3pDjw/rvuqpdU+mmXmE3YUK6MFTElcmT5jdK9qAbSatqte1fBFAga1ErEKEKw5B49dr/1BXHD9fr2/f/5EU5T8vO5/NDwjVrC6FZkqQAAAA==",
+      "alt": "A replacement heavy-duty steel post fixed to the wall at the end of the gate run",
+      "altWritten": true
+    },
+    {
+      "slug": "commercial-gate-repair-17",
+      "src": "/images/commercial-gate-repair/commercial-gate-repair-17",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZwAATHmK9eIHRxrjTAAA31s6v2tsrcnLNbyD/82NPwkGnmeec5wj5lpEFsoZx2CsMQi3cdFG05E66s42B/EbdGDSo9NXUcClJWzhQAA=",
+      "alt": "A long view down the repaired steel picket gate standing closed and square on its track, with the office building and yard beyond",
+      "altWritten": true
     }
   ],
   "elite": [
@@ -1779,6 +1952,118 @@ export const media: Record<string, MediaImage[]> = {
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJaACdADwVViFyAAA/ffcoxPOj9oMxOBnLDogwuMP2T5JXFrP6mwoCs1mAOzdtvvstBjiu8UVQn0eL942cm586vO+7cU13XddgAAA",
       "alt": "A high-cycle slide gate operator with its chain and drive sprocket exposed for inspection",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-06",
+      "src": "/images/ramset/ramset-06",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAwAA4BaJQAANI3LiJAIAAD+0Wx1i09uYZCTePovGUTkVFOh+9S4b/xxY7EhH697VN9XPqveLpsyQudxLFSOrxGBLJv5a7+gAAAA",
+      "alt": "A tall dark slide gate raised on a floor jack so the worn roller beneath it can be reached, with the ground track visible alongside",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-07",
+      "src": "/images/ramset/ramset-07",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JaACdAB+NmlkqWz4Ief7SY8AA/swVmum1n8/mj+p9Y7GAula0zCNcMUrI6S6qsgEd6ulzuyXcrPrRmsBR0tJ2fTvwKW9IY2EAX1xV+sReT3Fn/OjSDxrkM1l36zBsMuCuPqcZmUoG3dj/5b4AAA==",
+      "alt": "A Ramset slide gate operator and its control enclosure at the end of the gate run, beside the open gate",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-08",
+      "src": "/images/ramset/ramset-08",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAACQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBdgAaSp2WzLm/IAAN2XcBaqqTr/OjWnw+ZeyXFmu4DtfWWUIJ4fYTC1LccIFz7kU4sQ+6q5na5yypIFWJaRujJfmGmiRjxj0YSh6tiSuUzoIo/tAPXDFiocMIAA",
+      "alt": "The gate held clear of its track during the repair, with the operator and toolbox on the driveway behind",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-09",
+      "src": "/images/ramset/ramset-09",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAwAA4BaJaAC7AYvrSpNGLxAAM4uF6mj5oPrmfJYRzY5CDUnx7kPErjP0C5pDH9PiJfNR4pYGysP0WRL21evoS3kjcoEGecU6iUywd0ZAAAA",
+      "alt": "The base of the slide gate lifted away from the track, showing the roller mounting and the operator housing behind",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-10",
+      "src": "/images/ramset/ramset-10",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAwAA4BaJQBWABbs70tXCGkAAP7vF7mvreLdezjse2zv9KBLgHlshyU83NG5VDihnJIcet9g71p5TSuY0/s3PYTPvo9XQmIAAA==",
+      "alt": "A floor jack positioned under the leading edge of the slide gate to take its weight while the rollers are replaced",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-11",
+      "src": "/images/ramset/ramset-11",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAwAA4BaJYgAAtdNYyAFn8AAzgZTWwdvZEyyTtvmDmZyUHjuUvS24Hjr1jGebVhb+NSBWvdYjTLt7sWTv9SEVCWhA3H6tKe6D4XmoS6gvAAA",
+      "alt": "The completed slide gate closed square on its track after the rollers were replaced",
+      "altWritten": true
+    },
+    {
+      "slug": "ramset-12",
+      "src": "/images/ramset/ramset-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAQCdASoQAAwAA4BaJYgAAVQm3yUAAP5AqG032IBZTnNWZ/b5us7fuA3jDKa85J1CrtSDTbp5vpMeO/OvaT+TmnX5AdJ7b2JQujPPRQja8msHQf3kuxQA",
+      "alt": "The gate track and roller assembly at ground level with hand tools and a cordless driver laid out during the repair",
       "altWritten": true
     }
   ],

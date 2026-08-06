@@ -25,7 +25,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/all-o-matic-gate-motor-repair-20",
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoQAAkAA4BaJZACxC8AEyngAP7BxMujMRG30k4/vmgh3dyYeXTe6wsA8XDPZTnbRRTG6kUz2qRLEQSTmezAAA==",
     "durationSeconds": 17,
-    "bytes": 1596981,
+    "bytes": 1597633,
     "title": "All-O-Matic Gate Operator Repair — Shield Gate Repair",
     "description": "",
     "descriptionWritten": false
@@ -38,7 +38,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/all-o-matic-gate-motor-repair-21",
     "blurDataURL": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACwBACdASoQABwAPu1iqU2ppaOiMAgBMB2JZgCdAYye4BKd7z+CYR5v21oAFVZ0APkzLCreZaMb9Z5wiPMjVBKxLH9D/bv+1QE8kum8FHP0tqI2eBjrbOF9buHtWSieGz+WSdkERX4Z3gQxDSuQ1dwsVUtbxIg7LOZH+cvVgawhd72LBaSmhlLpuzlorLJLpidmrjGeiv/lIuTwJb06V2gIiIetP+VftVquQzhKc6BAAA==",
     "durationSeconds": 27,
-    "bytes": 5063459,
+    "bytes": 5083167,
     "title": "All-O-Matic Gate Operator Repair — Shield Gate Repair",
     "description": "",
     "descriptionWritten": false
@@ -77,7 +77,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/automatic-gate-repair-services-video",
     "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJYwAAfFAvo8AAP7b611wC/F2VrkvPuHJoSpuOfSghk+mfT+7Z877t6B/IwfiIi++pw+HnWI538iUyRucioAA",
     "durationSeconds": 13,
-    "bytes": 1459210,
+    "bytes": 1461394,
     "title": "Automatic Gate Repair — Safety Sensor Fault",
     "description": "A gate that opens but refuses to close is almost always a safety sensor seeing an obstruction that is not there. This shows the photo-eyes being realigned and the gate returned to normal operation.",
     "descriptionWritten": true
@@ -107,6 +107,19 @@ export const videos: SiteVideo[] = [
     "title": "Customer Testimonial — Shield Gate Repair",
     "description": "A Shield Gate Repair customer describing the work carried out on their gate, in their own words. Written reviews are easy to fake, which is why nobody fully believes them any more.",
     "descriptionWritten": true
+  },
+  {
+    "slug": "commercial-gate-repair-services-20",
+    "category": "commercial-gate-repair",
+    "label": "Commercial Gate Repair",
+    "src": "/videos/commercial-gate-repair-services-20.mp4",
+    "poster": "/images/video-posters/commercial-gate-repair-services-20",
+    "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoQABwAPu1iqU2ppaOiMAgBMB2JZwCw7B080tpkIigPL3l09lwAAM4yz0YTNULYVU8eNAV5qc/rslxwcE9xn9qQAnfVcfkJQRatcfSSaM7vWRbba0Fo9nDmTTVrh0wvxss36FJWRHaDnxuAXD0dXjl+FEhXtTXw1xQZhSTbAAA=",
+    "durationSeconds": 45,
+    "bytes": 7923501,
+    "title": "Commercial Gate Repair — Shield Gate Repair",
+    "description": "",
+    "descriptionWritten": false
   },
   {
     "slug": "commercial-gate-repair-services-video",
@@ -142,7 +155,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/doorking-gate-motor-repair-20",
     "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJZACsAEMw2blC4AA/s9x+0UzeofO+QWE+oZwU21iPOkbrwoOp4+oAxfH7m1rKYXMOcipUqcudaBemH5qg+jaX7ZAAA==",
     "durationSeconds": 23,
-    "bytes": 3875152,
+    "bytes": 3836977,
     "title": "DoorKing Gate Operator Repair — Shield Gate Repair",
     "description": "",
     "descriptionWritten": false
@@ -194,7 +207,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/elite-gate-motor-repair-video",
     "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJYwAAfFAvo8AAP7b611wC/F2VrkvPuHJoSpuOfSghk+mfT+7Z877t6B/IwfiIi++pw+HnWI538iUyRucioAA",
     "durationSeconds": 13,
-    "bytes": 1462009,
+    "bytes": 1461023,
     "title": "Elite Gate Operator Repair — Control Board Replacement",
     "description": "Replacing a failed control board in an Elite gate operator. The old board is tested to confirm the diagnosis before anything is replaced, so the customer is not paying for a guess.",
     "descriptionWritten": true
@@ -207,7 +220,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/elite-gate-motor-repair-video-2",
     "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAkAA4BaJYwCdAD2BS6jv/UAAP7kTeNIuGavUaqGQseYCZPUnQlD3KJFTfo2QB9NAnaxeZ6NWjQV4fdKtwIFDaUsTAafr1oDQAAA",
     "durationSeconds": 12,
-    "bytes": 1708045,
+    "bytes": 1708530,
     "title": "Elite Slide Gate Operator — Drive and Travel Check",
     "description": "An Elite slide operator run through full travel after service, checking limit positions, safety devices and chain tension. This is the final step on every repair before the technician leaves.",
     "descriptionWritten": true
@@ -220,7 +233,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/emergency-gate-repair-services-video",
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAkAA4BaJZQC7ADOnliIuwAA/nkJXN/L1NNRRbWV6SmywUwQ4leHp8HQALFx8DU4YNO3mN3/8ZU4JEZ56C/YNtzwCV4AAAA=",
     "durationSeconds": 46,
-    "bytes": 4179007,
+    "bytes": 4181222,
     "title": "Emergency Gate Repair — Same-Day Call-Out",
     "description": "An emergency call-out on a gate stuck open. A gate stuck open is a security problem, not an inconvenience, and is treated as urgent regardless of the underlying cause.",
     "descriptionWritten": true
@@ -233,7 +246,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/emergency-gate-repair-services-video-2",
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJZACdADGd8QIAAD0OcZAjFlPfJQ6KWOao+y5oxlzZt21fB2k67eC2o2Kay5XujrxKV2K3gAAAA==",
     "durationSeconds": 14,
-    "bytes": 960640,
+    "bytes": 960032,
     "title": "Emergency Gate Repair — Manual Release and Temporary Secure",
     "description": "How a gate is released to manual operation so a property can be used before the repair is complete, and how a gate is left in a secure state when a part has to be ordered.",
     "descriptionWritten": true
@@ -246,7 +259,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/faac-gate-motor-repair-video",
     "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAQCdASoQAAkAA4BaJZQAAcKszAAA9DnGK/ePG8IdunQglmD8bSOoaQuW9WVLJ9/+wbfrvWuK8NCkwPby4goAAAA=",
     "durationSeconds": 46,
-    "bytes": 2742101,
+    "bytes": 2736172,
     "title": "FAAC Gate Operator Repair — Hydraulic Service",
     "description": "FAAC builds hydraulic gate operators that most companies will not service, quoting a full replacement instead. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.",
     "descriptionWritten": true
@@ -259,7 +272,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/gate-installation-services-video",
     "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAkAA4BaJQBOgMWblyqJWoAA/qyrka73lYo4zSr8SGcEnTaeaeaubS697NyVTl6wSqR0/ygCporbYfnN5C6/afq4mGLWfdLEJO0iDSgAAA==",
     "durationSeconds": 20,
-    "bytes": 1964040,
+    "bytes": 1966979,
     "title": "Automatic Gate Installation — Site Preparation and Footings",
     "description": "The part of a gate installation nobody sees and everything depends on: footings set to depth, conduit run properly and power brought to the gate correctly the first time. Skipping this is how a gate becomes an annual repair call.",
     "descriptionWritten": true
@@ -272,7 +285,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/gate-installation-services-video-2",
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJQBOgCLNAL2lgAD2vlB8/NYve7bP13hhjnLuh12NybuukR0Xpn9bOrqwo/EPyujXnOXkFOXgAA==",
     "durationSeconds": 18,
-    "bytes": 1883631,
+    "bytes": 1884699,
     "title": "Automatic Gate Installation — Operator Fitting and Commissioning",
     "description": "Fitting and commissioning the operator on a new gate installation: alignment set, limits programmed, safety devices installed to standard and the whole system handed over working.",
     "descriptionWritten": true
@@ -337,7 +350,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/liftmaster-gate-motor-repair-20",
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAkAA4BaJQBOgCPTYEMLYAD+5E1DDxPz9cJ7HREMsyK9yRrqnRYgwQl74se86AMsNf1yk6UjTlx4QCpa9DUFkowYX64AAAA=",
     "durationSeconds": 14,
-    "bytes": 2498208,
+    "bytes": 2510498,
     "title": "LiftMaster Gate Operator Repair — Shield Gate Repair",
     "description": "",
     "descriptionWritten": false
@@ -350,7 +363,7 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/liftmaster-gate-motor-repair-video",
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJYwCdADJs0xwAAD+ox6C6yQHFl/iH1j59IZ+1yml3KWb3/WZZJDEWkp+nTJuXXy6YwTq8qsh6eGNwXAAAA==",
     "durationSeconds": 44,
-    "bytes": 4859981,
+    "bytes": 4857146,
     "title": "LiftMaster Gate Operator Repair — Full Service Call",
     "description": "A complete LiftMaster gate operator repair from diagnosis to test cycle. The technician isolates the fault at the control board, replaces the failed component and runs the gate through full travel before leaving. Most LiftMaster faults are a board, a capacitor or a limit switch — not the whole operator.",
     "descriptionWritten": true
@@ -363,10 +376,23 @@ export const videos: SiteVideo[] = [
     "poster": "/images/video-posters/liftmaster-gate-motor-repair-video-2",
     "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJYwCsAEYGmAljbwA/tGa8dENXQb1Kmt+4c+zWQCCkGdPryvDdKeQzY2WjqsmgH2ss2Hy4tg5uohHGS+GDWguoJNkAA==",
     "durationSeconds": 21,
-    "bytes": 3224722,
+    "bytes": 3223848,
     "title": "Inside a LiftMaster Operator — Board and Limit Switch Diagnosis",
     "description": "Close-up of a LiftMaster operator opened on site. Shows how the control board, limit switches and drive chain are checked in sequence, and why the gate itself is moved by hand first to separate a mechanical bind from an electrical fault.",
     "descriptionWritten": true
+  },
+  {
+    "slug": "ramset-gate-motor-repair-20",
+    "category": "ramset",
+    "label": "Ramset Gate Operator Repair",
+    "src": "/videos/ramset-gate-motor-repair-20.mp4",
+    "poster": "/images/video-posters/ramset-gate-motor-repair-20",
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAkAA4BaJQBWABjzIfPyHAD+6Zbsy0wqmHBM9LiNncWLoP06OojZgUQsbdaL4PrDYlX/WIxXGI9SlXwpIlne9AbikW7cHZoQwx4nAAA=",
+    "durationSeconds": 18,
+    "bytes": 2149059,
+    "title": "Ramset Gate Operator Repair — Shield Gate Repair",
+    "description": "",
+    "descriptionWritten": false
   },
   {
     "slug": "ramset-gate-motor-repair-video",

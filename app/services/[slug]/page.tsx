@@ -17,6 +17,8 @@ import { tier1Cities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
 import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { CaseStudies } from '@/components/sections/case-studies'
+import { projectsForService } from '@/content/projects'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -46,6 +48,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const depth = SERVICE_DEPTH[service.slug]
   const faqs = [...service.faqs, ...(depth?.extraFaqs ?? [])]
   const images = media[service.mediaCategory] ?? []
+  const serviceProjects = projectsForService(service.slug)
   const serviceVideos = videosFor(service.mediaCategory)
   const relatedBrands = service.relatedBrands.map(brandBySlug).filter(Boolean)
 
@@ -218,6 +221,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+
+      {/* Service pages had no route into the case studies at all. A visitor
+          reading about commercial gate repair is exactly the person the $25,000
+          quote story is written for, and it was three clicks away. */}
+      <CaseStudies
+        items={serviceProjects}
+        title={`${service.name} we have documented`}
+        intro="The same job written up properly — what was wrong, how it was diagnosed, and what it actually took to fix."
+      />
 
       <VideoTestimonials
         items={publishedTestimonials.slice(0, 3)}

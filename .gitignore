@@ -16,3 +16,15 @@ uploads-*.zip
 
 .DS_Store
 Thumbs.db
+
+# Client video masters (.mov straight off the phone) are 30-120MB each and one
+# exceeds GitHub's hard 100MB file limit, which blocks the push outright.
+# Decision 6 Aug 2026: keep them out of git rather than take on Git LFS quota.
+#
+# The site is unaffected — it serves the transcoded public/videos/*.mp4, which
+# ARE committed. These are archival originals only.
+#
+# THEY ARE THEREFORE NOT BACKED UP BY THIS REPO. Keep a copy somewhere else
+# before clearing them off the working drive. Masters committed before this
+# date remain retrievable from git history.
+client-assets/videos/*.mov

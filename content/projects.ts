@@ -57,6 +57,74 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    // Client-supplied 6 Aug 2026 with his own account, including the competing
+    // estimates and his own price. Those figures are his, reported as this job's
+    // numbers rather than as a rate — content/pricing.ts is still unconfirmed
+    // and nothing here should be read as a price list.
+    slug: 'commercial-gate-impact-damage-repair',
+    title: 'Two Companies Quoted $25,000 to Replace It. We Repaired It for $6,880.',
+    summary:
+      'A delivery truck hit a 35-foot heavy-duty commercial slide gate. Two companies said replace. We replaced the parts that were actually damaged.',
+    market: 'texas',
+    verified: false,
+    service: 'commercial-gate-repair',
+    gateType: 'commercial',
+    propertyType: 'commercial',
+    mediaCategory: 'commercial-gate-repair',
+    imageIndexes: [7, 6, 9, 14, 8, 13],
+    videoSlug: 'commercial-gate-repair-services-20',
+    problem: [
+      'A FedEx truck struck the entrance gate at a distribution facility. The gate is 35 feet of heavy-duty steel — the sort of gate that protects a yard full of freight, and the sort that a business genuinely cannot operate without.',
+      'The customer had already had two companies out. Both recommended replacing the gate completely, and neither quoted less than $25,000.',
+    ],
+    diagnosis: [
+      'Impact damage on a gate this size looks catastrophic, and that appearance does a lot of work in a replacement quote. What matters is which parts actually took the load.',
+      'Here the damage was concentrated: the rollers the gate runs on, and two of the posts. The gate structure itself — the expensive part, the part that takes weeks to fabricate and a crane day to install — was sound.',
+      'Replacing a structurally sound 35-foot gate because its rollers and posts were destroyed is not a repair decision. It is the easier sale.',
+    ],
+    solution: [
+      'We recommended repairing it, replacing only what the impact had actually damaged, and we were back the next day to do the work.',
+      'Replaced: six 2-inch rollers, a ten-foot 4x4 post, and a 2x6 heavy-duty post.',
+      'The price was $6,880 against estimates that started at $25,000 — and the customer received a five-year warranty on the work.',
+    ],
+    outcome:
+      'The gate runs correctly on its original structure. The facility was back to a secure yard the day after the assessment rather than waiting weeks for a fabricated replacement.',
+    takeaway:
+      'On a commercial gate the structure is almost always the most expensive component and almost never the thing an impact destroys. Rollers, posts and hardware take the load and are designed to be replaceable. Before accepting a five-figure replacement quote, it is worth asking a straight question: which parts are actually damaged, and which are being replaced because they happen to be attached to them?',
+  },
+  {
+    // Client-supplied 6 Aug 2026 with his own account of the job.
+    slug: 'ramset-slide-gate-broken-rollers',
+    title: 'A Ramset Gate That Stopped in the Wrong Place — It Was the Wheels',
+    summary:
+      'Broken rollers had changed where the gate physically sat, so it stopped and opened in the wrong positions. New wheels, and the operator was fine all along.',
+    market: 'texas',
+    verified: false,
+    service: 'gate-motor-repair',
+    brand: 'Ramset',
+    gateType: 'slide',
+    propertyType: 'residential',
+    mediaCategory: 'ramset',
+    imageIndexes: [5, 6, 8, 9, 10, 11],
+    videoSlug: 'ramset-gate-motor-repair-20',
+    problem: [
+      'A large sliding gate had started stopping and opening in the wrong places. It would not close fully, or it would run past where it should have stopped — the sort of fault that looks unmistakably like the operator has lost its settings.',
+    ],
+    diagnosis: [
+      'It was the wheels. The rollers the gate runs on had broken, and a slide gate with failing rollers does not simply get noisier — it changes position. The gate drops and shifts on its track, so every point in its travel is now physically somewhere slightly different to where it used to be.',
+      'That matters because a gate operator does not know where your gate is. It knows where its limits were set. Move the gate relative to its track and the limits it learned no longer correspond to the positions they were set for, so the gate stops short, overtravels, or refuses to close.',
+      'This is why we release the operator and move the gate by hand before touching anything electrical. Rolling this gate manually showed the problem immediately, and no amount of resetting limits would have fixed it — the settings were correct, the gate had moved.',
+    ],
+    solution: [
+      'We jacked the gate to take its weight off the track, replaced the broken rollers, and set the gate back down square on its rail.',
+      'With the gate sitting where it was supposed to sit again, the existing limits lined up with the correct physical positions.',
+    ],
+    outcome:
+      'The gate opens and closes to the right positions on its original Ramset operator. No control board, no limit switches, no operator replacement — the electrics were never the fault.',
+    takeaway:
+      'A gate that stops in the wrong place looks like an electrical fault and very often is not. Rollers, hinges, a post that has shifted and a sagging leaf all move the gate relative to the limits that were set for it, and every one of them produces symptoms that read as a confused operator. If someone quotes you a control board for this without having moved the gate by hand first, they have not diagnosed it.',
+  },
+  {
     // Client-supplied 6 Aug 2026 with his own account of the job.
     slug: 'doorking-dual-swing-gearbox-rebuild',
     title: 'DoorKing Dual Swing Gearbox Repaired, Not Replaced',

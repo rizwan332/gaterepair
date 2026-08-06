@@ -4,6 +4,8 @@ import { VideoReel } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { BrandMarquee } from '@/components/sections/brand-marquee'
 import { FeaturedWork } from '@/components/sections/featured-work'
+import { CaseStudies } from '@/components/sections/case-studies'
+import { projects, projectBySlug } from '@/content/projects'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
 import { reviewsConfirmed } from '@/content/reviews'
@@ -34,6 +36,20 @@ export const metadata: Metadata = {
  * hero's proof row, so it read as an unfinished component rather than a
  * credential strip.
  */
+/**
+ * Led by the commercial impact repair the client asked to feature, then filled
+ * out with the other jobs that turn on a diagnosis rather than a part swap.
+ * Named explicitly rather than sliced off the top of `projects`, so adding a
+ * case study cannot silently reorder the homepage.
+ */
+const homepageCaseStudies = [
+  'commercial-gate-impact-damage-repair',
+  'ramset-slide-gate-broken-rollers',
+  'liftmaster-corroded-board-solar-upgrade',
+]
+  .map((slug) => projectBySlug(slug))
+  .filter((p): p is (typeof projects)[number] => Boolean(p))
+
 export default function HomePage() {
   return (
     <>
@@ -49,6 +65,17 @@ export default function HomePage() {
       <VideoTestimonials items={publishedTestimonials.slice(0, 3)} tone="tint" />
       {/* The client's own three homepage photographs. */}
       <FeaturedWork />
+      {/* Case studies on the homepage at the client's request (6 Aug 2026),
+          led by the commercial impact job he asked to feature. It is the
+          strongest argument the site has — two companies quoted $25,000 to
+          replace a gate we repaired for $6,880 — and until now it was three
+          clicks from the front door. */}
+      <CaseStudies
+        items={homepageCaseStudies}
+        title="Repairs Other Companies Quoted to Replace"
+        intro="Each of these was diagnosed before anything was replaced. Several had already been quoted for a full replacement by someone else."
+        tone="tint"
+      />
       {reviewsConfirmed && <Reviews />}
       <VideoReel />
       <BrandsGrid />
