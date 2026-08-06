@@ -24,6 +24,15 @@ import { VIDEO_META } from '../content/video-meta'
 const run = promisify(execFile)
 
 const SOURCE = path.join(process.cwd(), 'wordpress-uploads', '2026')
+
+/**
+ * Videos the client sends us directly, outside the WordPress dump.
+ *
+ * Same reasoning as client-assets in process-assets.ts: the dump is a one-off
+ * export and is gitignored, so anything supplied afterwards has nowhere to live
+ * in that model. These are committed — they are the only copy we have.
+ */
+const CLIENT_SOURCE = path.join(process.cwd(), 'client-assets', 'videos')
 const OUT_DIR = path.join(process.cwd(), 'public', 'videos')
 const POSTER_DIR = path.join(process.cwd(), 'public', 'images', 'video-posters')
 const MANIFEST = path.join(process.cwd(), 'content', 'video-manifest.ts')
@@ -37,6 +46,8 @@ const CATEGORY_MAP: Array<{ match: string; category: string; label: string }> = 
   { match: 'Viking-Gate-Motor-Repair', category: 'viking', label: 'Viking Gate Operator Repair' },
   { match: 'Eagle-Gate-Motor-Repair', category: 'eagle', label: 'Eagle Gate Operator Repair' },
   { match: 'Ramset-Gate-Motor-Repair', category: 'ramset', label: 'Ramset Gate Operator Repair' },
+  { match: 'DoorKing-Gate-Motor-Repair', category: 'doorking', label: 'DoorKing Gate Operator Repair' },
+  { match: 'US-Automatic-Gate-Motor-Repair', category: 'us-automatic', label: 'US Automatic Gate Operator Repair' },
   { match: 'Gate-Installation-Services', category: 'gate-installation', label: 'Gate Installation' },
   { match: 'Emergency-Gate-Repair-Services', category: 'emergency-gate-repair', label: 'Emergency Gate Repair' },
   { match: 'Iron-Gate-Repair-Services', category: 'iron-gate-repair', label: 'Iron Gate Repair' },
@@ -49,7 +60,7 @@ const CATEGORY_MAP: Array<{ match: string; category: string; label: string }> = 
 
 function slugify(name: string): string {
   return name
-    .replace(/\.mp4$/i, '')
+    .replace(/\.(mp4|mov|m4v)$/i, '')
     .replace(/^SGR-/, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
@@ -61,7 +72,8 @@ async function findVideos(dir: string): Promise<string[]> {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name)
     if (entry.isDirectory()) out.push(...(await findVideos(full)))
-    else if (/\.mp4$/i.test(entry.name)) out.push(full)
+    // .mov included because client-supplied footage comes off a phone.
+    else if (/\.(mp4|mov|m4v)$/i.test(entry.name)) out.push(full)
   }
   return out
 }
@@ -86,7 +98,17 @@ async function main() {
   if (!ffmpegPath) throw new Error('ffmpeg-static did not resolve a binary')
 
   const videos = await findVideos(SOURCE)
-  console.log(`${videos.length} source videos found`)
+  console.log(`${videos.length} source videos found in the WordPress dump`)
+
+  // Client-supplied footage is optional — the directory may not exist on a
+  // fresh clone, and that must not fail the build.
+  try {
+    const extra = await findVideos(CLIENT_SOURCE)
+    if (extra.length > 0) console.log(`${extra.length} client-supplied videos found`)
+    videos.push(...extra)
+  } catch {
+    // no client-assets/videos directory
+  }
 
   await fs.mkdir(OUT_DIR, { recursive: true })
   await fs.mkdir(POSTER_DIR, { recursive: true })

@@ -67,6 +67,10 @@ const CATEGORIES = [
   { match: 'Ramset-Gate-Motor-Repair', slug: 'ramset', label: 'Ramset Gate Operator Repair', kind: 'brand' },
   // Client-supplied 4 Aug 2026. Must be matched BEFORE the generic categories
   // above would ever catch it, and kept distinct from 'automatic-gate-repair'.
+  // Added 6 Aug 2026 with the client's first DoorKing photographs. Without a
+  // category entry the matcher returns null and the files are skipped silently,
+  // which is exactly how a supplied photo goes missing without anyone noticing.
+  { match: 'DoorKing-Gate-Motor-Repair', slug: 'doorking', label: 'DoorKing Gate Operator Repair', kind: 'brand' },
   {
     match: 'US-Automatic-Gate-Motor-Repair',
     slug: 'us-automatic',

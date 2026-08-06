@@ -27,6 +27,10 @@ export const ALT_TEXT: Record<string, string> = {
   'faac-04': 'A dark metal estate driveway gate closed between stone pillars, fitted with a concealed gate operator',
   'faac-05': 'A FAAC control board and wiring terminals inside a weatherproof enclosure during diagnosis',
   'faac-06': 'A FAAC hydraulic ram fitted to the leaf of a swing gate, viewed from the driveway side',
+  // Client-supplied 5 Aug 2026 — the only FAAC image in the library where the
+  // manufacturer name is legible, which is why it leads the page.
+  'faac-07':
+    'A black wrought-iron slide gate closed alongside a rendered wall, with a FAAC control enclosure mounted on the wall beside it and its aerial running above',
 
   // ---- All-O-Matic (10) --------------------------------------------------
   'all-o-matic-01': 'An All-O-Matic slide gate operator housing beside a driveway gate track',
@@ -39,6 +43,25 @@ export const ALT_TEXT: Record<string, string> = {
   'all-o-matic-08': 'Wiring terminals and the transformer inside an All-O-Matic operator enclosure',
   'all-o-matic-09': 'A replacement chain fitted to an All-O-Matic slide gate operator',
   'all-o-matic-10': 'An All-O-Matic operator reassembled and closed after service, mounted on its concrete pad',
+  // Client-supplied 5 Aug 2026.
+  'all-o-matic-11':
+    'An All-O-Matic slide gate operator with its control enclosure open beside an ornamental iron gate, showing the board, wiring and drive rack',
+  'all-o-matic-12':
+    'A pair of tall dark metal swing gates closed across a paved driveway beneath a timber carport',
+  'all-o-matic-13':
+    'A black slide gate operator mounted on a concrete pad beside a decorative iron gate and clipped hedge',
+  'all-o-matic-14':
+    'A gate operator in a grey housing installed on a concrete pad at the base of a tall iron gate, with the drive arm connected to the gate frame',
+  'all-o-matic-15':
+    'A slide gate operator in a black housing at the foot of an iron gate, with stone pillars and a driveway beyond',
+  'all-o-matic-16':
+    'A technician kneeling at a gate operator base, welding the mounting frame in place during installation',
+  // A composed before/after marketing graphic supplied by the client rather
+  // than a job photograph. Described as what it is.
+  'all-o-matic-17':
+    'A before and after graphic showing a gate motor installation: the original mounting on the left and the completed operator in its enclosure on the right',
+  'all-o-matic-18':
+    'A wide timber-clad sliding gate closed across a driveway, with the slide operator mounted on the pad to the right',
 
   // ---- Ramset (5) --------------------------------------------------------
   'ramset-01': 'A gate operator mounted on a concrete pad at the end of a sliding driveway gate',
@@ -61,6 +84,16 @@ export const ALT_TEXT: Record<string, string> = {
   'liftmaster-11': 'A LiftMaster operator installed on a concrete pad next to a sliding driveway gate',
   'liftmaster-12': 'The drive chain and idler pulley of a LiftMaster slide gate operator',
   'liftmaster-13': 'A LiftMaster swing operator and its wall-mounted control box beside a stone gate pillar',
+  // Client-supplied 5 Aug 2026 — the corroded-board / solar case study, shot in
+  // sequence on one job. First confirmed Texas job photography in the library.
+  'liftmaster-14':
+    'A LiftMaster control enclosure mounted on the post of a rural wire-mesh gate, with an impact driver resting on top of the housing during the repair',
+  'liftmaster-15':
+    'A LiftMaster gate operator enclosure standing open beside the gate, showing the control board and wiring loom inside',
+  'liftmaster-16':
+    'Close view of a LiftMaster control board with its terminal blocks, programming buttons and two-digit diagnostic display',
+  'liftmaster-17':
+    'A double farm gate closed across a long tree-lined driveway, with a solar panel mounted on the post to the right of the gate',
 
   // ---- Elite (8) ---------------------------------------------------------
   'elite-01': 'An Elite slide gate operator installed beside a residential driveway gate',
@@ -82,6 +115,10 @@ export const ALT_TEXT: Record<string, string> = {
   'viking-03': 'A Viking swing gate operator arm attached to a heavy metal gate leaf',
   'viking-04': 'A Viking operator with its cover removed for diagnosis',
   'viking-05': 'A solar charging panel mounted near a gate operator on a rural driveway',
+  // Client-supplied 6 Aug 2026 and chosen by him as the Viking front image —
+  // the only one where the manufacturer name is legible on the housing.
+  'viking-06':
+    'A Viking slide gate operator in a dark grey housing with the Viking name on the front, installed on a concrete pad against a timber fence',
 
   // ---- Eagle (5) ---------------------------------------------------------
   'eagle-01': 'An Eagle gate operator housing beside a sliding driveway gate',
@@ -174,6 +211,18 @@ export const ALT_TEXT: Record<string, string> = {
   'commercial-gate-repair-04': 'A barrier arm raised at a controlled parking entrance',
   'commercial-gate-repair-05': 'A worn drive chain and sprocket on a commercial slide gate operator',
   'commercial-gate-repair-06': 'A commercial gate control cabinet opened for diagnosis',
+
+  // ---- DoorKing — client's own photographs, 6 Aug 2026 (5) ---------------
+  'doorking-01':
+    'Close view of a DKS DoorKing gate operator in its cast grey housing, mounted at ground level beside a driveway gate',
+  'doorking-02':
+    'A pair of black iron swing gates closed across a garden entrance, with planting and a paved path behind them',
+  'doorking-03':
+    'The same iron swing gates standing open, showing the driveway running between hedges toward the house',
+  'doorking-04':
+    'A DoorKing operator and its drive linkage connected to the lower rail of an iron swing gate leaf',
+  'doorking-05':
+    'A DoorKing operator housing set on the grass beside an open swing gate, with the drive arm extended',
 
   // ---- Homepage — client's own picks, 3 Aug 2026 (3) ---------------------
   // Rule 1 applies here as much as anywhere: two of these three have visible

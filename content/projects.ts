@@ -57,6 +57,72 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    // Client-supplied 6 Aug 2026 with his own account of the job.
+    slug: 'doorking-dual-swing-gearbox-rebuild',
+    title: 'DoorKing Dual Swing Gearbox Repaired, Not Replaced',
+    summary:
+      'A failed gearbox on a DoorKing dual swing operator — repaired and fully serviced, and the customer left with a three-year warranty on the work.',
+    market: 'texas',
+    verified: false,
+    service: 'gate-motor-repair',
+    brand: 'DoorKing',
+    gateType: 'swing',
+    propertyType: 'residential',
+    mediaCategory: 'doorking',
+    imageIndexes: [0, 1, 2, 3, 4],
+    videoSlug: 'doorking-gate-motor-repair-20',
+    problem: [
+      'A DoorKing dual swing gate operator at a residential entrance had stopped working correctly. Dual swing installations are less forgiving than single-leaf gates: both leaves have to move together, so a fault on one side shows up as the whole entrance misbehaving rather than as one obviously broken half.',
+    ],
+    diagnosis: [
+      'The fault was in the gearbox. That is the point at which most companies stop diagnosing and start quoting, because a gearbox sounds terminal and a replacement operator is a far simpler sale than a repair.',
+      'It is rarely terminal. A DoorKing operator is built to be serviced, and a gearbox is a serviceable assembly rather than a sealed unit you throw away with the motor and the control board still working perfectly.',
+    ],
+    solution: [
+      'We repaired the gearbox and carried out a full service on the whole unit rather than only the part that had failed. On a dual swing installation that matters: the two sides share the load, and leaving one half unserviced means the next failure is already scheduled.',
+      'The customer received a three-year warranty on the work.',
+    ],
+    outcome:
+      'Both leaves run correctly again on the original DoorKing operator, and the customer holds a three-year warranty on the repair.',
+    takeaway:
+      'A failed gearbox is the point where most quotes turn into a replacement operator. It is worth asking whether the gearbox itself was diagnosed, or whether it was simply the most expensive-sounding part in an estimate — because on a DoorKing unit it is a repairable assembly, and repairing it leaves a working motor and control board exactly where they are.',
+  },
+  {
+    // Client-supplied 5 Aug 2026, with his own account of the job. The first
+    // case study in this file carried out in Texas rather than California —
+    // hence market: 'texas' and the photography being genuinely local.
+    slug: 'liftmaster-corroded-board-solar-upgrade',
+    title: 'Moisture-Corroded LiftMaster Board Replaced, Solar System Resized',
+    summary:
+      'Corrosion on the control board had killed the operator — and the solar system was never big enough to keep the batteries charged in the first place.',
+    market: 'texas',
+    verified: false,
+    service: 'gate-motor-repair',
+    brand: 'LiftMaster',
+    gateType: 'swing',
+    propertyType: 'residential',
+    mediaCategory: 'liftmaster',
+    imageIndexes: [13, 14, 15, 16],
+    videoSlug: 'liftmaster-gate-motor-repair-20',
+    problem: [
+      'A double farm gate at the end of a long rural driveway had stopped responding. The operator was a solar-powered LiftMaster running off a battery bank, and the owner had noticed it getting less reliable for some time before it stopped altogether — slower to open, occasionally refusing the second cycle, and worse first thing in the morning.',
+      'That pattern matters, because it is the signature of a power problem rather than a dead motor, and it had been developing long before the day the gate finally stopped.',
+    ],
+    diagnosis: [
+      'Opening the enclosure showed the cause immediately: moisture had been getting into the housing, and the control board carried visible corrosion. Once water reaches a board it does not fail cleanly — it fails intermittently first, as corrosion creeps across terminals and traces, which is exactly the slow decline the owner had described.',
+      'The board was beyond salvaging. But replacing it alone would have been treating half the fault.',
+      'Testing the power side showed the solar installation had never been large enough for this gate. The panel could not put back what a heavy double gate on a rural driveway takes out per cycle, so the batteries had been running in a permanent state of partial charge. On a lead-acid battery that is not just an inconvenience: chronic undercharging shortens battery life and leaves the operator working at low voltage, which stresses the very electronics that had just failed.',
+    ],
+    solution: [
+      'We replaced the control board and resealed the enclosure so the new one is not going the same way as the old one. A board fitted into a housing that still lets water in is a repair with an expiry date.',
+      'We then installed an additional solar system sized to what this gate actually draws, so the batteries reach full charge rather than hovering permanently below it.',
+    ],
+    outcome:
+      'The gate runs normally again, and the power system behind it is now sized for the load rather than running at a permanent deficit.',
+    takeaway:
+      'Two faults were in play here and only one of them was visible. Replacing a corroded board is the obvious repair, and on its own it would have looked like a fix for a while — but the undersized solar array that had been stressing the electronics would still have been there, quietly working on the new board. Diagnosing the power system is what turns this from a repeat call-out into a repair.',
+  },
+  {
     slug: 'faac-hydraulic-operator-rebuild',
     title: 'FAAC Hydraulic Operator Rebuilt After Two Replacement Quotes',
     summary: 'A slow, weak FAAC that two companies had condemned — repaired with a seal kit and a pressure reset.',

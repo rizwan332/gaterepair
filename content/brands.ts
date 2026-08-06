@@ -40,6 +40,11 @@ export type Brand = {
 export const brands: Brand[] = [
   {
     slug: 'faac',
+    // Client-supplied 5 Aug 2026: the only FAAC photo where the manufacturer
+    // name is legible on the control enclosure. Leads the page for the same
+    // reason elite-09 does — matching the badge on your own gate is exactly
+    // what brings someone to a brand page.
+    featuredImage: 'faac-07',
     legacyPath: '/faac-gate-motor-repair/',
     name: 'FAAC',
     mediaCategory: 'faac',
@@ -85,6 +90,8 @@ export const brands: Brand[] = [
   },
   {
     slug: 'all-o-matic',
+    // Client picked this as the All-O-Matic front image, 6 Aug 2026.
+    featuredImage: 'all-o-matic-15',
     legacyPath: '/all-o-matic-gate-motor-repair/',
     name: 'All-O-Matic',
     mediaCategory: 'all-o-matic',
@@ -241,6 +248,8 @@ export const brands: Brand[] = [
   },
   {
     slug: 'viking',
+    // Client picked this as the Viking front image, 6 Aug 2026.
+    featuredImage: 'viking-06',
     legacyPath: '/viking-gate-motor-repair/',
     name: 'Viking',
     mediaCategory: 'viking',
@@ -304,9 +313,11 @@ export const brands: Brand[] = [
   // ---- than padded with stock imagery. Promote once real photos exist.
   {
     slug: 'doorking',
+    // Client-supplied 6 Aug 2026; he picked the front image himself.
+    mediaCategory: 'doorking',
+    featuredImage: 'doorking-01',
     legacyPath: '/doorking-gate-repair/',
     name: 'DoorKing',
-    mediaCategory: null,
     contested: false,
     priority: 8,
     headline: 'DoorKing Gate Operator & Intercom Repair in Dallas–Fort Worth',

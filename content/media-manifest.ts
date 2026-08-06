@@ -70,6 +70,10 @@ export const mediaCategories = {
     "label": "Ramset Gate Operator Repair",
     "kind": "brand"
   },
+  "doorking": {
+    "label": "DoorKing Gate Operator Repair",
+    "kind": "brand"
+  },
   "us-automatic": {
     "label": "US Automatic Gate Operator Repair",
     "kind": "brand"
@@ -370,6 +374,131 @@ export const media: Record<string, MediaImage[]> = {
       "height": 512,
       "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAsAA4BaJYgC7AEQ5X2urpEUQAD+6Phxfe5qeQP7KLLopNOhdJ/2/DcKhZwO2zOh7+XPwlAxj97yoGB3OCBRxvDyUBK984YDcG/jgAA=",
       "alt": "An All-O-Matic operator reassembled and closed after service, mounted on its concrete pad",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-11",
+      "src": "/images/all-o-matic/all-o-matic-11",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoQAAwAA4BaJZQC06Ytyt1dhgAA+5g777KBv4AmZR57FXiIpzaCDVuLaz6z3BBrhhhmXb/tErM/2apCJaiTFTGpi+/6t63KsIhir8RtJHBDOUvpA5NwAA==",
+      "alt": "An All-O-Matic slide gate operator with its control enclosure open beside an ornamental iron gate, showing the board, wiring and drive rack",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-12",
+      "src": "/images/all-o-matic/all-o-matic-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoQAAwAA4BaJZgCdAEWygv5+zgcAADMnMemVBLwnivUYU1+sF89JSwtFl1Gyoe8iR5IbyEu4FOcGiKDtxVVLJENGLTjKOA4vvINq2FF/zNsS9FFuAAAAA==",
+      "alt": "A pair of tall dark metal swing gates closed across a paved driveway beneath a timber carport",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-13",
+      "src": "/images/all-o-matic/all-o-matic-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAwAA4BaJbACdAENy4DfZkAAykB/xzJYuWSzeTNLZPCdCF84rVE8B08k5kLna8x+mcIkPpCIXi+rSvVW7AEvbmkc1lFnTMmdd9ZxOuyFsD0AAAA=",
+      "alt": "A black slide gate operator mounted on a concrete pad beside a decorative iron gate and clipped hedge",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-14",
+      "src": "/images/all-o-matic/all-o-matic-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAwAA4BaJZwAAsWN0p5ylbAA/r6Kwh1MEvF83VzACqT1qzcf6Q5bWlsQr520SZ+u3NbN728HVIFj45GIZG/dEY5q2kJfUs0EHk+AAAA=",
+      "alt": "A gate operator in a grey housing installed on a concrete pad at the base of a tall iron gate, with the drive arm connected to the gate frame",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-15",
+      "src": "/images/all-o-matic/all-o-matic-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 2252,
+      "height": 4000,
+      "blurDataURL": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABwBACdASoQABwAPu1iqU2ppaOiMAgBMB2JQBYd5YJ0UT8kknogB2ncNjc+AAD8cf106VsGwR86MIx0FLYA1h1RU8P3jy12HgtRPVGOUOoJ3WNoy/0qjddMQTr6vdsqBmabh9yv0HYfvGETmJP4PSo5Uulll71h6N2zP5IGuQVYwgCCIKzba3YuQ/yhcCz2z0oQen1MuYEs7WPlgj83GQzRI7o3JLHPpb8AAA==",
+      "alt": "A slide gate operator in a black housing at the foot of an iron gate, with stone pillars and a driveway beyond",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-16",
+      "src": "/images/all-o-matic/all-o-matic-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQDImCLBT07R4laftdQAAP6vo7feZUlnChuJpTmpdbxLCM3Yk5oGpm4GFY7+0DaLY8TBBYwYxVnYAbSQIaC8okVd/7tyGW3VxWcm5HWEpnHWgRo4A1SlFXok28evUAA=",
+      "alt": "A technician kneeling at a gate operator base, welding the mounting frame in place during installation",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-17",
+      "src": "/images/all-o-matic/all-o-matic-17",
+      "widths": [
+        400,
+        800
+      ],
+      "width": 1080,
+      "height": 1080,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQABAAA4BaJYwC7AEQZHW81jQ+gAD8JVUYq+YLH6aKBPamk1eyVVZ5Xvv8fzCjWh1txGjVi05JZYj8yIpZZBgR0FPDZPjuowK35eyNrYesCFBjfaU9qouBrL8UQU9Wm0bQ1MOAAAA=",
+      "alt": "A before and after graphic showing a gate motor installation: the original mounting on the left and the completed operator in its enclosure on the right",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-18",
+      "src": "/images/all-o-matic/all-o-matic-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABwAgCdASoQAAwAA4BaJYwCdAYuHq2qml3WzuXAAPwfanb5QsSvUTcyV9m1EILGV/BDt58aeXO6BLVxbPajdZ2rIHsTnM41UNVS08wLWF/hZ0qhpjY1sO/wp4ze9waAAAA=",
+      "alt": "A wide timber-clad sliding gate closed across a driveway, with the slide operator mounted on the pad to the right",
       "altWritten": true
     }
   ],
@@ -1089,6 +1218,22 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAsAA4BaJYgC7AD2A0qi9EfAAM2dOZqo+O+nTWTyleAlB1exGFJIcvFvQQNw+3xUdX0W0DD1utO52TyzX9G425NGd+sk/gBuG3AUwKgX6Sw21t9ZAAAA",
       "alt": "A FAAC hydraulic ram fitted to the leaf of a swing gate, viewed from the driveway side",
       "altWritten": true
+    },
+    {
+      "slug": "faac-07",
+      "src": "/images/faac/faac-07",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAwAA4BaJZQAAv/e8X+OxXgA/rgaQp1YuUGlaihbDPBMkICYrIPqIff33CE/tRxdUxr62rI1x5cl1KI9D8ek/9fcpP2/BQAAAA==",
+      "alt": "A black wrought-iron slide gate closed alongside a rendered wall, with a FAAC control enclosure mounted on the wall beside it and its aerial running above",
+      "altWritten": true
     }
   ],
   "gate-installation": [
@@ -1503,6 +1648,70 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAsAA4BaJYwC7AEQSh7ZwB3oAPsjx70wWwicUA9btZWgXmdTkSEUjQbyeJaPplxmBIppyoh7oUR9toNMumygB8agHRAA",
       "alt": "A LiftMaster swing operator and its wall-mounted control box beside a stone gate pillar",
       "altWritten": true
+    },
+    {
+      "slug": "liftmaster-14",
+      "src": "/images/liftmaster/liftmaster-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoQAAwAA4BaJZAC7ADp+Y85k8AA/q0rrPID+1vCw5z3zlXDnZ/vpBaZGBfs01O50ucTQ4KsJCZvyboznQI6utIFu8JI/d9B51AbOEZIAf4DB8o78vJur5EAAAA=",
+      "alt": "A LiftMaster control enclosure mounted on the post of a rural wire-mesh gate, with an impact driver resting on top of the housing during the repair",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-15",
+      "src": "/images/liftmaster/liftmaster-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZAC+SCHhH4vLPi+wy1MFyAD2uBDN58iYuk0RAJsOZ4x7pT81STWdMRobTO2ya9rDrvbHw0FrZh2wmVsDRwDrBy9N7JN4feZhnyDAta6ae0/wCmTgxbNU2rhg84Y2/NS1DRo5GTf++kDLVBp/d+ZesvMYxO3X/Z3N+f1IAAA=",
+      "alt": "A LiftMaster gate operator enclosure standing open beside the gate, showing the control board and wiring loom inside",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-16",
+      "src": "/images/liftmaster/liftmaster-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZgAAW8ur2ONUEpKnUoAA/tlnRoAFxLoSDwdVsB3fkgqtZhWyh27gesDbaeKyvP4IsBfbrzpMhqvPZmJFJCMfnaaztDfsG6GY30bJBa2lA/F1ajSEqmwx2R7SZneV+KVG5cX0e90xX2DCNSzFUIVu8aMrAAAA",
+      "alt": "Close view of a LiftMaster control board with its terminal blocks, programming buttons and two-digit diagnostic display",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-17",
+      "src": "/images/liftmaster/liftmaster-17",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoQAAwAA4BaJYgCdAEWhcc7TQHw67AA/uX5YWOcu4eBEVeTwkvaaH4Kbf655114WFo2sSItbX0hIwrx5eaGKzJK/5wI1JEByXLIll7oES7Q6CB429wAAA==",
+      "alt": "A double farm gate closed across a long tree-lined driveway, with a solar panel mounted on the post to the right of the gate",
+      "altWritten": true
     }
   ],
   "ramset": [
@@ -1570,6 +1779,88 @@ export const media: Record<string, MediaImage[]> = {
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAsAA4BaJaACdADwVViFyAAA/ffcoxPOj9oMxOBnLDogwuMP2T5JXFrP6mwoCs1mAOzdtvvstBjiu8UVQn0eL942cm586vO+7cU13XddgAAA",
       "alt": "A high-cycle slide gate operator with its chain and drive sprocket exposed for inspection",
+      "altWritten": true
+    }
+  ],
+  "doorking": [
+    {
+      "slug": "doorking-01",
+      "src": "/images/doorking/doorking-01",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3024,
+      "height": 4032,
+      "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZAC/OB9EdO1KWU0w+YPAAP21AhOY71ETxD0XXCUfQh73MzK3PCGHJlkO33GEzJ1vnylP5wjEdqdLhFmmIsP95+KJgJ5gn1jN9vP0QVvnHPP6K8VuEZRen0/piFXhZqvpX3xBzrQGx1jfEgt/r5XfmTWG+tgA",
+      "alt": "Close view of a DKS DoorKing gate operator in its cast grey housing, mounted at ground level beside a driveway gate",
+      "altWritten": true
+    },
+    {
+      "slug": "doorking-02",
+      "src": "/images/doorking/doorking-02",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAwAA4BaJQBdgCBYGBSaUsgA/umQ7uI3ssq2EFw/TOvhBmuwu0I7h4t1OwfSG7s3zsUxymQed4H6mMHIITv/25vZ7/35oAA=",
+      "alt": "A pair of black iron swing gates closed across a garden entrance, with planting and a paved path behind them",
+      "altWritten": true
+    },
+    {
+      "slug": "doorking-03",
+      "src": "/images/doorking/doorking-03",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAQCdASoQAAwAA4BaJQBOgMYOo4XGE4gA/u7oSG+pwACt9uvmywW5uM0Y5P5so4bYg9MnLVv7aK5f0V87AQLccngeKMRGtm/JsBNxQo3Xdb0W2EdfIfDz0u/p8uauHjMOVgAA",
+      "alt": "The same iron swing gates standing open, showing the driveway running between hedges toward the house",
+      "altWritten": true
+    },
+    {
+      "slug": "doorking-04",
+      "src": "/images/doorking/doorking-04",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQAB8oi73laKSJBynXdEOgAD+6/yIGfgzzltQj/7XaKRmV/6nemSdeRcIfZ2tGT1BtPFNajPjf9wNt8j6l7LYJEFi0arZpJjn1c3mqEJ2iMfOiWaGlqlZyjFpmwm/fqd5Vlrj2rKyyJc9R03b0NXCcn/XQ+p7NA7+8XAA",
+      "alt": "A DoorKing operator and its drive linkage connected to the lower rail of an iron swing gate leaf",
+      "altWritten": true
+    },
+    {
+      "slug": "doorking-05",
+      "src": "/images/doorking/doorking-05",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4007,
+      "height": 4007,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQAgCdASoQABAAA4BaJZgAD5MxcEqQ5v9AAP7R4UfOzpt1FbxjDYWM7vmMNs05wG0F09EDGpJyDi3FObXzCURSx8Y2x655U60G6xU21B6C+9mkA/g1k3MC8C7w1FBoT0R6tHv7lAf2NJdBYAA=",
+      "alt": "A DoorKing operator housing set on the grass beside an open swing gate, with the drive arm extended",
       "altWritten": true
     }
   ],
@@ -1923,12 +2214,28 @@ export const media: Record<string, MediaImage[]> = {
       "slug": "viking-05",
       "src": "/images/viking/viking-05",
       "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3024,
+      "height": 4032,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoQABUAPu1iqk2ppaQiMAgBMB2JZACdABuEvM/3XnST+aWAAP5u5AiqyzOf8IQwpNbvOiRQk3cZaSNtQsWgdhUJm9zkpi/v05J/v3O33cg8MPrN/uxAAA==",
+      "alt": "A solar charging panel mounted near a gate operator on a rural driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "viking-06",
+      "src": "/images/viking/viking-06",
+      "widths": [
         400
       ],
       "width": 600,
       "height": 400,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAsAA4BaJZQAArCDtpiGCAD+wk/MhqCRFtP3viATvv3rwXbl8pGCHdgpzZmTLsAIr4n9CMsqXYS+Hs9JPPakBA3+BAAA",
-      "alt": "A solar charging panel mounted near a gate operator on a rural driveway",
+      "alt": "A Viking slide gate operator in a dark grey housing with the Viking name on the front, installed on a concrete pad against a timber fence",
       "altWritten": true
     }
   ]

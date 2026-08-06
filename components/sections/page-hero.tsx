@@ -23,8 +23,21 @@ export function PageHero({
       {image && (
         <div className="absolute inset-0 -z-10">
           <ResponsiveImage image={image} alt="" priority fill sizes="100vw" className="object-cover" />
+          {/* Lightened to match the homepage hero, which was reduced when the
+              client said the site was too dark. This component backs every
+              brand, service and legal page, so leaving it at 95/85/55 meant
+              most of the site kept the heavy treatment the homepage had
+              dropped — and it buried photographs like the FAAC enclosure that
+              are on the page specifically to be recognised.
+
+              White display type over 0.82 still clears AA comfortably. */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/85 to-ink-950/55"
+            className="absolute inset-0 bg-gradient-to-r from-ink-950/82 via-ink-950/64 to-ink-950/28"
+            aria-hidden
+          />
+          {/* Warm lift on the image side so it reads as daylight. */}
+          <div
+            className="absolute inset-0 bg-[radial-gradient(65%_60%_at_80%_25%,rgb(245_179_42/0.14)_0%,transparent_70%)]"
             aria-hidden
           />
         </div>
