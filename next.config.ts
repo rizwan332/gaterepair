@@ -51,6 +51,20 @@ const nextConfig: NextConfig = {
       { source: '/locations', destination: '/service-areas', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
       { source: '/emergency-gate-repair-services', destination: '/emergency', permanent: true },
+
+      // Retired 6 Aug 2026 at the client's request. Both were indexed and both
+      // carry inbound links, so they 301 rather than 404 — a 404 throws away
+      // whatever authority they had earned.
+      //
+      // /pricing → /contact: the page existed to answer "what will this cost",
+      // and the honest answer without a published price list is "call and we
+      // will tell you", which is the contact page.
+      //
+      // /gallery → /projects: the closest thing to the retired Our Work page.
+      // The case studies contain the same photographs with the job written up
+      // around them, so an inbound link still lands on our work.
+      { source: '/pricing', destination: '/contact', permanent: true },
+      { source: '/gallery', destination: '/projects', permanent: true },
     ]
   },
 }

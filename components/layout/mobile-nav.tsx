@@ -93,9 +93,7 @@ export function MobileNav() {
                 <Item href="/service-areas" onClick={() => setOpen(false)}>Service Areas</Item>
                 <Item href="/about" onClick={() => setOpen(false)}>About us</Item>
                 <Item href="/projects" onClick={() => setOpen(false)}>Case Studies</Item>
-                <Item href="/gallery" onClick={() => setOpen(false)}>Our Work</Item>
                 <Item href="/warranty" onClick={() => setOpen(false)}>Our warranty</Item>
-                <Item href="/pricing" onClick={() => setOpen(false)}>Pricing</Item>
                 <Item href="/faq" onClick={() => setOpen(false)}>FAQs</Item>
                 <Item href="/contact" onClick={() => setOpen(false)}>Contact Us</Item>
               </Section>

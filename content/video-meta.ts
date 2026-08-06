@@ -29,7 +29,7 @@ export const VIDEO_META: Record<string, VideoMeta> = {
   'faac-gate-motor-repair-video': {
     title: 'FAAC Gate Operator Repair — Hydraulic Service',
     description:
-      'FAAC builds hydraulic gate operators that most companies will not service, quoting a full replacement instead. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.',
+      'FAAC builds hydraulic gate operators, which need different diagnostics and different parts to a chain drive. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.',
   },
   'all-o-matic-gate-motor-repair-video': {
     title: 'All-O-Matic Gate Operator Repair — Clutch and Limit Adjustment',

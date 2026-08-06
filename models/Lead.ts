@@ -17,6 +17,9 @@ const leadSchema = new Schema(
     phone: { type: String, required: true, trim: true, maxlength: 40 },
     email: { type: String, trim: true, lowercase: true, maxlength: 200 },
     city: { type: String, trim: true, maxlength: 120 },
+    // Added 6 Aug 2026 with the simplified contact form. Without this line
+    // mongoose strips the field silently and the lead arrives with no address.
+    address: { type: String, trim: true, maxlength: 300 },
 
     gateType: { type: String, enum: ['swing', 'slide', 'barrier-arm', 'unsure'], default: 'unsure' },
     problem: { type: String, trim: true, maxlength: 80 },

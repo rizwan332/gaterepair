@@ -12,6 +12,10 @@ const leadSchema = z.object({
   phone: z.string().min(7).max(40),
   email: z.string().email().max(200).optional().or(z.literal('')),
   city: z.string().max(120).optional(),
+  // Added 6 Aug 2026 with the simplified contact form. The removed fields
+  // below stay in the schema: they are optional, older payloads and any
+  // reinstated field keep validating without a deploy ordering problem.
+  address: z.string().max(300).optional(),
   gateType: z.enum(['swing', 'slide', 'barrier-arm', 'unsure']).optional(),
   problem: z.string().max(80).optional(),
   brand: z.string().max(60).optional(),

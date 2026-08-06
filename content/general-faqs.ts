@@ -30,7 +30,7 @@ export const GENERAL_FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: 'How quickly can you get to me?',
-        a: 'It depends where you are. We publish typical arrival windows per city rather than a single number that sounds good and is not achievable everywhere. When you call, you get a real arrival window and a message when the technician is on the way.',
+        a: 'It depends where you are in the Metroplex. Rather than advertise a single number that sounds good and is not achievable everywhere, we give you a real arrival window when you call — based on where the nearest technician actually is — and a message when they are on the way. We run 24 hours a day, seven days a week.',
       },
       {
         q: 'Do you charge to come out and look?',
@@ -51,8 +51,8 @@ export const GENERAL_FAQ_CATEGORIES: FaqCategory[] = [
         a: 'Age and parts availability, not symptoms. An operator under about ten years old is almost always worth repairing — boards, capacitors, limit switches and gearboxes are all serviceable parts. Between ten and fifteen years it usually still makes sense, but parts availability is worth asking about. Past fifteen years it depends on the manufacturer: some units are fully supported at twenty-five years, others become scavenger hunts. The honest test is whether you are starting to pay for the same visit twice a year.',
       },
       {
-        q: 'Another company told me my gate operator cannot be repaired. Should I believe them?',
-        a: 'Ask which specific component was tested and found faulty. If the answer is vague, get a second opinion. A great many operators are condemned because the company does not service that type — hydraulics in particular — rather than because the unit is beyond help. Replacing is easier than diagnosing, and it carries a much better margin.',
+        q: 'I was told my gate operator cannot be repaired. Should I get a second opinion?',
+        a: 'Ask which specific component was tested and found faulty. If the answer is vague, it is worth a second opinion. Operators are often condemned because that type is outside what the technician services — hydraulics in particular — rather than because the unit is beyond help. Boards, capacitors, limit switches and gearboxes are all replaceable parts on most operators still supported by their manufacturer.',
       },
       {
         q: 'Why does the same part keep failing on my gate?',

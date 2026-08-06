@@ -17,7 +17,7 @@ import { VideoTestimonials } from '@/components/sections/video-testimonials'
 export const metadata: Metadata = {
   title: 'About Shield Gate Repair | Gate Specialists Serving Dallas–Fort Worth',
   description:
-    'Who we are, where we came from, and why we repair gate operators other companies will only replace. Now serving Dallas–Fort Worth.',
+    'Who we are, where we came from, and why we repair gate operators rather than replacing them. Now serving Dallas–Fort Worth.',
   alternates: { canonical: '/about' },
 }
 
@@ -45,8 +45,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About us"
-        title="We Repair the Gate Operators Other Companies Replace"
-        intro="That sentence is the whole company. Everything else on this page explains why we are able to say it — and why so few of our competitors can."
+        title="We Repair Gate Operators Rather Than Replacing Them"
+        intro="That sentence is the whole company. Everything else on this page explains what it takes to be able to say it."
         image={media['all-o-matic']?.[4]}
       />
 
@@ -86,9 +86,9 @@ export default function AboutPage() {
             </h2>
             <div className="prose-measure space-y-5 text-lg leading-relaxed text-ink-200">
               <p>
-                Replacing a gate operator is easier than diagnosing one, and it carries a considerably
-                better margin. That is why so many gate companies do it, and why customers so often hear
-                that a perfectly serviceable unit is finished.
+                Diagnosing a gate operator takes time, instruments and knowing the equipment. Replacing
+                one takes none of those things, which is why a perfectly serviceable unit is sometimes
+                written off before anyone has measured anything.
               </p>
               <p>
                 A control board is a few hundred dollars. A new operator is a few thousand. The difference
@@ -109,13 +109,13 @@ export default function AboutPage() {
                 icon: Wrench,
                 stat: `${brands.length}`,
                 label: 'operator brands serviced',
-                note: 'Including FAAC, All-O-Matic and Ramset, which most companies decline',
+                note: 'Including FAAC, All-O-Matic and Ramset, and the hydraulic units',
               },
               {
                 icon: Video,
                 stat: `${videos.length}`,
                 label: 'repairs filmed',
-                note: 'No other gate company in Dallas–Fort Worth publishes video of their work',
+                note: 'Filmed on our own jobs, not stock footage',
               },
               {
                 icon: MapPin,

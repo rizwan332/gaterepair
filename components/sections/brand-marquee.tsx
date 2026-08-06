@@ -9,8 +9,9 @@ import { logoFor } from '@/lib/brand-logos'
  * Logos are the client's own, taken from Shield Gate Repair's existing
  * California site and normalised by scripts/process-logos.ts. Any brand
  * without a file falls back to a typographic wordmark rather than a gap or a
- * placeholder box — US Automatic is currently the only one, since the CA site
- * does not carry it.
+ * placeholder box. That covers US Automatic, which the CA site does not carry,
+ * and the six brands added from the client's roster on 6 Aug 2026 (Apollo,
+ * Mighty Mule, Ghost Controls, Nice, BFT, GTO).
  *
  * Shown in full colour. An earlier pass desaturated them at rest, which is a
  * common treatment and was wrong here: these are the proof that we service

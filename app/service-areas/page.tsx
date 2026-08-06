@@ -97,11 +97,11 @@ export default function ServiceAreasPage() {
         <section className="section bg-white">
           <div className="container-page">
             <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">
-              Where we get to fastest
+              Cities we cover in depth
             </h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-ink-700">
-              These cities have published typical arrival times. No other gate company in
-              Dallas&ndash;Fort Worth publishes response times at all.
+              Each of these has its own page covering the gates, operators and faults we actually see
+              there.
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {enrichedCities.map((city) => (
@@ -111,18 +111,13 @@ export default function ServiceAreasPage() {
                     className="flex items-center justify-between gap-4 rounded-[var(--radius-card)] border border-ink-100 bg-white px-5 py-4 transition-all hover:border-gold-400 hover:shadow-[var(--shadow-card)]"
                   >
                     <span className="font-medium text-ink-950">{city.name}</span>
-                    {city.responseBand && (
-                      <span className="shrink-0 text-xs font-medium text-ink-500">
-                        {city.responseBand}
-                      </span>
-                    )}
                   </Link>
                 </li>
               ))}
             </ul>
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-500">
-              Times are typical rather than guaranteed &mdash; North Texas traffic moves them around.
-              You get a real arrival window when you call.
+              We run 24 hours a day, seven days a week. You get a real arrival window when you call,
+              based on where the nearest technician actually is.
             </p>
           </div>
         </section>

@@ -9,7 +9,7 @@ import { projects, projectBySlug } from '@/content/projects'
 import { WhyShield } from '@/components/sections/why-shield'
 import { Reviews } from '@/components/sections/reviews'
 import { reviewsConfirmed } from '@/content/reviews'
-import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { publishedTestimonials } from '@/content/testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { Process } from '@/components/sections/process'
@@ -61,8 +61,15 @@ export default function HomePage() {
           section that used to follow rendered placeholder cards behind an
           "awaiting real review data" warning — the client has no Google reviews
           and says the videos are better, and he is right. It comes back
-          automatically if reviewsConfirmed is ever flipped. */}
-      <VideoTestimonials items={publishedTestimonials.slice(0, 3)} tone="tint" />
+          automatically if reviewsConfirmed is ever flipped.
+
+          Every video on the channel now appears, Shorts included, in one
+          carousel rather than the three-card strip that used to be here. */}
+      <TestimonialCarousel
+        items={publishedTestimonials}
+        intro="Every one of these is a Shield Gate Repair customer, filmed at their own gate after the job was finished."
+        tone="tint"
+      />
       {/* The client's own three homepage photographs. */}
       <FeaturedWork />
       {/* Case studies on the homepage at the client's request (6 Aug 2026),
@@ -72,7 +79,7 @@ export default function HomePage() {
           clicks from the front door. */}
       <CaseStudies
         items={homepageCaseStudies}
-        title="Repairs Other Companies Quoted to Replace"
+        title="Repairs That Were Quoted as Replacements"
         intro="Each of these was diagnosed before anything was replaced. Several had already been quoted for a full replacement by someone else."
         tone="tint"
       />

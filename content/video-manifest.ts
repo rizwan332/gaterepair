@@ -261,7 +261,7 @@ export const videos: SiteVideo[] = [
     "durationSeconds": 46,
     "bytes": 2736172,
     "title": "FAAC Gate Operator Repair — Hydraulic Service",
-    "description": "FAAC builds hydraulic gate operators that most companies will not service, quoting a full replacement instead. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.",
+    "description": "FAAC builds hydraulic gate operators, which need different diagnostics and different parts to a chain drive. This shows the repair being carried out: pressure checked, seals addressed and the operator returned to normal travel speed.",
     "descriptionWritten": true
   },
   {

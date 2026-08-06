@@ -58,7 +58,7 @@ export const tier1Cities: City[] = [
     landmarks: ['White Rock Lake', 'NorthPark Center', 'Klyde Warren Park', 'Dallas Arboretum'],
     majorRoads: ['I-35E', 'US-75 Central Expressway', 'Loop 12', 'Dallas North Tollway'],
     nearbyCities: ['university-park', 'highland-park', 'irving', 'mesquite', 'garland', 'richardson'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'A wide split between estate driveway gates in the northern neighborhoods and high-cycle commercial and multi-family entrances closer to the core',
       commonGateTypes: ['Wrought iron swing', 'Estate slide', 'Commercial slide', 'Barrier arm'],
@@ -75,7 +75,7 @@ export const tier1Cities: City[] = [
     faqs: [
       {
         q: 'How quickly can you reach my part of Dallas?',
-        a: 'Most of Dallas proper is within 30–60 minutes of a Shield truck, and we run 24/7. Travel across the city varies a lot with traffic on US-75 and I-35E, so we give you a real arrival window when you call rather than a vague "sometime today".',
+        a: 'We run 24/7 across Dallas. Travel across the city varies a lot with traffic on US-75 and I-35E, so we give you a real arrival window when you call rather than a vague "sometime today".',
       },
       {
         q: 'My gate closed fine in spring and now it drags. Nothing has changed.',
@@ -97,7 +97,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Legacy West', 'Arbor Hills Nature Preserve', 'Oak Point Park', 'Shops at Legacy'],
     majorRoads: ['Dallas North Tollway', 'US-75', 'President George Bush Turnpike', 'Preston Road'],
     nearbyCities: ['frisco', 'allen', 'richardson', 'carrollton', 'the-colony', 'murphy'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Established 1990s–2000s gated communities in West Plano alongside newer HOA-managed entrances around Legacy',
       commonGateTypes: ['Slide gate', 'Wrought iron swing', 'HOA community entrance'],
@@ -136,7 +136,7 @@ export const tier1Cities: City[] = [
     landmarks: ['The Star', 'Stonebriar Centre', 'Toyota Stadium', 'Frisco Commons'],
     majorRoads: ['Dallas North Tollway', 'Preston Road', 'Sam Rayburn Tollway', 'Legacy Drive'],
     nearbyCities: ['plano', 'prosper', 'little-elm', 'the-colony', 'mckinney', 'celina'],
-    responseBand: '45–75 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Newer master-planned communities with HOA-managed entrances, plus custom estate gates in Starwood and Newman Village',
       commonGateTypes: ['HOA community slide', 'Estate swing', 'Ornamental iron'],
@@ -171,7 +171,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Historic Downtown Square', 'Towne Lake Park', 'Heard Natural Science Museum', 'TUPPS Brewery'],
     majorRoads: ['US-75', 'SH-121', 'Custer Road', 'Virginia Parkway'],
     nearbyCities: ['allen', 'frisco', 'prosper', 'princeton', 'melissa', 'fairview'],
-    responseBand: '45–75 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Large gated communities in Stonebridge Ranch and Craig Ranch alongside older rural-edge properties with long driveways',
       commonGateTypes: ['Community slide', 'Estate swing', 'Solar-powered rural swing'],
@@ -206,7 +206,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Toyota Music Factory', 'Mustangs of Las Colinas', 'Lake Carolyn', 'Irving Convention Center'],
     majorRoads: ['SH-114', 'I-635', 'MacArthur Boulevard', 'President George Bush Turnpike'],
     nearbyCities: ['coppell', 'grand-prairie', 'euless', 'farmers-branch', 'dallas', 'grapevine'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Heavy concentration of gated communities and corporate campuses in Las Colinas and Valley Ranch',
       commonGateTypes: ['Community slide', 'Barrier arm', 'Commercial slide', 'Estate swing'],
@@ -244,7 +244,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Firewheel Town Center', 'Lake Ray Hubbard', 'Granville Arts Center', 'Spring Creek Forest Preserve'],
     majorRoads: ['I-635', 'President George Bush Turnpike', 'SH-78', 'Northwest Highway'],
     nearbyCities: ['richardson', 'rowlett', 'sachse', 'mesquite', 'wylie', 'dallas'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Mixed residential and a substantial industrial and warehouse base with commercial entrance gates',
       commonGateTypes: ['Commercial slide', 'Cantilever', 'Chain link industrial', 'Residential swing'],
@@ -282,7 +282,7 @@ export const tier1Cities: City[] = [
     landmarks: ['AT&T Stadium', 'Globe Life Field', 'Six Flags Over Texas', 'River Legacy Park'],
     majorRoads: ['I-20', 'I-30', 'SH-360', 'Cooper Street'],
     nearbyCities: ['grand-prairie', 'mansfield', 'kennedale', 'euless', 'crowley'],
-    responseBand: '45–90 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Established residential neighborhoods with older iron gates plus commercial and event-adjacent controlled access',
       commonGateTypes: ['Wrought iron swing', 'Slide gate', 'Commercial barrier arm'],
@@ -306,7 +306,7 @@ export const tier1Cities: City[] = [
       },
       {
         q: 'Do you cover all of Arlington?',
-        a: 'Yes, across all of Arlington and neighbouring Tarrant County cities. Typical arrival is 45–90 minutes depending on traffic on I-20 and SH-360.',
+        a: 'Yes, across all of Arlington and neighbouring Tarrant County cities. We give you a real arrival window when you call, based on where the nearest truck actually is and the traffic on I-20 and SH-360.',
       },
     ],
   },
@@ -320,7 +320,7 @@ export const tier1Cities: City[] = [
     landmarks: ['CityLine', 'UT Dallas', 'Galatyn Park', 'Cottonwood Park'],
     majorRoads: ['US-75', 'President George Bush Turnpike', 'Campbell Road', 'Coit Road'],
     nearbyCities: ['plano', 'garland', 'dallas', 'murphy', 'sachse', 'addison'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Established residential with mature gated pockets, plus corporate campus controlled access along the US-75 corridor',
       commonGateTypes: ['Residential swing', 'Community slide', 'Commercial barrier arm'],
@@ -333,7 +333,7 @@ export const tier1Cities: City[] = [
       'all of which are still readily available for this generation of equipment. Along the US-75 and CityLine corridor it shifts ' +
       'to corporate controlled access, where the fault is usually in the reader or controller rather than the gate itself. ' +
       'The thing worth knowing if you own a gate in Canyon Creek, Prairie Creek or Breckinridge is that age alone is not a reason ' +
-      'to replace an operator. We are regularly told by other companies that a twenty-five-year-old unit is beyond help, and in ' +
+      'to replace an operator. A twenty-five-year-old unit is often assumed to be beyond help when in ' +
       'most cases it simply needs a board and a set of limit switches. The mechanical side of these operators was built to last, ' +
       'and the parts that fail are the cheap ones. We will tell you honestly when a unit really has reached the end.',
     faqs: [
@@ -353,7 +353,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Josey Ranch Lake', 'Historic Downtown Carrollton', 'Coyote Ridge', 'Elm Fork Nature Preserve'],
     majorRoads: ['I-35E', 'President George Bush Turnpike', 'Josey Lane', 'Hebron Parkway'],
     nearbyCities: ['farmers-branch', 'lewisville', 'coppell', 'addison', 'plano', 'the-colony'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Suburban residential with gated pockets plus a significant light-industrial and distribution base',
       commonGateTypes: ['Residential swing', 'Commercial slide', 'Chain link industrial'],
@@ -386,7 +386,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Town East Mall', 'Mesquite Championship Rodeo', 'Mesquite Arts Center', 'Opal Lawrence Historical Park'],
     majorRoads: ['I-635', 'I-30', 'US-80', 'Galloway Avenue'],
     nearbyCities: ['garland', 'sunnyvale', 'balch-springs', 'forney', 'rowlett', 'dallas'],
-    responseBand: '30–60 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Residential neighborhoods with a growing multi-family and commercial base along the US-80 corridor',
       commonGateTypes: ['Apartment community slide', 'Residential swing', 'Commercial slide'],
@@ -424,7 +424,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Denton Square', 'University of North Texas', 'Ray Roberts Lake', 'Clear Creek Natural Heritage Center'],
     majorRoads: ['I-35E', 'I-35W', 'US-380', 'Loop 288'],
     nearbyCities: ['argyle', 'corinth', 'sanger', 'krum', 'lake-dallas', 'ponder'],
-    responseBand: '60–90 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Acreage and ranch properties with long driveways alongside established residential and student housing',
       commonGateTypes: ['Solar-powered ranch swing', 'Estate swing', 'Farm and pasture gate', 'Community slide'],
@@ -444,7 +444,7 @@ export const tier1Cities: City[] = [
       },
       {
         q: 'Do you travel out to acreage properties around Denton?',
-        a: 'Yes. Long-driveway, solar and off-grid gate installations around Denton, Argyle, Sanger and Ponder are regular work for us. Typical arrival is 60–90 minutes.',
+        a: 'Yes. Long-driveway, solar and off-grid gate installations around Denton, Argyle, Sanger and Ponder are regular work for us. We confirm an arrival window when you call.',
       },
     ],
   },
@@ -458,7 +458,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Lake Ray Hubbard', 'The Harbor Rockwall', 'Harry Myers Park', 'Downtown Rockwall Square'],
     majorRoads: ['I-30', 'SH-66', 'SH-205', 'John King Boulevard'],
     nearbyCities: ['rowlett', 'heath', 'royse-city', 'fate', 'wylie', 'garland'],
-    responseBand: '45–75 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Lakefront and gated waterfront communities around Lake Ray Hubbard with a high proportion of custom estate gates',
       commonGateTypes: ['Estate swing', 'Ornamental iron', 'Community slide'],
@@ -492,7 +492,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Allen Event Center', 'Watters Creek', 'Celebration Park', 'Allen Station Park'],
     majorRoads: ['US-75', 'SH-121', 'Bethany Drive', 'Stacy Road'],
     nearbyCities: ['plano', 'mckinney', 'fairview', 'lucas', 'parker', 'frisco'],
-    responseBand: '45–75 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Master-planned residential with HOA-managed community entrances and a growing custom estate segment toward Lucas',
       commonGateTypes: ['Community slide', 'Estate swing', 'Ornamental iron'],
@@ -526,7 +526,7 @@ export const tier1Cities: City[] = [
     landmarks: ['Epic Waters', 'Lone Star Park', 'Joe Pool Lake', 'Traders Village'],
     majorRoads: ['I-20', 'I-30', 'SH-161', 'Carrier Parkway'],
     nearbyCities: ['arlington', 'irving', 'mansfield', 'cedar-hill', 'duncanville', 'midlothian'],
-    responseBand: '45–75 minutes',
+    responseBand: '',
     gateProfile: {
       dominant: 'Newer gated communities to the south around Joe Pool Lake plus substantial industrial and logistics gate work along I-20 and SH-161',
       commonGateTypes: ['Community slide', 'Industrial cantilever', 'Commercial slide', 'Residential swing'],
@@ -546,7 +546,7 @@ export const tier1Cities: City[] = [
     faqs: [
       {
         q: 'Our distribution yard gate is down. How fast can you get there?',
-        a: 'We run 24/7 and treat commercial entrance failures as urgent — a gate down at a logistics site is a business-stopping problem, not an inconvenience. Typical arrival in Grand Prairie is 45–75 minutes.',
+        a: 'We run 24/7 and treat commercial entrance failures as urgent — a gate down at a logistics site is a business-stopping problem, not an inconvenience. We confirm an arrival window when you call.',
       },
     ],
   },

@@ -17,6 +17,7 @@ export type LeadEmail = {
   phone: string
   email?: string
   city?: string
+  address?: string
   gateType?: string
   problem?: string
   brand?: string
@@ -100,6 +101,7 @@ function buildHtml(lead: LeadEmail): string {
         ${row('Phone', lead.phone)}
         ${row('Email', lead.email)}
         ${row('City', lead.city)}
+        ${row('Address', lead.address)}
         ${row('Urgency', lead.urgency ? (URGENCY_LABEL[lead.urgency] ?? lead.urgency) : undefined)}
         ${row('Gate type', lead.gateType ? (GATE_LABEL[lead.gateType] ?? lead.gateType) : undefined)}
         ${row('Problem', lead.problem)}

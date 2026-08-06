@@ -186,7 +186,7 @@ export default function EmergencyPage() {
           <div className="container-page relative">
             <h2 className="mb-3 font-display text-3xl font-bold sm:text-4xl">An emergency call-out</h2>
             <p className="prose-measure mb-8 text-lg text-ink-300">
-              No other gate company in Dallas&ndash;Fort Worth publishes video of their work.
+              Every video on this site was filmed on one of our own jobs.
             </p>
             <div className="max-w-3xl">
               <LazyVideo video={video} />

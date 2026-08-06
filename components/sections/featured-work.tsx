@@ -34,10 +34,10 @@ export function FeaturedWork() {
               </p>
             </div>
             <Link
-              href="/gallery"
+              href="/projects"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 underline decoration-gold-400 underline-offset-4 hover:decoration-gold-600"
             >
-              See the full gallery
+              See the full case studies
               <ArrowUpRight className="size-4" aria-hidden />
             </Link>
           </div>

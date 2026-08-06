@@ -292,7 +292,7 @@ export const services: Service[] = [
     headline: 'Gate Access Control & Intercom Repair in Dallas–Fort Worth',
     intro:
       'When the call box stops working, the gate is fine — the system that tells it to open is not. That is a ' +
-      'different repair, and a lot of gate companies will not touch it.',
+      'different repair, needing access control and telephone entry knowledge rather than gate mechanics.',
     symptoms: [
       { seeing: 'Call box does not dial out', means: 'Telephone line, cellular module or board fault' },
       { seeing: 'Keypad code not accepted', means: 'Programming loss or keypad failure' },

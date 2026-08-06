@@ -12,6 +12,10 @@ import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { ServiceAreaMap } from '@/components/sections/service-area-map'
 import { VideoReel } from '@/components/sections/video-reel'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { BrandsGrid } from '@/components/sections/brands-grid'
+import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { publishedTestimonials } from '@/content/testimonials'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
 
 /**
@@ -76,6 +80,20 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   // the point of the client's "internal linking" deliverable.
   const curated = (city.nearbyCities ?? []).map(cityBySlug).filter(Boolean) as City[]
   const nearby = curated.length > 0 ? curated : countyPeers(city, 10)
+  /**
+   * Photographs for the city page.
+   *
+   * Drawn from the general service libraries rather than a per-city set,
+   * because the photographs are genuinely ours but are not all Texas jobs —
+   * captioning a specific driveway as a local address would be a false claim.
+   * The section heading says "our own jobs" and stops there. See
+   * MEDIA-PROVENANCE.md.
+   */
+  const cityPhotos = [
+    ...(media['gate-repair'] ?? []),
+    ...(media['gate-motor-repair'] ?? []),
+    ...(media['gate-installation'] ?? []),
+  ].slice(0, 6)
 
   return (
     <>
@@ -174,7 +192,7 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                 </p>
               )}
               <p className="mt-4 text-sm leading-relaxed text-ink-500">
-                Times are typical rather than guaranteed &mdash; North Texas traffic moves them around. You
+                We run 24 hours a day, seven days a week. You
                 get a real arrival window when you call, and a message when the technician is on the way.
               </p>
               {city.landmarks && city.landmarks.length > 0 && (
@@ -225,6 +243,25 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
       </section>
 
       <ServiceAreaMap city={city} />
+
+      {/* City pages previously had no social proof, no brand roster and no
+          photographs — they were text and a map. These are Google Ads
+          destinations for local search, so they now carry the same proof the
+          homepage does. */}
+      <TestimonialCarousel
+        items={publishedTestimonials}
+        intro={`Customers across Dallas–Fort Worth, filmed at their own gates. We bring the same team and the same parts stock to ${city.name}.`}
+        tone="tint"
+      />
+
+      <PhotoGallery
+        images={cityPhotos}
+        title="Our technicians, on our own jobs"
+        intro="Every photograph on this site is our own work. None of it is stock, and none of it is generated."
+        tone="muted"
+      />
+
+      <BrandsGrid />
 
       <VideoReel />
 

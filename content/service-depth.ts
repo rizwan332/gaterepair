@@ -252,7 +252,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         heading: 'Buried cable faults on long runs',
         body: [
           'Gates are often a long way from the building, and the cable between them is buried. That run gets damaged by landscaping, fence work, rodents and ground movement, and the damage is rarely visible.',
-          'The symptom is intermittency: a gate that works, then does not, then does again after rain or after a hot afternoon. Tracing the fault properly is almost always cheaper than the default of replacing the entire run, and it is the part of this work most companies skip.',
+          'The symptom is intermittency: a gate that works, then does not, then does again after rain or after a hot afternoon. Tracing the fault properly takes time and the right instruments, and it is almost always cheaper than replacing the entire run.',
         ],
       },
       {

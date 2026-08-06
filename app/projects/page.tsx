@@ -13,7 +13,7 @@ import { breadcrumbSchema } from '@/lib/schema'
 export const metadata: Metadata = {
   title: 'Project Case Studies | Real Gate Repairs, Start to Finish',
   description:
-    'Twelve gate repairs documented properly — the fault, how it was diagnosed, what was actually wrong, and what it took to fix. Including several that other companies had quoted for replacement.',
+    'Gate repairs documented properly — the fault, how it was diagnosed, what was actually wrong, and what it took to fix. Including several that had already been quoted as replacements.',
   alternates: { canonical: '/projects' },
 }
 

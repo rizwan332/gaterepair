@@ -16,7 +16,7 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
 import { publishedTestimonials } from '@/content/testimonials'
-import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForService } from '@/content/projects'
 
@@ -231,9 +231,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         intro="The same job written up properly — what was wrong, how it was diagnosed, and what it actually took to fix."
       />
 
-      <VideoTestimonials
-        items={publishedTestimonials.slice(0, 3)}
-        eyebrow="Customer videos"
+      <TestimonialCarousel
+        items={publishedTestimonials}
         intro="Real customers describing the repair in their own words, filmed on site."
         tone="tint"
       />

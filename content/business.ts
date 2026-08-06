@@ -75,8 +75,20 @@ export const business = {
   insurance: {
     confirmed: false,
     value: '',
-    note: 'Carrier name / bonded status for the "Licensed & Insured" badge.',
+    note: 'Carrier name / bonded status. Still needed to publish a specific policy.',
   } as Fact<string>,
+
+  /**
+   * The "Licensed & Insured" trust badge.
+   *
+   * Confirmed 6 Aug 2026: the client's written brief specifies this badge in
+   * the homepage hero. That is the business owner asserting a fact about his
+   * own company, which is his to assert — distinct from `license` and
+   * `insurance` above, which hold the *number* and *carrier* and stay
+   * unconfirmed. The badge therefore renders as a plain claim and never as a
+   * specific licence number until one is supplied.
+   */
+  licensedInsured: { confirmed: true, value: true } as Fact<boolean>,
 
   // Confirmed by client 3 Aug 2026 in the supplied About Us copy: "For over 16
   // years, Shield Gate Repair has proudly served the DFW Metroplex". Rendered
@@ -101,11 +113,21 @@ export const business = {
     note: 'Required for LocalBusiness schema and Google Ads location extensions.',
   } as Fact<{ street: string; city: string; region: string; postalCode: string }>,
 
-  /** Typical arrival window shown site-wide. Per-city bands live in content/cities.ts. */
+  /**
+   * Typical arrival window.
+   *
+   * Emptied 6 Aug 2026: the client's brief removes the "30–60 minute arrival"
+   * claim outright. It was never `confirmed`, so nothing was rendering it, and
+   * the per-city bands in content/cities.ts are cleared to match.
+   *
+   * If a real, measured window is ever supplied, setting it here and flipping
+   * `confirmed` brings it back everywhere — every render site already guards
+   * on this fact.
+   */
   responseBand: {
     confirmed: false,
-    value: '45–90 minutes',
-    note: 'Must be honest — publishing 30 min to Stephenville destroys the trust it is meant to build.',
+    value: '',
+    note: 'Removed at client request 6 Aug 2026. Only republish a window the team actually hits.',
   } as Fact<string>,
 
   /** Set true only if the client holds an actual dealer agreement. */

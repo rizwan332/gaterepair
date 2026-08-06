@@ -340,6 +340,17 @@
 }
 .leaflet-control-attribution a { color: var(--color-ink-700); }
 
+/* Carousel rails scroll by button and by swipe; the native scrollbar under the
+   cards is visual noise on a rail that already signals its own affordance. The
+   rail stays keyboard-scrollable — this hides the bar, not the behaviour. */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Every animation here is decorative. All of it must be switchable off. */
 @media (prefers-reduced-motion: reduce) {
   *,

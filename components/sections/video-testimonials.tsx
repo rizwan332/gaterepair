@@ -31,9 +31,13 @@ export function TestimonialCard({
 }) {
   const [playing, setPlaying] = useState(false)
 
+  // Shorts are 9:16. Letterboxing one into a 16:9 frame wastes most of the
+  // card and reads as a mistake, so the aspect follows the source.
+  const aspect = testimonial.isShort ? 'aspect-[9/16]' : 'aspect-video'
+
   if (playing) {
     return (
-      <div className="relative aspect-video overflow-hidden rounded-[var(--radius-card)] bg-ink-950">
+      <div className={`relative ${aspect} overflow-hidden rounded-[var(--radius-card)] bg-ink-950`}>
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${testimonial.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
           title={testimonial.title}
@@ -50,13 +54,13 @@ export function TestimonialCard({
       type="button"
       onClick={() => setPlaying(true)}
       aria-label={`Play video: ${testimonial.title}`}
-      className="group relative block aspect-video w-full overflow-hidden rounded-[var(--radius-card)] bg-ink-950 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]"
+      className={`group relative block ${aspect} w-full overflow-hidden rounded-[var(--radius-card)] bg-ink-950 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- remote YouTube
           thumbnail; next/image would need a remote pattern and buys nothing
           here since the file is already correctly sized and CDN-cached. */}
       <img
-        src={thumbnailFor(testimonial.youtubeId)}
+        src={thumbnailFor(testimonial.youtubeId, testimonial.isShort)}
         alt=""
         loading="lazy"
         decoding="async"

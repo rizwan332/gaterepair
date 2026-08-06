@@ -80,8 +80,8 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     ],
     extraFaqs: [
       {
-        q: 'Another company said my FAAC cannot be repaired. Is that true?',
-        a: 'Almost never. It usually means they do not service hydraulic operators — which is a statement about their technicians rather than about your gate. FAAC units are designed to be serviced: seals, fluid, pressure and boards are all replaceable. Replacement genuinely makes sense only when the housing or ram is physically damaged.',
+        q: 'I was told my FAAC cannot be repaired. Is that true?',
+        a: 'Almost never. FAAC units are designed to be serviced: seals, fluid, pressure and boards are all replaceable. Replacement genuinely makes sense only when the housing or ram is physically damaged. If you have been told otherwise, ask which specific component was tested and found faulty.',
       },
       {
         q: 'How often does a FAAC need servicing?',
@@ -472,7 +472,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         heading: 'The analogue line problem',
         body: [
           'DoorKing telephone entry units were designed around analogue phone lines. When a property moves to VoIP or fibre, the signalling those systems expect disappears and the unit stops dialling out — often months after the phone change, so nobody connects the two events.',
-          'The fix is usually a cellular module rather than a system replacement, which is considerably cheaper than what typically gets quoted.',
+          'The fix is usually a cellular module rather than a system replacement, which costs a great deal less.',
         ],
       },
       {

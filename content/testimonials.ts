@@ -43,6 +43,15 @@ export type Testimonial = {
   jobType?: string
   /** Operator brand, where the title names one. */
   brand?: string
+  /**
+   * True for a YouTube Short — vertical 9:16 rather than 16:9.
+   *
+   * Detected on 6 Aug 2026 by requesting youtube.com/shorts/<id>: a Short
+   * returns 200, a normal upload 303-redirects to /watch. Not guessed from the
+   * title, and it matters — a vertical video letterboxed into a 16:9 frame
+   * wastes most of the card.
+   */
+  isShort?: boolean
 }
 
 /** Customer testimonials, in the channel's order. */
@@ -83,6 +92,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'eagle-electric',
     youtubeId: 'MqT7ZnK_L7Y',
+    isShort: true,
     title: 'Eagle electric gate repair',
     jobType: 'Electric gate',
     brand: 'Eagle',
@@ -124,6 +134,72 @@ export const testimonials: Testimonial[] = [
     title: 'After an automatic swing gate service',
     jobType: 'Swing gate',
   },
+
+  // ── Added 6 Aug 2026 ────────────────────────────────────────────────────
+  // The client asked for every video on the channel including Shorts. These
+  // nine were read from the channel's own Atom feed, not typed from memory,
+  // and each ID was confirmed to resolve. Titles are the client's own,
+  // tidied to sentence case exactly as the entries above are.
+  {
+    id: 'liftmaster-repair-2',
+    youtubeId: 'jvKqVTIxOig',
+    title: 'LiftMaster gate repair',
+    jobType: 'Gate operator',
+    brand: 'LiftMaster',
+  },
+  {
+    id: 'double-swing',
+    youtubeId: 'mIh62RoIbow',
+    title: 'Double swing gate repair',
+    jobType: 'Swing gate',
+  },
+  {
+    id: 'swing-repair',
+    youtubeId: '_biXtk5wqRk',
+    title: 'Swing gate repair',
+    jobType: 'Swing gate',
+  },
+  {
+    id: 'liftmaster-install',
+    youtubeId: 'iCqBobZ331E',
+    title: 'LiftMaster swing gate opener installation',
+    jobType: 'Gate operator installation',
+    brand: 'LiftMaster',
+  },
+  {
+    id: 'swing-repair-short',
+    youtubeId: 'nQUqf0aiIZM',
+    title: 'Swing gate repair',
+    jobType: 'Swing gate',
+    isShort: true,
+  },
+  {
+    id: 'elite-electric',
+    youtubeId: 'JAV1Xm5EIVg',
+    title: 'Elite electric gate repair',
+    jobType: 'Gate operator',
+    brand: 'Elite',
+  },
+  {
+    id: 'liftmaster-repair-3',
+    youtubeId: 'p1E1qcAAZd4',
+    title: 'LiftMaster gate repair',
+    jobType: 'Gate operator',
+    brand: 'LiftMaster',
+  },
+  {
+    id: 'residential-swing',
+    youtubeId: 'rMWJkk2qFAY',
+    title: 'Automatic residential swing gate repair',
+    jobType: 'Swing gate',
+  },
+  {
+    id: 'apartment-emergency',
+    youtubeId: '5LcF684I8pE',
+    title: 'Apartment building emergency gate repair',
+    jobType: 'Emergency call-out',
+    isShort: true,
+  },
 ]
 
 /** Only entries with a real video ID can render. */
@@ -140,7 +216,15 @@ export function testimonialsForBrand(brandName: string, limit = 3): Testimonial[
   return [...matching, ...rest].slice(0, limit)
 }
 
-/** YouTube thumbnail. No API key, and no third-party JS until the user clicks. */
-export function thumbnailFor(youtubeId: string): string {
-  return `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
+/**
+ * YouTube thumbnail. No API key, and no third-party JS until the user clicks.
+ *
+ * `hqdefault` is always 4:3 with black bars baked in for a vertical Short, so
+ * a Short would show its own letterboxing inside an already-vertical card.
+ * `oar2.jpg` is the original-aspect-ratio still, which is the full 9:16 frame.
+ */
+export function thumbnailFor(youtubeId: string, isShort = false): string {
+  return isShort
+    ? `https://i.ytimg.com/vi/${youtubeId}/oar2.jpg`
+    : `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
 }

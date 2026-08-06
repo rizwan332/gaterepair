@@ -39,7 +39,7 @@ export function ServicesGrid() {
             </div>
             <p className="max-w-sm text-[0.9375rem] leading-relaxed text-ink-600">
               Most gate faults announce themselves in a fairly specific way. Every service page opens with a
-              symptom table &mdash; which no other gate company in this market publishes.
+              symptom table, so you can match what your gate is doing before you call.
             </p>
           </div>
         </Reveal>

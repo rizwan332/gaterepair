@@ -53,8 +53,8 @@ export const brands: Brand[] = [
     headline: 'FAAC Gate Operator Repair in Dallas–Fort Worth',
     intro:
       'FAAC builds some of the best hydraulic gate operators on the market — and almost nobody in Dallas will work ' +
-      'on them. Most companies open the housing, see hydraulics instead of a chain drive, and quote you a full ' +
-      'replacement with a different brand. We repair them.',
+      'on them, because hydraulics need different diagnostics, different parts and different training to a chain ' +
+      'drive. We repair them.',
     whyDifferent:
       'It is not that FAAC operators are unreliable. It is that hydraulic operators need different diagnostics and ' +
       'different parts than the chain-drive units most technicians see every day. Replacing one is easier than ' +
@@ -75,8 +75,8 @@ export const brands: Brand[] = [
         a: 'In most cases it can be repaired. FAAC hydraulic units are built to be serviced — seals, fluid, pump pressure and control boards are all replaceable parts. We see operators well past fifteen years still running fine after a seal kit and a pressure reset. Replacement only makes sense when the housing or ram is physically damaged.',
       },
       {
-        q: 'Why did another company tell me my FAAC has to be replaced?',
-        a: 'Usually because they do not service hydraulics. Most gate companies in Dallas work almost exclusively on chain-drive and screw-drive operators, so a hydraulic unit is outside what their technicians carry parts and training for. Replacing it with a brand they know is simpler for them than repairing the one you have.',
+        q: 'I was told my FAAC has to be replaced. Is that right?',
+        a: 'Often it means the hydraulics were not serviceable by whoever looked at it. Gate work in Dallas is overwhelmingly chain-drive and screw-drive, so a hydraulic unit sits outside what many technicians carry parts and training for. Ask which specific component was tested and found faulty — on a FAAC, seals, fluid, pressure and boards are all replaceable, and replacement is genuinely necessary only when the housing or ram is physically damaged.',
       },
       {
         q: 'My FAAC gate opens slowly or stops halfway. What causes that?',
@@ -178,9 +178,9 @@ export const brands: Brand[] = [
     priority: 4,
     headline: 'LiftMaster Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'LiftMaster is the most common gate operator in Dallas–Fort Worth, which means most companies will happily ' +
-      'sell you a new one. We repair them first. Control boards, capacitors, limit switches and logic faults are ' +
-      'all serviceable, and a board is a fraction of the cost of a replacement operator.',
+      'LiftMaster is the most common gate operator in Dallas–Fort Worth, and we repair them before we replace them. ' +
+      'Control boards, capacitors, limit switches and logic faults are all serviceable, and a board is a fraction ' +
+      'of the cost of a replacement operator.',
     whyDifferent:
       'Because LiftMaster is so common, it is also the brand most often replaced unnecessarily. The failure is ' +
       'usually a single serviceable component. We diagnose to the part, not to the invoice.',
@@ -219,13 +219,14 @@ export const brands: Brand[] = [
     mediaCategory: 'elite',
     contested: true,
     priority: 5,
-    headline: 'Elite Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Elite Gate Repair in Dallas–Fort Worth',
     intro:
-      'Elite operators are common on Dallas residential and light commercial gates. Boards, limit switches and ' +
-      'capacitors are all serviceable, and we carry the parts that actually fail.',
+      'Elite gate repair on Dallas residential and light commercial gates is routine work for us. Boards, ' +
+      'limit switches and capacitors are all serviceable, and we carry the parts that actually fail.',
     whyDifferent:
-      'Elite shares a lot of DNA with the LiftMaster line, which means the same repair-first logic applies — and ' +
-      'the same tendency in this market to replace rather than diagnose.',
+      'Elite shares a lot of DNA with the LiftMaster line, which means the same repair-first logic applies: ' +
+      'the board, the capacitor and the limit switches are the parts that fail, and all three are replaceable ' +
+      'without touching the operator itself.',
     commonFailures: [
       'Control board failure',
       'Capacitor failure',
@@ -322,11 +323,14 @@ export const brands: Brand[] = [
     priority: 8,
     headline: 'DoorKing Gate Operator & Intercom Repair in Dallas–Fort Worth',
     intro:
-      'DoorKing operators and telephone entry systems are common on Dallas apartment, HOA and commercial ' +
-      'entrances. We service both the gate operators and the access control side.',
+      'DoorKing — DKS — operators and telephone entry systems run the entrances at a large share of Dallas ' +
+      'apartment complexes, HOA communities and commercial sites. We service both sides of the system: the ' +
+      'gate operator itself and the access control that tells it when to open.',
     whyDifferent:
-      'DoorKing installations usually combine an operator with a telephone entry or card system, so the fault is ' +
-      'often in the access control rather than the gate. Diagnosing both together avoids two separate call-outs.',
+      'A DoorKing installation is two systems that have to agree with each other: an operator, and a telephone ' +
+      'entry or card system telling it when to run. When a resident says the gate will not open, the operator ' +
+      'is frequently fine and the fault is in the entry panel, the directory programming or the loop — which is ' +
+      'why we diagnose both together rather than booking two separate call-outs.',
     commonFailures: [
       'Telephone entry board faults',
       'Card reader and keypad failures',
@@ -334,12 +338,26 @@ export const brands: Brand[] = [
       'Limit switch drift',
       'Loop detector faults',
       'Programming and directory corruption',
+      'Gearbox wear on high-cycle apartment and HOA entrances',
+      'Dial-out and cellular connection loss after a phone line change',
     ],
     models: ['6300', '6400', '6500', '9100', '9150', '1830', '1835', '1837'],
     faqs: [
       {
         q: 'Do you program DoorKing telephone entry systems?',
         a: 'Yes — directory entries, access codes, card credentials and dial-out configuration, as well as the physical repair.',
+      },
+      {
+        q: 'Residents can call in but the gate will not open. Where is the fault?',
+        a: 'That symptom separates the two systems cleanly: the entry panel is working, so the fault is between it and the operator. Usually it is the relay output, the wiring run between panel and operator, or the operator input itself. It is rarely the part people expect.',
+      },
+      {
+        q: 'Our DKS system stopped dialling out after we changed phone providers.',
+        a: 'Common, and not a fault in the unit. Older DoorKing entry systems expect an analogue line, and a switch to VoIP or a cellular service changes what the panel is dialling into. The fix is usually a cellular module rather than replacing the system.',
+      },
+      {
+        q: 'Can a DoorKing gearbox be repaired instead of replaced?',
+        a: 'Often, yes. A gearbox is a serviceable assembly rather than a sealed unit, and on a DoorKing operator it can usually be rebuilt with the motor and control board left in place. We have documented one of these jobs in full — see the case studies on this page.',
       },
     ],
   },
@@ -415,19 +433,20 @@ export const brands: Brand[] = [
     priority: 11,
     headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'US Automatic builds solar-powered gate operators for rural and acreage properties — the Ranger and Patriot ' +
-      'lines you see on ranch entrances across North Texas. They run off-grid, which means most failures trace ' +
-      'back to power, not the motor.',
+      'US Automatic builds both solar and electric gate operators — the Ranger and Patriot lines you see on ' +
+      'ranch entrances, acreage driveways and mains-powered residential gates across North Texas. We repair ' +
+      'both, and the first job is working out which kind of fault you actually have.',
     whyDifferent:
-      'A solar operator is a power system with a gate attached. When one stops working the instinct is to blame ' +
-      'the operator, but the usual culprit is a battery at the end of its life, a panel that has drifted out of ' +
-      'sun, or a charge controller that has quit. Diagnosing it as a power problem first is the difference ' +
-      'between a battery swap and an unnecessary replacement — which matters on rural properties where the ' +
-      'nearest mains power may be a long way from the gate.',
+      'On a solar install the operator is a power system with a gate attached, and the usual culprit is a battery ' +
+      'at the end of its life, a panel that has drifted out of sun, or a charge controller that has quit. On a ' +
+      'mains-powered unit the same symptoms point somewhere quite different — a transformer, a surge-damaged ' +
+      'board or a limit switch. Establishing which system you have before diagnosing is the difference between ' +
+      'a battery swap and an unnecessary replacement.',
     commonFailures: [
-      'Battery degradation — the most common cause by a wide margin',
+      'Battery degradation — the most common cause on solar installs by a wide margin',
       'Solar panel output loss from shading, dirt or panel angle drift',
       'Charge controller failure',
+      'Transformer and mains supply faults on electric installs',
       'Control board damage from lightning and power surges',
       'Limit switch drift on Ranger and Patriot units',
       'Gate arm and linkage wear on long driveway gates',
@@ -435,11 +454,11 @@ export const brands: Brand[] = [
     models: ['Ranger', 'Ranger Solar', 'Patriot I', 'Patriot II', 'Patriot RSL', 'Sentry'],
     faqs: [
       {
-        q: 'My solar gate has stopped working. Is the operator dead?',
-        a: 'Usually not. On solar units the battery is the part that wears out, typically every three to five years in Texas heat, and a weak battery behaves exactly like a failed operator — the gate opens slowly, stops partway, or does nothing at all. We test the battery, panel output and charge controller before we touch the operator itself.',
+        q: 'My US Automatic gate has stopped working. Is the operator dead?',
+        a: 'Usually not. On a solar unit the battery is the part that wears out, typically every three to five years in Texas heat, and a weak battery behaves exactly like a failed operator — the gate opens slowly, stops partway, or does nothing at all. We test the battery, panel output and charge controller first. On a mains-powered unit we start at the transformer and the incoming supply instead, because the same symptoms have a completely different cause.',
       },
       {
-        q: 'Why does my gate work in summer but not winter?',
+        q: 'Why does my solar gate work in summer but not winter?',
         a: 'Shorter days and a lower sun angle mean the panel generates less, and cold reduces battery capacity at the same time. If the system was marginal in summer it will fail in winter. The fix is usually a larger battery, a repositioned or additional panel, or both.',
       },
       {
@@ -447,8 +466,226 @@ export const brands: Brand[] = [
         a: 'Yes. A large share of US Automatic units in our area are on acreage and ranch entrances well outside the city limits, and those are exactly the properties where a failed gate is most disruptive. Call and we will confirm coverage for your address.',
       },
       {
-        q: 'Can you convert a solar gate to mains power?',
-        a: 'Sometimes, if there is a practical route for a power run. Often it is cheaper and less disruptive to correct the solar sizing instead. We will tell you which makes sense for your gate rather than defaulting to the bigger job.',
+        q: 'Do you repair electric US Automatic operators as well as solar?',
+        a: 'Yes — both. US Automatic makes solar and electric operators, and we service the full range. We can also convert a solar gate to mains power where there is a practical route for a power run, though it is often cheaper and less disruptive to correct the solar sizing instead. We will tell you which makes sense for your gate rather than defaulting to the bigger job.',
+      },
+    ],
+  },
+  // -- Added 6 Aug 2026 from the client's own supplied brand list ----------
+  // He asked for the full roster of manufacturers he services rather than the
+  // eleven that had pages. None of these six had a legacy WordPress page, so
+  // there is no 301 to preserve and `legacyPath` is the new canonical path.
+  //
+  // No photography for any of them yet: `mediaCategory: null` means the page
+  // renders without a gallery rather than borrowing another brand's photos.
+  // Ranked below the brands we can evidence with our own work.
+  {
+    slug: 'apollo',
+    legacyPath: '/apollo-gate-motor-repair/',
+    name: 'Apollo',
+    mediaCategory: null,
+    contested: false,
+    priority: 11,
+    headline: 'Apollo Gate Operator Repair in Dallas–Fort Worth',
+    intro:
+      'Apollo builds the solar-capable swing and slide operators found on a great many North Texas acreage ' +
+      'properties, usually paired with a battery and a small panel. We repair them rather than replacing them.',
+    whyDifferent:
+      'Apollo installs are typically off-grid, which means most faults are power faults rather than operator ' +
+      'faults. A dying battery, an undersized panel or a shaded array produces exactly the symptoms of a failing ' +
+      'control board, so the charging system has to be measured under load before anything is condemned.',
+    commonFailures: [
+      'Battery failure and undercharging',
+      'Solar panel output loss from shading, soiling or panel age',
+      'Control board and receiver faults',
+      'Limit switch drift on swing arms',
+      'Actuator arm wear and mounting bracket fatigue',
+      'Corroded low-voltage connections at the enclosure',
+    ],
+    models: ['1500 Series', '1600 Series', '7000 Series', 'Titan', 'Nova'],
+    faqs: [
+      {
+        q: 'My solar Apollo gate has slowed down or stopped. Is the operator dead?',
+        a: 'Usually not. A slow gate that gets worse toward the end of the day is the classic signature of a charging system that is not keeping up, not a failing operator. We measure the battery under load and the panel output before touching the operator itself.',
+      },
+      {
+        q: 'Can you replace an Apollo battery and solar panel?',
+        a: 'Yes, and we size the replacement to the gate rather than fitting like for like. An array that was marginal when installed will be marginal again.',
+      },
+    ],
+  },
+  {
+    slug: 'mighty-mule',
+    legacyPath: '/mighty-mule-gate-motor-repair/',
+    name: 'Mighty Mule',
+    mediaCategory: null,
+    contested: false,
+    priority: 12,
+    headline: 'Mighty Mule Gate Opener Repair in Dallas–Fort Worth',
+    intro:
+      'Mighty Mule openers are the most common homeowner-installed operators in North Texas. We service and ' +
+      'repair them, including the solar and battery-backed installations.',
+    whyDifferent:
+      'These are light-duty operators, frequently fitted to gates heavier than they were rated for. That matters ' +
+      'because the failure then repeats: replacing the arm without addressing the load or the hinges buys a few ' +
+      'months. We check what the operator is actually being asked to move.',
+    commonFailures: [
+      'Battery and charging faults on solar installs',
+      'Control board failures after lightning or surge',
+      'Actuator arm wear and internal gear stripping',
+      'Limit and stall-force settings drifting out',
+      'Receiver and remote pairing loss',
+      'Undersized operator on an overweight gate',
+    ],
+    models: ['MM360', 'MM560', 'FM500', 'FM502', 'Ranger'],
+    faqs: [
+      {
+        q: 'Is a Mighty Mule worth repairing, or should I upgrade?',
+        a: 'It depends what failed and what the gate weighs. A board or a battery is worth repairing. If the arm has stripped repeatedly on a heavy gate, the honest answer is that the operator is undersized for the job and we will tell you so.',
+      },
+      {
+        q: 'Do you work on solar Mighty Mule installations?',
+        a: 'Yes. Most of the ones we see are solar, and most of the faults turn out to be in the battery or panel rather than the operator.',
+      },
+    ],
+  },
+  {
+    slug: 'ghost-controls',
+    legacyPath: '/ghost-controls-gate-motor-repair/',
+    name: 'Ghost Controls',
+    mediaCategory: null,
+    contested: false,
+    priority: 13,
+    headline: 'Ghost Controls Gate Opener Repair in Dallas–Fort Worth',
+    intro:
+      'Ghost Controls automatic gate openers are common on residential and ranch driveways across North Texas, ' +
+      'almost always running on solar and battery. We repair them.',
+    whyDifferent:
+      'Ghost Controls units are DC operators designed around a battery, so battery health governs everything the ' +
+      'gate does. A weak battery reads as a weak operator: slow travel, partial opening, intermittent response. ' +
+      'The charging system is the first thing to test, not the last.',
+    commonFailures: [
+      'Battery capacity loss and charge faults',
+      'Solar panel output falling below demand',
+      'Control box and receiver failures',
+      'Arm gear wear and mounting bracket movement',
+      'Auto-close timer and sensor faults',
+      'Remote and keypad pairing loss',
+    ],
+    models: ['TDS Series', 'TSS Series', 'DTP1', 'AXP1', 'Architectural Series'],
+    faqs: [
+      {
+        q: 'My Ghost Controls gate opens part way and stops. Why?',
+        a: 'Most often the battery no longer holds enough charge to complete a full cycle under load. It presents as an operator fault and is usually a power fault. We test the battery and the panel output before anything else.',
+      },
+      {
+        q: 'Can you service a Ghost Controls gate that was self-installed?',
+        a: 'Yes. We also check the mounting and the gate hardware, since self-installed arms are frequently fitted to gates that are heavier or draggier than the operator is rated for.',
+      },
+    ],
+  },
+  {
+    slug: 'nice',
+    legacyPath: '/nice-gate-motor-repair/',
+    name: 'Nice',
+    mediaCategory: null,
+    contested: false,
+    priority: 14,
+    headline: 'Nice Gate Operator Repair in Dallas–Fort Worth',
+    intro:
+      'Nice and Nice/Apollo operators appear on both residential and commercial entrances across the Metroplex, ' +
+      'including the underground and articulated-arm swing units. We service and repair them.',
+    whyDifferent:
+      'Nice is a European system, and its control logic, programming procedure and accessories differ from the ' +
+      'American operators most Dallas gate work is built around. Programming a Nice board is not the same job as ' +
+      'programming a LiftMaster, and getting it wrong means a gate that runs but never quite behaves.',
+    commonFailures: [
+      'Control unit and logic board faults',
+      'Encoder and limit position loss after power interruption',
+      'Photocell alignment and safety-edge faults',
+      'Gearbox and drive wear on articulated arm units',
+      'Radio receiver and transmitter pairing loss',
+      'Seal failure and water ingress on underground operators',
+    ],
+    models: ['Wingo', 'Toona', 'Robus', 'Road', 'Metro', 'Ten'],
+    faqs: [
+      {
+        q: 'Do you program Nice control units?',
+        a: 'Yes, including limit learning and force settings. Nice programming differs from the American operators most gate companies work on daily, which is often why a Nice gate has been left running badly rather than repaired.',
+      },
+      {
+        q: 'Can an underground Nice operator be repaired in place?',
+        a: 'Frequently, yes. Water ingress and seal failure are the usual causes, and both are serviceable. Replacement is a much larger job involving the foundation box, so it is worth diagnosing properly first.',
+      },
+    ],
+  },
+  {
+    slug: 'bft',
+    legacyPath: '/bft-gate-motor-repair/',
+    name: 'BFT',
+    mediaCategory: null,
+    contested: false,
+    priority: 15,
+    headline: 'BFT Gate Operator Repair in Dallas–Fort Worth',
+    intro:
+      'BFT builds hydraulic and electromechanical operators used on gated communities, commercial entrances and ' +
+      'higher-end residential gates. We repair them, hydraulics included.',
+    whyDifferent:
+      'Like FAAC, BFT is a hydraulic-heavy line, and hydraulic operators need different diagnostics, different ' +
+      'parts and different training to a chain drive. Pressure, fluid condition and seal integrity are measurable ' +
+      'things, and measuring them is what separates a repair from a replacement quote.',
+    commonFailures: [
+      'Hydraulic seal failure and fluid loss',
+      'Pressure loss causing slow or incomplete travel',
+      'Control board and Deimos/Alpha logic faults',
+      'Encoder and limit drift',
+      'Photocell and safety-edge faults',
+      'Ram and piston wear on high-cycle installs',
+    ],
+    models: ['Deimos', 'Ares', 'Phobos', 'Icaro', 'Elpro', 'Giotto'],
+    faqs: [
+      {
+        q: 'Do you repair hydraulic BFT operators?',
+        a: 'Yes. Seals, fluid and pressure are all serviceable, and a hydraulic unit that is leaking or slow is very rarely beyond repair. Replacement is genuinely necessary only when the ram or housing is physically damaged.',
+      },
+      {
+        q: 'Can you get BFT parts in Dallas?',
+        a: 'Yes. BFT is less common here than LiftMaster, so parts are ordered rather than carried on every truck, and we confirm availability before quoting a repair.',
+      },
+    ],
+  },
+  {
+    slug: 'gto',
+    legacyPath: '/gto-gate-motor-repair/',
+    name: 'GTO',
+    mediaCategory: null,
+    contested: false,
+    priority: 16,
+    headline: 'GTO Gate Opener Repair in Dallas–Fort Worth',
+    intro:
+      'GTO and GTO/PRO openers — the line Mighty Mule grew out of — are still running on a great many North ' +
+      'Texas driveways. We repair them and can still source parts for most models.',
+    whyDifferent:
+      'These are older DC operators, and a lot of the ones we see are fifteen or twenty years old. Age alone is ' +
+      'not a reason to replace one: the mechanical side was built to last and the parts that fail are usually the ' +
+      'cheap ones. We will tell you honestly when a unit really has reached the end.',
+    commonFailures: [
+      'Battery and solar charging faults',
+      'Control board failure, often after a surge',
+      'Actuator arm gear wear',
+      'Limit and stall-force drift',
+      'Receiver and remote pairing loss',
+      'Corroded connections in the control box',
+    ],
+    models: ['GTO PRO SW-2000XL', 'SW-3000XL', 'SW-4000XL', 'SL-1000', 'Mighty Mule conversion kits'],
+    faqs: [
+      {
+        q: 'My GTO opener is twenty years old. Can it still be repaired?',
+        a: 'Usually yes. Boards, batteries and arm gears are the parts that fail and all three are replaceable. We will be straight with you if a unit genuinely has reached the end of its life.',
+      },
+      {
+        q: 'Are GTO parts still available?',
+        a: 'For most models, yes — GTO and Mighty Mule share a good deal of hardware. We confirm availability before quoting rather than after.',
       },
     ],
   },

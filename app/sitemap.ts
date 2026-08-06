@@ -4,6 +4,7 @@ import { services } from '@/content/services'
 import { brands } from '@/content/brands'
 import { publishedCities } from '@/content/cities'
 import { projects } from '@/content/projects'
+import { landingPages } from '@/content/landing-pages'
 
 /**
  * Only published cities appear. Cities that exist in the service area but have
@@ -26,7 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/faq', priority: 0.85 },
     { path: '/warranty', priority: 0.7 },
     { path: '/about', priority: 0.7 },
-    { path: '/gallery', priority: 0.7 },
     { path: '/contact', priority: 0.8 },
   ]
 
@@ -36,6 +36,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: r.priority,
+    })),
+    // Google Ads landing pages. Indexed deliberately: they are genuinely
+    // distinct pages answering a model-specific query, not thin duplicates of
+    // the brand pages, and organic traffic for those long-tail terms is worth
+    // having alongside the paid clicks.
+    ...landingPages.map((p) => ({
+      url: `${base}/${p.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
     })),
     ...services.map((s) => ({
       url: `${base}/services/${s.slug}`,

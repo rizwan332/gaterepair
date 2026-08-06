@@ -20,7 +20,7 @@ export default function BrandsPage() {
       <PageHero
         eyebrow="Brands"
         title="Gate Operator Brands We Repair"
-        intro={`${brands.length} operator brands, with real repair photography and video for most of them. If another company has told you your operator can only be replaced, it is worth a second opinion.`}
+        intro={`${brands.length} operator brands, with real repair photography and video for most of them. If you have been told your operator can only be replaced, it is worth a second opinion.`}
         image={media['liftmaster']?.[0]}
       />
       <BrandsGrid />

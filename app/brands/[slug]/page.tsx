@@ -9,13 +9,16 @@ import { videosFor } from '@/content/video-manifest'
 import { business } from '@/content/business'
 import { PageHero } from '@/components/sections/page-hero'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { CaseStudies } from '@/components/sections/case-studies'
+import { projectsForBrand } from '@/content/projects'
+import { landingPagesForBrand } from '@/content/landing-pages'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
 import { testimonialsForBrand } from '@/content/testimonials'
-import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -32,7 +35,7 @@ export async function generateMetadata({
 
   return {
     title: `${brand.name} Gate Operator Repair Dallas | Shield Gate Repair`,
-    description: `We repair ${brand.name} gate operators most Dallas companies will not touch. Real repair photos and video, same-day service across Dallas–Fort Worth. Call ${business.phone.display}.`,
+    description: `${brand.name} gate operator repair across Dallas–Fort Worth. Real repair photos and video, boards, limits and capacitors serviced. Open 24/7. Call ${business.phone.display}.`,
     alternates: { canonical: `/brands/${brand.slug}` },
   }
 }
@@ -54,6 +57,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       ]
     : allImages
   const brandVideos = brand.mediaCategory ? videosFor(brand.mediaCategory) : []
+  const brandProjects = projectsForBrand(brand.name)
+  const brandLandingPages = landingPagesForBrand(brand.slug)
 
   return (
     <>
@@ -218,13 +223,56 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
-      <VideoTestimonials
-        items={testimonialsForBrand(brand.name, 3)}
-        eyebrow="Customer videos"
-        title={`${brand.name} customers, on camera`}
-        intro="Real Shield Gate Repair customers describing the job in their own words."
+      {/* Worked repair examples for this brand. The client asked specifically
+          for DoorKing repair examples; doing it by brand rather than
+          hard-coding one page means every brand picks its own up as case
+          studies are written. */}
+      <CaseStudies
+        items={brandProjects}
+        title={`${brand.name} repairs we have documented`}
+        intro="The fault, how it was diagnosed, and what it actually took to fix."
+        tone="light"
+      />
+
+      {/* Every video, ordered so this brand's own jobs come first — brand pages
+          are Google Ads destinations, so they carry the full library rather
+          than a three-card sample. */}
+      <TestimonialCarousel
+        items={testimonialsForBrand(brand.name, Number.MAX_SAFE_INTEGER)}
+        intro={`Real Shield Gate Repair customers describing the job in their own words, ${brand.name} jobs first.`}
         tone="tint"
       />
+
+      {/* Inbound links to the model-specific pages. Without these they are
+          orphans — reachable from an ad and the sitemap but with no internal
+          link, which is a weak signal for the organic long-tail traffic those
+          model queries also attract. */}
+      {brandLandingPages.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">
+              Specific {brand.name} repairs
+            </h2>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {brandLandingPages.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    href={`/${p.slug}`}
+                    className="group flex h-full flex-col rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 transition-all hover:border-gold-400 hover:shadow-[var(--shadow-card)]"
+                  >
+                    <span className="font-display font-semibold text-ink-950">{p.h1}</span>
+                    <span className="mt-1.5 text-sm leading-relaxed text-ink-600">{p.subhead}</span>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 group-hover:text-gold-600">
+                      Read more
+                      <ArrowRight className="size-3.5" aria-hidden />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <FaqAccordion faqs={faqs} title={`${brand.name} repair questions`} />
 

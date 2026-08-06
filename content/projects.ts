@@ -80,7 +80,7 @@ export const projects: Project[] = [
     diagnosis: [
       'Impact damage on a gate this size looks catastrophic, and that appearance does a lot of work in a replacement quote. What matters is which parts actually took the load.',
       'Here the damage was concentrated: the rollers the gate runs on, and two of the posts. The gate structure itself — the expensive part, the part that takes weeks to fabricate and a crane day to install — was sound.',
-      'Replacing a structurally sound 35-foot gate because its rollers and posts were destroyed is not a repair decision. It is the easier sale.',
+      'Replacing a structurally sound 35-foot gate because its rollers and posts were destroyed replaces the one part of the assembly that did not fail.',
     ],
     solution: [
       'We recommended repairing it, replacing only what the impact had actually damaged, and we were back the next day to do the work.',
@@ -143,7 +143,7 @@ export const projects: Project[] = [
       'A DoorKing dual swing gate operator at a residential entrance had stopped working correctly. Dual swing installations are less forgiving than single-leaf gates: both leaves have to move together, so a fault on one side shows up as the whole entrance misbehaving rather than as one obviously broken half.',
     ],
     diagnosis: [
-      'The fault was in the gearbox. That is the point at which most companies stop diagnosing and start quoting, because a gearbox sounds terminal and a replacement operator is a far simpler sale than a repair.',
+      'The fault was in the gearbox, which sounds terminal and is the point at which diagnosis often stops and quoting begins.',
       'It is rarely terminal. A DoorKing operator is built to be serviced, and a gearbox is a serviceable assembly rather than a sealed unit you throw away with the motor and the control board still working perfectly.',
     ],
     solution: [

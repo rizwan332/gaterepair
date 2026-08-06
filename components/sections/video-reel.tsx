@@ -49,7 +49,7 @@ export function VideoReel() {
         </div>
 
         <div className="mt-10">
-          <Button href="/gallery" variant="ghostDark" size="md">
+          <Button href="/testimonials" variant="ghostDark" size="md">
             See more of our work
           </Button>
         </div>

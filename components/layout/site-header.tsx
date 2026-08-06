@@ -79,9 +79,7 @@ export function SiteHeader() {
             items={[
               { label: 'About us', href: '/about' },
               { label: 'Case studies', href: '/projects' },
-              { label: 'Our work', href: '/gallery' },
               { label: 'Our warranty', href: '/warranty' },
-              { label: 'Pricing', href: '/pricing' },
               { label: 'FAQs', href: '/faq' },
             ]}
           />
