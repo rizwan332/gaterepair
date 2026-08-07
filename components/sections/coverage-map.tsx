@@ -62,6 +62,16 @@ export function CoverageMap({
   const [visible, setVisible] = useState(false)
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
+  /**
+   * Bumped by the "Try again" button to re-run the loader.
+   *
+   * The realistic failure here is not a broken map — it is a stale chunk. The
+   * Leaflet import is dynamic, so its filename carries a build hash; a page
+   * left open across a deploy asks for a chunk that no longer exists and the
+   * import rejects. That is a transient, recoverable condition, and it used to
+   * present as a permanent dead end.
+   */
+  const [attempt, setAttempt] = useState(0)
 
   // Arm the loader slightly before the section is on screen, so tiles have a
   // head start and the map is drawn by the time it is actually looked at.
@@ -88,6 +98,7 @@ export function CoverageMap({
     // on the second, and the spinner never clears.
     if (initialisingRef.current) return
     initialisingRef.current = true
+    setFailed(false)
 
     let cancelled = false
 
@@ -193,7 +204,7 @@ export function CoverageMap({
     // Deliberately not reacting to visibleSlugs/focus/hover — those are applied
     // by the effects below rather than by tearing the whole map down.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, cities, colors])
+  }, [visible, cities, colors, attempt])
 
   // Dim non-matching pins rather than removing them — "there is nothing there"
   // and "you filtered it out" must not look the same.
@@ -268,10 +279,25 @@ export function CoverageMap({
 
       {failed && (
         <div className="absolute inset-0 flex items-center justify-center bg-ink-50 p-6">
-          <p className="max-w-sm text-center text-sm text-ink-600">
-            The map could not load. Every city we serve is listed beside this &mdash; nothing is
-            missing from this page.
-          </p>
+          <div className="max-w-sm text-center">
+            <p className="text-sm text-ink-600">
+              The map could not load. Every city we serve is listed beside this &mdash; nothing is
+              missing from this page.
+            </p>
+            {/* Retry in place first — it costs nothing and keeps the page
+                state. If that fails too the cause is almost certainly a stale
+                chunk, which only a fresh document fixes, so the second press
+                reloads rather than repeating something we know will fail. */}
+            <button
+              type="button"
+              onClick={() =>
+                attempt === 0 ? setAttempt(1) : window.location.reload()
+              }
+              className="mt-4 inline-flex h-10 items-center rounded-lg border border-ink-200 bg-white px-4 text-sm font-semibold text-ink-900 transition-colors hover:border-gold-400"
+            >
+              {attempt === 0 ? 'Try again' : 'Reload the page'}
+            </button>
+          </div>
         </div>
       )}
     </div>
