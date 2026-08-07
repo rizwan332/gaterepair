@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { FileCheck, AlertTriangle, XCircle, CheckCircle2 } from 'lucide-react'
+import { FileCheck, XCircle, CheckCircle2 } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 import { PageHero } from '@/components/sections/page-hero'
@@ -65,18 +65,28 @@ export default function WarrantyPage() {
         meta={term ? `${term} on parts and workmanship` : undefined}
       />
 
-      {!term && (
-        <section className="border-b border-ink-100 bg-gold-500/[0.07]">
-          <div className="container-page flex max-w-3xl gap-3.5 py-5">
-            <AlertTriangle className="mt-0.5 size-5 shrink-0 text-gold-600" aria-hidden />
-            <p className="text-sm leading-relaxed text-ink-700">
-              <span className="font-semibold text-ink-950">Term pending confirmation.</span> The structure
-              below is final; the specific period is being confirmed and will appear here rather than being
-              stated approximately.
-            </p>
-          </div>
-        </section>
-      )}
+      {/*
+        Client-supplied copy, 7 Aug 2026, replacing the "term pending
+        confirmation" notice that sat here.
+
+        It is no longer conditional on `warrantyTerm`. The old text existed only
+        to explain a missing number, so it had to disappear once one arrived;
+        this says something true either way, and reads as a promise rather than
+        as an apology. The specific term still renders in the page meta above
+        the moment business.warrantyTerm is confirmed.
+
+        Restyled to match: the warning triangle and amber band were right for a
+        caveat and wrong for a commitment.
+      */}
+      <section className="border-b border-ink-100 bg-ink-50">
+        <div className="container-page flex max-w-3xl gap-3.5 py-6">
+          <FileCheck className="mt-0.5 size-5 shrink-0 text-success-600" aria-hidden />
+          <p className="text-base leading-relaxed text-ink-800">
+            Every repair is backed by a clear written warranty. No hidden terms. No confusing fine
+            print. We stand behind our work and every covered repair is explained before we begin.
+          </p>
+        </div>
+      </section>
 
       <section className="section bg-white">
         <div className="container-page">
