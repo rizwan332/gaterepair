@@ -1,4 +1,5 @@
 import type { MediaImage } from '@/content/media-manifest'
+import { cdn } from '@/lib/cdn'
 
 /**
  * Serves the pre-generated AVIF/WebP derivatives directly.
@@ -31,7 +32,7 @@ export function ResponsiveImage({
   alt?: string
 }) {
   const srcSet = (ext: 'avif' | 'webp') =>
-    image.widths.map((w) => `${image.src}-${w}.${ext} ${w}w`).join(', ')
+    image.widths.map((w) => `${cdn(`${image.src}-${w}.${ext}`)} ${w}w`).join(', ')
 
   // Largest generated width is the most compatible fallback for <img src>.
   const fallbackWidth = image.widths[image.widths.length - 1]
@@ -41,7 +42,7 @@ export function ResponsiveImage({
       <source type="image/avif" srcSet={srcSet('avif')} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />
       <img
-        src={`${image.src}-${fallbackWidth}.webp`}
+        src={cdn(`${image.src}-${fallbackWidth}.webp`)}
         alt={alt ?? image.alt}
         width={image.width}
         height={image.height}

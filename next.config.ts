@@ -22,6 +22,14 @@ const trim = (p: string) => p.replace(/\/$/, '')
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
+    /**
+     * The asset CDN. Required by next/image for any remote host, even one we
+     * control — without it every page carrying a video poster 500s.
+     *
+     * Kept generic rather than pinned to the current distribution domain so
+     * moving the CDN is an env-var change, not a code change.
+     */
+    remotePatterns: [{ protocol: 'https', hostname: '*.cloudfront.net' }],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [400, 640, 828, 1080, 1200, 1600, 1920],
     imageSizes: [64, 96, 128, 256, 384],

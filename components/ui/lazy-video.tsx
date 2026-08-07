@@ -4,6 +4,7 @@ import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { Play } from 'lucide-react'
 import type { SiteVideo } from '@/content/video-manifest'
+import { cdn } from '@/lib/cdn'
 
 /**
  * Poster-first video tile.
@@ -25,8 +26,8 @@ export function LazyVideo({ video, className }: { video: SiteVideo; className?: 
         {active ? (
           <video
             ref={ref}
-            src={video.src}
-            poster={`${video.poster}.jpg`}
+            src={cdn(video.src)}
+            poster={cdn(`${video.poster}.jpg`)}
             controls
             autoPlay
             playsInline
@@ -34,7 +35,7 @@ export function LazyVideo({ video, className }: { video: SiteVideo; className?: 
             className="size-full object-cover"
           >
             Your browser does not support embedded video.{' '}
-            <a href={video.src} className="underline">
+            <a href={cdn(video.src)} className="underline">
               Download the clip
             </a>
             .
@@ -47,12 +48,17 @@ export function LazyVideo({ video, className }: { video: SiteVideo; className?: 
             aria-label={`Play video: ${video.title}`}
           >
             <Image
-              src={`${video.poster}.jpg`}
+              src={cdn(`${video.poster}.jpg`)}
               alt=""
               fill
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               placeholder="blur"
               blurDataURL={video.blurDataURL}
+              // Already sized and encoded by scripts/process-videos.ts. Sending
+              // it through the optimizer would pull it back out of the CDN and
+              // re-encode it, which costs egress and CPU to produce the same
+              // file.
+              unoptimized
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <span className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
