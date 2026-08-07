@@ -124,9 +124,25 @@ export default function TestimonialsPage() {
             </div>
           )}
 
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/*
+            A CSS multi-column flow, not a grid.
+
+            Three of these videos are Shorts and render 9:16. In a fixed grid a
+            single tall card sets the height of its whole row, so the two 16:9
+            cards beside it kept their size and left a card-sized hole
+            underneath — which is what the client saw.
+
+            Columns let each card keep its true aspect and pack vertically, so
+            mixed heights produce no gaps. `break-inside-avoid` stops a card
+            being split across a column boundary; the margin does the vertical
+            spacing, since `gap` does not apply to column flow.
+
+            Trade-off: reading order becomes column-major rather than row-major.
+            For a gallery of equally-weighted testimonials that costs nothing.
+          */}
+          <ul className="columns-1 gap-5 sm:columns-2 lg:columns-3">
             {rest.map((t) => (
-              <li key={t.id}>
+              <li key={t.id} className="mb-5 break-inside-avoid">
                 <TestimonialCard testimonial={t} />
               </li>
             ))}
