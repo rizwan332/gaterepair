@@ -107,28 +107,28 @@ export default function AboutPage() {
             {[
               {
                 icon: Wrench,
-                stat: `${brands.length}`,
-                label: 'operator brands serviced',
-                note: 'Including FAAC, All-O-Matic and Ramset, and the hydraulic units',
+                label: 'Hydraulics included',
+                note: 'FAAC, BFT and the hydraulic units, not just chain and screw drives.',
               },
               {
                 icon: Video,
-                stat: `${videos.length}`,
-                label: 'repairs filmed',
-                note: 'Filmed on our own jobs, not stock footage',
+                label: 'Our own work, on camera',
+                note: 'Every photograph and video is our technicians on our own jobs. None of it is stock.',
               },
               {
                 icon: MapPin,
-                stat: `${projects.length}`,
-                label: 'case studies documented',
-                note: 'The fault, the diagnosis, and what it actually took to fix',
+                label: 'Repairs written up in full',
+                note: 'The fault, how it was diagnosed, and what it actually took to fix.',
               },
             ].map((item) => (
               <div key={item.label} className="card-dark p-6">
-                <item.icon className="mb-4 size-6 text-gold-400" aria-hidden />
-                <p className="tabular font-display text-3xl font-bold text-white">{item.stat}</p>
-                <p className="mt-1 font-medium text-ink-200">{item.label}</p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-400">{item.note}</p>
+                <span className="mb-4 inline-flex size-11 items-center justify-center rounded-xl bg-gold-400/12 text-gold-400 ring-1 ring-inset ring-gold-400/25">
+                  <item.icon className="size-5" aria-hidden />
+                </span>
+                <p className="font-display text-lg font-semibold leading-snug text-white">
+                  {item.label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-300">{item.note}</p>
               </div>
             ))}
           </div>

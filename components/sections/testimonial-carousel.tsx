@@ -168,7 +168,7 @@ export function TestimonialCarousel({
                 dark ? 'text-white' : 'text-ink-900'
               }`}
             >
-              Watch all {items.length} customer videos
+              Watch every customer video
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>

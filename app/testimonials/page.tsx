@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, PlayCircle, Video } from 'lucide-react'
+import { Phone, Video, ShieldCheck, Clock } from 'lucide-react'
 import { publishedTestimonials } from '@/content/testimonials'
 import { business } from '@/content/business'
 import { TestimonialCard } from '@/components/sections/video-testimonials'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { AssuranceRow } from '@/components/sections/assurance-row'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -45,7 +46,7 @@ export default function TestimonialsPage() {
             Testimonials
           </p>
           <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.05] text-ink-950 sm:text-5xl lg:text-6xl">
-            {items.length} customers, on camera, at their own gates
+            Customers, on camera, at their own gates
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-700">
             Anyone can print a five-star rating. These are our actual customers, filmed on site after
@@ -53,11 +54,26 @@ export default function TestimonialsPage() {
             nothing is stock.
           </p>
 
-          <dl className="mt-9 grid max-w-xl grid-cols-3 gap-4 sm:gap-8">
-            <Stat icon={Video} value={String(items.length)} label="customer videos" />
-            <Stat icon={PlayCircle} value={String(brands.length)} label="operator brands" />
-            <Stat icon={Phone} value="24/7" label="including holidays" />
-          </dl>
+          <AssuranceRow
+            className="mt-9 max-w-3xl"
+            points={[
+              {
+                icon: Video,
+                title: 'Filmed at the gate',
+                body: 'Every video was shot on site, after the repair, at the customer\u2019s own gate.',
+              },
+              {
+                icon: ShieldCheck,
+                title: 'Nothing scripted',
+                body: 'No actors, no stock footage, and no names or quotes we invented.',
+              },
+              {
+                icon: Clock,
+                title: 'Someone always answers',
+                body: 'Call any hour, any day of the year, and you get a person.',
+              },
+            ]}
+          />
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -137,28 +153,5 @@ export default function TestimonialsPage() {
         }}
       />
     </>
-  )
-}
-
-function Stat({
-  icon: Icon,
-  value,
-  label,
-}: {
-  icon: typeof Phone
-  value: string
-  label: string
-}) {
-  return (
-    <div>
-      <dt className="sr-only">{label}</dt>
-      <dd>
-        <span className="flex items-baseline gap-1.5 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-          <Icon className="size-5 self-center text-gold-500" aria-hidden />
-          <span className="tabular">{value}</span>
-        </span>
-        <span className="mt-1 block text-sm text-ink-600">{label}</span>
-      </dd>
-    </div>
   )
 }

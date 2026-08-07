@@ -18,16 +18,15 @@ export const metadata: Metadata = {
 }
 
 export default function ProjectsPage() {
-  const withVideo = projects.filter((p) => p.videoSlug).length
 
   return (
     <>
       <PageHero
         eyebrow="Case studies"
-        title="Twelve Repairs, Documented Properly"
-        intro="Not a gallery of finished gates. Each of these walks through what was actually wrong, how we worked it out, and what it took to fix — including several that had already been quoted for full replacement by someone else."
+        title="Real Repairs, Documented Properly"
+        intro="Not a gallery of finished gates. Each of these walks through what was actually wrong, how we worked it out, and what it took to fix — including several that had already been quoted as full replacements."
         image={media['all-o-matic']?.[4]}
-        meta={`${projects.length} case studies · ${withVideo} with video of the repair`}
+        meta="Every one filmed or photographed on the job"
       />
 
       <section className="section bg-ink-50">

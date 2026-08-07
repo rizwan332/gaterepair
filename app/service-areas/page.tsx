@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin, Clock, Phone } from 'lucide-react'
+import { MapPin, Clock, Phone, Navigation } from 'lucide-react'
 import { cities, citiesByCounty, enrichedCities } from '@/content/cities'
 import { CITY_COORDINATES } from '@/content/city-coordinates'
 import { business } from '@/content/business'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { AssuranceRow } from '@/components/sections/assurance-row'
 import { CoverageExplorer, type ExplorerCity } from '@/components/sections/coverage-explorer'
 import { breadcrumbSchema } from '@/lib/schema'
 
@@ -50,11 +51,26 @@ export default function ServiceAreasPage() {
             Find your city on the map, or search the full list below.
           </p>
 
-          <dl className="mt-9 grid max-w-2xl grid-cols-3 gap-4 sm:gap-8">
-            <Stat icon={MapPin} value={String(cities.length)} label="cities covered" />
-            <Stat icon={MapPin} value={String(countyCount)} label="counties" />
-            <Stat icon={Clock} value="24/7" label="including holidays" />
-          </dl>
+          <AssuranceRow
+            className="mt-9 max-w-3xl"
+            points={[
+              {
+                icon: MapPin,
+                title: 'Every city has its own page',
+                body: 'Not one list of names \u2014 the gates, operators and faults we actually see there.',
+              },
+              {
+                icon: Navigation,
+                title: 'Well past the city limits',
+                body: 'From Dallas and Fort Worth out to Weatherford, Sherman and Stephenville.',
+              },
+              {
+                icon: Clock,
+                title: 'Someone always answers',
+                body: 'Call any hour, any day of the year, and you get a person.',
+              },
+            ]}
+          />
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -137,28 +153,5 @@ export default function ServiceAreasPage() {
         }}
       />
     </>
-  )
-}
-
-function Stat({
-  icon: Icon,
-  value,
-  label,
-}: {
-  icon: typeof MapPin
-  value: string
-  label: string
-}) {
-  return (
-    <div>
-      <dt className="sr-only">{label}</dt>
-      <dd>
-        <span className="flex items-baseline gap-1.5 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-          <Icon className="size-5 self-center text-gold-500" aria-hidden />
-          <span className="tabular">{value}</span>
-        </span>
-        <span className="mt-1 block text-sm text-ink-600">{label}</span>
-      </dd>
-    </div>
   )
 }
