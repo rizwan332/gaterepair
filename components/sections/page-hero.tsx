@@ -2,6 +2,7 @@ import { Phone } from 'lucide-react'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
 import { business } from '@/content/business'
 import { Button } from '@/components/ui/button'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import type { MediaImage } from '@/content/media-manifest'
 
 /** Interior page hero. Real photograph as the LCP element, never a video. */
@@ -11,12 +12,15 @@ export function PageHero({
   intro,
   image,
   meta,
+  showBadges = true,
 }: {
   eyebrow?: string
   title: string
   intro: string
   image?: MediaImage
   meta?: string
+  /** Off for pages where a sales badge row would be out of place, e.g. legal. */
+  showBadges?: boolean
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-ink-950">
@@ -53,6 +57,8 @@ export function PageHero({
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-100">{intro}</p>
           {meta && <p className="mt-4 text-sm text-ink-300">{meta}</p>}
+
+          {showBadges && <TrustBadges className="mt-7" />}
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href={business.phone.href} size="lg">

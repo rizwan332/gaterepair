@@ -1,8 +1,8 @@
-import { Phone, BadgeCheck, CalendarCheck, Clock, Building2 } from 'lucide-react'
+import { Phone, BadgeCheck } from 'lucide-react'
 import { business } from '@/content/business'
-import { fact } from '@/lib/business'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { media } from '@/content/media-manifest'
 
 /**
@@ -43,27 +43,6 @@ export function Hero() {
     media['homepage']?.[2] ??
     media['gate-installation']?.[3] ??
     media['gate-installation']?.[0]
-  const years = fact(business.yearsInBusiness)
-
-  /**
-   * Trust badges, specified by the client 6 Aug 2026.
-   *
-   * The arrival-window chip that used to sit here is gone: `responseBand` was
-   * never confirmed, and the client's brief removes the 30–60 minute claim
-   * outright. A repairs-on-video count was also here and is likewise removed —
-   * a raw count is a weaker signal than the videos themselves, which now have
-   * their own section.
-   *
-   * `16+` reads from the confirmed fact rather than being typed, so it can
-   * never drift from `business.yearsInBusiness`.
-   */
-  const badges = [
-    { icon: BadgeCheck, label: 'Licensed & Insured' },
-    { icon: CalendarCheck, label: years ? `${years}+ Years Experience` : 'Experienced Technicians' },
-    { icon: Clock, label: 'Open 24/7' },
-    { icon: Building2, label: 'Residential & Commercial' },
-  ]
-
   return (
     <section className="surface-dark glow-gold grid-lines relative isolate overflow-hidden">
       {hero && (
@@ -134,17 +113,7 @@ export function Hero() {
             </Button>
           </div>
 
-          <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            {badges.map(({ icon: Icon, label }) => (
-              <li
-                key={label}
-                className="inline-flex items-center gap-2 text-sm font-medium text-ink-100"
-              >
-                <Icon className="size-[1.125rem] shrink-0 text-success-400" aria-hidden />
-                {label}
-              </li>
-            ))}
-          </ul>
+          <TrustBadges className="mt-10" />
         </div>
       </div>
     </section>

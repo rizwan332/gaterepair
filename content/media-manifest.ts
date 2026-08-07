@@ -1885,6 +1885,118 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoQAAwAA4BaJYgCdAEWhcc7TQHw67AA/uX5YWOcu4eBEVeTwkvaaH4Kbf655114WFo2sSItbX0hIwrx5eaGKzJK/5wI1JEByXLIll7oES7Q6CB429wAAA==",
       "alt": "A double farm gate closed across a long tree-lined driveway, with a solar panel mounted on the post to the right of the gate",
       "altWritten": true
+    },
+    {
+      "slug": "liftmaster-18",
+      "src": "/images/liftmaster/liftmaster-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAQCdASoQAAwAA4BaJbAC/OD7hohFgAD+7AsifDLt3nEiarjfjCxcoon+C4Jt0b6Np6q7MSl5Oj8EZIKUBH7GurVI/2+Q3BCQEnkP1d/Y7JVogAA=",
+      "alt": "A LiftMaster swing gate operator on a black iron driveway gate, with the control enclosure open and the circuit board exposed mid-diagnosis, an impact driver resting on the housing and a solar panel mounted above on the gate post",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-19",
+      "src": "/images/liftmaster/liftmaster-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBjegs1xNBM4Bby1vKwA+v5Y5uWsYtgfkQC611Oi3O3GARj3Ns3kOLDUWDHTLK9DIipcpS7QGq+CSMkUrUeC//hpGP26cXRVx1fqOz7dtoLAN4RJ/RKZ8hNlnkhG2C18oAAA",
+      "alt": "Close view of the opened LiftMaster control enclosure showing the circuit board, wiring loom and battery compartment, with the operator arm attached to the gate frame behind it",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-20",
+      "src": "/images/liftmaster/liftmaster-20",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYwCw8aglABE/Umd0XjX45lkTgAD+PXw9BEtwGbNA1vjlODL1w8ntqoRN7seciPF+OP1rakC3PtYRJUCjcnkFRpArjdOub2Zh16/cF8jvQrz+0S74LGNXgRtByARVnqqqOZzgqqnm+S3vwAA=",
+      "alt": "The LiftMaster operator arm and its closed control enclosure mounted on the iron gate after the replacement board was fitted",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-21",
+      "src": "/images/liftmaster/liftmaster-21",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAQCdASoQAAwAA4BaJQBdgBtj/eZAAPwLT7/xISjrLg3pEX2FgRQjcBCRkOhCOD4Xu4W46XZIu3sWC0ySyJryMjgaOHZsKPM6+VyqUzSOqcAwKAOMAAAA",
+      "alt": "The completed job — a black iron driveway gate closed across a suburban brick home, with the LiftMaster operator, sealed control box and post-mounted solar panel all back in service",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-22",
+      "src": "/images/liftmaster/liftmaster-22",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQAAwAA4BaJYwC7AEeZcE9r+EgAADyRA7PaZSfS3obLKe/6hYCt+ufbLiuACdsDKIOOZYsBZaqooiK0BJI6atQyrHI+QAA",
+      "alt": "An arched wrought iron swing gate standing open on a residential walkway, with its LiftMaster linear arm operator attached to the gate frame and the wall-mounted control box open on the brick pier alongside",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-23",
+      "src": "/images/liftmaster/liftmaster-23",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5712,
+      "height": 4284,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACQAQCdASoQAAwAA4BaJQBdgBgjXAAA/tHtIPtvlFHqwbfuojnUNp5ikNiVz2CoAt+7Ak8ZZDsaxWRPX2wi0PNckMETMno/XCt77M48ThVaQP2Ha4AAAA==",
+      "alt": "Close view of the open LiftMaster control box showing the control board and its two-digit diagnostic display, with the yellow LA400 model label on the housing and the operator arm attached to the iron gate behind",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-24",
+      "src": "/images/liftmaster/liftmaster-24",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoQAAwAA4BaJbACsAEQ1sYCEdzwAP7pVCxYLrqEBrIDIETGdSzYJ7ptE+UTEW0DyRfe8NMbVeVs2V7oRvy+VOm1yf00b3W61v0Q7LqvpVuHRwjcNLYDR+XMMHkgJSZ4wAA=",
+      "alt": "The upgraded LiftMaster arm fitted to the iron gate at dusk, with the original control box closed and still mounted on the same brick pier and conduit run",
+      "altWritten": true
     }
   ],
   "ramset": [

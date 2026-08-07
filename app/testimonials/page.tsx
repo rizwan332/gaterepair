@@ -5,6 +5,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { business } from '@/content/business'
 import { TestimonialCard } from '@/components/sections/video-testimonials'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { AssuranceRow } from '@/components/sections/assurance-row'
 import { breadcrumbSchema } from '@/lib/schema'
 
@@ -90,6 +91,8 @@ export default function TestimonialsPage() {
               Get a free estimate
             </Link>
           </div>
+
+          <TrustBadges tone="light" className="mt-7" />
         </div>
       </section>
 

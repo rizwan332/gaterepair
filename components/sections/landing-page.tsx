@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Phone, BadgeCheck, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Phone, CheckCircle2, ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -15,6 +15,7 @@ import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 
 /**
@@ -59,13 +60,6 @@ export function LandingPage({ slug }: { slug: string }) {
     : publishedTestimonials
   const projects = brand ? projectsForBrand(brand.name) : []
 
-  const badges = [
-    'Licensed & Insured',
-    years ? `${years}+ Years Experience` : 'Experienced Technicians',
-    'Open 24/7',
-    'Residential & Commercial',
-  ]
-
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────────────── */}
@@ -99,14 +93,7 @@ export function LandingPage({ slug }: { slug: string }) {
               </Button>
             </div>
 
-            <ul className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
-              {badges.map((label) => (
-                <li key={label} className="inline-flex items-center gap-2 text-sm font-medium text-ink-100">
-                  <BadgeCheck className="size-[1.125rem] shrink-0 text-success-400" aria-hidden />
-                  {label}
-                </li>
-              ))}
-            </ul>
+            <TrustBadges className="mt-9" />
           </div>
         </div>
       </section>

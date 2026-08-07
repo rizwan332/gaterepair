@@ -35,6 +35,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <PageHero
+        showBadges={false}
         eyebrow="Legal"
         title="Privacy Policy"
         intro={`How we handle the information you give us through this website. Last updated ${updated}.`}

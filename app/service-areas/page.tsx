@@ -5,6 +5,7 @@ import { cities, citiesByCounty, enrichedCities } from '@/content/cities'
 import { CITY_COORDINATES } from '@/content/city-coordinates'
 import { business } from '@/content/business'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { AssuranceRow } from '@/components/sections/assurance-row'
 import { CoverageExplorer, type ExplorerCity } from '@/components/sections/coverage-explorer'
 import { breadcrumbSchema } from '@/lib/schema'
@@ -87,6 +88,8 @@ export default function ServiceAreasPage() {
               Free estimate
             </Link>
           </div>
+
+          <TrustBadges tone="light" className="mt-7" />
         </div>
       </section>
 

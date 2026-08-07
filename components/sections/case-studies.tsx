@@ -33,6 +33,11 @@ export function CaseStudies({
   const shown = items.slice(0, limit)
   if (shown.length === 0) return null
 
+  // Four cards in a three-across grid leave one orphan on its own row, which
+  // reads as a mistake. Four goes 2x2 instead; three and below keep the wider
+  // row. Driven by count rather than by a prop so every caller gets it.
+  const columns = shown.length === 4 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'
+
   return (
     <section className={`section ${tone === 'tint' ? 'bg-ink-50' : 'bg-white'}`}>
       <div className="container-page">
@@ -55,7 +60,7 @@ export function CaseStudies({
           </div>
         </Reveal>
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className={`grid gap-6 ${columns}`}>
           {shown.map((project, i) => {
             const image = media[project.mediaCategory]?.[project.imageIndexes[0]]
             const hasVideo = Boolean(

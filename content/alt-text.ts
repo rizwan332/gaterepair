@@ -111,6 +111,28 @@ export const ALT_TEXT: Record<string, string> = {
   'liftmaster-17':
     'A double farm gate closed across a long tree-lined driveway, with a solar panel mounted on the post to the right of the gate',
 
+  // Client-supplied 7 Aug 2026 — the failed-charging-circuit job, shot in
+  // sequence at a suburban DFW property. Second confirmed Texas job in the
+  // library. The customer's licence plate in -18 is blurred on the master.
+  'liftmaster-18':
+    'A LiftMaster swing gate operator on a black iron driveway gate, with the control enclosure open and the circuit board exposed mid-diagnosis, an impact driver resting on the housing and a solar panel mounted above on the gate post',
+  'liftmaster-19':
+    'Close view of the opened LiftMaster control enclosure showing the circuit board, wiring loom and battery compartment, with the operator arm attached to the gate frame behind it',
+  'liftmaster-20':
+    'The LiftMaster operator arm and its closed control enclosure mounted on the iron gate after the replacement board was fitted',
+  'liftmaster-21':
+    'The completed job — a black iron driveway gate closed across a suburban brick home, with the LiftMaster operator, sealed control box and post-mounted solar panel all back in service',
+
+  // Client-supplied 7 Aug 2026 — the LA400 to LA500 arm upgrade. Third
+  // confirmed Texas job. The LA400 label is legible on the control box in -23,
+  // which is worth keeping in frame: it is the evidence for the whole story.
+  'liftmaster-22':
+    'An arched wrought iron swing gate standing open on a residential walkway, with its LiftMaster linear arm operator attached to the gate frame and the wall-mounted control box open on the brick pier alongside',
+  'liftmaster-23':
+    'Close view of the open LiftMaster control box showing the control board and its two-digit diagnostic display, with the yellow LA400 model label on the housing and the operator arm attached to the iron gate behind',
+  'liftmaster-24':
+    'The upgraded LiftMaster arm fitted to the iron gate at dusk, with the original control box closed and still mounted on the same brick pier and conduit run',
+
   // ---- Elite (8) ---------------------------------------------------------
   'elite-01': 'An Elite slide gate operator installed beside a residential driveway gate',
   'elite-02': 'The interior of an Elite gate operator showing the control board and transformer',

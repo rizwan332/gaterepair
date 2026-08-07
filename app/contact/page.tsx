@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { Phone, Mail, Clock, MapPin, BadgeCheck } from 'lucide-react'
+import { Phone, Mail, Clock, MapPin } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 import { videos } from '@/content/video-manifest'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
 import { LazyVideo } from '@/components/ui/lazy-video'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -25,18 +26,10 @@ export const metadata: Metadata = {
  */
 export default function ContactPage() {
   const address = fact(business.address)
-  const years = fact(business.yearsInBusiness)
   // A real repair, not a stock clip. Falls back through the library so the
   // panel never renders an empty frame if a video slug is renamed.
   const video =
     videos.find((v) => v.slug === 'automatic-gate-repair-services-video') ?? videos[0]
-
-  const badges = [
-    'Licensed & Insured',
-    years ? `${years}+ Years Experience` : 'Experienced Technicians',
-    'Open 24/7',
-    'Residential & Commercial',
-  ]
 
   return (
     <>
@@ -50,14 +43,7 @@ export default function ContactPage() {
             technician will call you back.
           </p>
 
-          <ul className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-            {badges.map((label) => (
-              <li key={label} className="inline-flex items-center gap-2 text-sm font-medium text-ink-100">
-                <BadgeCheck className="size-[1.125rem] shrink-0 text-success-400" aria-hidden />
-                {label}
-              </li>
-            ))}
-          </ul>
+          <TrustBadges className="mt-7" />
         </div>
       </section>
 

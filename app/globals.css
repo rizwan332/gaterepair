@@ -116,9 +116,30 @@
   /* ~65ch. Wider measures are measurably harder to read. */
   .prose-measure { max-width: 65ch; }
 
-  .section { padding-block: 4.5rem; }
+  /* ---- Section rhythm ---------------------------------------------------
+     Was 4.5rem / 7rem, which put 14rem — 224px — of padding at every section
+     boundary. Between two sections of the same colour that reads as a gap in
+     the page rather than as breathing room, and on the homepage it left a
+     visibly empty screen between the testimonial carousel and Recent Work.
+
+     5.5rem still gives generous separation (Stripe and Linear sit around
+     96–120px between major sections) without the dead space. */
+  .section { padding-block: 3.5rem; }
   @media (min-width: 768px) {
-    .section { padding-block: 7rem; }
+    .section { padding-block: 5.5rem; }
+  }
+
+  /* Two light sections in a row should not pay double padding.
+     Collapsing the second one's top padding leaves a single 5.5rem gap between
+     them, so spacing stays even down the page instead of doubling wherever two
+     same-coloured sections happen to meet.
+
+     Deliberately scoped to light-on-light: where a dark section borders a light
+     one the colour change is doing the separating, and the dark block needs its
+     own top padding so its content is not flush against the edge. */
+  .section:not(.surface-dark) + .section:not(.surface-dark),
+  .section.surface-dark + .section.surface-dark {
+    padding-top: 0;
   }
 
   /* ---- Dark surface -----------------------------------------------------

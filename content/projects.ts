@@ -191,6 +191,80 @@ export const projects: Project[] = [
       'Two faults were in play here and only one of them was visible. Replacing a corroded board is the obvious repair, and on its own it would have looked like a fix for a while — but the undersized solar array that had been stressing the electronics would still have been there, quietly working on the new board. Diagnosing the power system is what turns this from a repeat call-out into a repair.',
   },
   {
+    // Client-supplied 7 Aug 2026. Second Texas job in the library, and
+    // deliberately kept distinct from liftmaster-corroded-board-solar-upgrade
+    // above: that one is a rural farm gate with a corroded board and an
+    // undersized array, this one is a suburban property where the board's
+    // charging circuit failed while the battery itself was healthy.
+    slug: 'liftmaster-board-not-charging-battery',
+    title: 'LiftMaster Gate Kept Going Flat — The Board Had Stopped Charging the Battery',
+    summary:
+      'A battery that kept dying on a solar LiftMaster. The battery was fine; the charging circuit on the control board had failed. Replaced, and backed with a 3-year warranty.',
+    market: 'texas',
+    verified: false,
+    service: 'gate-motor-repair',
+    brand: 'LiftMaster',
+    gateType: 'swing',
+    propertyType: 'residential',
+    mediaCategory: 'liftmaster',
+    imageIndexes: [17, 18, 19, 20],
+    videoSlug: 'liftmaster-gate-motor-repair-21',
+    problem: [
+      'A LiftMaster swing operator on a suburban driveway gate had become unreliable and then stopped altogether. The gate ran on a battery kept topped up by a post-mounted solar panel, and the battery kept going flat — it had already been replaced once, and the new one went the same way.',
+      'That is the detail worth paying attention to. A battery that fails once is a battery. A replacement battery that fails the same way is telling you something upstream is wrong.',
+    ],
+    diagnosis: [
+      'We load-tested the battery first, because on any solar or battery-backed gate the power system is where the diagnosis starts. It held up — the battery in the gate was serviceable and not the fault.',
+      'We then checked what was going into it. The solar panel was producing correctly and the wiring between panel and enclosure was sound, so the energy was arriving at the operator.',
+      'The failure was on the control board itself. LiftMaster boards on these units carry the charging circuit, and on this one that circuit had stopped working. The board would still run the gate off whatever charge remained, but it was no longer putting anything back — so every cycle drew the battery down with nothing replenishing it, and each battery fitted to it was flattened in turn.',
+    ],
+    solution: [
+      'We replaced the control board with the correct unit for the operator, reprogrammed the limits and re-paired the remotes and keypad.',
+      'Before closing up we confirmed charge current was actually reaching the battery with the panel in sun, rather than assuming a new board had fixed it. That check is the difference between a repair and a return visit.',
+      'The enclosure was resealed on reassembly so the replacement board is not exposed to the conditions outdoor electronics fail in.',
+    ],
+    outcome:
+      'The gate is back in normal service on its original battery, which is charging properly for the first time in months. The repair is backed by a 3-year warranty on parts and workmanship.',
+    takeaway:
+      'If you have replaced a gate battery and the replacement also went flat, stop buying batteries. On a solar or battery-backed operator the charging circuit usually lives on the control board, and when it fails the battery is simply the component that shows the symptom. It is an easy fault to keep paying for repeatedly — a battery is cheap enough that replacing it again always seems like the reasonable next step, which is exactly why the underlying board fault can go unfound for a long time.',
+  },
+  {
+    // Client-supplied 7 Aug 2026. Third Texas job. The most literal expression
+    // of the site's whole positioning: the undersized component was replaced
+    // and everything still serviceable was kept.
+    slug: 'liftmaster-la400-to-la500-arm-upgrade',
+    title: 'LiftMaster LA400 Was Undersized for the Gate — We Changed the Arm, Not the System',
+    summary:
+      'A heavy iron swing gate the existing LA400 arm could not carry. Upgraded to the heavy-duty LA500 arm alone — the control board and control box were fine and stayed exactly where they were.',
+    market: 'texas',
+    verified: false,
+    service: 'gate-motor-repair',
+    brand: 'LiftMaster',
+    gateType: 'swing',
+    propertyType: 'residential',
+    mediaCategory: 'liftmaster',
+    imageIndexes: [21, 22, 23],
+    videoSlug: 'liftmaster-gate-motor-repair-22',
+    problem: [
+      'A residential iron swing gate had a LiftMaster LA400 arm operator fitted to it, and the operator was struggling. The LA400 is a capable unit, but it is rated for a certain gate weight and leaf length — and this gate, a solid arched wrought iron leaf, was beyond what that arm was built to move.',
+      'An operator working past its rating does not usually fail cleanly on day one. It labours on every cycle, runs hot, and works through its own components faster than it should, until something gives out. Replacing like for like at that point simply restarts the same clock.',
+    ],
+    diagnosis: [
+      'We released the operator and moved the gate by hand first, as we do on every call, to rule out the far more common cause — a gate that has become hard to move through worn hinges or a shifted post. This gate swung freely. Nothing was binding.',
+      'That is what pointed at specification rather than a fault. The gate was in good order and the arm was simply not rated to carry it, which is a sizing problem from the original installation rather than something that had gone wrong since.',
+      'We then checked what else was in the system. The control board and the control box were both in good condition and correctly wired, and the LA500 runs on the same control platform as the LA400 — so the electronics did not need to be part of this job at all.',
+    ],
+    solution: [
+      'We fitted the heavy-duty LA500 arm in place of the LA400. That is a straight mechanical upgrade to the component that was actually undersized.',
+      'The existing control board, control box, wiring and mounting all stayed. They were serviceable and compatible, so replacing them would have added cost to the invoice without adding anything to the gate.',
+      'Limits were re-learned for the new arm and the gate was run through repeated full cycles to confirm it was travelling comfortably rather than at the edge of what the operator could manage.',
+    ],
+    outcome:
+      'The gate now opens and closes on an operator rated for its actual weight, with the original control system retained — the customer paid for the arm, not for a new installation.',
+    takeaway:
+      'When a gate operator cannot manage its gate, the honest question is whether the whole system is wrong or just one part of it. Here it was the arm, and the LA400 and LA500 share a control platform, so the board and box carried straight over. Quoting a full replacement would have been easier to write and considerably more expensive to accept — and the customer would have paid to remove electronics that had nothing wrong with them.',
+  },
+  {
     slug: 'faac-hydraulic-operator-rebuild',
     title: 'FAAC Hydraulic Operator Rebuilt After Two Replacement Quotes',
     summary: 'A slow, weak FAAC that two companies had condemned — repaired with a seal kit and a pressure reset.',

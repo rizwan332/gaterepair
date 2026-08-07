@@ -21,6 +21,56 @@ export const VIDEO_META: Record<string, VideoMeta> = {
     description:
       'A complete LiftMaster gate operator repair from diagnosis to test cycle. The technician isolates the fault at the control board, replaces the failed component and runs the gate through full travel before leaving. Most LiftMaster faults are a board, a capacitor or a limit switch — not the whole operator.',
   },
+  // ── Texas job footage ────────────────────────────────────────────────────
+  // These arrived after the original 25 and were falling back to a templated
+  // title with an empty description, which forfeits the VideoObject rich
+  // result they are eligible for. Each one is paired with a written case study,
+  // so the description below is the same job the reader can go and read.
+  'liftmaster-gate-motor-repair-21': {
+    title: 'LiftMaster Board Replacement — When the Battery Keeps Going Flat',
+    description:
+      'A solar-powered LiftMaster whose battery kept dying, including a brand-new replacement. The battery load-tested fine and the panel was producing correctly — the charging circuit on the control board had failed, so every cycle drew the battery down with nothing putting charge back. Board replaced, charge current verified at the battery before closing up, and backed with a 3-year warranty.',
+  },
+  // No written case study behind these two yet, so the descriptions stay with
+  // what the footage actually shows and what is true of the equipment. They are
+  // not padded out with a job narrative nobody has confirmed.
+  'all-o-matic-gate-motor-repair-20': {
+    title: 'All-O-Matic Slide Operator — Drive and Clutch Service',
+    description:
+      'Service work on an All-O-Matic slide gate operator. These are mechanically straightforward and heavily built, so faults are nearly always a discrete replaceable part — limit cams, clutch, chain or board — rather than a unit that has reached the end of its life.',
+  },
+  'all-o-matic-gate-motor-repair-21': {
+    title: 'All-O-Matic Operator — Chain, Sprocket and Limit Check',
+    description:
+      'Checking the chain, sprocket and limit positions on an All-O-Matic operator. Chain stretch is normal and progressive: a stretched chain rides high on the sprocket and wears the teeth, so replacing a chain early is considerably cheaper than replacing a chain, a sprocket and a gearbox later.',
+  },
+
+  'liftmaster-gate-motor-repair-22': {
+    title: 'LiftMaster LA400 to LA500 — Upgrading Only the Arm',
+    description:
+      'A heavy arched iron swing gate whose LA400 arm was not rated to carry it. The gate swung freely by hand, so the fault was specification rather than wear. The LA500 shares a control platform with the LA400, so the heavy-duty arm went on and the existing control board, box and wiring stayed exactly where they were.',
+  },
+  'liftmaster-gate-motor-repair-20': {
+    title: 'Moisture-Corroded LiftMaster Board and an Undersized Solar Array',
+    description:
+      'A solar LiftMaster on a rural double farm gate that had been getting slower for months before it stopped. Water ingress had corroded the control board, and testing the power side showed the solar array had never been sized for the gate — so the batteries had been running permanently undercharged, stressing the electronics that failed. Board replaced, enclosure resealed, array resized to the actual load.',
+  },
+  'ramset-gate-motor-repair-20': {
+    title: 'Ramset Slide Gate — Worn Rollers Destroying the Drive',
+    description:
+      'A Ramset slide operator straining on every cycle. The fault was not in the operator: the rollers had flat-spotted and the track had loaded with grit, so the gate had become far harder to move than the unit was ever specified for. Rollers replaced and track cleared, with the operator left in service.',
+  },
+  'doorking-gate-motor-repair-20': {
+    title: 'DoorKing Dual Swing Gate — Gearbox Rebuild',
+    description:
+      'A DoorKing dual swing installation with a failing gearbox. Shows the strip-down, what worn gearing actually looks like against a healthy set, and the rebuild — an operator most companies would have quoted for outright replacement.',
+  },
+  'commercial-gate-repair-services-20': {
+    title: 'Commercial Gate Rebuilt After Vehicle Impact',
+    description:
+      'A commercial entrance gate struck by a vehicle. Impact damage is never only the visible bend — the post was pushed out of plumb and the gate no longer travelled true, so the repair runs structure first, then alignment, then the operator, then the safety devices. Fitting a new operator to a distorted gate simply destroys the new operator too.',
+  },
+
   'liftmaster-gate-motor-repair-video-2': {
     title: 'Inside a LiftMaster Operator — Board and Limit Switch Diagnosis',
     description:

@@ -41,11 +41,24 @@ export const metadata: Metadata = {
  * out with the other jobs that turn on a diagnosis rather than a part swap.
  * Named explicitly rather than sliced off the top of `projects`, so adding a
  * case study cannot silently reorder the homepage.
+ *
+ * Two of the four are LiftMaster jobs, so they sit at positions 2 and 4 rather
+ * than adjacent — side by side they would read as one story told twice.
+ *
+ * The LA400-to-LA500 arm upgrade leads the pair because it is the most literal
+ * version of this section's own title: a full replacement would have been the
+ * easy quote to write, and the customer paid for an arm instead.
+ *
+ * liftmaster-corroded-board-solar-upgrade is deliberately not here. It is a
+ * third LiftMaster board story and the homepage already carries two; it still
+ * leads /brands/liftmaster, which picks up every LiftMaster case study
+ * automatically.
  */
 const homepageCaseStudies = [
   'commercial-gate-impact-damage-repair',
+  'liftmaster-la400-to-la500-arm-upgrade',
   'ramset-slide-gate-broken-rollers',
-  'liftmaster-corroded-board-solar-upgrade',
+  'liftmaster-board-not-charging-battery',
 ]
   .map((slug) => projectBySlug(slug))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
@@ -79,6 +92,7 @@ export default function HomePage() {
           clicks from the front door. */}
       <CaseStudies
         items={homepageCaseStudies}
+        limit={4}
         title="Repairs That Were Quoted as Replacements"
         intro="Each of these was diagnosed before anything was replaced. Several had already been quoted for a full replacement by someone else."
         tone="tint"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, AlertTriangle, Clock, ShieldAlert, ArrowUpRight } from 'lucide-react'
 import { business } from '@/content/business'
+import { TrustBadges } from '@/components/ui/trust-badges'
 import { fact } from '@/lib/business'
 import { serviceBySlug } from '@/content/services'
 import { SERVICE_DEPTH } from '@/content/service-depth'
@@ -85,6 +86,9 @@ export default function EmergencyPage() {
               </Button>
             </div>
 
+            {/* The urgency line stays specific to this page; the shared trust
+                badges sit under it so the emergency hero carries the same
+                signals as every other page. */}
             <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink-300">
               <li className="inline-flex items-center gap-2">
                 <Clock className="size-4 text-gold-400" aria-hidden />
@@ -95,6 +99,8 @@ export default function EmergencyPage() {
                 Gate stuck open treated as urgent
               </li>
             </ul>
+
+            <TrustBadges className="mt-5" />
           </div>
         </div>
       </section>
