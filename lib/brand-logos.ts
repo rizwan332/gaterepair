@@ -32,3 +32,34 @@ export function logoFor(slug: string): string | null {
 export function anyLogosPresent(slugs: string[]): boolean {
   return slugs.some((slug) => logoFor(slug) !== null)
 }
+
+/**
+ * Initials to stand in for a missing logo.
+ *
+ * The nav dropdown previously rendered nothing at all when `logoFor` returned
+ * null, so seven of seventeen brands had no icon and their labels sat 24px to
+ * the left of everyone else's — it read as broken artwork rather than as a
+ * deliberate absence.
+ *
+ * A monogram keeps every row on the same grid and is honest: it is our own
+ * lettering, not an approximation of someone's trademark.
+ *
+ * Multi-word names take one letter per word ("US Automatic" -> "UA"). A short
+ * all-caps name is already an acronym, so it is shown whole ("BFT", "GTO") —
+ * abbreviating it further to "B" tells the reader nothing. Everything else
+ * takes its first letter ("Apollo" -> "A"), since truncating a word to two
+ * letters reads like a different brand.
+ */
+export function monogramFor(name: string): string {
+  const words = name.split(/[\s/-]+/).filter(Boolean)
+  if (words.length === 1) {
+    const word = words[0]
+    if (word.length <= 4 && word === word.toUpperCase()) return word
+    return word.slice(0, 1).toUpperCase()
+  }
+  return words
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+}

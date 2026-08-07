@@ -5,7 +5,7 @@ import { business } from '@/content/business'
 import { services } from '@/content/services'
 import { navBrands } from '@/content/brands'
 import { tier1Cities } from '@/content/cities'
-import { logoFor } from '@/lib/brand-logos'
+import { logoFor, monogramFor } from '@/lib/brand-logos'
 import { Button } from '@/components/ui/button'
 import { MobileNav } from '@/components/layout/mobile-nav'
 
@@ -27,6 +27,7 @@ export function SiteHeader() {
     label: b.name,
     href: `/brands/${b.slug}`,
     logo: logoFor(b.slug),
+    monogram: monogramFor(b.name),
   }))
 
   const cityItems = tier1Cities.slice(0, 8).map((c) => ({
@@ -142,7 +143,7 @@ function NavDropdown({
 }: {
   label: string
   href: string
-  items: { label: string; href: string; logo?: string | null }[]
+  items: { label: string; href: string; logo?: string | null; monogram?: string }[]
   wide?: boolean
 }) {
   return (
@@ -174,8 +175,7 @@ function NavDropdown({
                 className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-800 transition-colors hover:bg-ink-50 hover:text-ink-950"
               >
                 {item.logo ? (
-                  // Official artwork when the client supplies it; the wordmark
-                  // below until then. Never a placeholder box.
+                  // Official artwork where the client has supplied it.
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={item.logo}
@@ -185,6 +185,15 @@ function NavDropdown({
                     loading="lazy"
                     className="size-6 shrink-0 object-contain"
                   />
+                ) : item.monogram ? (
+                  // Same 24px footprint, so rows without artwork stay on the
+                  // grid instead of shunting their label left.
+                  <span
+                    aria-hidden
+                    className="flex size-6 shrink-0 items-center justify-center rounded bg-ink-100 text-[0.625rem] font-bold tracking-tight text-ink-500"
+                  >
+                    {item.monogram}
+                  </span>
                 ) : null}
                 {item.label}
               </Link>
