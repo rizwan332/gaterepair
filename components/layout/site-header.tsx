@@ -41,7 +41,7 @@ export function SiteHeader() {
       <div className="bg-ink-900 text-white">
         <div className="container-page flex h-9 items-center justify-between text-xs sm:text-[0.8125rem]">
           <p className="font-medium">{business.availability}</p>
-          <p className="hidden text-ink-200 sm:block">{business.serviceArea.primary}</p>
+          <p className="hidden text-ink-200 sm:block">{business.serviceArea.display}</p>
         </div>
       </div>
 

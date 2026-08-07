@@ -34,7 +34,22 @@ export const business = {
   hours: { open: '00:00', close: '23:59', days: 'Mo,Tu,We,Th,Fr,Sa,Su' },
 
   serviceArea: {
+    /**
+     * The precise named region. Used for schema.org areaServed, where a real
+     * administrative area name is worth more than a marketing phrase — a search
+     * engine can resolve "Dallas–Fort Worth Metroplex" to a place, and cannot
+     * resolve "DFW & Surrounding Areas" to anything.
+     */
     primary: 'Dallas–Fort Worth Metroplex',
+    /**
+     * How the client describes his coverage, confirmed 6 Aug 2026. Used in
+     * visible copy wherever the site states what area we serve.
+     *
+     * Deliberately NOT used in page titles or H1s: "Dallas–Fort Worth gate
+     * repair" is the phrase people actually search, and "DFW" a small fraction
+     * of it, so the headings keep the searchable form.
+     */
+    display: 'DFW & Surrounding Areas',
     region: 'TX',
     country: 'US',
   },

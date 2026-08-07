@@ -96,9 +96,9 @@ export default function ProjectsPage() {
               technicians did this work" is true; captioning an identifiable
               driveway as a Dallas address would not be. See MEDIA-PROVENANCE.md. */}
           <p className="mt-10 max-w-3xl text-sm leading-relaxed text-ink-500">
-            These case studies document work carried out by our own technicians. We serve Dallas&ndash;Fort
-            Worth with the same team and the same approach, and new local projects are added here as they
-            are completed.
+            These case studies document work carried out by our own technicians. We serve DFW and the
+            surrounding areas with the same team and the same approach, and new local projects are added
+            here as they are completed.
           </p>
         </div>
       </section>

@@ -107,7 +107,7 @@ export function Hero() {
               wrapping rather than by losing text if the metro name grows. */}
           <p className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full bg-white/[0.07] px-4 py-2 text-[0.8125rem] font-medium text-white ring-1 ring-inset ring-white/15 backdrop-blur-sm">
             <BadgeCheck className="size-4 shrink-0 text-success-400" aria-hidden />
-            Technicians available now &mdash; {business.serviceArea.primary}
+            Technicians available now &mdash; {business.serviceArea.display}
           </p>
 
           <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] text-white sm:text-5xl lg:text-[4rem]">

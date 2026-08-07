@@ -181,7 +181,7 @@ export default function AboutPage() {
                 ? { label: 'Google rating', value: `${rating.score} · ${rating.count.toLocaleString()} reviews` }
                 : null,
               { label: 'Availability', value: 'Open 24 hours, 7 days' },
-              { label: 'Service area', value: business.serviceArea.primary },
+              { label: 'Service area', value: business.serviceArea.display },
               { label: 'Real job photography', value: `${totalPhotos} images` },
             ]
               .filter(Boolean)

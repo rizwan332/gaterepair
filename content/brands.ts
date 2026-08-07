@@ -663,8 +663,8 @@ export const brands: Brand[] = [
     priority: 16,
     headline: 'GTO Gate Opener Repair in Dallas–Fort Worth',
     intro:
-      'GTO and GTO/PRO openers — the line Mighty Mule grew out of — are still running on a great many North ' +
-      'Texas driveways. We repair them and can still source parts for most models.',
+      'GTO and GTO/PRO openers — the line Mighty Mule grew out of — are still running on a great many ' +
+      'driveways across DFW and the surrounding areas. We repair them and can still source parts for most models.',
     whyDifferent:
       'These are older DC operators, and a lot of the ones we see are fifteen or twenty years old. Age alone is ' +
       'not a reason to replace one: the mechanical side was built to last and the parts that fail are usually the ' +

@@ -218,7 +218,7 @@ export function LandingPage({ slug }: { slug: string }) {
               },
               {
                 t: 'Open 24 hours, 7 days',
-                b: `${years ? `${years}+ years` : 'Years'} of gate work across ${business.serviceArea.primary}, and someone always answers the phone.`,
+                b: `${years ? `${years}+ years` : 'Years'} of gate work across ${business.serviceArea.display}, and someone always answers the phone.`,
               },
             ].map((item) => (
               <li key={item.t} className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-6">
@@ -354,7 +354,7 @@ export function LandingPage({ slug }: { slug: string }) {
             Where we do this work
           </h2>
           <p className="mt-3 max-w-3xl leading-relaxed text-ink-700">
-            We cover {business.serviceArea.primary} &mdash; Dallas, Fort Worth, Plano, Irving,
+            We cover {business.serviceArea.display} &mdash; Dallas, Fort Worth, Plano, Irving,
             Arlington, Frisco, McKinney, Denton, Grand Prairie and the surrounding cities. Common
             requests include {page.localKeywords.slice(0, 3).join(', ')} and{' '}
             {page.localKeywords[page.localKeywords.length - 1]}.

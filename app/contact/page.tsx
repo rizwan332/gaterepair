@@ -123,7 +123,7 @@ export default function ContactPage() {
                   <span className="text-ink-700">
                     {address && address.street
                       ? `${address.street}, ${address.city}, ${address.region} ${address.postalCode}`
-                      : business.serviceArea.primary}
+                      : business.serviceArea.display}
                   </span>
                 </li>
               </ul>
