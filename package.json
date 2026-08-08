@@ -13,7 +13,9 @@
     "validate:cities": "tsx scripts/validate-cities.ts",
     "geocode": "tsx scripts/geocode-cities.ts",
     "check:links": "tsx scripts/check-links.ts",
-    "logos": "tsx scripts/process-logos.ts"
+    "logos": "tsx scripts/process-logos.ts",
+    "verify:cdn": "tsx scripts/verify-cdn.ts",
+    "deploy:assets": "bash scripts/sync-cdn.sh && npm run verify:cdn"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

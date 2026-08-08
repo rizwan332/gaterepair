@@ -64,7 +64,22 @@ export function TestimonialCarousel({
     el.scrollBy({ left: direction * Math.min(el.clientWidth * 0.8, 640), behavior: 'smooth' })
   }
 
-  if (items.length === 0) return null
+  /**
+   * Landscape only. Vertical Shorts do not belong in a horizontal rail.
+   *
+   * Every card is one width, so the row is as tall as its tallest item. At
+   * mobile's w-[78vw] a 9:16 Short is ~541px tall against ~171px for a 16:9
+   * card, which left roughly 370px of empty space under every landscape
+   * testimonial — the "big space" this section kept showing.
+   *
+   * Narrowing Shorts instead does not work: matching a 16:9 card's height
+   * needs them at about 25vw, roughly 97px on a phone, which is too narrow to
+   * see anything in. Mixed orientations in one full-bleed rail cannot both
+   * look right, so the rail takes the 20 landscape videos and the 3 Shorts
+   * live on /testimonials, where they get a grid of their own.
+   */
+  const rail = items.filter((t) => !t.isShort)
+  if (rail.length === 0) return null
 
   const dark = tone === 'dark'
 
@@ -148,13 +163,8 @@ export function TestimonialCarousel({
           aria-label="Customer video testimonials"
           className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 sm:mx-0 sm:px-0"
         >
-          {items.map((t) => (
-            <li
-              key={t.id}
-              className={`w-[78vw] shrink-0 snap-start sm:w-[20rem] ${
-                t.isShort ? 'lg:w-[16rem]' : 'lg:w-[24rem]'
-              }`}
-            >
+          {rail.map((t) => (
+            <li key={t.id} className="w-[78vw] shrink-0 snap-start sm:w-[20rem] lg:w-[24rem]">
               <TestimonialCard testimonial={t} />
             </li>
           ))}

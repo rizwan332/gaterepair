@@ -131,7 +131,10 @@ export function VideoTestimonials({
 }) {
   if (items.length === 0) return null
 
-  const [featured, ...rest] = items
+  // The featured slot is the widest card here, so it wants a landscape video.
+  const landscape = items.filter((t) => !t.isShort)
+  const ordered = landscape.length > 0 ? [...landscape, ...items.filter((t) => t.isShort)] : items
+  const [featured, ...rest] = ordered
 
   return (
     <section
@@ -162,9 +165,21 @@ export function VideoTestimonials({
         <div className="grid gap-5 lg:grid-cols-2">
           <TestimonialCard testimonial={featured} featured />
           {rest.length > 0 && (
-            <ul className="grid gap-5 sm:grid-cols-2">
+            /*
+              A CSS multi-column flow, not a grid — the same approach
+              /testimonials uses, for the same reason.
+
+              A grid row is as tall as its tallest cell, so one 9:16 Short
+              stretches its whole row and leaves a card-sized hole under the
+              16:9 cards beside it. Columns let each card keep its true aspect
+              and pack vertically, so mixed heights produce no gaps.
+              `break-inside-avoid` stops a card splitting across a column, and
+              the margin does the vertical spacing since `gap` does not apply
+              to column flow.
+            */
+            <ul className="columns-1 gap-5 sm:columns-2">
               {rest.map((t) => (
-                <li key={t.id}>
+                <li key={t.id} className="mb-5 break-inside-avoid">
                   <TestimonialCard testimonial={t} />
                 </li>
               ))}
