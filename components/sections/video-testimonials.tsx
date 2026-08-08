@@ -31,9 +31,25 @@ export function TestimonialCard({
 }) {
   const [playing, setPlaying] = useState(false)
 
-  // Shorts are 9:16. Letterboxing one into a 16:9 frame wastes most of the
-  // card and reads as a mistake, so the aspect follows the source.
-  const aspect = testimonial.isShort ? 'aspect-[9/16]' : 'aspect-video'
+  /**
+   * Every card is 16:9, Shorts included.
+   *
+   * Letting the aspect follow the source was the earlier approach and it made
+   * a mess of every layout it touched: in a grid one 9:16 card set the height
+   * of its whole row, in a carousel it set the height of the whole rail, and
+   * in a masonry flow it left columns ending at wildly different points. Three
+   * layouts all bending around three videos.
+   *
+   * The thumbnail is already object-cover, so a vertical still centre-crops
+   * into the frame cleanly — and these are talking-head testimonials, so the
+   * subject is in the middle of the shot. On play the Short letterboxes inside
+   * the 16:9 iframe, which is exactly what YouTube itself does with a Short on
+   * a desktop page.
+   *
+   * `isShort` is still used for the thumbnail URL, where hqdefault would bake
+   * in its own black bars.
+   */
+  const aspect = 'aspect-video'
 
   if (playing) {
     return (
@@ -131,10 +147,7 @@ export function VideoTestimonials({
 }) {
   if (items.length === 0) return null
 
-  // The featured slot is the widest card here, so it wants a landscape video.
-  const landscape = items.filter((t) => !t.isShort)
-  const ordered = landscape.length > 0 ? [...landscape, ...items.filter((t) => t.isShort)] : items
-  const [featured, ...rest] = ordered
+  const [featured, ...rest] = items
 
   return (
     <section
@@ -165,21 +178,9 @@ export function VideoTestimonials({
         <div className="grid gap-5 lg:grid-cols-2">
           <TestimonialCard testimonial={featured} featured />
           {rest.length > 0 && (
-            /*
-              A CSS multi-column flow, not a grid — the same approach
-              /testimonials uses, for the same reason.
-
-              A grid row is as tall as its tallest cell, so one 9:16 Short
-              stretches its whole row and leaves a card-sized hole under the
-              16:9 cards beside it. Columns let each card keep its true aspect
-              and pack vertically, so mixed heights produce no gaps.
-              `break-inside-avoid` stops a card splitting across a column, and
-              the margin does the vertical spacing since `gap` does not apply
-              to column flow.
-            */
-            <ul className="columns-1 gap-5 sm:columns-2">
+            <ul className="grid gap-5 sm:grid-cols-2">
               {rest.map((t) => (
-                <li key={t.id} className="mb-5 break-inside-avoid">
+                <li key={t.id}>
                   <TestimonialCard testimonial={t} />
                 </li>
               ))}

@@ -65,20 +65,15 @@ export function TestimonialCarousel({
   }
 
   /**
-   * Landscape only. Vertical Shorts do not belong in a horizontal rail.
+   * All 23 videos, Shorts included.
    *
-   * Every card is one width, so the row is as tall as its tallest item. At
-   * mobile's w-[78vw] a 9:16 Short is ~541px tall against ~171px for a 16:9
-   * card, which left roughly 370px of empty space under every landscape
-   * testimonial — the "big space" this section kept showing.
-   *
-   * Narrowing Shorts instead does not work: matching a 16:9 card's height
-   * needs them at about 25vw, roughly 97px on a phone, which is too narrow to
-   * see anything in. Mixed orientations in one full-bleed rail cannot both
-   * look right, so the rail takes the 20 landscape videos and the 3 Shorts
-   * live on /testimonials, where they get a grid of their own.
+   * They were briefly excluded because a 9:16 card was ~541px tall against
+   * ~171px for a 16:9 one at mobile's w-[78vw], and the rail sizes to its
+   * tallest item — roughly 370px of dead space under every landscape card.
+   * TestimonialCard now renders every video at 16:9 and centre-crops the
+   * thumbnail, so heights match and there is nothing to exclude.
    */
-  const rail = items.filter((t) => !t.isShort)
+  const rail = items
   if (rail.length === 0) return null
 
   const dark = tone === 'dark'
