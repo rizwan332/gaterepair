@@ -138,14 +138,26 @@ your own export. Every fix in this document is in it.
 |---|---|
 | File | `GTM-MBBT87D8-modernized.json` |
 | Workspace | **New** — keeps your current draft untouched |
-| Import option | **Merge** → **Overwrite conflicting tags, triggers and variables** |
+| Import option | **Overwrite** |
 
-Use Merge, not Overwrite-all. Merge replaces the entities in the file and
-leaves anything else alone; Overwrite-all wipes the container and replaces it
-wholesale, which is a bad way to find out something was missing.
+**Overwrite, not Merge.** Merge only adds and updates: entities present in the
+container but absent from the file are left alone, so the Elementor listener
+and the two dead triggers would survive it. Deletions only apply on Overwrite.
 
-The preview screen shows what will change before you commit — 8 tags, 2
-triggers, 3 variables, and it should report the Elementor tag as deleted.
+Overwrite is safe here because the file *is* the container — generated from
+the client's own `workspace13` export with three dead entities removed and
+nothing else touched. Importing into a **New** workspace leaves the existing
+one intact, so a bad import can be discarded by deleting the workspace.
+
+The preview screen should report:
+
+```
+8 tags        (was 9 — Elementor listener deleted)
+2 triggers    (was 4 — two unattached deleted)
+3 variables   (2 renamed)
+```
+
+9 tags or 4 triggers means the deletions did not apply — that is Merge.
 
 ### What the imported container looks like
 
