@@ -50,7 +50,7 @@ export function Process() {
     <section className="section relative isolate overflow-hidden bg-gradient-to-b from-white via-sky-50 to-white">
       <div className="container-page relative">
         <Reveal>
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-10 max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">How it works</p>
             <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
               What Happens When You Call

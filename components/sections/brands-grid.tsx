@@ -29,7 +29,7 @@ export function BrandsGrid() {
     <section className="section bg-white">
       <div className="container-page">
         <Reveal>
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-10 max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">
               Operators we repair
             </p>

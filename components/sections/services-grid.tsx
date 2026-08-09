@@ -28,7 +28,7 @@ export function ServicesGrid() {
     <section className="section bg-ink-50">
       <div className="container-page">
         <Reveal>
-          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">What we fix</p>
               <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl lg:text-5xl">

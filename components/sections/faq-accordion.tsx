@@ -19,7 +19,7 @@ export function FaqAccordion({
   return (
     <section className={`section bg-white ${className ?? ''}`}>
       <div className="container-page">
-        <h2 className="mb-8 font-display text-3xl font-bold text-ink-950 sm:text-4xl">{title}</h2>
+        <h2 className="mb-10 font-display text-3xl font-bold text-ink-950 sm:text-4xl">{title}</h2>
         <div className="max-w-3xl divide-y divide-ink-100 border-y border-ink-100">
           {faqs.map((faq) => (
             <details key={faq.q} className="group py-5">

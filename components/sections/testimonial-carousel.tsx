@@ -89,7 +89,7 @@ export function TestimonialCarousel({
       }`}
     >
       <div className="container-page">
-        <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-3xl">
             <p
               className={`mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider ${

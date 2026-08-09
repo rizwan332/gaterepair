@@ -70,7 +70,7 @@ export function WhyShield() {
   return (
     <section className="section bg-white">
       <div className="container-page">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-10 max-w-2xl">
           <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">Why Shield</p>
           <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
             Six Reasons People Call Us Back

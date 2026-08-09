@@ -19,7 +19,23 @@ export const business = {
   name: 'Shield Gate Repair',
   legalName: 'Shield Gate Repair',
   domain: 'shieldgaterepair.com',
-  url: 'https://shieldgaterepair.com',
+  /**
+   * Must be the hostname that actually serves a 200.
+   *
+   * This was the apex, `https://shieldgaterepair.com`, but the apex 301s to
+   * `www` — so every canonical tag, all 252 sitemap URLs, the robots Host and
+   * Sitemap directives, every OG url and every schema @id pointed at a
+   * redirect rather than at the live page.
+   *
+   * Google resolves that eventually, but it is a conflicting signal on a domain
+   * that is also being migrated, it doubles the crawl cost of the whole
+   * sitemap, and a canonical pointing somewhere other than the indexed URL is
+   * exactly the sort of thing that stalls indexing.
+   *
+   * If the apex is ever made the primary instead, change it here — canonicals,
+   * sitemap, robots, OG and schema all derive from this one value.
+   */
+  url: 'https://www.shieldgaterepair.com',
 
   // ---- Confirmed by client, 1 Aug 2026 ----
   // Client replaced the 800 number with a local DFW number on 3 Aug 2026. A

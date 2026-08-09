@@ -24,7 +24,7 @@ export function PhotoGallery({
   return (
     <section className={`section ${tone === 'muted' ? 'bg-ink-50' : 'bg-white'}`}>
       <div className="container-page">
-        <div className="mb-8 max-w-2xl">
+        <div className="mb-10 max-w-2xl">
           <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">{title}</h2>
           {intro && <p className="mt-4 text-lg leading-relaxed text-ink-700">{intro}</p>}
         </div>
