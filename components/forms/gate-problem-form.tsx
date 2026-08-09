@@ -73,7 +73,28 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
         setServerError(data.error ?? 'Something went wrong. Please call us.')
         return
       }
-      pushEvent('generate_lead', { event_category: 'conversion' })
+      /**
+       * Payload shaped for the GTM container's Enhanced Conversions setup.
+       *
+       * Its User-Provided Data variable reads `inputs.form_fields[email]` and
+       * `inputs.form_fields[field_b7ee638]` — Elementor's dataLayer shape,
+       * left over from WordPress. Rather than make the client re-point two
+       * variables and risk breaking a working Ads conversion, we emit the same
+       * shape. `user_data` carries the same values under sane names so the
+       * variables can be modernised later without touching this code.
+       *
+       * This is the documented Enhanced Conversions flow: the values go to
+       * Google, hashed by the tag, to match a conversion to an ad click. They
+       * are not stored in the dataLayer beyond the page view.
+       */
+      pushEvent('generate_lead', {
+        event_category: 'conversion',
+        inputs: {
+          'form_fields[email]': values.email ?? '',
+          'form_fields[field_b7ee638]': values.phone,
+        },
+        user_data: { email: values.email ?? '', phone_number: values.phone },
+      })
       setSubmitted(true)
     } catch {
       setServerError('We could not send that. Please call us — someone always answers.')

@@ -1,0 +1,626 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2026-08-09 05:32:53",
+    "containerVersion": {
+        "path": "accounts/6343274072/containers/245776248/versions/0",
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6343274072/containers/245776248",
+            "accountId": "6343274072",
+            "containerId": "245776248",
+            "name": "shieldgaterepair.com",
+            "publicId": "GTM-MBBT87D8",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1773083021559",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6343274072/containers/245776248/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": false
+            },
+            "tagIds": [
+                "GTM-MBBT87D8"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "3",
+                "name": "GA4 - pageview - Tag",
+                "type": "googtag",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "tagId",
+                        "value": "G-BFR37L657V"
+                    }
+                ],
+                "fingerprint": "1778793170015",
+                "firingTriggerId": [
+                    "2147479573"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "13",
+                "name": "GA4 - form submit - Tag",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "generate_lead"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "G-BFR37L657V"
+                    }
+                ],
+                "fingerprint": "1778793096265",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "14",
+                "name": "GA4 - Phone click - Tag",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "phone_clicks"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "G-BFR37L657V"
+                    }
+                ],
+                "fingerprint": "1778793134121",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "15",
+                "name": "Google Ads Conversion Tracking - contact form - Tag",
+                "type": "awct",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableNewCustomerReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableProductReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableShippingData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "18000649811"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "IjMqCLuXo60cENO8sIdD"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "rdp",
+                        "value": "{{User-Provided Data}}"
+                    }
+                ],
+                "fingerprint": "1778794650478",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "16",
+                "name": "Google ads - configuration - Tag",
+                "type": "googtag",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "tagId",
+                        "value": "AW-18000649811"
+                    }
+                ],
+                "fingerprint": "1778793190818",
+                "firingTriggerId": [
+                    "2147479573"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "17",
+                "name": "Google Ads Conversion Tracking - Phone Clicks - Tag",
+                "type": "awct",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableNewCustomerReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableProductReporting",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableShippingData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "18000649811"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "7ETpCMGXo60cENO8sIdD"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "rdp",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1778793240221",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "18",
+                "name": "Google ads - Conversion Linker - Tag",
+                "type": "gclidw",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCrossDomain",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableUrlPassthrough",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "linkerDomains",
+                        "value": "6a780dd5d649ba0008a0566d--gaterepair.netlify.app, shieldgaterepair.com"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCookieOverrides",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1786253192912",
+                "firingTriggerId": [
+                    "2147479573"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "20",
+                "name": "cHTML - elemntor listener - Tag",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n\n(function() {\n    var origXMLHttpRequest = XMLHttpRequest;\n    XMLHttpRequest = function() {\n        var requestURL;\n        var requestMethod;\n        var requestBody;\n\n        var xhr = new origXMLHttpRequest();\n        var origOpen = xhr.open;\n        var origSend = xhr.send;\n\n        xhr.open = function(method, url) {\n            requestURL = url;\n            requestMethod = method;\n            return origOpen.apply(this, arguments);\n        };\n\n        xhr.send = function(data) {\n            if (/.+\\/admin-ajax\\.php/.test(requestURL)) {\n                xhr.addEventListener('load', function() {\n                    if (xhr.readyState === 4 && xhr.status === 200) {\n                        var response;\n                        try {\n                            response = JSON.parse(xhr.responseText);\n                        } catch (e) {\n                            return;\n                        }\n\n                        if (response && response.success && data && typeof FormData !== 'undefined' && data instanceof FormData) {\n                            requestBody = {};\n                            data.forEach(function(value, key) {\n                                requestBody[key] = value;\n                            });\n\n                            if (requestBody.action === \"elementor_pro_forms_send_form\") {\n                                window.dataLayer = window.dataLayer || [];\n                                window.dataLayer.push({\n                                    event: 'elementor_form_submit',\n                                    inputs: requestBody\n                                });\n                            }\n                        }\n                    }\n                });\n            }\n\n            return origSend.apply(this, arguments);\n        };\n\n        return xhr;\n    };\n})();\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1778794956892",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "tagId": "21",
+                "name": "Enhanced conversion - form submit - Tag",
+                "type": "awud",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "userDataVariable",
+                        "value": "{{User-Provided Data}}"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableConversionLinker",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": "18000649811"
+                    }
+                ],
+                "fingerprint": "1778795236312",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "triggerId": "4",
+                "name": "All Elements",
+                "type": "CLICK",
+                "fingerprint": "1773083505136"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "triggerId": "5",
+                "name": "Just Links",
+                "type": "LINK_CLICK",
+                "waitForTags": {
+                    "type": "BOOLEAN",
+                    "value": "false"
+                },
+                "checkValidation": {
+                    "type": "BOOLEAN",
+                    "value": "false"
+                },
+                "waitForTagsTimeout": {
+                    "type": "TEMPLATE",
+                    "value": "2000"
+                },
+                "uniqueTriggerId": {
+                    "type": "TEMPLATE"
+                },
+                "fingerprint": "1773083512454"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "triggerId": "8",
+                "name": "form_submit",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "gtm.formSubmit"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1778793583991"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "triggerId": "12",
+                "name": "phone clicks",
+                "type": "LINK_CLICK",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click URL}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "tel:+18007709642"
+                            }
+                        ]
+                    }
+                ],
+                "waitForTags": {
+                    "type": "BOOLEAN",
+                    "value": "false"
+                },
+                "checkValidation": {
+                    "type": "BOOLEAN",
+                    "value": "false"
+                },
+                "waitForTagsTimeout": {
+                    "type": "TEMPLATE",
+                    "value": "2000"
+                },
+                "uniqueTriggerId": {
+                    "type": "TEMPLATE"
+                },
+                "fingerprint": "1777178322128"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "variableId": "9",
+                "name": "form_fields[email]",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "inputs.form_fields[email]"
+                    }
+                ],
+                "fingerprint": "1773083896791",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "variableId": "10",
+                "name": "form_fields[phone]",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "inputs.form_fields[field_b7ee638]"
+                    }
+                ],
+                "fingerprint": "1773083948795",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "variableId": "11",
+                "name": "User-Provided Data",
+                "type": "awec",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "mode",
+                        "value": "MANUAL"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "phone_number",
+                        "value": "{{form_fields[phone]}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "email",
+                        "value": "{{form_fields[email]}}"
+                    }
+                ],
+                "fingerprint": "1773083971468",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "EVENT",
+                "name": "Event"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_ELEMENT",
+                "name": "Click Element"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_CLASSES",
+                "name": "Click Classes"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_ID",
+                "name": "Click ID"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_TARGET",
+                "name": "Click Target"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_URL",
+                "name": "Click URL"
+            },
+            {
+                "accountId": "6343274072",
+                "containerId": "245776248",
+                "type": "CLICK_TEXT",
+                "name": "Click Text"
+            }
+        ],
+        "fingerprint": "1786253573347",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6343274072/containers/245776248/versions/0?apiLink=version"
+    }
+}
