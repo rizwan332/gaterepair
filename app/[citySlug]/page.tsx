@@ -165,11 +165,26 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                     </li>
                   ))}
                 </ul>
+                {/* Zip codes get the same chip treatment as the neighbourhoods
+                    above them. As a middot-joined sentence they wrapped
+                    mid-list and left a stray "· 75231 · 75248" on its own line,
+                    which read as unfinished next to the tidy row of areas.
+                    Tabular figures stop the digits from jittering between
+                    chips. */}
                 {city.zips && city.zips.length > 0 && (
-                  <p className="mt-5 text-sm text-ink-600">
-                    <span className="font-medium text-ink-800">Zip codes served:</span>{' '}
-                    {city.zips.join(' · ')}
-                  </p>
+                  <div className="mt-6">
+                    <p className="mb-2.5 text-sm font-medium text-ink-800">Zip codes served</p>
+                    <ul className="flex flex-wrap gap-2">
+                      {city.zips.map((zip) => (
+                        <li
+                          key={zip}
+                          className="tabular rounded-lg border border-ink-100 bg-white px-3 py-1.5 text-sm text-ink-600"
+                        >
+                          {zip}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
             )}
