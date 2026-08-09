@@ -83,6 +83,16 @@ export const business = {
     note: 'GBP → Ask for reviews → copy link. Required before the review request system can send anything.',
   } as Fact<string>,
 
+  /**
+   * Google Tag Manager container.
+   *
+   * This container already fires GA4 (G-BFR37L657V) and Google Ads
+   * (AW-18000649811) as Google tags, so nothing else on the site may load
+   * GA4 directly — it would double-count every pageview and every conversion.
+   * Add new tags in the Tag Manager UI, not in this codebase.
+   */
+  gtmId: 'GTM-MBBT87D8',
+
   social: {
     // TODO: confirm — meeting notes reference a YouTube channel with usable footage
     youtube: null as string | null,

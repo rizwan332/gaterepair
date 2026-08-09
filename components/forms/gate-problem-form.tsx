@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Phone, CheckCircle2 } from 'lucide-react'
 import { business } from '@/content/business'
-import { trackEvent } from '@/components/analytics'
+import { pushEvent } from '@/components/analytics'
 
 /**
  * Service request form.
@@ -73,7 +73,7 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
         setServerError(data.error ?? 'Something went wrong. Please call us.')
         return
       }
-      trackEvent('generate_lead', { event_category: 'conversion' })
+      pushEvent('generate_lead', { event_category: 'conversion' })
       setSubmitted(true)
     } catch {
       setServerError('We could not send that. Please call us — someone always answers.')

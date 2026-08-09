@@ -1,80 +1,106 @@
 'use client'
 
-import Script from 'next/script'
 import { useEffect } from 'react'
+import { business } from '@/content/business'
 
 /**
- * GA4 + conversion instrumentation.
+ * Google Tag Manager — the single tag container for the site.
  *
- * There was no analytics of any kind, which meant the site would have launched
- * with no way to tell whether it converts better than the WordPress build it
- * replaces — and no way to optimise the Google Ads account described in
- * GOOGLE-ADS.md, where two of the three Quality Score inputs are page-side.
+ * ── WHY GTM AND NOT gtag.js ─────────────────────────────────────────────────
+ * This file previously loaded GA4 directly. It must not: the client's
+ * container (GTM-MBBT87D8) already fires both GA4 (G-BFR37L657V) and Google
+ * Ads (AW-18000649811) as Google tags. Loading GA4 here as well would have
+ * counted every pageview twice and inflated every conversion.
  *
- * Loaded `afterInteractive` so it never competes with LCP. Renders nothing when
- * `NEXT_PUBLIC_GA_ID` is unset, so local and preview builds stay clean.
+ * Routing everything through GTM also means the Ads conversion tags described
+ * in GOOGLE-ADS.md — call conversions, form conversions, remarketing — can be
+ * added and changed from the Tag Manager UI without a code change and a
+ * deploy.
  *
- * Call clicks are the primary conversion on this site — most emergency traffic
- * dials rather than fills in a form — so `tel:` clicks are tracked globally
- * here rather than being wired into each individual button.
+ * ── EVENTS ──────────────────────────────────────────────────────────────────
+ * Calls are the primary conversion here: most emergency traffic dials rather
+ * than fills in a form. Rather than wiring a handler onto every phone button
+ * scattered across the header, hero, sticky bars and footer, one delegated
+ * listener catches `tel:` and `sms:` clicks anywhere on the page and pushes
+ * them to `dataLayer`.
+ *
+ * To turn these into Ads conversions, create a Custom Event trigger in GTM on
+ * `call_click` / `generate_lead` and attach an Ads conversion tag. No deploy.
+ *
+ * ── WHERE THE LOADER LIVES ──────────────────────────────────────────────────
+ * In <head>, inline, in app/layout.tsx. It was briefly a next/script here with
+ * `afterInteractive`, which never reached the served HTML at all — an inline
+ * afterInteractive script in a client component is injected only on hydration.
+ * This component keeps the click listeners and renders nothing.
  */
 
 declare global {
   interface Window {
-    dataLayer?: unknown[]
-    gtag?: (...args: unknown[]) => void
+    dataLayer?: Record<string, unknown>[]
   }
 }
 
 export function Analytics() {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID
+  const gtmId = business.gtmId
 
   useEffect(() => {
-    if (!gaId) return
+    if (!gtmId) return
 
     const onClick = (event: MouseEvent) => {
-      const target = (event.target as HTMLElement | null)?.closest('a')
-      if (!target) return
-      const href = target.getAttribute('href') ?? ''
+      const link = (event.target as HTMLElement | null)?.closest('a')
+      if (!link) return
+      const href = link.getAttribute('href') ?? ''
 
       if (href.startsWith('tel:')) {
-        window.gtag?.('event', 'call_click', {
-          event_category: 'conversion',
-          link_url: href,
-          page_path: window.location.pathname,
-        })
+        pushEvent('call_click', { link_url: href, page_path: window.location.pathname })
       } else if (href.startsWith('sms:')) {
-        window.gtag?.('event', 'sms_click', { event_category: 'conversion', page_path: window.location.pathname })
+        pushEvent('sms_click', { link_url: href, page_path: window.location.pathname })
       }
     }
 
     document.addEventListener('click', onClick)
     return () => document.removeEventListener('click', onClick)
-  }, [gaId])
+  }, [gtmId])
 
-  if (!gaId) return null
+  // The container loader itself lives inline in <head> (app/layout.tsx), where
+  // Google asks for it and where it is guaranteed to be in the served HTML.
+  // This component exists for the event listeners above and renders nothing.
+  return null
+}
 
+/**
+ * The `<noscript>` half of the GTM snippet.
+ *
+ * Google's instructions put this immediately after the opening `<body>` tag,
+ * which is why it is a separate export rather than part of `Analytics` — that
+ * one renders near the end of the body.
+ */
+export function AnalyticsNoScript() {
+  if (!business.gtmId) return null
   return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${business.gtmId}`}
+        height="0"
+        width="0"
+        style={{ display: 'none', visibility: 'hidden' }}
+        title="Google Tag Manager"
       />
-      <Script id="ga-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', '${gaId}', { send_page_view: true });
-        `}
-      </Script>
-    </>
+    </noscript>
   )
 }
 
-/** Fire a conversion event from anywhere. No-ops when analytics is disabled. */
-export function trackEvent(name: string, params: Record<string, unknown> = {}) {
+/**
+ * Push an event to the dataLayer for GTM to pick up.
+ *
+ * Safe before the container has loaded — the array is created by the loader
+ * snippet ahead of the script, and queued events are replayed on init.
+ */
+export function pushEvent(event: string, params: Record<string, unknown> = {}) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', name, params)
+  window.dataLayer = window.dataLayer ?? []
+  window.dataLayer.push({ event, ...params })
 }
+
+/** @deprecated Use `pushEvent`. Kept so existing call sites keep working. */
+export const trackEvent = pushEvent
