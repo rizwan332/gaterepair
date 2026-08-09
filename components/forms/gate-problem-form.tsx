@@ -74,25 +74,21 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
         return
       }
       /**
-       * Payload shaped for the GTM container's Enhanced Conversions setup.
+       * `user_data` feeds the container's Enhanced Conversions setup, whose
+       * variables now read `user_data.email` and `user_data.phone_number`.
        *
-       * Its User-Provided Data variable reads `inputs.form_fields[email]` and
-       * `inputs.form_fields[field_b7ee638]` — Elementor's dataLayer shape,
-       * left over from WordPress. Rather than make the client re-point two
-       * variables and risk breaking a working Ads conversion, we emit the same
-       * shape. `user_data` carries the same values under sane names so the
-       * variables can be modernised later without touching this code.
+       * They previously read Elementor's shape — `inputs.form_fields[email]`
+       * and `inputs.form_fields[field_b7ee638]` — which is why enhanced
+       * conversions had been silently contributing nothing since the rebuild.
+       * See GTM-AUDIT.md and scripts/modernize-gtm.ts.
        *
-       * This is the documented Enhanced Conversions flow: the values go to
-       * Google, hashed by the tag, to match a conversion to an ad click. They
-       * are not stored in the dataLayer beyond the page view.
+       * This is the documented Enhanced Conversions flow: the tag hashes these
+       * values before they leave the browser, and uses them to match a
+       * conversion back to an ad click. Fired only after the server confirms
+       * the lead was stored, so it counts real leads rather than attempts.
        */
       pushEvent('generate_lead', {
         event_category: 'conversion',
-        inputs: {
-          'form_fields[email]': values.email ?? '',
-          'form_fields[field_b7ee638]': values.phone,
-        },
         user_data: { email: values.email ?? '', phone_number: values.phone },
       })
       setSubmitted(true)
