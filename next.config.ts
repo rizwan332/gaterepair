@@ -36,6 +36,22 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      /**
+       * WordPress-era city URLs.
+       *
+       * `/cities/garland-gate-repair` and friends are still indexed and were
+       * returning 404 — every one of them a dead end for whatever ranking
+       * equity it had built. The pattern is stable, so one rule covers all of
+       * them rather than 190 hand-written entries.
+       *
+       * Only cities that actually have a page today will resolve; the rest land
+       * on a 404 from the city route itself, which is the correct answer for a
+       * city we do not publish a page for. `/service-areas` lists all of them
+       * either way.
+       */
+      { source: '/cities/:city-gate-repair', destination: '/gate-repair-:city-tx', permanent: true },
+      { source: '/cities', destination: '/service-areas', permanent: true },
+
       ...brands.map((b) => ({
         source: trim(b.legacyPath),
         destination: `/brands/${b.slug}`,

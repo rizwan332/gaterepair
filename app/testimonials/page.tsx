@@ -10,13 +10,13 @@ import { AssuranceRow } from '@/components/sections/assurance-row'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: `Customer Testimonials | ${publishedTestimonials.length} Real Gate Repair Videos | Shield Gate Repair`,
+  title: `${publishedTestimonials.length} Customer Testimonials on Video`,
   description:
     `Watch ${publishedTestimonials.length} Shield Gate Repair customers describe their gate repair on camera. ` +
     `Real jobs, real customers, filmed on site across Dallas–Fort Worth. Call ${business.phone.display}.`,
   alternates: { canonical: '/testimonials' },
   openGraph: {
-    title: 'Customer Testimonials | Shield Gate Repair',
+    title: 'Customer Testimonials on Video',
     description: `${publishedTestimonials.length} real customers on camera describing their gate repair.`,
     type: 'website',
   },

@@ -11,7 +11,7 @@ import { media } from '@/content/media-manifest'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Gate Repair FAQs | Shield Gate Repair Dallas–Fort Worth',
+  title: 'Gate Repair FAQs — Straight Answers',
   description:
     'Straight answers on gate repair: what your gate is doing and why, repair versus replacement, safety, maintenance, and what to do while you wait for a technician.',
   alternates: { canonical: '/faq' },

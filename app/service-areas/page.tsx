@@ -11,7 +11,7 @@ import { CoverageExplorer, type ExplorerCity } from '@/components/sections/cover
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: `Service Areas | Gate Repair Across ${cities.length} Dallas–Fort Worth Cities | Shield Gate Repair`,
+  title: `Gate Repair Service Areas — ${cities.length} DFW Cities`,
   description: `Automatic gate repair across ${cities.length} cities in the Dallas–Fort Worth Metroplex. Interactive coverage map. Open 24/7. Call ${business.phone.display}.`,
   alternates: { canonical: '/service-areas' },
 }

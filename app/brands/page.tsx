@@ -7,7 +7,7 @@ import { brands } from '@/content/brands'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Gate Operator Brands We Repair | Shield Gate Repair Dallas',
+  title: 'Gate Operator Brands We Repair in Dallas–Fort Worth',
   description:
     'We repair LiftMaster, FAAC, All-O-Matic, Elite, Viking, Eagle, Ramset, DoorKing, Linear and HySecurity ' +
     'gate operators across Dallas–Fort Worth. Real repair photos and video.',

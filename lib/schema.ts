@@ -34,6 +34,16 @@ export function organizationSchema(): Json {
       'Automatic gate repair, installation and service across the Dallas–Fort Worth metroplex. Residential, ' +
       'commercial, HOA and industrial.',
     areaServed: { '@type': 'AdministrativeArea', name: business.serviceArea.primary },
+    // Google will not consider a LocalBusiness for a rich result without an
+    // image, and uses `logo` for the knowledge panel. Both are assets we own,
+    // so there was no reason for these to be absent. Absolute URLs — schema
+    // consumers do not resolve site-relative paths.
+    logo: `${BASE}/brand/logo-dark.png`,
+    image: [
+      `${BASE}/images/gate-installation/gate-installation-01-800.webp`,
+      `${BASE}/images/liftmaster/liftmaster-01-800.webp`,
+      `${BASE}/images/automatic-gate-repair/automatic-gate-repair-01-800.webp`,
+    ],
     // The client's About copy says "over 16 years", so the founding year is at
     // most 2010. Year only — a full date would claim a precision we do not
     // have. Omitted entirely while the fact is unconfirmed.
@@ -156,14 +166,29 @@ export function reviewSchema(
   }))
 }
 
+/**
+ * City page schema — a Service, not a second business.
+ *
+ * This used to emit a `HomeAndConstructionBusiness` per city with no `@id`,
+ * alongside the real one from the layout. Two nodes of the same type on one
+ * page, one of them anonymous, is a conflicting duplicate entity: Google has
+ * to guess which is authoritative and may pick neither.
+ *
+ * It was also the wrong claim to make. Declaring a LocalBusiness for a city
+ * asserts a presence there, and a service-area business has one location and
+ * drives out from it. A `Service` with `areaServed` and a `provider` pointing
+ * at the single business node says the true thing — we serve this city — and
+ * keeps exactly one business entity on the page.
+ */
 export function localBusinessForCity(city: { name: string; county: string; slug: string }): Json {
   return {
     '@context': 'https://schema.org',
-    '@type': 'HomeAndConstructionBusiness',
-    name: `${business.name} — ${city.name}`,
+    '@type': 'Service',
+    '@id': `${BASE}/gate-repair-${city.slug}-tx#service`,
+    name: `Gate Repair in ${city.name}, TX`,
+    serviceType: 'Automatic gate repair',
     url: `${BASE}/gate-repair-${city.slug}-tx`,
-    telephone: business.phone.display,
-    parentOrganization: { '@id': `${BASE}/#business` },
+    provider: { '@id': `${BASE}/#business` },
     areaServed: [
       { '@type': 'City', name: city.name, containedInPlace: { '@type': 'AdministrativeArea', name: city.county } },
     ],

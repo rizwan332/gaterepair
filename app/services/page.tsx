@@ -7,7 +7,7 @@ import { media } from '@/content/media-manifest'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Gate Repair Services in Dallas–Fort Worth | Shield Gate Repair',
+  title: 'Gate Repair Services in Dallas–Fort Worth',
   description:
     'Gate motor and operator repair, emergency call-outs, electric and iron gate repair, commercial and HOA ' +
     'entrances, access control and installation across Dallas–Fort Worth.',

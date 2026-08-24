@@ -5,7 +5,7 @@ import { PageHero } from '@/components/sections/page-hero'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Shield Gate Repair',
+  title: 'Privacy Policy',
   description:
     'How Shield Gate Repair collects, uses and stores the information you submit through this website.',
   alternates: { canonical: '/privacy-policy' },

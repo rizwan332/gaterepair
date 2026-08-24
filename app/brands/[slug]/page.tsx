@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!brand) return {}
 
   return {
-    title: `${brand.name} Gate Operator Repair Dallas | Shield Gate Repair`,
+    title: `${brand.name} Gate Operator Repair in Dallas–Fort Worth`,
     description: `${brand.name} gate operator repair across Dallas–Fort Worth. Real repair photos and video, boards, limits and capacitors serviced. Open 24/7. Call ${business.phone.display}.`,
     alternates: { canonical: `/brands/${brand.slug}` },
   }

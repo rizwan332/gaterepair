@@ -9,7 +9,7 @@ import { TrustBadges } from '@/components/ui/trust-badges'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Request Gate Repair Service | Shield Gate Repair Dallas–Fort Worth',
+  title: 'Request Gate Repair Service in Dallas–Fort Worth',
   description: `Call ${business.phone.display} or send your name and number and we'll call you back. Residential and commercial gate repair across Dallas–Fort Worth, open 24/7.`,
   alternates: { canonical: '/contact' },
 }

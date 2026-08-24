@@ -15,7 +15,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
-  title: 'About Shield Gate Repair | Gate Specialists Serving Dallas–Fort Worth',
+  title: 'About Us | Gate Specialists in Dallas–Fort Worth',
   description:
     'Who we are, where we came from, and why we repair gate operators rather than replacing them. Now serving Dallas–Fort Worth.',
   alternates: { canonical: '/about' },

@@ -10,7 +10,7 @@ import { media } from '@/content/media-manifest'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Our Warranty | Shield Gate Repair Dallas–Fort Worth',
+  title: 'Our Warranty — What We Stand Behind',
   description:
     'What our warranty actually covers, what it does not, and how to claim. Written plainly, because a warranty you have to interpret is not much of a warranty.',
   alternates: { canonical: '/warranty' },

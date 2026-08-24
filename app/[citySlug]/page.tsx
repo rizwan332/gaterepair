@@ -59,7 +59,7 @@ export async function generateMetadata({
   if (!city || !publishedCities.includes(city)) return {}
 
   return {
-    title: `Gate Repair ${city.name} TX | Same-Day Service | Shield Gate Repair`,
+    title: `Gate Repair ${city.name} TX — Same-Day Service`,
     description:
       `Automatic gate repair in ${city.name}, ${city.county}. ` +
       `${city.responseBand ? `Typical arrival ${city.responseBand}. ` : ''}` +
