@@ -27,7 +27,10 @@ export async function generateMetadata({
   const project = projectBySlug(slug)
   if (!project) return {}
   return {
-    title: `${project.title} | Case Study`,
+    // `project.title` is the editorial H1 and runs long by design; `seoTitle`
+    // is the short searchable form. "| Case Study" is gone — it cost 13 of the
+    // ~60 available characters and no one searches for it.
+    title: project.seoTitle,
     description: project.summary,
     alternates: { canonical: `/projects/${project.slug}` },
   }

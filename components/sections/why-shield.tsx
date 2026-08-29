@@ -61,9 +61,22 @@ export function WhyShield() {
     {
       icon: FileCheck,
       title: 'Written warranty, every job',
-      body: warranty
-        ? `${warranty} on parts and workmanship, in writing. If it fails, we come back.`
-        : 'Parts and workmanship covered in writing on every repair. If it fails, we come back.',
+      // Links to the page that substantiates the claim. The card made it and
+      // pointed nowhere, which is the one thing this section is built not to do.
+      body: (
+        <>
+          {warranty
+            ? `${warranty} on parts and workmanship, in writing. If it fails, we come back.`
+            : 'Parts and workmanship covered in writing on every repair. If it fails, we come back.'}{' '}
+          <Link
+            href="/warranty"
+            className="font-medium text-ink-900 underline decoration-gold-400 underline-offset-2 hover:text-ink-700"
+          >
+            What the warranty covers
+          </Link>
+          .
+        </>
+      ),
     },
   ]
 

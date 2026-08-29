@@ -24,7 +24,15 @@ export type LandingPage = {
   slug: string
   /** H1. Should contain the phrase the ad group bids on. */
   h1: string
-  /** <title>. Kept under ~60 chars where possible. */
+  /**
+   * <title>, WITHOUT the brand.
+   *
+   * The root layout appends '| Shield Gate Repair' via its title template, and
+   * `landingMetadata` returns this as a plain string — so a brand written here
+   * renders twice. Seven of these titles carried it, pushing the worst to 87
+   * characters and spending 20 of them on the brand name repeated, on pages
+   * paid for by the click. Kept under ~40 chars so the total clears 60.
+   */
   title: string
   metaDescription: string
   /** One line under the H1. */
@@ -51,7 +59,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'liftmaster-la400-repair',
     h1: 'LiftMaster LA400 Repair in Dallas–Fort Worth',
-    title: 'LiftMaster LA400 Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'LiftMaster LA400 Repair Dallas–Fort Worth',
     metaDescription:
       'LA400 gate not opening, stopping partway or clicking? We repair LiftMaster LA400 swing gate operators across Dallas–Fort Worth. Open 24/7. Call now.',
     subhead: 'Swing gate operator repair, usually finished on the first visit.',
@@ -115,7 +123,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'liftmaster-gate-opener-repair',
     h1: 'LiftMaster Gate Opener Repair in Dallas–Fort Worth',
-    title: 'LiftMaster Gate Opener Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'LiftMaster Gate Opener Repair Dallas–Fort Worth',
     metaDescription:
       'LiftMaster gate opener not working? We repair LiftMaster swing and slide gate operators across Dallas–Fort Worth. Boards, capacitors, limits. Open 24/7.',
     subhead: 'Residential and commercial LiftMaster operators, repaired rather than replaced.',
@@ -161,7 +169,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'us-automatic-ranger-repair',
     h1: 'US Automatic Ranger Repair in Dallas–Fort Worth',
-    title: 'US Automatic Ranger Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'US Automatic Ranger Repair Dallas–Fort Worth',
     metaDescription:
       'US Automatic Ranger gate opener slow, stopping partway or dead? We repair Ranger solar and electric operators across Dallas–Fort Worth. Open 24/7. Call now.',
     subhead: 'Solar and electric Ranger operators on ranch and acreage driveways.',
@@ -207,7 +215,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'doorking-repair',
     h1: 'DoorKing Repair in Dallas–Fort Worth',
-    title: 'DoorKing (DKS) Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'DoorKing (DKS) Repair Dallas–Fort Worth',
     metaDescription:
       'DoorKing gate operator or telephone entry system down? We repair and program DKS operators, entry panels and card readers across Dallas–Fort Worth. Open 24/7.',
     subhead: 'Gate operators, telephone entry and access control — both sides of the system.',
@@ -253,7 +261,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'elite-gate-repair',
     h1: 'Elite Gate Repair in Dallas–Fort Worth',
-    title: 'Elite Gate Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'Elite Gate Repair Dallas–Fort Worth',
     metaDescription:
       'Elite gate repair across Dallas–Fort Worth. Boards, capacitors, limit switches and chain wear on Elite swing and slide operators. Open 24/7. Call now.',
     subhead: 'Elite swing and slide operators on residential and light commercial gates.',
@@ -299,7 +307,9 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'faac-gate-repair',
     h1: 'FAAC Gate Repair in Dallas–Fort Worth',
-    title: 'FAAC Gate Repair Dallas–Fort Worth | Hydraulic Specialists',
+    // The hydraulic angle folded into the phrase rather than trailing after a
+    // pipe — it was the half the template's appended brand pushed past 80 chars.
+    title: 'FAAC Hydraulic Gate Repair Dallas–Fort Worth',
     metaDescription:
       'FAAC hydraulic gate operator repair across Dallas–Fort Worth. Seals, fluid, pressure and boards are all serviceable. Open 24/7. Call Shield Gate Repair.',
     subhead: 'Hydraulic operators, diagnosed properly rather than replaced.',
@@ -345,7 +355,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'apollo-gate-repair',
     h1: 'Apollo Gate Repair in Dallas–Fort Worth',
-    title: 'Apollo Gate Opener Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'Apollo Gate Opener Repair Dallas–Fort Worth',
     metaDescription:
       'Apollo solar gate opener slow, stopping partway or dead? We repair Apollo swing and slide operators across Dallas–Fort Worth. Open 24/7. Call Shield Gate Repair.',
     subhead: 'Solar and battery-powered Apollo operators on acreage driveways.',
@@ -391,7 +401,7 @@ export const landingPages: LandingPage[] = [
   {
     slug: 'viking-gate-repair',
     h1: 'Viking Gate Repair in Dallas–Fort Worth',
-    title: 'Viking Gate Operator Repair Dallas–Fort Worth | Shield Gate Repair',
+    title: 'Viking Gate Operator Repair Dallas–Fort Worth',
     metaDescription:
       'Viking gate operator repair across Dallas–Fort Worth. Boards, limits, hydraulics and high-cycle commercial units. Open 24/7. Call Shield Gate Repair.',
     subhead: 'Heavy-duty Viking operators on residential and commercial entrances.',

@@ -31,11 +31,16 @@ export function ServicesGrid() {
           <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">What we fix</p>
+              {/* The symptom-first line was the whole point of this section and
+                  is kept, but as the sub-head — the H2 now names what is being
+                  repaired, which is what the section is actually about and what
+                  people search for. */}
               <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl lg:text-5xl">
-                Tell us what the gate is doing.
-                <br />
-                We&rsquo;ll tell you what&rsquo;s wrong.
+                What We Fix: Automatic, Electric &amp; Iron Gates
               </h2>
+              <p className="mt-4 font-display text-xl font-semibold leading-snug text-ink-700 sm:text-2xl">
+                Tell us what the gate is doing. We&rsquo;ll tell you what&rsquo;s wrong.
+              </p>
             </div>
             <p className="max-w-sm text-[0.9375rem] leading-relaxed text-ink-600">
               Most gate faults announce themselves in a fairly specific way. Every service page opens with a

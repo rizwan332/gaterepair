@@ -81,6 +81,73 @@ export function organizationSchema(): Json {
   return node
 }
 
+/**
+ * Ties a page to the business entity explicitly rather than leaving it implied.
+ *
+ * Without this the homepage carried exactly one node — the business — and
+ * nothing said that node was what the page is *about*. `primaryImageOfPage`
+ * also gives Google a defined image for the page rather than letting it choose.
+ */
+export function webPageSchema(opts: {
+  url: string
+  name: string
+  description: string
+  primaryImage?: string
+}): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${BASE}${opts.url}#webpage`,
+    url: `${BASE}${opts.url}`,
+    name: opts.name,
+    description: opts.description,
+    isPartOf: { '@id': `${BASE}/#website` },
+    about: { '@id': `${BASE}/#business` },
+    ...(opts.primaryImage ? { primaryImageOfPage: `${BASE}${opts.primaryImage}` } : {}),
+    inLanguage: 'en-US',
+  }
+}
+
+/** The site node `webPageSchema` points `isPartOf` at. Emitted once, on the homepage. */
+export function webSiteSchema(): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${BASE}/#website`,
+    url: BASE,
+    name: business.name,
+    publisher: { '@id': `${BASE}/#business` },
+    inLanguage: 'en-US',
+  }
+}
+
+/**
+ * The full service list as an OfferCatalog hung off the business node.
+ *
+ * Says what this business actually does in a form a search engine can
+ * enumerate, instead of leaving it to be inferred from eight links.
+ */
+export function offerCatalogSchema(items: { name: string; description: string; url: string }[]): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    '@id': `${BASE}/#services`,
+    name: 'Gate repair and installation services',
+    itemListElement: items.map((s, i) => ({
+      '@type': 'Offer',
+      position: i + 1,
+      itemOffered: {
+        '@type': 'Service',
+        name: s.name,
+        description: s.description,
+        url: `${BASE}${s.url}`,
+        provider: { '@id': `${BASE}/#business` },
+        areaServed: { '@type': 'AdministrativeArea', name: business.serviceArea.primary },
+      },
+    })),
+  }
+}
+
 export function serviceSchema(opts: { name: string; description: string; url: string }): Json {
   return {
     '@context': 'https://schema.org',

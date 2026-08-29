@@ -11,7 +11,9 @@ import { Reveal } from '@/components/ui/reveal'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Project Case Studies | Real Gate Repairs, Start to Finish',
+  // 45 chars with the appended brand. The old "Project Case Studies | Real Gate
+  // Repairs, Start to Finish" reached 78 and lost its tail.
+  title: 'Gate Repair Case Studies',
   description:
     'Gate repairs documented properly — the fault, how it was diagnosed, what was actually wrong, and what it took to fix. Including several that had already been quoted as replacements.',
   alternates: { canonical: '/projects' },

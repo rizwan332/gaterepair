@@ -20,8 +20,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "clsx": "^2.1.1",
-    "embla-carousel-react": "^8.5.2",
-    "framer-motion": "^11.15.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.474.0",
     "mongoose": "^8.9.5",

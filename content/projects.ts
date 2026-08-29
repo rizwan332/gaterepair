@@ -23,7 +23,21 @@
 
 export type Project = {
   slug: string
+  /** The editorial headline. Renders as the H1 — long is fine here. */
   title: string
+  /**
+   * The `<title>`. Required, because `title` is written to be read on the page
+   * and every one of them was too long to survive a SERP.
+   *
+   * These titles ran 84–115 characters once " | Case Study" and the layout's
+   * " | Shield Gate Repair" template were appended — Google truncates around 60,
+   * so the fault being described was being cut off mid-sentence on all eighteen.
+   * `title` keeps the narrative; this carries the fault and the operator, which
+   * is what someone with the same problem actually types.
+   *
+   * Budget: 39 characters. The template appends 21 more.
+   */
+  seoTitle: string
   /** One line for the index card. Leads with the fault, not the service. */
   summary: string
   /** Which market the work was carried out in. */
@@ -62,6 +76,7 @@ export const projects: Project[] = [
     // numbers rather than as a rate — content/pricing.ts is still unconfirmed
     // and nothing here should be read as a price list.
     slug: 'commercial-gate-impact-damage-repair',
+    seoTitle: 'Commercial Gate Impact Damage Repair',
     title: 'Two Companies Quoted $25,000 to Replace It. We Repaired It for $6,880.',
     summary:
       'A delivery truck hit a 35-foot heavy-duty commercial slide gate. Two companies said replace. We replaced the parts that were actually damaged.',
@@ -95,6 +110,7 @@ export const projects: Project[] = [
   {
     // Client-supplied 6 Aug 2026 with his own account of the job.
     slug: 'ramset-slide-gate-broken-rollers',
+    seoTitle: 'Ramset Slide Gate Roller Replacement',
     title: 'A Ramset Gate That Stopped in the Wrong Place — It Was the Wheels',
     summary:
       'Broken rollers had changed where the gate physically sat, so it stopped and opened in the wrong positions. New wheels, and the operator was fine all along.',
@@ -127,6 +143,7 @@ export const projects: Project[] = [
   {
     // Client-supplied 6 Aug 2026 with his own account of the job.
     slug: 'doorking-dual-swing-gearbox-rebuild',
+    seoTitle: 'DoorKing Swing Gate Gearbox Rebuild',
     title: 'DoorKing Dual Swing Gearbox Repaired, Not Replaced',
     summary:
       'A failed gearbox on a DoorKing dual swing operator — repaired and fully serviced, and the customer left with a three-year warranty on the work.',
@@ -160,6 +177,7 @@ export const projects: Project[] = [
     // case study in this file carried out in Texas rather than California —
     // hence market: 'texas' and the photography being genuinely local.
     slug: 'liftmaster-corroded-board-solar-upgrade',
+    seoTitle: 'Corroded LiftMaster Board Replaced',
     title: 'Moisture-Corroded LiftMaster Board Replaced, Solar System Resized',
     summary:
       'Corrosion on the control board had killed the operator — and the solar system was never big enough to keep the batteries charged in the first place.',
@@ -197,6 +215,7 @@ export const projects: Project[] = [
     // undersized array, this one is a suburban property where the board's
     // charging circuit failed while the battery itself was healthy.
     slug: 'liftmaster-board-not-charging-battery',
+    seoTitle: 'LiftMaster Board Not Charging Battery',
     title: 'LiftMaster Gate Kept Going Flat — The Board Had Stopped Charging the Battery',
     summary:
       'A battery that kept dying on a solar LiftMaster. The battery was fine; the charging circuit on the control board had failed. Replaced, and backed with a 3-year warranty.',
@@ -233,6 +252,7 @@ export const projects: Project[] = [
     // of the site's whole positioning: the undersized component was replaced
     // and everything still serviceable was kept.
     slug: 'liftmaster-la400-to-la500-arm-upgrade',
+    seoTitle: 'LiftMaster LA400 to LA500 Arm Upgrade',
     title: 'LiftMaster LA400 Was Undersized for the Gate — We Changed the Arm, Not the System',
     summary:
       'A heavy iron swing gate the existing LA400 arm could not carry. Upgraded to the heavy-duty LA500 arm alone — the control board and control box were fine and stayed exactly where they were.',
@@ -266,6 +286,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'faac-hydraulic-operator-rebuild',
+    seoTitle: 'FAAC Hydraulic Operator Rebuild',
     title: 'FAAC Hydraulic Operator Rebuilt After Two Replacement Quotes',
     summary: 'A slow, weak FAAC that two companies had condemned — repaired with a seal kit and a pressure reset.',
     market: 'california',
@@ -295,6 +316,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'all-o-matic-clutch-misdiagnosis',
+    seoTitle: 'All-O-Matic Stalling Mid-Travel',
     title: 'All-O-Matic Stalling Mid-Travel — The Clutch Was Working Correctly',
     summary: 'A gate that kept stopping halfway. The operator was fine; the gate was binding.',
     market: 'california',
@@ -324,6 +346,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'liftmaster-capacitor-not-motor',
+    seoTitle: 'LiftMaster Humming But Not Moving',
     title: 'LiftMaster Humming But Not Moving — A Capacitor, Not an Operator',
     summary: 'The single most over-replaced fault in the trade, fixed in under an hour.',
     market: 'california',
@@ -350,6 +373,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'doorking-voip-call-box',
+    seoTitle: 'DoorKing Call Box Dead After VoIP',
     title: 'DoorKing Call Box Went Silent Three Months After a Phone Upgrade',
     summary: 'The system was undamaged. The analogue line it needed had quietly disappeared.',
     market: 'california',
@@ -379,6 +403,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'commercial-loop-detector-fault',
+    seoTitle: 'Commercial Gate Loop Detector Fault',
     title: 'Commercial Gate Ignoring Trucks — A Broken Loop, Not a Broken Operator',
     summary: 'Vehicles queuing at a yard entrance because of a cracked wire in the driveway.',
     market: 'california',
@@ -408,6 +433,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'iron-gate-post-movement',
+    seoTitle: 'Iron Gate Dragging: Post Movement',
     title: 'Iron Gate Dragging on the Driveway — The Post Had Moved, Not the Gate',
     summary: 'Straightening the gate would have hidden the problem for one season.',
     market: 'california',
@@ -436,6 +462,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'solar-gate-battery',
+    seoTitle: 'Solar Gate Battery Replacement',
     title: 'Solar Gate Failing After a Few Cycles — A Battery, Not a Motor',
     summary: 'A long rural driveway where the gate got weaker every week.',
     market: 'california',
@@ -464,6 +491,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'emergency-gate-stuck-open',
+    seoTitle: 'Gate Stuck Open Overnight: Emergency',
     title: 'Gate Stuck Open Overnight at a Residential Property',
     summary: 'A security exposure treated as urgent regardless of the underlying fault.',
     market: 'california',
@@ -491,6 +519,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'ramset-high-cycle-entrance',
+    seoTitle: 'Ramset High-Cycle Apartment Entrance',
     title: 'Ramset Operator Failing Every Few Months at an Apartment Entrance',
     summary: 'Not a defective unit — an operator running far past the duty cycle it was specified for.',
     market: 'california',
@@ -520,6 +549,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'gate-installation-footings',
+    seoTitle: 'Automatic Gate Installation Costs',
     title: 'New Automatic Gate Installation — Where the Cost Actually Goes',
     summary: 'Footings, conduit and safety devices: the parts nobody sees and everything depends on.',
     market: 'california',
@@ -548,6 +578,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'elite-board-replacement',
+    seoTitle: 'Elite Gate Operator Board Replacement',
     title: 'Elite Operator Dead With No Response — Board Confirmed Before Replacing',
     summary: 'Tested first, replaced second. The order matters more than people think.',
     market: 'california',
@@ -575,6 +606,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'viking-heavy-gate-load',
+    seoTitle: 'Viking Operator on a Heavy Gate',
     title: 'Viking Operator on a Heavy Gate — The Gate Was the Problem',
     summary: 'A heavy leaf that had become harder to move was destroying an otherwise healthy operator.',
     market: 'california',
