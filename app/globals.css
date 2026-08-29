@@ -274,6 +274,51 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Scroll reveal. See components/ui/reveal.tsx.
+
+   The hidden state is scoped to `.js`, which an inline script in the document
+   head sets before first paint. That ordering is the whole point:
+
+     · script runs  → `.js` present → element starts hidden → no flash
+     · script blocked, failed, or a non-executing crawler → no `.js` → the
+       content is simply visible, which is the correct fallback for a page
+       whose job is to rank.
+
+   This replaced framer-motion, which shipped 108 KB to do the same fade and
+   server-rendered 42 homepage elements at opacity:0.
+--------------------------------------------------------------------------- */
+.js [data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.js [data-reveal] {
+  transition:
+    opacity 0.38s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+    transform 0.38s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.js [data-reveal='shown'] {
+  opacity: 1;
+  transform: none;
+  /* Dropped once the element has arrived — leaving it on promotes a layer for
+     every revealed block on the page, which is a real cost on mobile. */
+  will-change: auto;
+}
+
+/* Applies before hydration, so reduced-motion users never see the hidden
+   state at all rather than having it undone by JavaScript. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Leaflet overrides.
 
    Leaflet ships a 2011-era default skin — sharp corners, blue system links,

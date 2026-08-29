@@ -1,0 +1,1233 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shield Homepage SEO Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+:root {
+  --paper:      #FAF8F3;
+  --surface:    #FFFFFF;
+  --surface-2:  #F3EFE6;
+  --text:       #1B1814;
+  --text-soft:  #4A4339;
+  --muted:      #6F675B;
+  --rule:       #DED7C9;
+  --rule-soft:  #EBE5D9;
+  --accent:     #B4820F;
+  --accent-ink: #7C5A08;
+
+  --sev-crit-bg:   #8E1B12;
+  --sev-crit-fg:   #FFF3F1;
+  --sev-high-bg:   #C0544A;
+  --sev-high-fg:   #FFF6F4;
+  --sev-med-bd:    #6B6252;
+  --sev-med-fg:    #3A342B;
+  --sev-low-bd:    #C9C1B1;
+  --sev-low-fg:    #6F675B;
+
+  --ok:      #2F6B4F;
+  --ok-bg:   #E6F0E9;
+  --warn:    #8A5A0B;
+  --warn-bg: #F6EDDA;
+
+  --measure: 68ch;
+  --shadow: 0 1px 2px rgb(27 24 20 / 0.05), 0 8px 24px -12px rgb(27 24 20 / 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:      #0B0C0E;
+    --surface:    #16181C;
+    --surface-2:  #1E2126;
+    --text:       #EFEBE3;
+    --text-soft:  #CBC4B8;
+    --muted:      #948C7E;
+    --rule:       #2C3037;
+    --rule-soft:  #23262B;
+    --accent:     #F5B32A;
+    --accent-ink: #FBD077;
+
+    --sev-crit-bg:   #C0342A;
+    --sev-crit-fg:   #1A0E0C;
+    --sev-high-bg:   #D98679;
+    --sev-high-fg:   #1A0E0C;
+    --sev-med-bd:    #6E665A;
+    --sev-med-fg:    #CBC4B8;
+    --sev-low-bd:    #33373E;
+    --sev-low-fg:    #948C7E;
+
+    --ok:      #6FBF95;
+    --ok-bg:   #14251C;
+    --warn:    #E0AC55;
+    --warn-bg: #2A2113;
+
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:      #0B0C0E;
+  --surface:    #16181C;
+  --surface-2:  #1E2126;
+  --text:       #EFEBE3;
+  --text-soft:  #CBC4B8;
+  --muted:      #948C7E;
+  --rule:       #2C3037;
+  --rule-soft:  #23262B;
+  --accent:     #F5B32A;
+  --accent-ink: #FBD077;
+
+  --sev-crit-bg:   #C0342A;
+  --sev-crit-fg:   #1A0E0C;
+  --sev-high-bg:   #D98679;
+  --sev-high-fg:   #1A0E0C;
+  --sev-med-bd:    #6E665A;
+  --sev-med-fg:    #CBC4B8;
+  --sev-low-bd:    #33373E;
+  --sev-low-fg:    #948C7E;
+
+  --ok:      #6FBF95;
+  --ok-bg:   #14251C;
+  --warn:    #E0AC55;
+  --warn-bg: #2A2113;
+
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.7);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px 96px; }
+.col  { max-width: var(--measure); }
+
+h1, h2, h3, h4 {
+  font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  text-wrap: balance;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.mono, code, .k, .num {
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Masthead ─────────────────────────────────────────── */
+.mast { border-bottom: 1px solid var(--rule); background: var(--surface); }
+.mast-in { max-width: 1100px; margin: 0 auto; padding: 44px 24px 36px; }
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 0 0 14px;
+}
+
+.mast h1 { font-size: clamp(2rem, 5.2vw, 3.1rem); font-weight: 800; }
+
+.subject {
+  margin: 16px 0 0;
+  max-width: 62ch;
+  color: var(--text-soft);
+  font-size: 1.06rem;
+}
+
+.subject .q { color: var(--text); font-weight: 600; }
+
+/* score block */
+.score-band {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: 40px;
+  align-items: end;
+  margin-top: 38px;
+  padding-top: 30px;
+  border-top: 1px solid var(--rule-soft);
+}
+@media (max-width: 720px) { .score-band { grid-template-columns: 1fr; gap: 28px; } }
+
+.score-num {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 5.4rem;
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.score-num span { font-size: 1.6rem; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+.score-cap {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); margin-top: 10px;
+}
+
+.ledger-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px;
+}
+.ledger { display: flex; height: 12px; border-radius: 2px; overflow: hidden; gap: 2px; }
+.ledger i { display: block; }
+.ledger .lc { background: var(--sev-crit-bg); }
+.ledger .lh { background: var(--sev-high-bg); }
+.ledger .lm { background: var(--sev-med-bd); }
+.ledger .ll { background: var(--sev-low-bd); }
+
+.ledger-key { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+.ledger-key div {
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px;
+  letter-spacing: 0.05em; color: var(--muted);
+  display: flex; align-items: center; gap: 7px;
+}
+.ledger-key i { width: 9px; height: 9px; border-radius: 1px; display: block; }
+.ledger-key b { color: var(--text); font-weight: 500; }
+
+/* ── Sections ─────────────────────────────────────────── */
+section { margin-top: 68px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+.sec-num {
+  font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 500;
+  color: var(--accent-ink); letter-spacing: 0.08em; padding-top: 4px;
+}
+section > h2 { font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 700; }
+.lede { color: var(--text-soft); margin: 12px 0 0; max-width: var(--measure); }
+p { margin: 1em 0; max-width: var(--measure); }
+.wrap section > p, .wrap section > ul, .wrap section > ol { max-width: var(--measure); }
+ul, ol { padding-left: 1.15em; }
+li { margin: 0.42em 0; }
+strong { font-weight: 600; }
+a { color: var(--accent-ink); text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.k {
+  font-size: 0.86em;
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text);
+  word-break: break-word;
+}
+
+/* ── Facts table ──────────────────────────────────────── */
+.tbl-scroll { overflow-x: auto; margin: 22px 0; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+thead th {
+  font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+  background: var(--surface-2); border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: 0; }
+td.mono { font-size: 13px; }
+.tbl-scroll table { min-width: 560px; }
+
+.flag {
+  font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.09em; text-transform: uppercase; padding: 2px 7px;
+  border-radius: 3px; white-space: nowrap; display: inline-block;
+}
+.flag.ok   { background: var(--ok-bg);   color: var(--ok); }
+.flag.warn { background: var(--warn-bg); color: var(--warn); }
+
+/* ── Findings ─────────────────────────────────────────── */
+.find {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--rule);
+  border-radius: 0 6px 6px 0;
+  padding: 22px 26px;
+  margin: 18px 0;
+  box-shadow: var(--shadow);
+}
+.find.crit { border-left-color: var(--sev-crit-bg); }
+.find.high { border-left-color: var(--sev-high-bg); }
+.find.med  { border-left-color: var(--sev-med-bd); }
+.find.low  { border-left-color: var(--sev-low-bd); }
+
+.find-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+.sev {
+  font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.11em; text-transform: uppercase; padding: 3px 9px; border-radius: 3px;
+}
+.sev.crit { background: var(--sev-crit-bg); color: var(--sev-crit-fg); }
+.sev.high { background: var(--sev-high-bg); color: var(--sev-high-fg); }
+.sev.med  { background: transparent; color: var(--sev-med-fg); border: 1.5px solid var(--sev-med-bd); }
+.sev.low  { background: transparent; color: var(--sev-low-fg); border: 1px solid var(--sev-low-bd); }
+
+.fid { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; }
+.find h3 { font-size: 1.14rem; font-weight: 700; margin: 0; width: 100%; }
+.find p { margin: 0.75em 0; max-width: 72ch; font-size: 16px; }
+.find dl { margin: 14px 0 0; }
+.find dt {
+  font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+  margin-top: 15px;
+}
+.find dd { margin: 5px 0 0; max-width: 72ch; }
+
+.evidence {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 5px;
+  padding: 13px 15px;
+  margin: 12px 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-soft);
+}
+.evidence .bad  { color: var(--sev-crit-bg); font-weight: 500; }
+.evidence .good { color: var(--ok); font-weight: 500; }
+.evidence .cm   { color: var(--muted); }
+
+/* ── Spec sheet (deliverables) ────────────────────────── */
+.spec { border-top: 2px solid var(--text); margin-top: 24px; }
+.spec-row {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+@media (max-width: 720px) { .spec-row { grid-template-columns: 1fr; gap: 8px; } }
+.spec-key {
+  font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  padding-top: 4px;
+}
+.spec-key b { display: block; color: var(--accent-ink); font-weight: 700; margin-bottom: 3px; }
+.spec-val > :first-child { margin-top: 0; }
+.spec-val > :last-child { margin-bottom: 0; }
+.spec-val p { max-width: none; }
+
+.copyline {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13.5px; line-height: 1.65;
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  padding: 12px 15px;
+  margin: 0 0 10px;
+  color: var(--text);
+  word-break: break-word;
+}
+.count { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ── Callout ──────────────────────────────────────────── */
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--warn);
+  border-radius: 0 0 6px 6px;
+  padding: 22px 26px;
+  margin: 26px 0;
+}
+.callout h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.callout p, .callout li { max-width: 74ch; }
+.callout ul { margin-bottom: 0; }
+
+/* ── Action plan ──────────────────────────────────────── */
+.actions { counter-reset: act; margin-top: 24px; border-top: 2px solid var(--text); }
+.act {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 108px;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .act { grid-template-columns: 34px minmax(0, 1fr); }
+  .act .act-sev { grid-column: 2; }
+}
+.act::before {
+  counter-increment: act;
+  content: counter(act, decimal-leading-zero);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px; font-weight: 700; color: var(--accent-ink);
+  padding-top: 3px;
+}
+.act h4 { font-size: 1.02rem; font-weight: 700; margin-bottom: 5px; }
+.act p { margin: 0; font-size: 15.5px; color: var(--text-soft); max-width: none; }
+.act-sev { justify-self: start; padding-top: 2px; }
+
+hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 62px 0 0; }
+
+footer.foot {
+  margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px;
+  color: var(--muted); letter-spacing: 0.04em; line-height: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<header class="mast">
+  <div class="mast-in">
+    <p class="eyebrow">On-page audit · Homepage · shieldgaterepair.com</p>
+    <h1>Professional Gate Repair &amp; Automatic Gate Services</h1>
+    <p class="subject">
+      Audit of the page carrying the H1 <span class="q">“Professional Gate Repair &amp; Automatic Gate Services”</span>
+      — the Shield Gate Repair homepage, rendered at <span class="k">/</span>.
+      Every finding below was read out of the source and the compiled HTML in this repository, not inferred.
+    </p>
+
+    <div class="score-band">
+      <div>
+        <div class="score-num">74<span>/100</span></div>
+        <div class="score-cap">Strong technically · weak at the top of the page</div>
+      </div>
+      <div>
+        <div class="ledger-label"><span>Issue distribution</span><span>16 findings</span></div>
+        <div class="ledger" role="img" aria-label="2 critical, 5 high, 6 medium, 3 low">
+          <i class="lc" style="flex:2"></i>
+          <i class="lh" style="flex:5"></i>
+          <i class="lm" style="flex:6"></i>
+          <i class="ll" style="flex:3"></i>
+        </div>
+        <div class="ledger-key">
+          <div><i class="lc" style="background:var(--sev-crit-bg)"></i><b>2</b> Critical</div>
+          <div><i class="lh" style="background:var(--sev-high-bg)"></i><b>5</b> High</div>
+          <div><i class="lm" style="background:var(--sev-med-bd)"></i><b>6</b> Medium</div>
+          <div><i class="ll" style="background:var(--sev-low-bd)"></i><b>3</b> Low</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head"><span class="sec-num">00</span><h2>The short version</h2></div>
+  <p class="lede">
+    This is an unusually well-built page. The technical layer — canonical, robots, sitemap, redirects,
+    image pipeline, font strategy, video facades — is better than almost anything in this market, and the body copy
+    is genuinely original rather than templated. The score is held down by four things, all of which sit
+    in the first 200 pixels or in the invisible layer around the page.
+  </p>
+  <p>
+    <strong>The H1 is the single biggest loss.</strong> “Professional Gate Repair &amp; Automatic Gate Services”
+    names no city, no brand, and leads on the weakest of the eight terms being targeted. The
+    <span class="k">&lt;title&gt;</span> is correctly geo-targeted; the H1 is not, so the page's strongest
+    on-page signal disagrees with its second-strongest.
+  </p>
+  <p>
+    <strong>The meta description promises something the site no longer does.</strong> It ends in
+    “Published prices.” — but <span class="k">/pricing</span> was retired and 301s to
+    <span class="k">/contact</span>. That is a SERP promise the landing page cannot keep.
+  </p>
+  <p>
+    <strong>The structured data is one node deep</strong> on a page carrying 21 videos, 8 services and 190 cities.
+    <strong>And the local entity is unverifiable</strong> — no address, no Google Business Profile link,
+    no review signal — which is the difference between appearing in the local pack and not.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>What the page actually renders</h2></div>
+  <p class="lede">Read from the compiled HTML, so this is what a crawler sees — not what the source intends.</p>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Element</th><th>Rendered value</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Title</td><td class="mono">Gate Repair Dallas–Fort Worth | Same-Day Service | Shield Gate Repair <span style="color:var(--muted)">(69 ch)</span></td><td><span class="flag warn">Too long</span></td></tr>
+        <tr><td>Meta description</td><td class="mono">Automatic gate stuck or broken? … Open 24/7. Published prices. <span style="color:var(--muted)">(186 ch)</span></td><td><span class="flag warn">Long + false</span></td></tr>
+        <tr><td>H1</td><td class="mono">Professional Gate Repair &amp; Automatic Gate Services</td><td><span class="flag warn">No geo</span></td></tr>
+        <tr><td>Heading counts</td><td class="mono">1 × H1 · 13 × H2 · 18 × H3</td><td><span class="flag ok">Clean</span></td></tr>
+        <tr><td>Canonical</td><td class="mono">https://www.shieldgaterepair.com</td><td><span class="flag ok">Self-ref</span></td></tr>
+        <tr><td>Robots meta</td><td class="mono">index, follow</td><td><span class="flag ok">Indexable</span></td></tr>
+        <tr><td>robots.txt</td><td class="mono">Allow: / · Disallow: /api/ · Sitemap declared</td><td><span class="flag ok">Correct</span></td></tr>
+        <tr><td>Sitemap</td><td class="mono">/sitemap.xml · homepage priority 1.0</td><td><span class="flag ok">Present</span></td></tr>
+        <tr><td>HTTPS / host</td><td class="mono">www enforced; apex 301s to www</td><td><span class="flag ok">Consistent</span></td></tr>
+        <tr><td>JSON-LD types</td><td class="mono">HomeAndConstructionBusiness only</td><td><span class="flag warn">Thin</span></td></tr>
+        <tr><td>Open Graph</td><td class="mono">Full set + generated 1200×630 image</td><td><span class="flag ok">Complete</span></td></tr>
+        <tr><td>Twitter card</td><td class="mono">summary_large_image</td><td><span class="flag ok">Complete</span></td></tr>
+        <tr><td>Image preload</td><td class="mono">Header logo only — hero not preloaded</td><td><span class="flag warn">Wrong target</span></td></tr>
+        <tr><td>Internal links</td><td class="mono">8 services · 17 brands · 14 cities · 4 case studies · /contact ×7</td><td><span class="flag ok">Dense</span></td></tr>
+        <tr><td>Link to /emergency</td><td class="mono">0 occurrences</td><td><span class="flag warn">Orphaned</span></td></tr>
+        <tr><td>NAP on page</td><td class="mono">Name ✓ · Phone ✓ (214) 735-4314 · Address ✗</td><td><span class="flag warn">Incomplete</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>Keyword targeting</h2></div>
+
+  <h3 style="margin-top:26px;font-size:1.05rem">Primary keyword and intent</h3>
+  <p>
+    The page is currently targeting two different things at once. The title targets
+    <span class="k">gate repair Dallas–Fort Worth</span> — correct. The H1 targets
+    <span class="k">automatic gate services</span> — the weakest phrase on the list, vague enough that it
+    attracts informational and supplier traffic rather than someone with a gate stuck open.
+  </p>
+  <p>
+    Intent for the head term is <strong>local transactional, frequently urgent</strong>. Someone searching
+    “gate repair” in DFW is usually blocked in or out of their own property. That intent wants a phone
+    number, a service area, an arrival expectation and proof — in that order. The page delivers all four,
+    but the H1 spends its keyword budget on a phrase nobody in that state of mind types.
+  </p>
+
+  <h3 style="margin-top:26px;font-size:1.05rem">Placement audit</h3>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Location</th><th>Carries primary keyword?</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Title</td><td><span class="flag ok">Yes</span></td><td>“Gate Repair Dallas–Fort Worth” leads. Correct.</td></tr>
+        <tr><td>Meta description</td><td><span class="flag ok">Yes</span></td><td>Opens on the symptom, then the term. Good structure.</td></tr>
+        <tr><td>H1</td><td><span class="flag warn">Partial</span></td><td>Has “Gate Repair”, no geo, leads with “Professional”.</td></tr>
+        <tr><td>Hero sub-headline</td><td><span class="flag ok">Yes</span></td><td>Geo lives here — but it is a <span class="k">&lt;p&gt;</span>, not a heading.</td></tr>
+        <tr><td>H2s</td><td><span class="flag warn">Weak</span></td><td>13 H2s; only one names a city. Copy is excellent but keyword-silent.</td></tr>
+        <tr><td>Body</td><td><span class="flag ok">Yes</span></td><td>Natural density, brand and symptom vocabulary throughout.</td></tr>
+        <tr><td>URL</td><td><span class="flag ok">N/A</span></td><td>Root. Correct for the head term — do not change.</td></tr>
+        <tr><td>Image alt</td><td><span class="flag warn">Deliberately absent</span></td><td>Hero is <span class="k">alt=""</span> (correct, decorative). Manifest alt avoids all geo claims by design.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:26px;font-size:1.05rem">Cannibalisation and over-optimisation</h3>
+  <p>
+    <strong>No over-optimisation risk.</strong> Keyword density is natural and the copy reads as though a
+    human who understands gate operators wrote it. This is a strength worth protecting — do not add keywords
+    to the body during the fixes below.
+  </p>
+  <p>
+    <strong>One real cannibalisation pair,</strong> and it does not involve the homepage:
+    <span class="k">/emergency</span> and <span class="k">/services/emergency-gate-repair</span> both target
+    “emergency gate repair Dallas–Fort Worth”. See finding <span class="fid">M-02</span>.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Search intent across the eight target terms</h2></div>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>Query</th><th>Dominant intent</th><th>Right page</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">gate repair</td><td>Local transactional, often urgent. Local pack dominates.</td><td><strong>Homepage</strong> — recommended primary</td></tr>
+        <tr><td class="mono">gate repair near me</td><td>Same intent, explicit proximity. Pack-only in practice.</td><td>Homepage + GBP. Never optimise a page <em>for</em> “near me”.</td></tr>
+        <tr><td class="mono">automatic gate repair</td><td>Local transactional, slightly more specified.</td><td><span class="k">/services/automatic-gate-repair</span></td></tr>
+        <tr><td class="mono">electric gate repair</td><td>Local transactional. Regional synonym for automatic.</td><td><span class="k">/services/electric-gate-repair</span></td></tr>
+        <tr><td class="mono">gate opener repair</td><td>Component-level. Mixed DIY and hire intent.</td><td><span class="k">/services/gate-motor-repair</span> + brand pages</td></tr>
+        <tr><td class="mono">emergency gate repair</td><td>Highest urgency, lowest patience. Phone-first.</td><td><span class="k">/emergency</span> — consolidate, see <span class="fid">M-02</span></td></tr>
+        <tr><td class="mono">gate installation</td><td>Considered purchase, long cycle, quote-seeking.</td><td><span class="k">/services/gate-installation</span></td></tr>
+        <tr><td class="mono">automatic gate services</td><td>Vague. Mixed B2B, supplier and informational.</td><td><strong>Do not target.</strong> Currently occupies the H1.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:20px">
+    <strong>Featured snippet and PAA opportunities.</strong> The strongest unclaimed surfaces are
+    definition and troubleshooting queries the site already answers on deeper pages but not on the homepage:
+    “why won't my automatic gate close”, “how much does gate repair cost”, “how do I open an electric gate
+    during a power outage”, “gate repair or replace”. The manual-release answer in particular is a
+    paragraph-snippet shape and the page already mentions it twice in prose without ever posing it as a question.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>Findings</h2></div>
+  <p class="lede">Sixteen findings, ordered by severity. Each carries what is wrong, why it matters, and the exact fix.</p>
+
+  <!-- ── CRITICAL ── -->
+  <article class="find crit">
+    <div class="find-top"><span class="sev crit">Critical</span><span class="fid">C-01</span><span class="flag warn">Needs client verification</span></div>
+    <h3>The page claims to be a local business but carries nothing a search engine can verify</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The <span class="k">HomeAndConstructionBusiness</span> node has no <span class="k">address</span>,
+      no <span class="k">sameAs</span>, no <span class="k">aggregateRating</span> and no
+      <span class="k">geo</span>. All four are suppressed correctly by the codebase's own honesty guard —
+      <span class="k">business.address</span>, <span class="k">business.rating</span>,
+      <span class="k">business.googleReviewUrl</span> and all three social handles are marked unconfirmed —
+      so this is a data gap, not a code defect.</dd>
+      <dt>Why it matters</dt>
+      <dd>For a local service business the local pack is the channel, not a bonus. Without a resolvable
+      location, a linked Google Business Profile, or a single review signal, the page has no way to be
+      associated with the entity that would rank in it. Everything else in this audit is worth less than
+      closing this gap.</dd>
+      <dt>Exact fix</dt>
+      <dd>This is a client conversation, not a code change. Obtain, in order: (1) the GBP listing URL and
+      the “Ask for reviews” short link; (2) the business address, or a written confirmation that it is a
+      service-area business with a hidden address; (3) the current Google rating and review count;
+      (4) the YouTube channel URL — the site already hosts 21 videos from it. Then set
+      <span class="k">confirmed: true</span> on each fact in <span class="k">content/business.ts</span>;
+      every render site and schema builder already guards on them and will light up automatically.</dd>
+      <dt>Do not</dt>
+      <dd>Do not invent an address or a rating to fill the schema. Emitting
+      <span class="k">aggregateRating</span> over reviews that do not exist is a structured-data violation
+      that earns manual actions. The existing guard is right.</dd>
+    </dl>
+  </article>
+
+  <article class="find crit">
+    <div class="find-top"><span class="sev crit">Critical</span><span class="fid">C-02</span></div>
+    <h3>The meta description advertises published prices; the pricing page was retired</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The description ends “Published prices.” — but <span class="k">/pricing</span> was retired and now
+      301s to <span class="k">/contact</span>, and no price list exists anywhere on the site.</dd>
+      <div class="evidence"><span class="cm">// app/page.tsx — rendered description tail</span>
+…Eagle and Ramset operators. Open 24/7. <span class="bad">Published prices.</span>
+
+<span class="cm">// next.config.ts — the page it promises</span>
+{ source: <span class="bad">'/pricing'</span>, destination: '/contact', permanent: true }</div>
+      <dt>Why it matters</dt>
+      <dd>It is the one line in the SERP snippet a price-sensitive searcher will act on. They click, find no
+      prices, and bounce — which teaches Google the result did not satisfy the query. It is also simply not
+      true, on a site whose entire positioning is that it tells customers the truth.</dd>
+      <dt>Exact fix</dt>
+      <dd>Remove the claim and use the reclaimed characters to bring the description under 160. Replacement in
+      section <strong>B</strong> below.</dd>
+    </dl>
+  </article>
+
+  <!-- ── HIGH ── -->
+  <article class="find high">
+    <div class="find-top"><span class="sev high">High</span><span class="fid">H-01</span></div>
+    <h3>The H1 has no location and leads on the weakest target term</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd><span class="k">Professional Gate Repair &amp; Automatic Gate Services</span> opens on an
+      unfalsifiable adjective, names no city, and gives its emphasis — the gold-gradient span — to
+      “Automatic Gate Services”, the one phrase of the eight with no clear commercial intent behind it.
+      The geo lives in the sub-headline, which is a <span class="k">&lt;p&gt;</span>.</dd>
+      <dt>Why it matters</dt>
+      <dd>The H1 is the strongest on-page relevance signal after the title, and here the two disagree: the
+      title says “Dallas–Fort Worth”, the H1 says nothing about where this company works. “Professional”
+      is also the exact register the site's own component comments criticise competitors for
+      (“unfalsifiable adjectives … which is exactly why they do not work”) — the hero is doing the thing the
+      rest of the page was built to avoid.</dd>
+      <dt>Exact fix</dt>
+      <dd>Replace the H1 and rewrite the sub-headline so it stops repeating the geo. In
+      <span class="k">components/sections/hero.tsx</span>:</dd>
+    </dl>
+    <div class="evidence"><span class="bad">- Professional Gate Repair &amp; &lt;span&gt;Automatic Gate Services&lt;/span&gt;</span>
+<span class="good">+ Automatic Gate Repair in &lt;span&gt;Dallas–Fort Worth&lt;/span&gt;</span>
+
+<span class="cm">// sub-headline — drop the now-duplicated geo, keep the proof</span>
+<span class="bad">- Residential &amp; Commercial Gate Repair Throughout Dallas–Fort Worth</span>
+<span class="good">+ Residential, commercial, HOA and industrial — most repairs finished on the first visit</span></div>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:0">
+      The gold span still lands on the most valuable words, and the line is 42 characters — it holds at the
+      current type scale on a 375px viewport.
+    </p>
+  </article>
+
+  <article class="find high">
+    <div class="find-top"><span class="sev high">High</span><span class="fid">H-02</span></div>
+    <h3>Meta description is 186 characters and truncates mid-brand-list</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>186 characters against a ~155–160 display budget. Google will cut it around
+      “…Elite, Viking, Eag…”, so the truncation lands inside the brand list and the 24/7 availability —
+      the strongest conversion line — never renders.</dd>
+      <dt>Why it matters</dt>
+      <dd>Description text does not affect ranking, but it is most of what determines the click. Losing
+      “Open 24/7” on a query set that skews toward emergencies loses the click to whoever kept theirs.</dd>
+      <dt>Exact fix</dt>
+      <dd>Replace with the 157-character version in section <strong>B</strong>. Apply it in both
+      <span class="k">app/page.tsx</span> and the <span class="k">app/layout.tsx</span> default, which
+      currently hold two different strings.</dd>
+    </dl>
+  </article>
+
+  <article class="find high">
+    <div class="find-top"><span class="sev high">High</span><span class="fid">H-03</span></div>
+    <h3>One schema node on a page carrying 21 videos, 8 services and 190 cities</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The homepage emits only the layout's <span class="k">HomeAndConstructionBusiness</span>. There is
+      no <span class="k">WebPage</span>, no <span class="k">Service</span> or
+      <span class="k">hasOfferCatalog</span>, and — most costly — no
+      <span class="k">VideoObject</span> for any of the 21 testimonial videos in the carousel.</dd>
+      <div class="evidence"><span class="cm">// JSON-LD types found in the compiled homepage</span>
+1 × HomeAndConstructionBusiness
+1 × AdministrativeArea         <span class="cm">(nested)</span>
+1 × OpeningHoursSpecification  <span class="cm">(nested)</span>
+<span class="bad">0 × VideoObject — over 21 embedded videos</span></div>
+      <dt>Why it matters</dt>
+      <dd><span class="k">lib/schema.ts</span> already contains a working
+      <span class="k">videoSchema()</span> builder, and it is wired into service, brand and project pages —
+      but not the homepage, which is the page with the most videos on it. The file's own comment notes that
+      no DFW competitor has any detectable schema and video rich results are uncontested here. This is a
+      built asset left unplugged on the highest-priority URL.</dd>
+      <dt>Exact fix</dt>
+      <dd>Emit a small graph on the homepage: a <span class="k">WebPage</span> node keyed to the business,
+      an <span class="k">ItemList</span> of <span class="k">VideoObject</span> for the carousel, and a
+      <span class="k">hasOfferCatalog</span> listing the eight services. Full plan in section <strong>J</strong>.</dd>
+    </dl>
+  </article>
+
+  <article class="find high">
+    <div class="find-top"><span class="sev high">High</span><span class="fid">H-04</span></div>
+    <h3>/emergency is orphaned — the homepage, header and footer all fail to link it</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>Zero occurrences of <span class="k">href="/emergency"</span> in the compiled homepage. It is not
+      in the header nav and not in the footer. The only file that links it is
+      <span class="k">components/sections/landing-page.tsx</span> — so the page's sole internal inbound
+      links come from the eight Google Ads landing pages.</dd>
+      <div class="evidence"><span class="cm">// links to /emergency, whole codebase</span>
+components/sections/landing-page.tsx:306    href="/emergency"
+<span class="bad">// header nav: absent · footer: absent · homepage: absent</span>
+
+<span class="cm">// meanwhile, in app/sitemap.ts</span>
+{ path: '/emergency', priority: <span class="bad">0.95</span> }  <span class="cm">← second only to the homepage</span></div>
+      <dt>Why it matters</dt>
+      <dd>The sitemap declares this the second most important page on the site, and the internal link graph
+      declares it nearly worthless. Google weighs the link graph far more heavily than sitemap priority.
+      “Emergency gate repair” is also the highest-urgency, highest-converting term in the set, and the
+      homepage — which ranks for the emergency-adjacent traffic — passes it no equity at all.</dd>
+      <dt>Exact fix</dt>
+      <dd>Three links. Add <span class="k">/emergency</span> to the header nav; add it to the footer's
+      Services column; and point the homepage's <span class="k">ClosingCTA</span> heading at it — that
+      section is already headed “Gate Not Working Right Now?”, which is the emergency query stated as a
+      sentence, and it currently links only to <span class="k">/contact</span>.</dd>
+    </dl>
+  </article>
+
+  <article class="find high">
+    <div class="find-top"><span class="sev high">High</span><span class="fid">H-05</span></div>
+    <h3>The LCP image is not preloaded; the header logo is preloaded instead</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The only <span class="k">&lt;link rel="preload" as="image"&gt;</span> in the head points at
+      <span class="k">/brand/logo-dark.webp</span>. The hero photograph — the actual LCP element — is
+      rendered by the custom <span class="k">ResponsiveImage</span> component as a raw
+      <span class="k">&lt;picture&gt;</span> served from CloudFront, so Next has no knowledge of it and
+      emits no preload for it.</dd>
+      <div class="evidence"><span class="cm">// compiled &lt;head&gt; — the only image preload</span>
+&lt;link rel="preload" as="image" imageSrcSet="/_next/image?url=<span class="bad">%2Fbrand%2Flogo-dark.webp</span>…"&gt;
+
+<span class="cm">// the actual LCP element — discovered only after HTML parse</span>
+&lt;picture&gt;&lt;source type="image/avif" srcset="https://…cloudfront.net/…"&gt;…</div>
+      <dt>Why it matters</dt>
+      <dd>The hero is correctly marked <span class="k">fetchPriority="high"</span>, but priority only applies
+      once the browser has found the element. A small logo is occupying the one preload slot and competing
+      for connection and bandwidth with the image LCP is measured on. On a cold 4G connection this is
+      typically several hundred milliseconds of LCP, entirely recoverable.</dd>
+      <dt>Exact fix</dt>
+      <dd>Emit a matching preload for the hero from the homepage, and drop <span class="k">priority</span>
+      from the header logo so it stops claiming the slot:</dd>
+    </dl>
+    <div class="evidence"><span class="cm">// app/page.tsx — mirror the &lt;picture&gt;'s AVIF source exactly</span>
+&lt;link
+  rel="preload" as="image" type="image/avif"
+  imageSrcSet={hero.widths.map(w =&gt; `${cdn(`${hero.src}-${w}.avif`)} ${w}w`).join(', ')}
+  imageSizes="100vw" fetchPriority="high"
+/&gt;
+<span class="cm">// the srcset and sizes must match the rendered &lt;source&gt; character for character,
+// or the browser downloads the image twice.</span></div>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:0">
+      Add <span class="k">&lt;link rel="preconnect"&gt;</span> to the CloudFront host at the same time —
+      the LCP image is on a third origin and currently pays full DNS + TLS before its first byte.
+    </p>
+  </article>
+
+  <!-- ── MEDIUM ── -->
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-01</span></div>
+    <h3>Title runs 69 characters and loses its tail</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>69 characters against a ~60-character display budget, so the trailing brand name is what gets cut.</dd>
+      <dt>Why it matters</dt>
+      <dd>Lower cost than it looks — the truncated element is the brand, and Google frequently appends the
+      site name itself. But the same 69 characters could carry the 24/7 differentiator instead, which
+      currently appears nowhere in the snippet a searcher sees first.</dd>
+      <dt>Exact fix</dt>
+      <dd>Two options in section <strong>A</strong>. Both are under 55 characters and both keep
+      “Gate Repair Dallas–Fort Worth” in the first position.</dd>
+    </dl>
+  </article>
+
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-02</span></div>
+    <h3>Two pages compete for “emergency gate repair Dallas–Fort Worth”</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>Two indexed pages target the same query with near-identical titles.</dd>
+      <div class="evidence">/emergency
+  <span class="bad">24/7 Emergency Gate Repair | Dallas–Fort Worth | Call Now</span>  <span class="cm">(80 ch rendered)</span>
+
+/services/emergency-gate-repair
+  <span class="bad">Emergency Gate Repair in Dallas–Fort Worth</span></div>
+      <dt>Why it matters</dt>
+      <dd>Google picks one and dilutes both. It compounds with <span class="fid">H-04</span>: the page with
+      the better title for the query is the one with no internal links, so the weaker page will win by
+      default — and it is the wrong page, because <span class="k">/emergency</span> is the phone-first
+      layout the query actually wants.</dd>
+      <dt>Exact fix</dt>
+      <dd>Pick <span class="k">/emergency</span> as the canonical target. Re-angle
+      <span class="k">/services/emergency-gate-repair</span> onto the diagnostic long tail — retitle it to
+      something like “After-Hours Gate Faults: What Breaks and What It Costs” — and have it link up to
+      <span class="k">/emergency</span> for the call. Alternatively 301
+      <span class="k">/services/emergency-gate-repair</span> → <span class="k">/emergency</span> and remove
+      it from <span class="k">content/services.ts</span>; cleaner, but it costs a service page.
+      While there, trim the <span class="k">/emergency</span> title — at 80 characters it truncates too.</dd>
+    </dl>
+  </article>
+
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-03</span></div>
+    <h3>No question-and-answer content anywhere on the strongest page</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The homepage has 13 H2s and not one is a question. Every FAQ on the site lives on
+      <span class="k">/faq</span>, service pages and brand pages.</dd>
+      <dt>Why it matters</dt>
+      <dd>Question-shaped headings followed by a direct 40–60 word answer are the extraction unit for
+      People Also Ask, paragraph snippets and AI Overviews. The homepage is the page with the most authority
+      to win them and it presents no extractable answer. Note this is about <em>content</em>, not markup —
+      since Google's 2023 restriction, <span class="k">FAQPage</span> rich results are effectively limited
+      to government and health sites, so the schema is worth adding for entity understanding but should not
+      be expected to produce visible rich results.</dd>
+      <dt>Exact fix</dt>
+      <dd>Add a six-question FAQ section above <span class="k">ClosingCTA</span>, reusing entries already
+      written in <span class="k">content/general-faqs.ts</span> so nothing is duplicated into a new file.
+      Questions in section <strong>H</strong>. Render it in plain <span class="k">&lt;details&gt;</span>
+      markup as <span class="k">/faq</span> already does, so the answers are in the DOM at render time.</dd>
+    </dl>
+  </article>
+
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-04</span></div>
+    <h3>An absolute photography claim the repository's own notes contradict</h3>
+    <div class="find-top" style="margin:-4px 0 12px"><span class="flag warn">Needs client verification</span></div>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The Featured Work section states: <em>“Every photograph on this site is our own technicians on our
+      own jobs. None of it is stock, and none of it is generated.”</em> Two files in this repository qualify
+      that. <span class="k">content/alt-text.ts</span> records that at least one image
+      (<span class="k">faac-01</span>) is a manufacturer product shot rather than a job photo, and that the
+      wider source library shows Southern California work — palm trees, Spanish tile, a Santa Monica
+      security sign — not DFW.</dd>
+      <dt>Why it matters</dt>
+      <dd>This is an E-E-A-T claim, not a marketing flourish, and it is stated in absolute terms on the page
+      that carries the most trust weight. A single verifiably-stock image makes the sentence false and
+      undermines every other claim beside it. The three photographs in that specific section are
+      client-supplied and confirmed — the problem is the word “site”, which scopes the claim to 122 images
+      the sentence cannot cover.</dd>
+      <dt>Exact fix</dt>
+      <dd>Narrow the claim to what is provably true of the images in view:</dd>
+    </dl>
+    <div class="evidence"><span class="bad">- Every photograph on this site is our own technicians on our own jobs.
+-   None of it is stock, and none of it is generated.</span>
+<span class="good">+ These are our own technicians on our own jobs — photographed on site,
++   not staged and not generated.</span></div>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:0">
+      Then confirm with the client which library images are DFW work before any of them appear in a
+      geo-claiming context. <span class="k">MEDIA-PROVENANCE.md</span> is the file to settle this against.
+    </p>
+  </article>
+
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-05</span></div>
+    <h3>Sixteen years of experience is a confirmed fact the homepage never states</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd><span class="k">business.yearsInBusiness</span> is <span class="k">confirmed: true, value: 16</span>
+      — verified against the client's own About copy. It is the only substantial experience credential the
+      business has confirmed, and it appears nowhere above the fold. The hero's trust row carries
+      “Licensed &amp; Insured”, which is the weakest and least differentiated claim available.</dd>
+      <dt>Why it matters</dt>
+      <dd>Experience is the first E of E-E-A-T, this is a confirmed number rather than an adjective, and
+      it is free to deploy — no client call needed. It also happens to be the kind of specific that the
+      rest of the page's copy strategy is explicitly built around.</dd>
+      <dt>Exact fix</dt>
+      <dd>Add it to the hero availability pill, which already renders the service area:</dd>
+    </dl>
+    <div class="evidence"><span class="bad">- Technicians available now — DFW &amp; Surrounding Areas</span>
+<span class="good">+ Technicians available now — 16+ years across DFW</span>
+<span class="cm">// guard on fact(business.yearsInBusiness) as every other render site does</span></div>
+  </article>
+
+  <article class="find med">
+    <div class="find-top"><span class="sev med">Medium</span><span class="fid">M-06</span></div>
+    <h3>GTM is the first thing in the head, ahead of everything that paints</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The GTM loader is inlined as the first element of <span class="k">&lt;head&gt;</span>, and the
+      container fires both GA4 and Google Ads. The loader itself is ~500 bytes and non-blocking, but
+      <span class="k">gtm.js</span> and its two child tags land on the main thread during the critical window.</dd>
+      <dt>Why it matters</dt>
+      <dd>This is a deliberate, documented trade — the code comment explains that deferring it risks losing
+      early Ads conversion events, which is a real business cost. So this is a measurement note, not a
+      defect. But GTM is now the single largest third-party cost on an otherwise near-optimal page, and it
+      lands on INP and TBT rather than LCP.</dd>
+      <dt>Exact fix</dt>
+      <dd>Keep the loader where it is. Instead: add
+      <span class="k">&lt;link rel="preconnect" href="https://www.googletagmanager.com"&gt;</span> above it,
+      and audit the container itself for tags that can move to a
+      <span class="k">DOM Ready</span> or <span class="k">Window Loaded</span> trigger. Measure before and
+      after with field data in Search Console rather than lab scores.</dd>
+    </dl>
+  </article>
+
+  <!-- ── LOW ── -->
+  <article class="find low">
+    <div class="find-top"><span class="sev low">Low</span><span class="fid">L-01</span><span class="flag warn">Off this page</span></div>
+    <h3>Seven of eight Ads landing pages still render the brand name twice</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd>The most recent commit removed the duplicated brand from 14 page titles, but did not touch
+      <span class="k">content/landing-pages.ts</span>. Those titles still hardcode the brand while
+      <span class="k">landingMetadata()</span> returns a plain string, so the root layout's
+      <span class="k">'%s | Shield Gate Repair'</span> template appends it a second time.</dd>
+      <div class="evidence"><span class="bad">Apollo Gate Opener Repair Dallas–Fort Worth | Shield Gate Repair | Shield Gate Repair</span>  87 ch
+<span class="bad">DoorKing (DKS) Repair Dallas–Fort Worth | Shield Gate Repair | Shield Gate Repair</span>     83 ch
+<span class="bad">Elite Gate Repair Dallas–Fort Worth | Shield Gate Repair | Shield Gate Repair</span>         79 ch</div>
+      <dt>Why it matters</dt>
+      <dd>Low severity for <em>this</em> audit because it does not touch the homepage — but these are paid
+      landing pages, so a wasted 20 characters of title is being paid for on every impression.</dd>
+      <dt>Exact fix</dt>
+      <dd>Strip <span class="k">| Shield Gate Repair</span> from all eight entries in
+      <span class="k">content/landing-pages.ts</span>. The template will re-add it once. Same fix the last
+      commit applied elsewhere; these files were simply missed.</dd>
+    </dl>
+  </article>
+
+  <article class="find low">
+    <div class="find-top"><span class="sev low">Low</span><span class="fid">L-02</span></div>
+    <h3>Sitemap priority and changefreq are being maintained for nothing</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd><span class="k">app/sitemap.ts</span> carries a deliberate priority tier system —
+      contested vs uncontested brands, Tier 1 vs Tier 3 cities. Google has stated for years that it ignores
+      both <span class="k">priority</span> and <span class="k">changefreq</span>.</dd>
+      <dt>Why it matters</dt>
+      <dd>Harmless output, but it is misleading as a planning artefact: <span class="fid">H-04</span> exists
+      partly because <span class="k">/emergency</span>'s 0.95 priority reads as though the page is being
+      promoted when nothing is actually promoting it.</dd>
+      <dt>Exact fix</dt>
+      <dd>Leave the values — removing them changes nothing. Instead treat the tiering as what it is: a
+      to-do list for the internal link graph, which <em>is</em> read. Anything above 0.85 in that file
+      should be reachable from the homepage or the header.</dd>
+    </dl>
+  </article>
+
+  <article class="find low">
+    <div class="find-top"><span class="sev low">Low</span><span class="fid">L-03</span></div>
+    <h3>robots.txt Host directive is Yandex-only</h3>
+    <dl>
+      <dt>What is wrong</dt>
+      <dd><span class="k">app/robots.ts</span> emits <span class="k">host: business.url</span>. Google has
+      never supported the Host directive; only Yandex reads it.</dd>
+      <dt>Why it matters</dt>
+      <dd>It does no harm and is ignored silently. Worth knowing only so it is not mistaken for the thing
+      that enforces www — the apex 301 and the self-referencing canonical are doing that job, and both are
+      correct.</dd>
+      <dt>Exact fix</dt>
+      <dd>None required. Keep or remove on preference.</dd>
+    </dl>
+  </article>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>Deliverables</h2></div>
+  <p class="lede">Copy-ready. Character counts measured, not estimated.</p>
+
+  <div class="spec">
+    <div class="spec-row">
+      <div class="spec-key"><b>A</b> SEO title</div>
+      <div class="spec-val">
+        <div class="copyline">Gate Repair Dallas–Fort Worth | Same-Day, Open 24/7</div>
+        <p class="count">51 characters · leads with the head term + geo, ends on the differentiator</p>
+        <p style="margin:14px 0 6px;font-size:15px;color:var(--muted)">If the brand must stay in the tag:</p>
+        <div class="copyline">Gate Repair Dallas–Fort Worth | Shield Gate Repair</div>
+        <p class="count">50 characters</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>B</b> Meta description</div>
+      <div class="spec-val">
+        <div class="copyline">Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.</div>
+        <p class="count">157 characters · “Published prices” removed · apply to app/page.tsx and the app/layout.tsx default</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>C</b> H1</div>
+      <div class="spec-val">
+        <div class="copyline">Automatic Gate Repair in <span style="color:var(--accent-ink)">Dallas–Fort Worth</span></div>
+        <p class="count">42 characters · gold span moves to the geo · sub-headline rewritten per H-01</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>D</b> Primary keyword</div>
+      <div class="spec-val">
+        <p style="margin-top:0"><strong>gate repair</strong>, targeted locally as
+        <span class="k">gate repair Dallas–Fort Worth</span>.</p>
+        <p>It is the head term with the broadest local-transactional intent, and “gate repair near me”
+        resolves to the same local pack — so one page serves both. Explicitly <strong>reject</strong>
+        “automatic gate services”, the phrase currently in the H1: it is the vaguest of the eight and
+        attracts supplier and informational traffic rather than someone with a broken gate.</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>E</b> Secondary keywords</div>
+      <div class="spec-val">
+        <p style="margin-top:0"><strong>Commercial:</strong> automatic gate repair · electric gate repair ·
+        gate opener repair · gate motor repair · emergency gate repair · driveway gate repair ·
+        sliding gate repair · commercial gate repair · 24 hour gate repair · gate repair near me</p>
+        <p><strong>Semantic and entity terms already present in the copy</strong> — keep them, they are why
+        the page reads as expert: gate operator · control board · capacitor · limit switch · photo eye ·
+        safety sensor · manual release · slide gate · swing gate · HOA gate · access control · intercom ·
+        LiftMaster · DoorKing · FAAC · Elite · Viking · Ramset · All-O-Matic · Apollo</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>F</b> URL slug</div>
+      <div class="spec-val">
+        <p style="margin-top:0"><span class="k">/</span> — unchanged.</p>
+        <p>The homepage is the correct target for the head term and already holds the site's authority.
+        Moving it to a slug would be a downgrade. No change recommended.</p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>G</b> H2 structure</div>
+      <div class="spec-val">
+        <p style="margin-top:0">The existing 13 H2s are well-written and should mostly stay. Four edits, one
+        addition — the goal is to get the primary term and the city into headings without touching the
+        voice:</p>
+        <ol style="margin-bottom:0">
+          <li>Real Customers. Real Repairs. <span class="count">— keep</span></li>
+          <li><strong>Gate Repairs We've Finished Across Dallas–Fort Worth</strong> <span class="count">← was “Real gates, real repairs”</span></li>
+          <li>Repairs That Were Quoted as Replacements <span class="count">— keep, it is the best heading on the page</span></li>
+          <li>Watch Us Actually Do the Work <span class="count">— keep</span></li>
+          <li><strong>Gate Operator Brands We Repair</strong> <span class="count">← was “We Fix the Operators Nobody Else Wants to Touch”; keep the old line as the intro sentence</span></li>
+          <li>Six Reasons People Call Us Back <span class="count">— keep</span></li>
+          <li><strong>What We Fix: Automatic, Electric and Iron Gates</strong> <span class="count">← was “Tell us what the gate is doing”; keep the old line as the sub-head</span></li>
+          <li>What Happens When You Call <span class="count">— keep</span></li>
+          <li>Serving 190+ Cities Across Dallas–Fort Worth <span class="count">— keep</span></li>
+          <li><strong>Gate Repair Questions We Get Every Week</strong> <span class="count">← new, see H</span></li>
+          <li>Gate Not Working Right Now? <span class="count">— keep; link it to /emergency per H-04</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>H</b> FAQ questions</div>
+      <div class="spec-val">
+        <p style="margin-top:0">Six for the homepage, chosen for PAA and paragraph-snippet shape. Answer each
+        in 40–60 words, direct answer first. Pull the answers from
+        <span class="k">content/general-faqs.ts</span> rather than writing new ones:</p>
+        <ol style="margin-bottom:12px">
+          <li>How much does gate repair cost in Dallas–Fort Worth?</li>
+          <li>Why won't my automatic gate close?</li>
+          <li>How do I open an electric gate during a power outage?</li>
+          <li>Should I repair or replace my gate operator?</li>
+          <li>How fast can you get to me?</li>
+          <li>Do you repair gates you didn't install?</li>
+        </ol>
+        <p style="margin-bottom:0;font-size:15px;color:var(--muted)">
+          Question 1 needs a client answer before it ships — a range, a diagnostic fee, or an honest
+          “it depends, here is what drives it”. Do not publish a number that has not been confirmed.
+        </p>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>I</b> Internal linking</div>
+      <div class="spec-val">
+        <p style="margin-top:0">The outbound graph is already strong — 8 services, 17 brands, 14 cities,
+        4 case studies. Four changes:</p>
+        <ul style="margin-bottom:0">
+          <li><strong>Add /emergency in three places</strong> — header nav, footer Services column, and the
+          ClosingCTA heading. Highest-value link change on the site. <span class="fid">H-04</span></li>
+          <li><strong>Link /faq from the new FAQ section</strong>, not just the footer. A “See all
+          questions” link under the six answers.</li>
+          <li><strong>Link /warranty from the “Written warranty, every job” card</strong> in WhyShield.
+          That card makes a claim and does not link to the page that substantiates it.</li>
+          <li><strong>Link /about from the 16-years mention</strong> once <span class="fid">M-05</span> is
+          applied — experience claims should be one click from their evidence.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-key"><b>J</b> Schema plan</div>
+      <div class="spec-val">
+        <p style="margin-top:0"><strong>Keep as-is:</strong>
+        <span class="k">HomeAndConstructionBusiness</span> in the layout, with its
+        <span class="k">@id</span> anchor and its honesty guards. The type choice is right — it is a
+        LocalBusiness subtype and more specific, which is preferable.</p>
+        <p><strong>Add to the homepage:</strong></p>
+        <ul>
+          <li><span class="k">WebPage</span> — <span class="k">@id</span> of
+          <span class="k">/#webpage</span>, <span class="k">about</span> pointing at
+          <span class="k">/#business</span>, <span class="k">primaryImageOfPage</span> set to the hero.
+          Ties the page to the entity explicitly instead of leaving it implied.</li>
+          <li><span class="k">VideoObject</span> ×21 inside an <span class="k">ItemList</span> — the
+          <span class="k">videoSchema()</span> builder already exists and is already wired into three other
+          route types. Uncontested in this market. <span class="fid">H-03</span></li>
+          <li><span class="k">hasOfferCatalog</span> on the business node — an
+          <span class="k">OfferCatalog</span> of eight <span class="k">Service</span> items generated from
+          <span class="k">content/services.ts</span>, each with <span class="k">areaServed</span>.</li>
+          <li><span class="k">FAQPage</span> once the FAQ section ships — for entity understanding only.
+          Do not expect rich results; Google restricted these to government and health sites in 2023.</li>
+        </ul>
+        <p><strong>Add once the client confirms the facts</strong> <span class="flag warn">Blocked</span> —
+        <span class="k">address</span> (PostalAddress), <span class="k">geo</span>,
+        <span class="k">sameAs</span> (GBP, YouTube, Facebook), <span class="k">aggregateRating</span>,
+        <span class="k">priceRange</span>, <span class="k">hasCredential</span> for the Texas licence.
+        Every one of these is already scaffolded behind a <span class="k">confirmed</span> flag.</p>
+        <p style="margin-bottom:0"><strong>Do not add:</strong> <span class="k">BreadcrumbList</span> — the
+        homepage is the root of the trail and has nothing to describe. It belongs on every other route,
+        where it already is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">06</span><h2>Prioritised action plan</h2></div>
+  <p class="lede">Ordered by impact per hour of work, not by severity. Items 1–5 are same-day changes.</p>
+
+  <div class="actions">
+    <div class="act">
+      <div>
+        <h4>Rewrite the H1 and hero sub-headline</h4>
+        <p>One string change, biggest single relevance gain on the page. <span class="fid">H-01</span></p>
+      </div>
+      <div class="act-sev"><span class="sev high">High</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Fix the meta description — remove “Published prices”</h4>
+        <p>Removes a false SERP claim and gets the length under 160 in the same edit. <span class="fid">C-02 · H-02</span></p>
+      </div>
+      <div class="act-sev"><span class="sev crit">Critical</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Link /emergency from the header, footer and ClosingCTA</h4>
+        <p>Three links. Un-orphans the highest-intent page on the site. <span class="fid">H-04</span></p>
+      </div>
+      <div class="act-sev"><span class="sev high">High</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Shorten the title to 51 characters</h4>
+        <p>Buys back the 24/7 differentiator in the snippet. <span class="fid">M-01</span></p>
+      </div>
+      <div class="act-sev"><span class="sev med">Medium</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Narrow the photography claim in Featured Work</h4>
+        <p>An absolute claim the repo's own provenance notes contradict. Correctness, not SEO. <span class="fid">M-04</span></p>
+      </div>
+      <div class="act-sev"><span class="sev med">Medium</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Get the client on the phone for the six blocked facts</h4>
+        <p>GBP link · address or SAB confirmation · rating and review count · YouTube URL · licence number ·
+        warranty term. Everything is already scaffolded to light up on <span class="k">confirmed: true</span>.
+        <span class="fid">C-01</span></p>
+      </div>
+      <div class="act-sev"><span class="sev crit">Critical</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Preload the hero image and preconnect to CloudFront</h4>
+        <p>Recovers LCP the page is currently giving away to a logo preload. <span class="fid">H-05</span></p>
+      </div>
+      <div class="act-sev"><span class="sev high">High</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Ship VideoObject + WebPage + hasOfferCatalog on the homepage</h4>
+        <p>The builder already exists and is wired into three other route types. Uncontested in this market.
+        <span class="fid">H-03</span></p>
+      </div>
+      <div class="act-sev"><span class="sev high">High</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Add the six-question FAQ section above ClosingCTA</h4>
+        <p>Answers already written in <span class="k">content/general-faqs.ts</span>. Opens the PAA and
+        AI-Overview surface on the strongest page. <span class="fid">M-03</span></p>
+      </div>
+      <div class="act-sev"><span class="sev med">Medium</span></div>
+    </div>
+    <div class="act">
+      <div>
+        <h4>Resolve the /emergency cannibalisation</h4>
+        <p>Re-angle or consolidate <span class="k">/services/emergency-gate-repair</span>, and trim the
+        80-character <span class="k">/emergency</span> title. <span class="fid">M-02</span></p>
+      </div>
+      <div class="act-sev"><span class="sev med">Medium</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="callout">
+    <h3>Needs verification before anything ships</h3>
+    <p style="margin-top:0">Nothing below was assumed, and none of it should be published until the client
+    confirms it. The codebase already refuses to render every one of these:</p>
+    <ul>
+      <li><strong>Business address</strong> — or written confirmation it is a service-area business with a
+      hidden address. Blocks <span class="k">PostalAddress</span> and <span class="k">geo</span> schema.</li>
+      <li><strong>Google Business Profile URL</strong> and the “Ask for reviews” short link. Blocks
+      <span class="k">sameAs</span> and the review-request system.</li>
+      <li><strong>Rating and review count.</strong> Currently 0 reviews. Blocks
+      <span class="k">aggregateRating</span> and star rich results.</li>
+      <li><strong>Texas licence number.</strong> Two competitors publish theirs. Blocks
+      <span class="k">hasCredential</span> and the strongest available trust line.</li>
+      <li><strong>Warranty term.</strong> The site says “written warranty” without a duration. No competitor
+      headlines a term — this is an opening.</li>
+      <li><strong>Typical arrival window.</strong> Removed at client request on 6 Aug 2026. Only republish a
+      window the team actually hits.</li>
+      <li><strong>Any cost figure</strong> for the “how much does gate repair cost” FAQ.</li>
+      <li><strong>Photo provenance</strong> — which library images are DFW work. See
+      <span class="k">MEDIA-PROVENANCE.md</span>.</li>
+      <li><strong>Whether California is still a live market.</strong> The unresolved question in
+      <span class="k">STRATEGY.md §0</span>; it changes the geo-targeting strategy for the whole site,
+      not just this page.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule">
+
+<footer class="foot">
+  Scope: shieldgaterepair.com homepage (<span class="k">/</span>) · Audited 26 Aug 2026<br>
+  Evidence: app/page.tsx · components/sections/hero.tsx · app/layout.tsx · lib/schema.ts · app/robots.ts ·
+  app/sitemap.ts · next.config.ts · content/business.ts · compiled .next/server/app/index.html<br>
+  All rendered values read from compiled output. No business fact asserted that the repository does not
+  already mark confirmed.
+</footer>
+
+</div>
+</html>

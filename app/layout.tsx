@@ -58,6 +58,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <head>
         {/*
+          Arms the scroll-reveal hidden state, and nothing else.
+
+          It has to be inline and in <head> so the class lands before first
+          paint — otherwise revealed content flashes in visible and then hides.
+          If this script never runs (blocked, failed, a crawler that does not
+          execute JS) the `.js` selector never matches and every Reveal block
+          renders plainly visible, which is the fallback we want. See
+          globals.css and components/ui/reveal.tsx.
+        */}
+        <script
+          id="js-class"
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
+        {/*
           Preconnects, before the GTM loader so the handshakes start first.
 
           The CDN carries the hero photograph — the LCP element on every page —
@@ -96,7 +112,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         )}
       </head>
-      <body className="antialiased">
+      {/* The bottom padding reserves the StickyCallBar's height on mobile.
+
+          Without it the bar — fixed, 3.5rem tall plus the safe-area inset —
+          sat on top of the last 56px of every page on the site. The footer's
+          copyright row and legal links were underneath it on every phone, and
+          on the homepage it clipped the bottom of the closing CTA. `md:pb-0`
+          because the bar is `md:hidden`. */}
+      <body className="antialiased pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <AnalyticsNoScript />
         {/* Keyboard and screen-reader users get past the nav in one keystroke. */}
         <a
