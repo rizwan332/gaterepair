@@ -70,7 +70,11 @@ export function SiteFooter() {
           </div>
 
           <FooterCol title="Services">
-            {services.slice(0, PER_COLUMN).map((s) => (
+            {/* /emergency leads the column rather than sitting in it. It is the
+                highest-intent page on the site and had no internal links
+                anywhere before this. */}
+            <FooterLink href="/emergency">24/7 Emergency Repair</FooterLink>
+            {services.slice(0, PER_COLUMN - 1).map((s) => (
               <FooterLink key={s.slug} href={`/services/${s.slug}`}>
                 {s.navLabel}
               </FooterLink>

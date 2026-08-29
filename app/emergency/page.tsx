@@ -18,7 +18,9 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
-  title: '24/7 Emergency Gate Repair | Dallas–Fort Worth | Call Now',
+  // 57 chars once the layout template appends the brand. It was 80, which
+  // truncated — and "Call Now" was the half Google was cutting.
+  title: '24/7 Emergency Gate Repair Dallas–Fort Worth',
   description:
     'Gate stuck open or closed right now? We answer 24/7 and can talk you through the manual release on the phone before a technician arrives. Same-day emergency gate repair across DFW.',
   alternates: { canonical: '/emergency' },

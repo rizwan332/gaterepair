@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import { business } from '@/content/business'
+import { cdnOrigin } from '@/lib/cdn'
 import { SiteHeader } from '@/components/layout/site-header'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { StickyCallBar } from '@/components/layout/sticky-call-bar'
@@ -28,12 +29,14 @@ const sans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(business.url),
   title: {
-    default: 'Gate Repair Dallas–Fort Worth | Same-Day Service | Shield Gate Repair',
+    // Fallback only — every real route sets its own title, and the homepage
+    // (the one segment the template below does not apply to) sets its own too.
+    default: 'Gate Repair Dallas–Fort Worth | Shield Gate Repair',
     template: '%s | Shield Gate Repair',
   },
   description:
-    'Automatic gate stuck or broken? Same-day gate repair across Dallas–Fort Worth. We repair LiftMaster, FAAC, ' +
-    'All-O-Matic, Elite, Viking, Eagle and Ramset operators. Open 24/7.',
+    'Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. ' +
+    'We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -54,6 +57,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <head>
+        {/*
+          Preconnects, before the GTM loader so the handshakes start first.
+
+          The CDN carries the hero photograph — the LCP element on every page —
+          and it is a third origin, so without this the browser pays DNS + TLS
+          before the largest element's first byte. googletagmanager is the one
+          third party the site loads, and it loads immediately below.
+        */}
+        {cdnOrigin && <link rel="preconnect" href={cdnOrigin} crossOrigin="anonymous" />}
+        {business.gtmId && <link rel="preconnect" href="https://www.googletagmanager.com" />}
         {/*
           Google Tag Manager, inline and as high in <head> as Google's own
           instructions ask for.

@@ -33,11 +33,16 @@ export function BrandsGrid() {
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-600">
               Operators we repair
             </p>
+            {/* The old headline — "We Fix the Operators Nobody Else Wants to
+                Touch" — was the better line but named nothing searchable. It
+                moves down to open the paragraph, where it still lands, and the
+                H2 takes the terms people actually type. */}
             <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl lg:text-5xl">
-              We Fix the Operators Nobody Else Wants to Touch
+              Gate Operator Brands We Repair
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-700">
-              Most gate companies replace the whole operator because diagnosing it is harder than selling
+              We fix the operators nobody else wants to touch. Most gate companies replace the whole
+              operator because diagnosing it is harder than selling
               you a new one. We repair control boards, limit switches, hydraulic pumps and gearboxes on all
               of these &mdash; and every tile below is a photograph of that manufacturer&rsquo;s equipment,
               not a logo.

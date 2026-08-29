@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { Hero } from '@/components/sections/hero'
-import { VideoReel } from '@/components/sections/video-reel'
+import { Hero, heroImage, HERO_SIZES } from '@/components/sections/hero'
+import { VideoReel, videoReelFeatured } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { BrandMarquee } from '@/components/sections/brand-marquee'
 import { FeaturedWork } from '@/components/sections/featured-work'
@@ -14,13 +14,35 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
+import { HomeFaq, homeFaqs } from '@/components/sections/home-faq'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { services } from '@/content/services'
+import { cdn } from '@/lib/cdn'
+import {
+  webPageSchema,
+  webSiteSchema,
+  offerCatalogSchema,
+  faqSchema,
+  videoSchema,
+} from '@/lib/schema'
 
+/**
+ * The homepage is the one route whose title bypasses the layout's
+ * '%s | Shield Gate Repair' template — `template` applies to child segments,
+ * and this is the same segment the template is defined in. So the brand is
+ * omitted here deliberately rather than by oversight: at 51 characters the tag
+ * clears Google's ~60-character display budget with room for the availability
+ * hook, which is the differentiator on a query set that skews to emergencies.
+ *
+ * The description previously ended "Published prices." — a claim the site
+ * cannot keep, since /pricing was retired and 301s to /contact. It was also
+ * 186 characters, so the 24/7 line was being truncated away.
+ */
 export const metadata: Metadata = {
-  title: 'Gate Repair Dallas–Fort Worth | Same-Day Service | Shield Gate Repair',
+  title: 'Gate Repair Dallas–Fort Worth | Same-Day, Open 24/7',
   description:
-    'Automatic gate stuck or broken? Same-day repair across Dallas–Fort Worth. We repair LiftMaster, FAAC, ' +
-    'All-O-Matic, Elite, Viking, Eagle and Ramset operators. Open 24/7. Published prices.',
+    'Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. ' +
+    'We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.',
   alternates: { canonical: '/' },
 }
 
@@ -63,9 +85,42 @@ const homepageCaseStudies = [
   .map((slug) => projectBySlug(slug))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
 
+const PAGE_TITLE = 'Automatic Gate Repair in Dallas–Fort Worth'
+const PAGE_DESCRIPTION =
+  'Same-day automatic gate repair across the Dallas–Fort Worth metroplex. Residential, commercial, ' +
+  'HOA and industrial. Open 24/7.'
+
 export default function HomePage() {
   return (
     <>
+      {/*
+        Preload the LCP element.
+
+        The hero is a hand-built <picture> served from the CDN, so Next knows
+        nothing about it and emits no preload — the only image preload in the
+        document used to be the header logo, which competed with the actual LCP
+        image for connection and bandwidth. The logo now loads eagerly without
+        claiming the slot (see site-header.tsx).
+
+        `imageSrcSet` and `imageSizes` must match the rendered <source>
+        character for character or the browser fetches the image twice, which is
+        why both the image and its `sizes` are imported from the hero rather
+        than restated here. AVIF only: it is the first <source>, so it is what
+        any browser that supports preload-as-image will actually select.
+      */}
+      {heroImage && (
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          // eslint-disable-next-line react/no-unknown-property
+          imageSrcSet={heroImage.widths
+            .map((w) => `${cdn(`${heroImage.src}-${w}.avif`)} ${w}w`)
+            .join(', ')}
+          imageSizes={HERO_SIZES}
+          fetchPriority="high"
+        />
+      )}
       <Hero />
       {/* Directly under the hero: the brand row is a credibility signal, and it
           is the fastest one on the page to read. */}
@@ -104,7 +159,62 @@ export default function HomePage() {
       <ServicesGrid />
       <Process />
       <ServiceAreas />
+      {/* Question-shaped headings with answers in the DOM — the extraction unit
+          for People Also Ask and AI Overviews. The homepage previously had
+          thirteen H2s and not one was a question. */}
+      <HomeFaq />
       <ClosingCTA />
+
+      {/*
+        Homepage schema graph.
+
+        This page used to carry exactly one node — the HomeAndConstructionBusiness
+        from the layout — while holding eight services, six embedded videos and
+        190 cities. Everything below hangs off that same @id rather than
+        declaring a second entity.
+
+        VideoObject covers the six self-hosted VideoReel clips only. The 21
+        YouTube testimonials in the carousel above are deliberately excluded:
+        VideoObject requires uploadDate, and neither the real upload dates nor
+        the durations of those videos exist anywhere in this repository. Adding
+        them would mean inventing both. If the client supplies the channel
+        metadata, extend content/testimonials.ts and add them here.
+
+        FAQPage is emitted for entity understanding, not rich results — Google
+        restricted those to government and health sites in 2023.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            webSiteSchema(),
+            webPageSchema({
+              url: '/',
+              name: PAGE_TITLE,
+              description: PAGE_DESCRIPTION,
+              primaryImage: heroImage ? `${heroImage.src}-1200.webp` : undefined,
+            }),
+            offerCatalogSchema(
+              services.map((s) => ({
+                name: s.name,
+                description: s.intro,
+                url: `/services/${s.slug}`,
+              })),
+            ),
+            ...(homeFaqs.length > 0 ? [faqSchema(homeFaqs)] : []),
+            ...videoReelFeatured.map((v) =>
+              videoSchema({
+                title: v.title,
+                description: v.description,
+                thumbnailUrl: `${v.poster}.jpg`,
+                contentUrl: v.src,
+                durationSeconds: v.durationSeconds,
+                uploadDate: '2026-08-01',
+              }),
+            ),
+          ]),
+        }}
+      />
     </>
   )
 }

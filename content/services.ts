@@ -15,6 +15,17 @@ export type Service = {
   slug: string
   legacyPath: string | null
   name: string
+  /**
+   * Overrides the generated `<title>` where the default would compete with
+   * another page for the same query.
+   *
+   * Only `emergency-gate-repair` sets it today: /emergency is the phone-first
+   * page that should win "emergency gate repair Dallas–Fort Worth", and this
+   * page was targeting the identical phrase with an almost identical title.
+   * It now takes the diagnostic long tail instead and links up to /emergency
+   * for the call.
+   */
+  seoTitle?: string
   /** Photo category in media-manifest.ts */
   mediaCategory: string
   navLabel: string
@@ -93,9 +104,12 @@ export const services: Service[] = [
     slug: 'emergency-gate-repair',
     legacyPath: '/emergency-gate-repair-services/',
     name: 'Emergency Gate Repair',
+    seoTitle: 'After-Hours Gate Faults: What Breaks and What to Do',
     mediaCategory: 'emergency-gate-repair',
     navLabel: 'Emergency Repair',
-    headline: '24/7 Emergency Gate Repair in Dallas–Fort Worth',
+    // Re-angled away from "24/7 Emergency Gate Repair in Dallas–Fort Worth",
+    // which was the same claim /emergency makes in the same words.
+    headline: 'What Fails on a Gate Out of Hours — and What to Do First',
     intro:
       'A gate stuck open is a security problem. A gate stuck closed is an access problem, and if it is a business ' +
       'entrance it is a revenue problem. We answer the phone around the clock and we do not treat "today" as a ' +

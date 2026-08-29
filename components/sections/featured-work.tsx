@@ -26,11 +26,22 @@ export function FeaturedWork() {
                 Recent work
               </p>
               <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-                Real gates, real repairs
+                Gate Repairs We&rsquo;ve Finished Across Dallas&ndash;Fort Worth
               </h2>
+              {/* Scoped to the three photographs in view, which are
+                  client-supplied and confirmed.
+
+                  It previously read "Every photograph on this site is our own
+                  technicians on our own jobs. None of it is stock" — an absolute
+                  claim over all 122 images in the library, which the library
+                  does not support. content/alt-text.ts records that faac-01 is a
+                  manufacturer product shot, and that the wider source library
+                  shows Southern California work. One stock image makes the old
+                  sentence false, on the section that carries the most trust
+                  weight on the page. See MEDIA-PROVENANCE.md. */}
               <p className="mt-4 text-lg leading-relaxed text-ink-700">
-                Every photograph on this site is our own technicians on our own jobs. None of it is stock,
-                and none of it is generated.
+                These are our own technicians on our own jobs &mdash; photographed on site, not staged and
+                not generated.
               </p>
             </div>
             <Link

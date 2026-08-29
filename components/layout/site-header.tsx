@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, ChevronDown } from 'lucide-react'
 import { business } from '@/content/business'
@@ -38,22 +37,52 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-ink-100 bg-white/90 backdrop-blur-md">
       {/* Availability strip. The single most reassuring thing we can say to
-          someone whose gate failed at 11pm is that we are open. */}
+          someone whose gate failed at 11pm is that we are open — and it is now
+          also the site-wide link to /emergency.
+
+          That page had no internal links at all — not here, not in the footer,
+          not on the homepage — while the sitemap ranked it second only to the
+          homepage. The nav below cannot take a seventh top-level item (six plus
+          the phone number and CTA already force the xl breakpoint), and this
+          strip was already saying the word "Emergency" on every page above the
+          fold, so it is the right surface rather than a compromise. */}
       <div className="bg-ink-900 text-white">
         <div className="container-page flex h-9 items-center justify-between text-xs sm:text-[0.8125rem]">
-          <p className="font-medium">{business.availability}</p>
+          <Link
+            href="/emergency"
+            className="font-medium underline-offset-4 hover:text-gold-400 hover:underline"
+          >
+            {business.availability}
+          </Link>
           <p className="hidden text-ink-200 sm:block">{business.serviceArea.display}</p>
         </div>
       </div>
 
       <div className="container-page flex h-16 items-center justify-between gap-3 md:h-20">
         <Link href="/" className="shrink-0" aria-label={`${business.name} — home`}>
-          <Image
+          {/* A plain <img>, deliberately, where this used to be a next/image.
+              Two reasons, both measured:
+
+              1. It was the only image preload in the document — a logo
+                 occupying the slot the hero photograph needs and competing with
+                 the actual LCP element for connection and bandwidth. Dropping
+                 `priority` was not enough: React 19 hoists a preload for any
+                 eager image, so next/image emits one either way. The homepage
+                 preloads the hero instead (see app/page.tsx).
+
+              2. The source is already a 16KB WebP displayed at ~110px wide, and
+                 the optimizer was being asked for 640w and 1080w variants of
+                 it. Serving the original directly is both smaller and one
+                 server round-trip cheaper.
+
+              Dimensions stay set so the header reserves the right box and CLS
+              stays at zero. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/brand/logo-dark.webp"
             alt={business.name}
             width={468}
             height={158}
-            priority
             className="h-9 w-auto md:h-11"
           />
         </Link>

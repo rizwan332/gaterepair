@@ -27,3 +27,22 @@ export function cdn(path: string): string {
 
 /** True when assets are being served from the CDN rather than from /public. */
 export const cdnEnabled = Boolean(CDN_BASE)
+
+/**
+ * Origin of the CDN, for <link rel="preconnect">.
+ *
+ * The LCP image lives on this host, so the browser otherwise pays a full DNS
+ * lookup and TLS handshake before the first byte of the largest element on the
+ * page. Null when assets are served locally, where a preconnect would be
+ * pointless.
+ */
+export const cdnOrigin: string | null = (() => {
+  if (!CDN_BASE) return null
+  try {
+    return new URL(CDN_BASE).origin
+  } catch {
+    // A malformed NEXT_PUBLIC_CDN_URL already degrades to local paths above;
+    // it must not additionally break the render.
+    return null
+  }
+})()

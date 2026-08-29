@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -17,7 +18,17 @@ export function ClosingCTA() {
             <p className="mt-4 text-lg leading-relaxed text-ink-900">
               We answer the phone 24/7
               {responseBand ? `, and most of Dallas–Fort Worth is within ${responseBand} of a Shield truck.` : '.'}{' '}
-              If you are stuck, call and we will talk you through the manual release before anyone arrives.
+              If you are stuck, call and we will talk you through the manual release before anyone arrives.{' '}
+              {/* This heading is the emergency query written as a sentence, so
+                  it is the natural place on the homepage to pass equity to
+                  /emergency — which previously received none. */}
+              <Link
+                href="/emergency"
+                className="font-semibold text-ink-950 underline decoration-ink-950/30 underline-offset-4 hover:decoration-ink-950"
+              >
+                See what counts as a gate emergency
+              </Link>
+              .
             </p>
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">

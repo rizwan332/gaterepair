@@ -13,13 +13,30 @@ import { Button } from '@/components/ui/button'
  * Each clip is poster-first and downloads nothing until the visitor asks for
  * it, so the section costs one image per tile rather than several megabytes.
  */
+/**
+ * The clips this section renders, resolved at module scope so the homepage can
+ * emit VideoObject for exactly what is on the page — schema describing videos
+ * that are not there is worse than no schema.
+ *
+ * Lead with the brands nobody else covers, then general repair work.
+ */
+const VIDEO_PRIORITY = [
+  'faac',
+  'all-o-matic',
+  'ramset',
+  'liftmaster',
+  'emergency-gate-repair',
+  'iron-gate-repair',
+]
+
+export const videoReelFeatured = VIDEO_PRIORITY.map((cat) =>
+  videos.find((v) => v.category === cat),
+)
+  .filter((v): v is NonNullable<typeof v> => Boolean(v))
+  .slice(0, 6)
+
 export function VideoReel() {
-  // Lead with the brands nobody else covers, then general repair work.
-  const priority = ['faac', 'all-o-matic', 'ramset', 'liftmaster', 'emergency-gate-repair', 'iron-gate-repair']
-  const featured = priority
-    .map((cat) => videos.find((v) => v.category === cat))
-    .filter((v): v is NonNullable<typeof v> => Boolean(v))
-    .slice(0, 6)
+  const featured = videoReelFeatured
 
   if (featured.length === 0) return null
 

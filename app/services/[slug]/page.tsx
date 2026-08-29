@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!service) return {}
 
   return {
-    title: `${service.name} in Dallas–Fort Worth`,
+    title: service.seoTitle ?? `${service.name} in Dallas–Fort Worth`,
     description: `${service.symptoms[0]?.seeing}. Same-day ${service.name.toLowerCase()} across DFW. Licensed, insured, written warranty. Call ${business.phone.display}.`,
     alternates: { canonical: `/services/${service.slug}` },
   }
