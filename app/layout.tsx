@@ -13,9 +13,25 @@ import './globals.css'
 
 // Self-hosted at build time — no runtime request to Google, no render-blocking
 // stylesheet, and `display: swap` so text is never invisible while fonts load.
+//
+// ── WHY preload IS OFF ──────────────────────────────────────────────────────
+// next/font preloads by default, which emitted two <link rel=preload> at High
+// priority. Measured on the live site, they started at 391ms and 393ms — ahead
+// of the LCP image at 452ms — and took 71KB of a throttled mobile connection
+// with them.
+//
+// Fonts cannot improve LCP here: the LCP element is the hero photograph, not
+// text. All the preload did was put 71KB in front of the one request the metric
+// is measured on. With `display: swap` the text paints immediately in the
+// fallback either way, and next/font's `adjustFontFallback` keeps the fallback
+// metrically matched, which is why CLS is 0 and stays 0 without the preload.
+//
+// The typography is unchanged. The webfont simply arrives a little later on a
+// cold load, after the image the page is judged on.
 const display = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
+  preload: false,
   variable: '--font-display-loaded',
   weight: ['500', '600', '700'],
 })
@@ -23,6 +39,7 @@ const display = Space_Grotesk({
 const sans = Inter({
   subsets: ['latin'],
   display: 'swap',
+  preload: false,
   variable: '--font-sans-loaded',
 })
 
