@@ -22,20 +22,37 @@ export const business = {
   /**
    * Must be the hostname that actually serves a 200.
    *
-   * This was the apex, `https://shieldgaterepair.com`, but the apex 301s to
-   * `www` — so every canonical tag, all 252 sitemap URLs, the robots Host and
-   * Sitemap directives, every OG url and every schema @id pointed at a
-   * redirect rather than at the live page.
+   * ⚠️ VERIFY THIS AGAINST THE LIVE SITE BEFORE CHANGING NETLIFY'S PRIMARY
+   * DOMAIN, AND AGAIN AFTER. The two must agree. They did not, and it cost the
+   * site its indexing.
    *
-   * Google resolves that eventually, but it is a conflicting signal on a domain
-   * that is also being migrated, it doubles the crawl cost of the whole
-   * sitemap, and a canonical pointing somewhere other than the indexed URL is
-   * exactly the sort of thing that stalls indexing.
+   * This was `https://www.shieldgaterepair.com`, and the note here used to say
+   * the apex 301s to www. That was true when it was written. Netlify's primary
+   * domain was flipped to the apex at some point afterwards, which silently
+   * reversed the redirect and turned a correct value into a broken one — the
+   * value never changed, the ground under it did.
    *
-   * If the apex is ever made the primary instead, change it here — canonicals,
-   * sitemap, robots, OG and schema all derive from this one value.
+   * Measured 2 Sep 2026:
+   *   https://shieldgaterepair.com/services      → 200
+   *   https://www.shieldgaterepair.com/services  → 301 to the apex
+   *
+   * So every canonical tag, all ~259 sitemap URLs, the robots Host and Sitemap
+   * directives, every OG url and every schema @id pointed at a host that
+   * redirects away from the page actually being served. Google crawled the
+   * apex, was told the real version lived at www, followed that, and was sent
+   * back where it started.
+   *
+   * Search Console on 1 Sep 2026: 102 pages filed under "Alternate page with
+   * proper canonical tag", validation Failed. That is this bug.
+   *
+   * Apex rather than www because it is the host Google has actually been
+   * crawling successfully — this asks Google to confirm what it already sees
+   * instead of migrating every URL to a host it has only ever seen redirect.
+   *
+   * If Netlify's primary is ever moved back to www, change this with it.
+   * Canonicals, sitemap, robots, OG and schema all derive from this one value.
    */
-  url: 'https://www.shieldgaterepair.com',
+  url: 'https://shieldgaterepair.com',
 
   // ---- Confirmed by client, 1 Aug 2026 ----
   // Client replaced the 800 number with a local DFW number on 3 Aug 2026. A
