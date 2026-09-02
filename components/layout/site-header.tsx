@@ -35,7 +35,19 @@ export function SiteHeader() {
   }))
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-100 bg-white/90 backdrop-blur-md">
+    /* Solid white, not `bg-white/90 backdrop-blur-md`.
+
+       backdrop-filter on a sticky, full-width element makes the browser
+       re-composite everything behind the bar on every scroll frame — and it was
+       doing that to produce a frosted effect behind a surface already 90%
+       opaque, which is close to invisible. Style & Layout was the single
+       largest main-thread consumer in the production trace (1,810 ms, ahead of
+       all script evaluation), and 65% of LCP was render delay: the hero
+       finished downloading around 3s and then waited on a busy main thread.
+
+       Going fully opaque also removes the reason the translucency existed —
+       at 90% with no blur you would see sharp content ghosting through. */
+    <header className="sticky top-0 z-50 border-b border-ink-100 bg-white">
       {/* Availability strip. The single most reassuring thing we can say to
           someone whose gate failed at 11pm is that we are open — and it is now
           also the site-wide link to /emergency.
