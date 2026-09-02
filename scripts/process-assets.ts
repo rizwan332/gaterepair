@@ -227,13 +227,37 @@ async function main() {
     await fs.mkdir(dir, { recursive: true })
 
     const pipeline = sharp(best.file).rotate() // honour EXIF orientation
+    /**
+     * AVIF quality 50, not 62.
+     *
+     * Measured on the live site 1 Sep 2026: LCP was 8.8s and scored 0 of the
+     * 25 points it is worth, while every other metric already passed (TBT
+     * 190ms, CLS 0, FCP 1.7s). LCP was the whole gap between 67 and ~90.
+     *
+     * On the emulated Moto G Power that PageSpeed uses, `sizes="100vw"` at a
+     * 412px viewport selects the 1200w variant — 314KB at q62. At q50 the same
+     * file is 216KB, a 31% cut on exactly the request the metric is measured
+     * on. Every other image on the site gets lighter with it.
+     *
+     * Why this does not visibly degrade the hero: it sits under a four-stop
+     * scrim running 0.84 black on the left, where the headline is, to 0.12 at
+     * the right edge (see components/sections/hero.tsx). Most fine detail is
+     * already obscured by design, which is not true of a bare photograph.
+     * Rendered side by side at q62/q55/q50/q45 before this was changed.
+     *
+     * WebP is deliberately left at 78. It is only the `<img>` fallback for
+     * browsers without AVIF, it is not what LCP is measured on here, and
+     * leaving it alone keeps the change surface small.
+     */
+    const AVIF_QUALITY = 50
+
     const emitted: number[] = []
 
     for (const width of WIDTHS) {
       if (width > best.width) continue // never upscale
       const resized = pipeline.clone().resize({ width, withoutEnlargement: true })
       await Promise.all([
-        resized.clone().avif({ quality: 62, effort: 4 }).toFile(path.join(dir, `${slug}-${width}.avif`)),
+        resized.clone().avif({ quality: AVIF_QUALITY, effort: 4 }).toFile(path.join(dir, `${slug}-${width}.avif`)),
         resized.clone().webp({ quality: 78 }).toFile(path.join(dir, `${slug}-${width}.webp`)),
       ])
       emitted.push(width)
@@ -241,7 +265,7 @@ async function main() {
     // Very small sources still need one usable output.
     if (emitted.length === 0) {
       await Promise.all([
-        pipeline.clone().avif({ quality: 62, effort: 4 }).toFile(path.join(dir, `${slug}-${best.width}.avif`)),
+        pipeline.clone().avif({ quality: AVIF_QUALITY, effort: 4 }).toFile(path.join(dir, `${slug}-${best.width}.avif`)),
         pipeline.clone().webp({ quality: 78 }).toFile(path.join(dir, `${slug}-${best.width}.webp`)),
       ])
       emitted.push(best.width)
