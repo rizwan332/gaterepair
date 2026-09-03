@@ -195,4 +195,16 @@ Nothing here needs a code deploy. The site side is already live.
 
 ## One thing to check outside GTM
 
-The GA4 data stream URL should be `https://www.shieldgaterepair.com` — with `www`. The site's canonicals were pointing at the apex until today, and the apex 301s, so it is worth confirming the stream was not set up against the redirecting hostname.
+The GA4 data stream URL should be `https://shieldgaterepair.com` — the **apex**, no `www`.
+
+⚠️ This paragraph previously said the opposite, and was correct when written. Netlify's
+primary domain was later flipped to the apex, which reversed the redirect: `www` now 301s
+to the apex, not the other way round. Verified 3 Sep 2026:
+
+```
+https://shieldgaterepair.com/services      → 200
+https://www.shieldgaterepair.com/services  → 301 to the apex
+```
+
+Confirm the stream is not set up against the redirecting hostname. See the note on
+`business.url` in content/business.ts — the same reversal cost the site its indexing.
