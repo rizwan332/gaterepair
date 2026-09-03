@@ -1,0 +1,61 @@
+# Netlify configuration.
+#
+# Deliberately contains no [build] section — build command, publish directory
+# and the Next.js runtime stay configured in the Netlify UI, and adding them
+# here would silently take that control away from the dashboard. This file
+# exists only to set cache headers.
+#
+# Header rules live here rather than in public/_headers because _headers is
+# only honoured inside the *publish* directory, and for a Next.js site that is
+# the build output, not public/. netlify.toml is read from the repo root
+# regardless.
+
+# ---------------------------------------------------------------------------
+# Static asset caching
+#
+# Netlify's default for these files is:
+#   Cache-Control: public, max-age=0, must-revalidate
+#
+# Measured on production 3 Sep 2026 — every image on the site carried it,
+# including the 90KB LCP hero. It means a browser that ALREADY HAS the file
+# still opens a conditional request and waits for the 304 before it can paint.
+# Across ~1,280 image files that is a lot of latency bought for nothing, and it
+# is what PageSpeed reports as "Use efficient cache lifetimes".
+#
+# `immutable` rather than a short TTL because these filenames already encode
+# content identity: scripts/process-assets.ts emits `<slug>-<n>-<width>.<fmt>`
+# from a deterministic pipeline, so homepage-04-800.avif denotes exactly one
+# photograph at exactly one width.
+#
+# ⚠️ THE FILENAMES ARE NOT CONTENT-HASHED.
+# A browser that cached one of these will not re-fetch it for a year. If the
+# BYTES behind an existing filename ever change — a re-encode at a different
+# quality, a logo revision — THE FILENAME MUST CHANGE TOO. Deploying purges
+# Netlify's edge; it cannot purge anyone's browser.
+#
+# Setting this now is deliberate rather than incidental: CrUX still reports no
+# field data for the domain, so there is effectively no returning-visitor cache
+# to strand. The AVIF quality change of 1 Sep (q62 → q50) reused every
+# filename, and is precisely the kind of edit that will need a rename once this
+# is live.
+# ---------------------------------------------------------------------------
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/brand/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/logos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
