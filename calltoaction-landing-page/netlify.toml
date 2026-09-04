@@ -1,0 +1,41 @@
+# Netlify configuration for the Google Ads landing page.
+#
+# This deploys as its OWN Netlify site, separate from shieldgaterepair.com.
+# Set the site's "Base directory" to this folder and its "Publish directory"
+# to the same folder. There is no build step — it is one HTML file and a
+# handful of images.
+#
+# Deliberately no [build] command. Adding one would give Netlify something to
+# run and there is nothing to run.
+
+[build]
+  publish = "."
+
+# ---------------------------------------------------------------------------
+# Static asset caching
+#
+# Netlify's default for static files is `public, max-age=0, must-revalidate`,
+# which makes a browser that already holds an image open a conditional request
+# for it anyway and wait for the 304 before painting. On the main site that was
+# costing a round-trip on every image on every page view.
+#
+# `immutable` is safe here because these filenames encode content identity:
+# hero-800.avif is one photograph at one width. If the bytes behind an existing
+# filename ever change, CHANGE THE FILENAME TOO — a deploy purges Netlify's
+# edge but it cannot purge anyone's browser.
+# ---------------------------------------------------------------------------
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The page itself must never be cached hard — ad copy and offers change, and a
+# stale landing page is worse than a slow one. must-revalidate lets the CDN
+# keep serving instantly while still checking for a new deploy.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
