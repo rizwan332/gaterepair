@@ -11,6 +11,32 @@
 # regardless.
 
 # ---------------------------------------------------------------------------
+# /samedaygaterepair — static HTML landing page
+#
+# The page is plain HTML at public/samedaygaterepair.html, not a Next.js route.
+# Without this rule the request would reach the `[citySlug]` route, which has
+# `dynamicParams = false` and returns 404 for any slug it does not know.
+#
+# A 200 rewrite (not a redirect), so the address bar and the canonical URL stay
+# https://shieldgaterepair.com/samedaygaterepair. Netlify matches the rule with
+# or without a trailing slash. `force = true` so it wins over the Next.js
+# runtime. The page's canonical tag covers anyone who requests the .html file
+# directly.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/samedaygaterepair"
+  to = "/samedaygaterepair.html"
+  status = 200
+  force = true
+
+# Google Ads destination: never let an intermediary serve a stale copy.
+[[headers]]
+  for = "/samedaygaterepair"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ---------------------------------------------------------------------------
 # Static asset caching
 #
 # Netlify's default for these files is:

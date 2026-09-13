@@ -24,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/testimonials', priority: 0.9 },
     { path: '/projects', priority: 0.9 },
     { path: '/emergency', priority: 0.95 },
+    // Static HTML page in public/, served through the rewrite in netlify.toml.
+    { path: '/samedaygaterepair', priority: 0.9 },
     { path: '/faq', priority: 0.85 },
     { path: '/warranty', priority: 0.7 },
     { path: '/about', priority: 0.7 },
