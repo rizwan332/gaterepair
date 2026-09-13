@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { business } from '@/content/business'
 import { PageHero } from '@/components/sections/page-hero'
@@ -7,8 +8,10 @@ import { breadcrumbSchema } from '@/lib/schema'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'How Shield Gate Repair collects, uses and stores the information you submit through this website.',
+    'How Shield Gate Repair collects and stores the information you submit through this website, what ' +
+    'our analytics tags record, and how to ask us to delete it.',
   alternates: { canonical: '/privacy-policy' },
+  openGraph: openGraphFor('/privacy-policy'),
   robots: { index: true, follow: true },
 }
 

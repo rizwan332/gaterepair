@@ -88,13 +88,32 @@ export function SiteHeader() {
                  server round-trip cheaper.
 
               Dimensions stay set so the header reserves the right box and CLS
-              stays at zero. */}
+              stays at zero.
+
+              ── WHY fetchPriority IS "low" ────────────────────────────────
+              Reason 1 above did not actually work, and the served HTML says so.
+              Measured on production 6 Sep 2026, in document order:
+
+                <link rel="preload" as="image" href="/brand/logo-dark.webp">
+                <link rel="preload" as="image" type="image/avif" imageSrcSet=...>
+
+              React 19's Float hoists a preload for an eager <img> whether or
+              not it came from next/image, so dropping next/image moved the
+              problem rather than removing it — the logo still claimed the first
+              image slot, ahead of the hero the LCP is measured on.
+
+              `fetchPriority="low"` demotes it instead of fighting it. The
+              preload is still emitted, so nothing regresses for anyone on a
+              slow connection who needs the header to paint; it simply stops
+              being scheduled ahead of a 90KB photograph on a throttled mobile
+              connection. Verify by reading the SERVED HTML, not the source. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/brand/logo-dark.webp"
             alt={business.name}
             width={468}
             height={158}
+            fetchPriority="low"
             className="h-9 w-auto md:h-11"
           />
         </Link>

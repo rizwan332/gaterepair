@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { ArrowUpRight, MapPin, Wrench, Video } from 'lucide-react'
 import { business } from '@/content/business'
@@ -15,10 +16,14 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
-  title: 'About Us | Gate Specialists in Dallas–Fort Worth',
+  // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
+  // past Google's ~60-character display budget. The site name is rendered
+  // separately in the SERP and derived from the WebSite schema node.
+  title: { absolute: 'About Us — Gate Specialists in Dallas–Fort Worth' },
   description:
     'Who we are, where we came from, and why we repair gate operators rather than replacing them. Now serving Dallas–Fort Worth.',
   alternates: { canonical: '/about' },
+  openGraph: openGraphFor('/about'),
 }
 
 /**

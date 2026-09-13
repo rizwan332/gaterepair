@@ -110,11 +110,24 @@ export const business = {
    */
   gtmId: 'GTM-MBBT87D8',
 
+  /**
+   * Social profiles. Supplied by the client 13 Sep 2026 and checked the same
+   * day: both resolve with a 200 and both identify as Shield Gate Repair.
+   *
+   * Stored in canonical form rather than as pasted. The YouTube link arrived as
+   * `m.youtube.com/channel/…?ra=m` — the mobile host plus a tracking parameter.
+   * A schema.org `sameAs` should match the URL the profile itself declares as
+   * canonical, or the two are not reliably joined into one entity. YouTube is
+   * the channel ID rather than the @ShieldGateRepair handle because a handle
+   * can be renamed and an ID cannot.
+   *
+   * These drive the footer icons and `sameAs` in the business schema on every
+   * page. Setting `facebook` makes it appear in both with no other change.
+   */
   social: {
-    // TODO: confirm — meeting notes reference a YouTube channel with usable footage
-    youtube: null as string | null,
+    youtube: 'https://www.youtube.com/channel/UCWxHMxbLZEyXY4Qu8p52InA' as string | null,
     facebook: null as string | null,
-    instagram: null as string | null,
+    instagram: 'https://www.instagram.com/shieldgaterepair/' as string | null,
   },
 
   // ---- NOT confirmed. Do not render without `confirmed: true`. ----
@@ -195,6 +208,20 @@ export const business = {
     note: 'If false, all brand copy reads "brands we service", never "authorized dealer".',
   } as Fact<boolean>,
 } as const
+
+export type SocialNetwork = 'youtube' | 'instagram' | 'facebook'
+
+/**
+ * Confirmed social profiles, in display order, with unset networks removed —
+ * so anything rendering them renders what exists and never an empty link.
+ */
+export const socialProfiles: { network: SocialNetwork; label: string; url: string }[] = (
+  [
+    ['youtube', 'YouTube', business.social.youtube],
+    ['instagram', 'Instagram', business.social.instagram],
+    ['facebook', 'Facebook', business.social.facebook],
+  ] as [SocialNetwork, string, string | null][]
+).flatMap(([network, label, url]) => (url ? [{ network, label, url }] : []))
 
 /**
  * Brand palette.

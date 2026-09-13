@@ -637,29 +637,48 @@ export const tier3Cities = build(tier3Raw, 3)
 export const cities: City[] = [...tier1Cities, ...tier2Cities, ...tier3Cities]
 
 /**
- * Cities that have their own page.
+ * Cities that have their own page and will answer a request.
  *
  * Every city on the client's list gets a page — the client asked for this
  * directly on 3 Aug 2026, overriding the earlier decision to publish only the
- * 14 enriched pages.
+ * 14 enriched pages. That still holds, and these pages still render: they are
+ * live Google Ads destinations for local search, and withdrawing the URLs would
+ * break running campaigns as well as overruling the client.
  *
- * The risk that decision was managing is real and has not gone away: Google's
- * scaled-content-abuse policy targets sets of near-identical pages generated
- * from a template with only the place name swapped. What keeps these pages on
- * the right side of it is that the thin ones are not pretending to be thick.
- * A Tier 2/3 page states its county, links its genuine county neighbours,
- * shows the service-area map, and stops. It does not pad to 1,500 words with
- * invented neighborhoods, zip codes, landmarks or response times — fabricating
- * verifiable facts about a real place is both worse for the user and a larger
- * ranking risk than a short page.
- *
- * Depth is still the goal. Promotion is a data change: fill in `localAngle`,
- * `neighborhoods`, `responseBand` and `faqs` and the page thickens on its own.
+ * What changed on 6 Sep 2026 is that RENDERING a page and SUBMITTING it for
+ * indexing are now two separate decisions — see `indexedCities` below. The
+ * client asked for a page at every city URL. He did not ask for 176 near-
+ * identical pages to be entered into Google's index, and that is the half that
+ * carries the risk.
  */
 export const publishedCities: City[] = cities
 
+/**
+ * Cities submitted for indexing — in the sitemap, and without `noindex`.
+ *
+ * Google's scaled-content-abuse policy targets sets of near-identical pages
+ * generated from a template with only the place name swapped. A Tier 2/3 page
+ * here is honest about being short — it states its county, links its genuine
+ * county neighbours, shows the map and stops, rather than padding to 1,500
+ * words with invented neighborhoods and response times. Honest is necessary but
+ * it is not sufficient: measured, two Tier 3 pages differ in 5 of 29 text
+ * blocks, and only by county name. Submitting 176 of those is the risk, not
+ * serving them.
+ *
+ * So the 14 enriched cities are indexed and the remaining 176 are `noindex,
+ * follow` — crawlable, link-passing, reachable from /service-areas and from
+ * every city page's "nearby cities" block, and available to any Ads click, but
+ * not asking Google to treat them as 176 distinct answers.
+ *
+ * Promotion is a data change and nothing else. Fill in `localAngle` (plus
+ * `neighborhoods` and `faqs` for Tier 1 and 2, which `isPublishable` checks)
+ * and the city moves into this list, into the sitemap, and out of `noindex`
+ * on the next build.
+ */
+export const indexedCities: City[] = cities.filter((c) => hasLocalContent(c) && isPublishable(c))
+
 /** Cities with the full enriched profile — used to flag depth in reporting. */
-export const enrichedCities: City[] = cities.filter((c) => isPublishable(c) && Boolean(c.localAngle))
+export const enrichedCities: City[] = indexedCities
 
 /**
  * Other cities in the same county, for internal linking.
@@ -692,6 +711,18 @@ export function citiesByCounty(): Record<string, City[]> {
  * A city is publishable when it carries enough genuinely local content to
  * justify its own page. Tier 1 and 2 need the full profile; Tier 3 ships as a
  * short honest page. Enforced by scripts/validate-cities.ts.
+ *
+ * `responseBand` used to be part of this conjunction. It was removed on
+ * 6 Sep 2026 because the fact it guarded no longer exists: the client had the
+ * arrival-window claim withdrawn on 6 Aug and every `responseBand` was emptied
+ * to match, which silently made every Tier 1 city unpublishable. The symptom
+ * was `enrichedCities` evaluating to 0 and `npm run validate:cities` exiting
+ * with 14 errors — one per Tier 1 city — so the guard that exists to stop thin
+ * location pages shipping was itself failing, and would have rejected the
+ * correct value of `publishedCities` below.
+ *
+ * If a real, measured arrival window is ever supplied, it belongs in the page
+ * copy and the meta description. It does not belong back in this gate.
  */
 export function isPublishable(city: City): boolean {
   if (city.tier === 3) return true
@@ -699,7 +730,24 @@ export function isPublishable(city: City): boolean {
     city.localAngle &&
       city.localAngle.split(/\s+/).length >= 100 &&
       (city.neighborhoods?.length ?? 0) >= 3 &&
-      city.responseBand &&
       (city.faqs?.length ?? 0) >= 1,
   )
+}
+
+/**
+ * Does this city carry content that is true of this city and nowhere else?
+ *
+ * This is the test that decides whether a page is submitted for indexing, and
+ * it is deliberately stricter than `isPublishable` — a Tier 3 city passes that
+ * one by design, because a short honest page is a fine thing to serve someone
+ * who followed a link. It is not a fine thing to submit to Google 176 times.
+ *
+ * Measured 6 Sep 2026: rendering `/gate-repair-azle-tx` and
+ * `/gate-repair-anna-tx` and normalising the city and county names away leaves
+ * 29 text blocks of which 5 differ, and all five differ only by county name and
+ * the list of neighbouring-city chips. That is one page served 176 times, which
+ * is the shape Google's scaled-content-abuse policy describes.
+ */
+export function hasLocalContent(city: City): boolean {
+  return Boolean(city.localAngle)
 }

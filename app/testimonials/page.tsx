@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { Phone, Video, ShieldCheck, Clock } from 'lucide-react'
 import { publishedTestimonials } from '@/content/testimonials'
@@ -11,15 +12,16 @@ import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: `${publishedTestimonials.length} Customer Testimonials on Video`,
+  // 164 characters previously. The brand name was repeated inside a sentence
+  // that already sits under the brand's own title tag. 148.
   description:
-    `Watch ${publishedTestimonials.length} Shield Gate Repair customers describe their gate repair on camera. ` +
-    `Real jobs, real customers, filmed on site across Dallas–Fort Worth. Call ${business.phone.display}.`,
+    `Watch ${publishedTestimonials.length} customers describe their gate repair on camera. ` +
+    `Real jobs, filmed on site across Dallas–Fort Worth. Call ${business.phone.display}.`,
   alternates: { canonical: '/testimonials' },
-  openGraph: {
+  openGraph: openGraphFor('/testimonials', {
     title: 'Customer Testimonials on Video',
     description: `${publishedTestimonials.length} real customers on camera describing their gate repair.`,
-    type: 'website',
-  },
+  }),
 }
 
 /**

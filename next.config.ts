@@ -67,6 +67,17 @@ const nextConfig: NextConfig = {
       { source: '/gate-repair-dallas-fort-worth', destination: '/service-areas', permanent: true },
       { source: '/shield-gate-repair', destination: '/', permanent: true },
       { source: '/about-us', destination: '/', permanent: true },
+      /**
+       * Missed in the original migration map, found 6 Sep 2026 by diffing the
+       * old Rank Math sitemap in wordpress-uploads/ against these rules.
+       *
+       * `/gate-repair/` is the broadest page the old site had and it was
+       * measured serving 308 → 404. The homepage is its exact topical
+       * equivalent — same query, same intent — so this is a clean 1:1, not a
+       * dump-on-the-homepage. It is also the one legacy URL most likely to
+       * carry inbound links, since it is the phrase the business is named for.
+       */
+      { source: '/gate-repair', destination: '/', permanent: true },
       // /testimonials was a legacy WordPress redirect to /reviews. It is now a
       // real page — the client's video testimonials live there — so the
       // redirect is inverted: /reviews keeps its inbound links and 301s to the

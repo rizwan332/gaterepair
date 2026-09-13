@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import { services } from '@/content/services'
 import { PageHero } from '@/components/sections/page-hero'
 import { ServicesGrid } from '@/components/sections/services-grid'
@@ -7,11 +8,16 @@ import { media } from '@/content/media-manifest'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Gate Repair Services in Dallas–Fort Worth',
+  // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
+  // past Google's ~60-character display budget. The site name is rendered
+  // separately in the SERP and derived from the WebSite schema node.
+  title: { absolute: 'Gate Repair Services | Dallas–Fort Worth' },
+  // 171 characters previously. 152.
   description:
-    'Gate motor and operator repair, emergency call-outs, electric and iron gate repair, commercial and HOA ' +
-    'entrances, access control and installation across Dallas–Fort Worth.',
+    'Gate motor and operator repair, emergency call-outs, electric and iron gates, commercial and HOA ' +
+    'entrances, and access control across Dallas–Fort Worth.',
   alternates: { canonical: '/services' },
+  openGraph: openGraphFor('/services'),
 }
 
 export default function ServicesPage() {

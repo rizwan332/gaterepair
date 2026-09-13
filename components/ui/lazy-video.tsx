@@ -2,9 +2,11 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { Play } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowUpRight, Play } from 'lucide-react'
 import type { SiteVideo } from '@/content/video-manifest'
 import { cdn } from '@/lib/cdn'
+import { watchPath } from '@/lib/video-paths'
 
 /**
  * Poster-first video tile.
@@ -13,6 +15,14 @@ import { cdn } from '@/lib/cdn'
  * poster is a normal responsive image, so a page can carry six of these for the
  * cost of six images rather than 20 MB of MP4 — which is what makes it viable
  * to put video high on the page instead of hiding it at the bottom.
+ *
+ * ── THIS TILE IS NOT WHAT GOOGLE INDEXES ────────────────────────────────────
+ * Because the <video> only exists after a click, Googlebot never sees one here.
+ * That is fine now, and it was the bug before: these tiles used to sit beside
+ * VideoObject schema describing a video that was not in the HTML. Each video's
+ * indexable home is its watch page (app/repair-videos/[slug]), which renders a
+ * real <video> — the caption link below is how both visitors and crawlers get
+ * there.
  */
 export function LazyVideo({ video, className }: { video: SiteVideo; className?: string }) {
   const [active, setActive] = useState(false)
@@ -77,6 +87,19 @@ export function LazyVideo({ video, className }: { video: SiteVideo; className?: 
           </button>
         )}
       </div>
+
+      {/* Inside the figure, so it sits on the tile's own dark ground and reads
+          the same on the white service pages and the dark homepage reel. */}
+      <figcaption className="flex items-center justify-between gap-3 border-t border-white/10 px-4">
+        <span className="truncate py-2.5 text-xs text-ink-300">{video.title}</span>
+        <Link
+          href={watchPath(video.slug)}
+          className="inline-flex min-h-11 shrink-0 items-center gap-1 text-xs font-semibold text-gold-400 transition-colors hover:text-gold-300"
+        >
+          Video page
+          <ArrowUpRight className="size-3.5" aria-hidden />
+        </Link>
+      </figcaption>
     </figure>
   )
 }

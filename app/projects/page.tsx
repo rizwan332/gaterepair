@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { ArrowUpRight, Play } from 'lucide-react'
 import { projects } from '@/content/projects'
@@ -14,9 +15,12 @@ export const metadata: Metadata = {
   // 45 chars with the appended brand. The old "Project Case Studies | Real Gate
   // Repairs, Start to Finish" reached 78 and lost its tail.
   title: 'Gate Repair Case Studies',
+  // 181 characters previously — the last clause, which is the most persuasive
+  // thing on the page, was the half being cut off. 156.
   description:
-    'Gate repairs documented properly — the fault, how it was diagnosed, what was actually wrong, and what it took to fix. Including several that had already been quoted as replacements.',
+    'Gate repairs documented properly: the fault, the diagnosis, and what it took to fix. Several had already been quoted as full replacements by someone else.',
   alternates: { canonical: '/projects' },
+  openGraph: openGraphFor('/projects'),
 }
 
 export default function ProjectsPage() {

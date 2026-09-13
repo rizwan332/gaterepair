@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import { FileCheck, XCircle, CheckCircle2 } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   description:
     'What our warranty actually covers, what it does not, and how to claim. Written plainly, because a warranty you have to interpret is not much of a warranty.',
   alternates: { canonical: '/warranty' },
+  openGraph: openGraphFor('/warranty'),
 }
 
 /**

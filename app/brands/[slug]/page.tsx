@@ -16,7 +16,8 @@ import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
-import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
+import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 
@@ -34,9 +35,26 @@ export async function generateMetadata({
   if (!brand) return {}
 
   return {
-    title: `${brand.name} Gate Operator Repair in Dallas–Fort Worth`,
-    description: `${brand.name} gate operator repair across Dallas–Fort Worth. Real repair photos and video, boards, limits and capacitors serviced. Open 24/7. Call ${business.phone.display}.`,
+    /**
+     * `absolute` bypasses the layout's ' | Shield Gate Repair' template.
+     *
+     * Measured 6 Sep 2026, every one of these 17 titles ran 66–77 characters
+     * against Google's ~60-character display budget, so the searched phrase was
+     * being truncated on the pages built specifically to win brand queries.
+     * "LiftMaster Gate Opener Repair | Dallas–Fort Worth" is 48.
+     *
+     * "Opener", not "operator". The trade says operator; customers say opener,
+     * and the client's own master keyword list leads every city block with
+     * "Gate Opener Repair". Match the searcher, not the trade — the body copy
+     * still says operator throughout, which is where the precision belongs.
+     */
+    title: { absolute: `${brand.name} Gate Opener Repair | Dallas–Fort Worth` },
+    description: fitDescription(
+      `${brand.name} gate opener not working? Boards, capacitors, limits and actuators repaired across Dallas–Fort Worth.`,
+      [`Open 24/7. Call ${business.phone.display}.`],
+    ),
     alternates: { canonical: `/brands/${brand.slug}` },
+    openGraph: openGraphFor(`/brands/${brand.slug}`),
   }
 }
 
@@ -288,6 +306,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                   href={`/gate-repair-${city.slug}-tx`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                 >
+                  {/* Anchor text carries the brand as well as the city — see
+                      the equivalent block on the service pages. Hidden so the
+                      chip still reads as a plain city name. */}
+                  <span className="sr-only">{brand.name} gate repair in </span>
                   {city.name}
                   <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                 </Link>
@@ -314,16 +336,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
               { name: 'Brands', url: '/brands' },
               { name: brand.name, url: `/brands/${brand.slug}` },
             ]),
-            ...brandVideos.map((v) =>
-              videoSchema({
-                title: v.title,
-                description: v.description || `${brand.name} gate operator repair by Shield Gate Repair in Dallas–Fort Worth.`,
-                thumbnailUrl: `${v.poster}.jpg`,
-                contentUrl: v.src,
-                durationSeconds: v.durationSeconds,
-                uploadDate: '2026-08-01',
-              }),
-            ),
+            // No VideoObject: the videos above are indexed on their watch pages — see content/video-pages.ts.
           ]),
         }}
       />

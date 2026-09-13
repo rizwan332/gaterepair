@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, Mail, Clock, MapPin } from 'lucide-react'
-import { business } from '@/content/business'
+import { business, socialProfiles } from '@/content/business'
+import { SOCIAL_ICONS } from '@/components/ui/social-icons'
 import { fact } from '@/lib/business'
 import { services } from '@/content/services'
 import { brands } from '@/content/brands'
@@ -67,6 +68,34 @@ export function SiteFooter() {
                 </li>
               )}
             </ul>
+
+            {/* Social profiles, from content/business.ts.
+
+                Icon-only, so each link carries its own aria-label — "Shield
+                Gate Repair on YouTube" rather than an unlabelled glyph a screen
+                reader announces as "link". 44px square, the tap-target minimum.
+                `rel="me"` asserts these are the business's own profiles, which
+                is the same claim `sameAs` makes in the schema. */}
+            {socialProfiles.length > 0 && (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {socialProfiles.map(({ network, label, url }) => {
+                  const Icon = SOCIAL_ICONS[network]
+                  return (
+                    <li key={network}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="me noopener noreferrer"
+                        aria-label={`${business.name} on ${label}`}
+                        className="inline-flex size-11 items-center justify-center rounded-lg border border-ink-800 text-ink-300 transition-colors hover:border-ink-600 hover:text-white"
+                      >
+                        <Icon className="size-5" />
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </div>
 
           <FooterCol title="Services">
@@ -112,6 +141,9 @@ export function SiteFooter() {
             </Link>
             <Link href="/testimonials" className="hover:text-ink-200">
               Testimonials
+            </Link>
+            <Link href="/repair-videos" className="hover:text-ink-200">
+              Repair Videos
             </Link>
             <Link href="/warranty" className="hover:text-ink-200">
               Warranty

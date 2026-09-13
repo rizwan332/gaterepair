@@ -1,6 +1,7 @@
 import { videos } from '@/content/video-manifest'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { Button } from '@/components/ui/button'
+import { VIDEO_HUB_PATH } from '@/lib/video-paths'
 
 /**
  * Video reel — positioned high on the homepage, deliberately.
@@ -14,9 +15,9 @@ import { Button } from '@/components/ui/button'
  * it, so the section costs one image per tile rather than several megabytes.
  */
 /**
- * The clips this section renders, resolved at module scope so the homepage can
- * emit VideoObject for exactly what is on the page — schema describing videos
- * that are not there is worse than no schema.
+ * The clips this section renders, resolved at module scope. The homepage used
+ * to emit VideoObject for each of these; it no longer does — every clip is
+ * claimed once, on its watch page (content/video-pages.ts).
  *
  * Lead with the brands nobody else covers, then general repair work.
  */
@@ -66,8 +67,10 @@ export function VideoReel() {
         </div>
 
         <div className="mt-10">
-          <Button href="/testimonials" variant="ghostDark" size="md">
-            See more of our work
+          {/* The hub, not /testimonials: someone who just watched a repair clip
+              wants more repair clips, and the hub links every watch page. */}
+          <Button href={VIDEO_HUB_PATH} variant="ghostDark" size="md">
+            Watch all repair videos
           </Button>
         </div>
       </div>

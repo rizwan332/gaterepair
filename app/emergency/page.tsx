@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { Phone, AlertTriangle, Clock, ShieldAlert, ArrowUpRight } from 'lucide-react'
 import { business } from '@/content/business'
@@ -18,12 +19,18 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
 export const metadata: Metadata = {
-  // 57 chars once the layout template appends the brand. It was 80, which
-  // truncated — and "Call Now" was the half Google was cutting.
-  title: '24/7 Emergency Gate Repair Dallas–Fort Worth',
+  // Shortened once from 80 characters, when "Call Now" was the half being cut.
+  // That left it at 65 with the layout's ' | Shield Gate Repair' appended,
+  // still over budget — so the suffix goes rather than the words. 46. The site
+  // name is rendered separately in the SERP, from the WebSite schema node.
+  title: { absolute: '24/7 Emergency Gate Repair | Dallas–Fort Worth' },
+  // 180 characters previously. The manual-release line is the differentiator —
+  // nobody else in the market offers it — so it stays and the generic
+  // "same-day emergency gate repair across DFW" tail goes. 157.
   description:
-    'Gate stuck open or closed right now? We answer 24/7 and can talk you through the manual release on the phone before a technician arrives. Same-day emergency gate repair across DFW.',
+    'Gate stuck open or closed right now? We answer 24/7 across DFW and can talk you through the manual release on the phone before a technician arrives.',
   alternates: { canonical: '/emergency' },
+  openGraph: openGraphFor('/emergency'),
 }
 
 /**
