@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { MapPin, Clock, Phone, Navigation } from 'lucide-react'
 import { cities, citiesByCounty, enrichedCities } from '@/content/cities'
@@ -11,9 +12,13 @@ import { CoverageExplorer, type ExplorerCity } from '@/components/sections/cover
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: `Gate Repair Service Areas — ${cities.length} DFW Cities`,
+  // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
+  // past Google's ~60-character display budget. The site name is rendered
+  // separately in the SERP and derived from the WebSite schema node.
+  title: { absolute: `Gate Repair Service Areas — ${cities.length} DFW Cities` },
   description: `Automatic gate repair across ${cities.length} cities in the Dallas–Fort Worth Metroplex. Interactive coverage map. Open 24/7. Call ${business.phone.display}.`,
   alternates: { canonical: '/service-areas' },
+  openGraph: openGraphFor('/service-areas'),
 }
 
 export default function ServiceAreasPage() {

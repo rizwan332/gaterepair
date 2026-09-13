@@ -12,7 +12,9 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { Reveal } from '@/components/ui/reveal'
-import { breadcrumbSchema, videoSchema, serviceSchema } from '@/lib/schema'
+import { business } from '@/content/business'
+import { breadcrumbSchema, serviceSchema } from '@/lib/schema'
+import { fitDescription, openGraphFor } from '@/lib/seo'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -30,9 +32,21 @@ export async function generateMetadata({
     // `project.title` is the editorial H1 and runs long by design; `seoTitle`
     // is the short searchable form. "| Case Study" is gone — it cost 13 of the
     // ~60 available characters and no one searches for it.
-    title: project.seoTitle,
-    description: project.summary,
+    //
+    // `absolute` because the layout template was spending another 20 on the
+    // brand, which put several of these back over budget after they had already
+    // been shortened once for exactly this reason.
+    title: { absolute: project.seoTitle },
+    // The summary is editorial copy shown on the index cards, so it is used
+    // as-is and only trimmed at a sentence boundary when it overruns. The
+    // shorter ones pick up the location and availability line they were
+    // missing — several ran under 80 characters.
+    description: fitDescription(project.summary, [
+      `Dallas–Fort Worth gate repair, open 24/7. Call ${business.phone.display}.`,
+      'Dallas–Fort Worth gate repair, open 24/7.',
+    ]),
     alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: openGraphFor(`/projects/${project.slug}`),
   }
 }
 
@@ -201,16 +215,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     url: `/projects/${project.slug}`,
                   })
                 : null,
-              video
-                ? videoSchema({
-                    title: video.title,
-                    description: video.description,
-                    thumbnailUrl: `${video.poster}.jpg`,
-                    contentUrl: video.src,
-                    durationSeconds: video.durationSeconds,
-                    uploadDate: '2026-08-01',
-                  })
-                : null,
+              // No VideoObject: this job's video is indexed on its watch pages — see content/video-pages.ts.
             ].filter(Boolean),
           ),
         }}

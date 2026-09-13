@@ -55,11 +55,12 @@ export const metadata: Metadata = {
     'Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. ' +
     'We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.',
   alternates: { canonical: '/' },
+  // No `url` here. A url on the layout is inherited by every route that does
+  // not set its own — which was every route. See `openGraphFor` in lib/seo.ts.
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: business.name,
-    url: business.url,
   },
   robots: { index: true, follow: true },
 }
@@ -100,6 +101,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         */}
         {cdnOrigin && <link rel="preconnect" href={cdnOrigin} crossOrigin="anonymous" />}
         {business.gtmId && <link rel="preconnect" href="https://www.googletagmanager.com" />}
+        {/*
+          YouTube's thumbnail origin. Video posters on the homepage, every city
+          page and every brand page come from i.ytimg.com, which was the one
+          third-party origin the head did not warm — so each of those pages paid
+          DNS + TLS before the first poster could start downloading. `dns-prefetch`
+          alongside it for browsers that ignore a preconnect budget.
+        */}
+        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
         {/*
           Google Tag Manager, inline and as high in <head> as Google's own
           instructions ask for.

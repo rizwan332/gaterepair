@@ -14,7 +14,8 @@ import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
 import { tier1Cities } from '@/content/cities'
-import { serviceSchema, faqSchema, breadcrumbSchema, videoSchema } from '@/lib/schema'
+import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { fitDescription, openGraphFor } from '@/lib/seo'
 import { publishedTestimonials } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CaseStudies } from '@/components/sections/case-studies'
@@ -34,9 +35,21 @@ export async function generateMetadata({
   if (!service) return {}
 
   return {
-    title: service.seoTitle ?? `${service.name} in Dallas–Fort Worth`,
-    description: `${service.symptoms[0]?.seeing}. Same-day ${service.name.toLowerCase()} across DFW. Licensed, insured, written warranty. Call ${business.phone.display}.`,
+    /**
+     * `absolute` bypasses the layout's ' | Shield Gate Repair' template, which
+     * was pushing all eight of these to 62–74 characters against a ~60
+     * character display budget. `seoTitle` overrides are already written short
+     * enough to carry the suffix, so they keep it; the generated form drops the
+     * brand and uses the shorter "| DFW" qualifier instead of spelling out
+     * Dallas–Fort Worth twice over.
+     */
+    title: { absolute: service.seoTitle ?? `${service.name} | Dallas–Fort Worth` },
+    description: fitDescription(
+      `${service.symptoms[0]?.seeing}? Same-day ${service.name.toLowerCase()} across Dallas–Fort Worth.`,
+      [`Open 24/7. Call ${business.phone.display}.`, 'Licensed, insured, written warranty.'],
+    ),
     alternates: { canonical: `/services/${service.slug}` },
+    openGraph: openGraphFor(`/services/${service.slug}`),
   }
 }
 
@@ -261,12 +274,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               Where we do this work
             </h2>
             <ul className="flex flex-wrap gap-2.5">
+              {/* The anchor carries the service as well as the city.
+                  "Plano" told a crawler only that this page links to a city
+                  page; "Gate motor repair in Plano" tells it what that city
+                  page is relevant FOR, which is the phrase both pages are
+                  trying to win. Visually it stays a chip — `sr-only` keeps the
+                  row of city names readable while the anchor text is complete
+                  for anything reading the markup. */}
               {tier1Cities.map((city) => (
                 <li key={city.slug}>
                   <Link
                     href={`/gate-repair-${city.slug}-tx`}
                     className="rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                   >
+                    <span className="sr-only">{service.name} in </span>
                     {city.name}
                   </Link>
                 </li>
@@ -289,16 +310,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               { name: 'Services', url: '/services' },
               { name: service.name, url: `/services/${service.slug}` },
             ]),
-            ...serviceVideos.map((v) =>
-              videoSchema({
-                title: v.title,
-                description: v.description || `${service.name} by Shield Gate Repair in Dallas–Fort Worth.`,
-                thumbnailUrl: `${v.poster}.jpg`,
-                contentUrl: v.src,
-                durationSeconds: v.durationSeconds,
-                uploadDate: '2026-08-01',
-              }),
-            ),
+            // No VideoObject: the videos above are indexed on their watch pages — see content/video-pages.ts.
           ]),
         }}
       />

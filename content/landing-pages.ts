@@ -51,6 +51,36 @@ export type LandingPage = {
   faqs: { q: string; a: string }[]
   /** Long-tail phrases worked into the closing local block. */
   localKeywords: string[]
+  /**
+   * Submit this page for indexing?
+   *
+   * Every one of these pages is served, and every one is a live Ads
+   * destination. This flag only decides whether the page also goes into the
+   * sitemap and stays out of `noindex`.
+   *
+   * Default is false, and that is the deliberate part. The original reasoning
+   * for indexing all eight — "they are genuinely distinct pages answering a
+   * model-specific query, not thin duplicates of the brand pages" — is sound,
+   * and it is true of the three flagged below. It is not true of the other
+   * five, measured 6 Sep 2026:
+   *
+   *   /elite-gate-repair  H1: "Elite Gate Repair in Dallas–Fort Worth"
+   *   /brands/elite       H1: "Elite Gate Repair in Dallas–Fort Worth"
+   *
+   * Identical, character for character, both indexed, both in the sitemap.
+   * /apollo-gate-repair, /viking-gate-repair, /doorking-repair and
+   * /liftmaster-gate-opener-repair are the same story a few characters apart:
+   * same brand, same city, same intent, two URLs, and a sitemap that ranked the
+   * landing page (0.85) above some of the brand pages (0.8). Google picks one
+   * and the choice is ours to make, so make it — the brand page is 1,400–2,400
+   * words with case studies, video and FAQs, and it wins on merit.
+   *
+   * This is reversible and it is a content decision, not a permanent one. Give
+   * one of those five a genuinely model-level angle — the way /faac-gate-repair
+   * leads on the hydraulic line and /liftmaster-la400-repair on one operator —
+   * and it earns the flag back.
+   */
+  indexable?: boolean
 }
 
 const DFW = 'Dallas–Fort Worth'
@@ -118,6 +148,9 @@ export const landingPages: LandingPage[] = [
       'LiftMaster swing gate repair Plano',
       'LA400 battery replacement Frisco',
     ],
+    // One named operator. /brands/liftmaster covers the range; this covers the
+    // model someone has just read off the housing of their own gate.
+    indexable: true,
   },
 
   {
@@ -210,6 +243,9 @@ export const landingPages: LandingPage[] = [
       'ranch gate opener repair Weatherford',
       'US Automatic gate repair Parker County',
     ],
+    // One named operator line, and a solar/ranch angle /brands/us-automatic
+    // does not lead on.
+    indexable: true,
   },
 
   {
@@ -260,7 +296,12 @@ export const landingPages: LandingPage[] = [
 
   {
     slug: 'elite-gate-repair',
-    h1: 'Elite Gate Repair in Dallas–Fort Worth',
+    // Was 'Elite Gate Repair in Dallas–Fort Worth' — identical, character for
+    // character, to /brands/elite's H1. The page is `noindex` now so this is no
+    // longer a ranking conflict, but two live URLs with the same headline is
+    // still confusing for anyone who lands on both, and the ad group this page
+    // serves is about the gate being down rather than about the brand.
+    h1: 'Elite Gate Operator Not Working? Same-Day Repair in DFW',
     title: 'Elite Gate Repair Dallas–Fort Worth',
     metaDescription:
       'Elite gate repair across Dallas–Fort Worth. Boards, capacitors, limit switches and chain wear on Elite swing and slide operators. Open 24/7. Call now.',
@@ -306,7 +347,13 @@ export const landingPages: LandingPage[] = [
 
   {
     slug: 'faac-gate-repair',
-    h1: 'FAAC Gate Repair in Dallas–Fort Worth',
+    // Leads on hydraulics, matching the title and the whole of the page below
+    // it. As "FAAC Gate Repair in Dallas–Fort Worth" this was a paraphrase of
+    // /brands/faac's "FAAC Gate Operator Repair in Dallas–Fort Worth" and the
+    // two pages were bidding against each other for one query. Hydraulics is a
+    // real product line, it is the thing nobody local will touch, and it is why
+    // this page deserves to exist separately.
+    h1: 'FAAC Hydraulic Gate Operator Repair in Dallas–Fort Worth',
     // The hydraulic angle folded into the phrase rather than trailing after a
     // pipe — it was the half the template's appended brand pushed past 80 chars.
     title: 'FAAC Hydraulic Gate Repair Dallas–Fort Worth',
@@ -350,6 +397,9 @@ export const landingPages: LandingPage[] = [
       'FAAC 402 repair Highland Park',
       'FAAC gate repair Southlake',
     ],
+    // Hydraulics is a distinct product line, not a restatement of the brand
+    // page. Zero of the 14 audited DFW competitors service them.
+    indexable: true,
   },
 
   {
@@ -357,7 +407,7 @@ export const landingPages: LandingPage[] = [
     h1: 'Apollo Gate Repair in Dallas–Fort Worth',
     title: 'Apollo Gate Opener Repair Dallas–Fort Worth',
     metaDescription:
-      'Apollo solar gate opener slow, stopping partway or dead? We repair Apollo swing and slide operators across Dallas–Fort Worth. Open 24/7. Call Shield Gate Repair.',
+      'Apollo solar gate opener slow, stopping partway or dead? We repair Apollo swing and slide operators across Dallas–Fort Worth. Open 24/7.',
     subhead: 'Solar and battery-powered Apollo operators on acreage driveways.',
     brandSlug: 'apollo',
     mediaCategory: null,

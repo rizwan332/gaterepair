@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Phone, CheckCircle2, ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 import { landingBySlug, type LandingPage as LandingPageData } from '@/content/landing-pages'
@@ -37,15 +38,25 @@ export function landingMetadata(slug: string): Metadata {
   const page = landingBySlug(slug)
   if (!page) return {}
   return {
-    title: page.title,
+    // `absolute` — the layout appends ' | Shield Gate Repair', which is the
+    // problem the `title` field's own doc comment describes and only half
+    // solved: the titles were shortened to make room for the suffix rather than
+    // the suffix being dropped. These are pages paid for by the click, so
+    // spending 20 characters of a 60-character budget on the brand name is the
+    // most expensive place on the site to do it.
+    title: { absolute: page.title },
     description: page.metaDescription,
     alternates: { canonical: `/${page.slug}` },
-    openGraph: {
+    openGraph: openGraphFor(`/${page.slug}`, {
       title: page.title,
       description: page.metaDescription,
-      url: `/${page.slug}`,
-      type: 'website',
-    },
+    }),
+    // Paid-only unless the page answers something its brand page does not.
+    // `follow`, so the links out to the brand page, the case studies and the
+    // testimonials still count. See `indexable` in content/landing-pages.ts.
+    robots: page.indexable
+      ? undefined
+      : { index: false, follow: true, googleBot: { index: false, follow: true } },
   }
 }
 

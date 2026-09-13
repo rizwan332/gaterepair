@@ -152,7 +152,13 @@ export const services: Service[] = [
     name: 'Automatic Gate Repair',
     mediaCategory: 'automatic-gate-repair',
     navLabel: 'Automatic Gates',
-    headline: 'Automatic Gate Repair in Dallas–Fort Worth',
+    // Was 'Automatic Gate Repair in Dallas–Fort Worth', identical to the
+    // homepage H1 — the two pages were competing for the same head term and the
+    // homepage should win it. This differentiates on intent instead of phrase:
+    // the homepage answers "who fixes gates near me", this page answers "what
+    // is actually wrong with mine", which is what the symptom table below it
+    // delivers and the homepage does not.
+    headline: 'Automatic Gate Repair: What Fails, and What It Costs to Fix',
     intro:
       'Automatic gates fail in a small number of predictable ways, and most of them are cheaper to fix than people ' +
       'expect. We diagnose the actual fault instead of quoting a replacement because it is easier to sell.',
@@ -301,6 +307,11 @@ export const services: Service[] = [
     slug: 'access-control-repair',
     legacyPath: null,
     name: 'Access Control & Intercom Repair',
+    // "Access control repair" without the gate qualifier is a different trade —
+    // badge readers on office doors. The H1 already says "Gate Access Control";
+    // the title tag needs to as well or the page reads as relevant to the wrong
+    // query. 44 characters.
+    seoTitle: 'Gate Access Control & Intercom Repair | DFW',
     mediaCategory: 'access-control',
     navLabel: 'Access Control',
     headline: 'Gate Access Control & Intercom Repair in Dallas–Fort Worth',

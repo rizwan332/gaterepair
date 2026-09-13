@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import Link from 'next/link'
 import { GENERAL_FAQ_CATEGORIES } from '@/content/general-faqs'
 import { services } from '@/content/services'
@@ -11,10 +12,15 @@ import { media } from '@/content/media-manifest'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Gate Repair FAQs — Straight Answers',
+  // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
+  // past Google's ~60-character display budget. The site name is rendered
+  // separately in the SERP and derived from the WebSite schema node.
+  title: { absolute: 'Gate Repair FAQs — Straight Answers' },
+  // 161 characters previously, by one word. 155.
   description:
-    'Straight answers on gate repair: what your gate is doing and why, repair versus replacement, safety, maintenance, and what to do while you wait for a technician.',
+    'Straight answers on gate repair: what your gate is doing and why, repair versus replacement, safety, and what to do while you wait for a technician.',
   alternates: { canonical: '/faq' },
+  openGraph: openGraphFor('/faq'),
 }
 
 /**

@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, Clock, Navigation } from 'lucide-react'
-import { cities, publishedCities, cityBySlug, countyPeers, type City } from '@/content/cities'
+import {
+  cities,
+  publishedCities,
+  indexedCities,
+  cityBySlug,
+  countyPeers,
+  type City,
+} from '@/content/cities'
 import { services } from '@/content/services'
 import { brands } from '@/content/brands'
 import { media } from '@/content/media-manifest'
@@ -58,13 +66,68 @@ export async function generateMetadata({
   const city = slug ? cityBySlug(slug) : null
   if (!city || !publishedCities.includes(city)) return {}
 
+  /**
+   * Description, assembled to fit rather than written and hoped over.
+   *
+   * The snippet budget is ~160 characters and the inputs vary by 20 — "Boyd,
+   * Wise County" against "North Richland Hills, Tarrant County" — so a single
+   * fixed template either overflows on the long cities or wastes the budget on
+   * the short ones. Writing one and eyeballing it is what produced the previous
+   * range of 114 to 126.
+   *
+   * So: build the sentence that always fits, then spend whatever is left on the
+   * operator brands we actually see in that city, dropping one at a time until
+   * it fits. The brands come from `gateProfile`, which is real technician-
+   * interview data — a city we have not enriched has none, and names none.
+   */
+  const LIMIT = 158
+  const head = `Gate stuck, stalled or dead in ${city.name}? Same-day gate repair across ${city.county}`
+  const tail = `. Open 24/7. Call ${business.phone.display}.`
+  let description = `${head}. Residential and commercial${tail.slice(1)}`
+  for (let n = (city.gateProfile?.commonBrands.length ?? 0); n > 0; n--) {
+    const candidate = `${head} — we fix ${city.gateProfile!.commonBrands.slice(0, n).join(', ')}${tail}`
+    if (candidate.length <= LIMIT) {
+      description = candidate
+      break
+    }
+  }
+
   return {
-    title: `Gate Repair ${city.name} TX — Same-Day Service`,
-    description:
-      `Automatic gate repair in ${city.name}, ${city.county}. ` +
-      `${city.responseBand ? `Typical arrival ${city.responseBand}. ` : ''}` +
-      `Licensed, insured, written warranty. Open 24/7. Call ${business.phone.display}.`,
+    /**
+     * `absolute`, so the layout's ' | Shield Gate Repair' template does not
+     * apply. That template was adding 20 characters to a tag that already ran
+     * to 59 — measured 6 Sep 2026, 192 of 241 titles on this site exceeded
+     * Google's ~60-character display budget, and every one of them did so
+     * because of the suffix rather than because the title itself was long.
+     *
+     * Dropping the brand is safe: Google renders the site name separately from
+     * the title on mobile and derives it from the WebSite schema node, which
+     * the homepage already emits.
+     *
+     * "Gate Repair in Plano, TX — Same-Day, Open 24/7" is 45 characters, which
+     * leaves the availability hook intact instead of truncating it away.
+     */
+    title: { absolute: `Gate Repair in ${city.name}, TX — Same-Day, Open 24/7` },
+    // Opens on the problem, not the service. Someone searching this is standing
+    // at a gate that will not move, and the snippet that names their situation
+    // back to them is the one they click. The previous version opened
+    // "Automatic gate repair in {city}, {county}." and ran 114–126 characters,
+    // spending none of the remaining budget.
+    description,
     alternates: { canonical: `/${PREFIX}${city.slug}${SUFFIX}` },
+    openGraph: openGraphFor(`/${PREFIX}${city.slug}${SUFFIX}`),
+    /**
+     * Cities without genuinely local content are served but not submitted.
+     *
+     * `follow` matters as much as `noindex` here: these pages carry the county
+     * peer links and the full service and brand rosters, so their links still
+     * pass. What stops is asking Google to treat 176 near-identical pages as
+     * 176 distinct answers. Filling in `localAngle` moves a city into
+     * `indexedCities` and removes this on the next build — see content/cities.ts.
+     */
+    robots: indexedCities.includes(city)
+      ? undefined
+      : { index: false, follow: true, googleBot: { index: false, follow: true } },
   }
 }
 

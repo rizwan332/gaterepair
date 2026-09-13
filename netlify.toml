@@ -11,6 +11,239 @@
 # regardless.
 
 # ---------------------------------------------------------------------------
+# Retired California pages — 410 Gone
+#
+# The WordPress site's entire local footprint was Southern California: 17 of its
+# 45 indexed URLs, against one for Dallas–Fort Worth. The exact list is in
+# wordpress-uploads/rank-math/rank_math_*.xml. STRATEGY.md §0 and next.config.ts
+# both record the decision NOT to redirect them into DFW pages, and that is
+# right — pointing a Los Angeles page at a Dallas page is a geographic relevance
+# mismatch that does more harm than retiring the URL cleanly.
+#
+# But "not redirected" was implemented as "nothing", so measured 6 Sep 2026 each
+# one served a 308 to strip the trailing slash and then a 404:
+#
+#   /los-angeles-county/ → 308 → /los-angeles-county → 404
+#
+# A 404 says "we cannot find this", and Google re-crawls it for months on the
+# chance it comes back. A 410 says "this is gone deliberately", which is the
+# true statement and drops it out of the index materially faster. Both slash
+# forms are listed because the 308 fires first otherwise.
+#
+# `force = true` so these win over the Next.js runtime's own 404 handling.
+# `to` is required by the redirect syntax and is not followed on a 410 — the
+# status is what the crawler acts on.
+#
+# ⚠️ These become wrong the moment California is a live market again. That
+# decision is still open (STRATEGY.md §0, path B). If it goes that way, delete
+# this whole block before building the California subtree.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/los-angeles-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/los-angeles-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-los-angeles"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-los-angeles/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/orange-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/orange-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-orange-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-orange-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/ventura-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/ventura-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-ventura-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-ventura-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/electric-automatic-gate-repair-ventura-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/electric-automatic-gate-repair-ventura-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/san-bernardino-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/san-bernardino-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-san-bernardino-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-san-bernardino-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/riverside-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/riverside-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/santa-barbara-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/santa-barbara-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/san-luis-obispo-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/san-luis-obispo-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-san-luis-obispo-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-san-luis-obispo-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/electric-gate-repair-santa-barbara-san-luis-obispo"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/electric-gate-repair-santa-barbara-san-luis-obispo/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/kern-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/kern-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/imperial-county"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/imperial-county/"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-fresno"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/gate-repair-fresno/"
+  to = "/"
+  status = 410
+  force = true
+
+# ---------------------------------------------------------------------------
 # /samedaygaterepair — static HTML landing page
 #
 # The page is plain HTML at public/samedaygaterepair.html, not a Next.js route.

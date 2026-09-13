@@ -58,6 +58,12 @@ export function organizationSchema(): Json {
     ],
   }
 
+  // Profiles the business controls, so search engines can join them to this
+  // entity — the knowledge-panel social links come from here. Unset networks
+  // are omitted rather than emitted as null.
+  const sameAs = Object.values(business.social).filter((u): u is string => Boolean(u))
+  if (sameAs.length) node.sameAs = sameAs
+
   if (address && address.street) {
     node.address = {
       '@type': 'PostalAddress',

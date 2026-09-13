@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
+import { openGraphFor } from '@/lib/seo'
 import { Hero, heroImage, HERO_SIZES } from '@/components/sections/hero'
-import { VideoReel, videoReelFeatured } from '@/components/sections/video-reel'
+import { VideoReel } from '@/components/sections/video-reel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { BrandMarquee } from '@/components/sections/brand-marquee'
 import { FeaturedWork } from '@/components/sections/featured-work'
@@ -23,7 +24,6 @@ import {
   webSiteSchema,
   offerCatalogSchema,
   faqSchema,
-  videoSchema,
 } from '@/lib/schema'
 
 /**
@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     'Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. ' +
     'We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.',
   alternates: { canonical: '/' },
+  openGraph: openGraphFor('/'),
 }
 
 /**
@@ -173,12 +174,16 @@ export default function HomePage() {
         190 cities. Everything below hangs off that same @id rather than
         declaring a second entity.
 
-        VideoObject covers the six self-hosted VideoReel clips only. The 21
-        YouTube testimonials in the carousel above are deliberately excluded:
-        VideoObject requires uploadDate, and neither the real upload dates nor
-        the durations of those videos exist anywhere in this repository. Adding
-        them would mean inventing both. If the client supplies the channel
-        metadata, extend content/testimonials.ts and add them here.
+        No VideoObject here, although the page embeds six clips. It used to
+        carry one for each, and Search Console could not index any of them: the
+        tiles only create a <video> after a click, so Googlebot found schema for
+        videos that were not in the HTML, and a video is only indexed on a page
+        where it is the main content — which a homepage never is. Each clip is
+        now claimed once, on its own watch page under /repair-videos, and the
+        tiles link there. See content/video-pages.ts.
+
+        The 21 YouTube testimonials in the carousel above were never included:
+        they are indexed on YouTube itself.
 
         FAQPage is emitted for entity understanding, not rich results — Google
         restricted those to government and health sites in 2023.
@@ -202,16 +207,6 @@ export default function HomePage() {
               })),
             ),
             ...(homeFaqs.length > 0 ? [faqSchema(homeFaqs)] : []),
-            ...videoReelFeatured.map((v) =>
-              videoSchema({
-                title: v.title,
-                description: v.description,
-                thumbnailUrl: `${v.poster}.jpg`,
-                contentUrl: v.src,
-                durationSeconds: v.durationSeconds,
-                uploadDate: '2026-08-01',
-              }),
-            ),
           ]),
         }}
       />
