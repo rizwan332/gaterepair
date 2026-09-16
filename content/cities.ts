@@ -88,6 +88,96 @@ export const tier1Cities: City[] = [
     ],
   },
   {
+    /**
+     * Added 16 Sep 2026. Fort Worth was missing from the client's service-area
+     * list and therefore from this file, so /gate-repair-fort-worth-tx returned
+     * a 404 — the second-largest city in the market and the one the metroplex
+     * is half named after. Treated as an oversight and corrected; see the note
+     * in scripts/client-city-list.ts, which records that the client still has
+     * to confirm it.
+     *
+     * Sourced rather than assumed, because none of it was in the client's data:
+     *  · zips — Census 2020 ZCTA-to-place relationship file, rows for "Fort
+     *    Worth city". West and south-west first, then the northern ZCTAs.
+     *  · neighborhoods — City of Fort Worth pages (historic districts, park
+     *    pages, capital project titles). Enclave municipalities that look like
+     *    Fort Worth neighborhoods but are not — White Settlement, Westworth
+     *    Village, River Oaks, Sansom Park — are deliberately absent.
+     *  · coordinates — not set here. `npm run geocode` resolved them through
+     *    Nominatim like every other city, to 32.75318, -97.33275, which is a
+     *    downtown-referenced point. The Census 2023 Gazetteer puts the
+     *    city-wide internal point further north-west at 32.78195, -97.34857;
+     *    for a pin on the coverage map the difference is immaterial, and
+     *    consistency with the other 190 cities is worth more than precision
+     *    here.
+     *  · the clay figure in the FAQ — a geotechnical report the city itself
+     *    hosts for a north Fort Worth site (D&S Engineering G20-2194), which
+     *    estimates 3 to 8.5 inches of potential vertical movement.
+     *  · the hail reference — NWS Fort Worth on the May 1995 Mayfest storm.
+     *
+     * `gateProfile` is drafted from the city's own geography and building
+     * stock, exactly as the other Tier 1 profiles are, and carries the same
+     * caveat at the top of this file: it needs replacing with the technician
+     * interview answers.
+     */
+    slug: 'fort-worth',
+    name: 'Fort Worth',
+    county: 'Tarrant County',
+    tier: 1,
+    zips: ['76107', '76108', '76109', '76116', '76126', '76132', '76133', '76131', '76137', '76177', '76179'],
+    neighborhoods: [
+      'Arlington Heights',
+      'Ridglea Hills',
+      'Wedgwood',
+      'Westcliff',
+      'Overton Park',
+      'Fairmount',
+      'Mistletoe Heights',
+      'Near Southside',
+    ],
+    landmarks: [
+      'Fort Worth Stockyards',
+      'Fort Worth Water Gardens',
+      'Fort Worth Botanic Garden',
+      'Will Rogers Memorial Center',
+      'Dickies Arena',
+    ],
+    // "Loop 820" rather than I-820, and Camp Bowie named alongside US-377,
+    // because that is what people here call them.
+    majorRoads: ['I-35W', 'Loop 820', 'Chisholm Trail Parkway', 'US-377 / Camp Bowie'],
+    nearbyCities: ['haltom-city', 'lake-worth', 'saginaw', 'white-settlement', 'north-richland-hills', 'forest-hill'],
+    responseBand: '',
+    gateProfile: {
+      dominant:
+        'Three separate kinds of gate work inside one city — post-war driveways on the west side, acreage entrances beyond Loop 820, and high-cycle commercial gates on the north side',
+      commonGateTypes: ['Wrought iron swing', 'Ranch and acreage swing', 'Commercial slide', 'Apartment entrance slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'All-O-Matic', 'US Automatic', 'Elite'],
+      commonIssues: [
+        'Clay-soil post movement pulling gates out of alignment',
+        'Hail and storm damage to photo-eyes and control boards',
+        'Battery and solar charging faults on acreage gates',
+        'High-cycle chain and sprocket wear on commercial entrances',
+        'Control board failure on ageing west-side operators',
+      ],
+    },
+    localAngle:
+      'Fort Worth splits three ways for gate work. West of downtown — Arlington Heights, Ridglea Hills, Westcliff and Wedgwood — the housing is largely post-war, and a good share of the operators on those driveways are twenty years old or more, which makes a control board or a limit adjustment the likely repair rather than a new unit. Push out past Loop 820 into the 76126 and 76179 zip codes and the lots turn into acreage: those gates usually run from a battery kept topped up by a solar panel, so a gate that has slowed down is a charging question before it is an operator question. North toward Alliance the work is commercial — yard entrances, distribution gates and apartment entrances cycling hundreds of times a day, where a chain wears out in a season rather than a decade. Those are three different diagnoses, and we do not approach them the same way.',
+    faqs: [
+      {
+        q: 'My gate lined up fine last year and now it catches. Nothing was touched.',
+        a: 'The post moved, not the gate. A geotechnical report the city publishes for a north Fort Worth site estimates the local clay can rise and fall by roughly three to eight and a half inches as its moisture changes, and a gate post set in that ground goes with it. Re-hanging the gate and correcting the post is considerably cheaper than the operator replacement the resulting strain often gets blamed on.',
+      },
+      {
+        q: 'Hail came through and the gate stopped responding. Is the operator finished?',
+        a: 'Usually not. Fort Worth gets genuinely severe hail — the 1995 Mayfest storm put softball-sized stones across the city — and what it damages is the exposed hardware: photo-eyes, an antenna, a solar panel, or the board inside an enclosure that has been cracked or let water in. Every one of those is an individual part, and we quote them individually.',
+      },
+      {
+        q: 'Do you cover the acreage properties west of Loop 820?',
+        a: 'Yes, and they are a distinct kind of call. Out there the gate is typically a long single leaf on a battery-and-solar operator at the end of a driveway, where a failure locks in a whole property rather than one car. We test the battery under load and the panel output before touching the operator, because that is where the fault usually is.',
+      },
+    ],
+  },
+  {
     slug: 'plano',
     name: 'Plano',
     county: 'Collin County',
