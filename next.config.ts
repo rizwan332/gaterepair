@@ -100,6 +100,14 @@ const nextConfig: NextConfig = {
       // around them, so an inbound link still lands on our work.
       { source: '/pricing', destination: '/contact', permanent: true },
       { source: '/gallery', destination: '/projects', permanent: true },
+
+      // Retired 15 Sep 2026: the two indexed model-specific Ads landing pages.
+      // Each model now has a fuller page inside its brand silo, and two indexed
+      // URLs answering one model query compete with each other. 301 so the
+      // equity carries over and any Ads final URL still pointing here keeps
+      // working until it is updated.
+      { source: '/liftmaster-la400-repair', destination: '/brands/liftmaster/la400-repair', permanent: true },
+      { source: '/us-automatic-ranger-repair', destination: '/brands/us-automatic/ranger-repair', permanent: true },
     ]
   },
 }

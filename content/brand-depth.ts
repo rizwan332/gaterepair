@@ -47,8 +47,8 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'Control boards and the release key',
         body: [
-          'FAAC control boards are conventional in the sense that they are diagnosable and replaceable like any other. The 452 MPS and 455D boards in particular are common failure points on older installations and are straightforward to swap once correctly identified.',
-          'The manual release on a FAAC is a keyed valve rather than a lever: turning the key opens a bypass and allows the gate to be moved by hand. That valve is itself a wear item, and a release that has started weeping fluid is a real fault rather than a cosmetic one.',
+          'FAAC control boards are conventional in the sense that they are diagnosable and replaceable like any other. The 455 D board used with the hydraulic swing operators is a common failure point on older installations and is straightforward to swap once correctly identified.',
+          'On FAAC hydraulic operators the manual release is a keyed valve rather than a lever: turning the key opens a bypass and allows the gate to be moved by hand. That valve is itself a wear item, and a release that has started weeping fluid is a real fault rather than a cosmetic one. The electromechanical 770 and 844 release with a key and lever instead.',
         ],
       },
     ],
@@ -60,15 +60,24 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         ],
       },
       {
-        heading: '750 and 844 — sliding gate operators',
+        // Corrected 15 Sep 2026: this block grouped the 750 and 844 as hydraulic
+        // slide operators. The 750 is an in-ground hydraulic swing operator; the
+        // 844 is an electromechanical slide operator (FAAC manuals).
+        heading: '844 — electromechanical slide operator',
         body: [
-          'Used on heavier sliding installations. Faults tend to be a mixture of hydraulic and mechanical: pressure on the drive side, and rack, pinion or roller wear on the gate side. Both need checking together, because a gate that is hard to move will make a healthy operator look faulty.',
+          'The 844 is not hydraulic: an electric motor drives the gate through a gear train and twin-disk clutch running in an oil bath. Faults are a mixture of clutch adjustment, limit switches and board on the operator side, and rack, pinion or roller wear on the gate side. Both need checking together, because a gate that is hard to move will make a healthy operator look faulty.',
+        ],
+      },
+      {
+        heading: '750 — in-ground hydraulic swing operator',
+        body: [
+          'The 750 sits in the ground beneath the leaf rather than on the gate, so diagnosis starts with getting at it: the foundation box, whether it drains, and the hydraulic unit inside.',
         ],
       },
       {
         heading: 'S800H and modern encoder-based units',
         body: [
-          'Newer FAAC operators use encoder position sensing rather than mechanical limits. Position can be lost after a power interruption or a forced manual move, which presents as erratic travel and is corrected by re-learning the limits rather than by replacing hardware.',
+          'Some newer FAAC operators, the S800H among them, use encoder position sensing rather than mechanical limits. Position can be lost after a power interruption or a forced manual move, which presents as erratic travel and is corrected by re-learning the limits rather than by replacing hardware.',
         ],
       },
     ],
@@ -124,19 +133,19 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     ],
     modelNotes: [
       {
-        heading: 'LA400 and LA500 — residential swing',
+        heading: 'LA400, LA412 and LA500 — DC linear-actuator swing',
         body: [
-          'Extremely common on residential driveways. Board, capacitor and limit faults dominate, and all are inexpensive relative to replacement.',
+          'Battery-run DC operators with no motor capacitor. Battery and charging faults, safety-sensor faults and limit settings dominate, and all are inexpensive relative to replacement.',
         ],
       },
       {
-        heading: 'SL585, SL595 and CSL24U — slide operators',
+        heading: 'CSL24UL, SL3000UL and SL595 — slide operators',
         body: [
           'Chain-driven slide units where mechanical wear matters as much as electronics. Chain tension, sprocket condition and roller wear should be checked on any service visit, because a gate that is getting harder to move will eventually take the gearbox with it.',
         ],
       },
       {
-        heading: 'CSW24U and commercial-duty units',
+        heading: 'CSW24UL and commercial-duty units',
         body: [
           'Installed on higher-cycle entrances. The same parts fail as on residential units, just far sooner, which is why a repeated failure usually indicates duty cycle rather than a defective part.',
         ],
@@ -170,16 +179,19 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         ],
       },
       {
-        heading: 'The clutch is a safety feature, not a fault',
+        // Corrected 15 Sep 2026 against All-O-Matic's manuals: only the SL-150
+        // slide operator has a gearbox clutch; the SL-100 reverses electronically,
+        // and slide limits are nuts on a lock plate rather than cams.
+        heading: 'A stall is usually the gate, not the clutch',
         body: [
-          'All-O-Matic slide operators use a mechanical clutch that slips when the gate meets resistance. When a gate stalls or reverses part-way, people reasonably conclude the clutch has failed — but usually the clutch is doing precisely its job, and the real fault is that the gate has become hard to move.',
-          'Tightening the clutch to force the gate through is the wrong repair and a genuinely dangerous one: it removes the protection that stops the gate crushing an obstruction. We check the gate by hand before touching the clutch, every time.',
+          'The SL-150 slide operator has a clutch inside its gearbox that slips when the gate meets resistance, and the SW-300 and SW-350 swing operators use a torque limiter or internal clutch; the SL-100 instead relies on the board’s electronic reversing device. When a gate stalls or reverses part-way, people reasonably conclude one of those has failed — but usually it is doing precisely its job, and the real fault is that the gate has become hard to move.',
+          'All-O-Matic describes the clutch as protection for the operator, with obstruction safety coming from the reversing device and photo-eyes. Tightening a clutch or turning reversing sensitivity down to force a binding gate through hides the real fault, so we check the gate by hand before adjusting either, every time.',
         ],
       },
       {
-        heading: 'Limit cam slip',
+        heading: 'Limit drift',
         body: [
-          'Limit positions are set by cams on a threaded shaft. Over thousands of cycles a cam can creep, and the gate gradually stops travelling as far as it should. It is an adjustment rather than a repair in most cases, and it explains a great many "the gate has stopped closing properly" calls.',
+          'On the slide operators, limit positions are set by limit nuts held by a lock plate; on the older swing operators, by cams tightened with an Allen screw. Either can creep over thousands of cycles, and the gate gradually stops travelling as far as it should. It is an adjustment rather than a repair in most cases, and it explains a great many "the gate has stopped closing properly" calls.',
         ],
       },
       {
@@ -198,7 +210,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     extraFaqs: [
       {
         q: 'My All-O-Matic stalls part-way and reverses. What is it?',
-        a: 'Usually the clutch doing its job. The clutch slips when the gate meets resistance, so if the gate is binding on its track or its hinges the clutch will stop it — which is exactly what it is for. We check the gate by hand before adjusting anything, because tightening the clutch to force it through removes a safety feature.',
+        a: 'Usually the operator doing its job. On an SL-150 the clutch slips when the gate meets resistance; on an SL-100 the electronic reversing device stops and reverses it. If the gate is binding on its track or its hinges, either will stop it. We check the gate by hand before adjusting anything, because forcing a binding gate through hides the real fault.',
       },
       {
         q: 'How old is too old for an All-O-Matic?',
@@ -212,7 +224,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'Commercial duty cycle changes the whole diagnosis',
         body: [
-          'Ramset operators turn up disproportionately on commercial and multi-family entrances, which means they are typically running hundreds of cycles a day rather than a handful. Every wear item in the drive train is consumed on cycle count, not on calendar age.',
+          'Ramset markets the RAM 100 and RAM 1000 for residential and light commercial gates, but when one ends up on a busy commercial or multi-family entrance it can run hundreds of cycles a day rather than a handful. Every wear item in the drive train is consumed on cycle count, not on calendar age.',
           'The diagnostic consequence is important: wear that would indicate a serious problem on a residential gate can be entirely normal on a Ramset at eighteen months. Knowing which is which is the difference between a sensible service interval and a series of unnecessary replacements.',
         ],
       },
@@ -246,10 +258,6 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         q: 'Our Ramset gate fails every few months. Is it a bad unit?',
         a: 'Rarely. Repeat failure of the same part on a commercial entrance almost always means the operator is running well past the duty cycle it was specified for, or the gate is making it work harder than it should. We measure the actual traffic against the installed unit before recommending anything.',
       },
-      {
-        q: 'Do you service barrier arms as well as slide gates?',
-        a: 'Yes — motors, boards, counterbalance and loop detection. Counterbalance in particular gets overlooked, and an out-of-balance arm dramatically shortens motor life.',
-      },
     ],
   },
 
@@ -265,6 +273,12 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
    *
    * If he had particular corrections in mind, they need to come back to us —
    * flagged in the handover notes rather than guessed at.
+   *
+   * 15 Sep 2026: the likely correction was found in US Automatic's manuals. No
+   * US Automatic operator runs its motor from mains power — the "AC" versions
+   * are the same battery-run operator recharged by a low-voltage charger — so
+   * the passages below no longer treat AC-charged units as a different power
+   * system, and battery-life figures with no source behind them are gone.
    */
   'us-automatic': {
     characteristics: [
@@ -278,7 +292,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'The battery is the part that wears out',
         body: [
-          'These systems run a sealed lead-acid or AGM battery, and in Dallas–Fort Worth heat that battery is a consumable. High ambient temperature is what kills lead-acid capacity, and a battery that would last five years in a mild climate frequently has three or four here — less if it sits in an unshaded enclosure in full summer sun.',
+          'These systems run a sealed lead-acid or AGM battery, and in Dallas–Fort Worth heat that battery is a consumable. High ambient temperature is what kills lead-acid capacity, and a battery lasts noticeably less time here than in a mild climate — less again if it sits in an unshaded enclosure in full summer sun.',
           'A tired battery does not fail cleanly. It behaves exactly like a failing operator: the gate opens slowly, stalls part-way, opens but will not close, works in the afternoon and not at dawn, or runs fine for one cycle and refuses the second. Every one of those symptoms will also be produced by a genuine motor or board fault, which is why the battery and charge system get tested first rather than assumed good.',
           'A battery should be tested under load, not just measured at rest. A worn cell can show close to a healthy resting voltage and still collapse the moment the motor draws current.',
         ],
@@ -317,10 +331,10 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     ],
     modelNotes: [
       {
-        heading: 'Ranger, Patriot and Sentry',
+        heading: 'Patriot and Ranger',
         body: [
-          'The Ranger and Patriot families cover most residential and acreage installations, in single and dual-leaf configurations, with solar and AC-charged variants of the same operator. Sentry units appear on lighter-duty gates.',
-          'Because the same operator is sold in both solar and AC-charged form, establishing which one is actually installed is the first step — the mechanical repair is identical and the power-side diagnosis is completely different.',
+          'The Patriot and Ranger families come in single and dual-leaf configurations, and each is sold with either solar or AC charging of the same battery-run operator.',
+          'Because the operator and its battery are the same either way, establishing how it is charged tells us where to look on the charging side — panel, wiring and controller on a solar install; the charger and its lead on an AC-charged one.',
         ],
       },
       {
@@ -340,7 +354,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     extraFaqs: [
       {
         q: 'My solar gate has stopped working. Does the whole operator need replacing?',
-        a: 'Usually not. On solar units the battery is the consumable, and in Texas heat it typically needs replacing every three to four years. A weak battery produces exactly the symptoms of a failed operator — slow travel, stalling part-way, opening but not closing. We test the battery under load, the panel output and the charge controller before we consider the operator itself.',
+        a: 'Usually not. On solar units the battery is the consumable, and Texas heat wears it out sooner than anything else on the gate. A weak battery produces exactly the symptoms of a failed operator — slow travel, stalling part-way, opening but not closing. We test the battery under load, the panel output and the charge controller before we consider the operator itself.',
       },
       {
         q: 'Why does my gate work fine in summer but not in winter?',
@@ -351,8 +365,8 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         a: 'It depends on battery capacity, panel output and how hard your gate is to move — a heavy sagging gate draws far more per cycle than a well-hung one. If your gate cannot keep up with your traffic, that is a sizing calculation we can do rather than something you have to live with.',
       },
       {
-        q: 'Can you convert a solar gate to mains power?',
-        a: 'Sometimes, if there is a practical route for a power run. On a long rural driveway the trenching often costs more than correcting the solar sizing, so we will tell you which actually makes sense for your property rather than defaulting to the bigger job.',
+        q: 'Can you switch a solar gate to AC charging?',
+        a: 'Often, yes. US Automatic operators run from the battery either way; AC charging swaps the panel for a low-voltage charger fed from an outlet, and the charger lead can run a long way, so 120 volts does not have to reach the gate. Where there is no practical outlet, correcting the solar sizing is the simpler fix, and we will tell you which makes sense for your property rather than defaulting to the bigger job.',
       },
       {
         q: 'Do you cover rural properties outside the main metro?',
@@ -364,9 +378,9 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
   elite: {
     characteristics: [
       {
-        heading: 'Shares DNA with the LiftMaster line',
+        heading: 'Part of LiftMaster since 2003',
         body: [
-          'Elite operators are related to the LiftMaster family and share design approaches and some components. In practice that means good parts availability and diagnostics that will be familiar to any technician who works on LiftMaster equipment — though board layouts and error codes differ enough that assuming they are identical causes misdiagnosis.',
+          'Chamberlain, LiftMaster’s parent company, bought Elite Access Systems in 2003, and Elite’s current commercial operators — the SL3000UL slide and CSW200UL swing — are now sold as LiftMaster Elite Series. Older Elite-badged units such as the SL585, SL595 and Miracle One predate that rebranding. Board layouts and error codes differ from model to model, so assuming one Elite behaves like another causes misdiagnosis.',
         ],
       },
       {
@@ -391,7 +405,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
     extraFaqs: [
       {
         q: 'Is Elite the same as LiftMaster?',
-        a: 'They are related product lines sharing some components, which helps with parts availability. Diagnostics are broadly similar, though board layouts and error codes differ between models — so they are not interchangeable in practice.',
+        a: 'Elite has been part of Chamberlain, LiftMaster’s parent company, since 2003, and current Elite models are sold as LiftMaster Elite Series. Board layouts and error codes still differ between models, so they are not interchangeable in practice.',
       },
     ],
   },
@@ -408,19 +422,21 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
         heading: 'DC power, batteries and solar',
         body: [
           'Many Viking installations run DC with battery storage and either solar or trickle charging. This is a genuine advantage on long driveways where mains power is impractical, and it adds a diagnostic step: a gate that has become slow or unreliable is often reporting a power problem rather than an operator fault.',
-          'Load-testing the battery and verifying charge input should happen before anything mechanical is suspected. Batteries are consumables with a three-to-five-year life, and a shaded solar panel or a failed charge controller produces symptoms indistinguishable from a dying motor.',
+          'Load-testing the battery and verifying charge input should happen before anything mechanical is suspected. Batteries are consumables — Viking’s own warranty covers them for less time than the operator — and a shaded solar panel or a failed charge controller produces symptoms indistinguishable from a dying motor.',
         ],
       },
       {
-        heading: 'Encoder and limit drift',
+        // Corrected 15 Sep 2026 against Viking's current manuals: no current
+        // Viking operator is hydraulic, and only the slide units use digital limits.
+        heading: 'Limits: mechanical on swing, digital on slide',
         body: [
-          'Viking units using encoder-based position sensing can lose their reference after a power interruption or a forced manual move. The result is erratic travel, corrected by re-learning limits rather than replacing hardware.',
+          'Viking’s swing operators — the T-21, F-1, R-6 and G-5 among them — set travel with mechanical limit switches, which can drift. The K-2 slide operator uses digital limits: current units carry Viking’s position sensor and keep their place through outages, while older K-2 units without it can lose their limits after a total power failure. That is corrected by re-learning the limits rather than replacing hardware.',
         ],
       },
     ],
     partsAvailability: [
       'Batteries, boards and limit hardware: generally available.',
-      'Gearbox and hydraulic components on applicable models: typically a short order.',
+      'Gearbox, chain and screw-drive components: typically a short order.',
       'Charge controllers and solar components: readily available.',
     ],
     extraFaqs: [
@@ -442,7 +458,7 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'Typical faults',
         body: [
-          'Control boards, limit cams and capacitors account for most Eagle service calls. On slide units, chain and sprocket wear follows the same pattern as any chain-driven operator.',
+          'Control boards and limit settings account for a large share of Eagle service calls. On the Eagle 1000 and 2000 slide units, chain and sprocket wear follows the same pattern as any chain-driven operator.',
           'Safety loop and photo-eye faults are also common, and as with any operator they present as the gate misbehaving rather than as a sensor problem.',
         ],
       },
@@ -471,8 +487,8 @@ export const BRAND_DEPTH: Record<string, BrandDepth> = {
       {
         heading: 'The analogue line problem',
         body: [
-          'DoorKing telephone entry units were designed around analogue phone lines. When a property moves to VoIP or fibre, the signalling those systems expect disappears and the unit stops dialling out — often months after the phone change, so nobody connects the two events.',
-          'The fix is usually a cellular module rather than a system replacement, which costs a great deal less.',
+          'Older DoorKing telephone entry units were designed around analogue phone lines, and DoorKing no longer recommends a copper line even on current 1830 Series panels. When a property moves to VoIP, a panel may keep ringing residents but lose remote programming, or stop dialling out altogether — often months after the phone change, so nobody connects the two events.',
+          'The fix is usually DoorKing’s cellular kit, which it lists as backward compatible with older DKS systems, rather than a system replacement. One caution: some early cellular boards went dead when the 3G networks shut down, so “it is already on cellular” does not mean the unit is working.',
         ],
       },
       {

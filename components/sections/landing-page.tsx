@@ -18,6 +18,8 @@ import { CaseStudies } from '@/components/sections/case-studies'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
 import { TrustBadges } from '@/components/ui/trust-badges'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { modelsForBrand, modelPath } from '@/content/models'
+import { isModelIndexable } from '@/lib/model-quality'
 
 /**
  * Renderer for every Google Ads landing page.
@@ -303,6 +305,22 @@ export function LandingPage({ slug }: { slug: string }) {
                     </Link>
                   </li>
                 )}
+                {/* Landing page → model pages, so a visitor from a brand-level
+                    ad can reach the page for the exact operator on their gate. */}
+                {brand &&
+                  modelsForBrand(brand.slug)
+                    .filter(isModelIndexable)
+                    .map((m) => (
+                      <li key={m.slug}>
+                        <Link
+                          href={modelPath(m)}
+                          className="inline-flex items-center gap-1.5 text-ink-800 underline decoration-gold-400 underline-offset-4 hover:text-ink-950"
+                        >
+                          {brand.name} {m.model} repair
+                          <ArrowRight className="size-3.5" aria-hidden />
+                        </Link>
+                      </li>
+                    ))}
                 <li>
                   <Link
                     href="/services/gate-motor-repair"

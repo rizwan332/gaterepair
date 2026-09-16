@@ -25,6 +25,8 @@ import { BrandsGrid } from '@/components/sections/brands-grid'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { publishedTestimonials } from '@/content/testimonials'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { modelPath, modelKey } from '@/content/models'
+import { brandsForCity, localFaults } from '@/lib/city-links'
 
 /**
  * City pages.
@@ -143,6 +145,10 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   // the point of the client's "internal linking" deliverable.
   const curated = (city.nearbyCities ?? []).map(cityBySlug).filter(Boolean) as City[]
   const nearby = curated.length > 0 ? curated : countyPeers(city, 10)
+  // City → brand → model. Computed in lib/city-links.ts so the linking
+  // validator asserts on exactly what this page renders.
+  const cityBrands = brandsForCity(city)
+  const faults = localFaults(city)
   /**
    * Photographs for the city page.
    *
@@ -202,8 +208,25 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
             </p>
             <div className="grid gap-8 md:grid-cols-3">
               <ProfileList title="Common gate types" items={city.gateProfile.commonGateTypes} />
-              <ProfileList title="Operators we see here" items={city.gateProfile.commonBrands} />
-              <ProfileList title="What usually fails" items={city.gateProfile.commonIssues} />
+              {/* The operators and the faults both become links: this is the
+                  city → brand and city → service half of the internal linking
+                  system, and the anchor carries the brand rather than the
+                  generic name so the relationship is stated, not implied. */}
+              <ProfileList
+                title="Operators we see here"
+                items={city.gateProfile.commonBrands}
+                hrefFor={(name) => {
+                  const brand = brands.find((b) => b.name === name)
+                  return brand ? `/brands/${brand.slug}` : undefined
+                }}
+                suffix={` gate repair in ${city.name}`}
+              />
+              <ProfileList
+                title="What usually fails"
+                items={faults.map((f) => f.issue)}
+                hrefFor={(issue) => `/services/${faults.find((f) => f.issue === issue)!.service.slug}`}
+                suffix={` — ${city.name} gate repair`}
+              />
             </div>
           </div>
         </section>
@@ -302,18 +325,54 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
             ))}
           </ul>
 
-          <h2 className="mb-6 mt-12 font-display text-2xl font-bold text-ink-950">
-            Operator brands we repair in {city.name}
+          {/* City → brand → model, the spine of the internal linking system.
+              One block rather than two lists: a visitor who knows their brand
+              gets straight to the model page for the operator on their gate,
+              and a crawler sees city, brand and model stated together on every
+              city page rather than inferred from three separate rosters. */}
+          <h2 className="mb-3 mt-12 font-display text-2xl font-bold text-ink-950">
+            Operator brands and models we repair in {city.name}
           </h2>
-          <ul className="flex flex-wrap gap-2.5">
-            {brands.map((b) => (
-              <li key={b.slug}>
-                <Link
-                  href={`/brands/${b.slug}`}
-                  className="rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
-                >
-                  {b.name}
-                </Link>
+          <p className="prose-measure mb-7 leading-relaxed text-ink-700">
+            {city.gateProfile
+              ? `The operators marked “seen here” are the ones that turn up most often in ${city.name}. Every brand links to what we repair on it, and to the individual models we are called out to most.`
+              : `Every brand links to what we repair on it, and to the individual models we are called out to most across ${city.county}.`}
+          </p>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {cityBrands.map(({ brand: b, seenHere, models }) => (
+              <li
+                key={b.slug}
+                className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 transition-all hover:border-ink-200 hover:shadow-[var(--shadow-card)]"
+              >
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <Link
+                    href={`/brands/${b.slug}`}
+                    className="font-display font-semibold text-ink-950 underline decoration-gold-400 decoration-1 underline-offset-4 hover:text-gold-600"
+                  >
+                    {b.name} gate repair
+                    <span className="sr-only"> in {city.name}</span>
+                  </Link>
+                  {seenHere && (
+                    <span className="rounded bg-gold-100 px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-gold-700">
+                      Seen here
+                    </span>
+                  )}
+                </div>
+                {models.length > 0 && (
+                  <ul className="mt-3.5 flex flex-wrap gap-1.5">
+                    {models.map((m) => (
+                      <li key={modelKey(m)}>
+                        <Link
+                          href={modelPath(m)}
+                          className="inline-block rounded-lg border border-ink-100 bg-ink-50 px-2.5 py-1 text-xs font-medium text-ink-700 transition-colors hover:border-gold-400 hover:text-ink-950"
+                        >
+                          {m.model}
+                          <span className="sr-only"> repair in {city.name}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -394,19 +453,44 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   )
 }
 
-function ProfileList({ title, items }: { title: string; items: string[] }) {
+function ProfileList({
+  title,
+  items,
+  hrefFor,
+  suffix,
+}: {
+  title: string
+  items: string[]
+  /** Where an item links, if anywhere. Items with no destination render as plain text. */
+  hrefFor?: (item: string) => string | undefined
+  /** Appended to the anchor for screen readers and crawlers, so the link text names the relationship. */
+  suffix?: string
+}) {
   return (
     <div>
       <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-ink-500">
         {title}
       </h3>
       <ul className="space-y-2.5">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-800">
-            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
-            {item}
-          </li>
-        ))}
+        {items.map((item) => {
+          const href = hrefFor?.(item)
+          return (
+            <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-800">
+              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
+              {href ? (
+                <Link
+                  href={href}
+                  className="underline decoration-gold-400 decoration-1 underline-offset-4 hover:text-ink-950"
+                >
+                  {item}
+                  {suffix && <span className="sr-only">{suffix}</span>}
+                </Link>
+              ) : (
+                item
+              )}
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
