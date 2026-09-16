@@ -30,3 +30,6 @@ Thumbs.db
 # adding footage. Masters committed before 6 Aug 2026 also remain retrievable
 # from git history.
 client-assets/videos/*.mov
+
+# Local before/after SEO snapshots (scripts/seo-snapshot.ts)
+.seo-snapshots/

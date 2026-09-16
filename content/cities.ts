@@ -718,8 +718,389 @@ export function toSlug(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
+/**
+ * Local data for cities that started life as a name and a county.
+ *
+ * Tier 2 and 3 are rosters — `[name, county]` pairs — because that is all the
+ * client gave us for them, and a page with nothing local on it is served
+ * `noindex` rather than submitted (see `indexedCities`). Enriching one is
+ * therefore not a code change but a data change: fill in an entry here and the
+ * city moves into the sitemap on the next build.
+ *
+ * Merged rather than promoted into `tier1Cities` so the roster below stays the
+ * roster — `scripts/validate-cities.ts` checks it against the client's list
+ * name for name, and lifting cities out of it would quietly break that check.
+ *
+ * ── SOURCING ────────────────────────────────────────────────────────────────
+ * Same rule as Fort Worth and for the same reason: none of this was in the
+ * client's data, so all of it is cited rather than assumed. Zips come from the
+ * Census 2020 ZCTA-to-place relationship file, ordered so the city's principal
+ * ZIP leads and shared slivers are dropped. Neighborhoods, landmarks and roads
+ * come from each city's own site where it publishes them, and the exceptions
+ * are noted per city. Adjacency is straight-line distance between Census
+ * Gazetteer internal points, nearest first.
+ *
+ * `gateProfile` is the one field that is NOT sourced. It is drafted from the
+ * city's building stock, lot sizes and zoning, exactly as the Tier 1 profiles
+ * are, and carries the same caveat as the note at the top of this file: it
+ * needs replacing with the client's technician interview answers. Everything a
+ * visitor reads as a fact about their city is sourced; what they read as our
+ * judgement about equipment is ours, and is marked as such here.
+ */
+const ENRICHED: Record<string, Partial<City>> = {
+  // The Park Cities share 75205/75209/75219/75225 with Dallas, so the zips are
+  // listed principal-first and the copy never claims a ZIP as exclusively ours.
+  'highland-park': {
+    zips: ['75205', '75209', '75219'],
+    neighborhoods: ['Old Highland Park', 'Lakeside', 'Highland Park West', 'Turtle Creek Acreage', 'Hackberry Creek Acreage'],
+    landmarks: ['Highland Park Village', 'Lakeside Park', 'Flippen Park', 'Exall Lake'],
+    majorRoads: ['Preston Road', 'Mockingbird Lane', 'Armstrong Parkway', 'Dallas North Tollway'],
+    nearbyCities: ['university-park', 'dallas', 'farmers-branch', 'addison', 'irving', 'carrollton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Ornamental iron gates on estate frontages in a town laid out between 1907 and 1924',
+      commonGateTypes: ['Wrought iron swing', 'Estate driveway swing', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Obsolete control boards on operators installed decades ago',
+        'Clay-soil post movement pulling heavy iron gates out of square',
+        'Hinge and pivot wear under ornamental iron',
+        'Photo-eye alignment on narrow drives',
+      ],
+    },
+    localAngle:
+      'Highland Park was platted between 1907 and 1924 by Wilbur David Cook, the landscape architect who laid out Beverly Hills, and roughly a fifth of the developed land was set aside as park. That history is what makes gate work here particular: the frontages are short, the ironwork is often decorative and heavy, and a great many of the operators behind it have been in place long enough that the board inside is no longer made. Replacing the whole assembly is rarely what the owner wants, because the gate itself is part of the house. So the question we are usually answering is whether the existing operator can be kept running with a current board and new safety devices, and whether the posts carrying that weight have shifted enough to need resetting before anything electrical is touched.',
+    faqs: [
+      {
+        q: 'Our gate is original to the house. Can it be kept, or does the whole thing have to go?',
+        a: 'Almost always kept. The gate, the hinges and the posts are separate from the operator that moves them, and an operator whose board is obsolete can usually be brought up to date without altering the ironwork at all. We would rather fit a current board and modern safety sensors behind a gate somebody chose in 1930 than sell a replacement that changes how the frontage looks.',
+      },
+      {
+        q: 'Do you work on the short driveways and courtyard gates in Highland Park?',
+        a: 'Yes, and they need a different approach to a long suburban drive. There is less room for a gate to swing and less room for a vehicle to wait off the street, which changes where safety devices go and how the timers are set. It also means a gate that fails here blocks the street rather than a driveway, so we treat it as urgent.',
+      },
+    ],
+  },
+
+  'university-park': {
+    zips: ['75205', '75225'],
+    // Neighborhood names are from a Dallas real-estate authority rather than
+    // the city, which publishes no list. Kept because they are the names people
+    // actually use, but they are the least-sourced field on this entry.
+    neighborhoods: ['Volk Estates', 'Caruth Hills', 'Windsor Place', 'Stratford Manor', 'University Heights'],
+    landmarks: ['Southern Methodist University', 'Snider Plaza', 'George W. Bush Presidential Center', 'Centennial Park'],
+    majorRoads: ['Preston Road', 'Hillcrest Avenue', 'Lovers Lane', 'US-75 Central Expressway'],
+    nearbyCities: ['highland-park', 'dallas', 'farmers-branch', 'addison', 'irving', 'carrollton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Seven thousand homes in under four square miles, where rebuilt houses keep adding new gates beside decades-old ones',
+      commonGateTypes: ['Wrought iron swing', 'Driveway slide', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'Elite', 'Eagle', 'DoorKing'],
+      commonIssues: [
+        'Limits and safety devices left wrong after a new install',
+        'Ageing operators on the acre lots at Volk Estates',
+        'Clay-soil post movement',
+        'Safety sensor misalignment on tight frontages',
+      ],
+    },
+    localAngle:
+      'University Park fits more than seven thousand homes into three and a half square miles, and it has been replacing its own housing stock since the 1970s — smaller houses coming down, larger ones going up on the same lots. For gate work that produces two completely different call types on neighbouring streets. On a rebuilt property the gate is new and the fault is usually commissioning: limits set for a gate that has since settled, a safety sensor aimed at nothing, an operator specified for a lighter leaf than the one it ended up carrying. A few doors down, on the acre-and-over lots around Volk Estates, the operator has been working since long before that rebuild started and needs parts rather than adjustment. The two need diagnosing differently, and they are frequently on the same street.',
+    faqs: [
+      {
+        q: 'Our gate was installed with the house last year and already misbehaves. Is it faulty?',
+        a: 'Usually it is set up rather than broken. A new gate settles on its hinges in its first year, and limits and obstruction force that were dialled in on the day stop matching where the gate physically sits. That is an adjustment, not a part. We would check the posts and the hinges first, because a builder-fitted gate on fresh ground moves more than one that has been up for twenty years.',
+      },
+      {
+        q: 'Can you match a new operator to an older gate on a large lot?',
+        a: 'Yes, and the sizing is the part that matters. A long iron leaf on an acre lot needs an operator rated for its weight and its length, not just for a residential driveway, and fitting one that is under-specified is what produces the repeat failures people assume are bad luck. We weigh the job by the gate, not by the address.',
+      },
+    ],
+  },
+
+  coppell: {
+    zips: ['75019', '75063'],
+    // Old Town and Riverchase are confirmed on coppelltx.gov; the remaining
+    // three rest on HOA and realty sources because the city's own subdivision
+    // database is behind a cookie gate.
+    neighborhoods: ['Old Town Coppell', 'Riverchase', 'The Lakes of Coppell', 'Northlake Woodlands', 'Coppell Greens'],
+    landmarks: ['Andrew Brown Park', 'Coppell Nature Park', 'The Square at Old Town Coppell', 'Coppell Arts Center'],
+    majorRoads: ['Denton Tap Road', 'Sandy Lake Road', 'SH 121 Sam Rayburn Tollway', 'I-635'],
+    nearbyCities: ['grapevine', 'carrollton', 'lewisville', 'farmers-branch', 'irving', 'flower-mound'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Subdivisions built almost entirely between 1985 and 2000, so the operators behind their gates are ageing on the same clock',
+      commonGateTypes: ['Residential slide', 'Wrought iron swing', 'HOA community entrance'],
+      commonBrands: ['LiftMaster', 'All-O-Matic', 'DoorKing', 'Elite'],
+      commonIssues: [
+        'Control board failure on operators of the same 1990s generation',
+        'Chain and sprocket wear on slide gates',
+        'Telephone entry and keypad faults at community entrances',
+        'Clay-soil post movement',
+      ],
+    },
+    localAngle:
+      'Coppell went from under four thousand people in 1980 to nearly thirty-six thousand by 2000, and by then most of its residential land was built out. That compressed history is the useful thing to know about gates here, because it means an unusual share of them went in within the same fifteen-year window and are reaching the end of their service life together. We see the same board, the same chain wear and the same tired limit switches turning up street after street, which also means the parts are predictable and the repair is usually a known quantity rather than an investigation. The community entrances are the other half of the work: an HOA gate on a shared drive fails for everyone at once, so it gets treated as urgent rather than scheduled.',
+    faqs: [
+      {
+        q: 'Our neighbours have all had gate trouble this year. Is that a coincidence?',
+        a: 'Probably not. Most of Coppell was built between the mid-1980s and 2000, so a lot of these operators were installed within a few years of each other and are wearing out on the same schedule. Control boards and chains do not fail on a calendar, but they do fail on cycles and age, and a street built in one go tends to reach that point together.',
+      },
+      {
+        q: 'Who do you deal with for an HOA or community entrance gate?',
+        a: 'Whoever the association nominates — a board member, a property manager, or the management company. We will diagnose and quote to one contact, and we are used to entrances where the operator, the entry panel and the loop in the road belong to different parts of the same problem. Getting all three checked in one visit is what avoids two call-outs.',
+      },
+    ],
+  },
+
+  prosper: {
+    zips: ['75078', '76227'],
+    neighborhoods: ['Windsong Ranch', 'Star Trail', 'Whitley Place', 'Gentle Creek Estates', 'Lakes of La Cima'],
+    landmarks: ['Frontier Park', 'Downtown Prosper', 'Windsong Ranch Lagoon', 'Whitley Place Park'],
+    // US 380 is signed as such and called University Drive locally; both are
+    // given because people search and say both.
+    majorRoads: ['US-380 University Drive', 'Preston Road', 'Dallas North Tollway', 'Frontier Parkway'],
+    nearbyCities: ['celina', 'frisco', 'little-elm', 'mckinney', 'aubrey', 'the-colony'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Estate lots of an acre and up under the town’s SF-E zoning, with gates set well back from the road',
+      commonGateTypes: ['Long-driveway swing', 'Ranch and acreage swing', 'HOA community entrance'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'Apollo'],
+      commonIssues: [
+        'Voltage lost over long low-voltage runs to the gate',
+        'Battery and solar charging faults on off-grid installs',
+        'Limit drift on long single leaves',
+        'Loop detector and keypad faults at community entrances',
+      ],
+    },
+    localAngle:
+      'Prosper zones its estate district at a one-acre minimum, with lots at least a hundred and fifty feet wide and a forty-foot front setback, and that single planning decision shapes most of the gate work in town. A gate sitting that far from the house means a long cable run, and a long run means voltage arriving at the operator lower than it left — which produces a gate that works in mild weather and struggles in cold, and gets misdiagnosed as a failing motor more often than anything else we see out here. The newer master-planned sections bring the other kind of call: community entrances with loops, keypads and several gates that have to agree with each other. Both are a different job to a suburban driveway, and we quote them differently.',
+    faqs: [
+      {
+        q: 'Our gate is a long way from the house and has got sluggish. Is the motor going?',
+        a: 'Test the supply before you believe that. On the one-acre lots here the run out to the gate is long enough that the voltage arriving can be meaningfully lower than what left the house, and an operator that is starved behaves exactly like one that is worn out — slow, hesitant, worse when it is cold. Cable gauge and connections are far cheaper to put right than a motor, so that is where we start.',
+      },
+      {
+        q: 'Do you service the gated entrances in the master-planned communities?',
+        a: 'Yes. Those entrances are usually several things working together — the operator, a loop buried in the road, a keypad or callbox, and sometimes a second gate — and the fault is often not in the part that appears broken. We check the whole entrance in one visit rather than replacing the obvious component and coming back.',
+      },
+    ],
+  },
+
+  celina: {
+    zips: ['75009', '75078', '76227'],
+    neighborhoods: ['Light Farms', 'Mustang Lakes', 'Cambridge Crossing', 'Creeks of Legacy', 'Sutton Fields', 'Lilyana'],
+    landmarks: ['Celina Historic Downtown Square', 'Old Celina Park', 'Founders Station Park'],
+    majorRoads: ['Preston Road', 'FM 455', 'FM 428', 'Dallas North Tollway'],
+    nearbyCities: ['prosper', 'gunter', 'pilot-point', 'aubrey', 'mckinney', 'little-elm'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Brand-new subdivision entrances inside the city alongside ranch gates across a 78-square-mile extraterritorial jurisdiction',
+      commonGateTypes: ['Ranch and acreage swing', 'HOA community entrance', 'Residential slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'Ghost Controls'],
+      commonIssues: [
+        'Battery and solar charging faults on acreage gates',
+        'Loop detector and keypad faults at new entrances',
+        'Limits left wrong on recently installed operators',
+        'Clay-soil post movement on long farm gates',
+      ],
+    },
+    localAngle:
+      'Celina grew by almost a quarter in a single year to 2025 — the fastest of any city in the country — and it now sits on about forty-eight square miles with an extraterritorial jurisdiction of seventy-eight. Those two numbers describe the two halves of our work here. Inside the developments, at Light Farms and Mustang Lakes and the rest, the equipment is new and the calls are about commissioning and access control: a loop that was paved over, a keypad that never got programmed properly, limits set before the gate settled. Out on the land beyond the subdivisions, the gate is usually a long farm leaf on a battery kept charged by a solar panel, a mile from anything, where a flat battery means nobody gets in or out. We carry parts for both, because on any given day we are likely to see both.',
+    faqs: [
+      {
+        q: 'Our development is new and the entrance gate already plays up. Should the builder fix it?',
+        a: 'Ask them first — if it is inside its installation warranty that is the cheaper route, and we will tell you plainly when we think it is. What we do see on new entrances is set-up rather than failure: a loop damaged during paving, a keypad never fully programmed, or limits set before the gate had settled on its hinges. Those are quick to correct and worth diagnosing before anyone argues about who pays.',
+      },
+      {
+        q: 'Do you come out past the city limits to ranch and acreage gates?',
+        a: 'Yes. Celina’s extraterritorial jurisdiction is larger than the city itself, and a lot of the gates we see around here are on that land: a long leaf, a solar panel, a battery in a box on the post. When one of those stops, the property is shut, so we treat it as urgent and we test the battery under load before we touch the operator, because that is where the fault usually is.',
+      },
+    ],
+  },
+  /**
+   * ⚠️ Neighborhood names for Southlake, Colleyville, Keller and Grapevine's
+   * subdivisions come from real-estate subdivision directories, not from the
+   * cities themselves — every one of those city sites either publishes no list
+   * or blocked retrieval. They are the names residents use, which is what
+   * matters for a page someone reads, but they are the least-sourced field in
+   * this file and worth a second pass if the client's team can confirm them.
+   * Grapevine's historic districts and Flower Mound's list are the exceptions:
+   * both come from the cities' own pages.
+   */
+  southlake: {
+    zips: ['76092'],
+    neighborhoods: ['Timarron', 'Carillon', 'Kirkwood Hollow', 'Shady Oaks', 'Coventry Manor', 'Clariden Ranch'],
+    landmarks: ['Southlake Town Square', 'Bob Jones Park', 'Bob Jones Nature Center', 'Bicentennial Park', 'The Marq Southlake'],
+    // FM 1938 is Randol Mill Avenue here and Davis Boulevard a few miles north
+    // in Keller — the same road, two names, and people search the local one.
+    majorRoads: ['SH 114', 'FM 1709 Southlake Blvd', 'FM 1938 Randol Mill Ave', 'N Carroll Ave'],
+    nearbyCities: ['trophy-club', 'westlake', 'colleyville', 'grapevine', 'keller', 'flower-mound'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Estate subdivisions built overwhelmingly in the 1990s, many behind their own community entrances',
+      commonGateTypes: ['Wrought iron swing', 'Estate driveway slide', 'HOA community entrance'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Control boards reaching the end of their life across a single build era',
+        'Chain and roller wear on wide estate slide gates',
+        'Keypad and callbox faults at community entrances',
+        'Clay-soil post movement under heavy iron',
+      ],
+    },
+    localAngle:
+      'Southlake built most of itself in one decade: the median home here dates to 1997, and forty-five per cent of the housing stock went up between 1990 and 1999. Gates went in with those houses, which is why a single street will often produce several similar calls in the same year — the boards, the chains and the limit switches behind them are all the same age. It makes the work predictable in a way that helps the customer, because we usually know what has failed before the cover comes off. The other thing worth knowing about this town is how much of it sits behind a shared entrance rather than a private drive, and a community gate that stops working is a different kind of urgent: nobody on the street gets in until it moves.',
+    faqs: [
+      {
+        q: 'Is it worth repairing an operator that went in with the house in the nineties?',
+        a: 'Usually, yes. The mechanical side of a well-installed operator from that era has plenty of life left, and what has actually failed is normally the board, the chain or a limit switch — all replaceable. What we would check alongside it is whether the gate has stayed square on its posts, because an operator fighting a dropped gate will wear out its replacement just as quickly.',
+      },
+      {
+        q: 'Our subdivision entrance gate has failed. Who should call it in?',
+        a: 'Whoever your association nominates, and one call is enough — we do not need every resident to report it. Entrance gates usually involve an operator, a keypad or callbox and a loop in the road, and the fault is often not in the part that looks broken, so we check all three on the first visit rather than returning for the second one.',
+      },
+    ],
+  },
+
+  colleyville: {
+    zips: ['76034'],
+    neighborhoods: ['Saddlebrook', 'Highland Meadows', 'Covington', 'Whittier Heights', 'Brook Meadows', 'Woodland Hills'],
+    landmarks: ['Colleyville Nature Center', 'Cotton Belt Trail', 'Colleyville Heritage High School'],
+    majorRoads: ['SH 26 Colleyville Blvd', 'Glade Road', 'Hall-Johnson Road', 'Precinct Line Road'],
+    nearbyCities: ['bedford', 'hurst', 'southlake', 'north-richland-hills', 'euless', 'grapevine'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Large-lot single-family homes spanning four decades of building, so no single generation of operator dominates',
+      commonGateTypes: ['Wrought iron swing', 'Estate driveway swing', 'Residential slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'Eagle', 'All-O-Matic'],
+      commonIssues: [
+        'Parts availability on operators from the 1970s and 1980s',
+        'Capacitor failure on older AC operators',
+        'Limit drift on long single leaves',
+        'Clay-soil post movement',
+      ],
+    },
+    localAngle:
+      'Colleyville settled an argument in the early 1980s that still shapes the place: one faction wanted expensive single-family homes on large lots, the other wanted smaller lots and apartments, and the large lots won. The result is a town of wide frontages whose houses were built across four decades rather than one, and that spread is the practical difference here. On the same afternoon we can be at a gate whose operator predates the internet and another fitted in the last few years, and the question of whether parts still exist is a real one rather than a formality. We check that before quoting, because telling somebody a board is available and discovering otherwise on the day is how a one-visit repair becomes three.',
+    faqs: [
+      {
+        q: 'My operator is old enough that I cannot find the brand online. Can it still be fixed?',
+        a: 'Often, and finding out is quick. Plenty of operators from the seventies and eighties are still serviceable, either with parts that remain available or by fitting a current board to the existing mechanics. Where a unit genuinely cannot be supported any more we will say so and explain what replacing it involves, rather than quietly fitting something that will not last.',
+      },
+      {
+        q: 'Do you handle the wide gates on the larger lots here?',
+        a: 'Yes, and width is the thing that decides the job. A long single leaf puts far more leverage on its hinges and its operator than a short one, so we look at the post, the hinge and the gate frame before we look at the electronics. Fitting a stronger operator to a gate that is sagging simply moves the failure somewhere more expensive.',
+      },
+    ],
+  },
+
+  keller: {
+    // 76262 is shared seven ways — Northlake, Roanoke, Westlake, Fort Worth,
+    // Trophy Club, Flower Mound and Keller — so it follows the core ZIP rather
+    // than leading. 76244 is postally "Keller" but is 96% Fort Worth land.
+    zips: ['76248', '76262'],
+    neighborhoods: ['Hidden Lakes', 'Marshall Ridge', 'Bourland Oaks', 'Harmonson Farms', 'Saddlebrook Estates', 'Highland Oaks'],
+    landmarks: ['Bear Creek Park', 'The Keller Pointe', 'Keller Town Center', 'Old Town Keller'],
+    majorRoads: ['US-377', 'FM 1709 Keller Pkwy', 'FM 1938 Davis Blvd', 'Bear Creek Pkwy'],
+    nearbyCities: ['westlake', 'southlake', 'north-richland-hills', 'colleyville', 'roanoke', 'fort-worth'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Newer housing than its neighbours, with several gated villages inside one subdivision running their own entrances',
+      commonGateTypes: ['HOA community entrance', 'Wrought iron swing', 'Residential slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'All-O-Matic'],
+      commonIssues: [
+        'Remote and keypad credentials at gated village entrances',
+        'Loop detector faults where entrances have been resurfaced',
+        'Limit and safety-sensor drift on newer operators',
+        'Clay-soil post movement',
+      ],
+    },
+    localAngle:
+      'Keller is the newest-built of the towns we cover along this corridor — the median home dates to 1999 and nearly a third of the housing went up between 2000 and 2009 — so the gates here are younger than most, and the calls skew toward access rather than mechanical failure. Hidden Lakes alone contains five separate gated villages, each with its own entrance and its own association maintaining the gates and the streets behind them, where residents get in with a remote or a keypad code. That arrangement produces a particular kind of problem: the operator is fine, the gate is fine, and what has actually broken is a credential, a loop under fresh asphalt, or the panel that reads them. Diagnosing it as an access fault instead of a gate fault is most of the job.',
+    faqs: [
+      {
+        q: 'Half the residents can get in and half cannot. Is the gate broken?',
+        a: 'Almost certainly not. When a gate opens for some credentials and not others, the gate and its operator are working and the fault is in what reads them — the keypad, the receiver, or the list of codes and remotes held in the panel. That is a programming and hardware question at the entrance, and it is usually a same-visit fix once we can get into the panel.',
+      },
+      {
+        q: 'Our entrance was resurfaced and now the gate misbehaves. Related?',
+        a: 'Very likely. Most entrances have a wire loop buried in the road that tells the gate a vehicle is there, and resurfacing, trenching or heavy plant can cut or crush it. The symptoms look like a possessed gate — opening on its own, refusing to close, ignoring cars — and the repair is the loop, not the operator.',
+      },
+    ],
+  },
+
+  grapevine: {
+    // 75261 is the DFW Airport ZCTA — a quarter of Grapevine's land area, and
+    // not a residential ZIP, so it is deliberately absent.
+    zips: ['76051'],
+    neighborhoods: ['Historic Grapevine Township', 'College Street Historic District', 'Original Town', 'Dove Creek', 'Silver Lake', 'Heritage Oaks'],
+    landmarks: ['Grapevine Lake', 'Historic Main Street District', 'Grapevine Vintage Railroad', 'Nash Farm', 'Gaylord Texan'],
+    majorRoads: ['SH 114', 'SH 121', 'SH 26 Ira E. Woods Ave', 'William D. Tate Ave'],
+    nearbyCities: ['southlake', 'colleyville', 'coppell', 'euless', 'flower-mound', 'irving'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The oldest housing stock of the north-east Tarrant cities, with lakeside properties and a heavy commercial and hospitality corridor alongside',
+      commonGateTypes: ['Wrought iron swing', 'Residential slide', 'Commercial slide', 'Barrier arm'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'All-O-Matic', 'Elite'],
+      commonIssues: [
+        'Obsolete boards on pre-1970s and 1980s properties',
+        'Corrosion and moisture ingress on enclosures near the lake',
+        'High-cycle wear on hotel and commercial entrances',
+        'Loop and barrier faults on managed parking entrances',
+      ],
+    },
+    localAngle:
+      'Grapevine has the oldest housing of any city along this stretch — the median home dates to 1993 but more than thirteen hundred houses here predate 1970 — and it wraps around a lake with nearly sixty miles of shoreline. Between those two facts sits most of what we repair. Older properties bring operators old enough that the board inside is the question, and the ones nearer the water bring corrosion: moisture gets into an enclosure, sits on a terminal strip, and produces intermittent faults that come and go with the weather rather than failing outright. Then there is the commercial side, because a quarter of the city by land area is the airport and the hotel and retail corridor beside it, where entrances and barrier arms run all day and wear on cycles rather than years.',
+    faqs: [
+      {
+        q: 'Our gate works some days and not others. Nothing obvious is wrong.',
+        a: 'Intermittent faults are usually connections rather than components, and near the lake they are usually moisture. Water finds its way into an enclosure, sits on the terminals, and the fault follows the weather instead of the gate. That needs tracing rather than parts-swapping, so we test the circuit under conditions rather than replacing the board and hoping.',
+      },
+      {
+        q: 'Do you cover hotel, retail and commercial entrances as well as houses?',
+        a: 'Yes, and they are a different service model. An entrance cycling hundreds of times a day consumes chains, bearings and loop hardware on a schedule, and the sensible approach is planned replacement before the failure rather than an emergency call-out when a barrier is stuck and vehicles are queueing. We will set that up if it is useful, or just fix what is broken.',
+      },
+    ],
+  },
+
+  'flower-mound': {
+    // 75022 and 75028 are the town's own; 76226 and 76262 are shared with
+    // Argyle, Bartonville, Northlake and Roanoke and are left off.
+    zips: ['75022', '75028'],
+    // The only neighborhood list here taken straight from the town's own
+    // homeowner-association page rather than a directory.
+    neighborhoods: ['Bridlewood', 'Wellington of Flower Mound', 'Canyon Falls', 'The Estates at Tour 18', 'Chateau du Lac', 'The Preserve at Flower Mound', 'Wichita Creek Estates'],
+    landmarks: ['The Flower Mound', 'Twin Coves Park', 'Heritage Park', 'Gibson-Grant Log House', 'Grapevine Lake'],
+    majorRoads: ['FM 1171 Cross Timbers Rd', 'FM 2499 Long Prairie Rd', 'FM 3040 Flower Mound Rd', 'US-377'],
+    nearbyCities: ['highland-village', 'trophy-club', 'argyle', 'roanoke', 'lewisville', 'coppell'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Two-acre minimum lots across the Cross Timbers district, with equestrian trails and no sewer, beside conventional 1990s subdivisions',
+      commonGateTypes: ['Long-driveway swing', 'Ranch and acreage swing', 'HOA community entrance', 'Residential slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'Apollo'],
+      commonIssues: [
+        'Battery and solar charging faults on gates far from the house',
+        'Voltage lost over long runs out to the road',
+        'Limit drift on long single leaves',
+        'Clay-soil post movement on paddock and farm gates',
+      ],
+    },
+    localAngle:
+      'Flower Mound zones a large part of itself as the Cross Timbers Conservation Development District, where the rule is one home per two acres and the town’s plan deliberately does not extend sewer. That is unusual this close to the metroplex, and it shows up in the gates: long entrance drives, leaves heavy enough to need a properly rated operator, and a good number of properties running the gate on a battery and panel because trenching power to the road was never worth it. The town also keeps more than fourteen miles of equestrian trail between its parks and the corps land along the lake, which tells you what kind of property is behind many of these gates. On the conventional side, the subdivisions built through the 1990s are now reaching the age where boards and chains start to go.',
+    faqs: [
+      {
+        q: 'The gate at the end of our drive has slowed right down. Is it the operator?',
+        a: 'On a long drive it is usually power before it is the operator. If the gate runs from a battery and a panel, the battery is the part that wears and Texas heat shortens it; if it runs from the house, the length of the cable can leave it short of voltage. Either way the symptom is the same — slow, hesitant, worse when it is cold — so we measure before we condemn anything.',
+      },
+      {
+        q: 'Do you work on paddock and farm gates as well as the entrance?',
+        a: 'Yes. On the two-acre properties out here the entrance gate is often not the only automated one, and a wide farm gate has its own problems — posts set in ground that shifts, long leaves that drop over time, and hinges carrying more weight than they were chosen for. We would rather fix the post and the hinge than fit a stronger operator to pull against them.',
+      },
+    ],
+  },
+}
+
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
-  raw.map(([name, county]) => ({ slug: toSlug(name), name, county, tier }))
+  raw.map(([name, county]) => ({ slug: toSlug(name), name, county, tier, ...ENRICHED[toSlug(name)] }))
 
 export const tier2Cities = build(tier2Raw, 2)
 export const tier3Cities = build(tier3Raw, 3)
