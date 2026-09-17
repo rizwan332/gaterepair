@@ -10,6 +10,7 @@ import { videoPageMeta } from '@/content/video-pages'
 import { watchPath } from '@/lib/video-paths'
 import { indexableModelPages } from '@/lib/model-quality'
 import { modelPath } from '@/content/models'
+import { assetUrl } from '@/lib/cdn'
 
 /**
  * Next writes sitemap video fields into the XML verbatim — it does not escape
@@ -114,9 +115,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       videos: [
         {
           title: xml(v.title),
-          thumbnail_loc: `${base}${v.poster}.jpg`,
+          // Via assetUrl, not the site origin: if the CDN is ever switched on,
+          // the sitemap has to point at the same file the player and the
+          // VideoObject do. See lib/cdn.ts.
+          thumbnail_loc: assetUrl(`${v.poster}.jpg`),
           description: xml(v.description),
-          content_loc: `${base}${v.src}`,
+          content_loc: assetUrl(v.src),
           duration: v.durationSeconds,
           publication_date: videoPageMeta(v.slug).uploadDate,
         },
