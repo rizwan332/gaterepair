@@ -122,7 +122,24 @@ export function isGone(pathname: string): boolean {
 }
 
 export function middleware(request: NextRequest) {
-  if (!isGone(request.nextUrl.pathname)) return NextResponse.next()
+  if (!isGone(request.nextUrl.pathname)) {
+    /**
+     * Proof of life, and it earns its keep.
+     *
+     * When the 410s first shipped, production kept answering 404 and there was
+     * no way to tell whether the deploy had not landed yet or middleware was
+     * running and its status was being dropped — nothing else in that commit
+     * changed a byte of visible HTML. Two very different fixes, no evidence to
+     * choose between them.
+     *
+     * This header makes middleware observable on any request: present means it
+     * executed, absent means it did not. `curl -sSI <any live page> | grep
+     * x-mw` settles in one call what otherwise takes a guess.
+     */
+    const response = NextResponse.next()
+    response.headers.set('x-mw', '1')
+    return response
+  }
 
   return new NextResponse(null, {
     status: 410,
