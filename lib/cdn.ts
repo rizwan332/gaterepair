@@ -14,6 +14,8 @@
  * logo, favicons, the OG image — stays local, because those are small, needed
  * before first paint, and not worth a second DNS lookup and TLS handshake.
  */
+import { business } from '../content/business'
+
 const CDN_BASE = (process.env.NEXT_PUBLIC_CDN_URL ?? '').replace(/\/+$/, '')
 
 /** Paths mirrored to the CDN. Anything else is returned untouched. */
@@ -27,6 +29,26 @@ export function cdn(path: string): string {
 
 /** True when assets are being served from the CDN rather than from /public. */
 export const cdnEnabled = Boolean(CDN_BASE)
+
+/**
+ * Absolute URL for an asset, for structured data and sitemaps.
+ *
+ * These have to name the URL the page actually serves, and `cdn()` decides that
+ * at build time. Hardcoding the site origin instead was a trap waiting on one
+ * environment variable: set NEXT_PUBLIC_CDN_URL in Netlify — which
+ * PERFORMANCE-AUDIT.md wants done, it is worth 1.5–3 s of mobile LCP — and the
+ * <video> would serve from CloudFront while VideoObject and the video sitemap
+ * still claimed shieldgaterepair.com. Google is explicit that the file it is
+ * given has to be the file it can fetch and match to the player; a mismatch
+ * there is one of the ways a video quietly stops being indexed.
+ *
+ * So both follow the same switch: CDN when it is configured, origin when it is
+ * not, and the two can no longer disagree.
+ */
+export function assetUrl(path: string): string {
+  const resolved = cdn(path)
+  return resolved.startsWith('http') ? resolved : `${business.url}${resolved}`
+}
 
 /**
  * Origin of the CDN, for <link rel="preconnect">.

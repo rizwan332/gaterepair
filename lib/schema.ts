@@ -199,18 +199,25 @@ export function breadcrumbSchema(trail: { name: string; url: string }[]): Json {
 export function videoSchema(opts: {
   title: string
   description: string
+  /** Absolute (from lib/cdn.ts `assetUrl`) or site-relative. */
   thumbnailUrl: string
   contentUrl: string
   durationSeconds: number
   uploadDate: string
 }): Json {
+  // An absolute URL is passed straight through: assets may be served from the
+  // CDN rather than this origin, and the schema has to name the file the page
+  // actually plays. A site-relative path still gets the origin prefix, so no
+  // caller breaks.
+  const absolute = (url: string) => (/^https?:\/\//.test(url) ? url : `${BASE}${url}`)
+
   return {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
     name: opts.title,
     description: opts.description,
-    thumbnailUrl: `${BASE}${opts.thumbnailUrl}`,
-    contentUrl: `${BASE}${opts.contentUrl}`,
+    thumbnailUrl: absolute(opts.thumbnailUrl),
+    contentUrl: absolute(opts.contentUrl),
     uploadDate: opts.uploadDate,
     duration: `PT${Math.floor(opts.durationSeconds / 60)}M${opts.durationSeconds % 60}S`,
     publisher: { '@id': `${BASE}/#business` },

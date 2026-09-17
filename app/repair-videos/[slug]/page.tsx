@@ -17,7 +17,7 @@ import { VideoCard, formatDuration } from '@/components/sections/video-card'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { breadcrumbSchema, videoSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
-import { cdn } from '@/lib/cdn'
+import { cdn, assetUrl } from '@/lib/cdn'
 
 export const dynamicParams = false
 
@@ -218,8 +218,10 @@ export default async function WatchPage({ params }: { params: Promise<{ slug: st
             videoSchema({
               title: video.title,
               description: video.description,
-              thumbnailUrl: `${video.poster}.jpg`,
-              contentUrl: video.src,
+              // Same switch the <video> above uses, so the file Google is told
+              // about is the file the player requests.
+              thumbnailUrl: assetUrl(`${video.poster}.jpg`),
+              contentUrl: assetUrl(video.src),
               durationSeconds: video.durationSeconds,
               uploadDate,
             }),
