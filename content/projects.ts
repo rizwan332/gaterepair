@@ -272,7 +272,7 @@ export const projects: Project[] = [
     diagnosis: [
       'We released the operator and moved the gate by hand first, as we do on every call, to rule out the far more common cause — a gate that has become hard to move through worn hinges or a shifted post. This gate swung freely. Nothing was binding.',
       'That is what pointed at specification rather than a fault. The gate was in good order and the arm was simply not rated to carry it, which is a sizing problem from the original installation rather than something that had gone wrong since.',
-      'We then checked what else was in the system. The control board and the control box were both in good condition and correctly wired, and the LA500 runs on the same control platform as the LA400 — so the electronics did not need to be part of this job at all.',
+      'We then checked what else was in the system. The control board and the control box were both in good condition and correctly wired, and the LA500 uses the same family of control board as the LA400 — so the electronics did not need to be replaced.',
     ],
     solution: [
       'We fitted the heavy-duty LA500 arm in place of the LA400. That is a straight mechanical upgrade to the component that was actually undersized.',
@@ -282,7 +282,7 @@ export const projects: Project[] = [
     outcome:
       'The gate now opens and closes on an operator rated for its actual weight, with the original control system retained — the customer paid for the arm, not for a new installation.',
     takeaway:
-      'When a gate operator cannot manage its gate, the honest question is whether the whole system is wrong or just one part of it. Here it was the arm, and the LA400 and LA500 share a control platform, so the board and box carried straight over. Quoting a full replacement would have been easier to write and considerably more expensive to accept — and the customer would have paid to remove electronics that had nothing wrong with them.',
+      'When a gate operator cannot manage its gate, the honest question is whether the whole system is wrong or just one part of it. Here it was the arm, and the LA400 and LA500 use the same family of control board, so the board and box carried over. Quoting a full replacement would have been easier to write and considerably more expensive to accept — and the customer would have paid to remove electronics that had nothing wrong with them.',
   },
   {
     slug: 'faac-hydraulic-operator-rebuild',

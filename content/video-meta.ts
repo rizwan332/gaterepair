@@ -48,7 +48,7 @@ export const VIDEO_META: Record<string, VideoMeta> = {
   'liftmaster-gate-motor-repair-22': {
     title: 'LiftMaster LA400 to LA500 — Upgrading Only the Arm',
     description:
-      'A heavy arched iron swing gate whose LA400 arm was not rated to carry it. The gate swung freely by hand, so the fault was specification rather than wear. The LA500 shares a control platform with the LA400, so the heavy-duty arm went on and the existing control board, box and wiring stayed exactly where they were.',
+      'A heavy arched iron swing gate whose LA400 arm was not rated to carry it. The gate swung freely by hand, so the fault was specification rather than wear. The LA500 uses the same family of control board as the LA400, so the heavy-duty arm went on and the existing control board, box and wiring stayed exactly where they were.',
   },
   'liftmaster-gate-motor-repair-20': {
     title: 'Moisture-Corroded LiftMaster Board and an Undersized Solar Array',

@@ -80,6 +80,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'flower-mound': { lat: 33.02839, lng: -97.08672 },
   'forest-hill': { lat: 32.67208, lng: -97.26918 },
   'forney': { lat: 32.74789, lng: -96.47193 },
+  'fort-worth': { lat: 32.75318, lng: -97.33275 },
   'frisco': { lat: 33.1506, lng: -96.82382 },
   'gainesville': { lat: 33.62485, lng: -97.14275 },
   'garland': { lat: 32.91262, lng: -96.63888 },

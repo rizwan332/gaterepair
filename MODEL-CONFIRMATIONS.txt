@@ -1,0 +1,431 @@
+# Model pages — claims to confirm
+
+Every model page under `/brands/<brand>/<model>-repair` was written from manufacturer manuals, spec sheets and warranty documents. Wherever sources disagreed, a manual table didn't extract cleanly, or a fact needs someone who has been on the job, the claim was **left off the page** and recorded here instead.
+
+Nothing below is published as fact. Confirming an item lets it be added to its page; the source of each is the `toConfirm` list in `content/models/<brand>.ts`.
+
+**Most useful to answer first:**
+
+1. **Which models technicians actually see in DFW.** Pages make no claims about how common a model is locally. Knowing, for example, whether it's 1835 or 1837 panels, or 9100 or 9150 slides, sets which pages get more depth.
+2. **Photos.** Only four photos in the library are confirmed to show a specific model: `liftmaster-03` (SL3000) and `liftmaster-22` to `-24` (LA400 job). If any other brand photos or case studies can be matched to a model number, they can go on that model's page.
+3. **Parts carried vs ordered.** Pages say common parts (boards, batteries, limit hardware, photo-eyes, remotes) come off the truck and brand-specific parts are ordered. Confirm that matches practice for each brand.
+4. **The LA400 → LA500 arm upgrade.** LiftMaster's control box identifies the operator model through a harness on the reset switch, so fitting an LA500 arm to an LA400 box normally means changing that harness. What was changed on that job, and what did the display read afterwards?
+5. **Warranty terms.** Each page states the manufacturer's published warranty. Shield's own repair warranty term is still unconfirmed in `content/business.ts`, and the pages render it once it is.
+
+Run `npm run validate:models` for the current list and counts.
+
+## All-O-Matic
+
+### All-O-Matic SL-100 — `/brands/all-o-matic/sl-100-repair`
+
+- [ ] SL-100FP AC max gate length: product page says 37 ft, the 09.2022 manual says 40 ft for the SL-100 ACFP.
+- [ ] When the regular SL-100AC left production, and whether its 10:1 gearbox is still available as a part.
+- [ ] ERD jumper pins differ between board generations (2007 manual chart lists SL-100 on pins 1–3; 2022 chart lists 5–6). Technician to confirm on older boards.
+- [ ] Board naming: manual calls the AC board model ALL-ACUL; product pages list part ACPCB-UL. Confirm these are the same board.
+- [ ] Confirm on a real unit that no SL-100 version has a slip clutch (manufacturer docs list none).
+- [ ] Temperature range is published as "−40 to 160°" without a unit; presumed Fahrenheit.
+- [ ] No photo, video or project is confirmed to show an SL-100.
+
+### All-O-Matic SL-150 — `/brands/all-o-matic/sl-150-repair`
+
+- [ ] Current draw figures come from a manual table whose columns did not extract cleanly (6.2 A for 1/2 HP and 8.4 A for 1 HP appear in the spec table; the current-draw chart reads differently). Technician to confirm from the motor label.
+- [ ] Whether the service-cycle countdown is available on all SL-150DC PRO board revisions.
+- [ ] Built-in loop rack is stated on the SL-150AC page; confirm whether the DC PRO uses the same rack.
+- [ ] Parts availability for the discontinued SL-150AC gearbox and AC board.
+- [ ] The existing all-o-matic-clutch-misdiagnosis project does not name a model, so it is not attached; if the unit was an SL-150 it could be.
+- [ ] No photo, video or project is confirmed to show an SL-150.
+
+### All-O-Matic SW-300 — `/brands/all-o-matic/sw-300-repair`
+
+- [ ] Limit cams, handing wire colors and the arm layout are from the 2007 AC swinger manual. Confirm they still apply to current SW-300 AC and to the SW-300DC PRO (DC PRO swing manual could not be read).
+- [ ] Whether current AC swing boards set handing with a dip switch (as current AC slide boards do) rather than by swapping wires.
+- [ ] The 2007 manual says battery backup was available for the SW-300; the current SW-300 AC page lists none. Confirm.
+- [ ] Whether All-O-Matic’s board-repair and advance-replacement policy (published in the slide manuals) applies equally to swing operators.
+- [ ] No photo is confirmed to show an SW-300 (all-o-matic-07 shows an All-O-Matic swing arm, model unknown).
+
+### All-O-Matic SW-350 — `/brands/all-o-matic/sw-350-repair`
+
+- [ ] Internal clutch adjustment procedure for the SW-350 is not published in the manual read; technician to confirm whether it is field-adjustable.
+- [ ] The 2007 motor rating chart lists SW-350 versions at 3/4 HP as well as 1/2 and 1 HP; current pages list 1/2 and 1 HP only. Older units may be 3/4 HP.
+- [ ] Whether the SW-350DC PRO keeps the pre-wired loop harnesses of the AC version.
+- [ ] Whether the SW-350 pedal has a kill switch like the SL-series pedals (not stated in the swinger manual).
+- [ ] "Highest duty rated" is All-O-Matic’s 2007 description; current lineup includes the SW-375DC PRO, not researched here.
+- [ ] No photo, video or project is confirmed to show an SW-350.
+
+
+## Apollo
+
+### Apollo 1550 — `/brands/apollo/1550-repair`
+
+- [ ] Year Nice acquired Apollo: sources disagree (2008 on PitchBook/search summaries, 2011 on an Apollo dealer history page). Year deliberately omitted.
+- [ ] Board fitted to the 1500/1600 (distributor lists the 636 board); not verified from a 1500/1600 manual, so the page does not state it.
+- [ ] Solar panel wattage versus daily cycle table in the manuals is flattened in extraction; exact pairings are not stated on the page.
+- [ ] TITAN 12L as bolt-in replacement is a distributor claim, not a Nice statement.
+- [ ] Whether "1551/1651" distributor kit names are the current successor packaging of the 1550/1650 (seen on All Security Equipment and Apollo Gate Openers listings); not added as aliases until confirmed.
+- [ ] Status "superseded" is editorial based on board and actuator generations; no Nice discontinuation notice was found.
+- [ ] Technician to confirm which Apollo boards Shield has installed before and whether Shield stocks 12V 33Ah+ batteries.
+
+
+## DoorKing
+
+### DoorKing 1835 — `/brands/doorking/1835-repair`
+
+- [ ] Which 1830 Series panels (1835 vs 1837, 80 vs 90 Series) the technicians actually see most in DFW. The page assumes both are common.
+- [ ] The 3G sunset details (affected boards 1800-009/1800-010 Rev J and lower, 1801-010; busy signal symptom) came from a search snippet of doorking.com/3g, which did not render for direct reading. Symptom text is kept generic.
+- [ ] Whether Shield carries 1835/1837 boards, displays and 1800-080 kits on the van or orders them.
+- [ ] Whether Shield sets up DKS Cloud accounts for customers or the property holds the subscription directly.
+- [ ] The 2132/2137 video systems were listed as “Coming Soon” in January 2026; confirm availability before recommending them.
+
+### DoorKing 1812 — `/brands/doorking/1812-repair`
+
+- [ ] How often Shield sees the 1812 in DFW versus the 1802/1808/1810 panels. The page assumes the 1812 is a common residential call box.
+- [ ] Access Plus board part number: the reference guide lists 1970-010 for the 1802/1808/1810/1812/1838 AP family; not stated on the page to avoid confusion with the Plus board diagram.
+- [ ] Whether 1800-081 cellular retrofits on an 1812 Plus (as opposed to 1812 AP) behave identically in practice; DoorKing’s cutsheet lists both.
+- [ ] Classic figures (3 phone numbers, 24 VAC) come from the reference guide table, whose PDF columns extracted out of alignment; a technician should confirm against the Classic manual.
+
+### DoorKing 6300 — `/brands/doorking/6300-repair`
+
+- [ ] Cutsheet environmental range reads “10°F to 115°F (-12°C to 62°C)”; 62°C is about 144°F, so the Fahrenheit and Celsius figures disagree. Page cites 115°F; confirm with DoorKing before relying on it.
+- [ ] Opening time: reference guide says about 16 s, cutsheet says 16–18 s. Both shown.
+- [ ] Whether the DoorKing photos (doorking-01, -04, -05) show a 6300, a 6050/6100 or another model. Not attached because the model cannot be confirmed from alt text.
+- [ ] Whether the dual swing gearbox rebuild case study was a 6300; not attached. On a 6300 the reduction is a belt-driven worm gear, so the job description should be checked against this unit.
+- [ ] Parts Shield stocks for the 6300 (belts, 4502 board, magnetic sensor, capacitors).
+
+### DoorKing 9150 — `/brands/doorking/9150-repair`
+
+- [ ] Whether the 9150 or the lighter 9050/9100 is the more common DoorKing slide operator on Shield’s DFW jobs; brands.ts lists 9100 and 9150.
+- [ ] The 9100 comparison in the FAQ gives only the 9150 rating; 9100 ratings were not extracted and are deliberately not stated.
+- [ ] Whether Shield stocks #40 chain, idlers, 4602 boards and clutch assemblies for the 9150.
+
+### DoorKing 1601 — `/brands/doorking/1601-repair`
+
+- [ ] Auto-close timer range conflicts: cutsheet says 1–23 seconds; manual 1601-065-M-7-26 says 3.5 to about 59 seconds. Omitted from page.
+- [ ] Release method: the cutsheet says “Fail-Secure Mechanical Release”; the manual describes factory manual release with a crank tool on some units and arm unbolting on units without one. FAQ follows the manual.
+- [ ] The hub cover color and “access door opposite the traffic lane” identification point comes from the manual diagram; confirm against units in the field.
+- [ ] Whether Shield stocks 1601 arms, breakaway kits, belts and Mobil SHC-629.
+
+
+## Eagle
+
+### Eagle 1000 — `/brands/eagle/eagle-1000-repair`
+
+- [ ] Where the model label sits on an Eagle 1000 (not found in the documentation reviewed).
+- [ ] Whether current-production 1000s still use the V-belt, limit box and part numbers shown in the 2002 manual (E285/E286 belts, E106 limit assembly). The manufacturer’s current manual PDF is image-only.
+- [ ] Whether the 1000’s ½ HP motor uses a start or run capacitor (not stated). No capacitor claim is made on the page.
+- [ ] UL 325 usage class for the Eagle 1000. The product pages list UL 325 and UL 991 but no class (the Eagle 2000 page lists Class I–IV).
+- [ ] Whether a fail-safe (FSF) Eagle 1000 is still sold. The 2002 parts list shows a fail-safe belt, but current pages list only FSC and FR.
+- [ ] Eagle-1000-DC availability. It is named only in the E600 board’s compatibility list.
+
+### Eagle 2000 — `/brands/eagle/eagle-2000-repair`
+
+- [ ] Chain size on older Eagle 2000s. The 2002 parts list shows a #41 sprocket (E166) on the standard 2000 and a #40 sprocket (E366) on DM/1 HP, while current pages list #40 for all.
+- [ ] The APT 1 HP page lists a 45 ft / 2,000 lb maximum but also says it suits “50’ feet or 2500lbs Gates”. The page states only 45 ft / 2,000 lbs until Eagle clarifies.
+- [ ] What “DM” and “APT” stand for. Eagle does not define them; the page describes the dual ½ HP motors and the stated applications only.
+- [ ] Whether the 2002 V-belt part numbers (E282/E283/E284) and limit assembly (E106) are unchanged on current production.
+- [ ] Model label location on the Eagle 2000.
+- [ ] Whether the FSF (fail-safe) 2000 is still sold. It appears in the FSC page’s capacity line but not as its own listing.
+- [ ] Capacitor presence on Eagle 2000 motors (not stated). The page makes no capacitor claim.
+
+### Eagle 200 — `/brands/eagle/eagle-200-repair`
+
+- [ ] Meaning of “DM” on the Eagle 200. The 2013 manual lists the 200-DM as “(2) 1/2 HP” with the same 750-lb rating as the ½ HP unit, which could mean a dual-gate pair rather than a dual-motor single operator. The page avoids defining it.
+- [ ] Whether the 200-DC and 200-DC-HD are still sold. They appear in the 2013 manual but not on the current swing listing.
+- [ ] Eagle 100 rating. The 2013 manual says 18 ft / 600 lbs, while some retailers list 800 lbs. The page uses the manual figure.
+- [ ] Model label location on the Eagle 200.
+- [ ] Capacitor presence on the 200’s AC motor (not stated). No capacitor claim is made.
+- [ ] Whether current Eagle 200 production matches the 2013 manual’s clutch, release and limit layout.
+
+
+## Elite
+
+### Elite SL595 — `/brands/elite/sl595-repair`
+
+- [ ] Older (pre-U, “SL595UL”) units: whether their board, display and codes match the U-series manual used here. Distributor pages list SL595UL variants, and an earlier manual summary gave different ratings (e.g. ½ HP, 12 in/sec, 40 ft cantilever). The page states U-series figures only.
+- [ ] Model label location on the SL595/SL585 housing (not found in the manual text).
+- [ ] Housing dimensions and orientation (the manual drawing gives 30 in, 35.4 in and 16.4 in for the SL595 without clear labels, so they are omitted).
+- [ ] Whether LiftMaster names an official successor to the SL595. None was found, and the SL3000UL is mentioned only as a current Elite Series slide operator, not as a successor.
+- [ ] Whether SL585/SL595 should live under the LiftMaster brand instead. content/brands.ts lists SL585 and SL595 under LiftMaster, and content/models/index.ts notes that Elite Series models are written up under LiftMaster. Avoid a duplicate page if the LiftMaster file also covers them.
+- [ ] Current availability of control, power and expansion boards for U-series units (K1D6761-1CC, K1D8284-1CC, K1D8424-1CC, K1D8387-1CC).
+- [ ] Whether the partner-support page title (“Discontinued”) is still current. The page could not be rendered for direct quotation.
+
+### Elite Miracle One — `/brands/elite/miracle-one-repair`
+
+- [ ] Discontinued Q222/Q223 boards with “no direct substitute”, and the LA500 as closest equivalent, come from a parts distributor, not LiftMaster. Confirm with LiftMaster or a second distributor before telling a customer the operator must be replaced.
+- [ ] The Q230 bracket compatibility with the LA500 (distributor claim).
+- [ ] Manufacturer warranty term for the Miracle One (not found).
+- [ ] Battery type and backup cycle count. The manual reviewed does not state them clearly; a retailer summary claims 100–200 cycles, which is omitted.
+- [ ] Close-timer range. The manual gives 3–60 s on the specifications page and 1–60 s on the timer page, so no figure is stated.
+- [ ] Whether the Miracle One carried any UL 325 listing. The manual includes UL 325 installation instructions, but no listing statement was captured.
+- [ ] Add "liftmaster/la500-repair" to relatedModels once that page exists (the validator rejects links to missing pages).
+
+
+## FAAC
+
+### FAAC 400 — `/brands/faac/400-repair`
+
+- [ ] Maximum leaf length and weight per 400 version: the manual's Table 1 did not extract cleanly. FAAC USA's page says leaves up to 23 ft; distributors quote 16 ft / 1,300 lb for the CBAC. Not stated on the page until confirmed.
+- [ ] Thrust, pump flow and cycles-per-hour figures per version (same garbled table).
+- [ ] Whether current 400 kits still ship with the 455 D or a newer FAAC board.
+- [ ] UL 325 classes: taken from the 2003 FAAC class table printed in the 402 manual; confirm for current 400 production.
+- [ ] Oil capacity of the 400 (not found in the manual text).
+- [ ] Current FAAC International warranty term: a separate FAAC International limited-warranty document (source URL not confirmed) lists 3 years for FAAC gate operators and 2 years for control boards; the manuals say 24 months.
+- [ ] Location of the release cap on the housing — described generically on the page.
+
+### FAAC 402 — `/brands/faac/402-repair`
+
+- [ ] Release turns: the 2003 manual text says one full turn counter-clockwise, but its Figure 3 caption says ½ turn. The page says "one full turn" attributed to the text.
+- [ ] Oil type conflict inside the 2003 manual: technical data says FAAC XD 220 or Shell Tellus 15; the parts list includes "1 Qt. Monolec Oil". Confirm the oil for current 402s.
+- [ ] Current version letters: FAAC's product catalog reportedly offers 402 CBC, SB (no lock) and SBS; the 2003 manual says all 402s have one lock and lists CBC/CBA. Only CBC and CBA are used as aliases.
+- [ ] Whether the specs in the 2003 manual (weight, current draw, 50% duty cycle) still apply to current production.
+- [ ] Which control board current 402 kits ship with in the US (455 D in 2003; older installs may have 450 MPS or 452 MPS).
+- [ ] Current FAAC International warranty term (manual states 24 months; another FAAC International warranty document lists 3 years for gate operators — source not confirmed).
+
+### FAAC 770 — `/brands/faac/770-repair`
+
+- [ ] Production status: marked discontinued because FAAC USA lists the 770N, not the 770 24V. Confirm with a FAAC distributor.
+- [ ] 770N as a drop-in for an existing 770 foundation box: a reseller claims "completely interchangeable"; FAAC UK and FAAC Help pages checked do not say so. Not stated on the page.
+- [ ] Availability of the 770 24V gearmotor and E024U board as spare parts in the US.
+- [ ] Maximum torque 245 lbf·ft read from a PDF table whose columns extracted out of alignment; other values in the column align, but confirm.
+- [ ] Whether a 230 V AC 770 variant exists in US installations (only the 24V manual was reviewed).
+- [ ] UL 325 class wording beyond the manual cover ("UL325 – UL991") and "Class of operation: Residential".
+
+### FAAC 844 — `/brands/faac/844-repair`
+
+- [ ] Oil conflict inside the 2010 manual: text says "Use FAAC XD 220 oil only" while the spares list item 88 is "Hydraulic oil FAAC HP OIL Lt. 1". Page follows the text.
+- [ ] Whether current US 844 ER production still uses the 780D board and the same specs (manual is 2010).
+- [ ] UL 325 class(es) for the 844 — not found in the manual text reviewed; not stated on the page.
+- [ ] Aliases 844 ER CAT and 844 ER RF come from section headings in the same manual that lists "844 R CAT" and "844 R RF" — confirm both spellings appear on labels.
+- [ ] Current FAAC International warranty term (manual states 24 months; another FAAC International warranty document lists 3 years for gate operators — source not confirmed).
+
+
+## Ghost Controls
+
+### Ghost Controls TDS2 — `/brands/ghost-controls/tds2-repair`
+
+- [ ] Weight/length chart: intermediate values were not transcribed because PDF extraction alignment was unreliable; only the 900 lb (shortest) and 300 lb (20 ft) endpoints are stated.
+- [ ] Secondary arm replacement part number for the TDS2 (not found).
+- [ ] TDS2 secondary cable length: Ghost product page says 32 ft; one retailer listing says 30 ft. Page uses 32 ft.
+- [ ] UL 325 class (I, II) for the Heavy Duty kits — the manual states UL 325 7th Edition system certification; class not extracted, so duty is set to residential.
+- [ ] Exact wording of the manual’s warning that an incorrect charging setup voids the warranty (line extracted without full context).
+- [ ] TDS2XL (50 ft cable) existence and rating — not used as an alias.
+
+
+## HySecurity
+
+### HySecurity SlideDriver — `/brands/hysecurity/slidedriver-repair`
+
+- [ ] SlideDriver II SmartTouch 725 alert/fault/error codes were not verified (the SlideDriver II user guide was not retrievable); codes on this page are from the earlier Smart Touch manual D0119 Rev. F. Confirm whether SD II displays the same abbreviations.
+- [ ] SlideDriver 50VF models use a separate manual (D0125) that was not reviewed; relief settings for 50VF2/3 are not stated.
+- [ ] SD200V horsepower row on the HySecurity page reads "5 HP / 4 HP (DC option)" in flattened text; confirm the column mapping for SD80V and SD200V.
+- [ ] Whether the original SlideDriver generation is formally discontinued by HySecurity (hysecurity.com still has a SlideDriver page); status relies on distributor "replaces" wording.
+- [ ] UL 325 classes verified for SD40 via distributor listing only; confirm for the other SD II models.
+- [ ] Technician to confirm Shield can source Uniflow fluid and SlideDriver wheels/valves and typical lead times.
+
+### HySecurity SwingSmart DC — `/brands/hysecurity/swingsmart-dc-repair`
+
+- [ ] Codes and specs come from manual revision E (2012). Later Smart DC software may add or rename messages; confirm against the current SwingSmart DC Programming and Operations Manual on support.hysecurity.com.
+- [ ] Brush replacement interval for the SwingSmart DC motor was not captured from the manual; do not quote an interval until checked.
+- [ ] Duty set to "commercial" although HySecurity also sells it for single-family residences; editorial choice.
+- [ ] Confirm whether HySecurity still supplies Smart DC Controller boards for early SwingSmart DC revisions.
+
+
+## LiftMaster
+
+### LiftMaster LA400 — `/brands/liftmaster/la400-repair`
+
+- [ ] Production status: only one distributor (DDM Garage Doors) was found listing the LA400UL as obsolete; liftmaster.com blocked automated access. Confirm with a LiftMaster dealer and name a successor only if LiftMaster names one.
+- [ ] Case study liftmaster-la400-to-la500-arm-upgrade: LiftMaster does not document an LA500 arm on an LA400 control box. The board identifies the model from the product ID in the control box reset switch (LA400 K94-36408-2 vs LA500 K94-36408-1), and the LA500 box is transformer-run (toroidal transformer) where the LA400 box is battery-run from an APOW3 plug-in charger. Technician to confirm whether the product ID harness/transformer were changed on that job and what the display showed afterward.
+- [ ] Original-LA400 blink code list is from the LA400 & LA400-S owner’s manual; confirm which LED blinks on that board before quoting the list to customers.
+- [ ] Code 60 (minimum monitored entrapment device) was read from the LA500 and RSW12UL code tables and the U-series guide; the LA400UL table was only partly legible in extraction.
+- [ ] Assumption that a UL-era board fitted to an original LA400 requires monitored sensors — technician to confirm the retrofit board (e.g. K1D8388-1CCMC) and its requirements.
+- [ ] The existing landing page claim that LA400 batteries last “three to five years” was not verified in any LiftMaster source and was not carried forward.
+
+### LiftMaster LA412 — `/brands/liftmaster/la412-repair`
+
+- [ ] Cycle rating conflict: the LA412 installation manual (01-37071B) lists 50 cycles/day and under 23 s to 90°; some retailers advertise the LA412UL at 100 cycles/day and 23–24 s. Confirm against the current LA412UL manual revision.
+- [ ] The 01-37071B manual may be the LA412U revision rather than the latest LA412UL; its parts list shows board K1D8052-1CC while distributors sell K1D8388-1CC for LA412UL. Board part number not stated on the page for that reason.
+- [ ] The LA412 manual’s BATT FAIL text says “critically low battery is less than 23 V,” which appears copied from the 24 V manuals; no critical voltage is stated on the page.
+- [ ] Current status taken from the LiftMaster product page title in search results (site blocked automated access) and active distributor listings; confirm the LA412UL is still in production.
+- [ ] Original LA412 flash-code list is from the LA412/LA412-S owner’s manual; confirm it matches the board generation on the customer’s gate.
+
+### LiftMaster LA500 — `/brands/liftmaster/la500-repair`
+
+- [ ] The LA500 manual used (01-37069B) is an earlier revision that lists board K1D8052-1CC and expansion board K1D8080-1CC; distributors sell K1D8388-1CC for LA500UL. No board part number is stated on the page. Confirm specs against the current LA500UL manual revision.
+- [ ] LA500XL: no LiftMaster document uses the name; kit contents come from distributors (PSS Store, Gatecrafters). Confirm with a LiftMaster dealer that “LA500XL” is a package designation only.
+- [ ] Production status: only one distributor found listing the LA500UL as obsolete; liftmaster.com blocked automated access.
+- [ ] Cycle-count procedure is from the LA500 manual; confirm it works on the customer’s board revision before quoting it.
+- [ ] The client case study and video-meta say “the LA500 shares a control platform with the LA400.” Partly true (same board family, interface, code list) but the control box power supply and product-ID harness differ — see LA400 page toConfirm.
+
+### LiftMaster RSW12UL — `/brands/liftmaster/rsw12ul-repair`
+
+- [ ] Production status: only one distributor found listing the RSW12UL as obsolete (“we no longer carry this part”); confirm with a LiftMaster dealer.
+- [ ] Code table columns were misaligned in PDF extraction; 00 = normal, 34 = encoder, 3A = force dial, 50 = run distance were cross-checked against the U-series troubleshooting guide. Technician to confirm on a live board.
+- [ ] The manual lists both an “integrated transformer” and a plug-in transformer (APOW3) part; the page says only that the operator’s transformer charges the battery.
+- [ ] Drive train description (motor → gear reducer → #41 chain → output shaft; #35 limit chain → encoder sprocket) is inferred from the repair parts list; confirm the exact arrangement.
+- [ ] K1D8389-1CC board applicability to RSW12UL is from distributors; the RSW12UL manual parts list agrees.
+
+### LiftMaster RSL12UL — `/brands/liftmaster/rsl12ul-repair`
+
+- [ ] Travel distance: the RSL12UL manual lists a minimum gate travel distance of 25 ft and a maximum of 50 ft; several retailers advertise “gates up to 25 ft.” Only the 50 ft maximum is stated on the page — confirm the minimum figure with LiftMaster.
+- [ ] Production status: only one distributor found listing the RSL12UL as obsolete; confirm with a LiftMaster dealer.
+- [ ] The manual’s manual-disconnect text refers to a “handle on the operator arm,” apparently copied from the RSW12UL manual; technician to confirm the RSL12UL release method before any page copy describes it.
+- [ ] Maintenance-chart intervals could not be read reliably from the PDF columns; the page says “routine” rather than stating monthly/six-monthly intervals.
+- [ ] K1D8389-1CC board applicability is from distributors; the RSL12UL manual repair-parts page read did not show the board part number.
+- [ ] Code table columns were misaligned in extraction; codes 34, 38, 53 and 60 meanings were cross-checked against the U-series guide and the RSW12UL table.
+
+### LiftMaster CSW24UL — `/brands/liftmaster/csw24ul-repair`
+
+- [ ] Battery-backup runtime is not given in the manual. Distributors quote figures such as "146 cycles / 24 days", so it was omitted from the page.
+- [ ] Whether current CSW24UL boards have myQ built in or need the 828LM Internet Gateway listed in the manual. The page does not make the claim either way.
+- [ ] Whether Shield carries the CSW24UL main board (K1D8389-1CC), expansion board and APE assembly on the truck, or orders them.
+- [ ] Parts cross-compatibility between the older CSW24U and the CSW24UL has not been verified.
+- [ ] LiftMaster.com blocked automated retrieval (HTTP 403). Current status is based on the 2022 manual and the live product URL in search results.
+- [ ] The CSL24UL manual’s manual-disconnect text matches the CSW24UL’s wording ("handle on the operator arm"). The CSW24UL procedure is as written, but a technician should confirm the physical release on current units.
+
+### LiftMaster CSL24UL — `/brands/liftmaster/csl24ul-repair`
+
+- [ ] Battery-backup runtime: a distributor (All Security Equipment) quotes "208 cycles / up to 24 days", but it is not in the manual, so it was omitted.
+- [ ] Distributor copy cites a "10:1 worm gear reduction" and "about 12 inches per second". The manual gives 1 ft/s max and does not state the ratio, so the ratio was omitted.
+- [ ] The manual’s manual-disconnect paragraph refers to a "handle on the operator arm", apparently copied from the swing manual. A technician should confirm the physical release method on a CSL24UL before this is added to the page.
+- [ ] HDSL24UL is named as an upgrade option without specs. Confirm with LiftMaster’s current literature before quoting ratings.
+- [ ] Whether Shield carries CSL24UL chain, sprockets and the K1D8389-1CC board as truck stock.
+- [ ] The CSL24ULWK variant was verified only from its LiftMaster product-page URL and title. Confirm what the kit includes before relying on it.
+
+### LiftMaster SL3000UL — `/brands/liftmaster/sl3000ul-repair`
+
+- [ ] Maximum gate length differs by source: the 2022 manual says 52 ft of travel, while distributor listings say 50 ft. The page uses the manual figure.
+- [ ] The 30:1 worm-gear reduction and the "surge suppression up to 50 ft" figure come from distributor listings only and are attributed as such.
+- [ ] The manual shows no onboard battery backup. Confirm whether LiftMaster offers a UPS or battery accessory for the SL3000UL before promising outage operation.
+- [ ] The manual lists some drive parts (belt, gear pulley) by horsepower, and the part-to-HP mapping in the PDF text was ambiguous, so no belt part numbers are given.
+- [ ] brand-depth.ts and landing-pages.ts present the SL3000UL under the Elite brand. The current product is LiftMaster-branded (Elite Series), so the brand pages should say so.
+- [ ] Image liftmaster-03 is captioned as an SL3000. Confirm that the photographed unit is the current SL3000UL rather than an SL3000U.
+
+### LiftMaster CSW200UL — `/brands/liftmaster/csw200ul-repair`
+
+- [ ] Rating conflict: distributor listings claim "18 ft / 1,200 lb per leaf" and "22 ft / 2,000 lb", but the 2018 manual gives 600 lb / 20 ft (1/2 HP) and 1,000 lb / 22 ft (1 HP). The page uses the manual. Confirm against LiftMaster’s current spec sheet.
+- [ ] Current production status: no LiftMaster.com product page could be retrieved (HTTP 403 on liftmaster.com). Status is based on distributor listings and the manual hosted on LiftMaster’s partner site.
+- [ ] The manual used is the 2018 edition. A later revision may change codes or parts.
+- [ ] Manual release: the manual describes releasing the arm handle to remove the arm from the output shaft during cover installation. A technician should confirm this is also the field manual-release method.
+- [ ] Distributor claims of a "900:1 worm gear reduction" and "surge protection up to 50 ft" were not verified and are not on the page.
+- [ ] CSW200UL repair part numbers in the manual text were not reliably matched to part names, so none are given apart from the uphill swivel arm (K75-50292), which is listed by name.
+
+
+## Linear
+
+### Linear SW Series — `/brands/linear/sw-series-repair`
+
+- [ ] Linear SW Series manufacturer warranty term not found; client or Linear tech support to confirm.
+- [ ] Current availability of SWC and SWD specifically (only the SWR product page was checked).
+- [ ] Specs are from 2010 literature and a 2011 manual; confirm no later revision changed gate ratings.
+- [ ] Whether SW Series units are actually common on DFW jobs Shield sees; the page avoids claiming frequency.
+- [ ] The "Osco" and "SWG/GSWG-A" older units are not covered here and use different controllers.
+
+
+## Mighty Mule
+
+### Mighty Mule MM560 — `/brands/mighty-mule/mm560-repair`
+
+- [ ] R4211 control board compatibility with MM560/MM562 comes from reseller listings; Mighty Mule’s own R4211 listing does not name models.
+- [ ] Linear’s 2005 GTO acquisition date is from trade press search results (SDM, Security Sales, SecurityInfoWatch); the articles returned 403 to direct fetch.
+- [ ] MM562 dual cycle chart read as roughly half of the MM560 single chart — extracted from a poorly formatted PDF; confirm against the printed manual.
+- [ ] The MM560 “1 beep with 2 seconds, then pause and repeats” limit-switch code layout — confirm on a unit.
+- [ ] Current availability and lead time of MM560 arms and motor/gear assemblies.
+- [ ] Whether Mighty Mule officially designates the MM571W as the MM560 successor (not found; page only says it is the current kit with the same label rating).
+
+### Mighty Mule MM571W — `/brands/mighty-mule/mm571w-repair`
+
+- [ ] Battery included or not: the manual says required but not included; the current product page lists the FM150 and battery box. Confirm by kit/retailer.
+- [ ] Exact mapping of the “1 beep every 10 seconds”, “2 beeps every 10 seconds” and 1–5 repeating beep codes — the manual table layout is ambiguous in extraction, so only the unambiguous codes (6 beeps, 1-2, 1-3, clicks) are stated.
+- [ ] Which solar zone the Mighty Mule map assigns to Dallas–Fort Worth (not stated on the page).
+- [ ] RVCTBD50 rev counter board compatibility with the MM571W — the parts page does not list models for it.
+- [ ] What the SMT571WACP / SMT572WACP and TS571W listed on the warranty page are relative to the MM571W (not researched; not used as aliases).
+
+
+## Ramset
+
+### Ramset RAM 100 — `/brands/ramset/ram-100-repair`
+
+- [ ] Fault indications, sensitivity adjustment and alarm behavior on the current logic/driver boards — the current AC manual PDF is image-only and could not be read. ERD and dip-switch details above are from the Intelligate-era manual.
+- [ ] When the RAM 100 rating changed from 700 lbs / 20 ft to 1,000 lbs / 35 ft, and whether the change came with the new boards.
+- [ ] The Intelligate-era manual says the RAM 100 is for front installations only; confirm for current units.
+- [ ] Whether the "Clutch Release Assembly" in the parts list is only the pedal disengagement or also a torque-limiting slip clutch. Manufacturer docs describe no clutch adjustment.
+- [ ] Warranty registration window: ramsetinc.com says 60 days; the older manual says 90 days by certified mail.
+- [ ] Motor capacitor rating appears in the Intelligate spec table but did not extract legibly.
+- [ ] Neither Ramset project (ramset-slide-gate-broken-rollers, ramset-high-cycle-entrance) names a model; ramset-07 shows a Ramset slide operator of unknown model. None attached.
+
+### Ramset RAM 1000 — `/brands/ramset/ram-1000-repair`
+
+- [ ] Ramset’s RAM 1000 AC page calls it "residential and light commercial" in its description but "Industrial/Commercial" in its spec table.
+- [ ] Max weight: current page 1,500 lbs; Intelligate manual 1,000 lbs; one dealer (ramsetstore.com) lists 1,500 lbs / 50 ft and another 1,000 lbs / 40 ft. Confirm per unit label.
+- [ ] Gear ratio 40:1 (current) vs 30:1 (older parts list) — confirm which units changed.
+- [ ] Limit shaft, limit chain and chain kit details are from the DC-manual bill of materials shared by RAM 1000/5500; confirm they match the AC units.
+- [ ] Master/slave, one pass, radio cycle, secure close, fire box and mag lock behavior are from the Intelligate manual; confirm on current logic boards (current AC manual is image-only).
+- [ ] Center/rear installation limit of 25 ft is from the Intelligate-era manual.
+- [ ] Optional battery back-up for AC units is mentioned in the Intelligate manual; not confirmed on current AC units.
+- [ ] No photo, video or project is confirmed to show a RAM 1000.
+
+
+## US Automatic
+
+### US Automatic Patriot — `/brands/us-automatic/patriot-repair`
+
+- [ ] Maximum gate weight: the 2023 Patriot manual says 800 lb (iron, ranch, chain link); USAutomatic Gate Openers’ comparison page and some listings say 650 lb. Page follows the manual — confirm.
+- [ ] 24 in stroke and 500 lb dynamic thrust come from distributor listings, not a manufacturer document we could open.
+- [ ] Which of the manual’s three solar zones covers Dallas–Fort Worth — the region map is an image we could not read. Page deliberately avoids stating it.
+- [ ] Whether the current 500018 board is the listed replacement for failed 500001/500002/500003/500016 boards, and what setting changes that involves.
+- [ ] The Patriot manual labels the battery reset button S4 on the board legend but calls the constant-pressure button S4 in one section and S5 elsewhere. Page uses the board legend (S4 battery reset) — technician to confirm on a 500018 board.
+- [ ] Board color: distributors sell 500018 as a red board; not stated to readers.
+- [ ] Fire ants in gate boxes is stated as general DFW context, not as a record of past jobs — client comfortable with that framing?
+
+### US Automatic Ranger — `/brands/us-automatic/ranger-repair`
+
+- [ ] Ranger 500 400 lb dynamic thrust is from a distributor comparison page only; no thrust figure for the Ranger HD was found in a manufacturer document.
+- [ ] Distributor comparison lists Ranger HD at 16 ft / 800 lb as “battery backup” — manufacturer manual confirms 800 lb; the “more corrosion-resistant” positioning is distributor/manufacturer marketing language, not a spec.
+- [ ] Which manual solar zone covers DFW (region map not machine-readable).
+- [ ] Whether actuator brackets carry over when upgrading a Ranger 500 to a Ranger HD — not stated on the page.
+- [ ] Existing landing page /us-automatic-ranger-repair says Rangers are “common on ranch and acreage entrances across Dallas–Fort Worth” — not carried forward as a claim; client to confirm if he wants it.
+- [ ] Metal cabinet part numbers: manual lists cabinet w/cover 020570 in the metal option list and 600020 on another page — page avoids the cabinet part number.
+- [ ] Distributor sells 500028 as fitting the Sentry 300 as well as the Ranger 500 — not used on the page.
+
+### US Automatic Patriot RSL — `/brands/us-automatic/patriot-rsl-repair`
+
+- [ ] Gate weight: the 2020 manual says 600 lb; distributor listings variously claim 800 lb and 1,000 lb, and older board silkscreens read “Gate Weight Max. Load: 650 lbs.” Page follows the manual.
+- [ ] The 2020 RSL manual intro names a 520004 transformer and 520025 panel kit, while its solar section names the 10 W 520026 kit. Page states the 10 W kit only.
+- [ ] Current 500026 board manual could not be opened (manufacturer site blocks automated access); page relies on the 2020 rev. A manual, which may describe the 500017 board. Technician to confirm dip switch numbering (soft stop DS1-6, handing DS1-9) on a 500026 board.
+- [ ] Warranty page of the RSL manual itself did not extract; terms are from the 2023 Patriot/Ranger HD manuals, which name Patriot RSL boards.
+- [ ] Removing the brake: manufacturer says it is not necessary; whether Shield is comfortable recommending removal on any gate should be confirmed by a technician.
+- [ ] Which solar zone covers DFW (region map image).
+
+
+## Viking
+
+### Viking T-21 — `/brands/viking/t-21-repair`
+
+- [ ] Which warranty tier Viking applies to the T-21 — the policy lists 3 years for “Gate Operators” and 5 years for “Pad Mount Gate Operators”.
+- [ ] Viking’s spec sheet says “24 VDC 1 HP”; its lineup page says “DC motor equivalent to 1 HP AC”. Confirm preferred wording.
+- [ ] Whether Shield stocks V-Flex boards, EMI boards and DUBA12 batteries or orders them per job.
+- [ ] That the ERR message-to-meaning mapping read from the manual’s two-column table is correct on a live unit.
+
+### Viking K-2 — `/brands/viking/k-2-repair`
+
+- [ ] Whether the SPS kit (distributor part VASPSKN2NX; manual part VASPSK2NX) can be retrofitted to an earlier VA-K2NX, and which board revision it needs.
+- [ ] K-2 battery specification: the parts list gives DUBB12 while the safety page names Yuasa NP7-12 / DUBA12, and a distributor lists two 4 Ah batteries.
+- [ ] The manual states 100 backup cycles “(1000 lb gate and 20’ length)”, which exceeds the 700 lb rating — confirm the test condition with Viking.
+- [ ] The year the SPS version replaced VA-K2NX in production.
+- [ ] ERR ___ LIMIT is printed with a blank for OPN / CLS / NO — confirm exact on-screen wording on a live unit.
+
+### Viking R-6 — `/brands/viking/r-6-repair`
+
+- [ ] Which warranty tier (3-year “Gate Operators” or 5-year “Pad Mount Gate Operators”) Viking applies to the R-6.
+- [ ] R-6 battery amp-hour rating: spec sheet gives “12 VDC x 2” without Ah; parts list shows DUBB12.
+- [ ] Whether the R-6 power supply is removable (spec sheet says so; the manual shows a power supply panel assembly and recommends a separate Modular Power Box for low voltage).
+- [ ] Whether an F-1 uses the same recommended pad size as the R-6 and T-21 (not checked).
+- [ ] Gearbox lubrication type and whether it is serviceable in the field.
+
+### Viking G-5 — `/brands/viking/g-5-repair`
+
+- [ ] Which warranty tier Viking applies to the G-5 (not a pad-mount unit, so presumably the 3-year “Gate Operators” line).
+- [ ] Whether a current VA-G5NX actuator is compatible with older G-5 ECUs (earlier-generation kits were sold as “2nd Gen”).
+- [ ] Intermediate points on the G-5 weight/length chart (manual chart did not extract cleanly; only 2,000 lb/10 ft and 800 lb/18 ft are stated).
+- [ ] G-5 battery amp-hour rating (ECU parts list gives DUBB12 only).
+- [ ] Viking’s push-to-open installation option and its limit differences (only pull-to-open was reviewed).

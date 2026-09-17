@@ -15,11 +15,15 @@ import { landingPagesForBrand } from '@/content/landing-pages'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
-import { tier1Cities } from '@/content/cities'
+// The cities we actually submit for indexing, not a fixed tier: as cities are
+// enriched and promoted out of `noindex`, the brand pages link them too.
+import { indexedCities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { modelsForBrand, modelMatching, modelPath, modelKey } from '@/content/models'
+import type { ModelPage } from '@/content/models/types'
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -78,6 +82,19 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const brandProjects = projectsForBrand(brand.name)
   const brandLandingPages = landingPagesForBrand(brand.slug)
 
+  // Model pages for this brand, plus any other brand's page for a model on
+  // this brand's list — Elite's SL3000UL is written up under LiftMaster, where
+  // the line is now sold, and an Elite owner should still find it from here.
+  const ownModels = modelsForBrand(brand.slug)
+  const crossModels = brand.models
+    .filter((name) => !modelMatching(brand.slug, name))
+    .map((name) => modelMatching(null, name))
+    .filter((m): m is ModelPage => Boolean(m))
+  const modelCards = [...ownModels, ...crossModels].filter(
+    (m, i, all) => all.findIndex((x) => modelKey(x) === modelKey(m)) === i,
+  )
+  const unlinkedModels = brand.models.filter((name) => !modelMatching(brand.slug, name) && !modelMatching(null, name))
+
   return (
     <>
       <PageHero
@@ -101,6 +118,74 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                 <LazyVideo key={video.slug} video={video} />
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Brand → model. High on the page because most visitors arrive having
+          read a model number off their own gate, and the model page is the
+          better answer for them — the brand page's job here is routing. */}
+      {(modelCards.length > 0 || unlinkedModels.length > 0) && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-4 inline-flex items-center gap-2.5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
+              <Wrench className="size-6 text-gold-500" aria-hidden />
+              {brand.name} models we repair
+            </h2>
+
+            {modelCards.length > 0 && (
+              <>
+                <p className="prose-measure mb-8 text-lg text-ink-700">
+                  Choose your model for the faults we see on it, the parts we repair or replace, and whether
+                  it is worth repairing. The model number is usually on a label inside the control box.
+                </p>
+                <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {modelCards.map((m) => (
+                    <li key={modelKey(m)}>
+                      <Link
+                        href={modelPath(m)}
+                        className="group flex h-full flex-col rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 transition-all hover:border-gold-400 hover:shadow-[var(--shadow-card)]"
+                      >
+                        <span className="font-display font-semibold text-ink-950">
+                          {brandBySlug(m.brandSlug)?.name} {m.model} repair
+                        </span>
+                        <span className="mt-1.5 text-sm leading-relaxed text-ink-600 first-letter:uppercase">
+                          {m.descriptor}
+                        </span>
+                        <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 group-hover:text-gold-600">
+                          {m.model} faults, parts and repair
+                          <ArrowRight className="size-3.5" aria-hidden />
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {unlinkedModels.length > 0 && (
+              <>
+                {modelCards.length > 0 && (
+                  <p className="mb-3 mt-10 text-sm font-semibold uppercase tracking-wider text-ink-500">
+                    We also service
+                  </p>
+                )}
+                <ul className="flex flex-wrap gap-2.5">
+                  {unlinkedModels.map((model) => (
+                    <li
+                      key={model}
+                      className="rounded-lg border border-ink-100 bg-ink-50 px-4 py-2 text-sm font-medium text-ink-800"
+                    >
+                      {model}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-500">
+              Not listed? Call us anyway. This covers the units we see most often in Dallas&ndash;Fort Worth,
+              not everything we can work on.
+            </p>
           </div>
         </section>
       )}
@@ -130,31 +215,6 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           </div>
         </div>
       </section>
-
-      {brand.models.length > 0 && (
-        <section className="section bg-white">
-          <div className="container-page">
-            <h2 className="mb-6 inline-flex items-center gap-2.5 font-display text-2xl font-bold text-ink-950 sm:text-3xl">
-              <Wrench className="size-6 text-gold-500" aria-hidden />
-              {brand.name} models we service
-            </h2>
-            <ul className="flex flex-wrap gap-2.5">
-              {brand.models.map((model) => (
-                <li
-                  key={model}
-                  className="rounded-lg border border-ink-100 bg-ink-50 px-4 py-2 text-sm font-medium text-ink-800"
-                >
-                  {model}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-500">
-              Not listed? Call us anyway. This covers the units we see most often in Dallas&ndash;Fort Worth,
-              not everything we can work on.
-            </p>
-          </div>
-        </section>
-      )}
 
       {images.length > 0 && (
         <PhotoGallery
@@ -300,7 +360,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             {brand.name} repair across Dallas&ndash;Fort Worth
           </h2>
           <ul className="flex flex-wrap gap-2.5">
-            {tier1Cities.map((city) => (
+            {indexedCities.map((city) => (
               <li key={city.slug}>
                 <Link
                   href={`/gate-repair-${city.slug}-tx`}

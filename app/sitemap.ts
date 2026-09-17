@@ -8,6 +8,8 @@ import { landingPages } from '@/content/landing-pages'
 import { videos } from '@/content/video-manifest'
 import { videoPageMeta } from '@/content/video-pages'
 import { watchPath } from '@/lib/video-paths'
+import { indexableModelPages } from '@/lib/model-quality'
+import { modelPath } from '@/content/models'
 
 /**
  * Next writes sitemap video fields into the XML verbatim — it does not escape
@@ -86,6 +88,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // FAAC, All-O-Matic and Ramset are uncontested in this market — they get
       // the higher crawl priority.
       priority: b.contested ? 0.8 : 0.9,
+    })),
+    // Model pages that clear the quality gate in lib/model-quality.ts. The rest
+    // are served `noindex` and deliberately absent here — validate:meta fails
+    // the build if a noindex page ever appears in this file.
+    ...indexableModelPages().map((m) => ({
+      url: `${base}${modelPath(m)}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     })),
     ...projects.map((p) => ({
       url: `${base}/projects/${p.slug}`,

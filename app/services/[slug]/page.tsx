@@ -13,13 +13,16 @@ import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { LazyVideo } from '@/components/ui/lazy-video'
-import { tier1Cities } from '@/content/cities'
+// Indexed cities rather than a fixed tier — see the note on the brand page.
+import { indexedCities } from '@/content/cities'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { publishedTestimonials } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForService } from '@/content/projects'
+import { modelsForService, modelPath, modelKey } from '@/content/models'
+import { isModelIndexable } from '@/lib/model-quality'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -64,6 +67,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const serviceProjects = projectsForService(service.slug)
   const serviceVideos = videosFor(service.mediaCategory)
   const relatedBrands = service.relatedBrands.map(brandBySlug).filter(Boolean)
+  // Service → model. Only pages that clear the quality gate, capped so the
+  // block stays a set of useful routes rather than a link farm.
+  const serviceModels = modelsForService(service.slug).filter(isModelIndexable).slice(0, 12)
 
   return (
     <>
@@ -270,6 +276,28 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ))}
             </ul>
 
+            {serviceModels.length > 0 && (
+              <>
+                <h2 className="mb-6 mt-12 font-display text-2xl font-bold text-ink-950">
+                  Operator models we repair
+                </h2>
+                <ul className="flex flex-wrap gap-2.5">
+                  {serviceModels.map((m) => (
+                    <li key={modelKey(m)}>
+                      <Link
+                        href={modelPath(m)}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
+                      >
+                        {brandBySlug(m.brandSlug)?.name} {m.model}
+                        <span className="sr-only"> repair</span>
+                        <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
             <h2 className="mb-6 mt-12 font-display text-2xl font-bold text-ink-950">
               Where we do this work
             </h2>
@@ -281,7 +309,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   trying to win. Visually it stays a chip — `sr-only` keeps the
                   row of city names readable while the anchor text is complete
                   for anything reading the markup. */}
-              {tier1Cities.map((city) => (
+              {indexedCities.map((city) => (
                 <li key={city.slug}>
                   <Link
                     href={`/gate-repair-${city.slug}-tx`}

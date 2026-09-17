@@ -63,12 +63,15 @@ export const brands: Brand[] = [
     commonFailures: [
       'Hydraulic fluid loss and seal failure',
       'Pump pressure drop causing slow or partial travel',
-      'Control board faults on 452 MPS and 455D units',
+      'Control board faults, including the 455 D board on hydraulic swing units',
       'Encoder and limit adjustment drift',
       'Release-key valve leaks',
       'Cold-weather viscosity slowdown',
     ],
-    models: ['400 Series', '402', '412', '415', '422', '750 Sliding', '844 ER', 'S800H', '452 MPS', '455D', 'E124'],
+    // Corrected 15 Sep 2026 against FAAC manuals: the 750 is an in-ground
+    // hydraulic swing operator, not a slide; 452 MPS, 455 D and E124 are
+    // control boards, not operators, and now live under commonFailures.
+    models: ['400', '402', '412', '415', '422', '750', '770', '844', 'S800H'],
     faqs: [
       {
         q: 'Can a FAAC operator actually be repaired, or does it need replacing?',
@@ -107,14 +110,15 @@ export const brands: Brand[] = [
       'operator. It is a limit switch, a clutch adjustment, a chain, or a control board. Anyone quoting you a full ' +
       'replacement on an All-O-Matic has not opened it.',
     commonFailures: [
-      'Limit switch cam slip and travel drift',
-      'Clutch out of adjustment causing stalls under load',
+      'Limit nut or cam slip and travel drift',
+      'Clutch or torque-limiter slip causing stalls (SL-150, SW-300, SW-350)',
+      'Electronic reversing device sensitivity set wrong for the gate',
       'Chain stretch and sprocket wear',
       'Control board relay failure',
-      'Motor brush wear on older SL and SW units',
-      'Gearbox oil loss',
     ],
-    models: ['SL-100', 'SL-125', 'SW-300', 'SW-350', 'SW-400', 'Ranger', 'BL-40', 'RP-100'],
+    // Corrected 15 Sep 2026 against All-O-Matic's lineup and manuals. SL-125,
+    // SW-400, Ranger, BL-40 and RP-100 do not appear in either.
+    models: ['SL-100', 'SL-150', 'SW-300', 'SW-350', 'SL-45DC PRO', 'SL-90DC PRO', 'SL-175DC PRO', 'SW-375DC PRO', 'OH-200', 'MAGNA Q'],
     faqs: [
       {
         q: 'Are All-O-Matic parts still available?',
@@ -122,7 +126,7 @@ export const brands: Brand[] = [
       },
       {
         q: 'My All-O-Matic stalls partway and reverses. What is it?',
-        a: 'Usually the clutch or the limit cams. The clutch is a safety feature — it slips when the gate meets resistance, so if the gate is binding on its track the clutch is doing its job and the real fault is alignment. We check the gate by hand before touching the operator.',
+        a: 'Usually the gate, not the operator. On an SL-150 the gearbox clutch slips when the gate meets resistance; on an SL-100 the board’s electronic reversing device stops and reverses it. Either way, a gate binding on its track or hinges produces exactly this symptom, so we check the gate by hand before touching the operator — and only then look at the clutch, reversing sensitivity or limits.',
       },
       {
         q: 'How old is too old for an All-O-Matic?',
@@ -139,11 +143,12 @@ export const brands: Brand[] = [
     priority: 3,
     headline: 'Ramset Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'Ramset operators show up on a lot of commercial and multi-family entrances around Dallas–Fort Worth, and ' +
-      'they are frequently misdiagnosed. We repair them rather than defaulting to replacement.',
+      'Ramset Automatic Gate Systems builds slide, swing and overhead gate operators — the RAM 100 and RAM 1000 ' +
+      'among them — for residential and light commercial gates. They are frequently misdiagnosed, and we repair ' +
+      'them rather than defaulting to replacement.',
     whyDifferent:
-      'Ramset units are commonly installed on high-cycle commercial gates, which means they wear differently to ' +
-      'residential operators — the same part fails ten times sooner because the gate runs two hundred cycles a day. ' +
+      'When a Ramset is fitted to a busy commercial or multi-family entrance it wears differently to the same unit ' +
+      'on a driveway — the same part fails far sooner because the gate runs many more cycles a day. ' +
       'Diagnosing them correctly means knowing which wear is normal for the duty cycle and which is a real fault.',
     commonFailures: [
       'High-cycle chain and sprocket wear',
@@ -153,7 +158,10 @@ export const brands: Brand[] = [
       'Motor overheating and thermal cutout',
       'Gearbox wear on continuous-duty entrances',
     ],
-    models: ['RAM 100', 'RAM 200', 'RAM 400', 'Barrier Arm Series', 'Slide Series'],
+    // Corrected 15 Sep 2026 against ramsetinc.com (Ramset Automatic Gate
+    // Systems, Sun Valley CA — unrelated to the fastener brand). RAM 200,
+    // RAM 400 and a barrier arm series do not exist.
+    models: ['RAM 100', 'RAM 1000', 'RAM 5500', 'RAM 101 DC', 'RAM 300', 'RAM 302', 'RAM 3000', 'RAM 30-30', 'RAM 2000'],
     faqs: [
       {
         q: 'Our Ramset gate at an apartment entrance keeps failing. Why?',
@@ -161,7 +169,7 @@ export const brands: Brand[] = [
       },
       {
         q: 'Do you service commercial and HOA Ramset installations?',
-        a: 'Yes, and this is where most Ramset units live. We handle single entrances through multi-gate properties, including loop detectors, access control integration and barrier arms.',
+        a: 'Yes. We handle single entrances through multi-gate properties, including the loop detectors and access control the operator is wired into.',
       },
       {
         q: 'Can you get Ramset parts quickly?',
@@ -179,24 +187,28 @@ export const brands: Brand[] = [
     headline: 'LiftMaster Gate Operator Repair in Dallas–Fort Worth',
     intro:
       'LiftMaster is the most common gate operator in Dallas–Fort Worth, and we repair them before we replace them. ' +
-      'Control boards, capacitors, limit switches and logic faults are all serviceable, and a board is a fraction ' +
+      'Control boards, batteries, limit settings, sensors and — on AC units — capacitors are all serviceable, and a board is a fraction ' +
       'of the cost of a replacement operator.',
     whyDifferent:
       'Because LiftMaster is so common, it is also the brand most often replaced unnecessarily. The failure is ' +
       'usually a single serviceable component. We diagnose to the part, not to the invoice.',
     commonFailures: [
       'Control board failure and error codes',
-      'Capacitor failure — motor hums but the gate does not move',
+      'Battery and charging faults on DC operators such as the LA400, LA412 and CSW24UL',
+      'Capacitor failure on AC Elite Series units — motor hums but the gate does not move',
       'Limit switch drift causing partial travel',
       'Photo-eye and safety loop faults preventing close',
       'Battery backup failure on solar and standby units',
       'Receiver and remote programming loss',
     ],
-    models: ['LA400', 'LA500', 'CSW24U', 'CSL24U', 'SL585', 'SL595', 'RSW12U', 'RSL12U', 'HDSL24UL', 'Elite Series'],
+    // Corrected 15 Sep 2026: current UL model names from LiftMaster manuals;
+    // LA412 added; "Elite Series" is a product line rather than a model.
+    // SL595 links across to its page under Elite.
+    models: ['LA400UL', 'LA412UL', 'LA500UL', 'RSW12UL', 'RSL12UL', 'CSW24UL', 'CSL24UL', 'SL3000UL', 'CSW200UL', 'SL595', 'HDSL24UL'],
     faqs: [
       {
         q: 'My LiftMaster hums but the gate does not move. Is the motor dead?',
-        a: 'Usually not. That symptom points at the capacitor far more often than the motor, and a capacitor is one of the least expensive repairs on a gate. The other possibility is that the gate itself is binding and the operator cannot overcome it — which is a gate problem, not an operator problem.',
+        a: 'Usually not. On an AC LiftMaster Elite Series operator such as the SL3000UL or CSW200UL, that symptom points at the start capacitor far more often than the motor, and a capacitor is one of the least expensive repairs on a gate. DC models such as the LA400 and CSW24UL have no motor capacitor, so there we look at the battery, the board output and the arm. On any model the other possibility is that the gate itself is binding and the operator cannot overcome it — a gate problem, not an operator problem.',
       },
       {
         q: 'Are you a LiftMaster authorized dealer?',
@@ -224,9 +236,10 @@ export const brands: Brand[] = [
       'Elite gate repair on Dallas residential and light commercial gates is routine work for us. Boards, ' +
       'limit switches and capacitors are all serviceable, and we carry the parts that actually fail.',
     whyDifferent:
-      'Elite shares a lot of DNA with the LiftMaster line, which means the same repair-first logic applies: ' +
-      'the board, the capacitor and the limit switches are the parts that fail, and all three are replaceable ' +
-      'without touching the operator itself.',
+      'Elite has belonged to Chamberlain, LiftMaster’s parent company, since 2003, and its current commercial ' +
+      'operators — the SL3000UL and CSW200UL — are sold as LiftMaster Elite Series. The repair-first logic carries ' +
+      'over: on these AC units the board, the start capacitor and the limit switches are the parts that fail, and ' +
+      'all three are replaceable without touching the operator itself.',
     commonFailures: [
       'Control board failure',
       'Capacitor failure',
@@ -235,11 +248,14 @@ export const brands: Brand[] = [
       'Chain and sprocket wear on slide units',
       'Battery backup failure',
     ],
-    models: ['CSW200UL', 'SL3000UL', 'Q401', 'Q404', 'Miracle One'],
+    // Corrected 15 Sep 2026: Q401 and Q404 are Elite parts (a control board and
+    // an alarm), not operators. CSW200UL and SL3000UL link to their pages under
+    // LiftMaster, where the line is now sold.
+    models: ['CSW200UL', 'SL3000UL', 'SL595', 'SL585', 'Miracle One'],
     faqs: [
       {
         q: 'Is Elite the same as LiftMaster?',
-        a: 'They are related product lines and share some components, which helps with parts availability. Diagnostics are broadly similar, though board layouts and error codes differ between models.',
+        a: 'Elite has been part of Chamberlain, LiftMaster’s parent company, since 2003, and current Elite models are sold as LiftMaster Elite Series. Board layouts and error codes still differ between models, so the model on the label matters when we diagnose and quote.',
       },
       {
         q: 'My Elite slide gate grinds when it moves. What is that?',
@@ -266,13 +282,15 @@ export const brands: Brand[] = [
       'customers a lot of money here.',
     commonFailures: [
       'Control board and logic faults',
-      'Limit and encoder drift',
+      'Limit switch drift on swing operators such as the T-21 and R-6',
+      'Lost limits on older K-2 slide operators after a total power failure',
       'Battery and solar charging failures',
-      'Gearbox wear on heavy gates',
-      'Hydraulic issues on applicable models',
+      'Gearbox and drive chain wear on heavy gates',
       'Loop detector faults',
     ],
-    models: ['I-8', 'K-2', 'F-1', 'R-6', 'T-21', 'G-5'],
+    // Corrected 15 Sep 2026 against Viking's current manuals: no current Viking
+    // operator is hydraulic, and the swing units use mechanical limit switches.
+    models: ['T-21', 'F-1', 'G-5', 'R-6', 'E-4', 'X-390', 'K-2', 'L-3', 'H-10', 'I-8'],
     faqs: [
       {
         q: 'Viking operators are battery driven — does that change the repair?',
@@ -289,20 +307,21 @@ export const brands: Brand[] = [
     priority: 7,
     headline: 'Eagle Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'Eagle Access Control operators are widespread on Dallas residential and commercial gates. Most faults are ' +
-      'serviceable on site.',
+      'Eagle Access Control Systems builds slide and swing gate operators — the Eagle 1000, 2000 and 200 among ' +
+      'them — for residential and commercial gates. Most faults are serviceable on site.',
     whyDifferent:
       'Eagle units are reliable enough that when they do fail, it is usually a single component with a long service ' +
       'life ahead of it once replaced.',
     commonFailures: [
       'Control board failure',
       'Limit switch and cam drift',
-      'Capacitor failure',
       'Chain and sprocket wear',
       'Safety loop and photo-eye faults',
       'Battery backup failure',
     ],
-    models: ['Eagle 1000', 'Eagle 2000', 'Eagle 200', 'Eagle 220', 'Flacon 220'],
+    // Corrected 15 Sep 2026: "Eagle 220" and "Falcon 220" do not appear in
+    // Eagle's lineup or at distributors.
+    models: ['Eagle 1000', 'Eagle 2000', 'Eagle 200', 'Eagle 100', 'Eagle II'],
     faqs: [
       {
         q: 'Are Eagle parts still available?',
@@ -341,7 +360,10 @@ export const brands: Brand[] = [
       'Gearbox wear on high-cycle apartment and HOA entrances',
       'Dial-out and cellular connection loss after a phone line change',
     ],
-    models: ['6300', '6400', '6500', '9100', '9150', '1830', '1835', '1837'],
+    // Corrected 15 Sep 2026: "1830" is DoorKing's name for the 1833–1838 board
+    // series, not a model. 6000-series units are swing operators, 9000-series
+    // slide operators, and the barrier gates are the 1601–1603.
+    models: ['6050', '6300', '6500', '9100', '9150', '1601', '1834', '1835', '1837', '1812'],
     faqs: [
       {
         q: 'Do you program DoorKing telephone entry systems?',
@@ -370,18 +392,20 @@ export const brands: Brand[] = [
     priority: 9,
     headline: 'Linear Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'Linear operators are common on Dallas residential driveways and smaller commercial entrances. Most faults ' +
-      'are board, limit or capacitor related and repairable on site.',
+      'Linear gate operators — the SW and SL series, now part of Nice — are found on residential driveways and ' +
+      'smaller commercial entrances. Most faults are board, limit or drive related and repairable on site.',
     whyDifferent:
       'Linear units are widely installed and well supported, so repair is nearly always the economical route.',
     commonFailures: [
       'Control board failure',
-      'Capacitor failure',
+      'Torque limiter slip and drive belt wear',
       'Limit switch drift',
       'Receiver and remote programming loss',
       'Battery backup failure',
     ],
-    models: ['LDO50', 'LSO50', 'SWG-050', 'GSWG-A', 'AP-5', 'Osco Series'],
+    // Corrected 15 Sep 2026: LDO50 and LSO50 are Linear garage door openers, not
+    // gate operators; SWG-050 and AP-5 could not be verified.
+    models: ['SWR', 'SWC', 'SWD', 'SLR', 'SLC', 'SLD'],
     faqs: [
       {
         q: 'My Linear remote stopped working but the keypad is fine. What is wrong?',
@@ -411,7 +435,7 @@ export const brands: Brand[] = [
       'Loop detector and safety device faults',
       'Motor and pump wear on continuous-duty installs',
     ],
-    models: ['SlideDriver', 'SwingRiser', 'HydraSwing', 'StrongArm', 'SlideSmart HD'],
+    models: ['SlideDriver', 'SlideDriver II', 'SwingSmart DC', 'HydraSwing', 'StrongArm', 'SlideSmart DC'],
     faqs: [
       {
         q: 'Do you service commercial and industrial HySecurity installations?',
@@ -433,29 +457,35 @@ export const brands: Brand[] = [
     priority: 11,
     headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'US Automatic builds both solar and electric gate operators — the Ranger and Patriot lines you see on ' +
-      'ranch entrances, acreage driveways and mains-powered residential gates across Dallas–Fort Worth. We repair ' +
-      'both, and the first job is working out which kind of fault you actually have.',
+      'US Automatic builds 12-volt battery-powered gate operators — the Patriot and Ranger lines — charged either ' +
+      'by a solar panel or by a plug-in AC charger. We repair both setups, and the first job is working out whether ' +
+      'the fault is in the battery and charging side or in the operator itself.',
+    // Corrected 15 Sep 2026 against US Automatic's manuals. No US Automatic
+    // operator runs its motor from mains power: the "AC" versions are the same
+    // battery-run operator, recharged by a low-voltage charger. The earlier copy
+    // sent "mains-powered" units to the transformer and incoming supply, which
+    // is very likely the solar/electrical correction the client asked for.
     whyDifferent:
-      'On a solar install the operator is a power system with a gate attached, and the usual culprit is a battery ' +
-      'at the end of its life, a panel that has drifted out of sun, or a charge controller that has quit. On a ' +
-      'mains-powered unit the same symptoms point somewhere quite different — a transformer, a surge-damaged ' +
-      'board or a limit switch. Establishing which system you have before diagnosing is the difference between ' +
-      'a battery swap and an unnecessary replacement.',
+      'Every US Automatic operator moves the gate from its battery. The solar and AC versions differ only in how ' +
+      'that battery is refilled — a panel, or a low-voltage charger fed from an outlet — so a slow or stalling gate ' +
+      'points at the battery and its charging on both. On a solar install the usual culprits are a battery at the ' +
+      'end of its life or a panel that has drifted out of sun; on an AC-charged install it is the battery, the ' +
+      'charger or the charge wiring. Testing that side under load before condemning the operator is the difference ' +
+      'between a battery swap and an unnecessary replacement.',
     commonFailures: [
       'Battery degradation — the most common cause on solar installs by a wide margin',
       'Solar panel output loss from shading, dirt or panel angle drift',
-      'Charge controller failure',
-      'Transformer and mains supply faults on electric installs',
+      'Battery controller and charge-path failure',
+      'AC charger or charge-wire faults on AC-charged installs',
       'Control board damage from lightning and power surges',
-      'Limit switch drift on Ranger and Patriot units',
+      'Limit switch drift on Patriot units, and limit settings on Ranger control boards',
       'Gate arm and linkage wear on long driveway gates',
     ],
-    models: ['Ranger', 'Ranger Solar', 'Patriot I', 'Patriot II', 'Patriot RSL', 'Sentry'],
+    models: ['Patriot I', 'Patriot II', 'Patriot RSL', 'Ranger 500', 'Ranger HD', 'Ranger I', 'Ranger II', 'Sentry 300'],
     faqs: [
       {
         q: 'My US Automatic gate has stopped working. Is the operator dead?',
-        a: 'Usually not. On a solar unit the battery is the part that wears out, typically every three to five years in Texas heat, and a weak battery behaves exactly like a failed operator — the gate opens slowly, stops partway, or does nothing at all. We test the battery, panel output and charge controller first. On a mains-powered unit we start at the transformer and the incoming supply instead, because the same symptoms have a completely different cause.',
+        a: 'Usually not. Every US Automatic operator runs the gate from its battery, and the battery is the part that wears out — sooner in Texas heat. A weak battery behaves exactly like a failed operator: the gate opens slowly, stops partway, or does nothing at all. We test the battery under load first, then the charging side — panel output on a solar install, the AC charger and its wiring on a plug-in one — before looking at the operator.',
       },
       {
         q: 'Why does my solar gate work in summer but not winter?',
@@ -466,8 +496,8 @@ export const brands: Brand[] = [
         a: 'Yes. A large share of US Automatic units in our area are on acreage and ranch entrances well outside the city limits, and those are exactly the properties where a failed gate is most disruptive. Call and we will confirm coverage for your address.',
       },
       {
-        q: 'Do you repair electric US Automatic operators as well as solar?',
-        a: 'Yes — both. US Automatic makes solar and electric operators, and we service the full range. We can also convert a solar gate to mains power where there is a practical route for a power run, though it is often cheaper and less disruptive to correct the solar sizing instead. We will tell you which makes sense for your gate rather than defaulting to the bigger job.',
+        q: 'Do you repair AC-charged US Automatic operators as well as solar?',
+        a: 'Yes — both. The operator is the same battery-run unit either way; only the charging differs. Switching a solar gate to AC charging means fitting a low-voltage charger rather than running mains power to the gate, and correcting an undersized solar setup is sometimes the simpler fix. We will tell you which makes sense for your gate rather than defaulting to the bigger job.',
       },
     ],
   },
@@ -502,7 +532,9 @@ export const brands: Brand[] = [
       'Actuator arm wear and mounting bracket fatigue',
       'Corroded low-voltage connections at the enclosure',
     ],
-    models: ['1500 Series', '1600 Series', '7000 Series', 'Titan', 'Nova'],
+    // Corrected 15 Sep 2026: "7000 Series" and "Nova" could not be verified.
+    // Plain model numbers so the brand page links them to their model page.
+    models: ['1550', '1650', 'TITAN', '7251/7351'],
     faqs: [
       {
         q: 'My solar Apollo gate has slowed down or stopped. Is the operator dead?',
@@ -523,8 +555,8 @@ export const brands: Brand[] = [
     priority: 12,
     headline: 'Mighty Mule Gate Opener Repair in Dallas–Fort Worth',
     intro:
-      'Mighty Mule openers are the most common homeowner-installed operators in Dallas–Fort Worth. We service and ' +
-      'repair them, including the solar and battery-backed installations.',
+      'Mighty Mule openers are among the most widely sold homeowner-installed gate openers, and plenty end up on ' +
+      'gates heavier than they were built for. We service and repair them, including solar and battery-backed installations.',
     whyDifferent:
       'These are light-duty operators, frequently fitted to gates heavier than they were rated for. That matters ' +
       'because the failure then repeats: replacing the arm without addressing the load or the hinges buys a few ' +
@@ -537,7 +569,7 @@ export const brands: Brand[] = [
       'Receiver and remote pairing loss',
       'Undersized operator on an overweight gate',
     ],
-    models: ['MM360', 'MM560', 'FM500', 'FM502', 'Ranger'],
+    models: ['MM571W', 'MM572W', 'MM371W', 'MM372W', 'MM271', 'MM272', 'TS571W', 'MM-SL2000B', 'MM560', 'MM562', 'FM500', 'FM502'],
     faqs: [
       {
         q: 'Is a Mighty Mule worth repairing, or should I upgrade?',
@@ -572,7 +604,9 @@ export const brands: Brand[] = [
       'Auto-close timer and sensor faults',
       'Remote and keypad pairing loss',
     ],
-    models: ['TDS Series', 'TSS Series', 'DTP1', 'AXP1', 'Architectural Series'],
+    // Corrected 15 Sep 2026: AXP1 is a remote, not an opener; DTP1 and
+    // "Architectural Series" could not be verified.
+    models: ['TSS1', 'TDS2', 'TDS2XP'],
     faqs: [
       {
         q: 'My Ghost Controls gate opens part way and stops. Why?',
@@ -593,29 +627,27 @@ export const brands: Brand[] = [
     priority: 14,
     headline: 'Nice Gate Operator Repair in Dallas–Fort Worth',
     intro:
-      'Nice and Nice/Apollo operators appear on both residential and commercial entrances across the Metroplex, ' +
-      'including the underground and articulated-arm swing units. We service and repair them.',
+      'In North America, Nice sells gate operators under its own name and through the brands it acquired — ' +
+      'Apollo, HySecurity and Linear among them. We service and repair them.',
     whyDifferent:
-      'Nice is a European system, and its control logic, programming procedure and accessories differ from the ' +
-      'American operators most Dallas gate work is built around. Programming a Nice board is not the same job as ' +
-      'programming a LiftMaster, and getting it wrong means a gate that runs but never quite behaves.',
+      'Because Nice’s North American range is built partly from acquired lines, two operators both badged Nice ' +
+      'can have entirely different controllers, programming procedures and accessories. Identifying which family ' +
+      'a unit came from is the first step — programming it as if it were another line means a gate that runs but ' +
+      'never quite behaves.',
     commonFailures: [
       'Control unit and logic board faults',
       'Encoder and limit position loss after power interruption',
       'Photocell alignment and safety-edge faults',
-      'Gearbox and drive wear on articulated arm units',
+      'Gearbox and drive wear',
       'Radio receiver and transmitter pairing loss',
-      'Seal failure and water ingress on underground operators',
     ],
-    models: ['Wingo', 'Toona', 'Robus', 'Road', 'Metro', 'Ten'],
+    // Corrected 15 Sep 2026: Wingo, Toona, Robus, Road, Metro and Ten are
+    // European Nice products, not in its North American gate operator lineup.
+    models: ['TITAN', 'Juno', 'Vanguard 3501', '7251/7351'],
     faqs: [
       {
         q: 'Do you program Nice control units?',
-        a: 'Yes, including limit learning and force settings. Nice programming differs from the American operators most gate companies work on daily, which is often why a Nice gate has been left running badly rather than repaired.',
-      },
-      {
-        q: 'Can an underground Nice operator be repaired in place?',
-        a: 'Frequently, yes. Water ingress and seal failure are the usual causes, and both are serviceable. Replacement is a much larger job involving the foundation box, so it is worth diagnosing properly first.',
+        a: 'Yes, including limit learning and force settings. Nice controllers vary by product family, and programming one as if it were another is often why a Nice gate has been left running badly rather than repaired.',
       },
     ],
   },
@@ -631,18 +663,19 @@ export const brands: Brand[] = [
       'BFT builds hydraulic and electromechanical operators used on gated communities, commercial entrances and ' +
       'higher-end residential gates. We repair them, hydraulics included.',
     whyDifferent:
-      'Like FAAC, BFT is a hydraulic-heavy line, and hydraulic operators need different diagnostics, different ' +
-      'parts and different training to a chain drive. Pressure, fluid condition and seal integrity are measurable ' +
-      'things, and measuring them is what separates a repair from a replacement quote.',
+      'BFT is an Italian manufacturer whose US range is mostly electromechanical — Deimos, Ares, Icaro, Phobos — ' +
+      'with hydraulic models such as the Lux alongside. Its control boards and programming differ from the ' +
+      'American operators most gate work is built around, and on the hydraulic units pressure, fluid condition ' +
+      'and seal integrity are measurable things that separate a repair from a replacement quote.',
     commonFailures: [
-      'Hydraulic seal failure and fluid loss',
+      'Hydraulic seal failure and fluid loss on hydraulic models',
       'Pressure loss causing slow or incomplete travel',
-      'Control board and Deimos/Alpha logic faults',
+      'Control board faults on QSC-D and MERAK boards',
       'Encoder and limit drift',
       'Photocell and safety-edge faults',
       'Ram and piston wear on high-cycle installs',
     ],
-    models: ['Deimos', 'Ares', 'Phobos', 'Icaro', 'Elpro', 'Giotto'],
+    models: ['Deimos BT', 'Deimos Ultra BT', 'Ares', 'Icaro', 'Phobos', 'Lux', 'Giotto', 'Moovi'],
     faqs: [
       {
         q: 'Do you repair hydraulic BFT operators?',
@@ -663,10 +696,10 @@ export const brands: Brand[] = [
     priority: 16,
     headline: 'GTO Gate Opener Repair in Dallas–Fort Worth',
     intro:
-      'GTO and GTO/PRO openers — the line Mighty Mule grew out of — are still running on a great many ' +
-      'driveways across DFW and the surrounding areas. We repair them and can still source parts for most models.',
+      'GTO/PRO openers come from GTO Access Systems, the company that also built Mighty Mule, and the line is ' +
+      'still sold today under Linear and Nice. We repair current and older units and can still source parts for most models.',
     whyDifferent:
-      'These are older DC operators, and a lot of the ones we see are fifteen or twenty years old. Age alone is ' +
+      'Many of these are DC operators well into their second decade. Age alone is ' +
       'not a reason to replace one: the mechanical side was built to last and the parts that fail are usually the ' +
       'cheap ones. We will tell you honestly when a unit really has reached the end.',
     commonFailures: [
@@ -677,7 +710,7 @@ export const brands: Brand[] = [
       'Receiver and remote pairing loss',
       'Corroded connections in the control box',
     ],
-    models: ['GTO PRO SW-2000XL', 'SW-3000XL', 'SW-4000XL', 'SL-1000', 'Mighty Mule conversion kits'],
+    models: ['PRO-SW2000XLS', 'PRO-SW3000XLS', 'PRO-SW4000XLS', 'SW-2000XL', 'SW-3000XL'],
     faqs: [
       {
         q: 'My GTO opener is twenty years old. Can it still be repaired?',
