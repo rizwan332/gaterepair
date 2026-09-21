@@ -25,6 +25,7 @@
 
 import fs from 'fs'
 import path from 'path'
+import { allSitemapUrls } from '../lib/sitemap'
 
 const ROOT = '.next/server/app'
 const STORE = '.seo-snapshots'
@@ -54,13 +55,11 @@ function readBuild(): Snapshot {
     }
   })(ROOT)
 
-  const sitemapFile = path.join(ROOT, 'sitemap.xml.body')
-  const sitemap = new Set<string>()
-  if (fs.existsSync(sitemapFile)) {
-    for (const m of fs.readFileSync(sitemapFile, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)) {
-      sitemap.add(new URL(m[1]).pathname.replace(/\/$/, '') || '/')
-    }
-  }
+  // From lib/sitemap.ts, the same module the index and section files render
+  // from, rather than from parsed build output.
+  const sitemap = new Set(
+    allSitemapUrls().map((url) => new URL(url).pathname.replace(/\/$/, '') || '/'),
+  )
 
   const decode = (s: string) =>
     s
