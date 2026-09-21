@@ -23,6 +23,7 @@ import fs from 'fs'
 import path from 'path'
 import { business } from '../content/business'
 import { DESCRIPTION_MAX } from '../lib/seo'
+import { SECTIONS } from '../lib/sitemap'
 
 const TITLE_MAX = 62 // 60 plus two characters of slack for a long city name
 const DESCRIPTION_MIN = 110
@@ -179,19 +180,36 @@ for (const page of pages) {
 
 // --- 5. the sitemap must agree with the pages -------------------------------
 
-const sitemapFile = path.join(ROOT, 'sitemap.xml.body')
-if (fs.existsSync(sitemapFile)) {
-  const xml = fs.readFileSync(sitemapFile, 'utf8')
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
-  const noindexed = new Set(pages.filter((p) => p.noindex).map((p) => p.url))
-  for (const loc of locs) {
-    const route = loc.replace(business.url, '') || '/'
-    if (noindexed.has(route)) errors.push(`Sitemap lists ${route}, which is noindex.`)
+/**
+ * Read from lib/sitemap.ts rather than from the build output. The index at
+ * /sitemap.xml and the seven section files are both generated from that
+ * module, so checking it covers both, and there is no parsing step to drift.
+ *
+ * Counts are printed per section because that is the number Search Console
+ * reports back per submitted sitemap — the whole reason for splitting.
+ */
+const noindexed = new Set(pages.filter((p) => p.noindex).map((p) => p.url))
+const builtRoutes = new Set(pages.map((p) => p.url))
+// Served from public/ via the netlify.toml rewrite, so it is a real URL with
+// no entry in the Next build output.
+const NOT_BUILT_BY_NEXT = new Set(['/samedaygaterepair'])
+
+let sitemapTotal = 0
+for (const section of SECTIONS) {
+  const urls = section.entries().map((e) => e.url)
+  sitemapTotal += urls.length
+
+  for (const url of urls) {
+    const route = url.replace(business.url, '') || '/'
+    if (noindexed.has(route)) errors.push(`${section.file} lists ${route}, which is noindex.`)
+    else if (!builtRoutes.has(route) && !NOT_BUILT_BY_NEXT.has(route))
+      errors.push(`${section.file} lists ${route}, which the build does not produce.`)
   }
-  console.log(`Sitemap: ${locs.length} URLs`)
-} else {
-  warnings.push('No sitemap.xml.body in the build output — sitemap checks skipped.')
+
+  if (urls.length === 0) warnings.push(`${section.file} is empty.`)
+  console.log(`  ${section.file.padEnd(14)} ${String(urls.length).padStart(4)} URLs`)
 }
+console.log(`Sitemap: ${sitemapTotal} URLs across ${SECTIONS.length} sections`)
 
 // --- report -----------------------------------------------------------------
 

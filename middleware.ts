@@ -86,6 +86,10 @@ const LIVE_SEGMENTS = new Set([
   'repair-videos',
   'service-areas',
   'services',
+  // The sitemap index and the section files under /sitemaps/. Without these
+  // the nested-sitemap trap pattern below would kill our own sitemaps.
+  'sitemap.xml',
+  'sitemaps',
   'testimonials',
   'viking-gate-repair',
   'warranty',

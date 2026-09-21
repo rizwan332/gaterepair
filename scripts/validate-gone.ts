@@ -21,6 +21,7 @@ import { projects } from '../content/projects'
 import { videos } from '../content/video-manifest'
 import { landingPages } from '../content/landing-pages'
 import { watchPath } from '../lib/video-paths'
+import { SECTIONS, sectionPath } from '../lib/sitemap'
 
 const errors: string[] = []
 
@@ -42,6 +43,12 @@ const live: string[] = [
   '/warranty',
   '/samedaygaterepair',
   '/samedaygaterepair.html',
+  // The sitemap index and its sections. A nested `sitemap.xml` is one of the
+  // WordPress crawl-trap shapes the 410 patterns catch, so our own must be
+  // proven safe rather than assumed.
+  '/sitemap.xml',
+  '/robots.txt',
+  ...SECTIONS.map((s) => sectionPath(s.file)),
   ...cities.map((c) => `/gate-repair-${c.slug}-tx`),
   ...brands.map((b) => `/brands/${b.slug}`),
   ...services.map((s) => `/services/${s.slug}`),
