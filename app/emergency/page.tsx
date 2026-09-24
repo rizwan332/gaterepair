@@ -244,6 +244,10 @@ export default function EmergencyPage() {
             {[
               { href: '/services/gate-motor-repair', label: 'Gate motor & operator repair' },
               { href: '/services/automatic-gate-repair', label: 'Automatic gate repair' },
+              // Same-day but not an emergency — and this is the only internal
+              // link to that page, which was otherwise orphaned: in the sitemap,
+              // reachable from an ad, and linked from nowhere on the site.
+              { href: '/samedaygaterepair', label: 'Same-day gate repair' },
               { href: '/contact', label: 'Request a free estimate' },
               { href: '/faq', label: 'Read the FAQs' },
             ].map((link) => (

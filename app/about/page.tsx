@@ -11,7 +11,7 @@ import { media } from '@/content/media-manifest'
 import { videos } from '@/content/video-manifest'
 import { projects } from '@/content/projects'
 import { brands } from '@/content/brands'
-import { breadcrumbSchema, organizationSchema } from '@/lib/schema'
+import { breadcrumbSchema } from '@/lib/schema'
 import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
 
@@ -233,8 +233,11 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
+          // The business node is emitted once, by the root layout. Emitting it
+          // here as well put two nodes with the identical @id in one document,
+          // which is invalid linked data and left the entity ambiguous to any
+          // parser. /about was the only page doing it.
           __html: JSON.stringify([
-            organizationSchema(),
             breadcrumbSchema([
               { name: 'Home', url: '/' },
               { name: 'About', url: '/about' },
