@@ -1097,6 +1097,354 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 2, 25 Sep 2026 ───────────────────────────────────────────────────
+  // Ten more Tier 2 towns taken off noindex. Selected on gate density first and
+  // population second: an acre-lot town of 8,000 with a gate on every drive is
+  // worth more to this business than a 90,000-person suburb of ungated tract
+  // housing. Each entry is anchored to a fact that is true of that town and of
+  // nowhere else — a zoning minimum, a lake shoreline, a 1973 master plan — so
+  // the page has something to say that a name swap could not produce.
+  //
+  // `gateProfile` remains a DRAFT on all ten, same standing as Tier 1: it is
+  // written from the town's housing stock and age, not from job records. The
+  // technician interview replaces it (CITY-PAGES.md §5).
+
+  lewisville: {
+    zips: ['75057', '75067', '75077'],
+    // 75028 is Flower Mound, 75056 The Colony and 75029 is PO-box only; all
+    // three list Lewisville as an alternate USPS name and none is claimed here.
+    neighborhoods: ['Old Town Lewisville', 'Castle Hills', 'Valley Vista', 'Garden Ridge', 'Arbor Valley'],
+    landmarks: ['Lake Lewisville', 'LLELA Nature Preserve', 'MCL Grand Theater', 'Old Town Lewisville'],
+    majorRoads: ['I-35E', 'SH 121 Business', 'FM 407 Justin Road', 'Main Street'],
+    nearbyCities: ['flower-mound', 'highland-village', 'coppell', 'carrollton', 'the-colony', 'denton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A city of 137,000 that grew outward in distinct decades, so operator age changes street by street',
+      commonGateTypes: ['Apartment and community slide', 'Residential swing', 'Commercial slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Viking'],
+      commonIssues: [
+        'High cycle counts on multifamily and HOA entrances',
+        'Worn slide chains and rollers on community gates',
+        'Telephone entry boards on ageing apartment systems',
+        'Clay-soil post movement on older residential drives',
+      ],
+    },
+    localAngle:
+      'Lewisville is the largest city on this list — around 137,000 people — and it grew in visible layers, which is the thing that matters for gate work. Old Town and the streets either side of Main are pre-war and post-war housing where an automated gate is the exception. The corridor along I-35E is apartments and gated communities, some of them thirty years old, and that is where most of our Lewisville calls come from: entrances running hundreds of cycles a day on slide operators that were specified for a quieter building. Out toward FM 407 and the lake the lots get larger and the gates become private driveway swings again. Those three call types need different parts on the van, so we ask which part of Lewisville a caller is in before we load it.',
+    faqs: [
+      {
+        q: 'We manage an apartment entrance in Lewisville that keeps failing. Is it the operator or the gate?',
+        a: 'On a high-traffic entrance it is usually neither in isolation. A slide gate doing several hundred cycles a day wears its chain, its rollers and its track long before the operator gives up, and the operator then strains against that wear until it fails too. Replacing the operator alone on a worn track buys a few months. We measure the track and the chain first and quote the whole entrance honestly, because a part-fix on a gate residents use every day is not a saving.',
+      },
+      {
+        q: 'Do you service gated communities and HOAs as well as individual homes?',
+        a: 'Yes, and a good share of our Lewisville work is exactly that. HOA and apartment entrances need scheduling around residents rather than around us, so we work to an agreed window, keep the entrance passable while we are in it, and put the failure and the fix in writing for the board or the management company.',
+      },
+    ],
+  },
+
+  mansfield: {
+    zips: ['76063'],
+    // Fairways of Walnut Creek and South Pointe are both gated; the remaining
+    // three are large-lot subdivisions from realty listings rather than a city
+    // register, which Mansfield does not publish.
+    neighborhoods: ['Fairways of Walnut Creek', 'South Pointe', 'Walnut Creek Valley', 'Twin Creeks', 'Woodland Estates'],
+    landmarks: ['Walnut Creek Country Club', 'Mansfield National Golf Club', 'Historic Downtown Mansfield', 'Hawaiian Falls'],
+    majorRoads: ['US-287', 'FM 157 Matlock Road', 'Broad Street', 'SH 360'],
+    nearbyCities: ['arlington', 'grand-prairie', 'cedar-hill', 'burleson', 'midlothian', 'kennedale'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Golf-course estate frontages and gated subdivisions spread across the Tarrant and Johnson county line',
+      commonGateTypes: ['Estate driveway swing', 'Community slide', 'Ornamental iron swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'All-O-Matic'],
+      commonIssues: [
+        'Community entrance slide gates running constant cycles',
+        'Long iron leaves sagging on estate frontages',
+        'Loop detector faults on wide subdivision entrances',
+        'Clay-soil post movement on golf-course lots',
+      ],
+    },
+    localAngle:
+      'Mansfield has more gated frontage per household than most towns its size, because its growth came as subdivisions rather than as infill — Fairways of Walnut Creek and South Pointe are gated at the entrance, and the estate lots around Walnut Creek Country Club are gated individually. That produces two kinds of work in the same postcode. A community entrance is a shared asset: it runs all day, it is a board or a management company that pays for it, and when it fails every resident is affected at once. A private estate gate on a golf-course lot is usually a long ornamental leaf, and the fault is more often the hinge, the post or the sag than the operator. We quote them differently because the urgency and the failure mode are different.',
+    faqs: [
+      {
+        q: 'Our subdivision entrance gate in Mansfield is stuck open. How quickly can you get to it?',
+        a: 'A community entrance stuck open is a security issue for every household behind it, so we treat it as urgent and aim to get a technician out the same day. If the fix needs a part we do not carry, we will secure the entrance in a safe state and tell you plainly when the part lands rather than leaving it open indefinitely.',
+      },
+      {
+        q: 'Our long iron gate has started dragging on the driveway. Is the operator failing?',
+        a: 'Usually not. A long ornamental leaf is heavy at its far end, and over years the hinge and the post take that load and let the gate drop — the operator is simply being asked to drag it. Fitting a stronger operator to a sagging gate is the common mistake and it fails again. The fix is the hinge, the post, or a re-square of the leaf, and then the existing operator generally has no trouble.',
+      },
+    ],
+  },
+
+  'north-richland-hills': {
+    // 76180 and 76182 are the city's own; 76148 covers a northern section it
+    // shares with Watauga.
+    zips: ['76180', '76182', '76148'],
+    neighborhoods: ['HomeTown NRH', 'Iron Horse', 'Iron Horse Commons', 'Kingswood Estates', 'Crestwood Estates'],
+    landmarks: ['Iron Horse Golf Course', 'NRH2O Family Water Park', 'HomeTown NRH', 'Northfield Park'],
+    majorRoads: ['Loop 820', 'SH 26 Grapevine Highway', 'Davis Boulevard', 'Rufe Snow Drive'],
+    nearbyCities: ['hurst', 'bedford', 'euless', 'haltom-city', 'keller', 'colleyville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Mid-century Mid-Cities housing with newer gated infill at HomeTown and Iron Horse',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Commercial slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'Eagle'],
+      commonIssues: [
+        'Operators installed in the 1990s with no current parts support',
+        'Safety sensors missing or bypassed on older installs',
+        'Slide gate track and roller wear at community entrances',
+        'Corroded wiring on gates exposed to years of storm runoff',
+      ],
+    },
+    localAngle:
+      'North Richland Hills is a Mid-Cities suburb that filled in from the 1960s onward, and the gates reflect that: most of the automated ones went in during the 1990s and 2000s, and a good number have never been touched since. The practical consequence is safety equipment. A gate operator installed before current UL 325 practice often has one photo-eye or none, and we still find sensors that were disconnected years ago because they nuisance-tripped rather than because they were faulty. The newer gated pockets — HomeTown and around Iron Horse — are a different job entirely, with modern boards and intact safety devices, where the failure is usually a detector loop or a worn slide track. Either way we check the safety side before we quote the fault somebody called about.',
+    faqs: [
+      {
+        q: 'Our gate has no safety sensors. Do we have to add them?',
+        a: 'We will not re-commission a powered gate without working entrapment protection, and that is not a sales position. An automatic gate is heavy and it moves without warning; the sensors are what stop it closing on a car, a child or a pet. If yours are missing or were disconnected, fitting current ones is a small part of the job and we will tell you the cost before we start.',
+      },
+      {
+        q: 'Our operator is from the 1990s. Can it still be repaired?',
+        a: 'Often yes, and when it cannot we will say so rather than guess. Some operators of that era still have current boards and parts available; others were discontinued and nothing fits them any more. The mechanics — the posts, the hinges, the track — usually outlast the electronics, so even when the operator has to be replaced the rest of the installation is generally reusable, which keeps the cost far below a full replacement.',
+      },
+    ],
+  },
+
+  'trophy-club': {
+    // 76262 is shared with Roanoke; the town has no exclusive ZIP.
+    zips: ['76262'],
+    neighborhoods: ['The Highlands at Trophy Club', 'Trophy Wood', 'Lakes of Trophy Club', 'Summit Cove', 'Turnberry'],
+    landmarks: ['Trophy Club Country Club', 'Ben Hogan and Kathy Whitworth courses', 'Trophy Club Park', 'Harmony Park'],
+    majorRoads: ['SH 114', 'Trophy Club Drive', 'Trophy Wood Drive', 'Bobcat Boulevard'],
+    nearbyCities: ['southlake', 'roanoke', 'westlake', 'keller', 'grapevine', 'northlake'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A 1973 master-planned golf community, so a large share of operators date from the original build-out',
+      commonGateTypes: ['Estate driveway swing', 'Courtyard gate', 'Community slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Original-era operators with discontinued control boards',
+        'Short drives and tight turning space on golf-course frontages',
+        'Post movement on the rolling ground the courses are cut through',
+        'Newer Highlands installs left badly commissioned',
+      ],
+    },
+    localAngle:
+      'Trophy Club was Texas’s first master-planned community, laid out in 1973 around two golf courses that the developer named for Ben Hogan. Almost fifty years of build-out in one town is why gate work here splits so cleanly. On the original streets the operator is frequently as old as the second or third owner of the house, and the question is whether a current board and new safety devices can be fitted behind ironwork nobody wants to change. In the Highlands, the district approved in 2007 that added roughly 1,400 homes, the gates are new and the faults are commissioning faults — limits set before the gate settled, sensors aimed at nothing, an operator sized for a lighter leaf. The town is small enough that we see both in an afternoon.',
+    faqs: [
+      {
+        q: 'Our house backs onto the golf course and the driveway is short. Does that change the gate work?',
+        a: 'It changes where the safety devices go and how the timers are set. A short drive means a vehicle waiting for the gate is partly in the street, so a slow open-and-close cycle is not just inconvenient, it is a hazard. We set the timing and the sensor positions for the drive you actually have rather than to a default, and on very tight frontages a slide gate is sometimes the safer answer than a swing.',
+      },
+      {
+        q: 'Our gate is as old as the house. Is a replacement the only option?',
+        a: 'Rarely. The gate, the posts and the hinges are separate from the operator, and on most 1970s and 1980s installations the ironwork is in better condition than the electronics driving it. Where the original board is genuinely discontinued we fit a current operator behind the existing gate, which preserves the frontage and costs a fraction of replacing the lot.',
+      },
+    ],
+  },
+
+  argyle: {
+    zips: ['76226'],
+    // Canyon Falls and Harvest are the two large master-planned developments;
+    // most of the town is unplatted acreage with no subdivision register to
+    // cite, so the remaining names are the ones in local use.
+    neighborhoods: ['Canyon Falls', 'Harvest', 'Country Lakes', 'Waterstone Estates', 'Old Argyle'],
+    landmarks: ['Argyle ISD campuses', 'Lantana', 'Denton Creek', 'US-377 corridor'],
+    majorRoads: ['US-377', 'FM 407', 'I-35W', 'Crawford Road'],
+    nearbyCities: ['flower-mound', 'highland-village', 'denton', 'northlake', 'roanoke', 'justin'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Horse and acreage properties where the entrance gate sits well back from the house on a long private drive',
+      commonGateTypes: ['Ranch entrance swing', 'Farm and paddock gate', 'Wide estate slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'Ramset'],
+      commonIssues: [
+        'Solar and battery operators on drives with no mains power at the gate',
+        'Long buried runs to a gate hundreds of feet from the meter',
+        'Wide farm gates dropping on posts set in shifting ground',
+        'Livestock and wildlife triggering or obstructing safety devices',
+      ],
+    },
+    localAngle:
+      'Argyle is horse country inside the metroplex — low-density zoning, tree preservation rules and a lot of properties measured in acres rather than square feet. The gate work that produces is unlike anything in a suburb. The entrance is often several hundred feet from the house and further still from the meter, so the operator is solar or battery-backed, and when it fails the cause is as likely to be a tired battery or a panel under a grown-out tree as anything in the operator. The gates themselves are wide, because a trailer has to get through, and a wide gate on a post set in ground that moves with the season will drop out of square long before the motor wears out. We come to Argyle expecting a power problem and a post problem, and check the operator third.',
+    faqs: [
+      {
+        q: 'Our gate runs on solar and has got slow and unreliable. Is the panel the problem?',
+        a: 'Usually it is the battery, and the panel only by association. Sealed batteries on gate operators have a working life of a few years and they fail gradually — the gate opens fine in the afternoon and struggles at dawn, which is the clearest sign. A panel shaded by a tree that has grown since the install will shorten that life, so we check both, and we size the replacement for the number of cycles you actually run rather than the number the box assumes.',
+      },
+      {
+        q: 'Do you work on farm and paddock gates as well as the main entrance?',
+        a: 'Yes. On acreage the entrance is rarely the only automated gate, and a wide farm gate has its own failure pattern — a long leaf, a post in ground that shifts, and hinges carrying more weight than they were chosen for. We would rather reset the post and the hinge than sell a stronger operator to pull against them, because the stronger operator tears the post out eventually.',
+      },
+    ],
+  },
+
+  lucas: {
+    // 75002 is Allen's ZIP and 75098 is Wylie's; Lucas has none of its own, and
+    // the copy never claims either as exclusively ours.
+    zips: ['75002', '75098'],
+    neighborhoods: ['Forest Grove Estates', 'Stinson Highlands', 'Brockdale', 'Inwood Estates', 'Winningkoff'],
+    landmarks: ['Lake Lavon', 'Brockdale Park', 'Lucas Community Park', 'Country Club Road corridor'],
+    majorRoads: ['FM 1378 Country Club Road', 'FM 2551', 'Lucas Road', 'Estates Parkway'],
+    nearbyCities: ['allen', 'wylie', 'parker', 'plano', 'murphy', 'mckinney'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town zoned to one- and two-acre minimums, so nearly every automated gate is a private driveway entrance',
+      commonGateTypes: ['Estate driveway swing', 'Ranch entrance swing', 'Wide slide on long drives'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'All-O-Matic', 'Elite'],
+      commonIssues: [
+        'Long buried cable runs between house and gate',
+        'Solar operators on drives without mains power at the entrance',
+        'Post movement in Blackland Prairie clay on wide leaves',
+        'Intercom and keypad faults over distance from the house',
+      ],
+    },
+    localAngle:
+      'Lucas holds its residential zoning at one- and two-acre minimums — R1 at an acre, R2 at two, the estate district averaging four — and it has defended that low density deliberately. For gate work that single ordinance explains almost everything. There are very few shared community entrances here, because there are very few dense subdivisions; nearly every gate is one household’s private entrance, set well back from the road on a drive long enough that power and communication have to travel. So the recurring faults are distance faults: a buried cable degraded after fifteen years in clay, a keypad that will not talk to a house two hundred feet away, a solar operator that was sized before the household added a second car and doubled the cycles. The gates themselves are wide, and wide leaves on Blackland clay posts move.',
+    faqs: [
+      {
+        q: 'Our gate intercom cuts out but the gate still opens. What causes that?',
+        a: 'Almost always the run between the gate and the house rather than either box. On an acre lot that cable is long, usually buried, and often fifteen or twenty years old — moisture gets into a joint and the audio degrades while the gate circuit, which is more tolerant, keeps working. We test the run before replacing hardware, because swapping an intercom that was never faulty is a common and expensive way to not fix this.',
+      },
+      {
+        q: 'How much does the clay soil out here really affect a gate?',
+        a: 'More than most people expect. Blackland Prairie clay swells when it is wet and shrinks hard in a Texas summer, and a gate post is a lever with a heavy leaf on the end of it. Over a few seasons that movement puts the gate out of square, which shows up as a gate that catches, strains or stops at the same point every time. It reads like an operator fault and it is a groundwork fault, so we check the post and the level before we touch the motor.',
+      },
+    ],
+  },
+
+  parker: {
+    zips: ['75002', '75094'],
+    neighborhoods: ['Southfork Estates', 'Hidden Creek Estates', 'Chaparral Estates', 'Dublin Meadows', 'Rolling Ridge'],
+    landmarks: ['Southfork Ranch', 'Lake Lavon', 'Bowman Branch Park', 'Parker Road corridor'],
+    majorRoads: ['Parker Road FM 2514', 'Dublin Road', 'FM 1378', 'SH 78'],
+    nearbyCities: ['plano', 'allen', 'murphy', 'wylie', 'lucas', 'richardson'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Two-acre estate lots beside the Southfork ranch land, with new luxury build-out adding gates each year',
+      commonGateTypes: ['Estate driveway swing', 'Ranch entrance swing', 'Ornamental iron slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'All-O-Matic', 'US Automatic'],
+      commonIssues: [
+        'Newly installed gates left commissioned to the wrong limits',
+        'Under-specified operators on long ornamental leaves',
+        'Long power and communication runs on two-acre frontages',
+        'Clay post movement on wide entrances',
+      ],
+    },
+    localAngle:
+      'Parker is a small city that has held a large-lot identity on purpose, and it is now adding to it — the acreage rezoned beside the Southfork Ranch mansion is being laid out as eighty-nine two-acre estate homesites. That matters to gate work because a new estate gate and a twenty-year-old one fail in completely different ways, and Parker is about to have a great many of both. A new install goes wrong at commissioning: limits dialled in before the gate settled on its hinges, obstruction force set for a lighter leaf than the one that was finally hung, a safety sensor aimed where the drive used to be. An older gate on the established streets has done its settling and needs parts. We diagnose the age of the installation before we diagnose the fault.',
+    faqs: [
+      {
+        q: 'Our gate was installed with our new build and already misbehaves. Is it under warranty?',
+        a: 'It may be, and we will tell you if it looks like a warranty claim on the installer rather than a repair you should be paying us for. New-build gates most often need adjustment rather than parts — a gate settles on its hinges through its first year and the settings dialled in on install day stop matching where the gate physically sits. That is a short visit, and if we think the original installer owes you the fix, we will say so.',
+      },
+      {
+        q: 'Is an operator sized for a normal driveway enough for a two-acre frontage?',
+        a: 'Often not, and under-sizing is the most common cause of gates that keep failing on estate lots. A long ornamental leaf is heavier and has far more leverage than a suburban gate, and an operator chosen on price rather than on the weight and length it has to move will strain, overheat and fail repeatedly. We size the operator to the gate we can see, and we will tell you when the one you have is the reason it keeps breaking.',
+      },
+    ],
+  },
+
+  'highland-village': {
+    // 75077 is shared with part of Lewisville; there is no exclusive ZIP.
+    zips: ['75077'],
+    neighborhoods: ['Highland Shores', 'Castlewood', 'Montclair Estates', 'Clearwater Estates', 'Highland Hills'],
+    landmarks: ['Lake Lewisville', 'Copperas Branch Park', 'Pilot Knoll Park', 'The Shops at Highland Village'],
+    majorRoads: ['FM 407 Justin Road', 'FM 2499', 'Briarhill Boulevard', 'I-35E'],
+    nearbyCities: ['flower-mound', 'lewisville', 'denton', 'argyle', 'the-colony', 'coppell'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Lakeside custom homes on the south shore of Lake Lewisville, many with private dock access',
+      commonGateTypes: ['Ornamental iron swing', 'Driveway slide', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'Eagle'],
+      commonIssues: [
+        'Corrosion on hardware and wiring near the shoreline',
+        'Moisture ingress into control boxes on lakeside lots',
+        'Post movement on sloping ground above the shore',
+        'Photo-eye faults from lake fog and condensation',
+      ],
+    },
+    localAngle:
+      'Highland Village sits on the south shore of Lake Lewisville, and the water is not a scenic detail in gate work — it is the reason things fail here. Humidity off a lake this size gets into control boxes, corrodes terminal blocks and hinge hardware faster than it does a few miles inland, and lake fog sets off photo-eyes that behave perfectly the rest of the year. The ground adds to it: the lots on Highland Shores and above the shoreline slope, and a gate post on sloping ground that drains toward a lake moves more than one on level clay. So our checklist here starts with the enclosure seal and the earth around the post, which on an inland job would be the last things we looked at.',
+    faqs: [
+      {
+        q: 'Our gate misbehaves on foggy mornings and is fine by lunchtime. Is it broken?',
+        a: 'That pattern is nearly always the photo-eyes rather than the operator. Condensation on the lens scatters the beam, the operator reads an obstruction that is not there and refuses to close, and once the sun burns the fog off it works perfectly. It is genuinely fixable — repositioning, hooding, or replacing with a sensor type that tolerates moisture — and it does not mean the gate needs replacing.',
+      },
+      {
+        q: 'Does being close to the lake shorten the life of the equipment?',
+        a: 'It shortens the life of the parts exposed to air and water, not the operator itself. Terminal blocks, hinge hardware and anything inside a box whose seal has aged corrode faster here than they would inland. Sealing the enclosure properly and using the right hardware makes a real difference, and it is a much smaller job than replacing an operator that failed because water reached it.',
+      },
+    ],
+  },
+
+  rowlett: {
+    zips: ['75088', '75089'],
+    neighborhoods: ['Bayside', 'Waterview', 'Lakeside on Lake Ray Hubbard', 'Springfield Estates', 'Liberty Grove'],
+    landmarks: ['Lake Ray Hubbard', 'Sapphire Bay peninsula', 'Rowlett Community Centre', 'Herfurth Park'],
+    majorRoads: ['I-30', 'President George Bush Turnpike', 'Lakeview Parkway SH 66', 'Dalrock Road'],
+    nearbyCities: ['garland', 'rockwall', 'sachse', 'wylie', 'mesquite', 'heath'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A peninsula city almost surrounded by Lake Ray Hubbard, with waterfront lots and newer gated communities',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Waterfront property gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'Elite'],
+      commonIssues: [
+        'Corrosion on waterfront hardware and buried wiring',
+        'Slide track fouling from windblown grit off the lake',
+        'Community entrance gates on constant cycles',
+        'Storm damage to exposed operators and control boxes',
+      ],
+    },
+    localAngle:
+      'Rowlett is nearly surrounded by Lake Ray Hubbard — the city sits on a peninsula with miles of shoreline, and the Sapphire Bay site alone has two miles of it. Wind comes off that water with nothing to break it, and it carries grit. On slide gates that is the whole story: the track fouls, the rollers grind, and the operator gets blamed for a problem that is mechanical and abrasive. On waterfront lots the humidity does what it does everywhere near water, which is to find any terminal that is not properly sealed. Then there are the newer gated communities inland, which have modern equipment and the ordinary high-cycle problems of any shared entrance. Three environments, one city, so we ask which side of Rowlett a caller is on.',
+    faqs: [
+      {
+        q: 'Our slide gate grinds and sticks. Does it need a new operator?',
+        a: 'Usually it needs its track cleared and its rollers replaced, not a new motor. Out here the wind carries grit off the lake into the track, the rollers wear on it, and the operator then labours against that friction until it too gives up. Replace the operator on a fouled track and you will be calling again. We measure the track and the rollers first and tell you honestly what actually needs replacing.',
+      },
+      {
+        q: 'What should we do with a gate after a storm?',
+        a: 'The two things that go are the safety sensors, knocked out of alignment, and anything electrical that took water or a surge. If your gate has been through a storm, the safest thing is to leave it in whatever position it settled in and call rather than force it through a cycle — a gate with damaged safety devices that still moves is more dangerous than one that has stopped.',
+      },
+    ],
+  },
+
+  waxahachie: {
+    zips: ['75165', '75167'],
+    // The first three are National Register historic districts, which is as
+    // well-sourced as a neighborhood name gets; the last two are subdivisions.
+    neighborhoods: ['West End Historic District', 'North Rogers Street', 'Oldham Avenue', 'Buffalo Creek', 'Emory Lakes'],
+    landmarks: ['Ellis County Courthouse', 'Historic downtown square', 'Getzendaner Memorial Park', 'Waxahachie Civic Center'],
+    majorRoads: ['I-35E', 'US-287', 'FM 813', 'Ferris Avenue'],
+    nearbyCities: ['midlothian', 'red-oak', 'ovilla', 'cedar-hill', 'palmer', 'maypearl'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A Victorian-era town centre ringed by working acreage, so heritage ironwork and ranch entrances turn up on the same day',
+      commonGateTypes: ['Ornamental iron swing', 'Ranch entrance swing', 'Wide farm gate'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'Ramset'],
+      commonIssues: [
+        'Heritage ironwork on properties where appearance cannot be altered',
+        'Solar operators on ranch entrances away from mains power',
+        'Wide farm gates dropping on posts in Blackland clay',
+        'Long drives with degraded buried cable runs',
+      ],
+    },
+    localAngle:
+      'Waxahachie calls itself the Gingerbread City and it has the record to back it — five National Register historic districts, and streets off the 1897 Ellis County courthouse where the Victorian and Queen Anne houses are protected. Then a few minutes out, the Ellis County acreage starts. The two halves want opposite things from us. On a historic property the ironwork is part of what is being preserved, and the answer is almost always to keep the gate and modernise what drives it, because changing the frontage is not on the table. On the ranch entrances the gate is a working object — wide enough for a trailer, far from the meter, usually solar — and it is judged on whether it opens in February when the battery is cold. We carry for both, because in Waxahachie they are the same day’s work.',
+    faqs: [
+      {
+        q: 'We are in one of the historic districts. Will modernising the gate change how it looks?',
+        a: 'It does not need to. The operator that moves a gate is separate from the gate itself, so a current operator, a modern board and proper safety sensors can go in behind ironwork that is not altered at all. Where equipment has to be visible we will show you the options before fitting anything, because on these properties the frontage is the point.',
+      },
+      {
+        q: 'Our ranch gate is a long way from the house and there is no power at the entrance. What are the options?',
+        a: 'Solar with a properly sized battery is the usual answer and it works well out here, provided the battery is sized for the number of cycles you actually run rather than an average. The alternative is a buried mains run, which is worth it on some layouts and not on others. We will price both honestly against your drive length and tell you which we would choose.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
