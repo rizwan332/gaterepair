@@ -17,14 +17,32 @@ const BASE = business.url
 
 type Json = Record<string, unknown>
 
+/**
+ * The business node.
+ *
+ * ── WHY THE TYPE IS CONDITIONAL ─────────────────────────────────────────────
+ * Google's LocalBusiness specification lists `address` as REQUIRED, and this
+ * business has not confirmed a street address yet (content/business.ts). A
+ * `HomeAndConstructionBusiness` without one is not a conservative omission —
+ * it is invalid markup that fails the Rich Results Test with "Missing field
+ * 'address'" and is ineligible for local rich results anyway. Measured on the
+ * live site 24 Sep 2026 across all 159 pages.
+ *
+ * `Organization` has no required address, describes the same entity truthfully,
+ * and validates cleanly. So the node is an Organization until an address
+ * exists, and upgrades itself to the LocalBusiness subtype the moment
+ * `business.address` is confirmed — no code change, same `@id` either way, so
+ * every `provider` and `publisher` reference keeps resolving.
+ */
 export function organizationSchema(): Json {
   const rating = fact(business.rating)
   const address = fact(business.address)
   const years = fact(business.yearsInBusiness)
+  const hasAddress = Boolean(address && address.street)
 
   const node: Json = {
     '@context': 'https://schema.org',
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': hasAddress ? 'HomeAndConstructionBusiness' : 'Organization',
     '@id': `${BASE}/#business`,
     name: business.name,
     url: BASE,
@@ -187,7 +205,11 @@ export function breadcrumbSchema(trail: { name: string; url: string }[]): Json {
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: `${BASE}${item.url}`,
+      // The home crumb is passed as '/', which would make this
+      // `https://shieldgaterepair.com/` while the homepage canonical is the
+      // same URL without the slash. Both resolve, and Google normalises them,
+      // but an entity should be referred to by one string throughout.
+      item: `${BASE}${item.url === '/' ? '' : item.url}`,
     })),
   }
 }
@@ -266,6 +288,9 @@ export function localBusinessForCity(city: { name: string; county: string; slug:
     '@type': 'Service',
     '@id': `${BASE}/gate-repair-${city.slug}-tx#service`,
     name: `Gate Repair in ${city.name}, TX`,
+    // The service and brand nodes carry a description; these did not, which
+    // left the city pages the only ones describing their service as a bare name.
+    description: `Automatic gate repair, operator and access control service in ${city.name}, ${city.county}. Residential, commercial and HOA gates, open 24/7.`,
     serviceType: 'Automatic gate repair',
     url: `${BASE}/gate-repair-${city.slug}-tx`,
     provider: { '@id': `${BASE}/#business` },

@@ -34,6 +34,8 @@ const leadSchema = new Schema(
     utmMedium: { type: String, trim: true, maxlength: 120 },
     utmCampaign: { type: String, trim: true, maxlength: 200 },
     utmTerm: { type: String, trim: true, maxlength: 200 },
+    landingPage: { type: String, trim: true, maxlength: 300 },
+    referrer: { type: String, trim: true, maxlength: 300 },
 
     status: { type: String, enum: ['new', 'contacted', 'booked', 'closed', 'lost'], default: 'new' },
   },

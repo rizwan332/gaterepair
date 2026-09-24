@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { business } from '@/content/business'
+import { attributionParams, captureAttribution } from '@/lib/attribution'
 
 /**
  * Google Tag Manager — the single tag container for the site.
@@ -46,15 +47,42 @@ export function Analytics() {
   useEffect(() => {
     if (!gtmId) return
 
+    /**
+     * Record where this visit came from before anything else happens.
+     *
+     * On a paid click the gclid is only in the URL of the landing page, and
+     * the call usually happens somewhere else on the site — so it has to be
+     * captured here, on arrival, or it is gone. See lib/attribution.ts.
+     */
+    captureAttribution()
+
     const onClick = (event: MouseEvent) => {
       const link = (event.target as HTMLElement | null)?.closest('a')
       if (!link) return
       const href = link.getAttribute('href') ?? ''
 
+      /**
+       * Attribution travels with the click.
+       *
+       * Without it a call from an ad and a call from organic search were
+       * indistinguishable in GA4, which is why Google Ads could report three
+       * conversions in a week that produced more calls than that, with no way
+       * to tell which was which. Now every call_click carries its gclid and
+       * campaign, so the two can be told apart and the Ads conversion can be
+       * matched back to a keyword.
+       */
       if (href.startsWith('tel:')) {
-        pushEvent('call_click', { link_url: href, page_path: window.location.pathname })
+        pushEvent('call_click', {
+          link_url: href,
+          page_path: window.location.pathname,
+          ...attributionParams(),
+        })
       } else if (href.startsWith('sms:')) {
-        pushEvent('sms_click', { link_url: href, page_path: window.location.pathname })
+        pushEvent('sms_click', {
+          link_url: href,
+          page_path: window.location.pathname,
+          ...attributionParams(),
+        })
       }
     }
 

@@ -27,6 +27,12 @@ const leadSchema = z.object({
   utmMedium: z.string().max(120).optional(),
   utmCampaign: z.string().max(200).optional(),
   utmTerm: z.string().max(200).optional(),
+  // First page of the visit and the referrer that brought them, captured on
+  // arrival by lib/attribution.ts. On paid traffic the landing page is the ad's
+  // destination; on organic it is the page that ranked, which is the only way
+  // to tell from a lead record which page earned it.
+  landingPage: z.string().max(300).optional(),
+  referrer: z.string().max(300).optional(),
   // Honeypot — real users never see this field, so anything in it is a bot.
   company: z.string().max(200).optional(),
 })

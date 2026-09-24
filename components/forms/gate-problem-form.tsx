@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { Phone, CheckCircle2 } from 'lucide-react'
 import { business } from '@/content/business'
 import { pushEvent } from '@/components/analytics'
+import { getAttribution } from '@/lib/attribution'
 
 /**
  * Service request form.
@@ -46,16 +47,25 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema) })
 
-  // Capture ad attribution client-side so keyword-level ROI is reportable.
+  /**
+   * Ad attribution for the lead record, so keyword-level ROI is reportable.
+   *
+   * Read from lib/attribution.ts rather than from this page's query string.
+   * The previous version looked only at `window.location.search`, which meant
+   * anyone who landed on an ad and then clicked through to another page before
+   * filling the form submitted with no gclid at all — the common path, and
+   * exactly the leads worth attributing.
+   */
   useEffect(() => {
-    const p = new URLSearchParams(window.location.search)
-    const grab = (k: string) => p.get(k) ?? ''
+    const captured = getAttribution()
     setAttribution({
-      gclid: grab('gclid'),
-      utmSource: grab('utm_source'),
-      utmMedium: grab('utm_medium'),
-      utmCampaign: grab('utm_campaign'),
-      utmTerm: grab('utm_term'),
+      gclid: captured.gclid ?? '',
+      utmSource: captured.utmSource ?? '',
+      utmMedium: captured.utmMedium ?? '',
+      utmCampaign: captured.utmCampaign ?? '',
+      utmTerm: captured.utmTerm ?? '',
+      landingPage: captured.landingPage ?? '',
+      referrer: captured.referrer ?? '',
       sourcePage: sourcePage ?? window.location.pathname,
     })
   }, [sourcePage])

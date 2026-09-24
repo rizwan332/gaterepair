@@ -62,7 +62,28 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: business.name,
   },
-  robots: { index: true, follow: true },
+  /**
+   * Snippet directives, set once for the whole site.
+   *
+   * Without them Google applies its own defaults: a short text snippet and a
+   * small image thumbnail. `max-image-preview: large` is what makes a page
+   * eligible for the large image treatment in results, and matters on a site
+   * whose entire differentiation is real repair photography;
+   * `max-video-preview: -1` lifts the preview cap on the 33 watch pages, which
+   * are competing for video results nobody else in this market contests.
+   * Measured 24 Sep 2026: only 1 of 159 pages carried these.
+   *
+   * Pages that set their own `robots` — the noindex city and landing pages —
+   * override this, which is correct: there is no snippet to size on a page
+   * that is not in the index.
+   */
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
+  },
 }
 
 export const viewport: Viewport = {

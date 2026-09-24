@@ -46,9 +46,14 @@ export function AssuranceRow({
           <span className="inline-flex size-10 items-center justify-center rounded-xl bg-gold-500/12 text-gold-600 ring-1 ring-inset ring-gold-500/20">
             <Icon className="size-5" aria-hidden />
           </span>
-          <h3 className="mt-3.5 font-display text-base font-semibold leading-snug text-ink-950">
+          {/* A paragraph, not a heading. These are three short assurances in a
+              hero band, not sections of the document — and as <h3> they sat
+              above the page's first <h2>, which made /service-areas and
+              /testimonials read h1 → h3 → h2 to anything following the outline.
+              Styling is unchanged. */}
+          <p className="mt-3.5 font-display text-base font-semibold leading-snug text-ink-950">
             {title}
-          </h3>
+          </p>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{body}</p>
         </li>
       ))}
