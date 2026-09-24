@@ -258,3 +258,76 @@ Local home-services budgets typically run **$1,500–$10,000+/month** in Texas, 
 - [ ] Call tracking with dynamic number insertion
 - [ ] `Lead` model capturing gclid, UTMs and landing page
 - [ ] Ad schedule matched to real answering hours — **never run ads when nobody answers**
+
+---
+
+## 9. "Ads says 3 conversions but we took more calls than that"
+
+Reported 24 Sep 2026. Both halves of the answer matter, because only one of
+them is a bug.
+
+### Why the number is lower than reality, and why that is partly correct
+
+Google Ads counts **conversions it can attribute to an ad click**. A call is
+counted only when Google can join it to a click it sold you. These calls are
+real and will never appear in that number:
+
+| The call | Appears in Ads? |
+|---|---|
+| Found you on organic search, called | No — never was an ad click |
+| Found you in the map pack / Google Business Profile | No — that is GBP, not Ads |
+| Repeat customer, had the number saved | No |
+| Saw the number on screen and dialled it on a desk phone | No — nothing was clicked |
+| Clicked the number on mobile after an ad click | Yes, if tagged |
+| Clicked the call button in the ad itself | Yes, with call reporting on |
+
+So "3" is not necessarily wrong. The question is not "why so few" but "which
+calls came from where", and that needs three different sources, one per
+channel.
+
+### What was fixed in the site (24 Sep 2026)
+
+`call_click` carried only the link and the page path, so a call from an ad and
+a call from organic looked identical in GA4 — nothing could separate them. And
+the lead form read `gclid` from the current page's query string, so anyone who
+landed on an ad and clicked through to another page before submitting arrived
+with no gclid at all. That is the normal path, and it was losing exactly the
+leads worth attributing.
+
+`lib/attribution.ts` now captures gclid / gbraid / wbraid / msclkid, the UTMs,
+the landing page and the referrer **on arrival**, keeps them for 90 days, and
+attaches them to every `call_click`, `sms_click` and form submission. The lead
+record and the database store the landing page and referrer alongside.
+
+In GA4 that gives you, per call click: the gclid, the campaign, the page they
+called from, and the page they arrived on. Segment `call_click` by
+`utm_source` or by presence of `gclid` and the split is readable directly.
+
+### What still has to be configured outside the code
+
+Front-end tracking cannot see a call that nobody clicked. To attribute those,
+in order of effort:
+
+1. **Google Ads call reporting** (free, do this first). Ads → Goals →
+   Conversions → new action → Phone calls → "Calls from ads" and "Calls from
+   your website". Google swaps in a forwarding number and counts calls over a
+   set duration as conversions. Also add a call asset to every campaign.
+2. **Google Business Profile → Calls** (free). Shows calls made from the map
+   listing, which are a different channel from Ads and are frequently the
+   larger one for a local trade.
+3. **A call-tracking provider with dynamic number insertion** — CallRail,
+   WhatConverts and similar (paid, roughly $45–$100/month at this volume).
+   This is the only thing that labels EVERY call with its source, including
+   the desk-phone dialler, because each visitor sees a different number.
+   Worth it once ad spend is meaningful; not before.
+
+Until at least (1) is in place, the honest reconciliation is: Ads conversions
+are ad-attributed calls only; GA4 `call_click` is every call click from any
+channel; and the difference between those and the phone log is people who
+dialled without clicking.
+
+### One question worth asking on the phone
+
+Until DNI is running, "how did you find us?" asked by whoever answers, written
+on the job sheet, is better data than any of the above — and it is the only
+source that captures a customer who saw the van last week.
