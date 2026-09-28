@@ -2236,6 +2236,144 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 7, 28 Sep 2026 ───────────────────────────────────────────────────
+  // Four Collin County cities. Anchors:
+  //   wylie      Lake Lavon is a flood-control reservoir, so its level swings
+  //   murphy     almost no commercial base - a purely residential call sheet
+  //   anna       building at a scale that makes the street itself the hazard
+  //   princeton  new subdivisions on ploughed farmland, so fill settles
+  //
+  // Fairview, Melissa, Farmersville and Blue Ridge are NOT here - fewer than
+  // three verifiable subdivision names each.
+
+  wylie: {
+    zips: ['75098'],
+    neighborhoods: ['Woodbridge', 'Birmingham Farms', 'Seis Lagos', 'Creek Hollow', 'Creekside Estates'],
+    landmarks: ['Lake Lavon', 'Historic Downtown Wylie', 'Founders Park', 'Woodbridge Golf Club'],
+    majorRoads: ['SH 78', 'FM 544', 'Brown Street', 'Country Club Road'],
+    nearbyCities: ['sachse', 'murphy', 'lucas', 'parker', 'rowlett', 'princeton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Wrapped around Lake Lavon, a flood-control reservoir whose level swings far more than a constant-level lake',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Shoreline access roads and gates inundated in wet years',
+        'Equipment mounted low enough to be reached by a high lake',
+        'Ground saturating and drying on a multi-year cycle rather than seasonally',
+        'Silt left in tracks and enclosures after water recedes',
+      ],
+    },
+    localAngle:
+      'Wylie wraps around the southern end of Lake Lavon, and the important thing about Lavon is that it is a flood-control reservoir rather than a constant-level lake. It is held deliberately low in dry years and allowed to rise a very long way in wet ones, and the difference between those two states is measured in feet of elevation and a great deal of shoreline. Properties and access roads that sit comfortably above the water for three years running can find it much closer in the fourth. For gate equipment that produces a pattern we do not see at Grapevine or Ray Hubbard: not gradual humidity damage, but occasional reach — a control box or a low-mounted sensor that has been fine since installation being touched by water once, and silt left behind in a track after the level drops. Mounting height is therefore worth deciding against the historical high rather than against where the water happens to be on the day of the installation.',
+    faqs: [
+      {
+        q: 'Our gate was fine for years and then flooded once. Is it worth moving the equipment?',
+        a: 'On Lavon, usually yes. The lake is managed for flood control, so it is held low for long stretches and then allowed to come up a long way — meaning the level you have grown used to is not the level the equipment should be specified against. Raising a control box and any low sensors above the historical high is inexpensive as part of a repair and takes the question off the table.',
+      },
+      {
+        q: 'There is silt packed in the gate track after the water went down. What is the right fix?',
+        a: 'Clearing it properly rather than running the gate through it — reservoir silt sets hard and behaves like grinding paste on rollers, so a few cycles through it does more damage than the water did. We would also check the rollers themselves, because they usually took the worst of it while the track was still full.',
+      },
+    ],
+  },
+
+  murphy: {
+    zips: ['75094'],
+    neighborhoods: ['Maxwell Creek', 'Maxwell Creek North', 'Woodbridge', 'Rolling Ridge'],
+    landmarks: ['Preserve at Maxwell Creek', 'Murphy Central Park', 'Murphy Community Center', 'FM 544 corridor'],
+    majorRoads: ['FM 544', 'Murphy Road', 'McCreary Road', 'Betsy Lane'],
+    nearbyCities: ['wylie', 'plano', 'sachse', 'parker', 'richardson', 'allen'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Under six square miles and almost entirely residential, with essentially no commercial or industrial base',
+      commonGateTypes: ['Residential swing', 'Courtyard gate', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'Eagle', 'DoorKing'],
+      commonIssues: [
+        'Gates built out within one narrow window now ageing together',
+        'Householders needing appointments outside working hours',
+        'Retrofits onto houses completed before the gate was considered',
+        'Clay-soil post movement on early-2000s installations',
+      ],
+    },
+    localAngle:
+      'Murphy is unusual among the cities we serve in having almost no commercial base at all — under six square miles, overwhelmingly residential, with no industrial estate, no distribution corridor and very few of the shared entrances that dominate our work in places like Lewisville or Little Elm. Practically every gate in this city belongs to a household. That sounds like a small distinction and it changes how we work here more than anything about the equipment does. There is nobody on site during the day to let a technician in, so the useful appointment is early morning, evening or weekend rather than the mid-morning slot that suits a managed property. It also means the person paying is the person who will live with the result, which is why we spend longer on the explanation in Murphy than we do on a commercial call, and why we would rather show a homeowner the worn roller than simply list it on an invoice.',
+    faqs: [
+      {
+        q: 'Can you come outside working hours? Nobody is home during the day.',
+        a: 'Yes, and in Murphy that is the norm rather than the exception. Almost all our work here is residential, so early morning, evening and weekend appointments are what we schedule around. Tell us what suits when you call rather than accepting the first slot offered.',
+      },
+      {
+        q: 'Our gate is about twenty years old. Is that the end of its life?',
+        a: 'Not necessarily, and the age is worth knowing rather than fearing. Much of Murphy was built within one fairly narrow window, so a lot of equipment here reaches the same milestones at the same time — but the mechanical side, the posts, hinges and track, normally outlasts the electronics by decades. Where an operator has reached the end, the rest of the installation is usually reusable.',
+      },
+    ],
+  },
+
+  anna: {
+    zips: ['75409'],
+    neighborhoods: ['AnaCapri', 'Churchill', 'Sherley Farms', 'Liberty Hills'],
+    landmarks: ['Anna Town Square', 'Slayter Creek Park', 'US-75 corridor', 'Anna Aquatic Center'],
+    majorRoads: ['US-75', 'FM 455', 'Ferguson Parkway', 'SH 5'],
+    nearbyCities: ['melissa', 'mckinney', 'princeton', 'celina', 'van-alstyne', 'blue-ridge'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Building at a scale that makes the street itself the hazard - thousand-home communities going in around houses that are already occupied',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Viking'],
+      commonIssues: [
+        'Construction traffic clipping gates and bending leaves',
+        'Site dust fouling tracks and sensor lenses continuously',
+        'Temporary power and unfinished supplies feeding new installs',
+        'Gates commissioned before surrounding ground is finished',
+      ],
+    },
+    localAngle:
+      'Anna is being built on a scale that is hard to overstate — Sherley Farms alone is around three thousand homes on nine hundred and seventy acres, and Liberty Hills adds another thousand-odd acres along US-75 at the northern edge. If you already live here, that means your gate is very likely operating on a street that is still a construction site. The damage we are called to reflects it. Delivery lorries and plant reversing in roads not yet at final width clip gate leaves; site dust settles into tracks and onto sensor lenses at a rate no domestic setting produces; and gates installed with a new house are sometimes commissioned before the surrounding ground has finished being graded, so their limits describe a driveway that has since changed. None of this is anybody doing anything wrong. It is what a town being built around you looks like, and it is worth knowing so it is not misread as equipment failure.',
+    faqs: [
+      {
+        q: 'Our gate is new and already misbehaving, with building work all around us. Related?',
+        a: 'Very likely. A gate commissioned while the surrounding ground is still being graded ends up with limits and force settings describing a driveway that has since moved, and site dust on sensor lenses will stop a gate closing without anything being broken. Both are adjustments rather than parts, and both are worth doing once the ground around you has settled rather than twice.',
+      },
+      {
+        q: 'A contractor hit our gate. What normally needs doing?',
+        a: 'Usually re-squaring the leaf and replacing whatever hinge took the impact, and then checking the operator — because if the gate was run while bound it may have strained the gearbox, and that damage shows up later than the visible dent. We will document what we find in writing if you are recovering the cost from the contractor.',
+      },
+    ],
+  },
+
+  princeton: {
+    zips: ['75407'],
+    neighborhoods: ['Princeton Lake', 'Whitewing Trails', 'Winchester Crossing', 'Ranger Crossing', 'Sicily'],
+    landmarks: ['US-380 corridor', 'J.M. Caldwell Sr. Community Park', 'Princeton Municipal Park', 'Lake Lavon'],
+    majorRoads: ['US-380', 'FM 982', 'Beauchamp Boulevard', 'Monte Carlo Boulevard'],
+    nearbyCities: ['mckinney', 'anna', 'farmersville', 'lowry-crossing', 'wylie', 'melissa'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'New subdivisions laid directly over ploughed Blackland farmland, where fill settles unevenly for the first few years',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Eagle'],
+      commonIssues: [
+        'New driveways and post footings settling unevenly on made ground',
+        'Gates needing re-commissioning in their first two or three years',
+        'Limits set before the ground finished moving',
+        'Drainage across new grading channelling water at the gate',
+      ],
+    },
+    localAngle:
+      'Princeton has grown outward along US-380 onto what was, until very recently, ploughed Blackland farmland, and that history is under every new driveway in the city. Ground that has been worked to depth for a century and then graded, cut and filled for a subdivision does not behave like undisturbed soil. It settles, and it settles unevenly, for the first few years after the houses go up. The practical result is that a Princeton gate installed with a new house frequently needs re-commissioning at two or three years old — not because anything has failed, but because the driveway it was set against has moved a little and the limits and force settings no longer describe it. Owners reasonably read that as a defect in a nearly new gate. It is the ground finishing what it started, and the fix is an adjustment rather than a part.',
+    faqs: [
+      {
+        q: 'Our gate is only three years old and has started catching. Is it faulty?',
+        a: 'Probably not. On new subdivisions built over worked farmland the made ground settles for several years, so the driveway and the post the gate was set against have both moved slightly since commissioning. Re-learning the travel and re-checking the force against the gate as it now sits usually resolves it, with no parts involved.',
+      },
+      {
+        q: 'Should we wait before having a gate installed on a new build?',
+        a: 'There is a real argument for it on ground this new. Waiting through a full wet and dry cycle lets the worst of the settlement happen before anything is set against the driveway, and it means the posts go into ground that has finished moving. If you would rather not wait, it is worth budgeting for a commissioning visit a couple of years in.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
