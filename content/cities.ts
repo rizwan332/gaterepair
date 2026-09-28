@@ -1684,6 +1684,243 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 4, 28 Sep 2026 ───────────────────────────────────────────────────
+  // Seven Tarrant County suburbs, and the hardest test the overlap gate has had
+  // — they adjoin each other, share a housing era and in three cases share a
+  // school district. Writing them from "mid-century Tarrant suburb" would have
+  // produced seven copies of one page, so each is anchored to a physical fact
+  // about its own ground: tree roots in Bedford, the airport in Euless, Big
+  // Fossil Creek in Haltom City, grain dust in Saginaw, limestone rather than
+  // clay in Azle, slope in Benbrook.
+  //
+  // `gateProfile` is a DRAFT on all seven.
+
+  bedford: {
+    zips: ['76021', '76022', '76095'],
+    neighborhoods: ['Stonegate', 'The Oaks of Bedford', 'Woodhill Estates', 'Oak Creek', 'Bedford Estates'],
+    landmarks: ['Old Bedford School', 'Boys Ranch Park', 'Bedford Trails', 'Central Drive corridor'],
+    majorRoads: ['SH 121 Airport Freeway', 'Harwood Road', 'Central Drive', 'Bedford Road'],
+    nearbyCities: ['hurst', 'euless', 'colleyville', 'north-richland-hills', 'grapevine', 'arlington'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Suburban streets built out in the 1960s and 1970s whose trees are now sixty years old and lifting everything they are planted beside',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'Eagle'],
+      commonIssues: [
+        'Tree roots lifting driveway slabs under the gate’s arc',
+        'Posts pushed out of plumb by root growth',
+        'Gates grounding where the drive has heaved',
+        'Photo-eye beams broken by grown shrubs and low branches',
+      ],
+    },
+    localAngle:
+      'Bedford is the middle city of the three that share the Hurst-Euless-Bedford school district, and it did most of its building in the 1960s and 1970s. The houses have aged gracefully; the trees planted with them have not stayed still. A post oak or live oak put in beside a new driveway in 1972 now has a root system wide enough to lift the slab it sits next to, and that is the single most common cause of gate trouble we find in this town. It shows up as a swing gate that has started scraping an arc on the concrete, or a post that has gone quietly out of plumb on the side the tree is on. Owners read both as the gate failing. They are the ground moving, and the fix is at the slab and the post rather than anywhere inside the operator. The other Bedford regular is simpler still: forty years of growth means shrubs and low branches now sit exactly where a photo-eye beam crosses the drive.',
+    faqs: [
+      {
+        q: 'Our driveway has lifted where the gate swings. Can the gate be adjusted to clear it?',
+        a: 'Sometimes there is enough adjustment to buy time, but it is worth understanding that the concrete is still moving. A root that has lifted a slab an inch will lift it further, so raising the gate is a stay of execution rather than a repair. We would rather show you what the root is doing and let you decide between grinding the high point, replacing that slab section, or accepting a yearly adjustment.',
+      },
+      {
+        q: 'Our gate stopped closing and nothing has changed. What should we look at?',
+        a: 'In Bedford, look at what has grown. A shrub or a low branch that has put on a season of growth in exactly the wrong place will break a photo-eye beam, and the operator then refuses to close because it correctly believes something is in the way. It is free to check and it accounts for a good share of the calls we take from these streets.',
+      },
+    ],
+  },
+
+  euless: {
+    zips: ['76039', '76040'],
+    neighborhoods: ['Villages of Bear Creek', 'Midway Park', 'Oak Park', 'Calloway Trails'],
+    landmarks: ['DFW International Airport', 'Texas Star Golf Course', 'Bear Creek Park', 'Euless Family Life Center'],
+    majorRoads: ['SH 360', 'SH 183 Airport Freeway', 'Euless Main Street', 'Industrial Boulevard'],
+    nearbyCities: ['bedford', 'hurst', 'grapevine', 'irving', 'arlington', 'colleyville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A city whose eastern edge is the DFW Airport boundary, so a large share of its gates secure businesses that never close',
+      commonGateTypes: ['Commercial slide', 'Cantilever slide', 'Barrier arm'],
+      commonBrands: ['DoorKing', 'LiftMaster', 'HySecurity', 'Viking'],
+      commonIssues: [
+        'Entrances cycling around the clock rather than twice a day',
+        'Barrier arms and ticket equipment on parking operations',
+        'Chain, track and roller wear far ahead of the operator',
+        'Access control tied to shift patterns rather than office hours',
+      ],
+    },
+    localAngle:
+      'Euless runs right up against the western boundary of DFW International, and that proximity decides what the gate work here looks like. Airport parking operations, freight and logistics yards, crew hotels and rental fleets all sit along SH 360 and the airport frontage, and none of them keeps office hours. A residential gate cycles perhaps six times a day. An airport parking entrance cycles hundreds of times, every day, including the days nobody wants a technician on site. What fails under that duty is almost never the motor — it is the chain, the track and the rollers, which wear out long before the operator notices, and then the operator strains against that wear until it fails too. So when we quote an entrance in Euless we measure the track and the chain first and price the whole entrance honestly, because replacing an operator on a worn track on a 24-hour site buys a few months at most.',
+    faqs: [
+      {
+        q: 'Our site runs 24 hours and we cannot close the entrance for a repair. How do you handle that?',
+        a: 'We plan around it rather than through it. On a continuously operating entrance we agree a window, keep the gate in a controlled manual state while we are working rather than simply open, and bring the parts we expect to need so the entrance is not sitting apart waiting on a delivery. If the site has a second entrance we will sequence the work to keep one of them live throughout.',
+      },
+      {
+        q: 'Our gate has needed three operators in five years. Is that normal?',
+        a: 'No, and it usually means the operator is not the problem. On a high-cycle entrance the chain, track and rollers wear first, and an operator asked to drag a gate over worn hardware will keep failing no matter how good it is. Three operators in five years is the signature of that. We would measure the running gear before selling you a fourth.',
+      },
+    ],
+  },
+
+  hurst: {
+    zips: ['76053', '76054'],
+    neighborhoods: ['Hurst Hills', 'Bellaire Place', 'Billy Creek Estates', 'Walker Oaks', 'Simpson Park'],
+    landmarks: ['North East Mall', 'Chisholm Park', 'Hurst Conference Center', 'Precinct Line Road corridor'],
+    majorRoads: ['SH 121 Airport Freeway', 'Precinct Line Road', 'Pipeline Road', 'Bedford Euless Road'],
+    nearbyCities: ['bedford', 'euless', 'north-richland-hills', 'richland-hills', 'colleyville', 'haltom-city'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The retail centre of the Mid-Cities, so a large share of its gates are the service yards and delivery bays behind the shopfronts',
+      commonGateTypes: ['Commercial slide', 'Service yard swing', 'Dumpster enclosure gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'All-O-Matic', 'Viking'],
+      commonIssues: [
+        'Delivery vehicles clipping gates and bending leaves',
+        'Gates left propped open and driven into',
+        'Enclosure gates taking daily impact from waste collection',
+        'Operators sited where trucks manoeuvre in tight yards',
+      ],
+    },
+    localAngle:
+      'Hurst is where the Mid-Cities does its shopping — North East Mall and the retail either side of Precinct Line Road — and the gate work reflects the back of those buildings rather than the front. Service yards, delivery bays and waste enclosures are the gates we are called to most here, and they fail in a way residential gates never do: by being hit. A delivery driver reversing a box truck in a yard designed for a smaller one clips the leaf, bends the frame a few degrees, and the gate starts binding at the same point in its travel from that day on. Waste enclosure gates take the same treatment weekly. That produces a specific repair pattern — straightening and re-squaring frames, replacing hinges that have absorbed an impact, moving an operator out of the swept path of a turning vehicle — and it is why we look at where the trucks actually go before we quote the gate.',
+    faqs: [
+      {
+        q: 'Our yard gate keeps getting hit by delivery vehicles. Is there anything that helps?',
+        a: 'Yes, and it is usually geometry rather than a stronger gate. Moving the operator out of the swept path, adding protective bollards, and in some cases changing from a swing to a slide so nothing projects into the manoeuvring area will end a cycle of damage that no amount of repair will. We would rather look at where the trucks actually turn than keep straightening the same leaf.',
+      },
+      {
+        q: 'The gate binds at one spot since it was hit. Does the whole thing need replacing?',
+        a: 'Usually not. A frame knocked a few degrees out of square binds at a predictable point, and re-squaring it and replacing the hinge that took the impact normally restores it. What we will check is whether the operator was strained while being asked to force the gate through that bind, because that damage is less visible and shows up later.',
+      },
+    ],
+  },
+
+  'haltom-city': {
+    zips: ['76117', '76137'],
+    neighborhoods: ['Diamond Oaks', 'Browning Heights', 'Fossil Springs', 'Haltom Acres', 'Meadow Oaks'],
+    landmarks: ['Big Fossil Creek', 'Diamond Oaks Country Club', 'Haltom City Public Library', 'Belknap Street corridor'],
+    majorRoads: ['Belknap Street', 'Loop 820', 'Denton Highway US-377', 'Broadway Avenue'],
+    nearbyCities: ['richland-hills', 'north-richland-hills', 'watauga', 'fort-worth', 'hurst', 'saginaw'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A city built across the Big Fossil Creek drainage, where a meaningful number of gates and operators sit on ground that floods',
+      commonGateTypes: ['Residential swing', 'Commercial slide', 'Side and yard gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'All-O-Matic'],
+      commonIssues: [
+        'Operators and boards mounted low enough to take flood water',
+        'Silt and creek debris packing slide gate tracks',
+        'Buried cable runs saturated in the drainage corridor',
+        'Corrosion following repeated wetting rather than constant damp',
+      ],
+    },
+    localAngle:
+      'Haltom City is laid out across the Big Fossil Creek drainage — the local place names give it away, with Fossil Springs, Fossil Ridge and Fossil Village all within the city — and that creek system is the thing that decides gate work here. Properties in the flood corridor do not get the slow humidity damage a lakeside house gets; they get sudden immersion, then weeks of drying, then immersion again. Equipment tolerates constant damp better than it tolerates that cycle. What we find after a wet spring is operators whose boards sat in water for an afternoon, buried cable runs saturated along their whole length, and slide tracks packed with creek silt that sets like mortar once the sun gets to it. The practical lesson, and the one we give owners here, is mounting height: a control box six inches higher survives a season that takes out one at ankle level, and that is a decision made once at installation rather than a repair.',
+    faqs: [
+      {
+        q: 'Our gate flooded and now works intermittently. Can it be saved?',
+        a: 'Often, but it depends what got wet and for how long. A board that was briefly immersed and dried properly sometimes survives; one that sat in water and was then powered up usually does not. We would rather assess it before you switch it back on, because powering up a wet board is frequently what finishes it off. Terminal corrosion and saturated cable runs are separately repairable.',
+      },
+      {
+        q: 'How do we stop this happening every time the creek comes up?',
+        a: 'Mounting height is the single most effective change, and it is cheap when done as part of a repair you are already paying for — moving the control box and any low-mounted sensors above the line the water actually reaches. Sealing the enclosure properly and re-routing a cable run out of the lowest ground are the other two. None of it makes the gate flood-proof, but it moves the equipment out of the water rather than trying to waterproof it in place.',
+      },
+    ],
+  },
+
+  saginaw: {
+    zips: ['76179', '76131'],
+    neighborhoods: ['Highland Station', 'Whisperwood Estates', 'Willow Creek Estates', 'Saginaw Heights'],
+    landmarks: ['Burrus grain elevators', 'Willow Creek Park', 'Saginaw Recreation Center', 'Knowles Drive corridor'],
+    majorRoads: ['SH 287 Business', 'Old Decatur Road', 'Knowles Drive', 'Bailey Boswell Road'],
+    nearbyCities: ['fort-worth', 'haslet', 'lake-worth', 'azle', 'haltom-city', 'watauga'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town built around grain elevators and three rail lines, where airborne dust is a permanent condition rather than a weather event',
+      commonGateTypes: ['Commercial slide', 'Cantilever slide', 'Residential swing'],
+      commonBrands: ['DoorKing', 'LiftMaster', 'HySecurity', 'All-O-Matic'],
+      commonIssues: [
+        'Fine grain and industrial dust packing tracks and bearings',
+        'Dust drawn into operator housings and onto boards',
+        'Photo-eye lenses dulled by airborne particulate',
+        'Sealed bearings failing early in a permanently dusty environment',
+      ],
+    },
+    localAngle:
+      'Saginaw grew up around the Burrus Mill elevators — at one point the largest grain elevator in Texas and the second largest in the country — and around the three rail lines that were built through here in the 1880s. Both are still working, and both put fine particulate into the air continuously. That is a specific and unusual problem for gate equipment. Grit that arrives with a storm can be swept out; dust that settles every day cannot, and it gets everywhere a seal is imperfect. We see rollers and bearings in this town fail at a fraction of the life they would manage ten miles away, photo-eye lenses that go dull rather than dirty, and operator housings with a film of dust across the board inside. The answer is not better sweeping. It is specifying sealed hardware to begin with, and accepting that a service interval which is generous elsewhere is simply too long in Saginaw.',
+    faqs: [
+      {
+        q: 'Our rollers keep wearing out and the gate is only a few years old. Why?',
+        a: 'Almost certainly the dust. An unsealed bearing in a permanently dusty environment is a consumable rather than a component — the particulate acts as a grinding compound and takes out a bearing in a fraction of its rated life. Fitting sealed rollers appropriate to these conditions costs a little more once and stops the annual replacement.',
+      },
+      {
+        q: 'How often should equipment here be serviced?',
+        a: 'More often than a manufacturer’s schedule assumes, because those intervals are written for ordinary suburban air. In practice that means clearing tracks and wiping sensor lenses on a routine rather than waiting for a fault, and checking enclosure seals annually rather than when something goes wrong. It is a small amount of attention that prevents most of what we get called out for here.',
+      },
+    ],
+  },
+
+  azle: {
+    zips: ['76020'],
+    // Azle straddles the Tarrant/Parker county line; the city is recorded here
+    // under Tarrant, which is where most of it sits.
+    neighborhoods: ['Silver Creek', 'Deer Glade', 'Oak Harbor Estates', 'The Orchard', 'Cross Timbers'],
+    landmarks: ['Eagle Mountain Lake', 'Azle Memorial Library', 'Shady Grove Park', 'SH 199 corridor'],
+    majorRoads: ['SH 199 Jacksboro Highway', 'FM 730', 'Stewart Street', 'Boyd Road'],
+    nearbyCities: ['lake-worth', 'saginaw', 'springtown', 'fort-worth', 'weatherford', 'briar'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Twenty miles north-west of Fort Worth on Eagle Mountain Lake, where the ground is limestone and rock rather than the clay the rest of the metroplex sits on',
+      commonGateTypes: ['Ranch entrance swing', 'Driveway slide', 'Wide farm gate'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'Ramset'],
+      commonIssues: [
+        'Post footings in rock rather than soil, which changes how they fail',
+        'Long drives on acreage away from mains power',
+        'Rocky, uneven ground under a gate’s swing arc',
+        'Lake-edge lots with steep or awkward access',
+      ],
+    },
+    localAngle:
+      'Azle sits about twenty miles north-west of Fort Worth on Eagle Mountain Lake, which was impounded in 1932, and it straddles the Tarrant and Parker county line. The interesting thing about working here is underfoot. Most of this metroplex sits on Blackland Prairie clay that swells and shrinks by season, and almost everything we tell owners about leaning posts and heaving driveways assumes that. Azle is in the Cross Timbers, where the ground is limestone and rock, and gate posts behave completely differently in it. They do not drift with the seasons the way a post in clay does — but a footing that was poured into a shallow rock pocket has nowhere to go and nothing to grip, and when it lets go it tends to do so suddenly rather than gradually. So the diagnosis reverses: in Fort Worth a leaning post is usually seasonal movement, and in Azle it is usually a footing that was never properly keyed into the rock.',
+    faqs: [
+      {
+        q: 'Our gate post has suddenly gone over and there was no warning. Is that normal here?',
+        a: 'It is more common here than east of Fort Worth, and the ground is why. In clay a post leans gradually as the soil moves with the seasons, so you get years of warning. In the rock out here a footing either holds or it does not, and a shallow one poured into a rock pocket can sit solid for a decade and then let go in a single wet spell. The repair is about keying properly into the rock rather than simply pouring more concrete.',
+      },
+      {
+        q: 'Do you come out this far west?',
+        a: 'Yes — Azle, Springtown and out toward Weatherford are all within the area we work. It is worth telling us the road you are on when you call, because access on the lake side can be slow and we would rather plan for it than arrive later than we told you.',
+      },
+    ],
+  },
+
+  benbrook: {
+    zips: ['76126', '76116', '76132', '76109'],
+    neighborhoods: ['Whitestone Ranch', 'Ridglea Country Club Estates', 'Timbercreek Estates', 'Mira Vista', 'Hencken Ranch'],
+    landmarks: ['Benbrook Lake', 'Whitestone Golf Course', 'Dutch Branch Park', 'Benbrook Stables'],
+    majorRoads: ['US-377 Benbrook Highway', 'I-20', 'Winscott Road', 'Vega Drive'],
+    nearbyCities: ['fort-worth', 'crowley', 'aledo', 'white-settlement', 'weatherford', 'forest-hill'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The hilly south-western corner of Tarrant County, where a large share of driveways run up or down a genuine slope',
+      commonGateTypes: ['Sloped-drive swing', 'Driveway slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'Elite', 'All-O-Matic', 'US Automatic'],
+      commonIssues: [
+        'Swing gates fighting gravity on an inclined driveway',
+        'Gates that will not stay where they are put on a slope',
+        'Water running down a drive into the operator and track',
+        'Ground clearance changing across the arc on uneven terrain',
+      ],
+    },
+    localAngle:
+      'Benbrook occupies the south-western corner of Tarrant County around Benbrook Lake, and unlike most of the metroplex it has real topography — the land rolls, and a great many driveways here run up or down a meaningful grade. That is the defining constraint on gate work in this town. A swing gate on a slope is not the same machine as a swing gate on the flat: gravity assists it in one direction and fights it in the other, so an operator sized for a level drive will labour one way and slam the other, ground clearance changes across the arc, and a leaf that sits perfectly at the closed position may foul halfway through. It is also why water matters here more than rain totals suggest — a drive that falls toward the gate delivers everything it collects straight into the track and the operator housing. Getting this right is a specification decision made before anything is fitted, which is why we would rather walk the slope than quote from a photograph.',
+    faqs: [
+      {
+        q: 'Our driveway slopes. Does that change what gate we can have?',
+        a: 'It changes the specification quite a lot. A swing gate on a grade has gravity helping it one way and resisting it the other, and ground clearance shifts as the leaf travels — so the hardware, the operator rating and sometimes the hinge type all differ from a level installation. On steeper drives a slide gate running across the slope rather than through it is often the better answer. It is worth us seeing the actual fall before recommending anything.',
+      },
+      {
+        q: 'Water runs down our drive and the gate sits at the bottom. Is that a problem?',
+        a: 'It is one of the more common causes of repeat failures here. Everything the driveway collects — water, grit, leaf litter — arrives at the lowest point, which is exactly where the track and often the operator are. Sorting the drainage, or moving the operator up out of the run, usually does more for reliability than any amount of replacing what the water keeps damaging.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
