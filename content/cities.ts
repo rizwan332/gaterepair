@@ -2374,6 +2374,114 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 8, 28 Sep 2026 ───────────────────────────────────────────────────
+  // Three cities east of Dallas. Anchors:
+  //   heath   east shore of Ray Hubbard, facing the lake's widest fetch, so
+  //           weather arrives from one consistent direction
+  //   fate    a commuter town on I-30 where the whole population leaves in a
+  //           two-hour window, which decides what a stuck gate costs
+  //   forney  the Blackland Prairie meets the Post Oak Belt here, so soil can
+  //           change across a single frontage
+  //
+  // Royse City, Terrell, Kaufman and Crandall are NOT here - fewer than three
+  // verifiable subdivision names each.
+
+  heath: {
+    zips: ['75032'],
+    neighborhoods: ['Buffalo Creek', 'Heath Golf & Yacht Club', 'Antigua Bay', 'Yankee Creek'],
+    landmarks: ['Lake Ray Hubbard', 'Heath Golf & Yacht Club', 'Terry Park', 'Towne Center'],
+    majorRoads: ['FM 740 Horizon Road', 'FM 1140', 'Smirl Drive', 'Hubbard Drive'],
+    nearbyCities: ['rockwall', 'rowlett', 'fate', 'sunnyvale', 'forney', 'royse-city'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'On the east shore of Ray Hubbard, facing the widest stretch of open water, so weather arrives from one consistent direction',
+      commonGateTypes: ['Estate driveway swing', 'Ornamental iron swing', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Enclosure seals failing on the lake-facing side first',
+        'Wind-driven rain forced past gaskets that would cope elsewhere',
+        'Corrosion concentrated on one face of the hardware',
+        'Photo-eyes on the exposed side needing more frequent attention',
+      ],
+    },
+    localAngle:
+      'Heath occupies the east shore of Lake Ray Hubbard, which means it looks out across the widest open stretch of that lake with nothing between it and the prevailing weather. That geography produces something we can genuinely predict before arriving: the damage here is directional. Wind-driven rain crossing several miles of open water arrives with force behind it, and a gasket that would shed ordinary rainfall for fifteen years gets water pushed past it from one consistent side. So on a Heath call we expect to find the lake-facing face of everything in worse condition than the sheltered one — the west side of an enclosure corroded while the east is clean, the photo-eye on the exposed post needing attention twice as often as its partner. It is a useful thing to know because the repair is asymmetric too. Renewing the seal on the weather side and leaving the other is often the proportionate answer rather than replacing a housing that is only half worn out.',
+    faqs: [
+      {
+        q: 'One of our two photo-eyes keeps failing and the other never does. Why?',
+        a: 'Exposure. On this shore the weather comes consistently off the open water, so the sensor on the lake-facing post takes wind-driven rain and sun that the sheltered one never sees. It is not a faulty unit so much as a harder posting. Hooding it, or fitting a housing rated for that exposure on that side only, usually ends the cycle.',
+      },
+      {
+        q: 'Does living on the water mean replacing equipment more often?',
+        a: 'It means maintaining it more often, which is cheaper. What fails here is seals and exposed hardware rather than operators, and those are small parts caught early. The expensive version is leaving a perished gasket until water has reached the board, which is a different order of repair for the sake of a component worth very little.',
+      },
+    ],
+  },
+
+  fate: {
+    zips: ['75087', '75189'],
+    neighborhoods: ['Woodcreek', 'Williamsburg', 'Chamberlain Crossing', 'Monterra', 'Edgewater'],
+    landmarks: ['Historic Fate', 'Woodcreek amenity centre', 'I-30 corridor', 'Fate Village'],
+    majorRoads: ['I-30', 'FM 551', 'FM 552', 'Ben Payne Road'],
+    nearbyCities: ['rockwall', 'royse-city', 'heath', 'wylie', 'princeton', 'farmersville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A commuter town on I-30 where most of the population leaves inside the same two hours, so a stuck gate has a deadline',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Barrier arm'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Viking'],
+      commonIssues: [
+        'Faults discovered at 7am with a household already late',
+        'Community entrances carrying their whole day in two peaks',
+        'Wear concentrated into narrow windows rather than spread out',
+        'Manual release needed by people who have never used it',
+      ],
+    },
+    localAngle:
+      'Fate grew from a village of a few hundred into a town of tens of thousands almost entirely on the back of I-30, and it is a commuter town in the strict sense: a very large share of its residents leave for Dallas inside the same two-hour window and come back inside another. That concentrates everything. A community entrance here does not do its cycles evenly through the day, it does most of them twice, which wears running gear faster than the raw daily count suggests. More to the point, it decides what a failure costs. A gate that fails at eleven in the morning is an inconvenience; the same fault at ten past seven strands a household that is already late, and that is when most Fate calls come in. It is why we push the manual release conversation harder here than almost anywhere — knowing where yours is, before the morning you need it, turns an emergency into a phone call you can make from the office.',
+    faqs: [
+      {
+        q: 'Our gate failed at 7am and we could not get out. What should we have done?',
+        a: 'Used the manual release, which every operator has — usually a key or lever on the housing that disconnects the motor so the gate can be pushed by hand. It is worth finding yours on a calm Saturday rather than in the dark on a weekday. Call us and we will talk you through it for your model, and we would rather do that free than have you trapped.',
+      },
+      {
+        q: 'Our community gate seems to wear out faster than it should. Is it a bad installation?',
+        a: 'Not necessarily. A commuter community concentrates its traffic into two short peaks rather than spreading it across the day, and running gear wears on how hard it is worked rather than on the clock. That is why an entrance here can need its chain and rollers attended to on a schedule that looks aggressive next to a quieter town with a similar number of homes.',
+      },
+    ],
+  },
+
+  forney: {
+    zips: ['75126'],
+    neighborhoods: ['Devonshire', 'Heartland', 'Windmill Farms', 'Travis Ranch', 'Clements Ranch', 'Gateway Parks'],
+    landmarks: ['Historic Downtown Forney', 'Forney Community Park', 'US-80 corridor', 'Spyglass Pond Park'],
+    majorRoads: ['US-80', 'FM 548', 'FM 741', 'Pinson Road'],
+    nearbyCities: ['terrell', 'crandall', 'mesquite', 'sunnyvale', 'heath', 'kaufman'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Where the Blackland Prairie gives way to the Post Oak Belt, so soil can change materially across a single frontage',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Two posts on one gate behaving differently from each other',
+        'A gate racking because one side moves and the other does not',
+        'Footings specified to one soil type across a transition',
+        'Alignment drifting in one direction rather than evenly',
+      ],
+    },
+    localAngle:
+      'Forney sits on the line where the Blackland Prairie runs out and the Post Oak Belt begins, and that transition is not tidy — it can run through a single property. The consequence for gate work is genuinely unusual and it catches out installers who have only worked further west. A gate has two posts, and in Forney those two posts can be standing in materially different ground: one in heavy clay that swells and shrinks with the season, the other in sandier soil that drains and settles instead. They therefore move differently, at different times, in different directions. What the owner sees is a gate that has gone out of square rather than simply out of plumb — a leaf that no longer meets its latch squarely, or a slide gate whose track has developed a twist. Diagnosing that as an operator fault is easy and wrong, and the repair has to treat each post on its own terms rather than assume both need the same thing.',
+    faqs: [
+      {
+        q: 'Our gate has gone out of square rather than just dropping. What causes that?',
+        a: 'Very often, in Forney, the two posts standing in different soil. This is the transition between the Blackland Prairie and the Post Oak Belt, and that boundary can cross a single frontage — so one post can be in clay that swells seasonally while the other is in sand that settles. They move differently and the gate racks between them. Each post then needs assessing separately rather than as a pair.',
+      },
+      {
+        q: 'Our installer set both footings the same. Was that wrong?',
+        a: 'It is the normal approach and it is right almost everywhere else, which is why it is easy to get caught here. Where the soil genuinely changes across the opening, footings sized and bedded to one type will behave well on one side and poorly on the other. It is worth checking what each post is actually standing in before re-setting either.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
