@@ -2867,6 +2867,227 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 10, 28 Sep 2026 — TIER 3 ─────────────────────────────────────────
+  // The last seven Tier 3 towns on the client's keyword list. `neighborhoods`
+  // omitted where no register exists, as in batch 9.
+
+  'balch-springs': {
+    zips: ['75180'],
+    landmarks: ['Balch Springs Civic Center', 'Elam Road corridor', 'Balch Springs Historical Museum', 'I-635 and US-175 junction'],
+    majorRoads: ['I-635', 'US-175', 'Elam Road', 'Seagoville Road'],
+    nearbyCities: ['mesquite', 'seagoville', 'dallas', 'sunnyvale', 'hutchins', 'combine'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Founded around springs that never ran dry, so groundwater here emerges at particular points rather than sitting evenly under the whole city',
+      commonGateTypes: ['Residential swing', 'Yard and storage gate', 'Commercial slide'],
+      commonBrands: ['LiftMaster', 'Viking', 'Eagle', 'DoorKing'],
+      commonIssues: [
+        'Wet ground appearing on one part of a property and not another',
+        'Footings set in soil that stays saturated year-round',
+        'Buried runs crossing ground that never dries out',
+        'Two posts on one gate in very different moisture conditions',
+      ],
+    },
+    localAngle:
+      'Balch Springs is named for exactly what brought the Balch family here around 1870 — three springs, one of which never ran dry, kept cleaned and bricked up as a gathering place. That detail is still relevant to gate work, because a spring is not the same thing as generally damp ground. Water emerging under pressure at particular points produces saturated patches that can sit a few yards from soil that behaves perfectly normally. We have seen gates on this side of Dallas County where one post is set in ground that has stayed wet for decades and the other is entirely dry, and the two have moved in opposite directions as a result. It is easy to misread as poor workmanship. The practical response is to find out what each post is actually standing in before deciding how to re-set it, rather than assuming a single soil condition across an opening.',
+    faqs: [
+      {
+        q: 'One side of our gate has sunk and the other has not. What causes that?',
+        a: 'Very often, around here, water. Springs and seeps mean saturated ground can sit a few yards from soil that is behaving normally, so one post can be in permanently wet conditions while its partner is dry. They then settle differently and the gate racks between them. Each post needs assessing on what it is actually standing in rather than as a matched pair.',
+      },
+      {
+        q: 'Can anything be done about permanently wet ground at the gate?',
+        a: 'Usually yes, and it is drainage rather than concrete. Directing water away from the footing, and bedding it so it is not sitting in a bowl, makes far more difference than pouring a bigger one. Where the ground genuinely cannot be drained, the footing gets designed for that condition instead of fought against.',
+      },
+    ],
+  },
+
+  'glenn-heights': {
+    zips: ['75154'],
+    landmarks: ['Glenn Heights City Hall', 'Heritage Park', 'I-35E corridor', 'Hampton Road corridor'],
+    majorRoads: ['I-35E', 'Hampton Road', 'Bear Creek Road', 'Ovilla Road'],
+    nearbyCities: ['red-oak', 'desoto', 'lancaster', 'ovilla', 'cedar-hill', 'midlothian'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Straddling the Dallas and Ellis county line, so neighbouring properties can sit in different counties with different records',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Eagle'],
+      commonIssues: [
+        'Permitting and records split between two counties',
+        'Utility and service boundaries not matching city limits',
+        'Confusion over which authority covers a given street',
+        'Eagle Ford ground movement shared with its southern neighbours',
+      ],
+    },
+    localAngle:
+      'Glenn Heights incorporated in 1969 and sits west of I-35E about sixteen miles south of Dallas, with an unusual administrative feature: the city straddles the Dallas and Ellis county line. Two houses on the same road can be in different counties, and that has practical consequences that catch people out — permits, property records and sometimes utility providers differ depending which side of an invisible line a driveway sits on. For gate work it matters mostly when something needs consent or when a claim or a record has to be traced, and the honest answer is that we check rather than assume. Underneath, the ground is the same Eagle Ford story as DeSoto and Red Oak to either side, so the gates here move for the same reason and on the same sort of cycle as their neighbours, whichever county they happen to be filed under.',
+    faqs: [
+      {
+        q: 'Which county are we in? It seems to change depending on who we ask.',
+        a: 'It genuinely might. Glenn Heights straddles the Dallas and Ellis county line, so neighbouring streets can fall under different counties for records and permits. If anything about a job needs consent or documentation we will confirm which side your property is on rather than assume, because getting it wrong wastes a week.',
+      },
+      {
+        q: 'Our gate has gone out of alignment. Is that the soil here?',
+        a: 'Very likely. This is the same Eagle Ford ground as DeSoto and Red Oak either side of you, and it moves more than the clay under the northern suburbs. A gate post is a lever with a heavy leaf on it, so it shows that movement long before a house slab does. The fix is footing and drainage rather than anything inside the operator.',
+      },
+    ],
+  },
+
+  kaufman: {
+    zips: ['75142'],
+    landmarks: ['Kaufman County Courthouse', 'Historic Courthouse Square', 'King’s Fort site', 'US-175 corridor'],
+    majorRoads: ['US-175', 'US-ct 34', 'SH 243', 'Washington Street'],
+    nearbyCities: ['crandall', 'terrell', 'forney', 'scurry', 'kemp', 'mabank'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The county seat since 1848, so a courthouse-square core of civic and commercial premises with working farmland immediately beyond it',
+      commonGateTypes: ['Commercial slide', 'Ranch entrance swing', 'Wide farm gate'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Civic and commercial gates with public accountability for access',
+        'Farm entrances a few minutes from the courthouse square',
+        'Older downtown premises with constrained frontages',
+        'Long rural drives without mains power at the gate',
+      ],
+    },
+    localAngle:
+      'Kaufman has been the seat of its county since 1848, built on the site William P. King settled as King’s Fort, and it still works the way a county town does — a courthouse square with civic and commercial premises around it, and farmland starting almost immediately beyond. That produces two quite different kinds of gate within a few minutes of each other. Around the square, access tends to be about accountability: who can get into a yard or a compound, recorded and revocable, on premises with tight frontages where there is little room to manoeuvre. Out on the county roads it is the familiar rural picture of long drives, wide openings and no power near the entrance. What connects them is that neither is the suburban driveway most gate equipment is marketed for, and specifying from a residential catalogue tends to disappoint in both directions.',
+    faqs: [
+      {
+        q: 'We need to control and record who gets into a yard. Is that complicated?',
+        a: 'Not especially, and it is worth doing properly rather than issuing everyone the same code. Individual codes or credentials mean access can be given and withdrawn one person at a time and you can see what was used when. On a commercial or civic site that is usually the point of the gate rather than an extra.',
+      },
+      {
+        q: 'Our entrance is a long way out on a county road. Does that change what you can fit?',
+        a: 'It changes the power question more than the gate. With no mains at the entrance, solar with a battery sized to your actual daily cycles is normally the answer, and it works well provided the sizing reflects real use rather than an average. Tell us the drive length and whether power is anywhere near when you call.',
+      },
+    ],
+  },
+
+  terrell: {
+    zips: ['75160', '75161'],
+    landmarks: ['British Flying Training School Museum', 'Terrell Municipal Airport', 'Historic Downtown Terrell', 'Iris Theatre'],
+    majorRoads: ['I-20', 'US-80', 'SH 34', 'Moore Avenue'],
+    nearbyCities: ['forney', 'kaufman', 'crandall', 'talty', 'poetry', 'scurry'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The county’s largest town, with an airfield that trained RAF cadets from 1941 and an industrial corridor along I-20',
+      commonGateTypes: ['Commercial slide', 'Cantilever slide', 'Ranch entrance swing'],
+      commonBrands: ['DoorKing', 'LiftMaster', 'HySecurity', 'All-O-Matic'],
+      commonIssues: [
+        'Airfield and industrial perimeters rather than driveways',
+        'Wide openings for aircraft, plant and freight',
+        'Exposed sites with no wind break across open ground',
+        'Long fence lines with several controlled entrances',
+      ],
+    },
+    localAngle:
+      'Terrell is the largest town in Kaufman County and it has an unusual piece of history attached: in 1941 the British chose the open skies over this county for the first of seven flying schools where RAF cadets trained before going to war, and the museum on the airfield is still there. The airfield is the useful fact for us, because airfield and industrial perimeters behave nothing like driveways. Openings have to be wide enough for aircraft, plant or freight rather than a car; fence lines are long and often carry several controlled entrances; and the sites themselves sit on open ground with nothing upwind, so a gate leaf takes wind loads that a sheltered suburban installation never sees. Combined with the I-20 industrial frontage, that makes Terrell a town where most of what we do is commercial-duty work rather than residential, and we specify for it accordingly.',
+    faqs: [
+      {
+        q: 'We need a gate wide enough for plant and trailers. What is the limit?',
+        a: 'Wider than most people expect is achievable, but past a certain span a single swing leaf becomes impractical — it needs somewhere to open into and it catches wind badly. Cantilever slides handle large openings better and do not depend on ground track. We size from the widest thing that will actually pass through rather than from a catalogue.',
+      },
+      {
+        q: 'Our gate is on open ground and the wind gets behind it. Does that matter?',
+        a: 'It matters more than most people assume. On exposed sites a solid leaf is a sail, and gusts can force it past its stops and bend an arm without anyone touching it. Properly rated stops, a positive latch when closed, and sometimes reducing the solid area are what prevent it — a stronger operator does not.',
+      },
+    ],
+  },
+
+  crandall: {
+    zips: ['75114'],
+    landmarks: ['Crandall town centre', 'Texas Trunk Line rail alignment', 'US-175 corridor', 'Crandall ISD campuses'],
+    majorRoads: ['US-175', 'FM 148', 'FM 3039', 'Main Street'],
+    nearbyCities: ['kaufman', 'forney', 'seagoville', 'combine', 'terrell', 'scurry'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'An 1880 railway town on US-175, now taking commuter growth onto what was farmland a few years ago',
+      commonGateTypes: ['Residential swing', 'Ranch entrance swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'Elite', 'DoorKing'],
+      commonIssues: [
+        'New subdivisions on recently worked farmland',
+        'Made ground settling under new drives and footings',
+        'Long-standing farm entrances on the same roads',
+        'Commuter traffic concentrating gate use into two peaks',
+      ],
+    },
+    localAngle:
+      'Crandall exists because the Texas Trunk Line Railway came through in 1880 and Rev. C. F. Crandall gave it a right of way across his land, and for most of the following century it stayed a small farming town on that line. US-175 has changed that, and the town is now taking commuter growth from Dallas onto ground that was being worked very recently. The practical consequence is one we see across this whole eastern edge: subdivisions built on made ground that has not finished settling, sitting alongside farm entrances that have been in place for forty years. A new gate here will often need re-commissioning at two or three years old because the driveway it was set against has moved; the farm gate up the road needs parts nobody makes any more. Knowing which of those two conversations we are having saves a good deal of time, which is why we ask the age of the installation first.',
+    faqs: [
+      {
+        q: 'Our new-build gate has started catching. Is it faulty?',
+        a: 'Usually not. On ground that was farmland until recently, the fill under a new drive settles for several years, so the surface and the posts the gate was commissioned against have both shifted slightly. Re-learning the travel against the gate as it now sits normally resolves it and needs no parts.',
+      },
+      {
+        q: 'Can you still get parts for an old farm gate operator?',
+        a: 'Sometimes, and where we cannot we will tell you before you spend anything. The posts, hinges and gate itself usually have years left even when the operator is unsupported, so fitting a current unit to the existing installation is far cheaper than replacing everything.',
+      },
+    ],
+  },
+
+  melissa: {
+    zips: ['75454'],
+    landmarks: ['Historic Melissa', 'Houston and Texas Central rail alignment', 'Texas Electric Railway interurban route', 'US-75 corridor'],
+    majorRoads: ['US-75', 'SH 121', 'FM 545', 'Central Street'],
+    nearbyCities: ['anna', 'mckinney', 'princeton', 'celina', 'blue-ridge', 'van-alstyne'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Laid out along an 1872 railway and later crossed by the Dallas–Denison interurban, so old rail alignments still constrain where drives and gates can sit',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Frontages shaped by embankments and old rail rights of way',
+        'Drives meeting roads at awkward angles near crossings',
+        'Sight lines constrained by raised alignments',
+        'New development fitting around century-old land divisions',
+      ],
+    },
+    localAngle:
+      'Melissa was laid out in 1872 when the Houston and Texas Central built through, and it was crossed again in 1908 by the Texas Electric Railway interurban running between Dallas and Denison. Two rail alignments through one small town leave a mark that outlives the track. Embankments, cuttings and old rights of way still shape where roads run and how properties meet them, and a surprising number of frontages here approach the road at an angle inherited from a railway rather than from anything about the land. For gate work that shows up as geometry: drives that meet the road obliquely give a gate less room to open into and worse sight lines when pulling out, and it changes where safety devices should sit and how long the gate should hold open. It is worth measuring rather than assuming a square frontage, because in Melissa a good many of them are not.',
+    faqs: [
+      {
+        q: 'Our driveway meets the road at an angle. Does that affect the gate?',
+        a: 'It affects the geometry quite a lot. An angled frontage gives a swing gate less clear arc and gives you worse visibility when pulling out, so the position of the photo-eyes and the hold-open time both want setting for that rather than to a default. On tighter angles a slide is often the safer configuration.',
+      },
+      {
+        q: 'Is there anything unusual about older properties here?',
+        a: 'Mostly the land divisions rather than the buildings. Boundaries here follow rail rights of way that are a century and a half old, so frontages and access points can be shaped by something that is no longer visible. We would rather measure the site than work from a plan that assumes a rectangle.',
+      },
+    ],
+  },
+
+  'lowry-crossing': {
+    zips: ['75069', '75407'],
+    landmarks: ['East Fork Trinity bottomland', 'FM 1827 corridor', 'Lowry Crossing City Hall', 'Wilson Creek'],
+    majorRoads: ['FM 1827', 'SH 5', 'US-380', 'County Road 383'],
+    nearbyCities: ['mckinney', 'princeton', 'lucas', 'lavon', 'nevada', 'parker'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A small city with a McKinney postal address, so residents frequently do not know which municipality they are actually in',
+      commonGateTypes: ['Ranch entrance swing', 'Driveway slide', 'Wide farm gate'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'Elite'],
+      commonIssues: [
+        'Address and jurisdiction confusion delaying the right response',
+        'Acreage entrances well back from the road',
+        'Bottomland ground that holds water near the creeks',
+        'Long drives with no power at the entrance',
+      ],
+    },
+    localAngle:
+      'Lowry Crossing is a city of under two thousand people that most of its own residents give a McKinney address for, because that is what the post office uses. It is a small thing that causes a disproportionate amount of confusion: people are genuinely unsure which municipality they live in, which matters when something needs a permit, when a utility is involved, or simply when someone is trying to find the property. We ask for the road and the nearest cross street here rather than the city, because a McKinney postcode covers an enormous area and the difference between the two can be twenty minutes of driving. Beyond that the work is what the land dictates — acreage entrances set well back from the road, bottomland near the creeks that holds water longer than the higher ground, and drives long enough that power at the gate is a question rather than an assumption.',
+    faqs: [
+      {
+        q: 'Our address says McKinney but we are told we live in Lowry Crossing. Which is it?',
+        a: 'Both, in a sense — the postal address is McKinney while the municipality is Lowry Crossing, which is normal here and causes endless confusion. For our purposes the road and nearest cross street matter far more than the city name, so that is what we will ask for. For permits and utilities, the municipality is the one that counts.',
+      },
+      {
+        q: 'Our gate sits on low ground near the creek. Does that need anything different?',
+        a: 'It changes where equipment should sit more than what equipment you need. Bottomland holds water long after the higher ground has dried, so mounting the control box and any low sensors above the level water actually reaches, and bedding the footings so they are not sitting in a bowl, is what makes the difference over time.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
