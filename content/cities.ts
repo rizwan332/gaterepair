@@ -3088,6 +3088,428 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 11, 28 Sep 2026 — THE LAST TWELVE ────────────────────────────────
+  // Completes every city on the client's master keyword list. Subdivision
+  // names for these came from city and county subdivision directories fetched
+  // directly rather than from search summaries, which is why this batch
+  // cleared the three-name requirement where earlier attempts did not.
+
+  addison: {
+    zips: ['75001'],
+    neighborhoods: ['Addison Place', 'Bellbrook Estates', 'Waterford Park', 'Oaks North', 'Midway Meadows'],
+    landmarks: ['Addison Airport', 'Addison Circle', 'Cavanaugh Flight Museum', 'Belt Line restaurant district'],
+    majorRoads: ['Dallas North Tollway', 'Belt Line Road', 'Midway Road', 'Addison Road'],
+    nearbyCities: ['farmers-branch', 'carrollton', 'dallas', 'richardson', 'plano', 'coppell'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Four square miles holding a small resident population and a very large daytime one, so most gates serve businesses rather than households',
+      commonGateTypes: ['Service court gate', 'Commercial slide', 'Parking and barrier arm'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'HySecurity', 'Viking'],
+      commonIssues: [
+        'Gates in service courts with almost no room to manoeuvre',
+        'Access needed by staff shifts and deliveries rather than residents',
+        'Waste and delivery vehicles striking gates in tight yards',
+        'Equipment sited where a building leaves barely enough space',
+      ],
+    },
+    localAngle:
+      'Addison packs an airport, one of the densest restaurant concentrations in Texas and a very large daytime working population into a little over four square miles, on top of a resident population that is small by comparison. Almost nothing we do here is a driveway. It is service courts behind restaurants, delivery yards between office buildings, and parking controls — gates fitted into whatever space was left once the buildings went up. That constraint is the defining one: there is frequently no room to site an operator clear of where a vehicle has to turn, and the damage that follows is predictable. We spend more time in Addison working out where a gate and its operator can physically live than we do choosing the equipment, because on a tight service court the wrong position guarantees the gate will be hit rather than merely risks it.',
+    faqs: [
+      {
+        q: 'Our service yard is tight and the gate keeps getting hit. What can be done?',
+        a: 'Usually geometry rather than a stronger gate. Moving the operator out of the swept path, adding protection at the vulnerable corner, and sometimes changing from a swing to a slide so nothing projects into the manoeuvring space will break the cycle. We would rather watch where your vehicles actually turn than keep repairing the same leaf.',
+      },
+      {
+        q: 'We need access to work for staff on shifts and for deliveries. Is that straightforward?',
+        a: 'Yes, and it is worth setting up rather than issuing one code to everyone. Separate credentials for staff, cleaners and regular deliveries mean access can be withdrawn individually and you can see what was used when, which matters far more on a commercial site than the convenience does.',
+      },
+    ],
+  },
+
+  'farmers-branch': {
+    zips: ['75234', '75244'],
+    neighborhoods: ['Brookhaven Estates', 'Brookhaven Hills', 'Mercer Crossing', 'Valwood Park', 'Town North Estates'],
+    landmarks: ['Farmers Branch Historical Park', 'Valwood industrial district', 'Mercer Crossing', 'Elm Fork Trinity River'],
+    majorRoads: ['I-35E', 'I-635', 'Valley View Lane', 'Josey Lane'],
+    nearbyCities: ['addison', 'carrollton', 'dallas', 'irving', 'coppell', 'university-park'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'An inner-ring suburb redeveloping former industrial ground, where digging a new footing means finding out what is already buried',
+      commonGateTypes: ['Commercial slide', 'Residential swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'All-O-Matic'],
+      commonIssues: [
+        'Old slabs, footings and services under new installations',
+        'Buried utilities in unexpected places on redeveloped land',
+        'Made ground of unknown depth and composition',
+        'Industrial and residential gates within a few streets',
+      ],
+    },
+    localAngle:
+      'Farmers Branch is one of the oldest settlements in Dallas County and one of its most industrially developed, with the Valwood district occupying a large share of the city. What is changing it now is redevelopment — Mercer Crossing and schemes like it are residential and mixed-use built over ground that was industrial for decades. That history is invisible from the surface and it is the thing that complicates gate work here more than anything else. Setting a post on redeveloped land frequently means encountering an old slab, a disused footing, or a service run that appears on no current drawing, and hitting any of those turns a straightforward installation into a different job. We check what is under the ground here before quoting a footing rather than after, because on this land the assumption that a post hole is just soil is the one most likely to be wrong.',
+    faqs: [
+      {
+        q: 'We are told the ground here has old industrial foundations in it. Does that affect a gate?',
+        a: 'It can, quite a lot. A post needs a footing at a proper depth, and on redeveloped land that depth may be occupied by an old slab or a disused service. It is better to find out before the quote than during the dig, so on this ground we check rather than assume, and we will tell you if the position needs moving a few feet to get a sound footing.',
+      },
+      {
+        q: 'Our gate is an older commercial one on an industrial unit. Can it be modernised?',
+        a: 'Usually yes, and the mechanical parts often have years left. Where the operator is unsupported, fitting a current unit and modern safety devices to the existing gate and posts costs far less than replacing the installation, and it brings the entrapment protection up to present standards, which on a commercial site matters for more than compliance.',
+      },
+    ],
+  },
+
+  sachse: {
+    zips: ['75048'],
+    neighborhoods: ['Woodbridge', 'Heritage Park', 'Brookview Estates', 'Cedar Creek Estates', 'Jackson Hills'],
+    landmarks: ['Woodbridge Golf Club', 'Sachse Community Park', 'Heritage Park', 'SH 78 corridor'],
+    majorRoads: ['SH 78', 'Sachse Road', 'Miles Road', 'Ranch Road'],
+    nearbyCities: ['wylie', 'murphy', 'garland', 'rowlett', 'plano', 'lavon'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Home to part of a master-planned community that spans three separate cities, so the HOA and the municipality frequently are not the same authority',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Amenity gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Viking'],
+      commonIssues: [
+        'Uncertainty over whether the HOA or the city owns an entrance',
+        'Identical equipment maintained under different arrangements',
+        'Residents unsure which authority to report a fault to',
+        'Boundaries running through a single community',
+      ],
+    },
+    localAngle:
+      'Woodbridge, the master-planned community that dominates this part of Collin and Dallas counties, does not stop at Sachse — it spans Sachse, Wylie and Murphy. That produces a confusion we deal with regularly and which has nothing to do with equipment: a resident reports a broken entrance gate and genuinely does not know whether it belongs to their HOA, to the city they live in, or to a neighbouring city whose boundary runs through the community. Identical gates a few hundred yards apart can sit under different management with different maintenance arrangements and different people authorising the work. So the first thing we establish on a community call in Sachse is not what is wrong with the gate but who owns it, because getting that wrong means doing work nobody has approved and billing somebody who did not ask for it.',
+    faqs: [
+      {
+        q: 'Our community gate is broken. Who is responsible for it?',
+        a: 'In this area that is a real question rather than a formality, because Woodbridge spans three cities and entrances can sit under different management. Tell us the entrance and we will help establish whether it is your HOA, your management company or the city — we would rather spend ten minutes on that than carry out work nobody has authorised.',
+      },
+      {
+        q: 'Can you work with our HOA directly?',
+        a: 'Yes, and on shared entrances that is normally how it should be done. We deal with boards and managing agents, give written reports they can put in front of a committee, and schedule around residents rather than around us.',
+      },
+    ],
+  },
+
+  burleson: {
+    zips: ['76028', '76058'],
+    neighborhoods: ['Mistletoe Hill', 'Shannon Creek', 'Overbrook Farm', 'Elk Ridge Estates', 'Hidden Vistas'],
+    landmarks: ['Old Town Burleson', 'Chisholm Trail Parkway', 'Bailey Lake', 'Russell Farm Art Center'],
+    majorRoads: ['Chisholm Trail Parkway', 'I-35W', 'SH 174', 'Wilshire Boulevard'],
+    nearbyCities: ['crowley', 'fort-worth', 'joshua', 'mansfield', 'alvarado', 'cleburne'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A Johnson County town whose growth arrived suddenly with a new toll road, so most of its gates are younger than the road that brought them',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'A decade of installations reaching first-service age together',
+        'New subdivisions beside long-standing county acreage',
+        'Commuter use concentrated into morning and evening peaks',
+        'Equipment specified during a rapid build-out rather than for the site',
+      ],
+    },
+    localAngle:
+      'Burleson sat in Johnson County as a modest town for most of its existence, and then the Chisholm Trail Parkway opened and put it within a straightforward commute of Fort Worth. Most of what has been built here dates from after that, which gives the city an unusually compressed equipment age profile: a great many gates went in within the same handful of years, and they are now arriving at their first real service interval more or less together. That is worth knowing because it changes what good advice looks like. The useful conversation in Burleson is rarely about whether an operator can be repaired — most of them can — and much more often about which components on an installation of that age are worth attending to now rather than waiting for. Beyond the new subdivisions the county acreage is still there, and those entrances are a different job entirely.',
+    faqs: [
+      {
+        q: 'Our gate is about eight years old and has never been serviced. What should we look at?',
+        a: 'At that age the things worth checking are the ones that wear silently — rollers and track on a slide, hinges and post plumb on a swing, and the safety devices, which drift out of alignment long before they fail outright. None of it is dramatic and all of it is cheaper attended to now than after it has taken the operator with it.',
+      },
+      {
+        q: 'Do you work out on the county acreage as well as the newer subdivisions?',
+        a: 'Yes, and they are genuinely different jobs. An acreage entrance is usually a longer gate further from power, often solar, with different failure modes from a subdivision installation a mile away. Telling us which you have on the phone decides what goes on the van.',
+      },
+    ],
+  },
+
+  crowley: {
+    zips: ['76036'],
+    neighborhoods: ['Carson Ranch', 'Deer Creek', 'Lasater Ranch', 'Rocky Creek Ranch', 'Stone Gate Village'],
+    landmarks: ['Historic Downtown Crowley', 'BNSF rail line', 'Bicentennial Park', 'Crowley Recreation Center'],
+    majorRoads: ['FM 1187', 'SH 174 Crowley Road', 'Main Street', 'Sycamore School Road'],
+    nearbyCities: ['burleson', 'fort-worth', 'benbrook', 'kennedale', 'joshua', 'everman'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Built along a working rail line that still splits the city, so a passing train can decide how long it takes to reach the other side',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Level crossings delaying access to half the city',
+        'Rail vibration working fixings loose near the line',
+        'Emergency calls routed around a blocked crossing',
+        'Older properties along the original rail-side streets',
+      ],
+    },
+    localAngle:
+      'Crowley began in 1881 as a Santa Fe railroad camp, and the railway is not a historical footnote here — it still runs through the middle of the city and it still splits it. Anyone who lives here knows the feeling of arriving at a crossing behind a train, and it affects us in a way it does not affect most of the towns we cover: a job five minutes away can be twenty if the timing is wrong, and an emergency call on the far side of the line needs routing rather than simply driving to. The second effect is felt rather than seen. Daily freight puts energy into the ground and into anything bolted to it, and over years that steadily undoes the alignment between an operator and the gate it drives — nothing fails, but the geometry drifts until the gate starts catching. It is why a torque check belongs at the start of a visit on the rail-side streets rather than at the end.',
+    faqs: [
+      {
+        q: 'Our gate has started binding and nothing is obviously wrong. What would you check first?',
+        a: 'How close you are to the track. Freight passing daily transmits far more energy into nearby ground and structures than most people credit, and over years that loosens what holds an operator in alignment with its gate. The correction is a torque check rather than a part, and on the rail-side streets we do it as standard before looking anywhere else.',
+      },
+      {
+        q: 'How quickly can you get here in an emergency?',
+        a: 'We will give you a real answer rather than an optimistic one, and in Crowley that sometimes depends on the crossings. If you are on the far side of the line from us we will say so and route accordingly. Telling us the nearest cross street when you call genuinely helps.',
+      },
+    ],
+  },
+
+  fairview: {
+    zips: ['75069'],
+    neighborhoods: ['Heritage Ranch', 'Ascot Heath', 'Sloan Creek Estates', 'Fairview Farms', 'Village of Fairview'],
+    landmarks: ['Heritage Ranch Golf and Country Club', 'The Village at Fairview', 'Sloan Creek', 'Fairview Town Hall'],
+    majorRoads: ['US-75', 'SH 5', 'Stacy Road', 'Country Club Road'],
+    nearbyCities: ['allen', 'mckinney', 'lucas', 'parker', 'murphy', 'princeton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town that has legislated hard to keep a rural look, including keeping street lighting to a minimum, so entrances are genuinely dark at night',
+      commonGateTypes: ['Estate driveway swing', 'Ranch entrance swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Entrances with no ambient light to see a keypad or a hazard by',
+        'Safety devices and lighting needing to work together after dark',
+        'Long unlit drives between the gate and the house',
+        'Visitors unable to find an entrance at night',
+      ],
+    },
+    localAngle:
+      'Fairview has protected its rural character deliberately and in detail, and one of the things that protection covers is lighting — there is far less of it here than in the towns either side, which is exactly the point and is much of why people move here. It does have a practical consequence at a gate. An entrance with no ambient light is a place where a keypad cannot be read, where a visitor cannot see the edge of the drive, and where anything in the gate’s path is invisible until it is very close. That does not argue for floodlighting a frontage people chose for its darkness; it argues for thinking about lighting and safety devices together — low-level marker lighting, an illuminated keypad, sensor positions chosen for conditions where nobody will see the gate coming. It is a design question rather than an equipment one, and it is one most installations here have never had asked about them.',
+    faqs: [
+      {
+        q: 'Our entrance is pitch dark and visitors struggle to find it. What helps without floodlighting it?',
+        a: 'Low-level marker lighting at the drive edges, an illuminated keypad and a modest light triggered by the gate cycle rather than left on. Together those make an entrance usable after dark without turning it into the thing the town’s lighting rules exist to prevent. It is usually a small addition to work you are already having done.',
+      },
+      {
+        q: 'Does darkness affect the gate’s safety sensors?',
+        a: 'Not the sensors themselves — photo-eyes work on infrared and do not care about visible light. What darkness affects is people: a pedestrian or a pet near a closing gate is much harder for a driver to see. That is an argument for where the sensors sit and how long the gate holds open, which we would set differently here than on a lit suburban street.',
+      },
+    ],
+  },
+
+  haslet: {
+    zips: ['76052'],
+    neighborhoods: ['Wellington', 'Sendera Ranch', 'Avondale Ranch', 'Elizabeth Creek', 'Lonesome Dove Estates'],
+    landmarks: ['BNSF Alliance intermodal facility', 'Alliance corridor', 'Haslet Community Park', 'Intermodal Parkway'],
+    majorRoads: ['I-35W', 'SH 170', 'FM 156', 'Avondale Haslet Road'],
+    nearbyCities: ['fort-worth', 'saginaw', 'justin', 'northlake', 'roanoke', 'keller'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Home to the largest inland rail port in North America, so the commercial gates here run at a scale nothing else in the metroplex matches',
+      commonGateTypes: ['Cantilever slide', 'Barrier arm', 'Commercial slide'],
+      commonBrands: ['HySecurity', 'DoorKing', 'All-O-Matic', 'LiftMaster'],
+      commonIssues: [
+        'Entrances cycling continuously for tractor units and trailers',
+        'Very large openings under constant heavy use',
+        'Running gear wearing far ahead of the operator',
+        'Downtime measured against freight schedules rather than convenience',
+      ],
+    },
+    localAngle:
+      'The BNSF Alliance intermodal facility sits in Haslet and handles something over a million container lifts a year, which makes this small town the location of the largest inland rail port in North America. The gates that serve that operation and the distribution estates around it are not scaled-up residential equipment; they are cantilever slides and barrier arms cycling for tractor units and trailers more or less continuously, on sites where an entrance being out of service has a cost measured against freight schedules. What fails under that duty is the running gear rather than the motor — trucks, rollers and chains carry the load and wear steadily, and the operator then labours against that wear until it looks like the culprit. Quoting an operator without measuring the running gear on a site like this produces a repair that does not last the quarter.',
+    faqs: [
+      {
+        q: 'Our entrance cannot be out of service. How do you approach that?',
+        a: 'By planning around the constraint rather than discovering it. We agree a window, arrive with the parts the site is most likely to need rather than diagnosing then ordering, and where a gate must stay usable we keep it in a controlled manual state instead of simply open. On a freight site we would rather do more preparation and less improvisation.',
+      },
+      {
+        q: 'We keep replacing operators on the same gate. What are we missing?',
+        a: 'Almost certainly the running gear. On continuous heavy duty the trucks, rollers and chain wear long before the motor does, and an operator asked to drag a gate over worn hardware will fail however good it is. Measuring those first is what turns a recurring cost into a one-off repair.',
+      },
+    ],
+  },
+
+  kennedale: {
+    zips: ['76060'],
+    neighborhoods: ['Steeplechase Estates', 'Shady Creek', 'Oakhill Park', 'Village Creek', 'Brookstone Estates'],
+    landmarks: ['Village Creek', 'Kennedale Town Center', 'Sonora Park', 'Business 287 corridor'],
+    majorRoads: ['US-287', 'Kennedale Parkway', 'Little School Road', 'Dick Price Road'],
+    nearbyCities: ['arlington', 'fort-worth', 'forest-hill', 'crowley', 'mansfield', 'everman'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A small city carrying an unusually large amount of open outdoor storage for its size, where the fence line is the security rather than a building',
+      commonGateTypes: ['Long-run cantilever slide', 'Chain-link rolling gate', 'Commercial swing'],
+      commonBrands: ['DoorKing', 'All-O-Matic', 'HySecurity', 'LiftMaster'],
+      commonIssues: [
+        'Very long perimeters with a single controlled entrance',
+        'Gates securing land and plant rather than premises',
+        'Unsurfaced yard ground under heavy rolling gates',
+        'Damage and forced entry attempts on isolated frontages',
+      ],
+    },
+    localAngle:
+      'Kennedale is small, sits between Arlington and Fort Worth on Business 287, and carries a great deal more open outdoor storage than a city its size would suggest — yards holding plant, materials and vehicles rather than buildings. That changes what a gate is for. On a site where the value is spread across the land rather than locked inside a building, the perimeter is the security, and the gate is the single point in a very long fence line that has to be both usable every day and sound every night. It also means the gate is often the only thing anyone would need to defeat, and it sits on ground that was never surfaced for it. We specify heavier here than the size of the business might imply, because a rolling gate dragged across unmade ground on a long run is doing a harder job than the same gate on a paved commercial forecourt.',
+    faqs: [
+      {
+        q: 'Our yard gate is the only security we have. What should we be fitting?',
+        a: 'Something specified for the job rather than for the budget. On a perimeter where the gate is the single control point, that usually means a heavier rolling or cantilever gate, a positive lock rather than relying on the operator to hold it, and proper ground preparation under the run. It costs more once and it is the difference between a deterrent and an inconvenience.',
+      },
+      {
+        q: 'The ground under our gate is not surfaced and it keeps binding. Is that fixable?',
+        a: 'Yes, and the ground is usually the fix rather than the gate. A rolling gate needs a consistent surface under its run, and on unmade yard ground that surface moves with the weather. Getting the run right — a proper track bed or a cantilever design with no ground contact at all — ends a problem that no amount of adjustment will.',
+      },
+    ],
+  },
+
+  midlothian: {
+    zips: ['76065'],
+    neighborhoods: ['Lawson Farms', 'Dove Creek', 'Somercrest', 'Hillstone Estates', 'Massey Meadows'],
+    landmarks: ['Midlothian Conference Center', 'Historic Downtown Midlothian', 'Cement plants', 'Mockingbird Nature Park'],
+    majorRoads: ['US-287', 'US-67', 'FM 663', 'Main Street'],
+    nearbyCities: ['waxahachie', 'cedar-hill', 'mansfield', 'red-oak', 'ovilla', 'grand-prairie'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The cement capital of Texas, with working plants and limestone quarries whose blasting and haulage are felt across the town',
+      commonGateTypes: ['Ranch entrance swing', 'Commercial slide', 'Residential swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'All-O-Matic', 'US Automatic'],
+      commonIssues: [
+        'Quarry blasting vibration loosening fixings and footings',
+        'Fine industrial dust settling in tracks and housings',
+        'Heavy haulage traffic on the roads gates open onto',
+        'Sensor lenses dulling faster than an ordinary environment',
+      ],
+    },
+    localAngle:
+      'Midlothian has been the cement capital of Texas for decades, with working plants and the limestone quarries that feed them inside the city. Two consequences follow for anything mechanical here. The first is vibration: quarry blasting is felt across the town, and while it is nothing like enough to damage a building, it is enough over years to work fixings loose and to settle a footing that was marginal to begin with. The second is dust — fine, pervasive and more abrasive than the road grit most towns deal with — which finds its way into tracks, bearings and operator housings and dulls sensor lenses on a cycle measured in months rather than years. Neither is dramatic on any given day. Together they mean equipment here needs checking on a shorter interval than a manufacturer writing for suburban conditions would suggest.',
+    faqs: [
+      {
+        q: 'Our gate needs adjusting more often than seems reasonable. Is that the quarries?',
+        a: 'Quite possibly, in part. Blasting vibration over years works bracket and mounting fixings loose and can settle a footing that was borderline, and both show up as a gate drifting out of adjustment with no obvious cause. Checking and re-torquing fixings is quick, and it is worth doing before assuming the operator is at fault.',
+      },
+      {
+        q: 'How often should equipment be cleaned here?',
+        a: 'More often than elsewhere. The dust in this town is fine and abrasive, so tracks and sensor lenses want attention on a routine rather than when something stops working. Sealed bearings rather than open ones make a real difference to how long rollers last, and it is a specification decision worth making at the outset.',
+      },
+    ],
+  },
+
+  northlake: {
+    zips: ['76226', '76247'],
+    neighborhoods: ['Canyon Falls', 'Harvest', 'Pecan Square', 'Highlands at Northlake', 'Prairie View Farms'],
+    landmarks: ['Alliance corridor', 'Texas Motor Speedway area', 'I-35W', 'Cleveland Gibbs Road'],
+    majorRoads: ['I-35W', 'FM 407', 'FM 1171', 'Cleveland Gibbs Road'],
+    nearbyCities: ['justin', 'argyle', 'haslet', 'roanoke', 'trophy-club', 'lantana'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town whose master-planned communities sit as separate islands with open land between them rather than as a continuous built-up area',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Communities physically separated by miles of open land',
+        'Very different conditions within one town boundary',
+        'New community entrances beside long-standing ranch gates',
+        'Travel time within the town longer than to neighbouring towns',
+      ],
+    },
+    localAngle:
+      'Northlake is not laid out the way most towns are. Its large master-planned communities — Canyon Falls, Harvest, Pecan Square — sit as separate islands with open ranch land between them rather than merging into a continuous built-up area, and the town boundary encloses all of it. The practical effect is that "Northlake" tells us less than a town name usually does. Two jobs inside the same city can be ten minutes apart with nothing but pasture in between, and they can be entirely different sorts of work: a new community entrance with modern equipment and an HOA behind it, and a ranch gate on a long solar-powered drive that has been there for twenty years. So we ask which community, or which farm-to-market road, rather than accepting the town name — it is the single most useful thing a caller here can tell us.',
+    faqs: [
+      {
+        q: 'Why do you ask which community we are in rather than just the city?',
+        a: 'Because Northlake’s communities are physically separate, with open land between them, and the work differs as much as the distance does. Knowing whether you are in Harvest, Canyon Falls or out on an FM road tells us what equipment to expect and how long it takes to reach you, which makes the arrival window we give you an honest one.',
+      },
+      {
+        q: 'Do you cover the older ranch properties as well as the new communities?',
+        a: 'Yes, and they are a large part of what we do here. An acreage entrance is a different job from a community gate — longer, usually solar, often with a decades-old operator — so telling us which you have decides the parts we bring rather than just the address we drive to.',
+      },
+    ],
+  },
+
+  'red-oak': {
+    zips: ['75154'],
+    neighborhoods: ['Fox Hollow Estates', 'Shiloh Downs', 'Oak Tree Estates', 'Quail Run Estates', 'Red Oak Club'],
+    landmarks: ['Red Oak Creek', 'Historic Downtown Red Oak', 'Pearson Park', 'I-35E corridor'],
+    majorRoads: ['I-35E', 'FM 664 Ovilla Road', 'Red Oak Road', 'Methodist Street'],
+    nearbyCities: ['glenn-heights', 'ovilla', 'waxahachie', 'midlothian', 'desoto', 'lancaster'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Sitting on the haul routes between the Midlothian cement works and I-35E, so the roads these gates open onto carry constant heavy freight',
+      commonGateTypes: ['Ranch entrance swing', 'Residential swing', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Gates opening directly onto roads carrying loaded quarry trucks',
+        'Sight lines and cycle timing that must allow for slow heavy vehicles',
+        'Road grit and spillage carried onto frontages',
+        'Vibration from constant heavy traffic on FM roads',
+      ],
+    },
+    localAngle:
+      'Red Oak sits between the Midlothian cement works and the interstate, which means the farm-to-market roads through it are haul routes. That is the fact that matters most at a gate here. A loaded quarry truck takes a long time to stop and needs a long gap to pull out in front of, so an entrance opening onto FM 664 or one of the connecting roads has a timing problem that a suburban driveway does not: a gate that is slow to open leaves you waiting in the path of vehicles that cannot react quickly, and a close timer set to a default may begin shutting before a long vehicle of your own has cleared. We set cycle speeds and sensor positions for the traffic the gate actually faces, and on the busier frontages we will say plainly when a gate is sited somewhere we would not choose.',
+    faqs: [
+      {
+        q: 'Our gate opens onto a road with constant lorry traffic. Is there anything we should do differently?',
+        a: 'Yes, mostly about timing and sight lines. A gate that opens slowly leaves you waiting where a loaded truck cannot stop quickly, so cycle speed matters more here than it would on a quiet street. We also set the close timer allowing for the longest vehicle that uses your drive rather than a family car.',
+      },
+      {
+        q: 'Why does our track fill with grit so quickly?',
+        a: 'Haul traffic. Loaded trucks carry material onto the road and it ends up on the frontages either side, which is more than an ordinary road delivers. Clearing the track is part of it; where the fall of the drive brings that material into the run, changing the drainage does more than sweeping ever will.',
+      },
+    ],
+  },
+
+  sunnyvale: {
+    zips: ['75182'],
+    neighborhoods: ['Homestead', 'Stoney Creek', 'Fox Hollow'],
+    landmarks: ['Long Creek', 'Sunnyvale Town Center', 'Lake Ray Hubbard', 'Tripp Road corridor'],
+    majorRoads: ['I-30', 'US-80', 'Belt Line Road', 'Tripp Road'],
+    nearbyCities: ['mesquite', 'garland', 'balch-springs', 'rowlett', 'forney', 'seagoville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A half-acre minimum lot ordinance has kept it low-density while dense suburbs grew up against its boundary on every side',
+      commonGateTypes: ['Estate driveway swing', 'Ranch entrance swing', 'Driveway slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'US Automatic', 'All-O-Matic'],
+      commonIssues: [
+        'Long private drives a few hundred yards from dense suburbia',
+        'Power and communication runs longer than neighbouring cities need',
+        'Rural-scale gates on land surrounded by city services',
+        'Expectations set by neighbouring suburbs that do not apply here',
+      ],
+    },
+    localAngle:
+      'Sunnyvale has held a half-acre minimum lot size while Mesquite, Garland and Balch Springs built right up to its boundary, and the result is a genuine island of low density inside dense eastern Dallas County. Crossing the town line, the lots roughly quadruple in size. For gate work that produces a mismatch worth naming: the properties are rural in scale — long drives, gates well back from the road, power and communication runs far longer than a suburban installation needs — while everything around them is suburban, and owners quite reasonably arrive with expectations set by what their neighbours a mile away paid. A gate at the end of a three-hundred-foot drive is a different job from one at the end of a thirty-foot drive, and the honest conversation here usually starts with why, rather than with the equipment itself.',
+    faqs: [
+      {
+        q: 'Why would a gate here cost more than one in Mesquite?',
+        a: 'Usually distance rather than the gate. A half-acre-plus lot means a longer drive, longer power and communication runs, and often a heavier gate across a wider opening — all of which cost more than the same equipment thirty feet from a garage. We will show you where the difference actually sits rather than quoting a round number.',
+      },
+      {
+        q: 'Our intercom is unreliable but the gate works fine. Why?',
+        a: 'Distance again. On these lot sizes the run between gate and house is long and usually buried, and moisture in a joint degrades audio while the gate circuit, which tolerates more, keeps working. Testing the run first avoids replacing hardware that was never at fault.',
+      },
+    ],
+  },
+
+  'royse-city': {
+    zips: ['75189'],
+    neighborhoods: ['High Point Ranch', 'Verandah', 'Creekview Estates', 'Waterscape', 'Kingsbrook'],
+    landmarks: ['Historic Downtown Royse City', 'I-30 corridor', 'Lake Ray Hubbard headwaters', 'Royse City Municipal Park'],
+    majorRoads: ['I-30', 'FM 35', 'FM 2642', 'Main Street'],
+    nearbyCities: ['fate', 'rockwall', 'caddo-mills', 'nevada', 'josephine', 'heath'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A city spread across three counties at once, so which authority covers a property depends on which side of a line the driveway sits',
+      commonGateTypes: ['Residential swing', 'Community slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'US Automatic'],
+      commonIssues: [
+        'Permits and records split across Rockwall, Collin and Hunt counties',
+        'Utility providers changing between neighbouring streets',
+        'New subdivisions beside long-standing county acreage',
+        'Growth outpacing the roads the entrances open onto',
+      ],
+    },
+    localAngle:
+      'Royse City has the unusual distinction of sitting in three counties at once — Rockwall, Collin and Hunt — and the lines run through the city rather than around it. That is more than trivia when something needs a permit, a record or a utility connection, because the answer genuinely depends on which side of an invisible boundary a particular driveway sits on, and neighbours on the same road can be filed under different counties. We check rather than assume, because getting it wrong costs a week rather than an afternoon. Beyond the administrative side the pattern is the one common to this whole I-30 corridor: large new subdivisions going up alongside acreage that has been farmed for generations, with the newer gates failing on commissioning as their made ground settles and the older ones needing parts that are no longer manufactured.',
+    faqs: [
+      {
+        q: 'Which county are we in? We get different answers from different people.',
+        a: 'Very possibly more than one is right for different parts of your street. Royse City spans Rockwall, Collin and Hunt counties, and the boundaries run through the city. If anything on a job needs a permit or a record we will confirm which county your property actually falls in first, because that is where the delays come from.',
+      },
+      {
+        q: 'Our gate came with a new build here and is already misbehaving. Is it faulty?',
+        a: 'Usually not. On subdivisions built over recently farmed ground the fill settles for several years, so the driveway and posts the gate was commissioned against have shifted since. Re-learning the travel against the gate as it now sits generally sorts it without any parts.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
