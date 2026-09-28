@@ -2093,6 +2093,149 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 6, 28 Sep 2026 ───────────────────────────────────────────────────
+  // Four of the Best Southwest cities in southern Dallas County. They formed a
+  // partnership together in 1986 and are routinely written about as one place,
+  // which is exactly the trap: written from "southern Dallas County suburb"
+  // they would be four copies of one page.
+  //
+  // Anchors, in the same ground-first pattern as batches 4 and 5:
+  //   cedar-hill    ridge-top wind exposure on the escarpment
+  //   desoto        Eagle Ford shale, which moves more than Blackland clay
+  //   duncanville   1980s electrical service predating outdoor GFCI practice
+  //   lancaster     33 square miles and large-site distribution perimeters
+  //
+  // Balch Springs and Glenn Heights are NOT here - fewer than three verifiable
+  // subdivision names each. They wait for a dedicated research pass.
+
+  'cedar-hill': {
+    zips: ['75104', '75106'],
+    neighborhoods: ['Lake Ridge', 'High Pointe Village', 'The Bluffs', 'Wooded Creek Estates', 'Cedar Valley Estates'],
+    landmarks: ['Cedar Hill State Park', 'Joe Pool Lake', 'Dogwood Canyon Audubon Center', 'Cedar Hill Mountain Nature Preserve'],
+    majorRoads: ['US-67', 'FM 1382 Belt Line Road', 'Cedar Hill Road', 'Pleasant Run Road'],
+    nearbyCities: ['duncanville', 'desoto', 'grand-prairie', 'midlothian', 'mansfield', 'glenn-heights'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Built along the limestone escarpment on some of the highest ground in the metroplex, where gates stand exposed to wind nothing else breaks',
+      commonGateTypes: ['Ornamental iron swing', 'Driveway slide', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'Elite', 'All-O-Matic', 'DoorKing'],
+      commonIssues: [
+        'Solid gate leaves acting as sails on exposed ridge frontages',
+        'Gates forced past their stops in high wind',
+        'Operator arms and brackets bent by wind loading',
+        'Shallow limestone limiting how deep a footing can go',
+      ],
+    },
+    localAngle:
+      'Cedar Hill is built along the limestone escarpment that gives it its name, on some of the highest ground in the metroplex — the ridge that carries Cedar Hill State Park, Dogwood Canyon and the nature preserves above Joe Pool Lake. Elevation and exposure are the story for gate work here. A solid gate leaf is a sail, and on a ridge frontage with nothing upwind to break the weather it takes loads that the same gate would never see in a sheltered subdivision. What that produces is a distinctive failure: arms and brackets bent not by anyone driving into them but by the gate itself being forced past its stops in a gust, usually overnight, so the owner finds it out of true in the morning with no explanation. The escarpment adds a second constraint underneath — rock is close to the surface in much of the city, so a footing cannot simply be made deeper to compensate. It has to be keyed into what is there.',
+    faqs: [
+      {
+        q: 'We found the gate bent out of shape one morning and nobody hit it. How?',
+        a: 'Almost certainly wind. On the ridge frontages here a solid leaf catches gusts like a sail, and if it is caught while unlatched it can be driven past its stops hard enough to bend the operator arm or crack a bracket. It is the most common damage we see in this city and it is why we ask about wind-hold hardware on exposed frontages rather than only about the operator.',
+      },
+      {
+        q: 'Can anything be done to stop the wind damaging the gate?',
+        a: 'Yes, and it is mostly mechanical rather than electronic. Properly rated stops, a positive latch or lock that holds the leaf when closed, and on very exposed sites reducing the solid area of the leaf all make a real difference. Where a gate has to stay solid for privacy, we would rather specify hardware that can take the load than keep straightening arms every spring.',
+      },
+    ],
+  },
+
+  desoto: {
+    zips: ['75115'],
+    neighborhoods: ['Westmoreland Estates', 'Regents Park', 'Ten Mile Creek Estates', 'Thorntree'],
+    landmarks: ['Ten Mile Creek', 'DeSoto Town Center', 'Grimes Park', 'Hampton Road corridor'],
+    majorRoads: ['I-35E', 'Hampton Road', 'Pleasant Run Road', 'Beltline Road'],
+    nearbyCities: ['duncanville', 'cedar-hill', 'lancaster', 'glenn-heights', 'red-oak', 'ovilla'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Sitting on Eagle Ford shale, a soil that moves more aggressively than the Blackland clay most of the metroplex is built on',
+      commonGateTypes: ['Estate driveway swing', 'Ornamental iron swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Posts moving further and faster than elsewhere in the metroplex',
+        'Driveway slabs cracking and stepping under the gate arc',
+        'Gate alignment needing correction more often than the north side',
+        'Heavy ornamental leaves amplifying ground movement',
+      ],
+    },
+    localAngle:
+      'Southern Dallas County sits largely on Eagle Ford shale, and anyone who has owned a house in DeSoto knows what that means before we say it — this is foundation country, and the ground here moves more than the Blackland clay the northern suburbs are built on. Gate posts are subject to exactly the same forces as a house slab, with the difference that a gate post is a lever with several hundred pounds hanging off the end of it, so it shows the movement far sooner than a building does. In practice that means the interval between alignment corrections here is genuinely shorter than in Plano or Frisco, and it is not a reflection of poor workmanship. It is the ground. What we can control is how the footing is sized and bedded for this soil rather than to a generic specification, and being straight with owners that a gate on Eagle Ford shale needs looking at on a cycle rather than only when it fails.',
+    faqs: [
+      {
+        q: 'Our gate needs realigning more often than our friends in Plano. Why?',
+        a: 'The ground, not the gate. Southern Dallas County sits on Eagle Ford shale, which swells and shrinks more aggressively than the clay under the northern suburbs — it is the same reason foundation work is so much more common down here. A gate post is a lever with a heavy leaf on it, so it reports that movement sooner than a house slab does.',
+      },
+      {
+        q: 'Is there a way to stop it moving rather than keep correcting it?',
+        a: 'Not stop, but substantially slow. A footing sized and bedded for this soil rather than to a generic depth, and drainage that keeps water from cycling the ground right at the post, together make a real difference to how often you see us. We would rather do that once at a repair you are already paying for than book the same adjustment every eighteen months.',
+      },
+    ],
+  },
+
+  duncanville: {
+    zips: ['75116', '75137'],
+    neighborhoods: ['Woodland Hills', 'Mountain Creek', 'Woods-Sugarberry', 'Alexander Estates'],
+    landmarks: ['Armstrong Park', 'Duncanville Fieldhouse', 'International Museum of Cultures', 'Main Street corridor'],
+    majorRoads: ['US-67', 'Camp Wisdom Road', 'Cedar Ridge Drive', 'Main Street'],
+    nearbyCities: ['cedar-hill', 'desoto', 'dallas', 'grand-prairie', 'lancaster', 'glenn-heights'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Essentially fully built out in the 1980s with almost no new construction since, so every gate is a retrofit onto electrical service of that era',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Side and yard gate'],
+      commonBrands: ['LiftMaster', 'Eagle', 'Viking', 'US Automatic'],
+      commonIssues: [
+        'No GFCI protection at the outdoor circuit feeding the gate',
+        'Gate operators sharing a circuit with garage or garden loads',
+        'Undersized or ageing outdoor wiring runs',
+        'Nuisance tripping traced to the supply rather than the operator',
+      ],
+    },
+    localAngle:
+      'Duncanville did most of its building in the 1980s and has added very little since, which makes it one of the most completely built-out cities we work in. Almost every automatic gate here has been retrofitted onto a house that was finished before it, and the part of that retrofit people rarely think about is the electrical supply. Outdoor circuits of that era frequently have no GFCI protection at all, are sometimes shared with a garage or garden load rather than dedicated, and were sized for what was on them in 1985. What we get called to as an intermittent gate fault turns out, often enough to be worth saying, to be the circuit rather than the operator — a shared load tripping the gate, or a supply that sags when something else on the same run starts up. So on a Duncanville call we check what the gate is plugged into before we open the operator, which is the reverse of how we would work in a newer city.',
+    faqs: [
+      {
+        q: 'Our gate trips out when something else in the garage switches on. Is the operator faulty?',
+        a: 'Probably not — that symptom points at the circuit. In a house of this era the gate is often on a shared outdoor circuit rather than a dedicated one, and a motor starting elsewhere on that run pulls the voltage down far enough for the gate to fault. The fix is electrical rather than in the gate, and it is worth finding before anyone replaces a working operator.',
+      },
+      {
+        q: 'Do we need a GFCI for the gate?',
+        a: 'For an outdoor circuit, yes, and a good number of houses here were built before that was standard. It is a safety matter first, since the equipment is outdoors and gets wet, but it also gives you a clear diagnostic: a GFCI that trips repeatedly is telling you something real about moisture or damaged cable rather than being a nuisance to work around.',
+      },
+    ],
+  },
+
+  lancaster: {
+    zips: ['75134', '75146'],
+    neighborhoods: ['Rolling Meadows', 'Wintergreen', 'Wellington Park North', 'Pleasant Run Estates'],
+    landmarks: ['Lancaster Historic Town Square', 'Lancaster Regional Airport', 'Commemorative Air Force DFW Wing', 'Ten Mile Creek'],
+    majorRoads: ['I-35E', 'I-20', 'Pleasant Run Road', 'Dallas Avenue'],
+    nearbyCities: ['desoto', 'hutchins', 'wilmer', 'glenn-heights', 'red-oak', 'ferris'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Thirty-three square miles at the I-20 and I-35E convergence, where the growth has been very large distribution sites rather than housing',
+      commonGateTypes: ['Cantilever slide', 'Commercial slide', 'Barrier arm'],
+      commonBrands: ['DoorKing', 'HySecurity', 'LiftMaster', 'All-O-Matic'],
+      commonIssues: [
+        'Long perimeter fence lines with several gates on one site',
+        'Operators expected to integrate with guard and access systems',
+        'Heavy cantilever gates on continuous commercial duty',
+        'Response distances varying widely within one city',
+      ],
+    },
+    localAngle:
+      'Lancaster covers thirty-three square miles, which makes it one of the largest cities by land area in the southern half of the metroplex, and its growth has come as distribution and logistics at the I-20 and I-35E convergence rather than as subdivisions. That gives its gate work a different shape from its Best Southwest neighbours. A distribution site does not have a gate; it has a perimeter, often with a main vehicle entrance, a trailer gate, and a staff entrance on the same fence line, all expected to work with a guard post or an access system rather than a remote in a car. The gates themselves are usually cantilever, long and heavy, running continuously through shift changes. The other consequence of thirty-three square miles is practical: the drive between one end of Lancaster and the other is longer than the drive between some neighbouring cities, so we ask for the road rather than the city when we schedule here.',
+    faqs: [
+      {
+        q: 'We have several gates on one site. Can they be managed together?',
+        a: 'Yes, and on a perimeter that is usually the right approach rather than treating each gate separately. Access can be issued once and applied across every entrance, with different permissions for staff, hauliers and visitors, and faults reported centrally rather than discovered when somebody cannot get in. We would look at the whole fence line before quoting any single gate on it.',
+      },
+      {
+        q: 'Our cantilever gate is slowing down and it runs all day. What usually causes that?',
+        a: 'On continuous commercial duty it is almost always the running gear rather than the motor. The trucks and rollers inside the gate frame carry the whole weight and wear steadily, and the operator then works harder against that wear until it looks like the problem. We measure the running gear first, because replacing an operator on worn trucks is a repair that does not last on a site cycling this often.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
