@@ -60,6 +60,8 @@ type Page = {
   description: string
   canonical: string
   noindex: boolean
+  /** The raw robots directive, or "" when the page carries no robots meta. */
+  robots: string
   ogUrl: string
   ogImage: string
   ogImageAlt: string
@@ -80,6 +82,7 @@ const pages: Page[] = files
       description: grab(/<meta name="description" content="([^"]*)"/),
       canonical: grab(/rel="canonical" href="([^"]+)"/),
       noindex: /<meta name="robots" content="[^"]*noindex/.test(html),
+      robots: grab(/<meta name="robots" content="([^"]*)"/),
       ogUrl: grab(/<meta property="og:url" content="([^"]+)"/),
       ogImage: grab(/<meta property="og:image" content="([^"]+)"/),
       ogImageAlt: grab(/<meta property="og:image:alt" content="([^"]+)"/),
@@ -137,6 +140,35 @@ for (const page of pages) {
     errors.push(
       `${page.url} canonical points at a different host: ${page.canonical} (expected ${business.url}).`,
     )
+  }
+}
+
+// --- 3b. snippet directives -------------------------------------------------
+//
+// Every indexable page must carry the full robots directive from app/layout.tsx,
+// not merely be free of `noindex`.
+//
+// This check exists because of a bug that was invisible for weeks. The model,
+// symptom, city and landing routes decide indexability per page and expressed
+// "this one is fine" as `robots: undefined`, assuming an unset field inherits
+// the layout. It does not — Next treats a present-but-undefined key as an
+// override — so roughly a hundred pages shipped with NO robots meta at all.
+// Indexing was unaffected (absent means index,follow) but max-snippet and
+// max-image-preview were silently dropped from the best content on the site.
+//
+// Absence of a tag is not a safe default here, so it is an error.
+
+for (const page of pages.filter((p) => !p.noindex)) {
+  if (!page.robots) {
+    errors.push(
+      `${page.url} has no robots meta at all — it loses max-snippet and max-image-preview. ` +
+        'Return INDEXABLE_ROBOTS from lib/seo.ts rather than undefined.',
+    )
+    continue
+  }
+  for (const directive of ['max-snippet:-1', 'max-image-preview:large']) {
+    if (!page.robots.includes(directive))
+      errors.push(`${page.url} robots meta is missing ${directive} (got "${page.robots}").`)
   }
 }
 

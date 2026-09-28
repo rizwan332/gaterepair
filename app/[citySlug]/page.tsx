@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { openGraphFor } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, Clock, Navigation } from 'lucide-react'
@@ -127,9 +127,7 @@ export async function generateMetadata({
      * 176 distinct answers. Filling in `localAngle` moves a city into
      * `indexedCities` and removes this on the next build — see content/cities.ts.
      */
-    robots: indexedCities.includes(city)
-      ? undefined
-      : { index: false, follow: true, googleBot: { index: false, follow: true } },
+    robots: indexedCities.includes(city) ? INDEXABLE_ROBOTS : HELD_BACK_ROBOTS,
   }
 }
 

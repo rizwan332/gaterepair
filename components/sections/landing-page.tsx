@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Phone, CheckCircle2, ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
-import { openGraphFor } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 import { landingBySlug, type LandingPage as LandingPageData } from '@/content/landing-pages'
@@ -56,9 +56,7 @@ export function landingMetadata(slug: string): Metadata {
     // Paid-only unless the page answers something its brand page does not.
     // `follow`, so the links out to the brand page, the case studies and the
     // testimonials still count. See `indexable` in content/landing-pages.ts.
-    robots: page.indexable
-      ? undefined
-      : { index: false, follow: true, googleBot: { index: false, follow: true } },
+    robots: page.indexable ? INDEXABLE_ROBOTS : HELD_BACK_ROBOTS,
   }
 }
 
