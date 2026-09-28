@@ -5,6 +5,8 @@ import { business, socialProfiles } from '@/content/business'
 import { SOCIAL_ICONS } from '@/components/ui/social-icons'
 import { fact } from '@/lib/business'
 import { services } from '@/content/services'
+import { symptomPath } from '@/content/symptoms'
+import { indexableSymptomPages } from '@/lib/symptom-quality'
 import { brands } from '@/content/brands'
 import { tier1Cities } from '@/content/cities'
 
@@ -25,10 +27,30 @@ export function SiteFooter() {
    */
   const footerBrands = [...brands].sort((a, b) => a.priority - b.priority).slice(0, PER_COLUMN)
 
+  /**
+   * The faults people actually search for, most urgent first.
+   *
+   * Explicit rather than "the first six", so editorial order survives someone
+   * reordering the content files — but filtered through the quality gate, so a
+   * page held back never gets a sitewide link.
+   */
+  const FOOTER_SYMPTOMS = [
+    'gate-wont-close',
+    'gate-wont-open',
+    'gate-stops-halfway',
+    'gate-opener-has-no-power',
+    'gate-remote-not-working',
+    'sliding-gate-off-track',
+  ]
+  const indexableSymptoms = indexableSymptomPages()
+  const footerSymptoms = FOOTER_SYMPTOMS.map((slug) =>
+    indexableSymptoms.find((p) => p.slug === slug),
+  ).filter((p): p is (typeof indexableSymptoms)[number] => Boolean(p))
+
   return (
     <footer className="mt-auto bg-ink-950 text-ink-200">
       <div className="container-page py-12 md:py-14">
-        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <Image
               src="/brand/logo-light.webp"
@@ -118,6 +140,18 @@ export function SiteFooter() {
               </FooterLink>
             ))}
             <FooterMore href="/brands">All brands</FooterMore>
+          </FooterCol>
+
+          <FooterCol title="Gate Problems">
+            {/* The symptom pages own Section 4 of the keyword list — the
+                highest-intent terms on the site. Without a footer column they
+                would hang off the service pages alone. */}
+            {footerSymptoms.map((sym) => (
+              <FooterLink key={sym.slug} href={symptomPath(sym)}>
+                {sym.label}
+              </FooterLink>
+            ))}
+            <FooterMore href="/gate-problems">All gate problems</FooterMore>
           </FooterCol>
 
           <FooterCol title="Service Areas">
