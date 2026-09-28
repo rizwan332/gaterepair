@@ -669,6 +669,23 @@ const tier2Raw: [string, string][] = [
   ['Sunnyvale', 'Dallas County'], ['The Colony', 'Denton County'], ['Trophy Club', 'Denton County'],
   ['University Park', 'Dallas County'], ['Waxahachie', 'Ellis County'], ['Weatherford', 'Parker County'],
   ['Wylie', 'Collin County'],
+
+  // ── Added 28 Sep 2026, from the client's master keyword list ──────────────
+  // These six appear throughout Shield_Gate_Repair_DFW_SEO_Master_Keywords.pdf
+  // and were absent from the service-area list entirely, so there was no page
+  // for them at any tier. Same correction as Fort Worth in fa899ce.
+  //
+  // Tiered on gate density rather than population: Bartonville and Cross Roads
+  // are acreage, where the entrance gate is a given, and Lantana is a single
+  // large master-planned community. Appended rather than merged alphabetically
+  // so the addition stays visible in review; `build()` does not care about
+  // order.
+  //
+  // ⚠️ Richland Hills is NOT North Richland Hills. They are separate Tarrant
+  // County cities with separate ZIPs, and conflating them would put wrong
+  // content on both.
+  ['Bartonville', 'Denton County'], ['Lantana', 'Denton County'], ['Cross Roads', 'Denton County'],
+  ['Hickory Creek', 'Denton County'], ['Richland Hills', 'Tarrant County'], ['Watauga', 'Tarrant County'],
 ]
 
 const tier3Raw: [string, string][] = [
@@ -712,6 +729,13 @@ const tier3Raw: [string, string][] = [
   ['Westminster', 'Collin County'], ['White Settlement', 'Tarrant County'], ['Whitewright', 'Grayson County'],
   ['Whitesboro', 'Grayson County'], ['Willow Park', 'Parker County'], ['Wilmer', 'Dallas County'],
   ['Wills Point', 'Van Zandt County'],
+
+  // ── Added 28 Sep 2026, from the client's master keyword list ──────────────
+  // The three remaining keyword-list towns that had no page at any tier. Small
+  // Collin County communities, so Tier 3: a short, honest page is a fine thing
+  // to serve someone who followed a link, and Tier 3 is not submitted for
+  // indexing until it carries genuinely local content (see hasLocalContent).
+  ['Lavon', 'Collin County'], ['Lowry Crossing', 'Collin County'], ['Nevada', 'Collin County'],
 ]
 
 export function toSlug(name: string): string {
