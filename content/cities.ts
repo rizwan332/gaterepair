@@ -2482,6 +2482,391 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 9, 28 Sep 2026 — TIER 3 ──────────────────────────────────────────
+  // Twelve small towns. Tier 3 does not require the three-subdivision profile
+  // Tier 2 does (isPublishable returns true for Tier 3; hasLocalContent asks
+  // only for a localAngle), so `neighborhoods` is OMITTED on the towns where
+  // no register exists rather than filled with plausible guesses. A town of
+  // eight hundred people may genuinely have no subdivisions, and saying so by
+  // omission is more honest than inventing three.
+  //
+  // Four of these - Justin, Krum, Ponder and Sanger - were founded in the same
+  // year, by the same railroad, for the same reason. Writing them from that
+  // shared fact would have produced four identical pages, so the shared origin
+  // is stated once and each is anchored on what became of it since.
+
+  justin: {
+    zips: ['76247'],
+    landmarks: ['Justin Historic Downtown', 'Santa Fe rail line', 'Alliance corridor', 'FM 407 corridor'],
+    majorRoads: ['FM 156', 'FM 407', 'I-35W', 'US-377'],
+    nearbyCities: ['northlake', 'roanoke', 'haslet', 'argyle', 'krum', 'ponder'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'An 1886 Santa Fe grain town now sitting directly in the path of the Alliance logistics corridor',
+      commonGateTypes: ['Ranch entrance swing', 'Wide farm gate', 'Commercial slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'DoorKing'],
+      commonIssues: [
+        'Decades-old farm entrances beside brand-new industrial gates',
+        'Parts support for operators installed a generation ago',
+        'Construction and haulage traffic on formerly quiet FM roads',
+        'Solar entrances on acreage without mains power',
+      ],
+    },
+    localAngle:
+      'Justin was platted in 1886 when the Gulf, Colorado and Santa Fe pushed through western Denton County to move wheat, and for most of the following century it stayed what it was built to be — a small grain town on a rail line. What has happened since is that the Alliance logistics corridor has arrived at its doorstep, and Justin now sits between working farmland and one of the largest inland freight operations in the country. That gives us an unusually wide spread of work in one small place. On the same day we can be repairing a farm entrance whose operator has been in place since the 1990s and no longer has a supported board, and commissioning a commercial slide gate on a new distribution unit a few miles up FM 156. The two need different parts, different expectations and different conversations, and the thing that connects them is that the roads between them are carrying far more heavy traffic than they were laid out for.',
+    faqs: [
+      {
+        q: 'Our farm gate operator is decades old. Can it still be repaired?',
+        a: 'Often yes, and where it cannot we will tell you before you spend anything. The mechanical side of a farm entrance — posts, hinges, the gate itself — routinely outlasts the electronics by decades, so even when an operator has no supported board left, fitting a current unit to the existing gate is usually far cheaper than replacing the whole installation.',
+      },
+      {
+        q: 'Do you cover commercial units as well as farms out here?',
+        a: 'Yes, and in Justin we do both. A distribution or industrial gate is a different specification from a ranch entrance — heavier duty, usually cantilever or commercial slide, often tied into an access system — and we quote and stock for it differently. It is worth telling us which you have when you call so the right parts are on the van.',
+      },
+    ],
+  },
+
+  krum: {
+    zips: ['76249'],
+    landmarks: ['Krum grain elevators', 'Historic Santa Fe depot site', 'Krum Civic Center', 'US-380 corridor'],
+    majorRoads: ['US-380', 'FM 1173', 'FM 2450', 'McCart Street'],
+    nearbyCities: ['denton', 'sanger', 'ponder', 'justin', 'aubrey', 'pilot-point'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Still surrounded by working grain and hay ground, so the vehicles using these gates are agricultural rather than domestic',
+      commonGateTypes: ['Wide farm gate', 'Ranch entrance swing', 'Equipment yard gate'],
+      commonBrands: ['US Automatic', 'Ramset', 'All-O-Matic', 'LiftMaster'],
+      commonIssues: [
+        'Openings sized for combines, grain trucks and tractors',
+        'Gates struck or clipped by oversized equipment',
+        'Seasonal traffic spikes at harvest concentrating wear',
+        'Dust and chaff fouling tracks and sensor lenses',
+      ],
+    },
+    localAngle:
+      'Krum was named for a Santa Fe official and by 1900 was shipping enough wheat to be described, not entirely modestly, as the largest inland grain market in the world. The elevators are still there and so is the farming, which makes Krum different from the commuter towns that surround it: the vehicles coming through these gates are agricultural. A combine, a grain truck or a tractor with an implement on the back is wider, taller and far less forgiving than a family car, and gates here have to be specified for that or they get hit. Most of the damage we repair in this town was done by a vehicle the gate was never wide enough for, and it clusters seasonally — harvest concentrates months of traffic into weeks, and that is when things get clipped. Sizing the opening honestly for the largest thing that will actually use it is cheaper than repairing a bent leaf every autumn.',
+    faqs: [
+      {
+        q: 'How wide should a farm gate be if we run equipment through it?',
+        a: 'Wider than the widest implement you own, plus room for the fact nobody lines up perfectly in a hurry. Undersizing is the single most common reason we are called back to the same gate, because a leaf clipped once is easier to clip again. We would rather measure your equipment than take a standard width off a price list.',
+      },
+      {
+        q: 'Our gate always seems to break around harvest. Why then?',
+        a: 'Because harvest compresses months of heavy traffic into a few weeks, and everything that wears does it at once — hinges, rollers and tracks that would age slowly under domestic use get a season of work in a fortnight. Having it looked at before harvest rather than during it is the practical answer, and it is far cheaper than a repair booked at the worst possible moment.',
+      },
+    ],
+  },
+
+  ponder: {
+    zips: ['76259'],
+    landmarks: ['Ponder Historic Downtown', 'Santa Fe rail line', 'FM 156 corridor', 'Ponder ISD campuses'],
+    majorRoads: ['FM 156', 'FM 2449', 'Bailey Street', 'US-380'],
+    nearbyCities: ['krum', 'justin', 'denton', 'sanger', 'northlake', 'argyle'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'The smallest of the western Denton County rail towns, where most properties sit on long county-road frontages rather than streets',
+      commonGateTypes: ['Ranch entrance swing', 'Wide farm gate', 'Driveway slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'Ramset', 'All-O-Matic'],
+      commonIssues: [
+        'Unpaved approaches feeding mud and gravel into tracks',
+        'Long drives with no mains power at the entrance',
+        'Access roads that soften after rain',
+        'Distances that make a wasted visit expensive for everyone',
+      ],
+    },
+    localAngle:
+      'Ponder was originally called Gerald and got its present name from the same 1886 Santa Fe line that created its neighbours, but it stayed the smallest of them and it still is. Most properties here front a county road rather than a street, and a good number are reached by an unpaved approach. That is the practical fact that shapes gate work in this town. Gravel and mud arrive in the track with every vehicle, so slide gates need clearing far more often than a suburban installation, and the approach itself softens enough after heavy rain that the drive up to the gate is sometimes the harder part of the job. It also means a wasted call-out costs more here than almost anywhere we work, which is why we ask more questions on the phone before setting out to Ponder than we would for a job ten minutes from the yard.',
+    faqs: [
+      {
+        q: 'Our drive is gravel and the gate jams constantly. Is there a fix?',
+        a: 'There is, and it is mostly about where the gravel goes rather than the gate. Edging the drive so material is not carried into the track, and correcting any fall that sends water across it, does more than any amount of sweeping. Where that is not practical, a swing gate avoids the ground-level track entirely and is often the more sensible answer out here.',
+      },
+      {
+        q: 'Can you tell us what it will cost before driving out?',
+        a: 'We will get as close as we honestly can. Distances matter here, so we would rather spend a few extra minutes on the phone — what the gate is doing, what it sounds like, whether it moves by hand — and arrive with the likely parts than make two trips. If we genuinely cannot tell without seeing it, we will say so rather than guess.',
+      },
+    ],
+  },
+
+  sanger: {
+    zips: ['76266'],
+    landmarks: ['Historic Downtown Sanger', 'Ray Roberts Lake', 'I-35 corridor', 'Sanger Public Library'],
+    majorRoads: ['I-35', 'FM 455', 'Bolivar Street', 'Keaton Road'],
+    nearbyCities: ['denton', 'krum', 'pilot-point', 'aubrey', 'valley-view', 'ponder'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Split between an I-35 commercial frontage and open farmland east and west of it, with very little in between',
+      commonGateTypes: ['Commercial slide', 'Ranch entrance swing', 'Wide farm gate'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Highway-frontage yards secured against interstate traffic',
+        'Rural entrances on long drives away from power',
+        'Two very different duty cycles a few miles apart',
+        'Road grit on the corridor, farm dust away from it',
+      ],
+    },
+    localAngle:
+      'Sanger grew up on the same 1886 rail line as Krum, Justin and Ponder, but it ended up with something they did not: a frontage on Interstate 35. That gives the town two quite separate personalities within a few miles. Along the corridor there are yards, storage and commercial premises whose gates exist to secure property against interstate traffic, running many cycles a day and specified accordingly. Move a mile east or west and you are on farmland, where an entrance may open half a dozen times a day at the end of a long private drive with no mains power near it. There is very little in between. That means the most useful thing a caller from Sanger can tell us is which side of the interstate they are on, because it determines the parts we bring, the duty rating we specify and the kind of fault we expect to find.',
+    faqs: [
+      {
+        q: 'We have a yard on the frontage road. Does that need a different gate from a house?',
+        a: 'Almost certainly. A commercial yard gate does many more cycles, is usually longer and heavier, and is protecting property rather than privacy, so it wants a commercial-duty operator and hardware rated for that. Fitting a residential unit to a working yard is one of the more common false economies we are called out to correct.',
+      },
+      {
+        q: 'Do you come out to properties well off the highway?',
+        a: 'Yes. A good share of our Sanger work is on rural entrances rather than the corridor. Tell us the drive length and whether there is power at the gate when you call — those two answers usually determine what we bring, and they save a second visit.',
+      },
+    ],
+  },
+
+  'lake-dallas': {
+    zips: ['75065'],
+    landmarks: ['Lewisville Lake', 'Lake Dallas Historic District', 'Willow Grove Park', 'I-35E corridor'],
+    majorRoads: ['I-35E', 'FM 2181 Swisher Road', 'Main Street', 'Shady Shores Road'],
+    nearbyCities: ['hickory-creek', 'corinth', 'denton', 'highland-village', 'lewisville', 'krum'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town named after a reservoir that no longer carries the name, platted in the 1920s and 1930s on small lakeside lots',
+      commonGateTypes: ['Driveway slide', 'Courtyard gate', 'Side and yard gate'],
+      commonBrands: ['LiftMaster', 'Eagle', 'Elite', 'Viking'],
+      commonIssues: [
+        'Original plats with very narrow frontages and no room to swing',
+        'Gates fitted between houses with minimal clearance',
+        'Older lots where the drive is shorter than a vehicle',
+        'Retrofits onto property lines that predate cars of this size',
+      ],
+    },
+    localAngle:
+      'The lake this town is named for stopped being called Lake Dallas decades ago — impounded in 1927 under that name, expanded and renamed Garza-Little Elm, and known as Lewisville Lake since the mid-1970s. The town kept the original name, and it also kept the original plats. Much of Lake Dallas was laid out in the 1920s and 1930s for lakeside cottages, on lots and frontages sized for the cars and the expectations of that period. That is the constraint here, and it is a physical one: a great many of these properties simply do not have the frontage for a swing gate to open into, or the driveway depth for a vehicle to wait off the road while it does. So the question we answer most often in this town is not which operator but whether a gate fits at all, and where it does, whether a slide running along the boundary is the only configuration the lot will take.',
+    faqs: [
+      {
+        q: 'Our lot is narrow and the drive is short. Can we have an automatic gate?',
+        a: 'Often yes, but usually as a slide rather than a swing. A swing gate needs clear arc to open into and somewhere for your car to wait off the road, and on these older plats that space frequently does not exist. A slide running along the boundary needs length rather than depth, which these lots are more likely to have. We would measure before recommending either.',
+      },
+      {
+        q: 'Is it worth putting a gate on a small property at all?',
+        a: 'That is genuinely your call and we will give you an honest view rather than a sales one. On some of these frontages a gate adds real security and works well; on others it would mean reversing into the road every time you leave, which is a poor trade. We would rather tell you that on the visit than fit something you come to regret.',
+      },
+    ],
+  },
+
+  'forest-hill': {
+    zips: ['76119', '76140'],
+    landmarks: ['Forest Hill Civic and Convention Center', 'I-20 and Loop 820 interchange', 'Forest Hill Park', 'Historic Brambleton Station site'],
+    majorRoads: ['I-20', 'Loop 820', 'Forest Hill Drive', 'Wichita Street'],
+    nearbyCities: ['fort-worth', 'everman', 'kennedale', 'arlington', 'benbrook', 'crowley'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Four square miles wrapped around a major freeway interchange, with commercial frontage on two sides and housing in the middle',
+      commonGateTypes: ['Commercial slide', 'Residential swing', 'Yard and storage gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'All-O-Matic'],
+      commonIssues: [
+        'Constant heavy traffic vibration working fixings loose',
+        'Road grit from the interchange carried onto frontage properties',
+        'Commercial and residential gates within yards of each other',
+        'Security-driven installations rather than convenience ones',
+      ],
+    },
+    localAngle:
+      'Forest Hill began as Brambleton Station and was a farming community from around 1860, which is hard to picture now: the city is a little over four square miles and it wraps around the point where Interstate 20 meets Loop 820. Living or trading beside a junction that size has a specific mechanical consequence that owners rarely connect to their gate. Heavy traffic vibration is continuous, and it works fixings loose over time — bracket bolts, hinge fasteners, the mountings holding an operator to its pad. We find slack hardware on Forest Hill gates far more often than the age of the installation would explain, and a gate whose operator has quietly shifted a few millimetres on its mounts will start binding and misreading its limits without anything having failed. Checking and re-torquing fixings is a small part of a visit here and it prevents a disproportionate share of the faults.',
+    faqs: [
+      {
+        q: 'Our gate has started binding and nothing looks broken. What would you check?',
+        a: 'Near a junction this size, the fixings. Continuous traffic vibration slackens bracket and mounting bolts over years, and an operator that has shifted slightly on its pad will fight a gate that is otherwise fine. It is quick to check and quick to correct, and it is the first thing we look at on this side of the city rather than the last.',
+      },
+      {
+        q: 'Is a gate here mostly about security?',
+        a: 'For most of our customers in Forest Hill, yes — it is about controlling who can reach a yard, a vehicle or a back lot rather than about convenience. That changes what we recommend: solid construction, a positive lock when closed, and sensible siting matter more than a fast cycle time or a phone app.',
+      },
+    ],
+  },
+
+  'white-settlement': {
+    zips: ['76108'],
+    landmarks: ['Naval Air Station Fort Worth Joint Reserve Base', 'Lockheed Martin Air Force Plant 4', 'White Settlement Historical Museum', 'Veterans Park'],
+    majorRoads: ['Loop 820', 'SH 199 Jacksboro Highway', 'White Settlement Road', 'Cherry Lane'],
+    nearbyCities: ['fort-worth', 'lake-worth', 'benbrook', 'azle', 'saginaw', 'aledo'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Wrapped around a joint reserve air base and the Lockheed plant next to it, with much of the city inside the airfield noise contours',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Commercial slide'],
+      commonBrands: ['LiftMaster', 'Eagle', 'DoorKing', 'Viking'],
+      commonIssues: [
+        'Households that change hands often, inheriting undocumented systems',
+        'Codes and remotes left over from previous occupants',
+        'Gates specified for security rather than convenience',
+        'Access needing to work for people on shift patterns',
+      ],
+    },
+    localAngle:
+      'White Settlement takes its name from an 1850s settlement of colonists among the Native villages west of Fort Worth, and today it wraps around Naval Air Station Fort Worth Joint Reserve Base and the Lockheed plant beside it. A base town has a characteristic we rarely see elsewhere: the houses turn over quickly. Service families post in and out on cycles measured in years, and a gate installed by one occupant is very often inherited by another who has no manual, no idea how many remotes exist, and no way to know which codes are still live. That is a security problem disguised as a paperwork one. The most useful visit we make in this city is frequently not a repair at all — it is clearing a receiver, re-pairing only the remotes the current household actually holds, and resetting the keypad codes, so that what opens the gate is known rather than assumed.',
+    faqs: [
+      {
+        q: 'We have just moved in and do not know how many remotes exist. What should we do?',
+        a: 'Clear the receiver and re-pair only the remotes you hold. Until that is done you have no way of knowing who else can open your gate, and on a property that has changed hands more than once the honest answer is usually that nobody knows. It is a short visit, it needs every remote you want to keep in front of us, and it is worth doing before anything else.',
+      },
+      {
+        q: 'Can we give access to someone temporarily without sharing our own code?',
+        a: 'Yes, and on a household that comes and goes it is worth setting up properly. Most keypads and access systems support separate codes that can be issued and removed individually, so a neighbour, a contractor or family visiting for a fortnight can be given their own and it can be withdrawn afterwards without changing everybody else’s.',
+      },
+    ],
+  },
+
+  westlake: {
+    zips: ['76262'],
+    landmarks: ['Circle T Ranch', 'Charles Schwab campus', 'Fidelity Investments campus', 'Westlake Academy'],
+    majorRoads: ['SH 114', 'SH 170', 'Davis Boulevard', 'Solana Boulevard'],
+    nearbyCities: ['trophy-club', 'southlake', 'roanoke', 'keller', 'grapevine', 'northlake'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town of very few residents and very large corporate campuses, so the perimeter outweighs the driveway',
+      commonGateTypes: ['Cantilever slide', 'Barrier arm', 'Estate driveway swing'],
+      commonBrands: ['HySecurity', 'DoorKing', 'LiftMaster', 'All-O-Matic'],
+      commonIssues: [
+        'Long corporate perimeters with multiple controlled entrances',
+        'Integration with staffed security and card systems',
+        'Estate gates on ranch land alongside campus infrastructure',
+        'Uptime expectations closer to industrial than residential',
+      ],
+    },
+    localAngle:
+      'Westlake was settled by the Medlin family in 1847 and incorporated in 1956, and for most of its existence it was ranch land with very few people on it. It is still a town of very few residents, but since Ross Perot Jr bought the Circle T Ranch in 1993 it has also become the address of some of the largest corporate campuses in North Texas — Fidelity from 1998 and Charles Schwab from 2019, between them well over two million square feet. That produces a gate profile that exists nowhere else we work. The typical job here is not a driveway; it is a controlled perimeter with several entrances, staffed security, card and plate recognition, and an uptime expectation closer to an industrial site than a home. Alongside it, on the same roads, sit genuine estate properties on ranch acreage. We quote and staff those two kinds of work quite differently.',
+    faqs: [
+      {
+        q: 'We manage a corporate site. Can you work alongside our existing security system?',
+        a: 'Yes — on a controlled perimeter the gate is one component in a larger system, and it has to answer to whatever is managing access rather than run independently. We work to the integration your system expects, coordinate with your security provider, and schedule around operational hours rather than ours.',
+      },
+      {
+        q: 'What sort of response do you offer for a site that cannot be left open?',
+        a: 'Where a perimeter cannot be left unsecured we prioritise it, and where the full repair needs a part we do not carry we will get the entrance into a secure, controllable state first rather than leaving it open overnight. Tell us the operational constraint when you call and we will plan to it.',
+      },
+    ],
+  },
+
+  farmersville: {
+    zips: ['75442'],
+    landmarks: ['Historic Onion Shed', 'Northeast Texas Trail', 'Chaparral Trail trailhead', 'Farmersville Square'],
+    majorRoads: ['US-380', 'SH 78', 'FM 547', 'Main Street'],
+    nearbyCities: ['princeton', 'blue-ridge', 'nevada', 'josephine', 'lavon', 'mckinney'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A cotton town since 1870 whose old railbed is now a rail-trail, so some properties are crossed by a public path rather than a road',
+      commonGateTypes: ['Ranch entrance swing', 'Wide farm gate', 'Driveway slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'Ramset', 'All-O-Matic'],
+      commonIssues: [
+        'Boundaries meeting a public trail rather than a street',
+        'Pedestrian and cyclist traffic beside vehicle entrances',
+        'Long agricultural frontages away from mains power',
+        'Older farm entrances with decades-old operators',
+      ],
+    },
+    localAngle:
+      'Cotton arrived in this part of Collin County in 1870, when Howard Crawford planted nine acres as an experiment and got ten bales out of it, and Farmersville grew on the back of what followed. The railway that carried it is gone, but its embankment is not — it is now the Northeast Texas Trail, and Farmersville is one of its trailheads. That gives some properties here a boundary condition we rarely deal with: a public path running along or across the land rather than a road. It matters for gate work because a gate beside a shared-use trail has people and cyclists passing at a walking pace right next to a powered vehicle entrance, which changes where safety devices go and how long a gate should stand open. It is not a difficult problem, but it is one that a standard driveway specification does not account for.',
+    faqs: [
+      {
+        q: 'Our gate is next to the trail. Does that change the safety requirements?',
+        a: 'It changes where the devices go and how the timings are set. A powered gate beside a shared path has pedestrians and cyclists passing close to it at times a driveway never would, so photo-eye positions and the hold-open time need setting for that rather than for a car. It is a specification question rather than extra equipment.',
+      },
+      {
+        q: 'We have an old farm gate at the end of a long drive. Is solar worth it?',
+        a: 'On a long agricultural frontage, usually yes. Trenching a mains supply several hundred feet costs more than a properly sized solar system on most layouts here, and solar keeps working through the outages this area gets in storm season. The sizing has to match your real daily use rather than an average, which is the part most often got wrong.',
+      },
+    ],
+  },
+
+  'blue-ridge': {
+    zips: ['75424'],
+    landmarks: ['Blue Ridge town square', 'The ridge itself', 'FM 545 corridor', 'Blue Ridge ISD campuses'],
+    majorRoads: ['SH 78', 'FM 545', 'FM 981', 'Main Street'],
+    nearbyCities: ['farmersville', 'westminster', 'anna', 'melissa', 'josephine', 'princeton'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A small town named for a genuine ridge, where properties sit on open high ground with nothing upwind of them',
+      commonGateTypes: ['Ranch entrance swing', 'Wide farm gate', 'Driveway slide'],
+      commonBrands: ['US Automatic', 'Ramset', 'LiftMaster', 'All-O-Matic'],
+      commonIssues: [
+        'Exposed frontages taking the full force of prairie wind',
+        'Solar panels and batteries on entrances far from power',
+        'Long distances between properties and to the nearest town',
+        'Gates left standing open because failures are hard to attend quickly',
+      ],
+    },
+    localAngle:
+      'Blue Ridge takes its name from a ridge that turns blue for about a month each year when the blue-eyed grass is in flower, and the ridge is the point: this is high, open country with very little between one property and the weather. Wind is the practical consequence. A solid gate leaf on an exposed frontage up here catches gusts that a sheltered suburban gate never sees, and the damage that follows is the kind owners struggle to explain — a leaf found out of true in the morning, an operator arm bent with nobody having touched it. The other consequence is distance. Properties are far apart and far from anywhere, so a gate that fails tends to stay failed longer than it would in town, and people are more likely to prop it open in the meantime. We would rather leave a gate in a secure manual state than have it standing open for a week.',
+    faqs: [
+      {
+        q: 'The wind keeps damaging our gate. What actually helps?',
+        a: 'Mechanical hardware rather than a bigger motor. Properly rated stops, a positive latch or lock that holds the leaf when it is closed, and on very exposed frontages reducing the solid area the wind can push against. A stronger operator does not stop a gate being blown past its stops — it just means something else bends first.',
+      },
+      {
+        q: 'If our gate fails, can it be made secure until you can get out?',
+        a: 'Yes, and out here we would rather do that than leave a property open. Most operators can be released and the gate secured manually so the entrance is closed and lockable while you wait for the part or the visit. Ask us on the phone and we will talk you through it for your model.',
+      },
+    ],
+  },
+
+  nevada: {
+    zips: ['75173'],
+    landmarks: ['Nevada town centre', 'Lake Lavon', 'FM 6 corridor', 'Community Park'],
+    majorRoads: ['SH 78', 'FM 6', 'FM 1778', 'Main Street'],
+    nearbyCities: ['lavon', 'josephine', 'farmersville', 'wylie', 'princeton', 'copeville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Farmland east of Lake Lavon where properties are measured in acres and entrances sit a long way from the house',
+      commonGateTypes: ['Ranch entrance swing', 'Wide farm gate', 'Driveway slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'Ramset', 'All-O-Matic'],
+      commonIssues: [
+        'Entrances several hundred feet from the nearest power',
+        'Solar batteries sized before a household grew',
+        'Intercom and keypad runs failing over distance',
+        'Wide gates on posts set in heavy Blackland ground',
+      ],
+    },
+    localAngle:
+      'Nevada was named by a settler in honour of the Nevada Territory he had passed through on his way to look for gold in California, and the town has stayed what it was: farmland east of Lake Lavon, with properties measured in acres rather than feet. The distances are what define the work. An entrance here is commonly several hundred feet from the house and further still from the meter, which puts both power and communication under strain. So the faults we attend are disproportionately about distance rather than about the operator — a solar battery specified when the household ran fewer vehicles, an intercom that has degraded over a long buried run, a keypad that will not reliably reach the house it is supposed to call. Diagnosing those means testing the run rather than swapping the box at either end, which is the most common wasted expense we see out here.',
+    faqs: [
+      {
+        q: 'Our intercom has got unreliable but the gate still opens. What is wrong?',
+        a: 'Usually the run between them rather than either unit. On an acre property that cable is long, buried and often decades old, and moisture in a joint degrades the audio while the gate circuit, which tolerates more, carries on working. Testing the run first avoids replacing hardware that was never at fault.',
+      },
+      {
+        q: 'How do we know what size solar system our gate needs?',
+        a: 'By counting cycles rather than guessing. How many times the gate actually opens on a normal day, and what else is drawing from the same battery — a camera or a keypad runs continuously — determines the panel and battery you need. Systems out here most often fail because the household grew after the system was specified, not because anything broke.',
+      },
+    ],
+  },
+
+  lavon: {
+    zips: ['75166'],
+    landmarks: ['Lake Lavon', 'Lavon town centre', 'SH 78 corridor', 'Lavon Community Park'],
+    majorRoads: ['SH 78', 'FM 6', 'FM 1378', 'Main Street'],
+    nearbyCities: ['wylie', 'nevada', 'princeton', 'copeville', 'josephine', 'farmersville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A small town beside the reservoir that took its name, where new subdivisions now sit next to long-standing acreage',
+      commonGateTypes: ['Residential swing', 'Ranch entrance swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'Elite'],
+      commonIssues: [
+        'Brand-new installs and decades-old entrances on the same road',
+        'New community gates alongside private farm gates',
+        'Made ground on new plots settling beside undisturbed acreage',
+        'Very different parts and expectations within one small town',
+      ],
+    },
+    localAngle:
+      'Lavon was Thompson Switch before it was Lavon, named for the postmaster’s son, and the reservoir beside it took the town’s name rather than the other way round. For most of its life it was a handful of people on farmland. What it is now is a town in the middle of changing: new subdivisions with community entrances going in along SH 78, while a few hundred yards away are acreage properties whose gates have been in place for decades. That mixture within a very small area is the practical challenge. The new installations fail the way new things do — commissioning settings describing ground that has since moved — and the old ones fail the way old things do, on parts that are no longer made. Both are routine on their own. What is unusual about Lavon is meeting both on one short road, which is why we ask how old the gate is before we ask what it is doing.',
+    faqs: [
+      {
+        q: 'Our gate came with a new house here and is already playing up. Is that normal?',
+        a: 'On new plots, fairly. Made ground settles for the first few years, so the driveway and posts the gate was commissioned against have moved slightly since. Re-learning the travel and rechecking the force against the gate as it now sits usually sorts it, without parts.',
+      },
+      {
+        q: 'Our gate is old and the maker has gone. Is it a write-off?',
+        a: 'Not usually. Even where an operator is genuinely unsupported, the posts, hinges and gate almost always have years left, so fitting a current operator to the existing installation is far cheaper than starting again. We will tell you honestly which of the two situations you are in before you commit to anything.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
