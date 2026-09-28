@@ -126,3 +126,40 @@ export const SHARE_IMAGE = {
   type: 'image/png',
   alt: 'Shield Gate Repair — Same-day automatic gate repair across Dallas–Fort Worth',
 }
+
+/**
+ * Robots directives for a page that IS indexable.
+ *
+ * ── WHY THIS EXISTS RATHER THAN `robots: undefined` ──────────────────────────
+ * The model and symptom routes decide indexability per page, and originally
+ * expressed "this one is fine" as `robots: undefined`, on the assumption that
+ * an unset field inherits the layout's value.
+ *
+ * It does not. Next's metadata merge treats an explicitly-present key as an
+ * override even when its value is undefined, so those pages shipped with NO
+ * robots meta tag at all. Measured on production 28 Sep 2026: `/` and
+ * `/brands/liftmaster` carried the full directive; `/brands/liftmaster/
+ * la500-repair` carried none.
+ *
+ * Indexing was never affected — no robots tag means index,follow by default —
+ * but the snippet directives were silently dropped on 43 model pages and 20
+ * symptom pages. Those are the pages with the longest answers and the best
+ * images on the site, so they are precisely the ones that wanted
+ * `max-snippet:-1` and `max-image-preview:large`.
+ *
+ * Must stay identical to the `robots` block in app/layout.tsx.
+ */
+export const INDEXABLE_ROBOTS = {
+  index: true,
+  follow: true,
+  'max-image-preview': 'large',
+  'max-snippet': -1,
+  'max-video-preview': -1,
+} as const
+
+/** Served, crawlable, but not submitted for indexing — links still count. */
+export const HELD_BACK_ROBOTS = {
+  index: false,
+  follow: true,
+  googleBot: { index: false, follow: true },
+} as const

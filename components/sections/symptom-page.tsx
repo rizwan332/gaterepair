@@ -18,7 +18,7 @@ import { indexedCities } from '@/content/cities'
 import { symptomBySlug, symptomPath } from '@/content/symptoms'
 import type { SymptomPage } from '@/content/symptoms/types'
 import { assessSymptom, isSymptomIndexable } from '@/lib/symptom-quality'
-import { openGraphFor } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { Button } from '@/components/ui/button'
 import { TrustBadges } from '@/components/ui/trust-badges'
@@ -91,10 +91,9 @@ export function symptomMetadata(page: SymptomPage): Metadata {
     alternates: { canonical: path },
     openGraph: openGraphFor(path, { title: page.title, description: page.metaDescription }),
     // Held back until it clears the gate. `follow`, so its links to services,
-    // models and cities still count while it is.
-    robots: assessSymptom(page).indexable
-      ? undefined
-      : { index: false, follow: true, googleBot: { index: false, follow: true } },
+    // models and cities still count while it is. The indexable branch states
+    // the directives rather than passing undefined — see INDEXABLE_ROBOTS.
+    robots: assessSymptom(page).indexable ? INDEXABLE_ROBOTS : HELD_BACK_ROBOTS,
   }
 }
 

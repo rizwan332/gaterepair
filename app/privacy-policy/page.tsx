@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { openGraphFor } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS } from '@/lib/seo'
 import Link from 'next/link'
 import { business } from '@/content/business'
 import { PageHero } from '@/components/sections/page-hero'
@@ -12,7 +12,9 @@ export const metadata: Metadata = {
     'our analytics tags record, and how to ask us to delete it.',
   alternates: { canonical: '/privacy-policy' },
   openGraph: openGraphFor('/privacy-policy'),
-  robots: { index: true, follow: true },
+  // The same directives the layout sets. Stating index/follow alone would
+  // override the layout and drop the snippet directives with it.
+  robots: INDEXABLE_ROBOTS,
 }
 
 /**

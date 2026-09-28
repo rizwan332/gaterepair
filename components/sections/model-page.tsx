@@ -25,7 +25,7 @@ import { testimonialsForBrand } from '@/content/testimonials'
 import { modelByKey, modelKey, modelPath, modelsForBrand } from '@/content/models'
 import type { ModelPage } from '@/content/models/types'
 import { assessModel, isModelIndexable } from '@/lib/model-quality'
-import { openGraphFor } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
@@ -91,9 +91,12 @@ export function modelMetadata(page: ModelPage): Metadata {
     openGraph: openGraphFor(path, { title: page.title, description: page.metaDescription }),
     // Held back until it clears the quality gate. `follow`, so its links to the
     // brand page, services and cities still count while it is.
-    robots: assessModel(page).indexable
-      ? undefined
-      : { index: false, follow: true, googleBot: { index: false, follow: true } },
+    //
+    // The indexable branch states the directives rather than passing undefined:
+    // an undefined value here still overrides the layout, which silently
+    // stripped the snippet directives from every model page. See
+    // INDEXABLE_ROBOTS in lib/seo.ts.
+    robots: assessModel(page).indexable ? INDEXABLE_ROBOTS : HELD_BACK_ROBOTS,
   }
 }
 
