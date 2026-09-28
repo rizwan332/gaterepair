@@ -20,12 +20,30 @@
  * delete the entry and the page stops building. CONFIRM WITH THE CLIENT that he
  * covers Fort Worth. If he does not, this needs removing rather than leaving.
  *
- * Nine further cities in his keyword file are also absent — Watauga, Richland
- * Hills, Lantana, Bartonville, Hickory Creek, Cross Roads, Lavon, Lowry
- * Crossing and Nevada. Those are NOT added: unlike Fort Worth they are small
- * suburbs where "he named it in a keyword list" is weaker evidence than "he
- * left it off his coverage list", and the two lists disagreeing is his to
- * resolve.
+ * ⚠️ NINE FURTHER ENTRIES ARE OURS — added 28 Sep 2026, on the agency's
+ * explicit instruction to cover every city in the master keyword list.
+ *
+ * Watauga, Richland Hills, Lantana, Bartonville, Hickory Creek, Cross Roads,
+ * Lavon, Lowry Crossing and Nevada. This REVERSES the decision recorded here
+ * on 16 Sep, which was to leave them out on the grounds that "he named it in a
+ * keyword list" is weaker evidence than "he left it off his coverage list".
+ *
+ * What changed is that the agency asked for the full keyword list covered, and
+ * that is their call to make. One piece of evidence also supports it: all nine
+ * are geographic enclaves INSIDE the existing coverage area rather than towns
+ * on its edge. Watauga and Richland Hills are ringed by Haltom City, North
+ * Richland Hills and Fort Worth; Bartonville, Lantana and Cross Roads sit among
+ * Argyle, Flower Mound and Aubrey; Lavon, Lowry Crossing and Nevada are beside
+ * Wylie and Princeton. Every one of those neighbours is on the client's own
+ * list. A van that reaches all the neighbours reaches these, which makes an
+ * oversight more plausible than a deliberate boundary.
+ *
+ * It is still an assumption, and it is still reversible: delete an entry and
+ * its page stops building.
+ *
+ * ⚠️ CONFIRM WITH THE CLIENT that he covers these nine and Fort Worth. Pages
+ * for cities a business does not actually serve generate calls it cannot take,
+ * which costs more than the traffic is worth.
  */
 export const CLIENT_CITY_LIST = [
   'Addison', 'Aledo', 'Allen', 'Alvarado', 'Alvord', 'Anna', 'Annetta', 'Annetta North',
@@ -53,4 +71,10 @@ export const CLIENT_CITY_LIST = [
   'Trophy Club', 'University Park', 'Valley View', 'Van Alstyne', 'Venus', 'Waxahachie',
   'Weatherford', 'West Tawakoni', 'Westlake', 'Westminster', 'White Settlement', 'Whitewright',
   'Whitesboro', 'Willow Park', 'Wilmer', 'Wills Point', 'Wylie',
+
+  // Ours, not the client's — see the warning at the top of this file. Kept in
+  // one block at the end rather than merged alphabetically so that what we
+  // added stays obvious to anyone reviewing this against his original list.
+  'Bartonville', 'Cross Roads', 'Hickory Creek', 'Lantana', 'Lavon',
+  'Lowry Crossing', 'Nevada', 'Richland Hills', 'Watauga',
 ] as const

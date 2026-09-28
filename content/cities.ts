@@ -1469,6 +1469,221 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 3, 28 Sep 2026 ───────────────────────────────────────────────────
+  // The six Tier 2 towns added in 929988e, which had no page at any tier until
+  // then. All six come from the client's keyword list rather than his coverage
+  // list — see the warning in scripts/client-city-list.ts.
+  //
+  // `gateProfile` is a DRAFT on all six, same standing as Tier 1.
+
+  bartonville: {
+    zips: ['76226'],
+    // Subdivision names from Denton County realty records; the town publishes
+    // no register. Most of Bartonville is unplatted acreage, so these are the
+    // platted exceptions rather than a map of the town.
+    neighborhoods: ['Saddlebrook Estates', 'Barrington Hills', 'Hat Creek Estates', 'Long Meadows Estates', 'Deer Hollow'],
+    landmarks: ['Bartonville Town Center', 'Denton Creek', 'Lantana Golf Club', 'Argyle ISD campuses'],
+    majorRoads: ['FM 407', 'FM 1830', 'US-377', 'Jeter Road'],
+    nearbyCities: ['argyle', 'lantana', 'flower-mound', 'highland-village', 'denton', 'justin'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town of roughly 1,700 people zoned for agricultural and equestrian use, where the entrance gate is further from the house than the house is wide',
+      commonGateTypes: ['Ranch entrance swing', 'Farm and paddock gate', 'Wide estate slide'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'Ramset'],
+      commonIssues: [
+        'Solar operators on entrances with no mains power at the gate',
+        'Long buried runs between the house and the road',
+        'Wide gates sized for horse trailers dropping on their posts',
+        'Livestock and wildlife triggering safety devices',
+      ],
+    },
+    localAngle:
+      'Bartonville holds about 1,700 people across land zoned for agricultural and equestrian use, and its ordinances are unusually explicit about it — an equestrian centre needs five acres before the town will even consider the permit. That tells you most of what matters for gate work here. The entrances are wide because a horse trailer has to clear them, they sit hundreds of feet from the house along a private drive, and the power to run them is frequently solar because trenching a supply that distance costs more than the operator. When a Bartonville gate fails in February the first thing we check is the battery, because a sealed battery that coped in October will not turn a heavy trailer gate on a cold morning. The second is the post, because a wide leaf on ground that moves with the season drops out of square long before the motor gives up.',
+    faqs: [
+      {
+        q: 'Our entrance is a long way from the house and there is no power at the gate. What are the options?',
+        a: 'Solar is the usual answer on Bartonville frontages, and the whole thing turns on sizing it to your real traffic — a household running twenty cycles a day needs a different panel and battery from one running six. Trenching power out to the gate is the other route, and on some layouts it genuinely is the better investment. We work out both figures against your own drive and cycle count, then tell you which one we would pick and why.',
+      },
+      {
+        q: 'Do you work on gates wide enough for a horse trailer?',
+        a: 'Yes, and the specification is where these go wrong. A leaf built wide enough for a trailer carries far more leverage at its outer end than a suburban gate, so an operator picked to a residential rating will overheat, stall and eventually burn out — not because it is faulty but because it was never rated for that leaf. We measure the leaf and weigh it before recommending anything, and we look at what is carrying it, since a post that cannot hold the gate will not hold a stronger motor either.',
+      },
+    ],
+  },
+
+  lantana: {
+    zips: ['76226'],
+    // Lantana is an unincorporated CDP, not a city. Its "neighborhoods" are the
+    // developer's villages, which is how residents actually refer to them.
+    neighborhoods: ['Bandera', 'Wisteria', 'Azalea', 'Madison', 'Larkspur'],
+    landmarks: ['Lantana Golf Club', 'Lantana Community Center', 'Denton Creek', 'Lantana Trail'],
+    majorRoads: ['FM 407', 'Lantana Trail', 'US-377', 'I-35W'],
+    nearbyCities: ['bartonville', 'argyle', 'flower-mound', 'highland-village', 'denton', 'justin'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A single master-planned community of about 4,000 homes built through the 2000s and 2010s, so the gates are a generation newer than the region average',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Eagle'],
+      commonIssues: [
+        'Community entrance gates running constant cycles',
+        'Commissioning faults on gates installed with the house',
+        'Loop detector faults at village entrances',
+        'Clay-soil post movement on newer construction',
+      ],
+    },
+    localAngle:
+      'Lantana is not a city — it is a single master-planned community of around 4,000 homes spread over about 1,780 acres of unincorporated Denton County, laid out in villages around an eighteen-hole course designed by Jay Morrish. Almost all of it went up in the 2000s and 2010s, which makes it one of the youngest places we work and changes what goes wrong. There is very little here of the obsolete-control-board problem that dominates the older parts of the metroplex. What we see instead are commissioning faults — gates installed with the house, dialled in before the leaf had settled on its hinges, and slowly drifting out of adjustment through their first years — and shared village entrances doing far more cycles a day than a private drive ever will. Those are different jobs with different parts, and on a single afternoon here we will usually do both.',
+    faqs: [
+      {
+        q: 'Our gate came with the house and has started misbehaving. Is it faulty?',
+        a: 'Usually it is set up rather than broken, and in a community this young that is the single most common thing we find. The leaf drops a fraction on its hinges over its first year or two, and the travel limits and obstruction force that were correct on handover day no longer describe where the gate actually sits. Re-learning the travel against the gate as it is now costs a visit and no parts.',
+      },
+      {
+        q: 'Do you work on the village entrance gates as well as private driveways?',
+        a: 'Yes, and in Lantana it is often both on the same visit. A village entrance is a shared asset with a shared consequence — when it stops, several hundred households notice before the board does. Those jobs get booked for a window that suits residents, and we leave a written account of what failed and what we changed so the management company has something to file rather than a verbal summary from whoever happened to be on site.',
+      },
+    ],
+  },
+
+  'cross-roads': {
+    zips: ['76227'],
+    // 76227 covers several communities; Windsong Ranch, Savannah and Paloma
+    // Creek are in the ZIP but NOT in Cross Roads town limits, so they are
+    // deliberately absent here.
+    neighborhoods: ['Cross Oak Ranch', 'Sunset Pointe', 'Forest Hills'],
+    landmarks: ['US-380 and US-377 junction', 'Lake Lewisville', 'Cross Roads Town Hall', 'Denton Creek'],
+    majorRoads: ['US-380', 'US-377', 'FM 424', 'Naylor Road'],
+    nearbyCities: ['aubrey', 'little-elm', 'denton', 'prosper', 'lantana', 'pilot-point'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town that requires lots of an acre or more by ordinance, sitting on the junction of two US highways',
+      commonGateTypes: ['Estate driveway swing', 'Ranch entrance swing', 'Community slide'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'All-O-Matic', 'DoorKing'],
+      commonIssues: [
+        'Gates opening directly onto two busy US highways',
+        'Road grit and dust fouling slide gate tracks',
+        'Timers and safety devices set without allowing for highway speeds',
+        'Vibration from heavy through-traffic loosening fixings',
+      ],
+    },
+    localAngle:
+      'Cross Roads is named for exactly what it is — the junction of US-380 and US-377 — incorporated in 1973 and still under two thousand people, with an ordinance keeping lots to an acre or more. The defining fact of gate work here is not the lot size but the traffic. A great many of these entrances open directly onto a US highway carrying through-traffic at speed, and that changes the specification rather than just the maintenance. Timing matters more: a gate that takes its time opening leaves a vehicle waiting in a 65mph lane, which is a different order of risk from waiting on a suburban street. So we set cycle speeds and safety device positions for the road the gate actually faces, we check that a vehicle can clear the carriageway before the gate begins closing behind it, and we look at fixings more often than we would elsewhere, because constant heavy through-traffic works bolts loose in a way a quiet cul-de-sac never does.',
+    faqs: [
+      {
+        q: 'Our gate keeps sticking and we are right on the highway. Is that related?',
+        a: 'Very likely. Traffic on US-380 and US-377 throws grit that settles in a slide gate’s track, the rollers grind on it, and the operator then labours against that friction until it stops or reverses. It reads as an operator fault and it is an abrasive one. We clear and measure the track and the rollers before condemning anything electrical.',
+      },
+      {
+        q: 'Our gate opens straight onto the highway. Is there anything different we should do?',
+        a: 'Yes, and it is mostly about timing and where the safety devices sit. A gate that opens slowly leaves you waiting in a fast lane, and a close timer set to a suburban default can start shutting before a trailer has fully cleared. We set the cycle speed and the sensor positions for the road you are actually pulling onto, and on some frontages we will recommend a slide over a swing purely because of where a waiting vehicle ends up.',
+      },
+    ],
+  },
+
+  'hickory-creek': {
+    zips: ['75065'],
+    neighborhoods: ['Shore Haven', 'Steeplechase', 'Shadow Creek Estates', 'The Enclave of Hickory Creek', 'Harbor Grove Estates'],
+    landmarks: ['Lake Lewisville', 'Point Vista Park', 'Hickory Creek Park', 'Sycamore Bend Park'],
+    majorRoads: ['I-35E', 'FM 2181 Swisher Road', 'Turbeville Road', 'Point Vista Road'],
+    nearbyCities: ['lake-dallas', 'corinth', 'denton', 'highland-village', 'lewisville', 'flower-mound'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town that began as weekend lake cabins in 1963 and became permanent housing, so gates were retrofitted to drives that were never laid out for them',
+      commonGateTypes: ['Driveway slide', 'Ornamental iron swing', 'Ranch entrance swing'],
+      commonBrands: ['LiftMaster', 'US Automatic', 'DoorKing', 'All-O-Matic'],
+      commonIssues: [
+        'Gates retrofitted to steep or narrow cabin-era driveways',
+        'Operators sited close to Corps of Engineers shoreline boundaries',
+        'Gravel and unpaved drives feeding grit into slide tracks',
+        'Seasonal lake traffic driving high cycle counts in summer',
+      ],
+    },
+    localAngle:
+      'Hickory Creek incorporated in 1963 with 219 residents. Much of what it was then was weekend cabins on the water, and much of what it is now — around five thousand people — is those same lots rebuilt as permanent houses. That history is the thing that shapes gate work here, because a driveway laid out in the 1960s to park a boat trailer beside a cabin is not a driveway anyone would design for an automatic gate. They are short, often steep down toward the water, frequently gravel, and sometimes run right up to the Corps of Engineers boundary where the shoreline land stops being yours. So the questions we answer in this town are geometry questions before they are equipment questions: whether a swing gate has room to open without putting a waiting car half onto Turbeville or Point Vista Road, whether a slide is the safer answer on a narrow drive, and where an operator can legally and sensibly be sited when the lot runs out before the lake does.',
+    faqs: [
+      {
+        q: 'Our driveway is short and slopes down toward the water. Can we even have an automatic gate?',
+        a: 'Usually yes, but the type matters more than it would on a flat suburban drive. A swing gate needs room to open without leaving a waiting vehicle in the road, and on a short sloping drive that room often is not there — which is when a slide gate becomes the safer answer rather than simply the more expensive one. We would rather look at the drive first and tell you which will actually work than fit the one you asked for and leave you edging into traffic.',
+      },
+      {
+        q: 'Our drive is gravel and the gate keeps sticking. Is that connected?',
+        a: 'Directly. A gravel or unpaved drive feeds grit into a slide gate’s track continuously, the rollers grind on it, and the operator then labours against that friction until it stops or reverses. Clearing it monthly treats the symptom. Edging the drive, or changing where water carries the gravel, treats the cause — and it is the difference between replacing rollers every year and not.',
+      },
+    ],
+  },
+
+  'richland-hills': {
+    // ⚠️ Richland Hills, not North Richland Hills. Separate cities, separate
+    // ZIPs, separate pages. 76118 is this one; 76180/76182 is the other.
+    zips: ['76118'],
+    // The city publishes no subdivision register, so these rest on realty
+    // sources and are the least-sourced field on this entry.
+    neighborhoods: ['Richland Park', 'Richlynn Terrace', 'Mimosa Park', 'Maple Park'],
+    landmarks: ['Richland Hills City Hall', 'Link Park', 'Calloway Branch', 'Baker Boulevard corridor'],
+    majorRoads: ['Loop 820', 'SH 121 Airport Freeway', 'Baker Boulevard', 'Glenview Drive'],
+    nearbyCities: ['haltom-city', 'north-richland-hills', 'fort-worth', 'hurst', 'bedford', 'watauga'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A small post-war city whose Loop 820 and Baker Boulevard frontage is working commercial yards rather than housing, so most of its gates secure plant and vehicles',
+      commonGateTypes: ['Chain-link rolling yard gate', 'Cantilever slide', 'Commercial swing'],
+      commonBrands: ['DoorKing', 'LiftMaster', 'All-O-Matic', 'Viking'],
+      commonIssues: [
+        'Heavy chain-link gates dragged over unsurfaced yard ground',
+        'Gates sized for a yard that now takes larger vehicles',
+        'Padlocks and manual chains defeating the operator',
+        'Theft and forced-entry damage to gates and operators',
+      ],
+    },
+    localAngle:
+      'Richland Hills incorporated in 1950 on the back of the Fort Worth defence plants and has stayed much the same size since — around eight and a half thousand people in under four square miles. It is worth saying plainly that it is not North Richland Hills, which is a separate city that formed in 1953 after this one declined to annex it. Different ZIP codes, different councils, and we have been sent to the wrong one before. What makes gate work here unlike its larger neighbour is what sits along Loop 820 and Baker Boulevard: working commercial yards — contractors, trades, vehicle storage — rather than subdivisions. The gate securing a yard has a harder life than any residential gate in the metroplex. It is usually heavy chain-link on a long run, it is dragged across ground that was never surfaced for it, it is opened and shut all day by people in a hurry, and when it fails the business cannot lock up its plant that night. So we carry for chain-link and cantilever hardware when we come here, and we ask what is behind the gate before we quote, because a yard gate that is down is a security problem with a deadline.',
+    faqs: [
+      {
+        q: 'Are you sure you mean Richland Hills and not North Richland Hills?',
+        a: 'They are two separate cities and we keep them separate. Richland Hills is the older one, incorporated in 1950 in ZIP 76118; North Richland Hills formed in 1953 and uses 76180 and 76182. We ask which you are in when you call, because sending a van to the wrong one wastes your morning and ours.',
+      },
+      {
+        q: 'Our yard gate is down and we cannot secure the site tonight. Can you help today?',
+        a: 'That is the call we prioritise here, because an open yard is plant and vehicles left unattended rather than an inconvenience. We aim to get someone out the same day, and where the full repair needs a part we do not carry, we will get the gate into a secure, manually lockable state first and come back for the permanent fix rather than leaving you open.',
+      },
+    ],
+  },
+
+  watauga: {
+    // 76148 is shared with parts of North Richland Hills and Fort Worth.
+    zips: ['76148'],
+    // Realty-sourced; the city publishes no register. Several directories list
+    // Fort Worth neighborhoods alongside Watauga ones, so anything on the
+    // Fort Worth side of the line has been left out.
+    neighborhoods: ['Parkwood Hills', 'Arcadia Park Estates', 'Highland Oaks', 'Melody Hills'],
+    landmarks: ['Capp Smith Park', 'Watauga Community Center', 'Big Bear Creek', 'US-377 corridor'],
+    majorRoads: ['US-377 Denton Highway', 'Watauga Road', 'Rufe Snow Drive', 'Chapman Road'],
+    nearbyCities: ['north-richland-hills', 'keller', 'haltom-city', 'fort-worth', 'richland-hills', 'saginaw'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Four square miles with no room left to build, so almost every gate is retrofitted to a 1970s or 1980s house on a small lot',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Side and yard gate'],
+      commonBrands: ['LiftMaster', 'Eagle', 'Viking', 'US Automatic'],
+      commonIssues: [
+        'Short driveways leaving no room for a gate to swing',
+        'Operators retrofitted to fences and posts never built to carry them',
+        'Gates fitted between houses with almost no clearance',
+        'Vehicles waiting in the street while the gate cycles',
+      ],
+    },
+    localAngle:
+      'Watauga is a Cherokee word meaning village of many springs, carried here from Tennessee after the Civil War, and the town was farmland for most of its history — sixty-five people in the mid-1930s. The defence plants changed that, and it now holds over twenty-three thousand people in just over four square miles, hemmed in on every side by Keller, Fort Worth, Haltom City and North Richland Hills. It cannot annex and it cannot spread, which makes it the most built-out place we work. For gate work that means something specific: virtually nothing here was designed with a gate in mind. These are 1970s and 1980s houses on small lots, and the gates are retrofits — bolted to fence posts that were never intended to carry a moving leaf, fitted to driveways with barely a car length between the garage and the pavement. The recurring problem is clearance rather than wear. A swing gate needs somewhere to swing and a waiting car needs somewhere to wait, and on a great many Watauga frontages neither is available without choosing the right gate type in the first place.',
+    faqs: [
+      {
+        q: 'Our driveway is short. Is there room for an automatic gate at all?',
+        a: 'Often yes, but not always as a swing. A swing gate needs clear arc to open into and a place for your car to wait off the road while it does, and on a short Watauga driveway that frequently does not exist. A slide gate needs room along the fence line instead, which many of these lots do have. We measure the frontage before recommending either, because fitting the wrong type here means reversing into traffic every time you come home.',
+      },
+      {
+        q: 'We are right on the city line. Do you cover us?',
+        a: 'Yes. Watauga is surrounded on every side by Keller, Fort Worth, Haltom City and North Richland Hills, and we work in all of them, so a boundary makes no difference to whether we come out. It only matters for getting the address right, which is why we ask for the street rather than the city when someone is near the line.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
