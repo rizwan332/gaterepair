@@ -1921,6 +1921,178 @@ const ENRICHED: Record<string, Partial<City>> = {
       },
     ],
   },
+
+  // ── BATCH 5, 28 Sep 2026 ───────────────────────────────────────────────────
+  // Five Denton County cities. Continuing the approach that made batch 4 work:
+  // anchor each on a physical fact about its own ground rather than on town
+  // character, because character repeats across suburbs and ground does not.
+  //
+  // This batch adds a third soil type to the site. Most of the metroplex is
+  // Blackland Prairie clay and Azle is Cross Timbers limestone; Pilot Point
+  // sits on sandy loam, which is why the horse industry is there and which
+  // makes its gate posts fail in a third distinct way.
+  //
+  // `gateProfile` is a DRAFT on all five.
+
+  'the-colony': {
+    zips: ['75056'],
+    neighborhoods: ['The Tribute', 'Legends', 'Austin Ranch', 'Ridgepoint', 'Stewart Peninsula'],
+    landmarks: ['Grandscape', 'Lewisville Lake', 'The Tribute Golf Links', 'Stewart Creek Park'],
+    majorRoads: ['SH 121 Sam Rayburn Tollway', 'Main Street', 'Paige Road', 'Josey Lane'],
+    nearbyCities: ['frisco', 'plano', 'carrollton', 'lewisville', 'little-elm', 'flower-mound'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A city incorporated in 1977 that was built as a single developer community, so most original installations are the same age and the same specification',
+      commonGateTypes: ['Community slide', 'Residential swing', 'Courtyard gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Elite', 'Eagle'],
+      commonIssues: [
+        'Whole streets reaching end of equipment life in the same season',
+        'Discontinued parts affecting many properties at once',
+        'Newer peninsula builds with commissioning faults',
+        'Clay-soil post movement on original-era installations',
+      ],
+    },
+    localAngle:
+      'The Colony was incorporated in 1977 and grew as one large developer community rather than accreting over decades, which produces an effect we rarely see elsewhere: things fail in cohorts. When a run of houses was built in the same year to the same specification, the gates added to them tend to be the same age too, and the components inside them reach the end of their lives within a season or two of each other. We will get three calls from one street in a month and find the identical board or the identical capacitor at fault each time. The practical value of knowing that is in the advice rather than the repair — if your neighbour has just replaced an operator that was original to the street, yours is on the same clock, and there is a real saving in planning for that rather than waiting for the failure. The Tribute and the newer peninsula builds are the exception, and they fail the way new installations do, on commissioning rather than on age.',
+    faqs: [
+      {
+        q: 'Two neighbours have replaced their gate operators recently. Should we be worried?',
+        a: 'It is worth a look rather than a worry. Streets here were built in cohorts, so equipment of the same age and specification tends to reach the end of its life at about the same time. That does not mean yours will fail tomorrow, but it does mean a service check is better value now than an emergency call later, and if the part is one that has been discontinued it is useful to know before you need it urgently.',
+      },
+      {
+        q: 'Our gate is original to the house. Is it worth repairing at this age?',
+        a: 'Usually yes, and we will tell you plainly when it is not. The mechanical side — posts, hinges, track — normally outlasts the electronics by decades, so even where an operator has reached the end, the rest of the installation is generally reusable. That keeps the cost far below a full replacement, and it is the honest answer more often than a replacement quote would suggest.',
+      },
+    ],
+  },
+
+  'little-elm': {
+    zips: ['75068'],
+    neighborhoods: ['Paloma Creek', 'Union Park', 'Wildridge', 'Sunset Pointe', 'Valencia on the Lake', 'Frisco Ranch'],
+    landmarks: ['Lewisville Lake', 'Little Elm Park', 'The Lakefront', 'Union Park amenity centre'],
+    majorRoads: ['FM 423', 'US-380', 'Eldorado Parkway', 'Main Street'],
+    nearbyCities: ['frisco', 'the-colony', 'cross-roads', 'aubrey', 'prosper', 'lewisville'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A town that went from a few thousand people to around fifty thousand in two decades, so its shared entrances outnumber its private gates',
+      commonGateTypes: ['Community slide', 'Barrier arm', 'Amenity and pool gate'],
+      commonBrands: ['LiftMaster', 'DoorKing', 'Viking', 'HySecurity'],
+      commonIssues: [
+        'Entrance queues stacking back onto two-lane roads',
+        'Cycle timing set without allowing for traffic volume',
+        'Loop detectors handling far more vehicles than planned for',
+        'Amenity gates and access credentials across large HOAs',
+      ],
+    },
+    localAngle:
+      'Little Elm has roughly quadrupled in twenty years, to around fifty thousand people, and it did it through large master-planned communities — Paloma Creek, Union Park, Wildridge — rather than through infill. The consequence for gate work is that the shared entrance matters here more than the private driveway, and the specific problem is queueing. Several of these communities feed onto roads that were laid out when the population was a fraction of what it is, so an entrance gate that takes a few seconds longer than it should puts a line of cars back onto a two-lane road at school run time. That turns cycle speed from a comfort question into a traffic one. When we are called to a Little Elm entrance the first thing we establish is how many vehicles pass through it in a peak hour, because an operator and a detector specified for a quiet community behave quite differently once several hundred cars a day are using them.',
+    faqs: [
+      {
+        q: 'Our community entrance backs traffic onto the road at peak times. Can anything be done?',
+        a: 'Usually yes, and not always by replacing the gate. Cycle speed, how long the gate holds open, and how the detectors are tuned all affect throughput, and those are adjustments rather than parts. Where the gate genuinely cannot keep up, a faster operator or a second lane is the honest answer — but we would tune what is there first and measure the difference before quoting hardware.',
+      },
+      {
+        q: 'Who is responsible for the community gate, us or the HOA?',
+        a: 'Almost always the HOA or its management company, since the entrance is common property. We work directly with boards and managers on these, provide written reports they can file, and schedule around residents rather than around us. If you are a resident reporting a fault, tell us who manages the community and we will take it from there.',
+      },
+    ],
+  },
+
+  corinth: {
+    zips: ['76210'],
+    neighborhoods: ['The Preserve at Pecan Creek', 'Oakmont Estates', 'Cypress Point', 'Lake Sharon Estates', 'Meadow Oaks'],
+    landmarks: ['Lake Sharon', 'Corinth Community Park', 'Agora Commons', 'I-35E corridor'],
+    majorRoads: ['I-35E', 'FM 2181 Swisher Road', 'Corinth Parkway', 'Lake Sharon Drive'],
+    nearbyCities: ['lake-dallas', 'denton', 'highland-village', 'hickory-creek', 'lewisville', 'krum'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'A narrow city squeezed between Lewisville Lake and Lake Dallas, where the water table sits high and ground stays wetter than the rest of the county',
+      commonGateTypes: ['Residential swing', 'Driveway slide', 'Community slide'],
+      commonBrands: ['LiftMaster', 'Elite', 'DoorKing', 'Eagle'],
+      commonIssues: [
+        'Buried cable runs in ground that rarely dries out',
+        'Footings set in soil that holds water against them',
+        'Conduit and junction boxes taking in groundwater',
+        'Corrosion at below-grade terminations',
+      ],
+    },
+    localAngle:
+      'Corinth was named by the Dallas and Wichita Railway in 1880 and stayed rural until the I-35E corridor pulled development up from Dallas. What it is now is a narrow city sitting between two bodies of water — Lewisville Lake on one side, Lake Dallas on the other — and that position does something specific to gate installations. Ground here holds water. A buried cable run that would dry out between storms in Plano can stay damp for weeks in Corinth, and a conduit joint or a junction box below grade that would tolerate occasional wetting elsewhere is effectively sitting in it. So the faults we are called to here skew heavily below ground: intercoms that fail progressively rather than suddenly, keypads that work erratically in wet spells, and terminations that have corroded where nobody can see them. When a Corinth gate develops an intermittent fault, we test the buried run early rather than late, because on these streets it is the likeliest answer rather than the last resort.',
+    faqs: [
+      {
+        q: 'Our keypad and intercom work sometimes and not others. What causes that?',
+        a: 'In Corinth, usually moisture in the buried run rather than the hardware at either end. Ground here stays damp far longer than it does further from the lakes, and water that reaches a joint or a below-grade termination causes exactly this pattern — fine in a dry spell, erratic after rain. We test the run before replacing boxes, because swapping a keypad that was never faulty is a common and avoidable expense.',
+      },
+      {
+        q: 'Is there anything that prevents this rather than just fixing it?',
+        a: 'Yes. Properly sealed and correctly oriented terminations, conduit that drains rather than holds, and bringing joints above grade where the layout allows all make a substantial difference. It costs a little more at the time of a repair you are already paying for, and it is the difference between fixing this once and fixing it every wet spring.',
+      },
+    ],
+  },
+
+  aubrey: {
+    zips: ['76227'],
+    neighborhoods: ['Chaparral Ridge', 'Covey Creek', 'Aubrey Ranch Estates', 'Silverado'],
+    landmarks: ['Aubrey Historic Downtown', 'US-377 corridor', 'Ray Roberts Lake', 'Horse Country USA'],
+    majorRoads: ['US-377', 'FM 428', 'FM 2931', 'Sherman Drive'],
+    nearbyCities: ['pilot-point', 'cross-roads', 'little-elm', 'denton', 'krum', 'sanger'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Horse Country USA — commercial breeding and training operations rather than hobby acreage, so the ranch gate is a business entrance',
+      commonGateTypes: ['Ranch entrance swing', 'Wide trailer gate', 'Staff and service gate'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'All-O-Matic', 'DoorKing'],
+      commonIssues: [
+        'Trailer traffic in and out all day rather than twice',
+        'Access for staff, farriers, vets and haulers on different schedules',
+        'Wide gates taking repeated trailer clearance',
+        'Solar systems sized for a house but used by a business',
+      ],
+    },
+    localAngle:
+      'Aubrey calls itself Horse Country USA and the figure behind it is real — this stretch of Denton County holds something in the order of 25,000 horses across several hundred ranches. That matters because it makes Aubrey commercial equestrian country rather than hobby acreage, and a commercial barn gate is a business entrance rather than a driveway. It opens for staff arriving early, for farriers and vets on their own schedules, for feed deliveries, and for client and hauler trailers through the day. The cycle count on a working ranch entrance can run ten times what a private acreage gate sees, and the solar systems these gates typically run on were very often sized for the latter. That is the most common thing we correct here: not a broken operator, but a power budget calculated for a household and being asked to serve an operation.',
+    faqs: [
+      {
+        q: 'Our ranch gate keeps running out of power by the afternoon. What is wrong?',
+        a: 'Usually nothing is broken — the system is simply sized for fewer cycles than you are running. A working barn entrance opens many times more often than a residential drive, and a solar panel and battery specified for a house cannot replace what an operation draws. The fix is recalculating the power budget against your actual daily traffic, which often means a larger panel as well as a larger battery.',
+      },
+      {
+        q: 'Can we give staff, farriers and haulers different access?',
+        a: 'Yes, and on a working yard it is usually worth doing. Separate codes or credentials for staff, regular service providers and visiting haulers let you see who came and when, and let you remove one person’s access without changing everybody else’s. It is a straightforward addition to most access control systems rather than a new gate.',
+      },
+    ],
+  },
+
+  'pilot-point': {
+    zips: ['76258'],
+    neighborhoods: ['Bryson Ranch', 'Creekview Meadows', 'Mobberly Farms', 'Lantern'],
+    landmarks: ['Pilot Point Square', 'Ray Roberts Lake', 'Isle du Bois State Park', 'US-377 corridor'],
+    majorRoads: ['US-377', 'FM 455', 'FM 2153', 'Washington Street'],
+    nearbyCities: ['aubrey', 'tioga', 'sanger', 'denton', 'celina', 'krum'],
+    responseBand: '',
+    gateProfile: {
+      dominant: 'Sitting on sandy loam rather than clay — the soil that drew the horse industry here, and that makes gate posts settle instead of heave',
+      commonGateTypes: ['Ranch entrance swing', 'Wide trailer gate', 'Estate driveway swing'],
+      commonBrands: ['US Automatic', 'LiftMaster', 'Ramset', 'All-O-Matic'],
+      commonIssues: [
+        'Footings settling and washing rather than heaving',
+        'Post bases undermined by water moving through loose soil',
+        'Long solar-powered entrances on ranch frontages',
+        'Gate alignment drifting downward over years rather than seasonally',
+      ],
+    },
+    localAngle:
+      'Pilot Point sits on an outcrop of rich sandy loam, and that soil is the reason the horse industry settled here — it drains, it is forgiving underfoot, and it is good ground to work a horse on. It is also the reason gates here fail differently from gates anywhere else we work. Most of this metroplex is Blackland Prairie clay, which swells and shrinks with the seasons and walks a gate post back and forth until it leans. Sandy loam does not do that. What it does instead is let water move through it, and over years that water carries fine material away from around a footing. The post does not heave; it settles, and it keeps settling in one direction. The symptom is a gate whose alignment drifts steadily downward rather than shifting with the weather, and the repair is about how the footing is bedded and how water is directed away from it, not about waiting out a seasonal cycle that is never going to come back around.',
+    faqs: [
+      {
+        q: 'Our gate post has slowly sunk rather than leaned. Is that the same problem people have in Dallas?',
+        a: 'No, and it is worth knowing the difference. Clay soils east of here swell and shrink seasonally, so posts lean one way and partly recover. The sandy loam under Pilot Point lets water move through it and wash fine material out from around a footing, so the post settles steadily in one direction and does not come back. The repair is about bedding and drainage rather than about riding out a season.',
+      },
+      {
+        q: 'Does the soil here mean footings need to be different?',
+        a: 'In practice yes. A footing that is adequate in clay can be undermined in loose, free-draining ground if water is allowed to run past it, so depth, bedding and where the water goes all matter more here. It is worth getting right once — we have re-set posts in this area that were failing for the third time because each previous repair treated the symptom.',
+      },
+    ],
+  },
 }
 
 const build = (raw: [string, string][], tier: 2 | 3): City[] =>
