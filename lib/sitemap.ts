@@ -8,6 +8,8 @@ import { videos } from '../content/video-manifest'
 import { videoPageMeta } from '../content/video-pages'
 import { watchPath } from './video-paths'
 import { indexableModelPages } from './model-quality'
+import { indexableSymptomPages } from './symptom-quality'
+import { symptomPath } from '../content/symptoms'
 import { modelPath } from '../content/models'
 import { assetUrl } from './cdn'
 
@@ -156,6 +158,29 @@ export const SECTIONS: SitemapSection[] = [
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       })),
+  },
+  {
+    file: 'symptoms.xml',
+    label: 'Symptom and fault diagnosis pages',
+    entries: () => [
+      {
+        url: `${BASE}/gate-problems`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      // Section 4 of the client keyword list is 3,135 symptom keywords, which
+      // is 33 patterns across 95 cities. These 20 pages own the 33 patterns;
+      // the city half is carried by cities.xml and by the links between them.
+      // Building 3,135 URLs would be the scaled-content abuse the brief
+      // forbids. Pages that fail lib/symptom-quality.ts are absent here.
+      ...indexableSymptomPages().map((p) => ({
+        url: `${BASE}${symptomPath(p)}`,
+        changeFrequency: 'monthly' as const,
+        // Highest-intent terms on the site: someone searching "gate won't
+        // close" is standing next to an open gate.
+        priority: p.urgency === 'security' || p.urgency === 'safety' ? 0.9 : 0.8,
+      })),
+    ],
   },
   {
     file: 'cities.xml',

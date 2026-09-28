@@ -23,6 +23,8 @@ import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForService } from '@/content/projects'
 import { modelsForService, modelPath, modelKey } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
+import { symptomsForService, symptomPath } from '@/content/symptoms'
+import { isSymptomIndexable } from '@/lib/symptom-quality'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -70,6 +72,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   // Service → model. Only pages that clear the quality gate, capped so the
   // block stays a set of useful routes rather than a link farm.
   const serviceModels = modelsForService(service.slug).filter(isModelIndexable).slice(0, 12)
+
+  // The symptoms this service answers. Joins Section 4 of the keyword list to
+  // the service that resolves it, in both directions — the symptom pages link
+  // back here through relatedServices.
+  const serviceSymptoms = symptomsForService(service.slug).filter(isSymptomIndexable)
 
   return (
     <>
@@ -140,6 +147,43 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {serviceSymptoms.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-4 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+              What is your gate actually doing?
+            </h2>
+            <p className="prose-measure mb-10 text-lg text-ink-700">
+              Each of these explains the likely causes and what you can safely check yourself before
+              calling anyone out.
+            </p>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {serviceSymptoms.map((sym) => (
+                <li key={sym.slug}>
+                  <Link
+                    href={symptomPath(sym)}
+                    className="group flex items-start gap-2.5 rounded-[var(--radius-card)] border border-ink-100 bg-white px-4 py-3.5 text-ink-800 transition-colors hover:border-gold-300 hover:text-ink-950"
+                  >
+                    <ArrowRight
+                      className="mt-1 size-4 shrink-0 text-gold-500 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden
+                    />
+                    <span className="font-medium">{sym.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/gate-problems"
+              className="mt-6 inline-flex items-center gap-2 font-semibold text-ink-900 underline decoration-gold-400 underline-offset-4"
+            >
+              All gate problems
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
           </div>
         </section>
       )}
