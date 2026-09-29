@@ -70,6 +70,9 @@ const RETIRED_CALIFORNIA = new Set([
  */
 const LIVE_SEGMENTS = new Set([
   'about',
+  // The lead dashboard. Not linked from anywhere and noindex, but it must
+  // pass through rather than be swallowed by the retired-URL rules below.
+  'admin',
   'api',
   'apollo-gate-repair',
   'brands',

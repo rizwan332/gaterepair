@@ -15,6 +15,10 @@ import { business } from '@/content/business'
  * grounding, and it is separate from Googlebot — blocking it does not affect
  * normal Search ranking, and allowing it does not change it either.
  *
+ * /admin is disallowed alongside /api/. It is already noindex and linked from
+ * nowhere, but a lead dashboard should not be something a crawler has to be
+ * trusted to ignore.
+ *
  * Each named group repeats `disallow`, because a user-agent that matches a
  * specific group ignores the wildcard group entirely. Leaving it out would
  * quietly open /api/ to exactly these crawlers.
@@ -41,12 +45,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/api/', '/admin'],
       },
       {
         userAgent: AI_CRAWLERS,
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/api/', '/admin'],
       },
     ],
     sitemap: `${business.url}/sitemap.xml`,

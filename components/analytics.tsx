@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { business } from '@/content/business'
-import { attributionParams, captureAttribution } from '@/lib/attribution'
+import { captureAttribution, attributionParams, getAttribution, visitorId } from '@/lib/attribution'
 
 /**
  * Google Tag Manager — the single tag container for the site.
@@ -38,6 +38,62 @@ import { attributionParams, captureAttribution } from '@/lib/attribution'
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[]
+  }
+}
+
+/**
+ * Persist a lead action to our own database as well as the dataLayer.
+ *
+ * ── WHY sendBeacon ──────────────────────────────────────────────────────────
+ * A tel: click hands the browser straight to the dialler, and on mobile the
+ * page is frozen or torn down within milliseconds. A normal fetch is cancelled
+ * when that happens, which is precisely why call tracking built on fetch loses
+ * the events that matter most. `sendBeacon` queues the request with the
+ * browser and it is delivered regardless of what the page does next.
+ *
+ * It is fire-and-forget by design: there is no response to read and no error
+ * to handle, because nothing here is allowed to stand between someone with a
+ * broken gate and the phone.
+ */
+function recordEvent(type: 'call_click' | 'sms_click' | 'form_submit' | 'directions_click') {
+  try {
+    const attribution = getAttribution()
+    const body = JSON.stringify({
+      type,
+      visitorId: visitorId(),
+      pagePath: window.location.pathname,
+      landingPage: attribution.landingPage,
+      referrer: attribution.referrer,
+      gclid: attribution.gclid,
+      gbraid: attribution.gbraid,
+      wbraid: attribution.wbraid,
+      msclkid: attribution.msclkid,
+      fbclid: attribution.fbclid,
+      ttclid: attribution.ttclid,
+      li_fat_id: attribution.li_fat_id,
+      twclid: attribution.twclid,
+      epik: attribution.epik,
+      igshid: attribution.igshid,
+      utmSource: attribution.utmSource,
+      utmMedium: attribution.utmMedium,
+      utmCampaign: attribution.utmCampaign,
+      utmTerm: attribution.utmTerm,
+      utmContent: attribution.utmContent,
+    })
+
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon('/api/events', new Blob([body], { type: 'application/json' }))
+    } else {
+      // Older Safari. keepalive does the same job for the fetch path.
+      void fetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        keepalive: true,
+      }).catch(() => {})
+    }
+  } catch {
+    // Never let reporting break a call.
   }
 }
 
@@ -77,12 +133,14 @@ export function Analytics() {
           page_path: window.location.pathname,
           ...attributionParams(),
         })
+        recordEvent('call_click')
       } else if (href.startsWith('sms:')) {
         pushEvent('sms_click', {
           link_url: href,
           page_path: window.location.pathname,
           ...attributionParams(),
         })
+        recordEvent('sms_click')
       }
     }
 
