@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { Phone, CheckCircle2 } from 'lucide-react'
 import { business } from '@/content/business'
 import { pushEvent } from '@/components/analytics'
-import { getAttribution } from '@/lib/attribution'
+import { getAttribution, visitorId } from '@/lib/attribution'
 
 /**
  * Service request form.
@@ -67,6 +67,13 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
       landingPage: captured.landingPage ?? '',
       referrer: captured.referrer ?? '',
       sourcePage: sourcePage ?? window.location.pathname,
+      // Ties this submission to the same person's call clicks in the events
+      // log, so the dashboard counts one lead rather than two.
+      visitorId: visitorId(),
+      fbclid: captured.fbclid ?? '',
+      ttclid: captured.ttclid ?? '',
+      msclkid: captured.msclkid ?? '',
+      utmContent: captured.utmContent ?? '',
     })
   }, [sourcePage])
 

@@ -3,6 +3,9 @@ import { z } from 'zod'
 import { connectToDatabase } from '@/lib/mongodb'
 import { LeadModel } from '@/models/Lead'
 import { sendLeadNotification } from '@/lib/brevo'
+import { EventModel } from '@/models/Event'
+import { classifyLead } from '@/lib/lead-source'
+import { identifyPage } from '@/lib/page-type'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -33,6 +36,14 @@ const leadSchema = z.object({
   // to tell from a lead record which page earned it.
   landingPage: z.string().max(300).optional(),
   referrer: z.string().max(300).optional(),
+  // Added 29 Sep 2026 so a form lead lands in the events log with the same
+  // identity and attribution as a call click, and the two can be counted as
+  // one person rather than two.
+  visitorId: z.string().max(64).optional(),
+  fbclid: z.string().max(200).optional(),
+  ttclid: z.string().max(200).optional(),
+  msclkid: z.string().max(200).optional(),
+  utmContent: z.string().max(200).optional(),
   // Honeypot — real users never see this field, so anything in it is a bot.
   company: z.string().max(200).optional(),
 })
@@ -92,6 +103,47 @@ export async function POST(request: Request) {
     (async () => {
       await connectToDatabase()
       await LeadModel.create(lead)
+
+      /**
+       * Mirror the submission into the events log.
+       *
+       * The dashboard counts a person, not a channel of contact: someone who
+       * taps the call button and then fills the form is one lead who did two
+       * things. That only works if both actions land in the same collection
+       * under the same visitor id, which is why this is written here rather
+       * than fired from the browser — a form submit that reaches the server is
+       * certain, and a beacon is not.
+       */
+      if (lead.visitorId) {
+        const classification = classifyLead({
+          params: { gclid: lead.gclid, fbclid: lead.fbclid, ttclid: lead.ttclid, msclkid: lead.msclkid },
+          referrer: lead.referrer,
+          utmSource: lead.utmSource,
+          utmMedium: lead.utmMedium,
+        })
+        const page = identifyPage(lead.sourcePage ?? '/')
+        await EventModel.create({
+          type: 'form_submit',
+          visitorId: lead.visitorId,
+          source: classification.source,
+          sourceGroup: classification.group,
+          sourceBasis: classification.basis,
+          pagePath: lead.sourcePage,
+          pageType: page.type,
+          pageSubject: page.subject,
+          landingPage: lead.landingPage,
+          referrer: lead.referrer,
+          gclid: lead.gclid,
+          fbclid: lead.fbclid,
+          ttclid: lead.ttclid,
+          msclkid: lead.msclkid,
+          utmSource: lead.utmSource,
+          utmMedium: lead.utmMedium,
+          utmCampaign: lead.utmCampaign,
+          utmTerm: lead.utmTerm,
+          utmContent: lead.utmContent,
+        })
+      }
     })(),
     sendLeadNotification(lead),
   ])

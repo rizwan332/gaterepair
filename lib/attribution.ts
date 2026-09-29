@@ -32,6 +32,27 @@ export type Attribution = {
   wbraid?: string
   /** Microsoft Ads, in case the account is ever run. */
   msclkid?: string
+  /**
+   * Social click ids, added 29 Sep 2026.
+   *
+   * These matter more here than the Google ones, because social is the channel
+   * a referrer cannot see. A link tapped inside the Instagram or Facebook app
+   * opens in that app's own browser, which frequently sends no referrer at all
+   * — but Meta appends `fbclid` to the outbound link itself, so it survives.
+   *
+   * Until these were captured, every Instagram and Facebook lead that was not
+   * on a hand-tagged link was recorded as untracked, which is exactly the
+   * channel the business most wanted counted.
+   *
+   * `fbclid` covers Facebook and Instagram together; lib/lead-source.ts uses a
+   * utm_source alongside it to tell them apart where one was set.
+   */
+  fbclid?: string
+  ttclid?: string
+  li_fat_id?: string
+  twclid?: string
+  epik?: string
+  igshid?: string
   utmSource?: string
   utmMedium?: string
   utmCampaign?: string
@@ -54,7 +75,7 @@ const STORAGE_KEY = 'sgr_attribution'
  */
 const MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000
 
-const CLICK_IDS = ['gclid', 'gbraid', 'wbraid', 'msclkid'] as const
+const CLICK_IDS = ['gclid', 'gbraid', 'wbraid', 'msclkid', 'fbclid', 'ttclid', 'li_fat_id', 'twclid', 'epik', 'igshid'] as const
 
 /**
  * Storage that never throws.
@@ -120,6 +141,12 @@ export function captureAttribution(): Attribution {
     gbraid: get('gbraid'),
     wbraid: get('wbraid'),
     msclkid: get('msclkid'),
+    fbclid: get('fbclid'),
+    ttclid: get('ttclid'),
+    li_fat_id: get('li_fat_id'),
+    twclid: get('twclid'),
+    epik: get('epik'),
+    igshid: get('igshid'),
     utmSource: get('utm_source'),
     utmMedium: get('utm_medium'),
     utmCampaign: get('utm_campaign'),
@@ -158,4 +185,33 @@ export function attributionParams(): Record<string, string> {
   return Object.fromEntries(
     Object.entries(attribution).filter(([, value]) => Boolean(value)),
   ) as Record<string, string>
+}
+
+/**
+ * A stable id for this browser, so repeat actions collapse into one lead.
+ *
+ * Someone whose gate is stuck open taps the call button, gets voicemail, taps
+ * it again, then fills the form. That is one lead and three events. Without an
+ * id tying them together the dashboard reports three, which overstates every
+ * channel and makes the per-source numbers useless for deciding where to spend.
+ *
+ * Deliberately not a fingerprint and deliberately not tied to anything about
+ * the person: a random value, generated once, stored alongside the attribution
+ * record and expiring with it. It identifies a browser for deduplication, not
+ * a human for tracking, and it never leaves this site.
+ */
+const VISITOR_KEY = 'sgr_visitor'
+
+export function visitorId(): string {
+  if (typeof window === 'undefined') return ''
+  const existing = safeGet(VISITOR_KEY)
+  if (existing) return existing
+
+  const id =
+    typeof crypto !== 'undefined' && 'randomUUID' in crypto
+      ? crypto.randomUUID()
+      : `v${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`
+
+  safeSet(VISITOR_KEY, id)
+  return id
 }

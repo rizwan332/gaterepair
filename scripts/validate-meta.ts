@@ -71,6 +71,22 @@ type Page = {
   twitterImage: string
 }
 
+/**
+ * The private dashboard is not part of the public surface this validator
+ * guards.
+ *
+ * /admin has no canonical, no share card and no business having one: it is a
+ * password-protected internal tool, noindex, disallowed in robots.txt and
+ * absent from the sitemap. Holding it to the SEO contract would mean giving a
+ * login form an og:image to satisfy a check that exists to protect search
+ * results it will never appear in.
+ *
+ * Excluded by path prefix rather than by noindex status, because a noindex
+ * CITY page genuinely should still be checked - it is a public URL that will
+ * be promoted later.
+ */
+const PRIVATE_PREFIXES = ['/admin']
+
 const pages: Page[] = files
   .map((file) => {
     const html = fs.readFileSync(file, 'utf8')
@@ -92,6 +108,7 @@ const pages: Page[] = files
       twitterImage: grab(/<meta name="twitter:image" content="([^"]+)"/),
     }
   })
+  .filter((page) => !PRIVATE_PREFIXES.some((prefix) => page.url.startsWith(prefix)))
   .filter((p) => p.url !== '/_not-found')
 
 const errors: string[] = []
