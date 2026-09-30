@@ -33,3 +33,23 @@ client-assets/videos/*.mov
 
 # Local before/after SEO snapshots (scripts/seo-snapshot.ts)
 .seo-snapshots/
+
+# ── Client case-study source documents ──────────────────────────────────────
+# The Word files and the zip they arrived in, 43 MB. Deliberately NOT committed:
+# everything of value has already been extracted into the repo by
+# scripts/extract-case-studies.py —
+#
+#   the 111 photographs  -> client-assets/case-studies/  (committed)
+#   the web derivatives  -> public/images/case-studies/  (committed)
+#   the write-ups        -> content/case-studies-client.ts
+#
+# So the .docx files are a redundant 43 MB of binary that git would store
+# forever. If the extraction ever needs re-running, the originals are in the
+# client's Drive export rather than here.
+/case-studies/
+#
+# NOTE THE LEADING SLASH. Without it this pattern matches a directory of that
+# name at ANY depth, which silently excluded client-assets/case-studies/ (the
+# client's only copies of 111 job photographs) and public/images/case-studies/
+# (596 web derivatives the pages reference). The site would have built and
+# deployed with every case-study image 404ing.

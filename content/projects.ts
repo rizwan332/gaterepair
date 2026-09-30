@@ -21,6 +21,8 @@
  * renders them.
  */
 
+import { clientCaseStudies } from './case-studies-client'
+
 export type Project = {
   slug: string
   /** The editorial headline. Renders as the H1 — long is fine here. */
@@ -60,6 +62,34 @@ export type Project = {
   imageIndexes: number[]
   /** Video slug, where footage of this repair type exists. */
   videoSlug?: string
+
+  // ── Client-supplied jobs, added 30 Sep 2026 ──────────────────────────────
+  // The eighteen case studies the client sent as Word documents come with
+  // their own photography rather than drawing from the shared pools above.
+  // That is a meaningful difference: these are ordered sets belonging to one
+  // job, grouped before/during/after and captioned individually by the person
+  // who did the work. `mediaCategory` and `imageIndexes` stay for the earlier
+  // projects, which genuinely are library photography.
+  /** Key into content/case-study-media.ts. Overrides mediaCategory when set. */
+  photoSet?: string
+  /**
+   * City slug, so the case study links to its service-area page.
+   *
+   * Separate from `city` because two of these jobs — Lake Kiowa and Mildred —
+   * are real work in towns that are NOT on the client's service-area list, so
+   * they are named honestly but have no page to link to.
+   */
+  citySlug?: string
+  /** Model page key, '<brandSlug>/<slug>', where the job names a specific operator. */
+  modelKey?: string
+  /**
+   * The client's own job videos on YouTube.
+   *
+   * The site's other videos are self-hosted and listed in
+   * content/video-manifest.ts. These are links to the client's channel, and
+   * the source documents ask for them to open in a new tab.
+   */
+  videos?: { label: string; url: string }[]
 
   problem: string[]
   diagnosis: string[]
@@ -634,6 +664,7 @@ export const projects: Project[] = [
     takeaway:
       'An operator is sized to move a gate that swings freely. When the gate gets harder to move, the operator looks like it is failing — and replacing it simply hands the same problem to a new unit. Always check the gate by hand first.',
   },
+  ...clientCaseStudies,
 ]
 
 export const projectBySlug = (slug: string) => projects.find((p) => p.slug === slug)

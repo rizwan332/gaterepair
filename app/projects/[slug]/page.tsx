@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { AlertTriangle, Search, Wrench, CheckCircle2, Lightbulb, ArrowUpRight } from 'lucide-react'
+import { AlertTriangle, Search, Wrench, CheckCircle2, Lightbulb, ArrowUpRight, PlayCircle } from 'lucide-react'
 import { projects, projectBySlug } from '@/content/projects'
 import { serviceBySlug } from '@/content/services'
+import { caseStudyPhotos } from '@/content/case-study-media'
+import { cityBySlug } from '@/content/cities'
+import { modelByKey, modelPath } from '@/content/models'
+import { isModelIndexable } from '@/lib/model-quality'
 import { brands } from '@/content/brands'
 import { media } from '@/content/media-manifest'
 import { videos } from '@/content/video-manifest'
@@ -68,11 +72,39 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = projectBySlug(slug)
   if (!project) notFound()
 
-  const images = project.imageIndexes
-    .map((i) => media[project.mediaCategory]?.[i])
-    .filter((img): img is NonNullable<typeof img> => Boolean(img))
+  /**
+   * Photographs, from the job's own set where we have one.
+   *
+   * The client's eighteen documented jobs came with their own ordered,
+   * captioned photography. Those take precedence over the shared category
+   * pools, and their ORDER IS MEANINGFUL — he grouped them before / during /
+   * after, so nothing here may sort or shuffle them.
+   */
+  const ownPhotos = project.photoSet ? (caseStudyPhotos[project.photoSet] ?? []) : []
+  const images =
+    ownPhotos.length > 0
+      ? ownPhotos.map((p) => ({
+          slug: p.slug,
+          src: p.src,
+          widths: p.widths,
+          width: p.width,
+          height: p.height,
+          blurDataURL: p.blurDataURL,
+          // The caption the client wrote for this exact photograph, where he
+          // wrote one. Falls back to the job's own title rather than to
+          // anything templated, because alt text describing "a gate" on a page
+          // about one specific repair helps nobody.
+          alt: p.caption || `${project.brand ? project.brand + ' ' : ''}gate repair in ${project.city ?? 'Dallas–Fort Worth'}`,
+          altWritten: Boolean(p.caption),
+        }))
+      : project.imageIndexes
+          .map((i) => media[project.mediaCategory]?.[i])
+          .filter((img): img is NonNullable<typeof img> => Boolean(img))
   const video = project.videoSlug ? videos.find((v) => v.slug === project.videoSlug) : undefined
   const service = serviceBySlug(project.service)
+  const city = project.citySlug ? cityBySlug(project.citySlug) : undefined
+  const model = project.modelKey ? modelByKey(project.modelKey) : undefined
+  const linkableModel = model && isModelIndexable(model) ? model : undefined
   const brand = project.brand
     ? brands.find((b) => b.name.toLowerCase() === project.brand!.toLowerCase())
     : undefined
@@ -148,6 +180,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
+        {/* ── The client's own job videos ────────────────────────────────
+            Opened in a new tab, which the source documents ask for
+            explicitly: these leave for YouTube, and a customer reading a
+            case study should not lose the page they were on. rel is set
+            because target="_blank" without noopener hands the opened tab a
+            reference back to this window. */}
+        {project.videos && project.videos.length > 0 && (
+          <div className="mt-10 rounded-[var(--radius-card)] border border-ink-100 bg-white p-6">
+            <h2 className="font-display text-lg font-semibold text-ink-950">
+              {project.videos.length > 1 ? 'Video from this job' : 'Video from this job'}
+            </h2>
+            <ul className="mt-4 space-y-2.5">
+              {project.videos.map((v) => (
+                <li key={v.url}>
+                  <a
+                    href={v.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-start gap-2.5 font-medium text-ink-800 hover:text-ink-950"
+                  >
+                    <PlayCircle className="mt-0.5 size-5 shrink-0 text-gold-500" aria-hidden />
+                    <span className="underline decoration-gold-400 underline-offset-4">{v.label}</span>
+                    <ArrowUpRight className="mt-1 size-3.5 shrink-0 text-ink-400" aria-hidden />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {images.length > 1 && (
           <PhotoGallery title="From the job" images={images} tone="light" />
         )}
@@ -171,6 +234,29 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
               >
                 {brand.name} repair
+                <ArrowUpRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            )}
+            {/* The operator this job was actually about. */}
+            {linkableModel && (
+              <Link
+                href={modelPath(linkableModel)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+              >
+                {linkableModel.model} repair
+                <ArrowUpRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            )}
+            {/* The service-area page for the town the job was in. Present only
+                where the town is on the client's service-area list — two of
+                these jobs are in towns that are not, and they say the town
+                honestly rather than linking somewhere that does not exist. */}
+            {city && (
+              <Link
+                href={`/gate-repair-${city.slug}-tx`}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+              >
+                Gate repair in {city.name}
                 <ArrowUpRight className="size-3.5 text-ink-400" aria-hidden />
               </Link>
             )}
