@@ -200,6 +200,52 @@ export const testimonials: Testimonial[] = [
     jobType: 'Emergency call-out',
     isShort: true,
   },
+
+  // ── From the client's case-study documents, added 1 Oct 2026 ─────────────
+  //
+  // Those documents contain seventeen video links, and only these THREE are
+  // customer testimonials — the documents label them "Customer Video
+  // Testimonial". The other fourteen say "Job video", "Project video" or
+  // "Final repair video": they are documentation of the work, and they live on
+  // their case-study pages. Filing repair footage here as a testimonial would
+  // misdescribe who is speaking and why, which is the same error this file's
+  // opening note refuses for invented names.
+  //
+  // Verified the way the rest of this file was: each id resolved through
+  // YouTube's oEmbed endpoint on 1 Oct 2026 — titles below are the client's
+  // own, as returned — and each was checked against youtube.com/shorts/<id>,
+  // where all three 303-redirect and are therefore normal 16:9 uploads.
+  //
+  // These are the first entries here to carry a `city`, because they are the
+  // first whose city we actually know: the client states it in the write-up
+  // for each job. The existing twenty-one have none and still should not.
+  {
+    id: 'eagle-mesquite-testimonial',
+    youtubeId: 'ftWhbFTdF98',
+    title: 'Eagle gate repair in Mesquite',
+    city: 'Mesquite',
+    jobType: 'Sliding gate wheels and chain',
+    brand: 'Eagle',
+  },
+  {
+    // Gary is named in the client's own write-up of this job, so the name is
+    // supplied rather than invented — which is the line this file draws.
+    id: 'csl24ul-frisco-testimonial',
+    youtubeId: 'CJX4QQ4Mrbk',
+    title: 'LiftMaster CSL24UL opener installation in Frisco',
+    customerName: 'Gary',
+    city: 'Frisco',
+    jobType: 'Sliding gate opener installation',
+    brand: 'LiftMaster',
+  },
+  {
+    id: 'liftmaster-chain-dallas-testimonial',
+    youtubeId: 'oIWbLj7wpBM',
+    title: 'LiftMaster sliding gate chain replacement in Dallas',
+    city: 'Dallas',
+    jobType: 'Rust-free chain replacement',
+    brand: 'LiftMaster',
+  },
 ]
 
 /** Only entries with a real video ID can render. */
