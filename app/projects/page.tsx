@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowUpRight, Play } from 'lucide-react'
 import { projects } from '@/content/projects'
 import { media } from '@/content/media-manifest'
+import { caseStudyPhotos } from '@/content/case-study-media'
 import { videos } from '@/content/video-manifest'
 import { PageHero } from '@/components/sections/page-hero'
 import { ClosingCTA } from '@/components/sections/closing-cta'
@@ -39,7 +40,24 @@ export default function ProjectsPage() {
         <div className="container-page">
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, i) => {
-              const image = media[project.mediaCategory]?.[project.imageIndexes[0]]
+              // The job's own photograph where it has one. This line used to
+              // read the shared library alone, which rendered all eighteen
+              // client-documented case studies imageless on this very index —
+              // the same fault as components/sections/case-studies.tsx, in a
+              // second copy. Both now go through the one helper.
+              const ownPhoto = project.photoSet ? caseStudyPhotos[project.photoSet]?.[0] : undefined
+              const image = ownPhoto
+                ? {
+                    slug: ownPhoto.slug,
+                    src: ownPhoto.src,
+                    widths: ownPhoto.widths,
+                    width: ownPhoto.width,
+                    height: ownPhoto.height,
+                    blurDataURL: ownPhoto.blurDataURL,
+                    alt: ownPhoto.caption || project.title,
+                    altWritten: Boolean(ownPhoto.caption),
+                  }
+                : media[project.mediaCategory]?.[project.imageIndexes[0]]
               const hasVideo = Boolean(project.videoSlug && videos.some((v) => v.slug === project.videoSlug))
               return (
                 <Reveal as="li" key={project.slug} delay={Math.min(i, 5) * 0.04}>

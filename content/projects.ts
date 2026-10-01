@@ -101,6 +101,20 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  /**
+   * The client's documented jobs lead, deliberately.
+   *
+   * Every surface that shows case studies takes the first few — the homepage,
+   * the service pages, the brand pages all slice to three. With these appended
+   * at the end, the three a visitor actually saw were always the older
+   * library-illustrated ones, and the eighteen jobs with real photography, a
+   * named city, a named operator and a verified record never surfaced anywhere
+   * except /projects.
+   *
+   * They are better proof on every axis, so they go first.
+   */
+  ...clientCaseStudies,
+
   {
     // Client-supplied 6 Aug 2026 with his own account, including the competing
     // estimates and his own price. Those figures are his, reported as this job's
@@ -665,7 +679,6 @@ export const projects: Project[] = [
     takeaway:
       'An operator is sized to move a gate that swings freely. When the gate gets harder to move, the operator looks like it is failing — and replacing it simply hands the same problem to a new unit. Always check the gate by hand first.',
   },
-  ...clientCaseStudies,
 ]
 
 export const projectBySlug = (slug: string) => projects.find((p) => p.slug === slug)
