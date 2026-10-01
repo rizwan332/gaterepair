@@ -25,6 +25,8 @@ import { TrustBadges } from '@/components/ui/trust-badges'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
+import { CaseStudies } from '@/components/sections/case-studies'
+import { projectsForService, projectsForBrand } from '@/content/projects'
 
 /**
  * Renderer for every symptom page (/gate-problems/<slug>).
@@ -133,6 +135,23 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
   // a sample of them from here is what joins "gate won't close" to "gate won't
   // close Plano TX" without building 95 copies of this page.
   const cities = indexedCities.slice(0, 12)
+
+  /**
+   * Case studies showing this fault actually repaired.
+   *
+   * A symptom page explains what is wrong and what it takes to fix; a case
+   * study proves we have done it. Matched on the services this fault maps to,
+   * and on the brands it is characteristic of where the page names any.
+   */
+  const relatedProjects = [
+    ...page.relatedServices.flatMap((slug) => projectsForService(slug)),
+    ...(page.relatedBrands ?? []).flatMap((slug) => projectsForBrand(slug)),
+  ]
+    .filter((p, i, all) => all.findIndex((x) => x.slug === p.slug) === i)
+    // Prefer the client's documented jobs: they carry real photography of the
+    // actual repair rather than library imagery.
+    .sort((a, b) => Number(Boolean(b.photoSet)) - Number(Boolean(a.photoSet)))
+    .slice(0, 3)
 
   const ownerFixable = page.causes.filter((c) => c.ownerCanFix)
 
@@ -508,6 +527,17 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
           </div>
         )}
       </section>
+
+      {/* ── Proof that we fix this ───────────────────────────────────────── */}
+      {relatedProjects.length > 0 && (
+        <CaseStudies
+          items={relatedProjects}
+          eyebrow="We have fixed this"
+          title={`${page.label} — jobs we have completed`}
+          intro="Real call-outs with photographs of the repair, not stock imagery."
+          tone="light"
+        />
+      )}
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
       <section className="border-y border-ink-100 bg-ink-50/50">

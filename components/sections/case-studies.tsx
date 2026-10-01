@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight, Play } from 'lucide-react'
-import type { Project } from '@/content/projects'
+import { projectCardImageSrc, projectHasVideo, type Project } from '@/content/projects'
+import { caseStudyPhotos } from '@/content/case-study-media'
 import { media } from '@/content/media-manifest'
 import { videos } from '@/content/video-manifest'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
@@ -62,10 +63,33 @@ export function CaseStudies({
 
         <ul className={`grid gap-6 ${columns}`}>
           {shown.map((project, i) => {
-            const image = media[project.mediaCategory]?.[project.imageIndexes[0]]
-            const hasVideo = Boolean(
-              project.videoSlug && videos.some((v) => v.slug === project.videoSlug),
-            )
+            /**
+             * The job's own photograph where it has one, the shared library
+             * otherwise.
+             *
+             * This used to read the library alone, which meant the eighteen
+             * client-documented jobs — the ones with real photography of the
+             * actual repair — rendered as cards with no image, because their
+             * `imageIndexes` is deliberately empty.
+             */
+            const ownPhoto = project.photoSet ? caseStudyPhotos[project.photoSet]?.[0] : undefined
+            const image = ownPhoto
+              ? {
+                  slug: ownPhoto.slug,
+                  src: ownPhoto.src,
+                  widths: ownPhoto.widths,
+                  width: ownPhoto.width,
+                  height: ownPhoto.height,
+                  blurDataURL: ownPhoto.blurDataURL,
+                  alt: ownPhoto.caption || project.title,
+                  altWritten: Boolean(ownPhoto.caption),
+                }
+              : media[project.mediaCategory]?.[project.imageIndexes[0]]
+            // Footage of either kind: a self-hosted clip, or one of the
+            // client's own job videos on YouTube.
+            const hasVideo =
+              Boolean(project.videoSlug && videos.some((v) => v.slug === project.videoSlug)) ||
+              projectHasVideo(project)
             return (
               <Reveal as="li" key={project.slug} delay={Math.min(i, 5) * 0.04}>
                 <Link
