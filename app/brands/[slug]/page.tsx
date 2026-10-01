@@ -22,6 +22,8 @@ import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { JobVideos } from '@/components/sections/job-videos'
+import { jobVideosForBrand } from '@/content/job-videos'
 import { modelsForBrand, modelMatching, modelPath, modelKey } from '@/content/models'
 import type { ModelPage } from '@/content/models/types'
 
@@ -315,6 +317,14 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       {/* Every video, ordered so this brand's own jobs come first — brand pages
           are Google Ads destinations, so they carry the full library rather
           than a three-card sample. */}
+      {/* The client's own footage of jobs on this manufacturer's equipment. */}
+      <JobVideos
+        items={jobVideosForBrand(brand.name)}
+        title={`${brand.name} repairs on video`}
+        intro={`Real ${brand.name} jobs filmed on site, each linked to its full write-up.`}
+        tone="tint"
+      />
+
       <TestimonialCarousel
         items={testimonialsForBrand(brand.name, Number.MAX_SAFE_INTEGER)}
         intro={`Real Shield Gate Repair customers describing the job in their own words, ${brand.name} jobs first.`}
