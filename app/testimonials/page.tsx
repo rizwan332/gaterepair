@@ -6,6 +6,8 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { business } from '@/content/business'
 import { TestimonialCard } from '@/components/sections/video-testimonials'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { JobVideos } from '@/components/sections/job-videos'
+import { jobVideos } from '@/content/job-videos'
 import { TrustBadges } from '@/components/ui/trust-badges'
 import { AssuranceRow } from '@/components/sections/assurance-row'
 import { breadcrumbSchema } from '@/lib/schema'
@@ -150,6 +152,17 @@ export default function TestimonialsPage() {
           </p>
         </div>
       </section>
+
+      {/* The other fourteen clips from the client's case-study documents, plus
+          the three above, under a heading that describes what they are. These
+          are the work being done rather than customers speaking, which is why
+          they sit in their own section and not in the carousel. */}
+      <JobVideos
+        items={jobVideos}
+        title="Video from real jobs"
+        intro="Repairs filmed on site — the fault, the parts that came out, and the gate working again. Each one links to the full write-up."
+        tone="tint"
+      />
 
       <ClosingCTA />
 

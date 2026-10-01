@@ -24,6 +24,8 @@ import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { publishedTestimonials } from '@/content/testimonials'
+import { JobVideos } from '@/components/sections/job-videos'
+import { jobVideosForCity } from '@/content/job-videos'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { modelPath, modelKey } from '@/content/models'
 import { brandsForCity, localFaults } from '@/lib/city-links'
@@ -140,6 +142,19 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   if (!city || !publishedCities.includes(city)) notFound()
 
   const cityProjects = projectsForCity(city.slug)
+  const cityJobVideos = jobVideosForCity(city.slug)
+  /**
+   * This city's own testimonial first, where one exists.
+   *
+   * Three of the client's testimonials now carry a confirmed city. Showing
+   * Mesquite's customer first on the Mesquite page is a materially stronger
+   * claim than the same carousel of twenty-four in channel order on all
+   * ninety-six — and it costs nothing, because the rest still follow.
+   */
+  const cityTestimonials = [
+    ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
+    ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
+  ]
 
   const heroImage = media['automatic-gate-repair']?.[2] ?? media['gate-installation']?.[0]
   // Curated neighbours where we have them; otherwise the city's genuine county
@@ -388,9 +403,20 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
           destinations for local search, so they now carry the same proof the
           homepage does. */}
       <TestimonialCarousel
-        items={publishedTestimonials}
-        intro={`Customers across Dallas–Fort Worth, filmed at their own gates. We bring the same team and the same parts stock to ${city.name}.`}
+        items={cityTestimonials}
+        intro={
+          cityTestimonials[0]?.city?.toLowerCase() === city.name.toLowerCase()
+            ? `A ${city.name} customer first, then the rest of Dallas–Fort Worth — all filmed at their own gates.`
+            : `Customers across Dallas–Fort Worth, filmed at their own gates. We bring the same team and the same parts stock to ${city.name}.`
+        }
         tone="tint"
+      />
+
+      {/* Footage from jobs in this city, where we have any. */}
+      <JobVideos
+        items={cityJobVideos}
+        title={`Gate repairs in ${city.name} on video`}
+        intro={`Filmed on site in ${city.name} — the fault, the parts replaced and the gate working again.`}
       />
 
       <PhotoGallery
