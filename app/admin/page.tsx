@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { AlertTriangle, Download, Phone, FileText, HelpCircle } from 'lucide-react'
+import { AlertTriangle, Download, Phone, FileText, HelpCircle, Mail, MapPin, MessageSquare } from 'lucide-react'
 import { isAuthenticated, adminConfigured } from '@/lib/admin-auth'
 import {
   rangeForDays,
@@ -11,6 +11,9 @@ import {
   getByPageType,
   getDaily,
   getRecent,
+  getFormLeads,
+  countFormLeads,
+  type FormLead,
 } from '@/lib/lead-report'
 
 /**
@@ -48,7 +51,7 @@ const GROUP_STYLE: Record<string, string> = {
   direct: 'bg-ink-50 text-ink-500 ring-ink-200',
 }
 
-type Props = { searchParams: Promise<{ days?: string }> }
+type Props = { searchParams: Promise<{ days?: string; tab?: string }> }
 
 export default async function AdminDashboard({ searchParams }: Props) {
   if (!adminConfigured()) {
@@ -73,13 +76,25 @@ export default async function AdminDashboard({ searchParams }: Props) {
   const days = Math.min(Math.max(Number(params.days) || 30, 1), 365)
   const range = rangeForDays(days)
 
-  const [totals, bySource, byPage, byType, daily, recent] = await Promise.all([
+  const tab = params.tab === 'forms' ? 'forms' : 'overview'
+
+  /**
+   * Both tabs are fetched whichever is showing.
+   *
+   * The form count is needed for the tab badge even on the overview, and
+   * these are indexed queries over a few hundred rows — one extra round trip
+   * costs less than the conditional would, and it means the badge can never
+   * disagree with the table it points at.
+   */
+  const [totals, bySource, byPage, byType, daily, recent, formLeads, formCount] = await Promise.all([
     getTotals(range),
     getBySource(range),
     getByPage(range),
     getByPageType(range),
     getDaily(range),
     getRecent(range, 50),
+    getFormLeads(range, 200),
+    countFormLeads(range),
   ])
 
   const peak = Math.max(1, ...daily.map((d) => d.leads))
@@ -119,6 +134,23 @@ export default async function AdminDashboard({ searchParams }: Props) {
         </div>
       </div>
 
+      {/* Tabs. Form submissions are kept behind their own tab rather than
+          mixed into the overview: the overview holds no personal data, this
+          holds names, numbers and addresses, and a visible boundary is the
+          cheapest way to make that difference obvious to whoever is using it. */}
+      <nav className="mt-8 flex gap-1 border-b border-ink-200" aria-label="Dashboard sections">
+        <TabLink href={`/admin?days=${days}`} active={tab === 'overview'}>
+          Overview
+        </TabLink>
+        <TabLink href={`/admin?days=${days}&tab=forms`} active={tab === 'forms'} count={formCount}>
+          Form submissions
+        </TabLink>
+      </nav>
+
+      {tab === 'forms' ? (
+        <FormLeadsTab leads={formLeads} days={days} />
+      ) : (
+        <>
       {/* ── Totals ───────────────────────────────────────────────────────── */}
       <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Leads" value={totals.leads} hint="Unique visitors who took an action" />
@@ -219,6 +251,8 @@ export default async function AdminDashboard({ searchParams }: Props) {
           ])}
         />
       </section>
+        </>
+      )}
     </main>
   )
 }
@@ -282,6 +316,180 @@ function Table({
           ))}
         </tbody>
       </table>
+    </div>
+  )
+}
+
+function TabLink({
+  href,
+  active,
+  count,
+  children,
+}: {
+  href: string
+  active: boolean
+  count?: number
+  children: React.ReactNode
+}) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? 'page' : undefined}
+      className={`-mb-px inline-flex items-center gap-2 border-b-2 px-4 py-2.5 text-sm font-medium transition-colors ${
+        active
+          ? 'border-gold-500 text-ink-950'
+          : 'border-transparent text-ink-500 hover:border-ink-300 hover:text-ink-800'
+      }`}
+    >
+      {children}
+      {typeof count === 'number' && (
+        <span
+          className={`rounded-full px-2 py-0.5 text-xs tabular ${
+            active ? 'bg-gold-500/15 text-gold-700' : 'bg-ink-100 text-ink-600'
+          }`}
+        >
+          {count}
+        </span>
+      )}
+    </Link>
+  )
+}
+
+/**
+ * Form submissions, straight from the database.
+ *
+ * ── WHAT THIS TAB IS FOR, AND WHAT THE OVERVIEW IS FOR ──────────────────────
+ * The overview answers "which channel and which page produce leads". It is
+ * built from the events collection, which deliberately stores no personal data
+ * at all — no name, no number, no IP address.
+ *
+ * This answers a different question: who asked us to call them back. It is the
+ * only part of the dashboard with names, phone numbers and addresses in it, and
+ * that is the whole reason it sits behind its own tab rather than as extra
+ * columns on the overview.
+ *
+ * Every row is a real person who typed their number in expecting a call. The
+ * phone number is a tel: link and the email a mailto:, because the point of
+ * looking at this screen is to contact them. `status` is shown so a lead can be
+ * tracked rather than lost in a mailbox.
+ *
+ * ── WHY PHONE LEADS ARE NOT HERE ────────────────────────────────────────────
+ * A call click leaves no name or number behind — nothing in a browser can
+ * capture who dialled. Those are counted on the overview, and the empty state
+ * below says so, because "0 submissions" on a day that produced eight calls
+ * would otherwise read as a tracking failure.
+ */
+function FormLeadsTab({ leads, days }: { leads: FormLead[]; days: number }) {
+  if (leads.length === 0) {
+    return (
+      <div className="mt-8 rounded-[var(--radius-card)] border border-ink-100 bg-white p-8 text-center">
+        <FileText className="mx-auto mb-3 size-8 text-ink-300" aria-hidden />
+        <p className="font-medium text-ink-900">No form submissions in the last {days} days</p>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-ink-600">
+          Submissions appear here as soon as someone completes the request form. Phone leads never
+          appear in this tab &mdash; a call click leaves no name or number behind, so those are
+          counted on the Overview instead.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="mt-8">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-ink-600">
+          {leads.length} submission{leads.length === 1 ? '' : 's'} in the last {days} days, newest
+          first.
+        </p>
+        <span className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-900 ring-1 ring-inset ring-amber-200">
+          <AlertTriangle className="size-3.5" aria-hidden />
+          Contains customer contact details
+        </span>
+      </div>
+
+      <ul className="space-y-3">
+        {leads.map((lead) => (
+          <li
+            key={lead.id}
+            className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 shadow-[var(--shadow-card)]"
+          >
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-display text-base font-semibold text-ink-950">{lead.name}</p>
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                  <a
+                    href={`tel:${lead.phone}`}
+                    className="inline-flex items-center gap-1.5 font-medium text-ink-900 underline decoration-gold-400 underline-offset-2"
+                  >
+                    <Phone className="size-3.5 text-ink-400" aria-hidden />
+                    {lead.phone}
+                  </a>
+                  {lead.email && (
+                    <a
+                      href={`mailto:${lead.email}`}
+                      className="inline-flex items-center gap-1.5 text-ink-700 hover:text-ink-950"
+                    >
+                      <Mail className="size-3.5 text-ink-400" aria-hidden />
+                      {lead.email}
+                    </a>
+                  )}
+                  {(lead.address || lead.city) && (
+                    <span className="inline-flex items-center gap-1.5 text-ink-700">
+                      <MapPin className="size-3.5 text-ink-400" aria-hidden />
+                      {[lead.address, lead.city].filter(Boolean).join(', ')}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="flex shrink-0 flex-col items-end gap-1.5">
+                <span className="text-xs tabular text-ink-500">
+                  {new Date(lead.at).toLocaleString('en-US', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short',
+                  })}
+                </span>
+                <span className="rounded-full bg-ink-100 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-ink-600">
+                  {lead.status}
+                </span>
+              </div>
+            </div>
+
+            {lead.message && (
+              <div className="mt-4 flex gap-2.5 rounded-lg bg-ink-50 p-3">
+                <MessageSquare className="mt-0.5 size-4 shrink-0 text-ink-400" aria-hidden />
+                <p className="text-sm leading-relaxed text-ink-800">{lead.message}</p>
+              </div>
+            )}
+
+            {/* Where this person came from, classified the same way the event
+                log is, so the two views cannot disagree about a channel. */}
+            <dl className="mt-4 grid gap-x-6 gap-y-2 border-t border-ink-100 pt-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <dt className="font-semibold uppercase tracking-wide text-ink-400">Source</dt>
+                <dd className="mt-0.5 text-ink-800">{lead.sourceLabel}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold uppercase tracking-wide text-ink-400">Submitted from</dt>
+                <dd className="mt-0.5 break-all font-mono text-[0.6875rem] text-ink-700">
+                  {lead.sourcePage ?? '—'}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold uppercase tracking-wide text-ink-400">Landed on</dt>
+                <dd className="mt-0.5 break-all font-mono text-[0.6875rem] text-ink-700">
+                  {lead.landingPage ?? '—'}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold uppercase tracking-wide text-ink-400">Campaign</dt>
+                <dd className="mt-0.5 text-ink-700">
+                  {lead.utmCampaign ?? (lead.gclid ? 'Google Ads click' : '—')}
+                </dd>
+              </div>
+            </dl>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

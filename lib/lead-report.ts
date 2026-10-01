@@ -1,7 +1,7 @@
 import { connectToDatabase } from './mongodb'
 import { EventModel } from '../models/Event'
 import { LeadModel } from '../models/Lead'
-import { SOURCE_LABEL, SOURCE_GROUP, type LeadSource, type SourceGroup } from './lead-source'
+import { SOURCE_LABEL, SOURCE_GROUP, classifyLead, type LeadSource, type SourceGroup } from './lead-source'
 import { PAGE_TYPE_LABEL, type PageType } from './page-type'
 
 /**
@@ -252,11 +252,78 @@ export async function getRecent(range: DateRange, limit = 100): Promise<RecentLe
   })
 }
 
-/** Form leads, which carry a name and number the event log does not. */
-export async function getFormLeads(range: DateRange, limit = 100) {
+/**
+ * Form submissions, with the contact details the event log deliberately lacks.
+ *
+ * The events collection stores no personal data at all — it answers "how many
+ * leads did Instagram produce" without holding anyone's name. This reads the
+ * other collection, which does: somebody filled a form and asked to be called
+ * back, so their name and number are the point of the record.
+ *
+ * Returned as plain objects for the dashboard, with the fields it actually
+ * renders and nothing else.
+ */
+export type FormLead = {
+  id: string
+  at: Date
+  name: string
+  phone: string
+  email?: string
+  city?: string
+  address?: string
+  message?: string
+  status: string
+  sourcePage?: string
+  landingPage?: string
+  referrer?: string
+  gclid?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  /** Classified the same way the event log is, so both views agree. */
+  source: string
+  sourceLabel: string
+}
+
+export async function getFormLeads(range: DateRange, limit = 200): Promise<FormLead[]> {
   await connectToDatabase()
-  return LeadModel.find({ createdAt: { $gte: range.from, $lte: range.to } })
+  const rows = await LeadModel.find({ createdAt: { $gte: range.from, $lte: range.to } })
     .sort({ createdAt: -1 })
     .limit(limit)
     .lean()
+
+  return (rows as Record<string, unknown>[]).map((r) => {
+    const classification = classifyLead({
+      params: { gclid: r.gclid as string | undefined },
+      referrer: r.referrer as string | undefined,
+      utmSource: r.utmSource as string | undefined,
+      utmMedium: r.utmMedium as string | undefined,
+    })
+    return {
+      id: String(r._id),
+      at: r.createdAt as Date,
+      name: (r.name as string) ?? '',
+      phone: (r.phone as string) ?? '',
+      email: r.email as string | undefined,
+      city: r.city as string | undefined,
+      address: r.address as string | undefined,
+      message: r.message as string | undefined,
+      status: (r.status as string) ?? 'new',
+      sourcePage: r.sourcePage as string | undefined,
+      landingPage: r.landingPage as string | undefined,
+      referrer: r.referrer as string | undefined,
+      gclid: r.gclid as string | undefined,
+      utmSource: r.utmSource as string | undefined,
+      utmMedium: r.utmMedium as string | undefined,
+      utmCampaign: r.utmCampaign as string | undefined,
+      source: classification.source,
+      sourceLabel: classification.label,
+    }
+  })
+}
+
+/** How many form submissions in the period, for the tab's count badge. */
+export async function countFormLeads(range: DateRange): Promise<number> {
+  await connectToDatabase()
+  return LeadModel.countDocuments({ createdAt: { $gte: range.from, $lte: range.to } })
 }
