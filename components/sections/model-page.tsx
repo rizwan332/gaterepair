@@ -17,7 +17,7 @@ import { fact } from '@/lib/business'
 import { brandBySlug } from '@/content/brands'
 import { media, type MediaImage } from '@/content/media-manifest'
 import { videos, type SiteVideo } from '@/content/video-manifest'
-import { projectBySlug, projectsForBrand, type Project } from '@/content/projects'
+import { projectBySlug, projectsForBrand, projectsForModel, type Project } from '@/content/projects'
 import { serviceBySlug, type Service } from '@/content/services'
 // Indexed cities rather than a fixed tier — see the note on the brand page.
 import { indexedCities } from '@/content/cities'
@@ -135,9 +135,18 @@ export function ModelPageView({ page }: { page: ModelPage }) {
   const modelVideos = (page.videoSlugs ?? [])
     .map((slug) => videos.find((v) => v.slug === slug))
     .filter((v): v is SiteVideo => Boolean(v))
-  const modelProjects = (page.projectSlugs ?? [])
-    .map((slug) => projectBySlug(slug))
-    .filter((p): p is Project => Boolean(p))
+  /**
+   * Case studies for this exact operator, then any named on the page itself.
+   *
+   * The link used to run one way only: the client's case studies say which
+   * operator the job was about, but nothing asked from the model's side, so a
+   * model page fell back to showing any case study from that brand — a CSL24UL
+   * page illustrated with an LA400 job. projectsForModel closes that.
+   */
+  const modelProjects = [
+    ...projectsForModel(modelKey(page)),
+    ...(page.projectSlugs ?? []).map((slug) => projectBySlug(slug)).filter((p): p is Project => Boolean(p)),
+  ].filter((p, i, all) => all.findIndex((x) => x.slug === p.slug) === i)
   const brandProjects = modelProjects.length > 0 ? [] : projectsForBrand(brand.name)
 
   // ── Links ─────────────────────────────────────────────────────────────────

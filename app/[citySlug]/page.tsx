@@ -27,6 +27,8 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { modelPath, modelKey } from '@/content/models'
 import { brandsForCity, localFaults } from '@/lib/city-links'
+import { CaseStudies } from '@/components/sections/case-studies'
+import { projectsForCity } from '@/content/projects'
 
 /**
  * City pages.
@@ -136,6 +138,8 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   const slug = citySlugFrom(citySlug)
   const city = slug ? cityBySlug(slug) : null
   if (!city || !publishedCities.includes(city)) notFound()
+
+  const cityProjects = projectsForCity(city.slug)
 
   const heroImage = media['automatic-gate-repair']?.[2] ?? media['gate-installation']?.[0]
   // Curated neighbours where we have them; otherwise the city's genuine county
@@ -429,6 +433,23 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
             </p>
           </div>
         </section>
+      )}
+
+      {/* ── Work actually done in this city ──────────────────────────────
+          Added 1 Oct 2026. A city page argued that we serve a place without
+          ever showing a job done there; the client's documented case studies
+          name their city, so sixteen of these pages can now show real local
+          work instead of only asserting coverage. Nothing renders where we
+          have no job in that city — an empty "our work in Azle" heading would
+          be worse than the silence. */}
+      {cityProjects.length > 0 && (
+        <CaseStudies
+          items={cityProjects}
+          eyebrow="Real jobs"
+          title={`Gate repairs we have completed in ${city.name}`}
+          intro={`Photographs and write-ups from actual ${city.name} call-outs — what failed, what we found and what it took to put right.`}
+          tone="tint"
+        />
       )}
 
       <ClosingCTA />

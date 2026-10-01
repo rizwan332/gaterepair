@@ -22,6 +22,7 @@
  */
 
 import { clientCaseStudies } from './case-studies-client'
+import { caseStudyPhotos } from './case-study-media'
 
 export type Project = {
   slug: string
@@ -671,3 +672,50 @@ export const projectBySlug = (slug: string) => projects.find((p) => p.slug === s
 export const projectsForService = (service: string) => projects.filter((p) => p.service === service)
 export const projectsForBrand = (brand: string) =>
   projects.filter((p) => p.brand?.toLowerCase() === brand.toLowerCase())
+
+/**
+ * Case studies for a city page.
+ *
+ * Added 1 Oct 2026. City pages carried no proof at all — ninety-six of them
+ * argued that we work in a place without ever showing a job done there. Of the
+ * client's eighteen documented jobs, sixteen name a city on his service-area
+ * list, so sixteen city pages can now show real local work rather than only
+ * describing it.
+ */
+export const projectsForCity = (citySlug: string) =>
+  projects.filter((p) => p.citySlug === citySlug)
+
+/**
+ * Case studies for a model page, keyed '<brandSlug>/<slug>'.
+ *
+ * The link was one-directional: the client's case studies name the operator
+ * they were about, but nothing asked the question from the model's side, so a
+ * model page fell back to showing any case study from that brand. This closes
+ * it, and the model page now prefers a job on that exact operator.
+ */
+export const projectsForModel = (modelKey: string) =>
+  projects.filter((p) => p.modelKey === modelKey)
+
+/**
+ * The photograph a card should lead with.
+ *
+ * ── THE BUG THIS REPLACES ───────────────────────────────────────────────────
+ * Cards did `media[project.mediaCategory]?.[project.imageIndexes[0]]`. The
+ * client's eighteen jobs carry their own ordered photography in `photoSet` and
+ * have an EMPTY `imageIndexes`, so that expression evaluated to
+ * `media[cat]?.[undefined]` — undefined — and every one of those cards rendered
+ * with no image at all, on the homepage, the brand pages and the service pages
+ * alike. The eighteen strongest pieces of proof on the site were showing as
+ * text-only cards.
+ */
+export function projectCardImageSrc(project: Project): string | null {
+  if (project.photoSet) {
+    const own = caseStudyPhotos[project.photoSet]
+    if (own && own.length > 0) return own[0].src
+  }
+  return null
+}
+
+/** True when the job has footage of any kind — self-hosted or the client's YouTube. */
+export const projectHasVideo = (project: Project) =>
+  Boolean(project.videoSlug) || Boolean(project.videos && project.videos.length > 0)
