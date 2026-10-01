@@ -78,10 +78,21 @@ export const metadata: Metadata = {
  * automatically.
  */
 const homepageCaseStudies = [
+  // The strongest claim on the site, and still the one that should lead:
+  // two companies quoted $25,000 to replace a gate we repaired for $6,880.
   'commercial-gate-impact-damage-repair',
-  'liftmaster-la400-to-la500-arm-upgrade',
-  'ramset-slide-gate-broken-rollers',
-  'liftmaster-board-not-charging-battery',
+  // The three below were swapped in on 1 Oct 2026 for documented jobs with
+  // the client's own photography of the actual repair. The ones they replaced
+  // were illustrated with library imagery, which on a page whose argument is
+  // "we repair rather than replace" is a weaker version of the same point —
+  // a photograph of the specific operator being refurbished carries it and a
+  // stock gate does not. All three are the same theme as the lead:
+  //   Viking      two estimates over $6,000 to replace; refurbished for $3,100
+  //   Eagle 2000  a 26-year-old operator kept in service
+  //   US Automatic another company said replace; we refurbished it
+  'viking-refurbishment-richardson-tx',
+  'eagle-2000-restored-coppell-tx',
+  'us-automatic-solar-refurbishment-fort-worth-tx',
 ]
   .map((slug) => projectBySlug(slug))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
