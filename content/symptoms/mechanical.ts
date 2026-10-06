@@ -176,7 +176,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['automatic-gate-repair', 'iron-gate-repair', 'gate-motor-repair'],
+    relatedServices: ['sliding-gate-repair', 'automatic-gate-repair', 'iron-gate-repair', 'gate-motor-repair'],
     relatedSymptoms: ['gate-roller-or-wheel-broken', 'gate-stops-halfway', 'gate-chain-broken'],
     sources: [
       {
@@ -359,7 +359,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['automatic-gate-repair', 'iron-gate-repair'],
+    relatedServices: ['sliding-gate-repair', 'automatic-gate-repair', 'iron-gate-repair'],
     relatedSymptoms: ['sliding-gate-off-track', 'gate-stops-halfway', 'gate-chain-broken'],
     sources: [
       {
@@ -541,7 +541,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['gate-motor-repair', 'automatic-gate-repair', 'commercial-gate-repair'],
+    relatedServices: ['sliding-gate-repair', 'gate-motor-repair', 'automatic-gate-repair', 'commercial-gate-repair'],
     relatedSymptoms: ['sliding-gate-off-track', 'gate-roller-or-wheel-broken', 'gate-stops-halfway'],
     sources: [
       {
@@ -730,7 +730,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['iron-gate-repair', 'automatic-gate-repair', 'gate-motor-repair'],
+    relatedServices: ['swing-gate-repair', 'iron-gate-repair', 'automatic-gate-repair', 'gate-motor-repair'],
     relatedSymptoms: ['gate-post-leaning', 'swing-gate-stuck', 'gate-stops-halfway'],
     sources: [
       {
@@ -913,7 +913,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['iron-gate-repair', 'gate-installation', 'automatic-gate-repair'],
+    relatedServices: ['swing-gate-repair', 'iron-gate-repair', 'gate-installation', 'automatic-gate-repair'],
     relatedSymptoms: ['gate-sagging-or-dragging', 'swing-gate-stuck', 'gate-stops-halfway'],
     sources: [
       {
@@ -1096,7 +1096,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
       },
     ],
 
-    relatedServices: ['automatic-gate-repair', 'iron-gate-repair', 'gate-motor-repair'],
+    relatedServices: ['swing-gate-repair', 'automatic-gate-repair', 'iron-gate-repair', 'gate-motor-repair'],
     relatedSymptoms: ['gate-sagging-or-dragging', 'gate-post-leaning', 'automatic-gate-not-working'],
     sources: [
       {

@@ -611,4 +611,134 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       },
     ],
   },
+  // ------------------------------------------------------------------------
+  // Added 7 Oct 2026 with the gate-type service pages. The jobs referenced are
+  // the client's own documented Texas jobs in content/case-studies-client.ts —
+  // nothing here is a hypothetical dressed as a job.
+  'sliding-gate-repair': {
+    causes: [
+      {
+        heading: 'Wheels and track — where most sliding gate failures start',
+        body: [
+          'A sliding gate rides on V-groove wheels running along a steel track set into the driveway. Everything else on the gate depends on those wheels turning freely and that track staying straight and clear. When a wheel bearing wears, a wheel flat-spots, or the track fills with grit and gravel, the gate gets harder to move on every cycle — and the operator pays for it.',
+          'The tell is usually noise before failure: a grind or rumble that was not there last month, or a gate that hesitates at the same point in its travel. Caught at that stage it is a wheel replacement. Left alone, a failed wheel can drop the gate onto the track or lift it off entirely.',
+          'Our Mesquite job is the textbook case. The Eagle operator was only about three years old and working properly. The wheels under the gate had broken completely, and the chain needed shortening and tightening to match. The opener did not need replacing — the hardware it was pulling did.',
+        ],
+      },
+      {
+        heading: 'Debris, settlement and a gate coming off its track',
+        body: [
+          'A gate leaves its track when something lifts a wheel out of the groove: a rock, a build-up of debris, a section of track that has settled or been driven over, or a guide roller that has stopped holding the top of the gate in line.',
+          'On a Dallas call that came in early one morning, a heavy sliding gate on a LiftMaster CSL24UL had come completely off its track and the homeowner could not get out. Rocks and debris around the track were the cause. The operator was working; the gate went back on the track, the area was cleared, a corroded backup battery was replaced and the limits were reset.',
+          'That pattern is common, and it is why an off-track gate is almost never an operator failure. It is also why clearing the track is the single most useful piece of maintenance an owner can do.',
+        ],
+      },
+      {
+        heading: 'Chain, sprockets and idlers',
+        body: [
+          "Most residential and light-commercial slide operators pull the gate with a roller chain fixed at both ends of the gate and running over the operator's drive sprocket. A chain stretches, rusts and loosens over time. Too slack and it jumps the sprocket; too tight and it loads the operator's bearings and gearbox on every cycle.",
+          'Chain replacement is routine — the equivalent of tyres on a car — and it is one of the jobs we do most on sliding gates in Dallas–Fort Worth. On one Dallas property the previous owner had never maintained the gate and the chain had rusted heavily; we fitted a new rust-free chain and kept the existing LiftMaster operator.',
+          'What matters is replacing the chain before it fails. A chain that snaps under load can take the drive sprocket with it, and occasionally damages the operator.',
+        ],
+      },
+      {
+        heading: 'When it really is the operator',
+        body: [
+          'Sometimes the gate rolls freely by hand and the fault is genuinely in the operator: a control board, a capacitor, a limit problem, or a battery system on a DC or solar slide operator. Those are covered in detail on our gate opener and motor repair page.',
+          "Even then, a full replacement is rarely the first answer. In Richardson a Viking slide operator had a failed motor and a failed board; two other companies had quoted over $6,000 to replace the system, and refurbishing it cost $3,100. That is the client's own figure for that job, not a price list — every repair is quoted on the day.",
+        ],
+      },
+    ],
+    maintenance: [
+      {
+        heading: 'Keep the track clear',
+        body: [
+          'Sweep the track and the area around it regularly, especially after storms, mowing and landscaping. Rocks, mulch and gravel are the most common reason a sliding gate binds or leaves its track.',
+          'Never run the gate with something lodged in the track. Release the operator, clear it, and roll the gate by hand to check it moves freely before putting it back in service.',
+        ],
+      },
+      {
+        heading: 'Listen to the wheels and watch the chain',
+        body: [
+          'A new grinding or rumbling sound usually means a wheel or bearing is going. A chain that visibly sags, slaps or has surface rust is due for adjustment or replacement.',
+          'Both are inexpensive caught early. Both become operator repairs if they are left until something breaks.',
+        ],
+      },
+    ],
+    repairVsReplace: [
+      'Wheels, rollers, chain or track worn: repair the hardware. A new operator on a gate that will not roll freely fails the same way.',
+      'Gate came off its track: put it back, clear the cause and check the wheels — the operator is usually fine.',
+      'Operator board, capacitor, motor or battery failed on a supported model: repair or refurbish the operator.',
+      'Operator obsolete, parts unavailable, and failing repeatedly: replacement becomes the sensible decision — and we will say so.',
+    ],
+    extraFaqs: [
+      {
+        q: 'What brands of sliding gate opener do you repair?',
+        a: 'LiftMaster (including the CSL24UL, RSL12UL and SL3000UL), Eagle, Viking, Ramset, Elite, All-O-Matic and US Automatic slide operators among others. Each brand has its own page, and the most common models have their own repair pages linked below.',
+      },
+    ],
+  },
+
+  // ------------------------------------------------------------------------
+  'swing-gate-repair': {
+    causes: [
+      {
+        heading: 'Hinges, posts and a sagging gate',
+        body: [
+          'A swing gate hangs its full weight from the hinge side. Over years the hinges wear, the gate frame racks slightly out of square, and the post it hangs from moves. The result is a gate that sags at the latch end, drags on the driveway, or no longer meets its stop.',
+          'In Dallas–Fort Worth, post movement is the biggest single factor. Expansive clay swells when it is wet and shrinks when it dries, so posts lean and shift with the seasons. A gate that closed perfectly in spring can be rubbing the ground by late summer — and an automatic operator then fights that friction on every cycle.',
+          'The repair is to the gate, not the operator: new or adjustable hinges, a post reset, or the frame squared and re-welded. Our iron gate repair page covers the welding side in more depth.',
+        ],
+      },
+      {
+        heading: 'Operator arms and brackets',
+        body: [
+          'Linear-actuator and articulated arms push the gate open and pull it closed, and they carry real load even when the gate is standing still. Wind on a solid gate, a vehicle nudging a leaf, or a gate that has started to bind all bend arms and loosen brackets.',
+          'An arm is replaceable on its own. In University Park a swing gate that had not been used for about a year had damage to both its bracket and its LiftMaster LA400 arm; a replacement arm put it back in service on the existing operator. In Prosper a visibly bent US Automatic arm was tested with power restored before we decided to replace it — the battery was replaced too, and the operator stayed.',
+        ],
+      },
+      {
+        heading: 'Boards, batteries and solar on swing operators',
+        body: [
+          'Many residential swing operators in Dallas–Fort Worth are DC with battery backup, and many run on solar. A battery that no longer holds charge, a corroded board, or a charging fault will all present as a gate that "just stopped" — and none of them means the operator is finished.',
+          'In Southlake a control box had been left open, debris had collected around the electronics and the board had corroded. A new board and backup batteries restored the gate; the opener itself was kept. A box that will not close properly is worth fixing for that reason alone.',
+        ],
+      },
+      {
+        heading: 'Double gates out of sync',
+        body: [
+          'Dual swing gates are timed so one leaf moves slightly ahead of the other and they meet cleanly. When one side is slower — a weaker arm, a binding hinge, a tired battery on that side — the leaves start colliding, stopping short or reversing.',
+          'Usually only one side is at fault. We test each leaf on its own before touching the board settings, so you pay for one side rather than a whole system.',
+        ],
+      },
+    ],
+    maintenance: [
+      {
+        heading: 'Check the swing by hand once a season',
+        body: [
+          'Put the operator into manual release and swing each leaf through its travel. It should move evenly without dragging or catching. Stiffness or a scraping sound is the earliest warning of hinge wear or post movement.',
+          "Lubricate hinges per the hardware maker's guidance, and keep the area under the gate clear of soil build-up and plant growth.",
+        ],
+      },
+      {
+        heading: 'Keep the control box sealed',
+        body: [
+          'Make sure the operator and control box lids close fully and the seals are intact. Insects, debris and moisture inside an open box are a common cause of board failure on swing operators.',
+          'On solar systems, keep the panel clean and unshaded; a battery that is never fully recharged ages quickly.',
+        ],
+      },
+    ],
+    repairVsReplace: [
+      'Gate sagging or dragging: fix hinges and posts first — this is a hardware repair, not an operator one.',
+      'Arm bent or bracket broken: replace the arm or bracket and keep the operator.',
+      'Board, battery or solar charging fault: repair the electronics; the operator is usually worth keeping.',
+      'Operator obsolete and failing repeatedly, or undersized for a heavy gate: replace — and size the new one to the gate.',
+    ],
+    extraFaqs: [
+      {
+        q: 'What swing gate openers do you repair?',
+        a: 'LiftMaster (including the LA400, LA412, LA500 and CSW24UL), US Automatic, Viking, Eagle, Elite, FAAC and DoorKing swing operators among others, on single and double gates. The most common models have their own repair pages linked below.',
+      },
+    ],
+  },
 }

@@ -34,7 +34,7 @@ import type { Project } from './projects'
 export const clientCaseStudies: Project[] = [
   {
     slug: 'eagle-sliding-gate-repair-mesquite-tx',
-    seoTitle: 'Eagle Sliding Gate Wheel Repair',
+    seoTitle: 'Eagle Sliding Gate Wheel Repair, Mesquite TX',
     title: 'The Opener Was Fine. The Wheels Had Completely Failed.',
     summary:
       'A three-year-old Eagle operator was working perfectly. The sliding gate wheels underneath it were broken, which is a different repair entirely.',
@@ -192,7 +192,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-la400-arm-replacement-university-park-tx',
-    seoTitle: 'LA400 Arm Replacement, University Park',
+    seoTitle: 'LiftMaster LA400 Arm Replacement, University Park',
     title: 'A Gate Left Unused for a Year, a Broken Bracket and a Broken Arm',
     summary:
       'The customer had not operated the gate in about twelve months and wanted it working again. The bracket and the operator arm had both failed.',
@@ -224,7 +224,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-rust-free-chain-dallas-tx',
-    seoTitle: 'Rust-Free Chain Replacement, Dallas',
+    seoTitle: 'LiftMaster Rust-Free Chain Replacement, Dallas',
     title: 'The Chain Was Heavily Rusted. The Operator Was Not the Problem.',
     summary:
       'A new owner inherited a LiftMaster sliding gate the previous owner had never maintained. We replaced the component that had actually failed.',
@@ -262,7 +262,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-chain-replacement-dallas-tx',
-    seoTitle: 'Sliding Gate Chain Replacement, Dallas',
+    seoTitle: 'LiftMaster Sliding Gate Chain Replacement, Dallas',
     title: 'Chain Replacement on a LiftMaster Sliding Gate',
     summary:
       'A straightforward Dallas job: the chain on a LiftMaster sliding gate operator had reached the end of its life and was replaced.',
@@ -292,7 +292,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-circuit-board-batteries-richardson-tx',
-    seoTitle: 'Circuit Board Repair, Richardson',
+    seoTitle: 'LiftMaster Slide Gate Board Repair, Richardson',
     title: 'The Board Had Physically Fallen Inside the Operator',
     summary:
       'A Sunday call from a senior customer. The circuit board had come loose and failed, and because it had stopped charging them, both backup batteries had gone too.',
@@ -336,7 +336,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-solar-upgrade-wills-point-tx',
-    seoTitle: 'Arm and Solar Repair, Wills Point',
+    seoTitle: 'LiftMaster Arm & Solar Repair, Wills Point',
     title: 'The Fire Department Forced the Gate. Then the Batteries Kept Dying.',
     summary:
       'An emergency entry broke the operator arm. The batteries needed replacing every two months, and a single solar panel facing one direction was why.',
@@ -446,7 +446,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'swing-gate-circuit-board-southlake-tx',
-    seoTitle: 'Circuit Board Repair, Southlake',
+    seoTitle: 'Swing Gate Circuit Board Repair, Southlake',
     title: 'The Control Box Had Been Left Open. Debris and Corrosion Did the Rest.',
     summary:
       'An open enclosure let debris collect around the electronics and moisture reach the board. The board and the backup batteries were replaced; the opener stayed.',
@@ -554,7 +554,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'viking-refurbishment-richardson-tx',
-    seoTitle: 'Viking Refurbishment, Richardson',
+    seoTitle: 'Viking Slide Gate Opener Refurbished, Richardson',
     title: 'Two Companies Quoted Over $6,000 to Replace It. We Refurbished It for $3,100.',
     summary:
       'A Viking sliding gate opener with a failed motor and a failed board. Both replaceable — which made a full refurbishment cheaper than half a new system.',
@@ -592,7 +592,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'eagle-2000-restored-coppell-tx',
-    seoTitle: 'Eagle 2000 Restored, Coppell',
+    seoTitle: 'Eagle 2000 Gate Opener Restored, Coppell',
     title: 'The Operator Was 26 Years Old. It Is Still Working.',
     summary:
       'An Eagle 2000 that is no longer manufactured, on a gate with worn wheels and a stretched chain. Replacing the worn parts cost a fraction of replacing the unit.',
@@ -632,7 +632,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-csl24ul-off-track-dallas-tx',
-    seoTitle: 'Gate Off Track Emergency, Dallas',
+    seoTitle: 'Sliding Gate Off Track: LiftMaster, Dallas',
     title: 'Off the Track, Unable to Leave, On Site in Twenty Minutes',
     summary:
       'A heavy sliding gate came off its track early in the morning and trapped the customer. Rocks and debris in the track were the cause.',
@@ -673,7 +673,7 @@ export const clientCaseStudies: Project[] = [
 
   {
     slug: 'liftmaster-la400-replaces-gto-dallas-tx',
-    seoTitle: 'GTO Replaced with LA400, Dallas',
+    seoTitle: 'GTO Replaced with LiftMaster LA400, Dallas',
     title: 'An Ageing GTO Opener Replaced with a LiftMaster LA400',
     summary:
       'The customer wanted a modern operator with battery backup and a safety sensor on an existing wrought-iron swing gate.',

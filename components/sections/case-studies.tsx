@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowUpRight, Play } from 'lucide-react'
+import { ArrowUpRight, MapPin, Play } from 'lucide-react'
 import { projectCardImageSrc, projectHasVideo, type Project } from '@/content/projects'
 import { caseStudyPhotos } from '@/content/case-study-media'
 import { media } from '@/content/media-manifest'
@@ -117,6 +117,17 @@ export function CaseStudies({
                       {project.brand && (
                         <span className="rounded-md bg-ink-950 px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-gold-400">
                           {project.brand}
+                        </span>
+                      )}
+                      {/* The job's city, where the client has confirmed it. A
+                          card reading "LiftMaster · Richardson, TX" answers
+                          "do they actually work near me" before anyone clicks;
+                          the unverified library projects have no city and show
+                          none. */}
+                      {project.verified && project.city && (
+                        <span className="inline-flex items-center gap-1 rounded-md bg-gold-100 px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-gold-700">
+                          <MapPin className="size-3" aria-hidden />
+                          {project.city.replace(/, Texas$/, ', TX')}
                         </span>
                       )}
                       <span className="rounded-md bg-ink-100 px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wide text-ink-600">

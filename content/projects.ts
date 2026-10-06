@@ -38,7 +38,8 @@ export type Project = {
    * `title` keeps the narrative; this carries the fault and the operator, which
    * is what someone with the same problem actually types.
    *
-   * Budget: 39 characters. The template appends 21 more.
+   * Budget: 60 characters. The page sets it as an `absolute` title, so no
+   * template suffix is appended. Verified jobs carry brand + fault + city.
    */
   seoTitle: string
   /** One line for the index card. Leads with the fault, not the service. */

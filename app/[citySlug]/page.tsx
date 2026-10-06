@@ -87,8 +87,15 @@ export async function generateMetadata({
    * interview data — a city we have not enriched has none, and names none.
    */
   const LIMIT = 158
-  const head = `Gate stuck, stalled or dead in ${city.name}? Same-day gate repair across ${city.county}`
+  // "opener" and "automatic gate" are the two modifiers people add to "gate
+  // repair" most, so the snippet names both. The shorter head is the fallback
+  // for the long city + county pairs, so no city overruns the budget.
   const tail = `. Open 24/7. Call ${business.phone.display}.`
+  const heads = [
+    `Gate stuck or opener dead in ${city.name}? Same-day automatic gate repair across ${city.county}`,
+    `Gate stuck, stalled or dead in ${city.name}? Same-day gate repair across ${city.county}`,
+  ]
+  const head = heads.find((h) => `${h}. Residential and commercial${tail.slice(1)}`.length <= LIMIT) ?? heads[1]
   let description = `${head}. Residential and commercial${tail.slice(1)}`
   for (let n = (city.gateProfile?.commonBrands.length ?? 0); n > 0; n--) {
     const candidate = `${head} — we fix ${city.gateProfile!.commonBrands.slice(0, n).join(', ')}${tail}`
@@ -113,7 +120,12 @@ export async function generateMetadata({
      * "Gate Repair in Plano, TX — Same-Day, Open 24/7" is 45 characters, which
      * leaves the availability hook intact instead of truncating it away.
      */
-    title: { absolute: `Gate Repair in ${city.name}, TX — Same-Day, Open 24/7` },
+    //
+    // Updated 7 Oct 2026: "Automatic Gate Repair Plano, TX" carries the two
+    // highest-intent phrases at once — "automatic gate repair plano" and, as an
+    // exact substring, "gate repair plano". The long city names fall back to
+    // the shorter form so nothing is truncated.
+    title: { absolute: cityTitle(city.name) },
     // Opens on the problem, not the service. Someone searching this is standing
     // at a gate that will not move, and the snippet that names their situation
     // back to them is the one they click. The previous version opened
@@ -165,6 +177,18 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   // City → brand → model. Computed in lib/city-links.ts so the linking
   // validator asserts on exactly what this page renders.
   const cityBrands = brandsForCity(city)
+  /**
+   * Brands we have a documented, client-verified job for in this city.
+   *
+   * The badge on the brand roster used to read "Seen here" and was driven by
+   * `gateProfile.commonBrands` — drafted profile data, not interview data (see
+   * the note at the top of content/cities.ts). It now marks only brands with a
+   * verified case study in this city, which is a claim the page can prove a
+   * scroll away.
+   */
+  const jobBrands = new Set(
+    cityProjects.filter((p) => p.verified && p.brand).map((p) => p.brand!.toLowerCase()),
+  )
   const faults = localFaults(city)
   /**
    * Photographs for the city page.
@@ -185,7 +209,7 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
     <>
       <PageHero
         eyebrow={city.county}
-        title={`Gate Repair in ${city.name}, TX — Same-Day Service`}
+        title={`Automatic Gate Repair in ${city.name}, TX`}
         intro={
           city.localAngle
             ? `${city.localAngle.split('. ').slice(0, 2).join('. ')}.`
@@ -194,6 +218,24 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
         image={heroImage}
         meta={city.responseBand ? `Typical arrival in ${city.name}: ${city.responseBand}` : undefined}
       />
+
+      {/* ── Work actually done in this city ──────────────────────────────
+          Added 1 Oct 2026; moved directly under the hero 7 Oct 2026. Someone
+          searching "gate repair {city}" is deciding whether we genuinely work
+          there, and a documented job in their own city answers that better
+          than anything else on the page — it was at the very bottom, below
+          the FAQs. Nothing renders where we have no job in that city; an
+          empty "our work in Azle" heading would be worse than the silence. */}
+      {cityProjects.length > 0 && (
+        <CaseStudies
+          items={cityProjects}
+          limit={6}
+          eyebrow="Real jobs"
+          title={`Gate repairs we have completed in ${city.name}`}
+          intro={`Photographs and write-ups from actual ${city.name} call-outs — what failed, what we found and what it took to put right.`}
+          tone="tint"
+        />
+      )}
 
       {city.localAngle && (
         <section className="section bg-white">
@@ -230,19 +272,17 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                   system, and the anchor carries the brand rather than the
                   generic name so the relationship is stated, not implied. */}
               <ProfileList
-                title="Operators we see here"
+                title="Operators we service here"
                 items={city.gateProfile.commonBrands}
                 hrefFor={(name) => {
                   const brand = brands.find((b) => b.name === name)
                   return brand ? `/brands/${brand.slug}` : undefined
                 }}
-                suffix={` gate repair in ${city.name}`}
               />
               <ProfileList
                 title="What usually fails"
                 items={faults.map((f) => f.issue)}
                 hrefFor={(issue) => `/services/${faults.find((f) => f.issue === issue)!.service.slug}`}
-                suffix={` — ${city.name} gate repair`}
               />
             </div>
           </div>
@@ -326,17 +366,27 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
 
       <section className="section bg-ink-50">
         <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">
-            Gate services we provide in {city.name}
+          <h2 className="mb-3 font-display text-2xl font-bold text-ink-950">
+            Gate repair services in {city.name}
           </h2>
+          {/* Each card says what the service actually covers. A bare list of
+              names told a visitor with a sliding gate off its track nothing
+              about which one was theirs. */}
+          <p className="prose-measure mb-7 leading-relaxed text-ink-700">
+            Automatic and electric driveway gates, sliding and swing gates, gate openers and motors,
+            emergency call-outs, and commercial and HOA entrances across {city.name} and {city.county}.
+          </p>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="block rounded-[var(--radius-card)] border border-ink-100 bg-white px-5 py-4 text-sm font-medium text-ink-900 transition-all hover:border-ink-200 hover:shadow-[var(--shadow-card)]"
+                  className="block h-full rounded-[var(--radius-card)] border border-ink-100 bg-white px-5 py-4 transition-all hover:border-ink-200 hover:shadow-[var(--shadow-card)]"
                 >
-                  {s.name}
+                  <span className="block text-sm font-semibold text-ink-900">{s.name}</span>
+                  {s.cardLine && (
+                    <span className="mt-1 block text-[0.8125rem] leading-snug text-ink-600">{s.cardLine}</span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -351,12 +401,12 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
             Operator brands and models we repair in {city.name}
           </h2>
           <p className="prose-measure mb-7 leading-relaxed text-ink-700">
-            {city.gateProfile
-              ? `The operators marked “seen here” are the ones that turn up most often in ${city.name}. Every brand links to what we repair on it, and to the individual models we are called out to most.`
+            {jobBrands.size > 0
+              ? `Brands marked “our job here” are ones we have a documented ${city.name} repair for — see the case studies above. Every brand links to what we repair on it, and to the individual models we are called out to most.`
               : `Every brand links to what we repair on it, and to the individual models we are called out to most across ${city.county}.`}
           </p>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {cityBrands.map(({ brand: b, seenHere, models }) => (
+            {cityBrands.map(({ brand: b, models }) => (
               <li
                 key={b.slug}
                 className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-5 transition-all hover:border-ink-200 hover:shadow-[var(--shadow-card)]"
@@ -367,11 +417,10 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                     className="font-display font-semibold text-ink-950 underline decoration-gold-400 decoration-1 underline-offset-4 hover:text-gold-600"
                   >
                     {b.name} gate repair
-                    <span className="sr-only"> in {city.name}</span>
                   </Link>
-                  {seenHere && (
+                  {jobBrands.has(b.name.toLowerCase()) && (
                     <span className="rounded bg-gold-100 px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-gold-700">
-                      Seen here
+                      Our job here
                     </span>
                   )}
                 </div>
@@ -384,7 +433,6 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                           className="inline-block rounded-lg border border-ink-100 bg-ink-50 px-2.5 py-1 text-xs font-medium text-ink-700 transition-colors hover:border-gold-400 hover:text-ink-950"
                         >
                           {m.model}
-                          <span className="sr-only"> repair in {city.name}</span>
                         </Link>
                       </li>
                     ))}
@@ -461,23 +509,6 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
         </section>
       )}
 
-      {/* ── Work actually done in this city ──────────────────────────────
-          Added 1 Oct 2026. A city page argued that we serve a place without
-          ever showing a job done there; the client's documented case studies
-          name their city, so sixteen of these pages can now show real local
-          work instead of only asserting coverage. Nothing renders where we
-          have no job in that city — an empty "our work in Azle" heading would
-          be worse than the silence. */}
-      {cityProjects.length > 0 && (
-        <CaseStudies
-          items={cityProjects}
-          eyebrow="Real jobs"
-          title={`Gate repairs we have completed in ${city.name}`}
-          intro={`Photographs and write-ups from actual ${city.name} call-outs — what failed, what we found and what it took to put right.`}
-          tone="tint"
-        />
-      )}
-
       <ClosingCTA />
 
       <script
@@ -498,18 +529,25 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   )
 }
 
+/** The `<title>`, longest form that fits Google's ~60-character budget. */
+function cityTitle(name: string): string {
+  const forms = [
+    `Automatic Gate Repair ${name}, TX | Same-Day 24/7`,
+    `Gate Repair ${name}, TX | Automatic Gates, 24/7`,
+    `Gate Repair ${name}, TX | Same-Day 24/7`,
+  ]
+  return forms.find((t) => t.length <= 60) ?? forms[forms.length - 1]
+}
+
 function ProfileList({
   title,
   items,
   hrefFor,
-  suffix,
 }: {
   title: string
   items: string[]
   /** Where an item links, if anywhere. Items with no destination render as plain text. */
   hrefFor?: (item: string) => string | undefined
-  /** Appended to the anchor for screen readers and crawlers, so the link text names the relationship. */
-  suffix?: string
 }) {
   return (
     <div>
@@ -528,7 +566,6 @@ function ProfileList({
                   className="underline decoration-gold-400 decoration-1 underline-offset-4 hover:text-ink-950"
                 >
                   {item}
-                  {suffix && <span className="sr-only">{suffix}</span>}
                 </Link>
               ) : (
                 item
