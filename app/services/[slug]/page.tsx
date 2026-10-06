@@ -20,8 +20,8 @@ import { fitDescription, openGraphFor } from '@/lib/seo'
 import { publishedTestimonials } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { CaseStudies } from '@/components/sections/case-studies'
-import { projectsForService } from '@/content/projects'
-import { modelsForService, modelPath, modelKey } from '@/content/models'
+import { projects, projectsForService } from '@/content/projects'
+import { modelPages, modelsForService, modelPath, modelKey } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { symptomsForService, symptomPath } from '@/content/symptoms'
 import { isSymptomIndexable } from '@/lib/symptom-quality'
@@ -66,12 +66,31 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const depth = SERVICE_DEPTH[service.slug]
   const faqs = [...service.faqs, ...(depth?.extraFaqs ?? [])]
   const images = media[service.mediaCategory] ?? []
-  const serviceProjects = projectsForService(service.slug)
+  /**
+   * Gate-type pages (sliding, swing) draw jobs by gate type, verified Texas
+   * jobs first. A sliding-gate job is filed under what was repaired on it —
+   * chain, board, wheels — but it is still sliding-gate evidence, and the
+   * client's documented jobs name the city, which is the proof a local
+   * searcher is looking for.
+   */
+  const serviceProjects = service.gateType
+    ? projects
+        .filter((p) => p.gateType === service.gateType)
+        .sort((a, b) => Number(b.verified) - Number(a.verified))
+    : projectsForService(service.slug)
   const serviceVideos = videosFor(service.mediaCategory)
   const relatedBrands = service.relatedBrands.map(brandBySlug).filter(Boolean)
   // Service → model. Only pages that clear the quality gate, capped so the
   // block stays a set of useful routes rather than a link farm.
-  const serviceModels = modelsForService(service.slug).filter(isModelIndexable).slice(0, 12)
+  const serviceModels = (
+    service.gateType
+      ? modelPages.filter((m) =>
+          service.gateType === 'slide' ? m.gateType === 'slide' : m.gateType.includes('swing'),
+        )
+      : modelsForService(service.slug)
+  )
+    .filter(isModelIndexable)
+    .slice(0, 12)
 
   // The symptoms this service answers. Joins Section 4 of the keyword list to
   // the service that resolves it, in both directions — the symptom pages link
@@ -290,6 +309,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           quote story is written for, and it was three clicks away. */}
       <CaseStudies
         items={serviceProjects}
+        limit={service.gateType ? 6 : undefined}
         title={`${service.name} we have documented`}
         intro="The same job written up properly — what was wrong, how it was diagnosed, and what it actually took to fix."
       />
@@ -332,8 +352,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         href={modelPath(m)}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                       >
-                        {brandBySlug(m.brandSlug)?.name} {m.model}
-                        <span className="sr-only"> repair</span>
+                        {brandBySlug(m.brandSlug)?.name} {m.model} repair
                         <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                       </Link>
                     </li>
@@ -343,23 +362,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             )}
 
             <h2 className="mb-6 mt-12 font-display text-2xl font-bold text-ink-950">
-              Where we do this work
+              {service.name} across Dallas&ndash;Fort Worth
             </h2>
             <ul className="flex flex-wrap gap-2.5">
-              {/* The anchor carries the service as well as the city.
-                  "Plano" told a crawler only that this page links to a city
-                  page; "Gate motor repair in Plano" tells it what that city
-                  page is relevant FOR, which is the phrase both pages are
-                  trying to win. Visually it stays a chip — `sr-only` keeps the
-                  row of city names readable while the anchor text is complete
-                  for anything reading the markup. */}
+              {/* Plain city names. These used to carry a hidden
+                  `sr-only` "{service} in" prefix on every chip — ninety-six
+                  keyword-bearing anchors per page that a sighted visitor
+                  never sees, which is the shape of hidden-text manipulation
+                  even when the intent is not. The section heading states the
+                  relationship in visible text instead. */}
               {indexedCities.map((city) => (
                 <li key={city.slug}>
                   <Link
                     href={`/gate-repair-${city.slug}-tx`}
                     className="rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                   >
-                    <span className="sr-only">{service.name} in </span>
                     {city.name}
                   </Link>
                 </li>

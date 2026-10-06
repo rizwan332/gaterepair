@@ -589,9 +589,8 @@ export function ModelPageView({ page }: { page: ModelPage }) {
                   href={`/gate-repair-${city.slug}-tx`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                 >
-                  {/* Same pattern as the brand and service pages: the chip reads
-                      as a city, the anchor text carries what it is relevant for. */}
-                  <span className="sr-only">{name} repair in </span>
+                  {/* Plain city name — the hidden "{model} repair in" prefix was
+                      removed 7 Oct 2026, as on the brand and service pages. */}
                   {city.name}
                   <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                 </Link>

@@ -309,6 +309,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           studies are written. */}
       <CaseStudies
         items={brandProjects}
+        // Six rather than the default three: LiftMaster alone has eight
+        // documented jobs across five DFW cities, and that spread is the proof
+        // behind "LiftMaster gate repair" in each of those cities.
+        limit={6}
         title={`${brand.name} repairs we have documented`}
         intro="The fault, how it was diagnosed, and what it actually took to fix."
         tone="light"
@@ -376,10 +380,9 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                   href={`/gate-repair-${city.slug}-tx`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                 >
-                  {/* Anchor text carries the brand as well as the city — see
-                      the equivalent block on the service pages. Hidden so the
-                      chip still reads as a plain city name. */}
-                  <span className="sr-only">{brand.name} gate repair in </span>
+                  {/* Plain city name: the hidden "{brand} gate repair in"
+                      prefix that used to sit here was removed 7 Oct 2026 —
+                      see the equivalent block on the service pages. */}
                   {city.name}
                   <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                 </Link>

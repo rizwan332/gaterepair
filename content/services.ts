@@ -29,6 +29,8 @@ export type Service = {
   /** Photo category in media-manifest.ts */
   mediaCategory: string
   navLabel: string
+  /** One line for the service cards on city pages: what this covers, in the customer's words. */
+  cardLine?: string
   headline: string
   /** Opens on the reader's problem, never on the company. */
   intro: string
@@ -51,16 +53,28 @@ export type Service = {
   faqs: { q: string; a: string }[]
   relatedBrands: string[]
   priority: number
+  /**
+   * Set on the gate-type services (sliding, swing). The page then draws its
+   * case studies and operator models by gate type rather than by service tag,
+   * because a sliding-gate job is filed under whatever was repaired on it —
+   * chain, board, wheels — but it is still sliding-gate evidence.
+   */
+  gateType?: 'slide' | 'swing'
 }
 
 export const services: Service[] = [
   {
     slug: 'gate-motor-repair',
     legacyPath: '/gate-motor-repair-services/',
-    name: 'Gate Motor & Operator Repair',
+    // "Opener" leads because it is the customer's word — "gate opener repair"
+    // and "gate motor repair" are the same job searched two ways, and this one
+    // page owns both rather than splitting them into two thin pages. The slug
+    // stays: it is the URL the WordPress 301 and every inbound link point at.
+    name: 'Gate Opener & Motor Repair',
     mediaCategory: 'automatic-gate-repair',
-    navLabel: 'Gate Motor Repair',
-    headline: 'Gate Motor & Operator Repair in Dallas–Fort Worth',
+    navLabel: 'Gate Opener & Motor',
+    cardLine: 'Openers that hum, click, stall or will not respond',
+    headline: 'Gate Opener & Motor Repair in Dallas–Fort Worth',
     intro:
       'Your gate hums but does not move. Or it clicks and stops. Or it opens halfway and gives up. Nine times out ' +
       'of ten that is the control board, a limit switch, or a failed capacitor — not the whole operator. We ' +
@@ -102,11 +116,17 @@ export const services: Service[] = [
   },
   {
     slug: 'emergency-gate-repair',
-    legacyPath: '/emergency-gate-repair-services/',
+    // null rather than the WordPress path. A legacyPath here generates a 301
+    // in next.config.ts that is listed BEFORE the explicit
+    // `/emergency-gate-repair-services → /emergency` rule, and the first match
+    // wins — so the old emergency URL's equity was landing on this diagnostic
+    // page instead of /emergency, the page built to win "emergency gate repair".
+    legacyPath: null,
     name: 'Emergency Gate Repair',
     seoTitle: 'After-Hours Gate Faults: What Breaks and What to Do',
     mediaCategory: 'emergency-gate-repair',
     navLabel: 'Emergency Repair',
+    cardLine: 'Gate stuck open or shut — day or night',
     // Re-angled away from "24/7 Emergency Gate Repair in Dallas–Fort Worth",
     // which was the same claim /emergency makes in the same words.
     headline: 'What Fails on a Gate Out of Hours — and What to Do First',
@@ -152,13 +172,18 @@ export const services: Service[] = [
     name: 'Automatic Gate Repair',
     mediaCategory: 'automatic-gate-repair',
     navLabel: 'Automatic Gates',
+    cardLine: 'Automatic and driveway gates that will not open or close',
     // Was 'Automatic Gate Repair in Dallas–Fort Worth', identical to the
     // homepage H1 — the two pages were competing for the same head term and the
     // homepage should win it. This differentiates on intent instead of phrase:
     // the homepage answers "who fixes gates near me", this page answers "what
     // is actually wrong with mine", which is what the symptom table below it
     // delivers and the homepage does not.
-    headline: 'Automatic Gate Repair: What Fails, and What It Costs to Fix',
+    // Driveway gates are the bulk of residential automatic gate work, and
+    // "driveway gate repair" is the homeowner's phrase for this same page. The
+    // title carries both rather than spawning a near-duplicate driveway page.
+    seoTitle: 'Automatic & Driveway Gate Repair | Dallas–Fort Worth',
+    headline: 'Automatic & Driveway Gate Repair: What Fails, and What It Costs to Fix',
     intro:
       'Automatic gates fail in a small number of predictable ways, and most of them are cheaper to fix than people ' +
       'expect. We diagnose the actual fault instead of quoting a replacement because it is easier to sell.',
@@ -190,13 +215,123 @@ export const services: Service[] = [
     relatedBrands: ['liftmaster', 'faac', 'all-o-matic', 'elite', 'viking', 'eagle'],
     priority: 3,
   },
+  /**
+   * Sliding and swing gate repair — added 7 Oct 2026.
+   *
+   * These are gate TYPES, not faults, and they earn their own pages because
+   * the hardware is genuinely different: a slide gate rides on wheels in a
+   * track and is pulled by a chain; a swing gate hangs on hinges from a post
+   * and is pushed by an arm. Someone searching "sliding gate repair" has a
+   * different gate, a different set of failures and a different repair from
+   * someone searching "swing gate repair", and until now both landed on the
+   * general automatic-gate page.
+   *
+   * They are evidence-led rather than keyword-led: ten of the client's
+   * documented Texas jobs are sliding gates and eight are swing gates, and the
+   * pages draw those jobs in by `gateType`.
+   */
+  {
+    slug: 'sliding-gate-repair',
+    legacyPath: null,
+    name: 'Sliding Gate Repair',
+    gateType: 'slide',
+    mediaCategory: 'automatic-gate-repair',
+    navLabel: 'Sliding Gates',
+    cardLine: 'Wheels, track, chain and gates off their track',
+    headline: 'Sliding Gate Repair in Dallas–Fort Worth',
+    intro:
+      'A sliding gate fails in one of two places: the hardware it rides on — wheels, track, guide rollers and chain — ' +
+      'or the operator that pulls it. Most of our sliding gate calls are the first kind, and most are repaired ' +
+      'rather than replaced. In Mesquite the Eagle opener was three years old and working perfectly; the wheels ' +
+      'underneath it had completely failed.',
+    symptoms: [
+      { seeing: 'Gate has come off its track or leans out of line', means: 'Debris in the track, a worn V-groove wheel, or a bent or damaged track' },
+      { seeing: 'Grinding, scraping or a heavy rumble as it moves', means: 'Wheel bearings failing, a flat-spotted wheel, or the gate rubbing a guide roller' },
+      { seeing: 'Starts, stops partway and reverses', means: 'The gate is binding on the track or a roller, and the operator reads the extra load as an obstruction' },
+      { seeing: 'Chain slack, jumping the sprocket or snapped', means: 'A stretched or rusted chain, a worn idler, or chain brackets out of line' },
+      { seeing: 'Motor runs but the gate does not move', means: 'Chain off the sprocket, a broken drive sprocket, or a slipping clutch' },
+      { seeing: 'Gate rolls on its own or will not stay shut', means: 'Track slope, a missing or broken gate stop, or a worn latch' },
+    ],
+    process: [
+      'Release the operator and roll the gate by hand — this separates a gate hardware fault from an operator fault before anything electrical is touched',
+      'Walk the full track: wheels, V-groove, guide rollers, gate stops, and any debris, rock or settlement in the path',
+      'Check chain tension, idlers, drive sprocket and the brackets that keep the chain level',
+      'Test the operator, limits and safety devices — photo-eyes and edges — with the gate under its real load',
+      'Reset limits after any hardware work and run full open and close cycles',
+    ],
+    faqs: [
+      {
+        q: 'My sliding gate came off its track. Should I try to push it back on?',
+        a: 'Not if it is fully off. A sliding gate is heavy, and once it has left the track it can tip. Switch the operator off, keep people and cars clear, and call — an off-track gate cannot be secured, so we treat it as an emergency. If it is only binding, releasing the operator and rolling it gently by hand tells you whether it moves freely. On a recent Dallas call, rocks and debris in the track had lifted a heavy gate clean off; the LiftMaster operator itself was fine.',
+      },
+      {
+        q: 'Do I need a new operator if my sliding gate is struggling?',
+        a: 'Usually not. A slide operator that strains is almost always fighting worn wheels, a dirty or damaged track, or a chain set wrong. Fix the gate and the operator goes back to normal. Replace the operator without fixing the gate and the new one wears out early for exactly the same reason.',
+      },
+      {
+        q: 'Is a rusted gate chain worth replacing on its own?',
+        a: 'Yes — it is one of the most common sliding gate repairs and one of the cheapest. In Dallas we replaced a heavily rusted chain on a LiftMaster slide gate the previous owner had never maintained, and kept the operator. Left to fail, a chain takes the sprockets with it and sometimes the operator.',
+      },
+    ],
+    relatedBrands: ['liftmaster', 'eagle', 'viking', 'ramset', 'elite', 'all-o-matic', 'us-automatic'],
+    priority: 2,
+  },
+  {
+    slug: 'swing-gate-repair',
+    legacyPath: null,
+    name: 'Swing Gate Repair',
+    gateType: 'swing',
+    mediaCategory: 'iron-gate-repair',
+    navLabel: 'Swing Gates',
+    cardLine: 'Sagging gates, arms, hinges and double gates',
+    headline: 'Swing Gate Repair in Dallas–Fort Worth',
+    intro:
+      'A swing gate hangs its whole weight on hinges and a post, and an arm pushes it through every cycle. When ' +
+      'something gives, it is usually one of those three — not the operator. In Dallas–Fort Worth the clay soil ' +
+      'moves posts between wet and dry seasons, so a gate that closed cleanly in spring can be dragging by August.',
+    symptoms: [
+      { seeing: 'Gate sags, or the latch no longer lines up', means: 'Worn hinges, a post that has moved, or a gate frame that has racked out of square' },
+      { seeing: 'Gate drags on the driveway', means: 'A leaning post or hinge wear — the operator is now fighting the ground on every cycle' },
+      { seeing: 'Arm moves but the gate barely does', means: 'A bent or worn operator arm, a loose or broken bracket, or a stripped drive' },
+      { seeing: 'One leaf of a double gate lags or will not close', means: 'An arm or board fault on that side, or the two leaves have drifted out of sync' },
+      { seeing: 'Gate will not hold closed, or swings in the wind', means: 'A missing gate stop or latch, or an operator left in manual release' },
+      { seeing: 'Hums at the start of travel and stalls', means: 'A failing capacitor, or a gate that has become too heavy to start moving' },
+    ],
+    process: [
+      'Release the arm and swing each leaf by hand — a gate that is stiff with the operator disconnected has a hardware problem, not an operator problem',
+      'Check hinges, posts and gate stops, and whether the post has moved in the ground',
+      'Inspect arm mounting geometry, brackets and pivot points for wear and bending',
+      'Test the operator, limits and obstruction sensing, and the battery on solar and DC systems',
+      'Synchronise double leaves and run full open and close cycles',
+    ],
+    faqs: [
+      {
+        q: 'Can you replace just the arm on a LiftMaster LA400 or a US Automatic opener?',
+        a: 'Yes, and it is often all that is needed. In University Park we replaced a damaged LA400 arm and bracket on a gate that had stood unused for a year, and kept the operator. In Prosper a bent US Automatic arm was tested with power restored before we decided to replace it — the operator stayed in service.',
+      },
+      {
+        q: 'Only one side of my double swing gate closes. What is wrong?',
+        a: 'Usually a fault on that one side — its arm, its connection to the board, or a leaf that has dropped on its hinges and now binds. Occasionally the leaves are simply out of sequence. It is a one-visit repair in most cases, not a new system.',
+      },
+      {
+        q: 'Can a sagging gate be fixed without replacing it?',
+        a: 'Almost always. Worn hinges can be replaced or upgraded to adjustable ones, a moving post can be reset, and a racked frame can be squared and re-welded. Fixing the sag also takes load off the operator, which is often why the gate started struggling in the first place.',
+      },
+    ],
+    relatedBrands: ['liftmaster', 'us-automatic', 'viking', 'eagle', 'elite', 'faac', 'doorking'],
+    priority: 2,
+  },
   {
     slug: 'electric-gate-repair',
     legacyPath: '/electric-gate-repair-services/',
     name: 'Electric Gate Repair',
     mediaCategory: 'electric-gate-repair',
     navLabel: 'Electric Gates',
-    headline: 'Electric Gate Repair in Dallas–Fort Worth',
+    cardLine: 'Power faults, wiring, solar and battery systems',
+    // Electric driveway gates and solar openers are this page's real subject —
+    // the symptom table below already covers solar batteries and DC operators.
+    seoTitle: 'Electric Gate Repair — Driveway & Solar | DFW',
+    headline: 'Electric Gate Repair in Dallas–Fort Worth — Driveway, Solar & DC Gates',
     intro:
       'Electrical faults are where most gate companies start guessing and swapping parts. We test before we ' +
       'replace, which usually means you pay for one component instead of three.',
@@ -234,6 +369,7 @@ export const services: Service[] = [
     name: 'Iron Gate Repair & Welding',
     mediaCategory: 'iron-gate-repair',
     navLabel: 'Iron Gates & Welding',
+    cardLine: 'Welding, hinges, posts and damaged iron gates',
     headline: 'Iron Gate Repair & Welding in Dallas–Fort Worth',
     intro:
       'Wrought iron gates sag, crack at the welds, and rust from the bottom rail up. All of it is repairable, and ' +
@@ -271,6 +407,7 @@ export const services: Service[] = [
     name: 'Commercial & HOA Gate Repair',
     mediaCategory: 'commercial-gate-repair',
     navLabel: 'Commercial & HOA',
+    cardLine: 'Apartments, HOA entrances and industrial gates',
     headline: 'Commercial, HOA & Industrial Gate Repair in Dallas–Fort Worth',
     intro:
       'A commercial gate runs hundreds of cycles a day. Parts that last fifteen years on a driveway last months on ' +
@@ -314,6 +451,7 @@ export const services: Service[] = [
     seoTitle: 'Gate Access Control & Intercom Repair | DFW',
     mediaCategory: 'access-control',
     navLabel: 'Access Control',
+    cardLine: 'Keypads, call boxes, card readers and intercoms',
     headline: 'Gate Access Control & Intercom Repair in Dallas–Fort Worth',
     intro:
       'When the call box stops working, the gate is fine — the system that tells it to open is not. That is a ' +
@@ -352,6 +490,7 @@ export const services: Service[] = [
     name: 'Gate Installation',
     mediaCategory: 'gate-installation',
     navLabel: 'Installation',
+    cardLine: 'New automatic gates and opener installation',
     headline: 'Automatic Gate Installation in Dallas–Fort Worth',
     intro:
       'A gate installed properly runs for twenty years. A gate installed badly becomes somebody\'s repeat repair ' +
