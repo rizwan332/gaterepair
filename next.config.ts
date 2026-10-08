@@ -21,6 +21,21 @@ const trim = (p: string) => p.replace(/\/$/, '')
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  /**
+   * Trailing slashes are handled in middleware.ts, not by Next.
+   *
+   * Next's built-in slash strip runs BEFORE middleware — measured against a
+   * local production build on 8 Oct 2026, /faac-gate-motor-repair/ still went
+   * 308 -> /faac-gate-motor-repair -> /brands/faac even with middleware
+   * answering the path. Every URL in the old WordPress sitemap ends in a
+   * slash, so that wasted hop was being paid on all of them.
+   *
+   * Turning the built-in off makes middleware responsible for BOTH cases: a
+   * legacy path redirects straight to its destination in one hop, and
+   * everything else gets the same 308 to the slash-less form that Next was
+   * sending. See middleware.ts.
+   */
+  skipTrailingSlashRedirect: true,
   images: {
     /**
      * The asset CDN. Required by next/image for any remote host, even one we
@@ -108,6 +123,26 @@ const nextConfig: NextConfig = {
       // working until it is updated.
       { source: '/liftmaster-la400-repair', destination: '/brands/liftmaster/la400-repair', permanent: true },
       { source: '/us-automatic-ranger-repair', destination: '/brands/us-automatic/ranger-repair', permanent: true },
+      /**
+       * Trailing slashes, last so every specific rule above wins first.
+       *
+       * With `skipTrailingSlashRedirect` on, Next matches the rules above
+       * against the slashed form directly, so /faac-gate-motor-repair/ goes
+       * straight to /brands/faac in ONE hop instead of stripping the slash
+       * first and redirecting twice. Every URL in the old WordPress sitemap
+       * ends in a slash, so that hop was being paid on all of them.
+       *
+       * This rule then does what Next's built-in strip used to do for
+       * everything else. It cannot live in middleware: measured 8 Oct 2026,
+       * both `request.nextUrl.pathname` and `request.url` arrive with the
+       * slash already normalised away, so middleware cannot see it — and with
+       * the built-in strip disabled and nothing else handling it, /services/
+       * redirected to itself forever.
+       *
+       * `:path+` rather than `:path*` so it cannot match "/" and loop.
+       */
+      { source: '/:path+/', destination: '/:path+', permanent: true },
+
     ]
   },
 }
