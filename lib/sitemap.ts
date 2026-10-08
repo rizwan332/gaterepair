@@ -237,8 +237,26 @@ export const allSitemapUrls = (): string[] => SECTIONS.flatMap((s) => s.entries(
 
 const VIDEO_NS = ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"'
 
-export function renderUrlset(entries: SitemapEntry[], lastModified = new Date()): string {
-  const lastmod = lastModified.toISOString()
+/**
+ * ── WHY THERE IS NO <lastmod> ───────────────────────────────────────────────
+ * Every URL used to carry the build timestamp, so all 271 shared one value
+ * that changed on every deploy whether or not the page had. Google discounts a
+ * lastmod it cannot trust, and an always-identical one is the clearest way to
+ * earn that. Measured on the live sitemaps 8 Oct 2026: one distinct value per
+ * section, differing only in milliseconds.
+ *
+ * Omitting the tag is valid and says honestly that we do not track per-page
+ * change dates: nothing in content/cities.ts, services.ts, brands.ts, models
+ * or symptoms records when an entry last changed, and a file's git date would
+ * mark all 96 cities as modified whenever one city is edited.
+ *
+ * `video:publication_date` below is unaffected — that is a real date, sourced
+ * per clip in content/video-pages.ts.
+ *
+ * To bring lastmod back, give each entry a real date at the source rather than
+ * deriving one here; a wrong date is worse than none.
+ */
+export function renderUrlset(entries: SitemapEntry[]): string {
   const hasVideo = entries.some((e) => e.videos?.length)
 
   const urls = entries.map((entry) => {
@@ -262,7 +280,6 @@ export function renderUrlset(entries: SitemapEntry[], lastModified = new Date())
     return [
       '  <url>',
       `    <loc>${escapeXml(entry.url)}</loc>`,
-      `    <lastmod>${lastmod}</lastmod>`,
       `    <changefreq>${entry.changeFrequency}</changefreq>`,
       `    <priority>${entry.priority}</priority>`,
       ...videoBlocks,
@@ -279,8 +296,7 @@ export function renderUrlset(entries: SitemapEntry[], lastModified = new Date())
   ].join('\n')
 }
 
-export function renderIndex(lastModified = new Date()): string {
-  const lastmod = lastModified.toISOString()
+export function renderIndex(): string {
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -289,7 +305,6 @@ export function renderIndex(lastModified = new Date()): string {
         `  <!-- ${section.label} -->`,
         '  <sitemap>',
         `    <loc>${escapeXml(`${BASE}${sectionPath(section.file)}`)}</loc>`,
-        `    <lastmod>${lastmod}</lastmod>`,
         '  </sitemap>',
       ].join('\n'),
     ),
