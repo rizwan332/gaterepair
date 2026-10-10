@@ -348,6 +348,8 @@ export type RecentLead = {
   landingPage?: string
   campaign?: string
   actions: string[]
+  /** How many times each action happened, e.g. { call_click: 3 }. */
+  actionCounts: Record<string, number>
   ip?: string
   geo?: VisitorGeo
   device?: string
@@ -370,6 +372,10 @@ function toRecent(r: Record<string, unknown>): RecentLead {
     landingPage: r.landingPage as string | undefined,
     campaign: (r.utmCampaign as string | undefined) ?? (r.gclid ? 'Google Ads click' : undefined),
     actions: Array.from(new Set(r.types as string[])),
+    actionCounts: (r.types as string[]).reduce<Record<string, number>>((acc, t) => {
+      acc[t] = (acc[t] ?? 0) + 1
+      return acc
+    }, {}),
     ip: r.ip as string | undefined,
     geo: r.geo as VisitorGeo | undefined,
     device: r.device as string | undefined,
