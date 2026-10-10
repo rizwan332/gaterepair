@@ -1,4 +1,5 @@
 import mongoose, { Schema, type InferSchemaType } from 'mongoose'
+import { visitorFields } from './visitor-fields'
 
 /**
  * Every lead-producing action, recorded server-side.
@@ -16,15 +17,14 @@ import mongoose, { Schema, type InferSchemaType } from 'mongoose'
  * layers rather than one because the raw log is the thing you go back to when
  * a number looks wrong, and a deduplicated table cannot be un-deduplicated.
  *
- * ── WHAT IS DELIBERATELY NOT STORED ─────────────────────────────────────────
- * No IP address, no user agent string, no fingerprint. `ipHash` is a salted
- * one-way hash kept only so abuse can be rate-limited and obvious duplicates
- * spotted; it cannot be reversed to an address. `visitorId` is a random value
- * generated in the browser, not derived from anything about the person.
- *
- * The business has no need for more than that, and a lead log on a small
- * contractor's site is not a place to accumulate personal data that would have
- * to be defended later.
+ * ── VISITOR DETAILS ─────────────────────────────────────────────────────────
+ * Until 10 Oct 2026 this log deliberately held no IP address or user agent,
+ * only `ipHash`. The client then asked for IP, location and device on every
+ * lead, to verify leads and see where traffic really comes from, so those are
+ * now stored (models/visitor-fields.ts). `ipHash` stays for rate limiting and
+ * so older rows can still be matched against newer ones. `visitorId` is a
+ * random value generated in the browser, not derived from anything about the
+ * person.
  */
 const eventSchema = new Schema(
   {
@@ -74,6 +74,9 @@ const eventSchema = new Schema(
 
     /** Salted one-way hash. Not reversible to an address. */
     ipHash: { type: String, trim: true, maxlength: 64, index: true },
+
+    // ── IP, location, device ────────────────────────────────────────────────
+    ...visitorFields,
   },
   { timestamps: true },
 )

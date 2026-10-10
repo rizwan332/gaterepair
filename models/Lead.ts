@@ -1,4 +1,5 @@
 import mongoose, { Schema, type InferSchemaType } from 'mongoose'
+import { visitorFields } from './visitor-fields'
 
 /**
  * Lead capture — the only thing MongoDB is used for on this site.
@@ -36,6 +37,10 @@ const leadSchema = new Schema(
     utmTerm: { type: String, trim: true, maxlength: 200 },
     landingPage: { type: String, trim: true, maxlength: 300 },
     referrer: { type: String, trim: true, maxlength: 300 },
+
+    // Visitor tracking cross-reference, IP, location and device
+    visitorId: { type: String, trim: true, maxlength: 64 },
+    ...visitorFields,
 
     status: { type: String, enum: ['new', 'contacted', 'booked', 'closed', 'lost'], default: 'new' },
   },
