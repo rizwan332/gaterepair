@@ -5,6 +5,7 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { EventModel } from '@/models/Event'
 import { classifyLead } from '@/lib/lead-source'
 import { identifyPage } from '@/lib/page-type'
+import { visitorContext, contextFields } from '@/lib/visitor-context'
 
 /**
  * Records a lead-producing action.
@@ -53,6 +54,8 @@ const payload = z.object({
   utmCampaign: z.string().max(200).optional(),
   utmTerm: z.string().max(200).optional(),
   utmContent: z.string().max(200).optional(),
+  /** The browser's IANA time zone, e.g. "America/Chicago". */
+  timezone: z.string().max(64).optional(),
 })
 
 /**
@@ -76,7 +79,7 @@ function rateLimited(key: string): boolean {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  const ip = visitorContext(request).ip ?? 'unknown'
   const ipHash = hashIp(ip)
 
   if (rateLimited(ipHash)) {
@@ -116,6 +119,7 @@ export async function POST(request: Request) {
   })
 
   const page = identifyPage(data.pagePath ?? '/')
+  const visitor = visitorContext(request, data.timezone)
 
   try {
     await connectToDatabase()
@@ -140,6 +144,7 @@ export async function POST(request: Request) {
       utmTerm: data.utmTerm,
       utmContent: data.utmContent,
       ipHash,
+      ...contextFields(visitor),
     })
   } catch {
     // A failed write must never interfere with the visitor calling. The click

@@ -55,6 +55,14 @@ declare global {
  * to handle, because nothing here is allowed to stand between someone with a
  * broken gate and the phone.
  */
+function browserTimeZone(): string | undefined {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone
+  } catch {
+    return undefined
+  }
+}
+
 function recordEvent(type: 'call_click' | 'sms_click' | 'form_submit' | 'directions_click') {
   try {
     const attribution = getAttribution()
@@ -79,6 +87,9 @@ function recordEvent(type: 'call_click' | 'sms_click' | 'form_submit' | 'directi
       utmCampaign: attribution.utmCampaign,
       utmTerm: attribution.utmTerm,
       utmContent: attribution.utmContent,
+      // The phone's own clock zone. More reliable than IP location for showing
+      // the visitor's local time, since a VPN moves the IP but not the clock.
+      timezone: browserTimeZone(),
     })
 
     if (navigator.sendBeacon) {

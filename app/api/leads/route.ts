@@ -6,6 +6,7 @@ import { sendLeadNotification } from '@/lib/brevo'
 import { EventModel } from '@/models/Event'
 import { classifyLead } from '@/lib/lead-source'
 import { identifyPage } from '@/lib/page-type'
+import { visitorContext, contextFields } from '@/lib/visitor-context'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -44,6 +45,8 @@ const leadSchema = z.object({
   ttclid: z.string().max(200).optional(),
   msclkid: z.string().max(200).optional(),
   utmContent: z.string().max(200).optional(),
+  /** The browser's IANA time zone, e.g. "America/Chicago". */
+  timezone: z.string().max(64).optional(),
   // Honeypot — real users never see this field, so anything in it is a bot.
   company: z.string().max(200).optional(),
 })
@@ -63,7 +66,7 @@ function rateLimited(ip: string): boolean {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  const ip = visitorContext(request).ip ?? 'unknown'
 
   if (rateLimited(ip)) {
     return NextResponse.json({ ok: false, error: 'Too many requests' }, { status: 429 })
@@ -84,7 +87,8 @@ export async function POST(request: Request) {
     )
   }
 
-  const { company, ...lead } = parsed.data
+  const { company, timezone, ...lead } = parsed.data
+  const visitor = contextFields(visitorContext(request, timezone))
 
   // Bot filled the honeypot. Return success so it does not learn anything.
   if (company) return NextResponse.json({ ok: true })
@@ -102,7 +106,7 @@ export async function POST(request: Request) {
   const [stored, notified] = await Promise.allSettled([
     (async () => {
       await connectToDatabase()
-      await LeadModel.create(lead)
+      await LeadModel.create({ ...lead, ...visitor })
 
       /**
        * Mirror the submission into the events log.
@@ -142,6 +146,7 @@ export async function POST(request: Request) {
           utmCampaign: lead.utmCampaign,
           utmTerm: lead.utmTerm,
           utmContent: lead.utmContent,
+          ...visitor,
         })
       }
     })(),

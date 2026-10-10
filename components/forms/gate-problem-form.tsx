@@ -74,6 +74,7 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
       ttclid: captured.ttclid ?? '',
       msclkid: captured.msclkid ?? '',
       utmContent: captured.utmContent ?? '',
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone ?? '',
     })
   }, [sourcePage])
 
