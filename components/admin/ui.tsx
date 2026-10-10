@@ -59,12 +59,14 @@ const ACTION_STYLE: Record<string, string> = {
   directions_click: 'bg-ink-100 text-ink-700 ring-ink-200',
 }
 
-export function ActionChips({ actions }: { actions: string[] }) {
+/** One chip per action type, with "×3" when the person did it more than once. */
+export function ActionChips({ actions, counts = {} }: { actions: string[]; counts?: Record<string, number> }) {
   return (
     <span className="flex flex-wrap gap-1">
       {actions.map((a) => (
-        <span key={a} className={`rounded-md px-1.5 py-0.5 text-[0.6875rem] font-semibold ring-1 ring-inset ${ACTION_STYLE[a] ?? ACTION_STYLE.directions_click}`}>
+        <span key={a} className={`rounded-md px-1.5 py-0.5 text-[0.6875rem] font-semibold tabular ring-1 ring-inset ${ACTION_STYLE[a] ?? ACTION_STYLE.directions_click}`}>
           {ACTION_LABEL[a] ?? a}
+          {(counts[a] ?? 1) > 1 && <span className="ml-0.5 opacity-75">×{counts[a]}</span>}
         </span>
       ))}
     </span>

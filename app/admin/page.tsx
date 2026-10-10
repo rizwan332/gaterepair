@@ -247,7 +247,7 @@ async function Overview({ range, tz, leadsHref }: { range: ReturnType<typeof ran
   return (
     <div className="mt-6 flex flex-col gap-5">
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <Kpi label="Leads" value={totals.leads} previous={before.leads} hint="Unique people who acted" icon={Users} />
+        <Kpi label="Leads" value={totals.leads} previous={before.leads} hint="Unique people per day; repeat taps count once" icon={Users} />
         <Kpi label="Call clicks" value={totals.callClicks} previous={before.callClicks} hint="Taps on the phone number" icon={Phone} />
         <Kpi label="Text clicks" value={totals.smsClicks} previous={before.smsClicks} hint="Taps on the text button" icon={MessageSquareText} />
         <Kpi label="Form requests" value={totals.formSubmits} previous={before.formSubmits} hint="Completed request forms" icon={FileText} />
@@ -419,7 +419,7 @@ function LeadTable({ rows, tz }: { rows: Awaited<ReturnType<typeof getLeadsPage>
             <th className="px-4 py-3 font-semibold">Location · IP</th>
             <th className="px-4 py-3 font-semibold">Device</th>
             <th className="px-4 py-3 font-semibold">Page</th>
-            <th className="px-4 py-3 font-semibold">Actions</th>
+            <th className="px-4 py-3 font-semibold">Actions (taps)</th>
           </tr>
         </thead>
         <tbody>
@@ -448,7 +448,7 @@ function LeadTable({ rows, tz }: { rows: Awaited<ReturnType<typeof getLeadsPage>
                 <span className="mt-0.5 block text-xs text-ink-500">{r.pageTypeLabel}</span>
               </td>
               <td className="px-4 py-3">
-                <ActionChips actions={r.actions} />
+                <ActionChips actions={r.actions} counts={r.actionCounts} />
               </td>
             </tr>
           ))}
