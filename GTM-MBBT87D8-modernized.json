@@ -1,11 +1,12 @@
 {
   "exportFormatVersion": 2,
-  "exportTime": "2026-08-09 05:32:53",
+  "exportTime": "2026-10-07 21:02:25",
   "containerVersion": {
-    "path": "accounts/6343274072/containers/245776248/versions/0",
+    "path": "accounts/6343274072/containers/245776248/versions/13",
     "accountId": "6343274072",
     "containerId": "245776248",
-    "containerVersionId": "0",
+    "containerVersionId": "13",
+    "name": "new-fixed-version",
     "container": {
       "path": "accounts/6343274072/containers/245776248",
       "accountId": "6343274072",
@@ -171,9 +172,9 @@
             "value": "IjMqCLuXo60cENO8sIdD"
           },
           {
-            "type": "TEMPLATE",
+            "type": "BOOLEAN",
             "key": "rdp",
-            "value": "{{User-Provided Data}}"
+            "value": "false"
           }
         ],
         "fingerprint": "1778794650478",
@@ -342,6 +343,94 @@
         "consentSettings": {
           "consentStatus": "NOT_SET"
         }
+      },
+      {
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "tagId": "22",
+        "name": "GA4 - SMS click - Tag",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "sms_click"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "G-BFR37L657V"
+          }
+        ],
+        "firingTriggerId": [
+          "13"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      },
+      {
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "tagId": "23",
+        "name": "Google Ads Conversion Tracking - SMS Clicks - Tag",
+        "type": "awct",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "enableNewCustomerReporting",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableConversionLinker",
+            "value": "true"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableProductReporting",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableShippingData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "conversionId",
+            "value": "18000649811"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "conversionLabel",
+            "value": "25g_COXJ4ZQdENO8sIdD"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "rdp",
+            "value": "false"
+          }
+        ],
+        "firingTriggerId": [
+          "13"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
       }
     ],
     "trigger": [
@@ -353,7 +442,7 @@
         "type": "CUSTOM_EVENT",
         "customEventFilter": [
           {
-            "type": "EQUALS",
+            "type": "MATCH_REGEX",
             "parameter": [
               {
                 "type": "TEMPLATE",
@@ -363,7 +452,7 @@
               {
                 "type": "TEMPLATE",
                 "key": "arg1",
-                "value": "generate_lead"
+                "value": "^(generate_lead|form_submit)$"
               }
             ]
           }
@@ -377,7 +466,7 @@
         "type": "CUSTOM_EVENT",
         "customEventFilter": [
           {
-            "type": "EQUALS",
+            "type": "MATCH_REGEX",
             "parameter": [
               {
                 "type": "TEMPLATE",
@@ -387,7 +476,31 @@
               {
                 "type": "TEMPLATE",
                 "key": "arg1",
-                "value": "call_click"
+                "value": "^(call_click|phone_click)$"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "triggerId": "13",
+        "name": "sms clicks",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "^(sms_click)$"
               }
             ]
           }
@@ -395,58 +508,6 @@
       }
     ],
     "variable": [
-      {
-        "accountId": "6343274072",
-        "containerId": "245776248",
-        "variableId": "9",
-        "name": "DLV - user email",
-        "type": "v",
-        "parameter": [
-          {
-            "type": "INTEGER",
-            "key": "dataLayerVersion",
-            "value": "2"
-          },
-          {
-            "type": "BOOLEAN",
-            "key": "setDefaultValue",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "name",
-            "value": "user_data.email"
-          }
-        ],
-        "fingerprint": "1773083896791",
-        "formatValue": {}
-      },
-      {
-        "accountId": "6343274072",
-        "containerId": "245776248",
-        "variableId": "10",
-        "name": "DLV - user phone",
-        "type": "v",
-        "parameter": [
-          {
-            "type": "INTEGER",
-            "key": "dataLayerVersion",
-            "value": "2"
-          },
-          {
-            "type": "BOOLEAN",
-            "key": "setDefaultValue",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "name",
-            "value": "user_data.phone_number"
-          }
-        ],
-        "fingerprint": "1773083948795",
-        "formatValue": {}
-      },
       {
         "accountId": "6343274072",
         "containerId": "245776248",
@@ -470,7 +531,59 @@
             "value": "{{DLV - user email}}"
           }
         ],
-        "fingerprint": "1773083971468",
+        "fingerprint": "1786257654717",
+        "formatValue": {}
+      },
+      {
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "variableId": "22",
+        "name": "DLV - user phone",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "user_data.phone_number"
+          }
+        ],
+        "fingerprint": "1786257654670",
+        "formatValue": {}
+      },
+      {
+        "accountId": "6343274072",
+        "containerId": "245776248",
+        "variableId": "23",
+        "name": "DLV - user email",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "user_data.email"
+          }
+        ],
+        "fingerprint": "1786257654670",
         "formatValue": {}
       }
     ],
@@ -542,7 +655,7 @@
         "name": "Click Text"
       }
     ],
-    "fingerprint": "1786253573347",
-    "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6343274072/containers/245776248/versions/0?apiLink=version"
+    "fingerprint": "1786257716306",
+    "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6343274072/containers/245776248/versions/13?apiLink=version"
   }
 }
