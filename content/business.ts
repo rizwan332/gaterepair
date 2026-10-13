@@ -123,11 +123,21 @@ export const business = {
    *
    * These drive the footer icons and `sameAs` in the business schema on every
    * page. Setting `facebook` makes it appear in both with no other change.
+   *
+   * X, TikTok and LinkedIn supplied 14 Oct 2026. X checked that day: it
+   * identifies as "Shield Gate Repair (@ShieldGateDFW)". TikTok resolves;
+   * the handle really is `shield.gate.repai` (no final r). LinkedIn is a
+   * personal profile (/in/) rather than a company page (/company/); swap the
+   * URL here if a company page is created, since that is the entity a
+   * business schema should point at.
    */
   social: {
     youtube: 'https://www.youtube.com/channel/UCWxHMxbLZEyXY4Qu8p52InA' as string | null,
     facebook: null as string | null,
     instagram: 'https://www.instagram.com/shieldgaterepair/' as string | null,
+    tiktok: 'https://www.tiktok.com/@shield.gate.repai' as string | null,
+    x: 'https://x.com/ShieldGateDFW' as string | null,
+    linkedin: 'https://www.linkedin.com/in/shield-gate-repair-dfw-35381743a/' as string | null,
   },
 
   // ---- NOT confirmed. Do not render without `confirmed: true`. ----
@@ -209,7 +219,7 @@ export const business = {
   } as Fact<boolean>,
 } as const
 
-export type SocialNetwork = 'youtube' | 'instagram' | 'facebook'
+export type SocialNetwork = 'youtube' | 'instagram' | 'facebook' | 'tiktok' | 'x' | 'linkedin'
 
 /**
  * Confirmed social profiles, in display order, with unset networks removed —
@@ -220,6 +230,9 @@ export const socialProfiles: { network: SocialNetwork; label: string; url: strin
     ['youtube', 'YouTube', business.social.youtube],
     ['instagram', 'Instagram', business.social.instagram],
     ['facebook', 'Facebook', business.social.facebook],
+    ['tiktok', 'TikTok', business.social.tiktok],
+    ['x', 'X (Twitter)', business.social.x],
+    ['linkedin', 'LinkedIn', business.social.linkedin],
   ] as [SocialNetwork, string, string | null][]
 ).flatMap(([network, label, url]) => (url ? [{ network, label, url }] : []))
 

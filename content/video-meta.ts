@@ -117,72 +117,72 @@ export const VIDEO_META: Record<string, VideoMeta> = {
       'An Eagle gate operator diagnosed and repaired on site. Eagle units are reliable enough that when they do fail it is usually a single serviceable component with a long life ahead of it once replaced.',
   },
   'gate-motor-repair-services-video': {
-    title: 'Gate Motor Repair — How We Diagnose a Dead Operator',
+    title: 'How We Diagnose a Dead Gate Operator (Video)',
     description:
       'The diagnostic sequence for a gate that will not move: gate released and pushed by hand to rule out a mechanical bind, then power at the board, capacitor under load, limit switch travel and safety devices — in that order.',
   },
   'gate-motor-repair-services-video-2': {
-    title: 'Gate Motor Repair — Capacitor Test and Replacement',
+    title: 'Gate Motor Capacitor Test and Replacement (Video)',
     description:
       'A gate motor that hums but will not move is far more often a failed capacitor than a dead motor. This shows the capacitor being tested under load and replaced, one of the least expensive repairs on a gate.',
   },
   'automatic-gate-repair-services-video': {
-    title: 'Automatic Gate Repair — Safety Sensor Fault',
+    title: 'Finding a Safety Sensor Fault on an Automatic Gate (Video)',
     description:
       'A gate that opens but refuses to close is almost always a safety sensor seeing an obstruction that is not there. This shows the photo-eyes being realigned and the gate returned to normal operation.',
   },
   'automatic-gate-repair-services-video-2': {
-    title: 'Automatic Gate Repair — Full Repair Walkthrough',
+    title: 'One Automatic Gate Fault, Diagnosed and Fixed (Video)',
     description:
       'A complete automatic gate repair, start to finish: fault identified, cause explained, repair carried out and the gate run through several full cycles to confirm it holds.',
   },
   'emergency-gate-repair-services-video': {
-    title: 'Emergency Gate Repair — Same-Day Call-Out',
+    title: 'A Same-Day Emergency Gate Call-Out (Video)',
     description:
       'An emergency call-out on a gate stuck open. A gate stuck open is a security problem, not an inconvenience, and is treated as urgent regardless of the underlying cause.',
   },
   'emergency-gate-repair-services-video-2': {
-    title: 'Emergency Gate Repair — Manual Release and Temporary Secure',
+    title: 'Manual Release and Securing a Broken Gate (Video)',
     description:
       'How a gate is released to manual operation so a property can be used before the repair is complete, and how a gate is left in a secure state when a part has to be ordered.',
   },
   'electric-gate-repair-services-video': {
-    title: 'Electric Gate Repair — Tracing an Electrical Fault',
+    title: 'Tracing an Electrical Fault on a Driveway Gate (Video)',
     description:
       'Tracing an intermittent fault on an electric gate: supply voltage checked at source and at the operator, terminals inspected for corrosion, and accessories isolated to find a short — rather than replacing parts one at a time.',
   },
   'electric-gate-repair-services-video-2': {
-    title: 'Electric Gate Repair — Transformer and Power Supply Check',
+    title: 'Gate Transformer and Power Supply Check (Video)',
     description:
       'Testing the transformer and power supply on an electric gate that had stopped responding entirely. Shows why the power path is checked before the control board is suspected.',
   },
   'iron-gate-repair-services-video': {
-    title: 'Iron Gate Repair — Weld Repair on a Cracked Frame',
+    title: 'Welding a Cracked Iron Gate Frame (Video)',
     description:
       'A cracked weld at an iron gate frame joint cut out, re-welded, ground back and refinished so the repair is not visible. Custom ironwork is almost always worth repairing rather than replacing.',
   },
   'iron-gate-repair-services-video-2': {
-    title: 'Iron Gate Repair — Fixing a Sagging Gate',
+    title: 'Fixing a Sagging Iron Gate (Video)',
     description:
       'A sagging iron gate dragging on the driveway. The hinges and the post are assessed together with the gate, because straightening the leaf without addressing the post means it will drag again within a season.',
   },
   'gate-installation-services-video': {
-    title: 'Automatic Gate Installation — Site Preparation and Footings',
+    title: 'Gate Installation Footings and Site Preparation (Video)',
     description:
       'The part of a gate installation nobody sees and everything depends on: footings set to depth, conduit run properly and power brought to the gate correctly the first time. Skipping this is how a gate becomes an annual repair call.',
   },
   'gate-installation-services-video-2': {
-    title: 'Automatic Gate Installation — Operator Fitting and Commissioning',
+    title: 'Fitting and Commissioning a Gate Operator (Video)',
     description:
       'Fitting and commissioning the operator on a new gate installation: alignment set, limits programmed, safety devices installed to standard and the whole system handed over working.',
   },
   'commercial-gate-repair-services-video': {
-    title: 'Commercial Gate Repair — High-Cycle Entrance',
+    title: 'Repairing a High-Cycle Commercial Gate Entrance (Video)',
     description:
       'A commercial entrance gate serving hundreds of cycles a day. When the same part fails repeatedly the operator is usually under-specified for the duty cycle, or the gate is making it work far harder than it should.',
   },
   'commercial-gate-repair-services-video-2': {
-    title: 'Commercial Gate Repair — Loop Detector Fault',
+    title: 'Fixing a Loop Detector Fault at a Commercial Gate (Video)',
     description:
       'A commercial gate ignoring approaching vehicles. The fault is in the buried loop and detector rather than the operator — a distinction that gets misdiagnosed constantly and is usually the fastest thing to put right.',
   },

@@ -50,7 +50,7 @@ export const brands: Brand[] = [
     mediaCategory: 'faac',
     contested: false,
     priority: 1,
-    headline: 'FAAC Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'FAAC Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'FAAC builds some of the best hydraulic gate operators on the market — and almost nobody in Dallas will work ' +
       'on them, because hydraulics need different diagnostics, different parts and different training to a chain ' +
@@ -100,7 +100,7 @@ export const brands: Brand[] = [
     mediaCategory: 'all-o-matic',
     contested: false,
     priority: 2,
-    headline: 'All-O-Matic Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'All-O-Matic Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'All-O-Matic operators are workhorses — simple, heavily built, and very repairable. They also turn up on a lot ' +
       'of older Dallas properties where the original installer is long gone. We service them, stock the common ' +
@@ -141,7 +141,7 @@ export const brands: Brand[] = [
     mediaCategory: 'ramset',
     contested: false,
     priority: 3,
-    headline: 'Ramset Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Ramset Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Ramset Automatic Gate Systems builds slide, swing and overhead gate operators — the RAM 100 and RAM 1000 ' +
       'among them — for residential and light commercial gates. They are frequently misdiagnosed, and we repair ' +
@@ -184,7 +184,7 @@ export const brands: Brand[] = [
     mediaCategory: 'liftmaster',
     contested: true,
     priority: 4,
-    headline: 'LiftMaster Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'LiftMaster Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'LiftMaster is the most common gate operator in Dallas–Fort Worth, and we repair them before we replace them. ' +
       'Control boards, batteries, limit settings, sensors and — on AC units — capacitors are all serviceable, and a board is a fraction ' +
@@ -272,7 +272,7 @@ export const brands: Brand[] = [
     mediaCategory: 'viking',
     contested: true,
     priority: 6,
-    headline: 'Viking Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Viking Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Viking Access Systems operators are built for heavy gates and high-cycle use. We diagnose and repair them ' +
       'rather than defaulting to replacement.',
@@ -305,7 +305,7 @@ export const brands: Brand[] = [
     mediaCategory: 'eagle',
     contested: true,
     priority: 7,
-    headline: 'Eagle Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Eagle Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Eagle Access Control Systems builds slide and swing gate operators — the Eagle 1000, 2000 and 200 among ' +
       'them — for residential and commercial gates. Most faults are serviceable on site.',
@@ -340,7 +340,7 @@ export const brands: Brand[] = [
     name: 'DoorKing',
     contested: false,
     priority: 8,
-    headline: 'DoorKing Gate Operator & Intercom Repair in Dallas–Fort Worth',
+    headline: 'DoorKing (DKS) Gate Repair, Opener & Intercom Service in Dallas–Fort Worth',
     intro:
       'DoorKing — DKS — operators and telephone entry systems run the entrances at a large share of Dallas ' +
       'apartment complexes, HOA communities and commercial sites. We service both sides of the system: the ' +
@@ -390,7 +390,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 9,
-    headline: 'Linear Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Linear Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Linear gate operators — the SW and SL series, now part of Nice — are found on residential driveways and ' +
       'smaller commercial entrances. Most faults are board, limit or drive related and repairable on site.',
@@ -420,7 +420,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 10,
-    headline: 'HySecurity Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'HySecurity Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'HySecurity operators are heavy-duty commercial and industrial units — the sort installed where a gate ' +
       'failure stops a business. We service them, including the hydraulic models.',
@@ -455,7 +455,7 @@ export const brands: Brand[] = [
     mediaCategory: 'us-automatic',
     contested: false,
     priority: 11,
-    headline: 'US Automatic Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'US Automatic Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'US Automatic builds 12-volt battery-powered gate operators — the Patriot and Ranger lines — charged either ' +
       'by a solar panel or by a plug-in AC charger. We repair both setups, and the first job is working out whether ' +
@@ -516,7 +516,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 11,
-    headline: 'Apollo Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Apollo Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Apollo builds the solar-capable swing and slide operators found on a great many Dallas–Fort Worth acreage ' +
       'properties, usually paired with a battery and a small panel. We repair them rather than replacing them.',
@@ -553,7 +553,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 12,
-    headline: 'Mighty Mule Gate Opener Repair in Dallas–Fort Worth',
+    headline: 'Mighty Mule Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Mighty Mule openers are among the most widely sold homeowner-installed gate openers, and plenty end up on ' +
       'gates heavier than they were built for. We service and repair them, including solar and battery-backed installations.',
@@ -588,7 +588,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 13,
-    headline: 'Ghost Controls Gate Opener Repair in Dallas–Fort Worth',
+    headline: 'Ghost Controls Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Ghost Controls automatic gate openers are common on residential and ranch driveways across Dallas–Fort Worth, ' +
       'almost always running on solar and battery. We repair them.',
@@ -625,7 +625,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 14,
-    headline: 'Nice Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'Nice Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'In North America, Nice sells gate operators under its own name and through the brands it acquired — ' +
       'Apollo, HySecurity and Linear among them. We service and repair them.',
@@ -658,7 +658,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 15,
-    headline: 'BFT Gate Operator Repair in Dallas–Fort Worth',
+    headline: 'BFT Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'BFT builds hydraulic and electromechanical operators used on gated communities, commercial entrances and ' +
       'higher-end residential gates. We repair them, hydraulics included.',
@@ -694,7 +694,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 16,
-    headline: 'GTO Gate Opener Repair in Dallas–Fort Worth',
+    headline: 'GTO Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'GTO/PRO openers come from GTO Access Systems, the company that also built Mighty Mule, and the line is ' +
       'still sold today under Linear and Nice. We repair current and older units and can still source parts for most models.',

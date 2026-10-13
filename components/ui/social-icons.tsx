@@ -58,6 +58,37 @@ export function FacebookIcon({ className }: IconProps) {
   )
 }
 
+/** A musical-note "d" shape: the TikTok mark reduced to lucide's stroke grid. */
+export function TikTokIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M14 3v12.5a3.5 3.5 0 1 1-3.5-3.5" />
+      <path d="M14 3a5 5 0 0 0 5 5" />
+    </svg>
+  )
+}
+
+/** The X mark as two strokes, matching the 2px line weight of its neighbours. */
+export function XIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="m4 4 16 16" />
+      <path d="M20 4 4 20" />
+    </svg>
+  )
+}
+
+export function LinkedInIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M8 11v5" />
+      <circle cx="8" cy="7.75" r="0.9" fill="currentColor" stroke="none" />
+      <path d="M12 16v-5m0 2a2 2 0 0 1 4 0v3" />
+    </svg>
+  )
+}
+
 /**
  * Network → mark. Every `SocialNetwork` has one, so setting a profile URL in
  * content/business.ts is the whole job: the footer picks it up with no change
@@ -67,4 +98,7 @@ export const SOCIAL_ICONS: Record<SocialNetwork, ComponentType<IconProps>> = {
   youtube: YouTubeIcon,
   instagram: InstagramIcon,
   facebook: FacebookIcon,
+  tiktok: TikTokIcon,
+  x: XIcon,
+  linkedin: LinkedInIcon,
 }

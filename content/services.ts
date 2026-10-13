@@ -186,7 +186,8 @@ export const services: Service[] = [
     headline: 'Automatic & Driveway Gate Repair: What Fails, and What It Costs to Fix',
     intro:
       'Automatic gates fail in a small number of predictable ways, and most of them are cheaper to fix than people ' +
-      'expect. We diagnose the actual fault instead of quoting a replacement because it is easier to sell.',
+      'expect. We repair residential driveway gates and automatic gates across Dallas–Fort Worth, and we diagnose ' +
+      'the actual fault instead of quoting a replacement because it is easier to sell.',
     symptoms: [
       { seeing: 'Gate will not open', means: 'Power, board, capacitor, or a jammed track' },
       { seeing: 'Gate will not close', means: 'Almost always a safety sensor seeing something that is not there' },
@@ -210,6 +211,10 @@ export const services: Service[] = [
       {
         q: 'The gate is fine but the remote is not. Is that expensive?',
         a: 'No — this is usually the cheapest call on our list. It is normally the remote itself or the receiver, not the operator.',
+      },
+      {
+        q: 'Do you do residential gate repair, or only commercial?',
+        a: 'Both. Residential gate repair covers home driveway gates, swing and sliding, from the operator and remote to the hinges, rollers and posts. HOA, apartment and commercial entrances are covered on the commercial gate repair page.',
       },
     ],
     relatedBrands: ['liftmaster', 'faac', 'all-o-matic', 'elite', 'viking', 'eagle'],
@@ -488,10 +493,13 @@ export const services: Service[] = [
     slug: 'gate-installation',
     legacyPath: '/gate-installation-services/',
     name: 'Gate Installation',
+    // 14 Oct 2026. Was the bare service name, which carried none of the three
+    // installation searches in the client's keyword list. 44 characters.
+    seoTitle: 'Automatic Gate & Opener Installation | DFW',
     mediaCategory: 'gate-installation',
     navLabel: 'Installation',
     cardLine: 'New automatic gates and opener installation',
-    headline: 'Automatic Gate Installation in Dallas–Fort Worth',
+    headline: 'Automatic Gate, Driveway Gate & Opener Installation in Dallas–Fort Worth',
     intro:
       'A gate installed properly runs for twenty years. A gate installed badly becomes somebody\'s repeat repair ' +
       'call. The difference is almost entirely in the groundwork nobody sees.',

@@ -17,18 +17,21 @@ import { Reveal } from '@/components/ui/reveal'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { publishedTestimonials } from '@/content/testimonials'
 import { VideoTestimonials } from '@/components/sections/video-testimonials'
+import { tier1Cities } from '@/content/cities'
 
 export const metadata: Metadata = {
   // Shortened once from 80 characters, when "Call Now" was the half being cut.
   // That left it at 65 with the layout's ' | Shield Gate Repair' appended,
   // still over budget — so the suffix goes rather than the words. 46. The site
   // name is rendered separately in the SERP, from the WebSite schema node.
-  title: { absolute: '24/7 Emergency Gate Repair | Dallas–Fort Worth' },
+  // 14 Oct 2026: "24 hour" added. Searchers type "24 hour gate repair", and
+  // the site only ever said "24/7", so no page carried the phrase at all. 49.
+  title: { absolute: '24 Hour Emergency Gate Repair | Dallas–Fort Worth' },
   // 180 characters previously. The manual-release line is the differentiator —
   // nobody else in the market offers it — so it stays and the generic
   // "same-day emergency gate repair across DFW" tail goes. 157.
   description:
-    'Gate stuck open or closed right now? We answer 24/7 across DFW and can talk you through the manual release on the phone before a technician arrives.',
+    '24 hour emergency gate repair across DFW. Gate stuck open or closed? We answer day or night and can talk you through the manual release by phone.',
   alternates: { canonical: '/emergency' },
   openGraph: openGraphFor('/emergency'),
 }
@@ -44,7 +47,11 @@ export const metadata: Metadata = {
  *  - the call CTA is the first thing below the headline, not the last;
  *  - "what to do right now" comes before anything about the company, because a
  *    person who is blocked in cares about getting out, not about our warranty;
- *  - the page is deliberately short. Emergency traffic does not read.
+ *  - the page is deliberately short at the top. Emergency traffic does not
+ *    read, so everything a searcher needs to act is above the FAQ. The
+ *    "24-hour gate repair across DFW" section below it is for the reader who
+ *    is comparing companies, and for search engines; it never sits between a
+ *    stressed visitor and the phone number.
  */
 export default function EmergencyPage() {
   const service = serviceBySlug('emergency-gate-repair')
@@ -74,7 +81,13 @@ export default function EmergencyPage() {
               Emergency line open now
             </p>
 
+            {/* The searched phrase is the heading's first, visible line rather
+                than hidden text: the H1 has to say what the page is about, and
+                the big line underneath does the talking to a stressed person. */}
             <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] text-white sm:text-5xl lg:text-6xl">
+              <span className="mb-4 block text-base font-semibold uppercase tracking-wider text-gold-300 sm:text-lg">
+                24 Hour Emergency Gate Repair · Dallas–Fort Worth
+              </span>
               Gate Stuck Right Now?
               <br />
               <span className="text-gradient-gold">Call. We&rsquo;ll Answer.</span>
@@ -219,6 +232,89 @@ export default function EmergencyPage() {
       />
 
       <FaqAccordion faqs={faqs} title="Emergency gate repair questions" />
+
+      {/* For the comparer and for search: what "24-hour" covers, kept below the
+          FAQ so it never stands between a blocked-in visitor and the phone. */}
+      <section className="section bg-white">
+        <div className="container-page grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
+          <div className="prose-measure space-y-5 text-lg leading-relaxed text-ink-700">
+            <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+              24-hour gate repair across Dallas–Fort Worth
+            </h2>
+            <p>
+              Gates fail at the worst times: a power cut at 2 a.m., a storm on a Sunday, a delivery truck clipping
+              the leaf on a holiday weekend. Our emergency line is answered by a person at night, on weekends and
+              on holidays, and the first thing we do is make the property safe and passable, whether that is
+              talking you through the manual release or sending a technician.
+            </p>
+            <h3 className="pt-2 font-display text-xl font-semibold text-ink-950">Emergencies we handle most</h3>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <strong className="text-ink-900">Gate stuck open</strong> — an open gate is an open property, so we
+                treat it as urgent whatever the cause.
+              </li>
+              <li>
+                <strong className="text-ink-900">Gate won&rsquo;t open and you&rsquo;re blocked in or out</strong> —
+                usually a dead operator, a tripped breaker, a failed board or a drained battery.
+              </li>
+              <li>
+                <strong className="text-ink-900">Gate not working after a power outage or storm</strong> — surges
+                and lightning damage control boards, transformers and loop detectors; standing water gets into
+                underground loops and wiring.
+              </li>
+              <li>
+                <strong className="text-ink-900">Gate hit by a vehicle</strong> — bent leaves and posts, a sliding
+                gate off its track, or an operator arm torn from its bracket.
+              </li>
+              <li>
+                <strong className="text-ink-900">Broken chain, snapped arm or seized motor</strong> — the gate moves
+                partway, grinds, or the motor runs with nothing moving.
+              </li>
+              <li>
+                <strong className="text-ink-900">Gate reversing or closing on vehicles</strong> — a failed safety
+                sensor or photo eye. Stop using the gate until it is checked.
+              </li>
+            </ul>
+            <h3 className="pt-2 font-display text-xl font-semibold text-ink-950">
+              Homes, HOAs, apartments and commercial sites
+            </h3>
+            <p>
+              We repair residential driveway gates and the high-cycle entrances on HOA communities, apartment
+              complexes and commercial properties, where a failed gate affects every resident or the whole site.
+              We work on LiftMaster, US Automatic, DoorKing, FAAC, Viking, Elite, Eagle, Ramset, All-O-Matic and
+              Apollo operators, plus the keypads, intercoms, loops and sensors that control them.
+            </p>
+            <p>
+              Not sure it counts as an emergency? Call anyway. If it can safely wait, we&rsquo;ll tell you and book
+              a regular same-day visit instead.
+            </p>
+          </div>
+
+          <aside className="self-start rounded-[var(--radius-card)] bg-ink-50 p-6 ring-1 ring-inset ring-ink-100">
+            <h3 className="font-display text-lg font-semibold text-ink-950">Emergency gate repair near you</h3>
+            <p className="mt-1.5 text-sm text-ink-600">Across the Dallas–Fort Worth metroplex.</p>
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+              {tier1Cities.map((city) => (
+                <li key={city.slug}>
+                  <Link
+                    href={`/gate-repair-${city.slug}-tx`}
+                    className="text-ink-800 underline decoration-ink-200 underline-offset-2 hover:text-ink-950 hover:decoration-gold-400"
+                  >
+                    {city.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/service-areas"
+              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink-900 underline decoration-gold-400 underline-offset-2"
+            >
+              All service areas
+              <ArrowUpRight className="size-3.5" aria-hidden />
+            </Link>
+          </aside>
+        </div>
+      </section>
 
       <section className="bg-gold-500">
         <div className="container-page py-14 md:py-16">
