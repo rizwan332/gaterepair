@@ -31,6 +31,13 @@ export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
 }
 
+/** "LiftMaster Gate Repair & Opener Repair | Dallas–Fort Worth", shortened to fit. */
+function brandTitle(name: string) {
+  const display = name === 'DoorKing' ? 'DoorKing (DKS)' : name
+  const full = `${display} Gate Repair & Opener Repair | Dallas–Fort Worth`
+  return full.length <= 60 ? full : `${display} Gate Repair & Opener Repair | DFW`
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -53,10 +60,15 @@ export async function generateMetadata({
      * and the client's own master keyword list leads every city block with
      * "Gate Opener Repair". Match the searcher, not the trade — the body copy
      * still says operator throughout, which is where the precision belongs.
+     *
+     * 14 Oct 2026: led with "{Brand} Gate Repair", the most-searched form in
+     * the client's keyword list, which no page title carried. "Opener" stays
+     * in the title as the second phrase. DoorKing also carries DKS, the name
+     * printed on its newer operators and searched separately.
      */
-    title: { absolute: `${brand.name} Gate Opener Repair | Dallas–Fort Worth` },
+    title: { absolute: brandTitle(brand.name) },
     description: fitDescription(
-      `${brand.name} gate opener not working? Boards, capacitors, limits and actuators repaired across Dallas–Fort Worth.`,
+      `${brand.name} gate repair across Dallas–Fort Worth. Opener not working? Boards, capacitors, limits and actuators repaired.`,
       [`Open 24/7. Call ${business.phone.display}.`],
     ),
     alternates: { canonical: `/brands/${brand.slug}` },

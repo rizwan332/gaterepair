@@ -41,8 +41,8 @@ import {
 export const metadata: Metadata = {
   title: 'Gate Repair Dallas–Fort Worth | Same-Day, Open 24/7',
   description:
-    'Automatic gate stuck, stalled or dead? Same-day gate repair across Dallas–Fort Worth. ' +
-    'We fix LiftMaster, FAAC, Elite, Viking and Ramset operators. Open 24/7.',
+    'Dallas–Fort Worth gate repair company, open 24/7. Automatic gate stuck or dead? Same-day repair ' +
+    'for LiftMaster, FAAC, Elite, Viking and Ramset operators.',
   alternates: { canonical: '/' },
   openGraph: openGraphFor('/'),
 }

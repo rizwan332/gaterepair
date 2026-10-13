@@ -177,7 +177,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
   'automatic-gate-repair': {
     causes: [
       {
-        heading: 'Safety sensors — why a gate opens but will not close',
+        heading: 'Gate sensor and photo eye repair — why a gate opens but will not close',
         body: [
           'This is the single most common automatic gate fault and one of the least expensive to fix. Photo-eyes sit either side of the opening and hold the gate open whenever the beam is broken. They are also, by design, paranoid: anything interrupting or misaligning that beam produces the same result as a genuine obstruction.',
           'Common causes are a spider web across the lens, a bracket knocked by a vehicle or a mower, low winter sun striking the receiver directly, dust build-up, and a loose terminal in the wiring run. In most cases cleaning and realignment is the whole repair.',
@@ -185,7 +185,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Loop detectors and buried loops',
+        heading: 'Gate loop detector repair and buried loops',
         body: [
           'Many automatic gates use a wire loop buried in the driveway to detect vehicles, either to open the gate or to hold it open while a car passes. Loops break when the ground moves, when the surface cracks, or when other work is done on the driveway; detectors fail from surges and age.',
           'A gate that ignores approaching vehicles, or closes while a car is still in the opening, is usually a loop or detector problem rather than an operator problem. Testing the detection side first avoids replacing perfectly healthy equipment.',
@@ -320,7 +320,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Cracked welds and metal fatigue',
+        heading: 'Gate welding — cracked welds and metal fatigue',
         body: [
           'Welds crack at the joints that carry the most cyclic load — usually the corners of the frame and the point where the operator arm attaches. This is normal fatigue on a gate that has been in service for decades, not a sign the gate was badly made.',
           'Repair means cutting out the failed weld, re-welding properly, grinding back and refinishing so the repair is not visible. A cracked frame joint left running will propagate, and eventually the leaf distorts far enough that straightening becomes a much larger job.',
@@ -476,13 +476,13 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Keypads',
+        heading: 'Gate keypad repair',
         body: [
           'Keypads wear at the buttons people press most, which is why a code with a repeated digit often fails first. Membrane keypads perish in sun; metal keypads survive longer but are not immune. Replacement is straightforward and inexpensive.',
         ],
       },
       {
-        heading: 'Intercom audio faults',
+        heading: 'Gate intercom repair and audio faults',
         body: [
           'One-way audio, distortion or excessive noise is usually the speaker, the microphone, or line quality rather than the whole unit. On systems that have been converted to VoIP, audio quality problems are frequently the network rather than the hardware — which is worth establishing before replacing anything.',
         ],
@@ -569,7 +569,15 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Automating an existing gate',
+        heading: 'Driveway gate installation — slide or swing, and where it sits',
+        body: [
+          'The first decision on a new driveway gate is the type. A swing gate needs clear, level ground across the full arc of each leaf, and on a driveway that slopes up from the street it can strike the pavement partway open. A sliding gate needs a straight run beside the opening at least as long as the gate itself, but it works on slopes and in tight frontages where a swing gate cannot.',
+          'The second is the setback. A gate built right at the street means a car waiting for it to open sits in the road. Setting it back far enough for a vehicle to pull fully off the street is safer and is often what the city or HOA expects, so we check local requirements before anything is ordered.',
+          'Then the gate is sized to the opening and the operator to the gate: leaf width, weight, wind load on solid panels, and how many times a day it will run. That decides whether a residential operator is enough or the gate needs a heavier commercial unit, and whether solar can power it or it needs a mains supply.',
+        ],
+      },
+      {
+        heading: 'Gate opener installation on an existing gate',
         body: [
           'Retrofitting an operator to a manual gate is often viable and considerably cheaper than a new gate, but it depends on three things: the gate\'s weight, the condition of its hinges and posts, and whether power can sensibly reach the location.',
           'A gate that does not swing freely by hand will not swing freely under power. Where the hinges or posts need work, doing that first is not an upsell — it is the difference between an installation that works and one that fails within a year.',

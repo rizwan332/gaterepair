@@ -126,7 +126,8 @@ export function Hero() {
 
           {/* No longer repeats the metro name now that the H1 states it. */}
           <p className="mt-6 max-w-2xl font-display text-xl font-semibold leading-snug text-white sm:text-2xl">
-            Residential, commercial, HOA and industrial &mdash; most repairs finished on the first visit
+            The local gate repair company for homes, HOAs and commercial sites &mdash; most repairs finished on
+            the first visit
           </p>
 
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-200">
