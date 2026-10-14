@@ -20,8 +20,8 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
  * than by the system that has failed, which is how a technician would group it
  * and is useless to the person holding the remote.
  *
- * It is also the hub that gives the 20 symptom pages a parent in the link
- * graph, so they are not 20 orphans hanging off the service pages.
+ * It is also the hub that gives the symptom pages a parent in the link
+ * graph, so they are not orphans hanging off the service pages.
  */
 
 const PATH = '/gate-problems'
@@ -45,7 +45,14 @@ const GROUPS: { heading: string; blurb: string; slugs: string[] }[] = [
   {
     heading: 'It will not move',
     blurb: 'Nothing happens, or the gate goes one way and not the other.',
-    slugs: ['automatic-gate-not-working', 'gate-wont-open', 'gate-wont-close', 'swing-gate-stuck'],
+    slugs: [
+      'automatic-gate-not-working',
+      'gate-motor-not-working',
+      'gate-wont-open',
+      'gate-wont-close',
+      'swing-gate-stuck',
+      'sliding-gate-stuck',
+    ],
   },
   {
     heading: 'It moves, but wrongly',
@@ -61,6 +68,7 @@ const GROUPS: { heading: string; blurb: string; slugs: string[] }[] = [
       'gate-keypad-not-working',
       'gate-battery-keeps-dying',
       'gate-circuit-board-not-working',
+      'gate-not-working-after-power-outage',
       'gate-not-working-after-storm',
     ],
   },
@@ -69,8 +77,10 @@ const GROUPS: { heading: string; blurb: string; slugs: string[] }[] = [
     blurb: 'A physical part of the gate has failed — usually with warning noises first.',
     slugs: [
       'gate-roller-or-wheel-broken',
+      'gate-track-damaged',
       'gate-chain-broken',
       'gate-sagging-or-dragging',
+      'gate-hinge-broken',
       'gate-post-leaning',
       'gate-photo-eye-not-working',
       'gate-loop-detector-not-working',

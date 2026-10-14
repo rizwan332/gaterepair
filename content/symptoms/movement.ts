@@ -19,17 +19,16 @@ export const movementSymptoms: SymptomPage[] = [
       'Automatic Gate Not Working',
       'Electric Gate Not Working',
       'Gate Opener Not Working',
-      'Gate Motor Not Working',
     ],
     applies: 'both',
     urgency: 'access',
     urgencyNote:
       'A gate that is dead in the closed position locks you in or out; dead in the open position leaves the property unsecured. Either way it is worth the ten minutes of checks below before anyone is called out.',
 
-    title: 'Automatic Gate Not Working? Causes & Fixes | DFW',
+    title: 'Automatic or Electric Gate Not Working? Fixes | DFW',
     metaDescription:
       'Your automatic gate has stopped working completely. Here is how to tell power, board, capacitor and mechanical faults apart in ten minutes — in DFW.',
-    h1: 'Automatic Gate Not Working — How to Find Out Why',
+    h1: 'Automatic Gate or Gate Opener Not Working — Finding Why',
     heroIntro:
       'A gate that does nothing at all is usually one of four things, and three of them you can identify yourself in ten minutes. This page walks the same order a technician works in, so you know what you are dealing with before you pay anyone to look.',
     heroPoints: [
@@ -44,6 +43,13 @@ export const movementSymptoms: SymptomPage[] = [
         body: [
           'Every automatic gate is a gate plus an operator. The gate is the leaf, the hinges or rollers, the posts and the track — pure mechanics that would still move if you disconnected every wire on the property. The operator is the motor, gearbox, control board and safety devices that move it for you.',
           'Almost every wasted call-out on a dead gate comes from confusing the two. An operator straining against a gate that has seized on its track will trip out, overheat, or click and stop — behaviour identical to a failed capacitor. The difference costs a few hundred dollars, and it takes thirty seconds to tell them apart: release the operator and push the gate by hand. If it fights you, the fault is mechanical and no electrical part will fix it.',
+        ],
+      },
+      {
+        heading: 'Electric gate, automatic gate, gate opener: one machine, three names',
+        body: [
+          'People search for an electric gate not working, an automatic gate not working, or a gate opener not working, and they almost always mean the same installation. “Electric” and “automatic” describe the gate as a whole; the “opener” is the operator unit itself — the box or arm on the post containing the motor and control board. Installers and manuals from LiftMaster, US Automatic, DoorKing, FAAC and Viking call it the operator.',
+          'The distinction is still useful when you describe the fault. If the opener shows no lights and makes no sound, the problem is upstream of it, in the supply. If the opener is alive — lights, beeps, a hum — but the gate does not move, the problem is in the operator’s motor or drive, or in the gate. And if the opener works from one input but not another, it is the command path. Telling us which of those you have is the fastest route to the right part.',
         ],
       },
       {
@@ -169,6 +175,10 @@ export const movementSymptoms: SymptomPage[] = [
 
     faqs: [
       {
+        q: 'My gate opener is not working but the lights are on. What does that mean?',
+        a: 'It means power is reaching the board, so the supply is not the problem. Listen when you press the remote: a hum points at the capacitor or a stiff gate, a free whirr with no movement at the drive or the manual release, and silence with lights on at the command path or a safety input holding it. Our gate motor page covers the motor-side signs in detail.',
+      },
+      {
         q: 'My gate is completely dead. Is it going to need replacing?',
         a: 'Usually not. The most common causes of a totally dead gate are a tripped GFCI, a flat battery and a failed capacitor — all inexpensive. A dead gate is not a worse sign than a gate that half-works; if anything it is often simpler, because a single point of failure is easier to find than an intermittent one.',
       },
@@ -191,7 +201,7 @@ export const movementSymptoms: SymptomPage[] = [
     ],
 
     relatedServices: ['gate-motor-repair', 'automatic-gate-repair', 'emergency-gate-repair'],
-    relatedSymptoms: ['gate-opener-has-no-power', 'gate-wont-open', 'gate-circuit-board-not-working'],
+    relatedSymptoms: ['gate-opener-has-no-power', 'gate-motor-not-working', 'gate-wont-open', 'gate-circuit-board-not-working'],
     sources: [
       {
         label: 'LiftMaster residential and commercial gate operator manuals (troubleshooting sections)',
@@ -221,7 +231,7 @@ export const movementSymptoms: SymptomPage[] = [
     title: 'Gate Won’t Open? Causes and Fixes | Dallas–Fort Worth',
     metaDescription:
       'Gate closes fine but will not open? Usually the open limit, the remote receiver or a safety input — not the motor. Diagnose it before you call. DFW.',
-    h1: 'Gate Won’t Open — What It Usually Means',
+    h1: 'Gate Won’t Open, or Closes but Won’t Open Again',
     heroIntro:
       'A gate that closes normally but refuses to open has already proved its motor, its board and its power supply are fine. That single fact eliminates most of what a general troubleshooting guide would have you check, and points at a much shorter list.',
     heroPoints: [
@@ -232,7 +242,7 @@ export const movementSymptoms: SymptomPage[] = [
 
     whatIsHappening: [
       {
-        heading: 'Closing proves more than people realise',
+        heading: 'If it closes but won’t open, closing has proved a lot',
         body: [
           'If your gate still closes on command, the power supply is good, the transformer is good, the board is executing commands, the motor turns and the gearbox drives. Those are the expensive parts, and a gate that closes has just demonstrated all of them working.',
           'What remains is everything specific to the open direction: the open limit switch or encoder position that tells the operator where "open" is, the input that carries the open command, and anything mechanical that obstructs travel in that direction only. That is a short list, and it is mostly inexpensive.',
@@ -403,7 +413,7 @@ export const movementSymptoms: SymptomPage[] = [
     title: 'Gate Won’t Close? Causes and Fixes | Dallas–Fort Worth',
     metaDescription:
       'A gate that opens but will not close is usually a photo-eye, not a motor. How to check the safety sensors, limits and obstructions yourself — DFW.',
-    h1: 'Gate Won’t Close — What It Usually Means',
+    h1: 'Gate Won’t Close, or Opens but Won’t Close Again',
     heroIntro:
       'Four times out of five this is a safety sensor doing exactly what it was designed to do. The gate is not broken so much as refusing, and the thing it is refusing about is usually visible from where you are standing.',
     heroPoints: [
@@ -418,6 +428,13 @@ export const movementSymptoms: SymptomPage[] = [
         body: [
           'Powered gates are required to detect obstructions before and during closing. In practice that means photo-eyes — an infrared beam across the opening — and often an edge sensor on the leading edge of the gate. If either believes something is in the way, the operator will not close, and many will not even attempt it.',
           'That is the correct behaviour. A closing gate is hundreds of pounds moving under power, and the sensor is the only thing standing between it and whatever is in the gap. So the question on this page is almost never "how do I make it close" — it is "what does the sensor think it can see".',
+        ],
+      },
+      {
+        heading: 'When the gate opens but won’t close, look at what only closing uses',
+        body: [
+          'A gate that has just opened on command has demonstrated its power supply, board, motor and drive. The parts that only come into play on the closing stroke are a much shorter list: the photo-eyes and edge sensors, which on most installations monitor only the closing direction; the close limit or close position the operator was taught; the timer-to-close setting that tells it to close on its own; and anything sitting in the closing path.',
+          'That is why this page starts at the safety devices rather than the motor. An operator that will open freely and then sits there refusing to close is, in the large majority of cases, being told by a sensor that something is in the way — and the sensor is either right, dirty, knocked out of line, or wired through a cable that has finally broken.',
         ],
       },
       {
@@ -589,7 +606,7 @@ export const movementSymptoms: SymptomPage[] = [
     urgencyNote:
       'A gate stopped mid-travel usually blocks the drive entirely and cannot be driven around. Find the manual release before trying anything else.',
 
-    title: 'Gate Stops Halfway — Causes and Fixes | DFW Repair',
+    title: 'Gate Stops Halfway or Opens Halfway Then Stops | DFW',
     metaDescription:
       'A gate that opens halfway and stops is nearly always meeting resistance at the same point. Here is how to find it, and why forcing it makes the repair worse.',
     h1: 'Gate Stops Halfway Through Its Travel',
@@ -607,6 +624,13 @@ export const movementSymptoms: SymptomPage[] = [
         body: [
           'Every compliant gate operator monitors how hard it is working. If the load rises beyond what it expects for that point in the travel, it concludes something is in the way and stops — often reversing. This is entrapment protection and it is required by the safety standard gate operators are built to.',
           'So a gate stopping halfway is usually not a malfunction. It is the operator correctly reporting that moving the gate got harder than it should be. The useful question is what changed, and where.',
+        ],
+      },
+      {
+        heading: 'If the gate opens halfway then stops, check for a partial-open command',
+        body: [
+          'A gate that opens halfway then stops on the opening stroke has a few explanations that a gate stopping on its way closed does not. Many operators — FAAC, BFT, Nice and several LiftMaster models among them — have a pedestrian or partial-open function that deliberately opens the gate only part of the way. A remote button, keypad code or second input programmed for partial open produces exactly this symptom, perfectly repeatably, and nothing is broken.',
+          'Two other opening-specific causes are worth knowing. Many boards run a maximum run timer: if a slow gate, often on a weak battery, has not reached its open limit before the timer expires, the board stops it where it is. And on a swing gate opening into the wind or uphill on a sloping drive, the opening stroke is the harder one, so a gate on the edge of its force setting fails opening and not closing. Try a different remote or button first; if the gate then opens fully, the first explanation is yours.',
         ],
       },
       {

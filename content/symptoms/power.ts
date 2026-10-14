@@ -1,7 +1,13 @@
 import type { SymptomPage } from './types'
 
 /**
- * Power, battery and board faults.
+ * Power, battery, board and motor faults.
+ *
+ * The motor page and the power-outage page were added after the original
+ * four. The motor page owns "the operator is getting power and the motor is
+ * the thing misbehaving" (hum, click, spins without moving the gate); the
+ * outage page owns "the power is back but the gate is not", which has a
+ * different short list from a gate that has no power at all.
  *
  * The distinction these four pages have to hold is between "no power arriving"
  * (supply), "power arriving but not stored" (battery and charging), "power
@@ -14,7 +20,7 @@ export const powerSymptoms: SymptomPage[] = [
   {
     slug: 'gate-opener-has-no-power',
     label: 'Gate opener has no power',
-    searchedAs: ['Gate Opener Has No Power', 'Gate Not Working After Power Outage'],
+    searchedAs: ['Gate Opener Has No Power'],
     applies: 'both',
     urgency: 'access',
     urgencyNote:
@@ -41,7 +47,7 @@ export const powerSymptoms: SymptomPage[] = [
         ],
       },
       {
-        heading: 'Why outages specifically cause this',
+        heading: 'Surges and drained batteries also look like “no power”',
         body: [
           'A power cut does two things to a gate. The obvious one is that a mains-powered operator stops; the less obvious one is that the restoration surge, when the supply comes back, is hard on transformers and boards. A meaningful share of "dead after the outage" calls are actually "damaged by the surge when it came back".',
           'The second effect is memory. Some operators lose their learned travel limits after an interruption and will not run a full cycle until the travel is re-learned, which presents as a gate that has power and lights but will not move properly. And on battery-backed units, an extended outage drains a backup battery that was already near the end of its life — so the gate works through the outage and dies a day later.',
@@ -157,8 +163,8 @@ export const powerSymptoms: SymptomPage[] = [
         a: 'With the GFCI outlet feeding the operator, then the breaker. Between them they account for a large share of completely dead gates and they cost nothing to check. Only after those are ruled out is it worth looking at the transformer, the fuse or the board.',
       },
       {
-        q: 'The gate stopped working after a power cut. Why did it not just come back?',
-        a: 'Three common reasons. The restoration surge damaged the transformer or board; the backup battery was drained by the outage and was already near the end of its life; or the operator lost its learned travel limits and needs its travel re-learned before it will run a full cycle. Tell us it followed an outage and we will check those first.',
+        q: 'Is a dead gate after a power cut the same fault?',
+        a: 'It overlaps, but it has its own short list — a release left disengaged, a battery drained during the outage, a fail-safe setting, or a restoration surge — so it has its own page. If the operator is completely dark and there was no outage, the order on this page is the right one.',
       },
       {
         q: 'I keep resetting the GFCI and it keeps tripping. What now?',
@@ -175,7 +181,12 @@ export const powerSymptoms: SymptomPage[] = [
     ],
 
     relatedServices: ['gate-motor-repair', 'automatic-gate-repair', 'emergency-gate-repair'],
-    relatedSymptoms: ['automatic-gate-not-working', 'gate-battery-keeps-dying', 'gate-not-working-after-storm'],
+    relatedSymptoms: [
+      'automatic-gate-not-working',
+      'gate-not-working-after-power-outage',
+      'gate-battery-keeps-dying',
+      'gate-not-working-after-storm',
+    ],
     sources: [
       {
         label: 'LiftMaster gate operator installation manuals — power, transformer and fuse specifications',
@@ -736,6 +747,381 @@ export const powerSymptoms: SymptomPage[] = [
     toConfirm: [
       'Whether Shield offers a diagnostic-only visit that confirms board failure before committing to the part.',
       'Which surge protection device is fitted alongside a replacement board, and its cost.',
+    ],
+    indexable: true,
+  },
+
+  {
+    slug: 'gate-motor-not-working',
+    label: 'Gate motor not working',
+    searchedAs: ['Gate Motor Not Working'],
+    applies: 'both',
+    urgency: 'access',
+    urgencyNote:
+      'A gate whose motor will not drive it is stuck wherever it stopped. The manual release still works whatever the motor is doing, so find it before anything else — and keep clear of the gate while anyone is testing it.',
+
+    title: 'Gate Motor Not Working? Hum, Click or Silence | DFW',
+    metaDescription:
+      'Gate motor hums, clicks, spins without moving the gate, or cuts out when hot? What each sign points to — capacitor, gearbox, brushes — and what to check.',
+    h1: 'Gate Motor Not Working — Reading What It Does',
+    heroIntro:
+      'When people say the gate motor is not working, they usually mean one of four different things: it hums, it clicks, it runs without moving the gate, or it does nothing at all. Each of those points somewhere different, and only one of them is usually the motor itself.',
+    heroPoints: [
+      'We confirm voltage at the motor terminals under load before condemning a motor',
+      'A motor that spins without moving the gate gets its drive train inspected, not replaced',
+      'Heat cut-outs are traced back to the load that caused them, so the new motor is not cooked too',
+    ],
+
+    whatIsHappening: [
+      {
+        heading: 'Two kinds of gate motor, and they fail in different ways',
+        body: [
+          'Most operators in Dallas–Fort Worth use one of two motor types. Heavier commercial units and many older residential operators — a lot of DoorKing, Elite and older LiftMaster equipment — run a mains-voltage AC motor that needs a start capacitor to get turning. Battery-backed and solar operators, including most current US Automatic, Viking, Mighty Mule and LiftMaster residential units, run a low-voltage DC motor fed from a battery that the mains or a panel keeps charged.',
+          'An AC motor that cannot start usually hums: it is energised but has no starting kick, which is the capacitor’s job. A DC motor has no capacitor; when it struggles it tends to click, stutter or run slowly, and the cause is more often supply voltage, worn brushes, or the encoder that tells the board how far the motor has turned. Knowing which kind you have halves the list before anyone opens the housing — the label on the operator or the manual will say.',
+        ],
+      },
+      {
+        heading: 'Motor running and gate not moving is a drive-train question',
+        body: [
+          'Between the motor and the gate sits a gearbox and a coupling: a chain and sprocket, a gear rack and pinion, or a swing arm on an output shaft. If you can hear the motor spinning freely and the gate stays put, the motor is doing its job and something between it and the gate has let go. That might be as simple as a manual release left part-way engaged, or as serious as stripped gear teeth inside the gearbox.',
+          'This distinction matters for cost. A motor replacement on a discontinued operator can lead straight to a conversation about a new unit, while a sheared drive pin, a slipping clutch or a loose sprocket set screw is a short repair. Listening carefully at the housing while someone presses the remote is worth doing before anyone quotes for a motor.',
+        ],
+      },
+    ],
+
+    causes: [
+      {
+        cause: 'Manual release left disengaged or only partly re-engaged',
+        likelihood: 'most common',
+        howToTell:
+          'The motor runs with a free, high-pitched whirr and the gate does not move, or moves a little and slips. Common straight after anyone has opened the gate by hand — during an outage, for a delivery, or after a service visit.',
+        fix: 'Re-engage the release fully, following the procedure for your model, and cycle the gate once while standing clear. If the release will not lock back in, the mechanism itself is worn and needs a technician.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'Failed start or run capacitor (AC motors)',
+        likelihood: 'most common',
+        howToTell:
+          'A steady hum with no rotation, often with the board timing out after a few seconds. A nudge to the gate sometimes gets it going. The capacitor may be bulged on top or weeping oil, though a dead one can look perfectly normal.',
+        fix: 'Replacing the capacitor with one of the correct microfarad and voltage rating. It is a small part, but it holds a charge after power is off and should be handled by someone who knows how to discharge it safely.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Low supply voltage to a DC motor',
+        likelihood: 'common',
+        howToTell:
+          'The motor clicks, stutters, starts and stops, or runs noticeably slower than it used to. Worse in the early morning and after cloudy days on solar units. The battery may read healthy at rest and collapse the moment the motor draws current.',
+        fix: 'Load-testing and usually replacing the battery, then checking why it ran down — a failing charger, a shaded panel, or a long low-voltage run with undersized cable.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Thermal overload cutting the motor out',
+        likelihood: 'common',
+        howToTell:
+          'The motor runs normally for the first few cycles of the day, then stops mid-travel and refuses to restart until it has cooled for twenty minutes to an hour. The housing is hot to the touch. Most frequent on busy gates in July and August.',
+        fix: 'The cut-out is protecting the windings, so the repair is whatever made the motor work too hard: a stiff gate, a tight chain, a cycle count above the operator’s duty rating, or a housing baking in direct sun with blocked vents.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Stripped gears, sheared pin or slipping clutch in the drive train',
+        likelihood: 'common',
+        howToTell:
+          'The motor runs at normal speed, the release is engaged, and the gate does not move or moves in jerks. You may hear grinding or a rhythmic clack from the gearbox. On operators with an adjustable friction clutch, a clutch set too light or worn slips under load.',
+        fix: 'Opening the gearbox and replacing the damaged gear, pin, key or coupling. Worth asking why it failed, because a gearbox that stripped against a binding gate will strip again.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Worn motor brushes or a failed encoder (DC motors)',
+        likelihood: 'less common',
+        howToTell:
+          'A DC motor that runs, stops dead at a random point, and restarts if the gate is moved slightly — a dead spot on worn brushes. An encoder fault usually shows as the motor running briefly and the board stopping it with a travel or position error.',
+        fix: 'Brush replacement where the motor design allows it, or a motor and encoder assembly where it does not. On many current operators the encoder is built into the motor and they are replaced together.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Burnt windings',
+        likelihood: 'rare',
+        howToTell:
+          'Usually after a long period of overheating or a gate that was dragged for months. There may be a sharp burnt-varnish smell at the housing, and the motor does nothing even with correct voltage measured at its terminals.',
+        fix: 'Motor replacement. On an operator that is still in production this is a contained repair; on a discontinued one it is the moment to compare the cost against a new operator honestly.',
+        ownerCanFix: false,
+      },
+    ],
+
+    checkFirst: [
+      {
+        step: 'Stand clear and listen at the operator',
+        body: 'Have someone press the remote while you stand beside — not in front of — the operator. A hum, a click, a free whirr with no movement, and silence each point to a different part of the system. Note which you hear and for how long.',
+      },
+      {
+        step: 'Check the manual release position',
+        body: 'Look at the release lever, key or knob on the housing. If it has been used recently, make sure it is fully back in the operating position as the manual for your model describes. A half-engaged release is the cheapest answer on this page.',
+      },
+      {
+        step: 'Release it and move the gate by hand',
+        body: 'With the operator disengaged, push the gate through its full travel. If it is heavy, stiff or catches, the motor is being asked to do too much and the gate needs attention first. If it glides, the fault is in the operator.',
+      },
+      {
+        step: 'Feel the housing and note the time of day',
+        body: 'A hot housing and a gate that works in the morning but not mid-afternoon points at a thermal cut-out. Tell us when it fails and how many times it had run that day — it shortens the visit considerably.',
+      },
+    ],
+
+    doNot: [
+      'Do not touch capacitor terminals, even with the power off. A charged capacitor can deliver a painful shock.',
+      'Do not hold a hot motor in service by repeatedly re-triggering it. The thermal cut-out is preventing a burnt winding.',
+      'Do not put your hands near the chain, sprockets or arm while someone else operates the gate to test it.',
+      'Do not tighten a slip clutch or raise force settings to make a struggling motor push through — those settings are part of the entrapment protection.',
+    ],
+
+    outlook: {
+      summary:
+        'Most calls about a gate motor end without a new motor. Capacitors, batteries, a release left out, and drive-train parts account for the large majority, and they are modest repairs. A motor that genuinely has failed is usually the last link in a chain that started with a gate that had become hard to move, and that chain has to be fixed with it.',
+      usuallyRepair: [
+        'Start and run capacitors on AC operators',
+        'Batteries and charging faults on DC operators',
+        'Manual release mechanisms and couplings',
+        'Gearbox gears, drive pins, sprockets and clutches',
+        'Brushes and encoders where the motor design allows',
+      ],
+      sometimesReplace: [
+        'A burnt motor on an operator that is no longer supported by its manufacturer',
+        'An operator running far beyond its duty cycle, where a heavier-rated unit is the real fix',
+        'A gearbox and motor both worn out after years of dragging a binding gate',
+      ],
+    },
+
+    dfw: [
+      {
+        heading: 'Heat, duty cycle and fire ants',
+        body: [
+          'A gate operator housing in full Texas sun can run far hotter inside than the air around it, and every degree counts against a motor that is already near its thermal limit. This is why thermal cut-outs cluster in late summer here and largely disappear by October — the motor did not change, the starting temperature did.',
+          'The other local culprit is less obvious. Fire ants are drawn to electrical equipment and readily colonise operator housings and control boxes, packing them with soil and bodies that bridge relay contacts and motor connections. A motor that stopped working and a housing full of ants are frequently the same fault, and the repair includes cleaning out and sealing the enclosure.',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        q: 'My gate motor hums but the gate will not move. Is the motor dead?',
+        a: 'Usually not. A hum means power is reaching the motor and it cannot start turning. On AC operators that is classically the start capacitor; on any operator it can also be a gate so stiff the motor cannot overcome it. Release the operator and push the gate by hand — if it moves freely, the capacitor is the prime suspect.',
+      },
+      {
+        q: 'I can hear the motor running but the gate stays where it is. What broke?',
+        a: 'Something between the motor and the gate. Check first that the manual release is fully engaged. If it is, the likely causes are inside the drive train — a stripped gear, a sheared pin, a slipping clutch or a sprocket loose on its shaft. The motor itself is very likely fine.',
+      },
+      {
+        q: 'The motor works in the morning and quits in the afternoon. Why?',
+        a: 'That pattern is almost always the thermal overload. The motor heats up over the day’s cycles and the sun, trips its protection, and recovers when it cools. The useful question is why it is running hot — a stiff gate, too many cycles for the operator’s rating, or a housing that cannot shed heat.',
+      },
+      {
+        q: 'Can a gate motor be repaired, or does the whole opener have to go?',
+        a: 'The motor is one replaceable part of the operator, and on current models it can be swapped on its own. Whether that is worth doing depends on the age of the operator and whether parts are still made for it. We will tell you which side of that line your unit is on before any work starts.',
+      },
+    ],
+
+    relatedServices: ['gate-motor-repair', 'automatic-gate-repair', 'electric-gate-repair'],
+    relatedSymptoms: ['automatic-gate-not-working', 'gate-stops-halfway', 'gate-circuit-board-not-working'],
+    sources: [
+      {
+        label: 'LiftMaster gate operator manuals — manual release, motor and duty cycle specifications',
+        url: 'https://www.liftmaster.com/service-and-support/manuals',
+      },
+      {
+        label: 'DoorKing gate operator owner’s manuals — motor, capacitor and clutch troubleshooting',
+        url: 'https://www.doorking.com/gate-operators',
+      },
+      {
+        label: 'Texas A&M AgriLife Extension — fire ants and electrical equipment',
+        url: 'https://fireant.tamu.edu/',
+      },
+    ],
+    toConfirm: [
+      'Whether Shield stocks common capacitor ratings and DC replacement motors for the brands it services most.',
+      'Whether ant-proofing or sealing the operator enclosure is offered as part of a motor repair.',
+    ],
+    indexable: true,
+  },
+
+  {
+    slug: 'gate-not-working-after-power-outage',
+    label: 'Gate not working after a power outage',
+    searchedAs: ['Gate Not Working After Power Outage'],
+    applies: 'both',
+    urgency: 'access',
+    urgencyNote:
+      'If the gate is stuck open after an outage, the property is unsecured; if it is stuck closed, you may be trapped. Either way the manual release lets you move it by hand while the cause is found.',
+
+    title: 'Gate Not Working After a Power Outage? | DFW Help',
+    metaDescription:
+      'Power is back but the gate is not? Re-engaged release, drained backup battery, fail-safe mode, lost settings or restoration surge — what to check, in order.',
+    h1: 'Gate Not Working After a Power Outage',
+    heroIntro:
+      'The lights came back on and the gate did not. That is a different situation from a gate with no power at all, because the outage itself usually left something behind — a release still disengaged, a battery run flat, a setting lost, or a surge when the supply returned.',
+    heroPoints: [
+      'We ask what happened during the outage first, because it usually explains what happened after',
+      'Backup batteries are load-tested after a deep drain rather than assumed to recover',
+      'Fail-safe and fail-secure settings are checked so the gate behaves as you expect next time',
+    ],
+
+    whatIsHappening: [
+      {
+        heading: 'The outage is over, but its side-effects are not',
+        body: [
+          'A mains-powered operator with no battery simply stops when the supply drops, and in principle should carry on when it returns. In practice several things happen around an outage that stop that. People open the gate by hand to get out and leave the release disengaged. A battery-backed operator keeps working on its battery until the battery is exhausted. Boards that keep a clock or a schedule lose the time. And the moment the supply returns, the voltage can spike or sag before it settles.',
+          'That is why the best first question is not “what is broken” but “what happened while the power was off”. A gate that ran on battery for six hours and then died has a different answer from one that was pushed open by hand at midnight, and both are different from one that was fine until the instant the power came back.',
+        ],
+      },
+      {
+        heading: 'Battery backup, fail-safe and fail-secure',
+        body: [
+          'Many operators can be set to do something specific when the mains fails. Some are configured to open on battery and stay open until mains returns — common on commercial and multi-family entrances where emergency access matters. Others hold the gate closed and run a limited number of cycles on battery. Which one your gate does is a setting, not a fault, but it explains a lot of post-outage calls about a gate that is “stuck open”.',
+          'The other thing a long outage does is drain the backup battery far deeper than normal use ever does. Sealed lead-acid batteries, which most gate operators use, do not enjoy being run flat; an older battery may never recover its full capacity, and the gate behaves erratically for days afterwards until it is replaced.',
+        ],
+      },
+    ],
+
+    causes: [
+      {
+        cause: 'Manual release still disengaged after someone opened the gate by hand',
+        likelihood: 'most common',
+        howToTell:
+          'The gate moves freely when pushed and the operator can be heard running, but nothing happens to the gate. Ask everyone in the household whether they used the release during the outage — it is easy to forget.',
+        fix: 'Re-engage the release following your operator’s instructions, then run one full cycle while standing clear. Some operators need the gate pushed slightly until the drive re-meshes.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'GFCI or breaker tripped when the supply returned',
+        likelihood: 'most common',
+        howToTell:
+          'The house has power but the operator has none, or is running on battery and beeping a warning. Restoration surges and the inrush of every appliance starting at once commonly trip outdoor GFCIs.',
+        fix: 'Reset the GFCI or breaker once. If it holds, the outage was the only cause. If it trips again, stop — there is a genuine fault to earth and it needs tracing rather than resetting.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'Backup battery run flat by the outage',
+        likelihood: 'common',
+        howToTell:
+          'The gate kept working for some hours during the outage, then stopped. Now mains is back it is slow, beeps a low-battery pattern, or runs one cycle and quits. A battery more than three or four years old is unlikely to recover from a deep drain.',
+        fix: 'Give it a few hours on mains to recharge. If it is no better by the next day, the battery needs load-testing and almost certainly replacing — then the charger is checked to make sure it is actually charging.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Operator still in fail-safe or battery mode',
+        likelihood: 'common',
+        howToTell:
+          'The gate opened when the power failed and has stayed open since, ignoring commands, or the board is still showing a battery or AC-fail indicator although mains is on. Common on entrances configured for emergency access.',
+        fix: 'Some operators return to normal automatically once mains is stable; others need a close command, a reset, or a fault cleared at the board. Where the board still thinks mains is absent, the transformer or its fuse is the next thing to check.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Surge or brownout damage when the supply returned',
+        likelihood: 'common',
+        howToTell:
+          'The gate was fine on battery or untouched throughout, and failed the moment the power came back — dark board, blown fuse, or erratic behaviour. Also common after the flickering on-off-on restorations that utilities sometimes go through.',
+        fix: 'Tracing it through the transformer, fuse, surge protector and board, and replacing what failed. Adding or replacing surge protection at the same time is worth discussing.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Lost travel position, clock or access settings',
+        likelihood: 'less common',
+        howToTell:
+          'The gate runs but stops short, overruns, or makes one slow cycle as though searching for its limits. Or the gate works from the remote but a timer, hold-open schedule, telephone entry system or app link has stopped behaving.',
+        fix: 'Many operators find their position again on the first slow cycle after power returns, and that is normal. If it does not, the travel is re-learned and the clock, schedules and network connections are restored.',
+        ownerCanFix: false,
+      },
+    ],
+
+    checkFirst: [
+      {
+        step: 'Ask what happened during the outage',
+        body: 'Did anyone open the gate by hand? Did it keep working on battery for a while, and roughly how long? Did it fail during the outage or only once the power was back? These answers point at a different cause each, and they are the first thing we will ask.',
+      },
+      {
+        step: 'Check the manual release is fully engaged',
+        body: 'Look at the release on the operator housing and make sure it is in its normal operating position. If the gate swings or slides freely when pushed with the release “engaged”, it is not.',
+      },
+      {
+        step: 'Reset the GFCI and breaker once',
+        body: 'Find the outdoor GFCI feeding the operator and the breaker in the panel. Reset each once. A single trip from the outage is normal; one that trips again straight away is reporting a real fault.',
+      },
+      {
+        step: 'Give a battery-backed operator time',
+        body: 'If the battery was run down, leave the operator on mains for a few hours before judging it. A healthy battery recovers; a tired one does not, and that tells you something useful when you call.',
+      },
+    ],
+
+    doNot: [
+      'Do not keep cycling a gate that is running slowly on a drained battery — you are deepening the discharge and shortening the battery’s life.',
+      'Do not reset a GFCI or breaker more than once if it trips again immediately.',
+      'Do not start a generator and back-feed the house to run the gate. Back-feeding endangers utility workers and anyone touching the supply.',
+      'Do not leave the gate disconnected from its operator long-term to get around the problem — a free-moving leaf can swing or roll in the wind.',
+    ],
+
+    outlook: {
+      summary:
+        'Most gates that fail after an outage need nothing more than a release re-engaged, a GFCI reset, or a battery that had come to the end of its life anyway. Surge damage is the expensive exception, and it is usually confined to the board, transformer or fuse rather than the motor.',
+      usuallyRepair: [
+        'Release mechanisms that will not re-engage cleanly',
+        'Backup batteries and chargers',
+        'Transformers, fuses and surge protectors',
+        'Travel re-learning, clock and schedule restoration',
+        'Fail-safe and fail-secure configuration',
+      ],
+      sometimesReplace: [
+        'A control board damaged by a restoration surge on an operator no longer supported',
+        'An access control or entry system whose memory was lost and cannot be recovered from a backup',
+      ],
+    },
+
+    dfw: [
+      {
+        heading: 'Outages here come with storms and with heat',
+        body: [
+          'In Dallas–Fort Worth outages arrive in two seasons. Spring and autumn storms bring lines down and leave restorations that flicker on and off before they hold, which is hard on boards and transformers. Summer brings demand peaks during long triple-digit stretches, and winter can bring the kind of grid emergency the region saw in February 2021, when outages lasted long enough to drain any backup battery completely.',
+          'Long outages are what turn a healthy-looking battery into a dead one. If you live somewhere that loses power more than once or twice a year — common on the rural edges of the metroplex — it is worth sizing the backup battery for the outage you actually get, and knowing in advance whether you want the gate to fail open or fail closed.',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        q: 'The power is back. Why is my gate still not working?',
+        a: 'Most often because something changed during the outage: the release was used and not fully re-engaged, the outdoor GFCI tripped when power returned, or a backup battery was run flat and has not recovered. Check those three first. If none applies and the board is dark or erratic, the restoration may have damaged the transformer or board.',
+      },
+      {
+        q: 'My gate opened by itself when the power went out. Is that a fault?',
+        a: 'Probably not. Many battery-backed operators can be configured to open on mains failure and stay open, so that emergency services and residents are never locked out. It is a setting, and if you would rather the gate stayed closed during an outage, it can usually be changed.',
+      },
+      {
+        q: 'It made one slow trip and then started working normally. Is that okay?',
+        a: 'Yes. Some operators run a slow first cycle after power is restored to find their open and closed positions again. If it then works normally, nothing is wrong. If it stops short or overruns repeatedly, the travel needs re-learning.',
+      },
+      {
+        q: 'How do I stop this happening next time?',
+        a: 'Three things help: a backup battery sized for the outages you actually get and replaced on schedule, surge protection on the supply to the operator, and knowing where the manual release is and how to put it back. It is also worth deciding deliberately whether you want the gate to fail open or closed.',
+      },
+    ],
+
+    relatedServices: ['electric-gate-repair', 'gate-motor-repair', 'automatic-gate-repair', 'emergency-gate-repair'],
+    relatedSymptoms: ['gate-opener-has-no-power', 'gate-battery-keeps-dying', 'gate-not-working-after-storm'],
+    sources: [
+      {
+        label: 'LiftMaster gate operator manuals — battery backup and AC power-loss behaviour settings',
+        url: 'https://www.liftmaster.com/service-and-support/manuals',
+      },
+      {
+        label: 'UL 325 — Standard for Door, Drapery, Gate, Louver, and Window Operators and Systems',
+        url: 'https://www.shopulstandards.com/ProductDetail.aspx?productId=UL325',
+      },
+      {
+        label: 'ERCOT — February 2021 extreme cold weather event review',
+        url: 'https://www.ercot.com/',
+      },
+    ],
+    toConfirm: [
+      'Whether Shield fits or recommends surge protectors as standard on operator power supplies.',
+      'Whether battery backup retrofits are offered for mains-only operators.',
     ],
     indexable: true,
   },
