@@ -1,4 +1,5 @@
 import { clientCaseStudies } from './case-studies-client'
+import { nearestSpread } from './city-coordinates'
 
 /**
  * Video from real jobs — all seventeen clips in the client's case-study
@@ -73,6 +74,13 @@ export const jobVideos: JobVideo[] = clientCaseStudies.flatMap((study) =>
 
 /** Clips from jobs in one city. */
 export const jobVideosForCity = (citySlug: string) => jobVideos.filter((v) => v.citySlug === citySlug)
+
+/**
+ * The nearest job clips from other cities, for city pages with none of their
+ * own. Each card keeps its real city, exactly as nearbyProjects does.
+ */
+export const nearbyJobVideos = (citySlug: string, limit = 3, maxMiles = 35) =>
+  nearestSpread(citySlug, jobVideos, (v) => v.citySlug, limit, maxMiles).map(({ item, miles }) => ({ video: item, miles }))
 
 /** Clips from jobs on one manufacturer's equipment. */
 export const jobVideosForBrand = (brandName: string) =>

@@ -384,10 +384,10 @@ export const safetySymptoms: SymptomPage[] = [
     urgencyNote:
       'A gate with a failed photo-eye has lost its entrapment protection. Until it is repaired, the gate should not be left operating unattended around vehicles, pets or children.',
 
-    title: 'Gate Photo Eye Not Working — Diagnose It | DFW',
+    title: 'Gate Sensor or Photo Eye Not Working? | DFW',
     metaDescription:
       'Photo eye faulting, or a gate that will not close? How through-beam and reflective sensors fail, what the indicator LEDs mean, and what can be realigned.',
-    h1: 'Gate Photo Eye and Safety Sensor Faults',
+    h1: 'Gate Sensor or Photo Eye Not Working',
     heroIntro:
       'The photo-eye is the device that stops a gate closing on a car, a pet or a person, and it is also the most frequently misdiagnosed part on a gate. This page is about the sensor itself — how it works, how it fails, and what its indicator is telling you.',
     heroPoints: [
@@ -402,6 +402,13 @@ export const safetySymptoms: SymptomPage[] = [
         body: [
           'A through-beam photo-eye is two units facing each other: a transmitter on one side of the opening and a receiver on the other, wired separately. A retro-reflective photo-eye is a single unit with a reflector opposite it, so the beam makes a round trip. Both report an obstruction when the beam is interrupted.',
           'They fail differently, which matters when diagnosing. Through-beam units go out of alignment when either housing is knocked, and need power run to both sides. Reflective units are more tolerant of small knocks but far more sensitive to a dirty or fogged reflector, and they can be fooled by a shiny surface elsewhere in their field. Knowing which you have narrows the fault immediately.',
+        ],
+      },
+      {
+        heading: 'Which gate sensor is not working? There are usually three kinds',
+        body: [
+          'When a gate sensor is not working, it helps to know which sensor is meant. Photo-eyes are the small paired or single boxes low on the posts, sending an infrared beam across the opening. Edge sensors are rubber or plastic strips along the leading edge of the gate, or on posts and walls nearby, that register contact — some wired, some wireless with a small transmitter on the gate. Vehicle loops are wires buried in the driveway that detect a car and are covered on their own page.',
+          'The first two are entrapment protection and fail in a predictable way: they report an obstruction when there is none, so the gate refuses to close or reverses. A wired edge whose cable has fractured, or a wireless edge whose transmitter battery has died, behaves exactly like a blocked photo-eye. Most control boards have a separate indicator for each safety input, so the board will usually tell you which of them is complaining before anyone opens a sensor.',
         ],
       },
       {
@@ -452,6 +459,14 @@ export const safetySymptoms: SymptomPage[] = [
         howToTell:
           'Strictly time-of-day. A west-facing receiver floods in late afternoon; a reflective unit can also be confused by a parked car’s chrome or a wet driveway bouncing the beam.',
         fix: 'Hooding or repositioning the sensor, or changing to a design less susceptible to the geometry of that entrance.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Edge sensor damaged, or its wireless transmitter battery flat',
+        likelihood: 'less common',
+        howToTell:
+          'The photo-eye indicators all show a clear beam, but the board shows an edge or contact input as active. Look for a split or crushed edge strip, a cable torn where it crosses to the gate, or on wireless edges a transmitter whose battery has run down.',
+        fix: 'Replacing the transmitter battery on a wireless edge, or the edge strip or its cable on a wired one. Edges are a wear item on a busy gate and are made to be replaced.',
         ownerCanFix: false,
       },
       {
@@ -532,6 +547,10 @@ export const safetySymptoms: SymptomPage[] = [
       {
         q: 'It only fails on foggy mornings. Is the sensor faulty?',
         a: 'Usually not — it is alignment with no margin. Condensation scatters a beam that is only just landing on the receiver, while a well-aligned beam has enough signal to tolerate it. Realignment, sometimes with a hood, normally fixes it permanently without a new part.',
+      },
+      {
+        q: 'How do I know which gate sensor is the faulty one?',
+        a: 'Start at the control board. Most have a separate status light for each safety input — photo-eyes, close edge, open edge — and the one that stays lit or flashing with nothing in the way is the sensor at fault. Then check that sensor’s own indicator, lenses or strip. Photographing the board lights before calling usually lets us name the device on the phone.',
       },
       {
         q: 'How often should photo eyes be cleaned?',

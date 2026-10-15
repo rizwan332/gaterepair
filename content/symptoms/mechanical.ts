@@ -3,6 +3,12 @@ import type { SymptomPage } from './types'
 /**
  * Faults in the gate rather than the operator.
  *
+ * Sliding-gate-stuck, gate-track-damaged and gate-hinge-broken were split out
+ * of off-track and sagging once it was clear they have different first checks:
+ * a stuck slide gate is still on its track and can be tested by hand; damaged
+ * track is a repair to the steel and slab; a broken hinge is a sudden failure
+ * with a falling-leaf risk, not gradual sag.
+ *
  * These six matter disproportionately, because they are the faults most often
  * "solved" by replacing an operator that was never broken. A gate dragging on
  * the ground, riding a failed roller or hanging off a leaning post will destroy
@@ -14,7 +20,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
   {
     slug: 'sliding-gate-off-track',
     label: 'Sliding gate off track',
-    searchedAs: ['Sliding Gate Off Track', 'Sliding Gate Stuck', 'Gate Track Damaged'],
+    searchedAs: ['Sliding Gate Off Track'],
     applies: 'slide',
     urgency: 'safety',
     urgencyNote:
@@ -23,7 +29,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
     title: 'Sliding Gate Off Track — Causes and Repair | DFW',
     metaDescription:
       'A slide gate off its track or jammed is usually debris, a failed roller or a bent track. Why forcing it makes it worse, and what a proper repair involves.',
-    h1: 'Sliding Gate Off Track or Stuck',
+    h1: 'Sliding Gate Off Track',
     heroIntro:
       'A slide gate that has come off its track has almost always been telling you for months — grinding, stiffening, or catching at the same point. The derailment is the end of that story rather than a sudden event.',
     heroPoints: [
@@ -177,7 +183,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
     ],
 
     relatedServices: ['sliding-gate-repair', 'automatic-gate-repair', 'iron-gate-repair', 'gate-motor-repair'],
-    relatedSymptoms: ['gate-roller-or-wheel-broken', 'gate-stops-halfway', 'gate-chain-broken'],
+    relatedSymptoms: ['gate-roller-or-wheel-broken', 'gate-track-damaged', 'sliding-gate-stuck', 'gate-chain-broken'],
     sources: [
       {
         label: 'ASTM F2200 — Standard Specification for Automated Vehicular Gate Construction',
@@ -360,7 +366,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
     ],
 
     relatedServices: ['sliding-gate-repair', 'automatic-gate-repair', 'iron-gate-repair'],
-    relatedSymptoms: ['sliding-gate-off-track', 'gate-stops-halfway', 'gate-chain-broken'],
+    relatedSymptoms: ['sliding-gate-off-track', 'gate-track-damaged', 'gate-stops-halfway', 'gate-chain-broken'],
     sources: [
       {
         label: 'ASTM F2200 — automated vehicular gate construction requirements',
@@ -563,7 +569,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
   {
     slug: 'gate-sagging-or-dragging',
     label: 'Gate sagging or dragging',
-    searchedAs: ['Gate Sagging', 'Gate Dragging On Ground', 'Gate Hinge Broken'],
+    searchedAs: ['Gate Sagging', 'Gate Dragging On Ground'],
     applies: 'swing',
     urgency: 'safety',
     urgencyNote:
@@ -731,7 +737,7 @@ export const mechanicalSymptoms: SymptomPage[] = [
     ],
 
     relatedServices: ['swing-gate-repair', 'iron-gate-repair', 'automatic-gate-repair', 'gate-motor-repair'],
-    relatedSymptoms: ['gate-post-leaning', 'swing-gate-stuck', 'gate-stops-halfway'],
+    relatedSymptoms: ['gate-hinge-broken', 'gate-post-leaning', 'swing-gate-stuck', 'gate-stops-halfway'],
     sources: [
       {
         label: 'ASTM F2200 — automated vehicular gate construction requirements',
@@ -1110,6 +1116,548 @@ export const mechanicalSymptoms: SymptomPage[] = [
     ],
     toConfirm: [
       'Whether replacement arms are stocked for the operator brands Shield most commonly services.',
+    ],
+    indexable: true,
+  },
+
+  {
+    slug: 'sliding-gate-stuck',
+    label: 'Sliding gate stuck',
+    searchedAs: ['Sliding Gate Stuck'],
+    applies: 'slide',
+    urgency: 'access',
+    urgencyNote:
+      'A stuck slide gate usually blocks the only way in or out. If it is still sitting on its track, the steps below are safe; if it has dropped off the track or is leaning, stay clear of it and call instead.',
+
+    title: 'Sliding Gate Stuck? How to Tell What Is Holding It | DFW',
+    metaDescription:
+      'Slide gate stuck and will not move by remote or by hand? How to tell a locked operator, jammed rollers, chain or rack faults and debris apart — safely.',
+    h1: 'Sliding Gate Stuck — What Is Holding It',
+    heroIntro:
+      'A slide gate that will not move is being held by one of three things: the operator, the hardware it rolls on, or something in its path. One test — releasing the operator and trying it by hand — tells you which, and that decides everything that follows.',
+    heroPoints: [
+      'We separate an operator that will not drive from a gate that will not roll before touching anything',
+      'Chain, rack and pinion drives are checked for engagement, not just tension',
+      'If the gate is still on its track we keep it there — the repair starts from where it is',
+    ],
+
+    whatIsHappening: [
+      {
+        heading: 'Stuck by remote, or stuck by hand?',
+        body: [
+          'Owners describe two very different situations as a stuck slide gate. In the first, nothing happens when the remote is pressed, but the gate rolls easily once the operator is released. That is an operator or drive fault, and the gate itself is fine. In the second, the gate will not move even with the operator disconnected. That is a gate fault — rollers, guides, track or an obstruction — and no amount of electrical work will free it.',
+          'The test that separates them takes a minute. Use the manual release on your operator, then try to roll the gate a foot in each direction with steady pressure. A healthy slide gate on good rollers moves with one hand. If it fights you, stop and look at what it is fighting against before pushing harder.',
+        ],
+      },
+      {
+        heading: 'How a slide gate is driven, and where that drive can jam',
+        body: [
+          'Most slide gate operators in the region move the gate one of two ways. Many American units — common LiftMaster, DoorKing, Elite and US Automatic slide operators — pull the gate with a roller chain bolted to brackets at each end of the gate and wrapped through idler and drive sprockets inside the operator. Many European designs from FAAC, BFT and Nice drive a toothed gear rack fixed along the gate with a pinion on the operator.',
+          'Both can jam the gate even when the motor and rollers are healthy. A chain that has jumped an idler can wedge itself in the operator; a rack whose bolts have worked loose can drop onto the pinion and bind; a bracket that has torn from the gate leaves the operator running and the gate going nowhere. These are inspected visually, which is why a photograph of the operator side of the gate is genuinely useful when you call.',
+        ],
+      },
+    ],
+
+    causes: [
+      {
+        cause: 'Something in the track or in the gate’s pocket',
+        likelihood: 'most common',
+        howToTell:
+          'The gate rolls part of the way by hand and then stops hard. Look at the track ahead of the wheels and at the space the gate retracts into beside the fence — stones, a fallen branch, a toy, a trash bin or a drift of gravel are all common.',
+        fix: 'Clearing it. If gravel or soil keeps arriving in the same place, edging the drive or redirecting run-off stops it recurring.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'Operator still engaged, or release not working',
+        likelihood: 'most common',
+        howToTell:
+          'With the release supposedly operated, the gate will not move at all and you can feel the gearbox resisting. On some chain-driven operators the release is a lever on the gearbox; on others the chain has to be lifted off or disconnected at a bracket. If the release lever moves but nothing changes, the mechanism may be seized.',
+        fix: 'Following the correct release procedure for your model usually frees it. A seized release mechanism needs cleaning or replacing, which is a technician job.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Seized or collapsed wheels',
+        likelihood: 'common',
+        howToTell:
+          'The gate is on its track but drags rather than rolls, often with grinding or a squeal, and you may see a wheel that does not turn as the gate is pushed. Rust streaks on the wheel or track are a common sign.',
+        fix: 'Replacing the wheels, as a set where they have all aged together. A gate pushed or driven on a seized wheel wears a flat in the wheel and damages the track.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Gate bound in its guide rollers',
+        likelihood: 'common',
+        howToTell:
+          'The gate leans or presses hard against one side of the upright guide rollers at the post, and moves more easily if you pull the top slightly away from them. Often follows a post shifting or a guide bracket being knocked.',
+        fix: 'Re-adjusting or replacing the guides and, if the post has moved, addressing the post so the gate runs plumb again.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Chain off its sprockets, or rack out of mesh with the pinion',
+        likelihood: 'common',
+        howToTell:
+          'The gate rolls freely with the operator released but jams or crunches when driven. Look at the operator: a chain that is slack, twisted, or riding up on a sprocket; or a rack that is gapped, sagging or riding on top of the pinion.',
+        fix: 'Re-seating and tensioning the chain, or re-fixing and re-spacing the rack along its length. Worn sprockets or stripped rack teeth get replaced, or the fault simply recurs.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Lock, latch or drop bolt engaged',
+        likelihood: 'less common',
+        howToTell:
+          'The gate will not move at all from the closed position, by remote or by hand. Check for a manual drop bolt, a padlock or chain added by someone, or on commercial entrances an electric lock or maglock that has not released.',
+        fix: 'Lifting the bolt or unlocking it frees the gate immediately. An electric lock that will not release is an access-control fault and needs a technician.',
+        ownerCanFix: true,
+      },
+    ],
+
+    checkFirst: [
+      {
+        step: 'Make sure the gate is still on its track',
+        body: 'Look at the bottom of the gate from a safe distance. If any wheel is off the track or the gate is leaning, stop here — the gate is unsupported and should not be pushed. If it is sitting squarely on the track, carry on.',
+      },
+      {
+        step: 'Release the operator and try it by hand',
+        body: 'Use the manual release for your model, then push the gate steadily a short way in each direction. Freely rolling means the fault is in the operator or drive; refusing to roll means the gate hardware or an obstruction.',
+      },
+      {
+        step: 'Walk the full length of the track and the pocket',
+        body: 'Check the track the wheels run on and the space the gate slides into when open. Remove anything loose you find, keeping hands clear of the gate while anyone else is near the controls.',
+      },
+      {
+        step: 'Photograph the operator side of the gate',
+        body: 'A picture of the chain or rack, the brackets at each end and the guide rollers at the post often identifies the fault before a technician arrives, and lets them bring the right parts.',
+      },
+    ],
+
+    doNot: [
+      'Do not push or pull a slide gate that has come off its track or is leaning — it can fall.',
+      'Do not use a vehicle to shove a stuck gate open.',
+      'Do not put fingers near the chain, sprockets, rack or pinion while anyone could operate the gate.',
+      'Do not lubricate the ground track; oil collects grit and accelerates wear on the wheels.',
+    ],
+
+    outlook: {
+      summary:
+        'A stuck slide gate that is still on its track is usually a modest repair: an obstruction, a release, a chain or rack that needs re-seating, or a set of wheels. The costs rise when it has been forced — pushed off the track, a chain snapped by the operator, or a bracket torn from the gate — so it pays to find the cause before the gate is moved hard.',
+      usuallyRepair: [
+        'Obstructions and drainage feeding debris into the track',
+        'Manual release mechanisms',
+        'Chain re-seating, tensioning and sprockets',
+        'Gear rack re-fixing and re-spacing',
+        'Wheels and upright guide rollers',
+      ],
+      sometimesReplace: [
+        'A gear rack with stripped teeth along much of its length',
+        'A gate frame bent by being forced while bound',
+        'An operator whose gearbox was damaged driving a gate that could not move',
+      ],
+    },
+
+    dfw: [
+      {
+        heading: 'Wind-blown debris and long, heavy slide gates',
+        body: [
+          'Slide gates are common across the region’s acreage properties and commercial yards, often long and heavy, and they sit across driveways that collect whatever the wind and the last downpour brought in. A North Texas storm front can fill a track and a gate pocket with debris in a single afternoon, and a gate that ran perfectly that morning is stuck by the evening.',
+          'The other local factor is ground movement. Expansive clay soil shifts posts and slabs seasonally, and a post that moves a fraction pulls the upright guide rollers with it. The gate starts to press against one side of its guides — gradually at first, then enough to stop it — which is why a slide gate can stick in late summer and free itself again after the autumn rains.',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        q: 'My slide gate will not open with the remote. Can I push it open?',
+        a: 'If it is still sitting squarely on its track, yes — use the manual release first, then push steadily. If it rolls freely, the fault is in the operator and you can leave the gate open or closed by hand until it is repaired. If it will not roll, do not force it; something is holding it and forcing it usually causes more damage.',
+      },
+      {
+        q: 'The gate rolls fine by hand but jams when the motor drives it. Why?',
+        a: 'The drive is out of engagement. On chain-driven operators the chain may have jumped a sprocket or lost tension; on rack-driven operators the rack may have loosened and dropped onto the pinion. Both are visible from the operator side and both are usually short repairs, provided the gate has not been forced.',
+      },
+      {
+        q: 'Is a stuck slide gate the same as one that is off its track?',
+        a: 'No, and the difference matters for safety. A gate still on its track is supported and can be checked carefully by hand. A gate that has come off its track is unsupported, can fall, and should be left alone until it is re-seated properly.',
+      },
+      {
+        q: 'It sticks in summer and frees up after rain. What is going on?',
+        a: 'Most likely ground movement. Clay soil shrinks in a dry summer and swells after rain, moving the posts and slab slightly. That can push the gate against its guide rollers or lift part of the track, and the bind comes and goes with the weather. The repair is to the guides, track or post rather than the operator.',
+      },
+    ],
+
+    relatedServices: ['sliding-gate-repair', 'automatic-gate-repair', 'gate-motor-repair'],
+    relatedSymptoms: ['sliding-gate-off-track', 'gate-roller-or-wheel-broken', 'gate-chain-broken', 'gate-track-damaged'],
+    sources: [
+      {
+        label: 'DoorKing slide gate operator manuals — chain installation and manual release',
+        url: 'https://www.doorking.com/gate-operators',
+      },
+      {
+        label: 'FAAC sliding gate operator manuals — gear rack installation and pinion clearance',
+        url: 'https://www.faacusa.com/',
+      },
+      {
+        label: 'ASTM F2200 — automated vehicular gate construction requirements',
+        url: 'https://www.astm.org/f2200-21.html',
+      },
+    ],
+    toConfirm: [
+      'Whether Shield services rack-and-pinion slide operators as well as chain-driven ones, as this page implies.',
+    ],
+    indexable: true,
+  },
+
+  {
+    slug: 'gate-track-damaged',
+    label: 'Gate track damaged',
+    searchedAs: ['Gate Track Damaged'],
+    applies: 'slide',
+    urgency: 'safety',
+    urgencyNote:
+      'A damaged track lets the gate wheels climb, drop or wander, and a slide gate that leaves its track can fall. If the gate rocks, lifts or jolts as it passes the damage, stop using it until it has been looked at.',
+
+    title: 'Gate Track Damaged — Repair or Replace? | DFW',
+    metaDescription:
+      'Bent, crushed, worn or loose slide gate track? How each kind of damage shows, what can be straightened or re-anchored, and when a section needs replacing.',
+    h1: 'Gate Track Damaged — What Can Be Saved',
+    heroIntro:
+      'The ground track under a slide gate is a strip of steel taking the whole weight of the gate on a line no wider than a finger. When it is bent, worn or loose, the wheels stop running true, and everything above it — wheels, operator, gate frame — starts to suffer.',
+    heroPoints: [
+      'We identify the track profile and wheel groove before choosing a repair, so the two still match afterwards',
+      'Bent sections are cut out and replaced where straightening would leave a weak spot',
+      'Anchors and the concrete under the track are checked, not just the steel you can see',
+    ],
+
+    whatIsHappening: [
+      {
+        heading: 'What a gate track actually is',
+        body: [
+          'Most residential slide gates run on V-groove wheels sitting on an inverted angle iron — a steel angle laid point-up so the wheels ride its ridge. Others use U-groove wheels on round bar or pipe, or a flat-bottomed channel set flush into the drive. The track is either bolted to the concrete with anchors, welded to plates set in the slab, or cast into the concrete itself.',
+          'Whatever the type, the job is the same: keep the gate wheels on a straight, level line so the gate rolls without climbing or dropping. The wheel groove and the track profile are a matched pair. A wheel running on the wrong profile, or on a ridge that has been worn flat, rides loose and can step off.',
+        ],
+      },
+      {
+        heading: 'How tracks get damaged',
+        body: [
+          'The commonest damage is from vehicles. A low steel ridge across a driveway is crossed by every car, and occasionally by something much heavier — a concrete truck, a removal van, a skid steer, a trash truck turning across it. One heavy wheel can flatten or kink a section that cars have crossed for years without harm.',
+          'The rest is slower. Wheels wear the ridge of a V-track gradually; rust attacks the base where water sits; anchor bolts loosen as the slab expands and contracts; and the concrete under the track cracks, leaving a length of steel unsupported. Each of these shows itself first as a bump, a rock or a change in sound at one point in the gate’s travel.',
+        ],
+      },
+    ],
+
+    causes: [
+      {
+        cause: 'Section bent or crushed by a vehicle',
+        likelihood: 'most common',
+        howToTell:
+          'Sight along the track from one end at ground level. A kink, a flattened stretch or a section pushed sideways is usually obvious. The gate jolts, lifts or grinds at exactly that point.',
+        fix: 'Straightening only where the steel has bent cleanly and the profile is intact. A crushed or kinked ridge is cut out and a new length welded or bolted in, aligned with the track either side.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Track ridge worn flat or sharp',
+        likelihood: 'common',
+        howToTell:
+          'On angle-iron track, the point that was once a crisp ridge has worn into a flat or a knife edge, and the wheels rock from side to side. The wheel grooves may also be worn into a matching shape.',
+        fix: 'Replacing the worn run of track, and usually the wheels with it, so the new profile and the grooves match. Replacing only one of the pair gives a short life.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Anchors loose or pulled from the concrete',
+        likelihood: 'common',
+        howToTell:
+          'The track moves or lifts when the gate passes over it, or you can see anchor bolts standing proud or spinning in their holes. Sometimes there is a click as each wheel passes a loose section.',
+        fix: 'Re-anchoring into sound concrete with new fixings, offset from the old holes. Where the concrete around the anchors has broken up, that needs repairing first.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Nuts on a bolt-down track backed off',
+        likelihood: 'common',
+        howToTell:
+          'The anchors themselves are firm in the concrete, but the nuts holding the track down have loosened and the track lifts slightly under the wheels. Check each fixing with the gate at rest.',
+        fix: 'Tightening the nuts snugly with a wrench, with the gate stationary and the operator released. If an anchor spins or the concrete crumbles as you tighten, stop — that is the previous cause and needs proper re-anchoring.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'Concrete under the track cracked, settled or heaved',
+        likelihood: 'common',
+        howToTell:
+          'A crack in the driveway crosses the track line, or the track is visibly higher or lower on one side of the crack. The steel may be intact but no longer level, and the gate climbs or drops at that point.',
+        fix: 'Re-setting the track level, which often means cutting out and re-pouring a strip of concrete under it. On ground that keeps moving, a cantilever gate with no ground track is worth discussing.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Rust at the base or at joints between sections',
+        likelihood: 'less common',
+        howToTell:
+          'Flaking or holed steel where water sits against the track, or a step where two lengths of track meet and no longer line up. The wheels bump at the joint on every pass.',
+        fix: 'Cutting out the corroded length and replacing it, or re-aligning and joining the sections. Drainage at low spots is addressed so the new section does not rust the same way.',
+        ownerCanFix: false,
+      },
+    ],
+
+    checkFirst: [
+      {
+        step: 'Sight along the track at ground level',
+        body: 'Crouch at one end and look along the track towards the other. Bends, flattened sections, steps at joints and places where the track rises or dips stand out clearly from this angle, much more than from standing height.',
+      },
+      {
+        step: 'Watch the wheels as the gate passes the damage',
+        body: 'From a safe distance and to one side, watch the gate roll over the suspect point. A wheel that lifts, drops, rocks sideways or slides off the ridge tells you the damage is affecting the gate now, and the gate should be taken out of use.',
+      },
+      {
+        step: 'Check the fixings with the gate stopped',
+        body: 'With the operator released and the gate still, look at each anchor and nut along the track. Note any that are loose, spinning or missing, and where the concrete around them is cracked.',
+      },
+      {
+        step: 'Keep heavy vehicles off the track',
+        body: 'Until it is repaired, ask delivery and service drivers not to cross the track with heavy wheels, or to cross it square rather than turning on it. That stops one bent section becoming three.',
+      },
+    ],
+
+    doNot: [
+      'Do not hammer a bent track back into line with the gate on it.',
+      'Do not shim or pack under a bend and carry on using the gate — the load goes straight into the wheels.',
+      'Do not keep running a gate whose wheels lift or slide off the ridge at the damaged point; that is how a gate comes off its track.',
+      'Do not try to lift the gate to inspect under it. Slide gates are heavy and unstable once lifted.',
+    ],
+
+    outlook: {
+      summary:
+        'Damaged track is very often repairable in sections. Cleanly bent steel can sometimes be straightened, crushed or worn lengths replaced, and loose track re-anchored, without replacing the whole run. A full new track, and sometimes a strip of new concrete, is needed when the damage is widespread or the slab underneath keeps moving.',
+      usuallyRepair: [
+        'Cutting out and replacing damaged lengths of track',
+        'Re-anchoring loose track into sound concrete',
+        'Re-aligning joints between sections',
+        'Replacing wheels to match a new track profile',
+      ],
+      sometimesReplace: [
+        'An entire track run worn or rusted along most of its length',
+        'Track set in a slab that has broken up, where the concrete has to be re-poured',
+        'A ground-track installation on actively moving ground, where a cantilever design is the durable answer',
+      ],
+    },
+
+    dfw: [
+      {
+        heading: 'Construction traffic and moving slabs',
+        body: [
+          'The metroplex has been building continuously for decades, and new houses, pools, additions and landscaping all bring heavy vehicles through gated drives. Concrete trucks, dump trucks and skid steers are the commonest cause of crushed track we see described, and it is worth telling contractors where your track is before they arrive.',
+          'Under the track, the region’s expansive clay does the rest. Driveway slabs crack along the lines the soil moves them, and a crack across a track line lets one side rise or settle relative to the other. That is why re-levelling, and occasionally re-pouring a strip of concrete under the track, comes up so often here.',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        q: 'Can a bent gate track be straightened?',
+        a: 'Sometimes. A section that has bent cleanly without crushing its profile can often be brought back into line. A section that has been flattened, kinked or cracked is better cut out and replaced, because straightened steel that has been crushed stays weak and the wheels will find the weak spot.',
+      },
+      {
+        q: 'Does the whole track have to be replaced?',
+        a: 'Usually not. Most damage is local — one crushed section, a few loose anchors, a rusty low spot — and those lengths can be replaced on their own. A whole new run makes sense when the profile is worn along most of its length or the slab under it is breaking up.',
+      },
+      {
+        q: 'Do the wheels need replacing too?',
+        a: 'If the track profile is changing, or the old wheels have worn to match a damaged ridge, yes. The wheel groove and the track have to fit each other; a worn wheel on a fresh track or a new wheel on a worn one wears out quickly and rides badly.',
+      },
+      {
+        q: 'Is it safe to use the gate with a damaged track?',
+        a: 'Only if the wheels pass the damage without lifting, dropping or rocking. If they do any of those, the gate can step off the track and fall, so take it out of use, open it by hand if you need to, and keep people clear until it is repaired.',
+      },
+    ],
+
+    relatedServices: ['sliding-gate-repair', 'iron-gate-repair', 'automatic-gate-repair'],
+    relatedSymptoms: ['sliding-gate-off-track', 'gate-roller-or-wheel-broken', 'sliding-gate-stuck'],
+    sources: [
+      {
+        label: 'ASTM F2200 — Standard Specification for Automated Vehicular Gate Construction',
+        url: 'https://www.astm.org/f2200-21.html',
+      },
+      {
+        label: 'DoorKing slide gate operator installation manuals — track and gate requirements',
+        url: 'https://www.doorking.com/gate-operators',
+      },
+    ],
+    toConfirm: [
+      'Whether Shield cuts and re-pours concrete under a track in house or subcontracts it.',
+      'Whether cantilever conversion is offered, since this page mentions it as an option.',
+    ],
+    indexable: true,
+  },
+
+  {
+    slug: 'gate-hinge-broken',
+    label: 'Gate hinge broken',
+    searchedAs: ['Gate Hinge Broken'],
+    applies: 'swing',
+    urgency: 'safety',
+    urgencyNote:
+      'A swing gate with a broken hinge is held up by whatever is left — one hinge, the operator arm, or the latch — and none of those is designed to carry it. Stop operating it and keep people and cars out of the area it could fall into.',
+
+    title: 'Gate Hinge Broken? Make It Safe, Then Repair | DFW',
+    metaDescription:
+      'Swing gate hinge snapped, weld cracked or hinge torn from the post? How to make the gate safe, which hinge types fail how, and what a lasting repair involves.',
+    h1: 'Gate Hinge Broken — Making It Safe and Fixing It',
+    heroIntro:
+      'A broken hinge is not a slow sag; it is a sudden change in what is holding the gate up. The first job is to make sure the leaf cannot fall on anyone. The second is to work out why the hinge failed, because a heavy gate on a replacement hinge fails again if the cause is still there.',
+    heroPoints: [
+      'We secure the leaf before any hinge work starts, so it cannot drop while being repaired',
+      'Hinges are matched to the gate’s weight and width, not to what was there before',
+      'The operator arm geometry is checked, because a mis-set arm breaks hinges',
+    ],
+
+    whatIsHappening: [
+      {
+        heading: 'The hinge types on DFW gates, and how each one breaks',
+        body: [
+          'Welded steel and ornamental iron gates usually hang on weld-on barrel hinges, heavy ball-bearing hinges, or a top bracket with a bottom pivot sitting in a cup. These rarely break in the middle; they break at the weld that joins them to the gate or the post, or the pin wears and shears, or the bearing inside collapses. Wooden and lighter gates hang on bolt-through strap hinges or adjustable J-bolt hinges, which more often tear their fixings out of the post than break outright.',
+          'Each failure looks different. A cracked weld lets the leaf drop at one corner and swing out of line. A sheared pin can let the leaf lift off entirely. A collapsed bearing grinds and lets the leaf settle. Fixings pulling from a wooden post leave the hinge hanging loose with the screws or bolts visible. Knowing which you have tells you whether the repair is welding, a part, or a new post.',
+        ],
+      },
+      {
+        heading: 'Why automatic gates are hard on hinges',
+        body: [
+          'A swing gate operator pushes the leaf from a point some distance from the hinge, and every start and stop is a sideways shove the hinges have to resist. If the operator arm is set at the wrong geometry, if there is no positive stop for the gate to close against, or if the gate is allowed to slam to a halt at either end of its travel, the hinges absorb that every cycle.',
+          'Add a leaf heavier than the hinges were chosen for — common after privacy panels or decorative infill are added — and a hinge that would have lasted decades on a manual gate fatigues in a few years. That is why a lasting repair looks at the operator and the gate’s weight as well as the broken part.',
+        ],
+      },
+    ],
+
+    causes: [
+      {
+        cause: 'Weld cracked between hinge and gate or post',
+        likelihood: 'most common',
+        howToTell:
+          'A visible crack, often rust-stained, along the weld where the hinge meets the frame or the post. The leaf has dropped at its free end, and the gap at the latch side has changed suddenly rather than over months.',
+        fix: 'Grinding out and re-welding with a proper weld, or fitting a new hinge where the old one is damaged. The welder will often reinforce the joint, since it has already shown it is the weak point.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Hinge pin worn through or sheared',
+        likelihood: 'common',
+        howToTell:
+          'The two halves of the hinge have separated, or there is so much play that the leaf lifts and drops noticeably when pushed. Metal shavings or a polished, thinned pin are signs it has been wearing for a long time.',
+        fix: 'Replacing the hinge as a whole, usually with a heavier or bearing-type hinge rated for the leaf. Replacing only the pin rarely lasts if the barrel is worn as well.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Ball bearing collapsed inside the hinge',
+        likelihood: 'common',
+        howToTell:
+          'Grinding or a gritty crunch as the gate swings, and a leaf that settles slightly lower than it used to. Heavy-duty bearing hinges fail this way when water and grit get into the bearing.',
+        fix: 'Replacing the hinge. Sealed or greaseable bearing hinges are worth the extra cost on heavy leaves in a wet, gritty climate.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Hinge fixings torn out of a wooden post',
+        likelihood: 'common',
+        howToTell:
+          'On timber gates and posts, the hinge plate hangs away from the post with screws or bolts pulled partly out, and the wood around them is split or soft. Rot at the post is common where it meets the ground.',
+        fix: 'Re-fixing into sound wood with through-bolts where the post is healthy, or replacing the post where it has rotted. Longer screws into rotten timber do not hold.',
+        ownerCanFix: false,
+      },
+      {
+        cause: 'Hinge nuts or J-bolts loosened',
+        likelihood: 'common',
+        howToTell:
+          'On adjustable or bolt-on hinges the hinge itself is intact but the nuts have worked loose, letting the leaf drop and move. There is no crack and no broken metal, just play at the fixings.',
+        fix: 'With the operator released and someone supporting the leaf, tighten the nuts back to snug and re-set the adjustment so the gate hangs level. If a bolt spins without tightening or the fixing is cracked, stop and call.',
+        ownerCanFix: true,
+      },
+      {
+        cause: 'Bottom pivot or post cap bracket failed',
+        likelihood: 'less common',
+        howToTell:
+          'Heavy ornamental gates hung on a bottom pivot and top bracket. The leaf has shifted off its pivot cup, the cup is cracked, or the top bracket has bent or torn from the post. The gate may lean outwards at the top.',
+        fix: 'Re-seating the leaf on a new pivot and re-fixing or replacing the top bracket. These gates are heavy enough that the leaf is supported mechanically during the work.',
+        ownerCanFix: false,
+      },
+    ],
+
+    checkFirst: [
+      {
+        step: 'Stop the operator and keep everyone clear',
+        body: 'Switch the operator off at its power switch or breaker so nobody can trigger it, and keep people, pets and cars away from the area the leaf could fall into. Do this before looking closely at anything.',
+      },
+      {
+        step: 'Look at each hinge from a safe position',
+        body: 'Without standing under or beside the leaf, look at the top and bottom hinges. Note whether there is a crack at a weld, a gap between hinge halves, a hinge hanging loose from the post, or bolts pulled out.',
+      },
+      {
+        step: 'Support the leaf only if it is safe to',
+        body: 'If the free end has dropped to the ground, it is often best left resting there. If it is hanging and you have solid blocking that can be slid under the free end without putting yourself in the fall path, that takes weight off the remaining hinge. If in doubt, leave it and call.',
+      },
+      {
+        step: 'Photograph the hinge and the whole gate',
+        body: 'A close-up of the broken hinge and a wide shot of the gate and operator tell a technician which hinge type, which welding or parts, and how much support the leaf will need — so the visit can be a repair rather than an inspection.',
+      },
+    ],
+
+    doNot: [
+      'Do not run the operator on a gate with a broken hinge, even once to get it closed.',
+      'Do not try to lift a heavy leaf back into place by hand. Iron and steel swing gates can weigh several hundred pounds.',
+      'Do not stand in the fall path of a leaf hanging from one hinge.',
+      'Do not tack the break together with a quick weld or wire and put the gate back in service.',
+    ],
+
+    outlook: {
+      summary:
+        'A broken hinge is normally a repair, not a new gate. Welds can be re-made, hinges replaced with heavier ones, and fixings re-made into sound material. What turns it into a larger job is a gate frame bent by the drop, a post that has rotted or moved, or an operator that kept running after the hinge failed.',
+      usuallyRepair: [
+        'Re-welding cracked hinge welds',
+        'Replacing worn, sheared or collapsed hinges with correctly rated ones',
+        'Re-fixing hinges into sound posts with through-bolts',
+        'Re-seating gates on new bottom pivots and top brackets',
+        'Adjusting operator arm geometry and fitting positive stops',
+      ],
+      sometimesReplace: [
+        'A wooden post that has rotted at the hinge fixings',
+        'A gate frame twisted when the leaf dropped',
+        'An operator arm or bracket bent by driving a gate that had partly fallen',
+      ],
+    },
+
+    dfw: [
+      {
+        heading: 'Heavy iron, hot steel and moving posts',
+        body: [
+          'Many of the established neighbourhoods across Dallas–Fort Worth have heavy ornamental iron swing gates, some decades old, on hinges chosen when the gate was lighter or was opened by hand. Fitting an operator to an older gate without upgrading its hinges is one of the commonest reasons we see a hinge weld crack years later.',
+          'Summer adds its own load. Steel in direct Texas sun expands and contracts every day, and welds that already carry a heavy leaf see that cycle hundreds of times a year. Expansive clay moves posts seasonally as well, which puts the hinges out of line and adds a twist to every swing. None of these breaks a hinge on its own; together they find the weakest weld.',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        q: 'Can a broken gate hinge be welded back on?',
+        a: 'Often, yes. On welded steel and iron gates the most common failure is the weld rather than the hinge, and a properly prepared and re-made weld is a sound repair. If the hinge itself is worn or damaged, it is replaced rather than re-welded, usually with a heavier one.',
+      },
+      {
+        q: 'Is a broken hinge the same as a sagging gate?',
+        a: 'They are related, but a broken hinge is sudden and more dangerous. Sag usually develops over months from wear or a moving post, and the gate keeps working while it drags. A broken hinge changes what is holding the gate up overnight, and the leaf can fall, so the gate should be taken out of service immediately.',
+      },
+      {
+        q: 'Why did my hinge break when the gate is only a few years old?',
+        a: 'Usually because of load the hinge was not chosen for: a heavier leaf than expected, an operator arm set at the wrong geometry, a gate that slams into its stop, or no stop at all. A lasting repair corrects whichever of those applies, or the replacement hinge will follow the original.',
+      },
+      {
+        q: 'Can I still open the gate to get my car out?',
+        a: 'Only if it can be done without standing in the leaf’s fall path and without the leaf dropping further. Often the safer option is to leave it where it is and use another exit, or call us and describe it — we would rather talk you through whether it is safe than have you lift a heavy leaf alone.',
+      },
+    ],
+
+    relatedServices: ['swing-gate-repair', 'iron-gate-repair', 'automatic-gate-repair', 'emergency-gate-repair'],
+    relatedSymptoms: ['gate-sagging-or-dragging', 'gate-post-leaning', 'swing-gate-stuck'],
+    sources: [
+      {
+        label: 'ASTM F2200 — automated vehicular gate construction requirements',
+        url: 'https://www.astm.org/f2200-21.html',
+      },
+      {
+        label: 'LiftMaster swing gate operator manuals — arm geometry, positive stops and gate hardware requirements',
+        url: 'https://www.liftmaster.com/service-and-support/manuals',
+      },
+    ],
+    toConfirm: [
+      'Whether Shield carries out hinge welding on site in house, which the iron-gate-repair service implies.',
+      'Whether temporary securing of a dropped leaf is offered as an emergency call-out.',
     ],
     indexable: true,
   },
