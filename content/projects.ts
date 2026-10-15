@@ -23,6 +23,7 @@
 
 import { clientCaseStudies } from './case-studies-client'
 import { caseStudyPhotos } from './case-study-media'
+import { nearestSpread } from './city-coordinates'
 
 export type Project = {
   slug: string
@@ -698,6 +699,25 @@ export const projectsForBrand = (brand: string) =>
  */
 export const projectsForCity = (citySlug: string) =>
   projects.filter((p) => p.citySlug === citySlug)
+
+/**
+ * The nearest documented jobs from OTHER cities, closest first.
+ *
+ * For the city pages that have no job of their own yet (most of them). Each
+ * job keeps its real city: the card shows "Richardson, TX", never the page's
+ * city, so the section is evidence of nearby work rather than a claim about
+ * this city. Distance is straight-line between city centres, capped so a
+ * Denton page does not cite a Waxahachie job as "near".
+ */
+export function nearbyProjects(citySlug: string, limit = 3, maxMiles = 35): { project: Project; miles: number }[] {
+  return nearestSpread(
+    citySlug,
+    projects.filter((p) => p.verified),
+    (p) => p.citySlug,
+    limit,
+    maxMiles,
+  ).map(({ item, miles }) => ({ project: item, miles }))
+}
 
 /**
  * Case studies for a model page, keyed '<brandSlug>/<slug>'.

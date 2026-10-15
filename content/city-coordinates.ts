@@ -27,6 +27,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'aurora': { lat: 33.05958, lng: -97.51107 },
   'azle': { lat: 32.89759, lng: -97.54378 },
   'balch-springs': { lat: 32.72874, lng: -96.62277 },
+  'bartonville': { lat: 33.07318, lng: -97.13168 },
   'bedford': { lat: 32.84402, lng: -97.14307 },
   'benbrook': { lat: 32.67319, lng: -97.46058 },
   'blue-ridge': { lat: 33.29928, lng: -96.40212 },
@@ -57,6 +58,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'corinth': { lat: 33.15401, lng: -97.06473 },
   'crandall': { lat: 32.62791, lng: -96.45582 },
   'cresson': { lat: 32.53059, lng: -97.61722 },
+  'cross-roads': { lat: 33.23128, lng: -97.00911 },
   'crowley': { lat: 32.57835, lng: -97.35855 },
   'dallas': { lat: 32.77627, lng: -96.79686 },
   'decatur': { lat: 33.23428, lng: -97.58614 },
@@ -97,6 +99,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'haltom-city': { lat: 32.79957, lng: -97.26918 },
   'haslet': { lat: 32.97445, lng: -97.34826 },
   'heath': { lat: 32.83651, lng: -96.47499 },
+  'hickory-creek': { lat: 33.12234, lng: -97.04306 },
   'highland-park': { lat: 32.83346, lng: -96.79195 },
   'highland-village': { lat: 33.09179, lng: -97.04668 },
   'howe': { lat: 33.50733, lng: -96.61266 },
@@ -116,12 +119,15 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'lake-dallas': { lat: 33.11929, lng: -97.02556 },
   'lake-worth': { lat: 32.80485, lng: -97.44502 },
   'lancaster': { lat: 32.59208, lng: -96.75611 },
+  'lantana': { lat: 33.09351, lng: -97.12 },
+  'lavon': { lat: 33.02762, lng: -96.43415 },
   'leonard': { lat: 33.38355, lng: -96.2445 },
   'lewisville': { lat: 33.04623, lng: -96.99417 },
   'lindsay': { lat: 33.63601, lng: -97.222 },
   'lipan': { lat: 32.51847, lng: -98.04587 },
   'little-elm': { lat: 33.16262, lng: -96.93751 },
   'lone-oak': { lat: 32.99517, lng: -95.94194 },
+  'lowry-crossing': { lat: 33.15484, lng: -96.54721 },
   'lucas': { lat: 33.08429, lng: -96.57666 },
   'mabank': { lat: 32.36653, lng: -96.10081 },
   'malakoff': { lat: 32.1696, lng: -96.01247 },
@@ -137,6 +143,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'morgan-mill': { lat: 32.38819, lng: -98.16726 },
   'muenster': { lat: 33.65153, lng: -97.37628 },
   'murphy': { lat: 33.01512, lng: -96.61305 },
+  'nevada': { lat: 33.04007, lng: -96.37306 },
   'new-fairview': { lat: 33.09917, lng: -97.44639 },
   'newark': { lat: 33.00124, lng: -97.48447 },
   'nocona': { lat: 33.78885, lng: -97.72674 },
@@ -162,6 +169,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'rendon': { lat: 32.57625, lng: -97.2414 },
   'rhome': { lat: 33.05346, lng: -97.47197 },
   'richardson': { lat: 32.94818, lng: -96.72972 },
+  'richland-hills': { lat: 32.81596, lng: -97.22807 },
   'rio-vista': { lat: 32.23348, lng: -97.37446 },
   'roanoke': { lat: 33.00401, lng: -97.22585 },
   'rockwall': { lat: 32.93123, lng: -96.45971 },
@@ -190,6 +198,7 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'valley-view': { lat: 33.48817, lng: -97.16501 },
   'van-alstyne': { lat: 33.42203, lng: -96.57648 },
   'venus': { lat: 32.43347, lng: -97.10251 },
+  'watauga': { lat: 32.85791, lng: -97.25474 },
   'waxahachie': { lat: 32.39449, lng: -96.84394 },
   'weatherford': { lat: 32.75896, lng: -97.79707 },
   'west-tawakoni': { lat: 32.89611, lng: -96.00413 },
@@ -202,4 +211,52 @@ export const CITY_COORDINATES: Record<string, CityCoords> = {
   'wills-point': { lat: 32.7093, lng: -96.0083 },
   'wilmer': { lat: 32.58902, lng: -96.68527 },
   'wylie': { lat: 33.01516, lng: -96.5388 },
+}
+
+/**
+ * Straight-line miles between two service-area cities' centre points, or null
+ * when either has no coordinates. Used to show the nearest real jobs and job
+ * videos on city pages that have none of their own.
+ */
+export function milesBetween(fromSlug: string, toSlug: string): number | null {
+  const a = CITY_COORDINATES[fromSlug]
+  const b = CITY_COORDINATES[toSlug]
+  if (!a || !b) return null
+  const toRad = (d: number) => (d * Math.PI) / 180
+  const dLat = toRad(b.lat - a.lat)
+  const dLng = toRad(b.lng - a.lng)
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2
+  return Math.round(3958.8 * 2 * Math.asin(Math.sqrt(h)))
+}
+
+/**
+ * Nearest-first, but one item per source city before any second item from the
+ * same city, so a page shows the spread of work around it.
+ */
+export function nearestSpread<T>(
+  citySlug: string,
+  items: T[],
+  slugOf: (item: T) => string | undefined,
+  limit: number,
+  maxMiles: number,
+): { item: T; miles: number }[] {
+  const scored = items.flatMap((item) => {
+    const slug = slugOf(item)
+    if (!slug || slug === citySlug) return []
+    const miles = milesBetween(citySlug, slug)
+    return miles === null || miles > maxMiles ? [] : [{ item, miles }]
+  })
+  scored.sort((a, b) => a.miles - b.miles)
+  const seen = new Set<string>()
+  const first: typeof scored = []
+  const rest: typeof scored = []
+  for (const x of scored) {
+    const slug = slugOf(x.item)!
+    if (seen.has(slug)) rest.push(x)
+    else {
+      seen.add(slug)
+      first.push(x)
+    }
+  }
+  return [...first, ...rest].slice(0, limit)
 }

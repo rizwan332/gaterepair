@@ -25,12 +25,12 @@ import { BrandsGrid } from '@/components/sections/brands-grid'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { publishedTestimonials } from '@/content/testimonials'
 import { JobVideos } from '@/components/sections/job-videos'
-import { jobVideosForCity } from '@/content/job-videos'
+import { jobVideosForCity, nearbyJobVideos } from '@/content/job-videos'
 import { localBusinessForCity, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { modelPath, modelKey } from '@/content/models'
 import { brandsForCity, localFaults } from '@/lib/city-links'
 import { CaseStudies } from '@/components/sections/case-studies'
-import { projectsForCity } from '@/content/projects'
+import { projectsForCity, nearbyProjects } from '@/content/projects'
 
 /**
  * City pages.
@@ -154,7 +154,11 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   if (!city || !publishedCities.includes(city)) notFound()
 
   const cityProjects = projectsForCity(city.slug)
+  // Fill up to three with the nearest real jobs from neighbouring cities, each
+  // labelled with its own city. See nearbyProjects in content/projects.ts.
+  const nearbyJobs = cityProjects.length < 3 ? nearbyProjects(city.slug, 3 - cityProjects.length) : []
   const cityJobVideos = jobVideosForCity(city.slug)
+  const nearbyVideos = cityJobVideos.length === 0 ? nearbyJobVideos(city.slug, 3) : []
   /**
    * This city's own testimonial first, where one exists.
    *
@@ -234,6 +238,19 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
           title={`Gate repairs we have completed in ${city.name}`}
           intro={`Photographs and write-ups from actual ${city.name} call-outs — what failed, what we found and what it took to put right.`}
           tone="tint"
+        />
+      )}
+
+      {nearbyJobs.length > 0 && (
+        <CaseStudies
+          items={nearbyJobs.map((j) => j.project)}
+          limit={3}
+          eyebrow="Real jobs nearby"
+          title={`Recent gate repairs near ${city.name}`}
+          intro={`Documented call-outs within ${Math.max(...nearbyJobs.map((j) => j.miles))} miles of ${city.name}, each marked with the city it was done in: ${nearbyJobs
+            .map((j) => `${j.project.city?.replace(/, Texas$/, '')} (${j.miles} mi)`)
+            .join(', ')}. The same team and parts stock cover ${city.name}.`}
+          tone={cityProjects.length > 0 ? 'light' : 'tint'}
         />
       )}
 
@@ -461,11 +478,19 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
       />
 
       {/* Footage from jobs in this city, where we have any. */}
-      <JobVideos
-        items={cityJobVideos}
-        title={`Gate repairs in ${city.name} on video`}
-        intro={`Filmed on site in ${city.name} — the fault, the parts replaced and the gate working again.`}
-      />
+      {cityJobVideos.length > 0 ? (
+        <JobVideos
+          items={cityJobVideos}
+          title={`Gate repairs in ${city.name} on video`}
+          intro={`Filmed on site in ${city.name} — the fault, the parts replaced and the gate working again.`}
+        />
+      ) : (
+        <JobVideos
+          items={nearbyVideos.map((v) => v.video)}
+          title={`Gate repairs near ${city.name} on video`}
+          intro={`Filmed on our own jobs nearby, each marked with its city: ${[...new Set(nearbyVideos.map((v) => `${v.video.city?.replace(/, Texas$/, '')} (${v.miles} mi)`))].join(', ')}.`}
+        />
+      )}
 
       <PhotoGallery
         images={cityPhotos}
