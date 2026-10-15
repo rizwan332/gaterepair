@@ -1,5 +1,6 @@
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
+import { tier1Cities } from '@/content/cities'
 
 /**
  * JSON-LD builders.
@@ -51,7 +52,17 @@ export function organizationSchema(): Json {
     description:
       'Automatic gate repair, installation and service across the Dallas–Fort Worth metroplex. Residential, ' +
       'commercial, HOA and industrial.',
-    areaServed: { '@type': 'AdministrativeArea', name: business.serviceArea.primary },
+    // The metro, then the tier-1 cities by name, each linked to its own page.
+    // A single "Dallas–Fort Worth" told search engines the region but none of
+    // the cities people actually type. 15 Oct 2026.
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: business.serviceArea.primary },
+      ...tier1Cities.map((c) => ({
+        '@type': 'City',
+        name: `${c.name}, TX`,
+        url: `${BASE}/gate-repair-${c.slug}-tx`,
+      })),
+    ],
     // Google will not consider a LocalBusiness for a rich result without an
     // image, and uses `logo` for the knowledge panel. Both are assets we own,
     // so there was no reason for these to be absent. Absolute URLs — schema
@@ -121,8 +132,11 @@ export function webPageSchema(opts: {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${BASE}${opts.url}#webpage`,
-    url: `${BASE}${opts.url}`,
+    // The homepage canonical is the bare origin (no trailing slash), so the
+    // WebPage url says the same rather than "/" — identical URLs, but the
+    // two should not even look different to a validator.
+    '@id': `${BASE}${opts.url === '/' ? '' : opts.url}#webpage`,
+    url: opts.url === '/' ? BASE : `${BASE}${opts.url}`,
     name: opts.name,
     description: opts.description,
     isPartOf: { '@id': `${BASE}/#website` },

@@ -41,9 +41,8 @@ export function BrandsGrid() {
               Gate Operator Brands We Repair
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-700">
-              We fix the operators nobody else wants to touch. Most gate companies replace the whole
-              operator because diagnosing it is harder than selling
-              you a new one. We repair control boards, limit switches, hydraulic pumps and gearboxes on all
+              We repair the operators other companies would rather replace. Swapping the whole operator is
+              easier than diagnosing it, so that is often what gets quoted. We repair control boards, limit switches, hydraulic pumps and gearboxes on all
               of these &mdash; and every tile below is a photograph of that manufacturer&rsquo;s equipment,
               not a logo.
             </p>
@@ -76,9 +75,12 @@ export function BrandsGrid() {
                     </div>
                   )}
                   <div className="relative">
+                    {/* Was "Nobody else covers this": a claim about every competitor
+                        that no visitor can check and one counterexample disproves.
+                        This states what we do instead. Changed 15 Oct 2026. */}
                     {!brand.contested && (
                       <span className="mb-2.5 inline-block rounded-full bg-gold-500 px-2.5 py-0.5 text-[0.6875rem] font-bold uppercase tracking-wide text-ink-950">
-                        Nobody else covers this
+                        Factory-level repair
                       </span>
                     )}
                     <p className="font-display text-xl font-bold text-white">{brand.name}</p>
