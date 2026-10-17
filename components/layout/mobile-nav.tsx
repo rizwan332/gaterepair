@@ -77,7 +77,8 @@ const COMPANY_LINKS = [
 
 type SectionId = 'problems' | 'services' | 'brands' | null
 
-export function MobileNav() {
+/** `blogLive` comes from the server header so no post content reaches the client bundle. */
+export function MobileNav({ blogLive = false }: { blogLive?: boolean }) {
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [section, setSection] = useState<SectionId>(null)
@@ -312,7 +313,7 @@ export function MobileNav() {
 
                 {/* ── Everything else, plainly, without competing ────────── */}
                 <ul className="mt-4 border-t border-ink-100 pt-3">
-                  {COMPANY_LINKS.map((l) => (
+                  {[...COMPANY_LINKS, ...(blogLive ? [{ href: '/blog', label: 'Gate repair guides' }] : [])].map((l) => (
                     <Item key={l.href} href={l.href} current={pathname} onClick={close}>
                       {l.label}
                     </Item>

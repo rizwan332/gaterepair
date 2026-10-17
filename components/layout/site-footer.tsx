@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { blogIsLive } from '@/content/blog'
 import { Phone, Mail, Clock, MapPin } from 'lucide-react'
 import { business, socialProfiles } from '@/content/business'
 import { SOCIAL_ICONS } from '@/components/ui/social-icons'
@@ -185,6 +186,11 @@ export function SiteFooter() {
             <Link href="/faq" className="hover:text-ink-200">
               FAQs
             </Link>
+            {blogIsLive && (
+              <Link href="/blog" className="hover:text-ink-200">
+                Gate Repair Guides
+              </Link>
+            )}
             <Link href="/privacy-policy" className="hover:text-ink-200">
               Privacy Policy
             </Link>

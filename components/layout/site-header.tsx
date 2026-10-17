@@ -3,7 +3,8 @@ import { Phone, ChevronDown } from 'lucide-react'
 import { business } from '@/content/business'
 import { services } from '@/content/services'
 import { navBrands } from '@/content/brands'
-import { tier1Cities } from '@/content/cities'
+import { cities, tier1Cities } from '@/content/cities'
+import { blogIsLive } from '@/content/blog'
 import { logoFor, monogramFor } from '@/lib/brand-logos'
 import { Button } from '@/components/ui/button'
 import { MobileNav } from '@/components/layout/mobile-nav'
@@ -131,7 +132,7 @@ export function SiteHeader() {
           <NavDropdown
             label="Service Areas"
             href="/service-areas"
-            items={[...cityItems, { label: 'All 190 cities →', href: '/service-areas' }]}
+            items={[...cityItems, { label: `All ${cities.length} cities →`, href: '/service-areas' }]}
           />
           <NavLink href="/testimonials">Testimonials</NavLink>
           <NavDropdown
@@ -142,6 +143,8 @@ export function SiteHeader() {
               { label: 'Case studies', href: '/projects' },
               { label: 'Our warranty', href: '/warranty' },
               { label: 'FAQs', href: '/faq' },
+              // Only once a post is published: never a link to an empty blog.
+              ...(blogIsLive ? [{ label: 'Gate repair guides', href: '/blog' }] : []),
             ]}
           />
           <NavLink href="/contact">Contact Us</NavLink>
@@ -169,7 +172,7 @@ export function SiteHeader() {
           <Button href="/contact" size="sm" className="hidden sm:inline-flex">
             Free Estimate
           </Button>
-          <MobileNav />
+          <MobileNav blogLive={blogIsLive} />
         </div>
       </div>
     </header>

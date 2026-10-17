@@ -27,6 +27,7 @@ export type PageType =
   | 'brand'
   | 'project'
   | 'video'
+  | 'blog'
   | 'landing'
   | 'other'
 
@@ -39,6 +40,7 @@ export const PAGE_TYPE_LABEL: Record<PageType, string> = {
   brand: 'Brand page',
   project: 'Case study',
   video: 'Video page',
+  blog: 'Blog post',
   landing: 'Ads landing page',
   other: 'Other page',
 }
@@ -109,6 +111,11 @@ export function identifyPage(pathname: string): PageIdentity {
   // /repair-videos/<slug>
   const video = path.match(/^\/repair-videos\/([a-z0-9-]+)$/)
   if (video) return { type: 'video', subject: video[1], label: `Video: ${video[1]}` }
+
+  // /blog and /blog/<slug>
+  const post = path.match(/^\/blog\/([a-z0-9-]+)$/)
+  if (post) return { type: 'blog', subject: post[1], label: `Blog: ${post[1]}` }
+  if (path === '/blog') return { type: 'blog', subject: '', label: 'Blog index' }
 
   if (LANDING_PATHS.has(path)) return { type: 'landing', subject: path.slice(1), label: `Ads: ${path.slice(1)}` }
 
