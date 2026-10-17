@@ -71,10 +71,14 @@ export const services: Service[] = [
     // page owns both rather than splitting them into two thin pages. The slug
     // stays: it is the URL the WordPress 301 and every inbound link point at.
     name: 'Gate Opener & Motor Repair',
+    // 15 Oct 2026: "Opener & Motor" carried neither "gate opener repair" nor
+    // "gate motor repair" as a phrase, so the page that owns both searches
+    // matched neither exactly. 44 characters.
+    seoTitle: 'Gate Opener Repair & Gate Motor Repair | DFW',
     mediaCategory: 'automatic-gate-repair',
     navLabel: 'Gate Opener & Motor',
     cardLine: 'Openers that hum, click, stall or will not respond',
-    headline: 'Gate Opener & Motor Repair in Dallas–Fort Worth',
+    headline: 'Gate Opener Repair & Gate Motor Repair in Dallas–Fort Worth',
     intro:
       'Your gate hums but does not move. Or it clicks and stops. Or it opens halfway and gives up. Nine times out ' +
       'of ten that is the control board, a limit switch, or a failed capacitor — not the whole operator. We ' +
@@ -335,7 +339,8 @@ export const services: Service[] = [
     cardLine: 'Power faults, wiring, solar and battery systems',
     // Electric driveway gates and solar openers are this page's real subject —
     // the symptom table below already covers solar batteries and DC operators.
-    seoTitle: 'Electric Gate Repair — Driveway & Solar | DFW',
+    // 15 Oct 2026: "DFW" never matched "electric gate repair Dallas". 56.
+    seoTitle: 'Electric Gate Repair Dallas–Fort Worth | Driveway & Solar',
     headline: 'Electric Gate Repair in Dallas–Fort Worth — Driveway, Solar & DC Gates',
     intro:
       'Electrical faults are where most gate companies start guessing and swapping parts. We test before we ' +
@@ -410,10 +415,14 @@ export const services: Service[] = [
     slug: 'commercial-gate-repair',
     legacyPath: '/commercial-gate-repair-services/',
     name: 'Commercial & HOA Gate Repair',
+    // 15 Oct 2026: "Commercial & HOA Gate Repair" split the searched phrase,
+    // and two video pages titled "Commercial Gate Repair — ..." outranked it
+    // for it. 51 characters.
+    seoTitle: 'Commercial Gate Repair — HOA & Apartment Gates | DFW',
     mediaCategory: 'commercial-gate-repair',
     navLabel: 'Commercial & HOA',
     cardLine: 'Apartments, HOA entrances and industrial gates',
-    headline: 'Commercial, HOA & Industrial Gate Repair in Dallas–Fort Worth',
+    headline: 'Commercial Gate Repair for HOA, Apartment & Industrial Gates in Dallas–Fort Worth',
     intro:
       'A commercial gate runs hundreds of cycles a day. Parts that last fifteen years on a driveway last months on ' +
       'an apartment entrance. We service them on that reality, not on a residential schedule.',
