@@ -10,6 +10,7 @@ import { watchPath } from './video-paths'
 import { indexableModelPages } from './model-quality'
 import { indexableSymptomPages } from './symptom-quality'
 import { symptomPath } from '../content/symptoms'
+import { publishedPosts, postPath } from '../content/blog'
 import { modelPath } from '../content/models'
 import { assetUrl } from './cdn'
 
@@ -183,6 +184,23 @@ export const SECTIONS: SitemapSection[] = [
     ],
   },
   {
+    file: 'blog.xml',
+    label: 'Gate repair guides (published posts only)',
+    // Empty until a post is published, and the index only appears with it:
+    // draft and review posts are never built in production. See content/blog.
+    entries: () =>
+      publishedPosts.length === 0
+        ? []
+        : [
+            { url: `${BASE}/blog`, changeFrequency: 'weekly' as const, priority: 0.6 },
+            ...publishedPosts.map((p) => ({
+              url: `${BASE}${postPath(p)}`,
+              changeFrequency: 'monthly' as const,
+              priority: 0.6,
+            })),
+          ],
+  },
+  {
     file: 'cities.xml',
     label: 'City pages carrying genuinely local content',
     entries: () =>
@@ -300,7 +318,9 @@ export function renderIndex(): string {
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...SECTIONS.map((section) =>
+    // A section with no URLs (blog.xml before the first post) is left out of
+    // the index rather than submitted empty, which Search Console flags.
+    ...SECTIONS.filter((section) => section.entries().length > 0).map((section) =>
       [
         `  <!-- ${section.label} -->`,
         '  <sitemap>',

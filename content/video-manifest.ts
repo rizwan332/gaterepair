@@ -78,7 +78,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJYwAAfFAvo8AAP7b611wC/F2VrkvPuHJoSpuOfSghk+mfT+7Z877t6B/IwfiIi++pw+HnWI538iUyRucioAA",
     "durationSeconds": 13,
     "bytes": 1462289,
-    "title": "Automatic Gate Repair — Safety Sensor Fault",
+    "title": "Finding a Safety Sensor Fault on an Automatic Gate (Video)",
     "description": "A gate that opens but refuses to close is almost always a safety sensor seeing an obstruction that is not there. This shows the photo-eyes being realigned and the gate returned to normal operation.",
     "descriptionWritten": true
   },
@@ -91,7 +91,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJQBOgB7Hs9nd6AAA4jIXMKC3Ov/220Hmy/rH5TGxYhYEDRCyzMyJ75Pg0jZ11E0Yft0LoSUFbuzXAAA=",
     "durationSeconds": 47,
     "bytes": 4601742,
-    "title": "Automatic Gate Repair — Full Repair Walkthrough",
+    "title": "One Automatic Gate Fault, Diagnosed and Fixed (Video)",
     "description": "A complete automatic gate repair, start to finish: fault identified, cause explained, repair carried out and the gate run through several full cycles to confirm it holds.",
     "descriptionWritten": true
   },
@@ -130,7 +130,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJZQCdAD1pQdkgAD+CLqqxrxLifWR9/HWUyFAPeT5YQbOCZUftmn9o2GGl0Zjj0I2MI6A81tVBNQj8QP4AA==",
     "durationSeconds": 10,
     "bytes": 1068012,
-    "title": "Commercial Gate Repair — High-Cycle Entrance",
+    "title": "Repairing a High-Cycle Commercial Gate Entrance (Video)",
     "description": "A commercial entrance gate serving hundreds of cycles a day. When the same part fails repeatedly the operator is usually under-specified for the duty cycle, or the gate is making it work far harder than it should.",
     "descriptionWritten": true
   },
@@ -143,7 +143,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAQCdASoQABAAA4BaJZwAAxPEx1Cv4AD+ifglf30lGbkjWdXQCUQB8+kGgXmMZ2SGJSzMgudycAqMuRiGaW5+QHWGgEJ6IzFK+S4b58GiKy7z1FzFjDp+OrCY3/BfsyLZr1UeoJQ5AAAA",
     "durationSeconds": 37,
     "bytes": 1003534,
-    "title": "Commercial Gate Repair — Loop Detector Fault",
+    "title": "Fixing a Loop Detector Fault at a Commercial Gate (Video)",
     "description": "A commercial gate ignoring approaching vehicles. The fault is in the buried loop and detector rather than the operator — a distinction that gets misdiagnosed constantly and is usually the fastest thing to put right.",
     "descriptionWritten": true
   },
@@ -182,7 +182,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAkAA4BaJQBOgCFKrx7AAAD+rHAYShwLuwcCTxjNTzoBSCOBNeMFJoouq/Z6l0bquoo3iW4rkhgOySCANBEgqqyQR0zrIAA=",
     "durationSeconds": 16,
     "bytes": 1120637,
-    "title": "Electric Gate Repair — Tracing an Electrical Fault",
+    "title": "Tracing an Electrical Fault on a Driveway Gate (Video)",
     "description": "Tracing an intermittent fault on an electric gate: supply voltage checked at source and at the operator, terminals inspected for corrosion, and accessories isolated to find a short — rather than replacing parts one at a time.",
     "descriptionWritten": true
   },
@@ -195,7 +195,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAkAA4BaJYwC7AEREXoGTgAA/kkfkSAc6PxQ7Zt+pqxP6A4sS8Uztalv/PeB6S145yDRY6nL9r5AgFOuTLbDXSAAAA==",
     "durationSeconds": 16,
     "bytes": 1584808,
-    "title": "Electric Gate Repair — Transformer and Power Supply Check",
+    "title": "Gate Transformer and Power Supply Check (Video)",
     "description": "Testing the transformer and power supply on an electric gate that had stopped responding entirely. Shows why the power path is checked before the control board is suspected.",
     "descriptionWritten": true
   },
@@ -234,7 +234,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAkAA4BaJZQC7ADOnliIuwAA/nkJXN/L1NNRRbWV6SmywUwQ4leHp8HQALFx8DU4YNO3mN3/8ZU4JEZ56C/YNtzwCV4AAAA=",
     "durationSeconds": 46,
     "bytes": 4181568,
-    "title": "Emergency Gate Repair — Same-Day Call-Out",
+    "title": "A Same-Day Emergency Gate Call-Out (Video)",
     "description": "An emergency call-out on a gate stuck open. A gate stuck open is a security problem, not an inconvenience, and is treated as urgent regardless of the underlying cause.",
     "descriptionWritten": true
   },
@@ -247,7 +247,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJZACdADGd8QIAAD0OcZAjFlPfJQ6KWOao+y5oxlzZt21fB2k67eC2o2Kay5XujrxKV2K3gAAAA==",
     "durationSeconds": 14,
     "bytes": 958597,
-    "title": "Emergency Gate Repair — Manual Release and Temporary Secure",
+    "title": "Manual Release and Securing a Broken Gate (Video)",
     "description": "How a gate is released to manual operation so a property can be used before the repair is complete, and how a gate is left in a secure state when a part has to be ordered.",
     "descriptionWritten": true
   },
@@ -273,7 +273,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAkAA4BaJQBOgMWblyqJWoAA/qyrka73lYo4zSr8SGcEnTaeaeaubS697NyVTl6wSqR0/ygCporbYfnN5C6/afq4mGLWfdLEJO0iDSgAAA==",
     "durationSeconds": 20,
     "bytes": 1966074,
-    "title": "Automatic Gate Installation — Site Preparation and Footings",
+    "title": "Gate Installation Footings and Site Preparation (Video)",
     "description": "The part of a gate installation nobody sees and everything depends on: footings set to depth, conduit run properly and power brought to the gate correctly the first time. Skipping this is how a gate becomes an annual repair call.",
     "descriptionWritten": true
   },
@@ -286,7 +286,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoQAAkAA4BaJQBOgCLNAL2lgAD2vlB8/NYve7bP13hhjnLuh12NybuukR0Xpn9bOrqwo/EPyujXnOXkFOXgAA==",
     "durationSeconds": 18,
     "bytes": 1883990,
-    "title": "Automatic Gate Installation — Operator Fitting and Commissioning",
+    "title": "Fitting and Commissioning a Gate Operator (Video)",
     "description": "Fitting and commissioning the operator on a new gate installation: alignment set, limits programmed, safety devices installed to standard and the whole system handed over working.",
     "descriptionWritten": true
   },
@@ -299,7 +299,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAkAA4BaJZwAAwDfApPZIIgA/qN2i9/A1/4pj2Y4ufcGushX5j36BCKN4WyOju+huMzDaIlwAA==",
     "durationSeconds": 15,
     "bytes": 1365550,
-    "title": "Gate Motor Repair — How We Diagnose a Dead Operator",
+    "title": "How We Diagnose a Dead Gate Operator (Video)",
     "description": "The diagnostic sequence for a gate that will not move: gate released and pushed by hand to rule out a mechanical bind, then power at the board, capacitor under load, limit switch travel and safety devices — in that order.",
     "descriptionWritten": true
   },
@@ -312,7 +312,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoQAAkAA4BaJQBdgBowKKhAAPuX+XwgcRfK08c4lkD0wrjjzmxdWP6FxzUjkzeBzPVNJRlp0UTyRdmotqkAAA==",
     "durationSeconds": 21,
     "bytes": 1092201,
-    "title": "Gate Motor Repair — Capacitor Test and Replacement",
+    "title": "Gate Motor Capacitor Test and Replacement (Video)",
     "description": "A gate motor that hums but will not move is far more often a failed capacitor than a dead motor. This shows the capacitor being tested under load and replaced, one of the least expensive repairs on a gate.",
     "descriptionWritten": true
   },
@@ -325,7 +325,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAgCdASoQAAkAA4BaJYwC7IExgpiuf2uPkiSAAPlpdL4RZnPOCCd2gem7C4MxnR+aEyeP8HLBFyQpWUvJBCDsQYnDrEEoZDyxulCfLnAAAA==",
     "durationSeconds": 20,
     "bytes": 2420048,
-    "title": "Iron Gate Repair — Weld Repair on a Cracked Frame",
+    "title": "Welding a Cracked Iron Gate Frame (Video)",
     "description": "A cracked weld at an iron gate frame joint cut out, re-welded, ground back and refinished so the repair is not visible. Custom ironwork is almost always worth repairing rather than replacing.",
     "descriptionWritten": true
   },
@@ -338,7 +338,7 @@ export const videos: SiteVideo[] = [
     "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJZQAAxfWokiGHIAA/uuQ2iHWrQpzy90h8OydFO6gMLZVzZgtRXosGo2h2JXvRonmmaEKLunNfg1QAAA=",
     "durationSeconds": 45,
     "bytes": 4429905,
-    "title": "Iron Gate Repair — Fixing a Sagging Gate",
+    "title": "Fixing a Sagging Iron Gate (Video)",
     "description": "A sagging iron gate dragging on the driveway. The hinges and the post are assessed together with the gate, because straightening the leaf without addressing the post means it will drag again within a season.",
     "descriptionWritten": true
   },

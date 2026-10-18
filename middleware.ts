@@ -74,6 +74,8 @@ const LIVE_SEGMENTS = new Set([
   // pass through rather than be swallowed by the retired-URL rules below.
   'admin',
   'api',
+  // Gate repair guides. Added 17 Oct 2026.
+  'blog',
   'apollo-gate-repair',
   'brands',
   'contact',
