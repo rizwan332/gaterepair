@@ -76,6 +76,8 @@ const LIVE_SEGMENTS = new Set([
   'api',
   // Gate repair guides. Added 17 Oct 2026.
   'blog',
+  // Google Ads landing page. Added 21 Oct 2026.
+  'dfw-gate-repair',
   'apollo-gate-repair',
   'brands',
   'contact',

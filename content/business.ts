@@ -211,6 +211,23 @@ export const business = {
     note: 'Removed at client request 6 Aug 2026. Only republish a window the team actually hits.',
   } as Fact<string>,
 
+  /**
+   * Ads landing page claims (/dfw-gate-repair), from the client's 20 Oct 2026
+   * mockup. Both render only once confirmed: Google Ads disapproves ads whose
+   * landing page promises what the business does not do, and the mockup's own
+   * note says to advertise only what is actually offered.
+   */
+  noServiceCallFee: {
+    confirmed: false,
+    value: 'No service call fee with any repair',
+    note: 'Client to confirm: is there really no service call fee, and on what condition (the mockup shows an asterisk)? Put the exact condition in value.',
+  } as Fact<string>,
+  sameDayOnSite: {
+    confirmed: false,
+    value: 'On site today',
+    note: 'Client to confirm he can reach callers across DFW the same day before "On site today" is promised on the Ads page.',
+  } as Fact<string>,
+
   /** Set true only if the client holds an actual dealer agreement. */
   authorizedDealer: {
     confirmed: false,

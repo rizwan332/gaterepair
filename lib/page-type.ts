@@ -65,6 +65,8 @@ const LANDING_PATHS = new Set([
   '/viking-gate-repair',
   '/apollo-gate-repair',
   '/samedaygaterepair',
+  // Phone-first Ads page from the client's 20 Oct 2026 mockup. noindex.
+  '/dfw-gate-repair',
 ])
 
 const clean = (pathname: string): string => {
