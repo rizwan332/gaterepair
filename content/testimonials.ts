@@ -246,6 +246,32 @@ export const testimonials: Testimonial[] = [
     jobType: 'Rust-free chain replacement',
     brand: 'LiftMaster',
   },
+  // Three customer testimonials uploaded to the channel on 27 Sep 2026, each
+  // titled "testimony" or "review" by the client. Verified 21 Oct 2026: each
+  // id resolves through YouTube's oEmbed endpoint and youtube.com/shorts/<id>
+  // 303-redirects, so all three are normal 16:9 uploads. Cities are taken from
+  // the client's own titles; the swing gate one names no city, so it has none.
+  {
+    id: 'swing-gate-testimonial',
+    youtubeId: 'L-PZXFZswds',
+    title: 'Swing gate repair testimonial',
+    jobType: 'Swing gate repair',
+  },
+  {
+    id: 'sliding-carrollton-testimonial',
+    youtubeId: 'G2bUoFgtN80',
+    title: 'Sliding gate repair in Carrollton',
+    city: 'Carrollton',
+    jobType: 'Sliding gate repair',
+  },
+  {
+    id: 'elite-university-park-testimonial',
+    youtubeId: 'cbs1JJyjCFM',
+    title: 'Elite gate repair in University Park',
+    city: 'University Park',
+    jobType: 'Gate operator',
+    brand: 'Elite',
+  },
 ]
 
 /** Only entries with a real video ID can render. */
