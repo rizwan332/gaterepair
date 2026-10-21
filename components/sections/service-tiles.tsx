@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { services } from '@/content/services'
-import { media } from '@/content/media-manifest'
+import { serviceJobPhoto } from '@/content/service-photos'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
 
 /**
@@ -20,7 +20,7 @@ export function ServiceTiles() {
         <h2 className="mb-5 font-display text-2xl font-bold text-ink-950">Our Gate Repair Services</h2>
         <ul className="grid grid-cols-2 gap-3">
           {services.map((s) => {
-            const image = media[s.mediaCategory]?.[0]
+            const image = serviceJobPhoto(s.slug)
             return (
               <li key={s.slug}>
                 <Link

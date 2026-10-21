@@ -2,9 +2,8 @@ import type { Metadata } from 'next'
 import { CalendarDays, CheckCircle2, Phone, ShieldCheck, Star } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
-import { media, type MediaImage } from '@/content/media-manifest'
-import { projects } from '@/content/projects'
-import { caseStudyPhotos } from '@/content/case-study-media'
+import { media } from '@/content/media-manifest'
+import { jobPhoto, serviceJobPhoto } from '@/content/service-photos'
 import { publishedTestimonials } from '@/content/testimonials'
 import { services } from '@/content/services'
 import { tier1Cities } from '@/content/cities'
@@ -47,42 +46,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/dfw-gate-repair' },
   openGraph: openGraphFor('/dfw-gate-repair'),
   robots: HELD_BACK_ROBOTS,
-}
-
-/** A client job photo in the shape ResponsiveImage takes. */
-function jobPhoto(projectSlug: string, index: number): MediaImage | undefined {
-  const project = projects.find((p) => p.slug === projectSlug)
-  const photo = project?.photoSet ? caseStudyPhotos[project.photoSet]?.[index] : undefined
-  if (!photo) return undefined
-  return {
-    slug: photo.slug,
-    src: photo.src,
-    widths: photo.widths,
-    width: photo.width,
-    height: photo.height,
-    blurDataURL: photo.blurDataURL,
-    alt: photo.caption || project!.title,
-    altWritten: Boolean(photo.caption),
-  }
-}
-
-/**
- * One distinct photo per service, chosen by hand so each shows that service.
- * Real Texas job photos wherever the client supplied one; the two services
- * with no documented job use their own library category. No photo repeats,
- * and none is reused in the before/after section.
- */
-const SERVICE_PHOTO: Record<string, () => MediaImage | undefined> = {
-  'gate-motor-repair': () => jobPhoto('liftmaster-la400-arm-replacement-university-park-tx', 2),
-  'emergency-gate-repair': () => jobPhoto('liftmaster-csl24ul-off-track-dallas-tx', 0),
-  'automatic-gate-repair': () => jobPhoto('eagle-2000-restored-coppell-tx', 0),
-  'sliding-gate-repair': () => jobPhoto('ramset-gearbox-repair-richardson-tx', 0),
-  'swing-gate-repair': () => jobPhoto('us-automatic-arm-battery-prosper-tx', 2),
-  'electric-gate-repair': () => jobPhoto('liftmaster-solar-upgrade-wills-point-tx', 3),
-  'iron-gate-repair': () => media['iron-gate-repair']?.[0],
-  'commercial-gate-repair': () => jobPhoto('liftmaster-community-gate-reset-mildred-tx', 0),
-  'access-control-repair': () => media['access-control']?.[0],
-  'gate-installation': () => jobPhoto('liftmaster-csl24ul-installation-dallas-tx', 4),
 }
 
 /** Pairs whose own captions say which photo is before and which is after. */
@@ -314,7 +277,7 @@ export default function DfwGateRepairLanding() {
           <h2 className="mb-6 font-display text-2xl font-bold text-ink-950 sm:text-3xl">What we repair</h2>
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-5">
             {services.map((s) => {
-              const img = SERVICE_PHOTO[s.slug]?.()
+              const img = serviceJobPhoto(s.slug)
               return (
                 <li key={s.slug} className="overflow-hidden rounded-xl border border-ink-100 bg-white">
                   <div className="relative aspect-[4/3] bg-ink-100">
