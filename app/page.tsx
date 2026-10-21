@@ -14,6 +14,7 @@ import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { publishedTestimonials } from '@/content/testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { ServiceTiles } from '@/components/sections/service-tiles'
+import { AdvantagesStrip } from '@/components/sections/call-hero'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
 import { HomeFaq, homeFaqs } from '@/components/sections/home-faq'
@@ -135,6 +136,7 @@ export default function HomePage() {
         />
       )}
       <Hero />
+      <AdvantagesStrip />
       {/* Directly under the hero: the brand row is a credibility signal, and it
           is the fastest one on the page to read. */}
       <BrandMarquee />

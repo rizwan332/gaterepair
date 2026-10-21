@@ -10,6 +10,7 @@ import { tier1Cities } from '@/content/cities'
 import { openGraphFor, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
+import { CallHero, AdvantagesStrip } from '@/components/sections/call-hero'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
@@ -89,87 +90,14 @@ export default function DfwGateRepairLanding() {
   // Background: the client's own double swing gate installation at Lake Kiowa,
   // Texas. A real DFW-area job photo, not stock and not generated.
   const hero = jobPhoto('liftmaster-la400-double-swing-installation-lake-kiowa-tx', 5) ?? media['gate-installation']?.[0]
-  const noFee = fact(business.noServiceCallFee)
   const rating = fact(business.rating)
   const warranty = fact(business.warrantyTerm)
 
-  // The client's exact trust points (brief of 22 Oct 2026). "No service call
-  // fee" still reads from the confirmed fact so it can never outlive the offer.
-  const trustPoints = [...(noFee ? ['No Service Call Fee'] : []), 'Licensed & Insured', 'All Major Gate Brands']
 
   return (
     <>
-      {/* ── First screen: the client's exact copy, everything above the fold ─ */}
-      <section className="relative isolate overflow-hidden bg-ink-950">
-        {hero && (
-          <div className="absolute inset-0 -z-10">
-            <ResponsiveImage image={hero} alt="" priority fill sizes="100vw" className="object-cover object-center" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.35)_0%,rgb(8_9_11/0.55)_35%,rgb(8_9_11/0.82)_70%,rgb(8_9_11/0.92)_100%)]" />
-          </div>
-        )}
-        <div className="container-page relative pb-8 pt-6 md:py-20 [@media(max-height:620px)]:pb-6 [@media(max-height:620px)]:pt-4">
-          <div className="max-w-2xl">
-            <p className="font-display text-[0.8125rem] font-semibold uppercase leading-relaxed tracking-[0.16em] sm:text-sm">
-              <span className="block text-gold-400">DFW &amp; Surrounding Areas</span>
-              <span className="block text-white">Residential &amp; Commercial</span>
-            </p>
-
-            <h1 className="mt-2.5 font-display text-[1.9rem] font-bold leading-[1.06] tracking-tight text-white drop-shadow-[0_2px_12px_rgb(0_0_0/0.45)] sm:text-6xl lg:text-7xl [@media(max-height:620px)]:text-[1.65rem]">
-              Gate Problems?
-              <span className="block text-gold-400">We Have the Solution.</span>
-            </h1>
-
-            <p className="mt-3 font-display text-[1.0625rem] font-semibold leading-snug text-white sm:text-2xl [@media(max-height:620px)]:mt-2 [@media(max-height:620px)]:text-[0.9375rem]">
-              Expert Automatic Gate Repair.
-              <span className="block">Fast, Reliable Service.</span>
-              <span className="block text-gold-400">We Repair Before We Replace.</span>
-            </p>
-
-            <ul className="mt-4 grid grid-cols-3 gap-2 sm:max-w-xl [@media(max-height:620px)]:mt-3">
-              {trustPoints.map((t) => (
-                <li key={t} className="flex items-center gap-2 text-[0.8125rem] font-medium leading-tight text-white sm:text-base">
-                  <CheckCircle2 className="size-6 shrink-0 text-success-400 sm:size-8" aria-hidden />
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-5 flex flex-col gap-2.5 sm:max-w-xl [@media(max-height:620px)]:mt-3.5">
-              <Button href={business.phone.href} size="lg" className="h-14 w-full whitespace-nowrap px-4 text-[1.0625rem] font-bold uppercase tracking-wide tabular shadow-[0_10px_30px_-10px_rgb(245_179_42/0.7)] sm:h-[3.75rem] sm:text-xl">
-                <Phone className="size-6" aria-hidden />
-                Call Now — {business.phone.display}
-              </Button>
-              <Button href="#estimate" variant="ghostDark" size="lg" className="h-12 w-full font-bold uppercase tracking-wide sm:h-14">
-                <CalendarDays className="size-5" aria-hidden />
-                Get a Free Estimate
-              </Button>
-            </div>
-
-            <p className="mt-4 text-center text-sm text-ink-300 sm:text-left">
-              Professional Gate Repair &bull; Residential &amp; Commercial
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Advantages strip, straight under the first screen. The hero carries
-          the client's exact three trust points; his earlier brief also asks for
-          16+ years, which lives here so the hero copy stays as he wrote it. */}
-      <section className="bg-gold-500">
-        <ul className="container-page grid grid-cols-2 gap-x-4 gap-y-2 py-4 text-sm font-semibold text-ink-950 sm:flex sm:justify-center sm:gap-x-8">
-          {[
-            ...(fact(business.yearsInBusiness) ? [`${fact(business.yearsInBusiness)}+ Years Experience`] : []),
-            'Written Warranty',
-            'Open 24/7',
-            'Repair Before Replace',
-          ].map((t) => (
-            <li key={t} className="flex items-center gap-1.5">
-              <CheckCircle2 className="size-4 shrink-0" aria-hidden />
-              {t}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <CallHero image={hero} headingMode="headline" estimateHref="#estimate" />
+      <AdvantagesStrip />
 
       {/* ── Brands: recognition, not navigation ─────────────────────────── */}
       <section className="border-b border-ink-100 bg-white py-7">

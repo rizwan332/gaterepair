@@ -15,7 +15,8 @@ import { business } from '@/content/business'
 export function TopStrip() {
   const pathname = usePathname()
 
-  if (pathname === '/dfw-gate-repair') {
+  // Homepage added 22 Oct 2026, with the shared CallHero.
+  if (pathname === '/dfw-gate-repair' || pathname === '/') {
     return (
       <div className="bg-ink-900 text-white">
         <p className="container-page flex h-9 items-center justify-center whitespace-nowrap text-center text-[0.625rem] font-semibold uppercase tracking-[0.03em] min-[400px]:text-[0.6875rem] sm:text-[0.8125rem] sm:tracking-[0.08em]">
