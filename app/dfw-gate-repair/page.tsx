@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { CalendarDays, CheckCircle2, Phone, ShieldCheck, Star } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -21,10 +22,11 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
  * Revised 21 Oct 2026 to the client's ten-point brief: short first screen,
  * Call Now as the one primary action, a unique real photo per service, less
  * copy, trust (testimonials, before/after, warranty), the three advantages,
- * DFW coverage, and nothing that pulls the visitor off the page. Service,
- * brand and city items are deliberately NOT links here: on a paid page every
+ * DFW coverage, and nothing that pulls the visitor off the page. Service
+ * and city items are deliberately NOT links here: on a paid page every
  * exit is a click paid for and lost. The header and footer still lead to the
- * full site for anyone who wants it.
+ * full site for anyone who wants it. Brand logos DO link to their brand
+ * pages, at the site owner's request (22 Oct 2026).
  *
  * ── WHY IT CANNOT HURT SEO ──────────────────────────────────────────────────
  * noindex, absent from the sitemap and linked from nowhere on the site.
@@ -99,7 +101,7 @@ export default function DfwGateRepairLanding() {
       <CallHero image={hero} headingMode="headline" estimateHref="#estimate" />
       <AdvantagesStrip />
 
-      {/* ── Brands: recognition, not navigation ─────────────────────────── */}
+      {/* ── Brands: each logo opens its brand page ───────────────────────── */}
       <section className="border-b border-ink-100 bg-white py-7">
         <div className="container-page">
           <p className="mb-5 text-center text-xs font-semibold uppercase tracking-wider text-ink-500">
@@ -117,8 +119,14 @@ export default function DfwGateRepairLanding() {
               ] as const
             ).map(([slug, name]) => (
               <li key={slug} className="flex justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/logos/${slug}.webp`} alt={`${name} gate operators`} className="h-8 w-auto max-w-[7rem] object-contain opacity-80" loading="lazy" />
+                <Link
+                  href={`/brands/${slug}`}
+                  aria-label={`${name} gate repair`}
+                  className="rounded-md p-1 opacity-80 transition hover:opacity-100 focus-visible:opacity-100"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/logos/${slug}.webp`} alt={`${name} gate operators`} className="h-8 w-auto max-w-[7rem] object-contain sm:h-10 sm:max-w-[9rem]" loading="lazy" />
+                </Link>
               </li>
             ))}
           </ul>
