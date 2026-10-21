@@ -104,7 +104,7 @@ export default function DfwGateRepairLanding() {
         {hero && (
           <div className="absolute inset-0 -z-10">
             <ResponsiveImage image={hero} alt="" priority fill sizes="100vw" className="object-cover object-center" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.55)_0%,rgb(8_9_11/0.78)_38%,rgb(8_9_11/0.92)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.35)_0%,rgb(8_9_11/0.55)_35%,rgb(8_9_11/0.82)_70%,rgb(8_9_11/0.92)_100%)]" />
           </div>
         )}
         <div className="container-page relative pb-8 pt-6 md:py-20 [@media(max-height:620px)]:pb-6 [@media(max-height:620px)]:pt-4">
