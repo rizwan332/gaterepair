@@ -217,10 +217,13 @@ export const business = {
    * landing page promises what the business does not do, and the mockup's own
    * note says to advertise only what is actually offered.
    */
+  // Confirmed 21 Oct 2026: the client's written landing-page brief lists "No
+  // Service Call Fee" among "our advantages". No condition was given, so the
+  // claim renders unqualified; add one to `value` if he states one.
   noServiceCallFee: {
-    confirmed: false,
-    value: 'No service call fee with any repair',
-    note: 'Client to confirm: is there really no service call fee, and on what condition (the mockup shows an asterisk)? Put the exact condition in value.',
+    confirmed: true,
+    value: 'No service call fee',
+    note: 'Confirmed by the client 21 Oct 2026 (landing-page brief, item 6).',
   } as Fact<string>,
   sameDayOnSite: {
     confirmed: false,
