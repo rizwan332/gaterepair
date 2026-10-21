@@ -62,7 +62,7 @@ const FAQS = [
   },
   {
     q: 'Which gate brands do you repair?',
-    a: 'LiftMaster, US Automatic, DoorKing, FAAC, Viking, Elite, Eagle, Ramset, All-O-Matic and more, plus keypads, intercoms and sensors.',
+    a: 'LiftMaster, US Automatic, Nice Apollo, FAAC, Viking, Ramset, Elite, All-O-Matic and more, plus keypads, intercoms and sensors.',
   },
   {
     q: 'Will I know the price before you start?',
@@ -109,10 +109,10 @@ export default function DfwGateRepairLanding() {
             {(
               [
                 ['liftmaster', 'LiftMaster'],
-                ['doorking', 'DoorKing'],
+                ['us-automatic', 'US Automatic'],
                 ['faac', 'FAAC'],
                 ['viking', 'Viking'],
-                ['eagle', 'Eagle'],
+                ['apollo', 'Nice Apollo'],
                 ['ramset', 'Ramset'],
               ] as const
             ).map(([slug, name]) => (
