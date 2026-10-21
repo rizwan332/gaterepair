@@ -84,7 +84,7 @@ function CallButton({ size = 'lg' }: { size?: 'md' | 'lg' }) {
     <Button href={business.phone.href} size={size} className="h-auto w-full flex-col gap-0.5 py-3.5 tabular sm:w-auto sm:px-10">
       <span className="inline-flex items-center gap-2.5 text-lg font-bold sm:text-xl">
         <Phone className="size-5" aria-hidden />
-        Call Now &mdash; {business.phone.display}
+        Call Now: {business.phone.display}
       </span>
       <span className="text-sm font-medium">Speak with a gate repair specialist</span>
     </Button>

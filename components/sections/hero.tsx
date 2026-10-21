@@ -1,6 +1,5 @@
-import { Phone, BadgeCheck } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { business } from '@/content/business'
-import { fact } from '@/lib/business'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
 import { TrustBadges } from '@/components/ui/trust-badges'
@@ -58,12 +57,6 @@ export const heroImage =
 export const HERO_SIZES = '100vw'
 
 export function Hero() {
-  // Confirmed 3 Aug 2026 from the client's own About copy. The only substantial
-  // experience credential the business has confirmed, and it was previously
-  // rendered nowhere above the fold — the pill carried the service area, which
-  // the sub-headline and the header strip both already state.
-  const years = fact(business.yearsInBusiness)
-
   const hero = heroImage
   return (
     <section className="surface-dark glow-gold grid-lines relative isolate overflow-hidden">
@@ -97,55 +90,42 @@ export function Hero() {
         </div>
       )}
 
-      <div className="container-page relative py-20 md:py-28 lg:py-36">
+      <div className="container-page relative pb-10 pt-8 md:py-28 lg:py-36">
         <div className="max-w-3xl">
-          {/* Was a pulsing dot; the client asked for a green verified check.
-              It also drops an infinite CSS animation from above the fold. */}
-          {/* max-w-full is defensive only: the pill is a non-shrinking
-              inline-flex holding a long string, and the hero clips overflow.
-              Measured at a 375px viewport it fits (scrollWidth == clientWidth),
-              so nothing here wraps today — this just guarantees it degrades by
-              wrapping rather than by losing text if the metro name grows. */}
-          <p className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full bg-white/[0.07] px-4 py-2 text-[0.8125rem] font-medium text-white ring-1 ring-inset ring-white/15 backdrop-blur-sm">
-            <BadgeCheck className="size-4 shrink-0 text-success-400" aria-hidden />
-            Gate technicians available now
-            {years ? ` — ${years}+ years across DFW` : ` — ${business.serviceArea.display}`}
-          </p>
+          {/* Layout from the client's 20 Oct 2026 mobile mockup: the promise is
+              the big line and the H1 sits above it as a short label.
 
-          {/* The H1 carries the location, because the <title> does and the two
-              should not disagree — that was the single biggest relevance loss
-              on the page. It previously read "Professional Gate Repair &
-              Automatic Gate Services": an unfalsifiable adjective, no city, and
-              the gold emphasis spent on "automatic gate services", the vaguest
-              phrase in the target set and the one with the least commercial
-              intent behind it. */}
-          <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] text-white sm:text-5xl lg:text-[4rem]">
-            Automatic Gate Repair in{' '}
-            <span className="text-gradient-gold">Dallas&ndash;Fort Worth</span>
+              The H1 is unchanged and still the page's only H1, so the heading
+              that carries "automatic gate repair" and "Dallas–Fort Worth"
+              (and matches the <title>) is exactly what search engines saw
+              before. Only its size changed. The years-in-business pill went;
+              the same fact is in the trust grid below, and "gate technicians"
+              moved into the parts line. */}
+          <h1 className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-gold-300 sm:text-base">
+            Automatic Gate Repair in Dallas&ndash;Fort Worth
           </h1>
 
-          {/* No longer repeats the metro name now that the H1 states it. */}
-          <p className="mt-6 max-w-2xl font-display text-xl font-semibold leading-snug text-white sm:text-2xl">
-            Trusted gate repair company for homes, HOAs and businesses &mdash; fixed right the first time,
-            with parts on the truck
+          <p className="mt-3 font-display text-[1.5rem] font-bold leading-[1.18] text-white sm:mt-4 sm:text-5xl sm:leading-[1.12] lg:text-[3.5rem]">
+            Trusted gate repair company for homes, HOAs and businesses.{' '}
+            <span className="text-gradient-gold">Fixed right the first time, with parts on the truck.</span>
           </p>
 
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-200">
-            Our technicians carry parts for LiftMaster, DoorKing, FAAC, Elite, Viking, Ramset and more
-            &mdash; on the truck, not on order.
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-200 sm:mt-5 sm:text-lg">
+            Our gate technicians carry parts for LiftMaster, DoorKing, FAAC, Elite, Viking, Ramset and more,
+            so most repairs are done in one visit.
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row">
             <Button href={business.phone.href} size="lg" className="tabular">
               <Phone className="size-5" aria-hidden />
-              Call Now &mdash; {business.phone.display}
+              Call Now: {business.phone.display}
             </Button>
             <Button href="/contact" variant="ghostDark" size="lg">
               Request Service
             </Button>
           </div>
 
-          <TrustBadges className="mt-10" />
+          <TrustBadges layout="grid" className="mt-8 border-t border-white/10 pt-6 sm:mt-10 sm:border-0 sm:pt-0" />
         </div>
       </div>
     </section>

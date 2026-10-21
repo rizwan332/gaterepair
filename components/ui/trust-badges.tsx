@@ -22,10 +22,13 @@ import { fact } from '@/lib/business'
 export function TrustBadges({
   tone = 'dark',
   className = '',
+  layout = 'inline',
 }: {
   /** `dark` for photo/ink backgrounds, `light` for white sections. */
   tone?: 'dark' | 'light'
   className?: string
+  /** `grid`: two columns with larger icons on phones (homepage hero), a row from `sm` up. */
+  layout?: 'inline' | 'grid'
 }) {
   const years = fact(business.yearsInBusiness)
 
@@ -37,7 +40,13 @@ export function TrustBadges({
   ]
 
   return (
-    <ul className={`flex flex-wrap items-center gap-x-6 gap-y-3 ${className}`}>
+    <ul
+      className={`${
+        layout === 'grid'
+          ? 'grid grid-cols-2 gap-x-4 gap-y-4 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3'
+          : 'flex flex-wrap items-center gap-x-6 gap-y-3'
+      } ${className}`}
+    >
       {badges.map(({ icon: Icon, label }) => (
         <li
           key={label}
@@ -46,7 +55,7 @@ export function TrustBadges({
           }`}
         >
           <Icon
-            className={`size-[1.125rem] shrink-0 ${
+            className={`${layout === 'grid' ? 'size-6 sm:size-[1.125rem]' : 'size-[1.125rem]'} shrink-0 ${
               tone === 'dark' ? 'text-success-400' : 'text-success-600'
             }`}
             aria-hidden
