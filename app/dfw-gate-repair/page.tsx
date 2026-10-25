@@ -11,7 +11,7 @@ import { tier1Cities } from '@/content/cities'
 import { openGraphFor, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
-import { CallHero, AdvantagesStrip } from '@/components/sections/call-hero'
+import { CallHero } from '@/components/sections/call-hero'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
@@ -98,8 +98,7 @@ export default function DfwGateRepairLanding() {
 
   return (
     <>
-      <CallHero image={hero} headingMode="headline" estimateHref="#estimate" />
-      <AdvantagesStrip />
+      <CallHero image={hero} estimateHref="#estimate" />
 
       {/* ── Brands: each logo opens its brand page ───────────────────────── */}
       <section className="border-b border-ink-100 bg-white py-7">

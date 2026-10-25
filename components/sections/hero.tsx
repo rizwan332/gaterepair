@@ -57,5 +57,5 @@ export function Hero() {
   // image and sizes are the ones app/page.tsx preloads, unchanged, so the LCP
   // preload still matches. The small gold top line is the H1 here; see
   // CallHero for why.
-  return <CallHero image={heroImage} sizes={HERO_SIZES} headingMode="top-line" estimateHref="/contact" />
+  return <CallHero image={heroImage} sizes={HERO_SIZES} estimateHref="/contact" />
 }

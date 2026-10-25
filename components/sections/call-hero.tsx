@@ -15,22 +15,18 @@ import { ResponsiveImage } from '@/components/ui/responsive-image'
  * left clear (the padding above the text scales with width) so the gate shows,
  * as in the mockup.
  *
- * `headingMode`:
- *  - 'headline' (landing page, noindex): the big "Gate Problems?" line is the H1.
- *  - 'top-line' (homepage): the small gold top line is the H1, and reads
- *    "Automatic Gate Repair · DFW & Surrounding Areas" so the heading Google
- *    ranks the homepage on still names the service and the area. The big line
- *    is then a paragraph. Chosen by the client 22 Oct 2026.
+ * The gold top lines, the "Gate Problems?" headline and the gold advantages
+ * strip were removed at the site owner's request (25 Oct 2026). The
+ * "Expert Automatic Gate Repair" lines are now the H1, so it still names the
+ * service; the area is in the top strip, the title and the page body.
  */
 export function CallHero({
   image,
   sizes = '100vw',
-  headingMode,
   estimateHref,
 }: {
   image?: MediaImage
   sizes?: string
-  headingMode: 'headline' | 'top-line'
   estimateHref: string
 }) {
   const noFee = fact(business.noServiceCallFee)
@@ -39,9 +35,6 @@ export function CallHero({
     ['Licensed &', 'Insured'],
     ['All Major', 'Gate Brands'],
   ]
-
-  const TopLine = headingMode === 'top-line' ? 'h1' : 'p'
-  const Headline = headingMode === 'headline' ? 'h1' : 'p'
 
   return (
     <section className="relative isolate overflow-hidden bg-ink-950">
@@ -55,23 +48,11 @@ export function CallHero({
 
       <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(2.5rem,16vw,9rem)]">
         <div className="max-w-3xl">
-          <TopLine className="font-display text-[clamp(0.8rem,3.1vw,1.15rem)] font-semibold uppercase leading-[1.55] tracking-[0.12em] [text-shadow:0_1px_8px_rgb(0_0_0/0.6)]">
-            <span className="block text-gold-400">
-              {headingMode === 'top-line' ? 'Automatic Gate Repair · DFW & Surrounding Areas' : 'DFW & Surrounding Areas'}
-            </span>
-            <span className="block text-white">Residential &amp; Commercial</span>
-          </TopLine>
-
-          <Headline className="mt-[clamp(0.5rem,2vw,1rem)] font-display text-[clamp(1.85rem,7.5vw,5rem)] font-bold leading-[1.04] tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0/0.5)]">
-            Gate Problems?
-            <span className="block text-gold-400">We Have the Solution.</span>
-          </Headline>
-
-          <p className="mt-[clamp(0.6rem,2.4vw,1.25rem)] font-display text-[clamp(1.05rem,4.6vw,2.1rem)] font-semibold leading-[1.25] text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]">
+          <h1 className="font-display text-[clamp(1.05rem,4.6vw,2.1rem)] font-semibold leading-[1.25] text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]">
             Expert Automatic Gate Repair.
             <span className="block">Fast, Reliable Service.</span>
             <span className="block text-gold-400">We Repair Before We Replace.</span>
-          </p>
+          </h1>
 
           <ul className="mt-[clamp(0.9rem,3.6vw,2rem)] grid grid-cols-3 gap-[clamp(0.4rem,2vw,1.5rem)]">
             {trustPoints.map(([a, b]) => (
@@ -114,29 +95,3 @@ export function CallHero({
   )
 }
 
-/**
- * Gold advantages strip under the hero. Carries 16+ years (the client's
- * earlier brief) so the hero copy can stay exactly as he wrote it, and
- * "gate technicians", a phrase from the keyword list the homepage owns.
- */
-export function AdvantagesStrip() {
-  const years = fact(business.yearsInBusiness)
-  const items = [
-    ...(years ? [`${years}+ Years Experience`] : []),
-    'Written Warranty',
-    'Gate Technicians 24/7',
-    'Repair Before Replace',
-  ]
-  return (
-    <section className="bg-gold-500">
-      <ul className="container-page grid grid-cols-2 gap-x-4 gap-y-2 py-4 text-sm font-semibold text-ink-950 sm:flex sm:justify-center sm:gap-x-8">
-        {items.map((t) => (
-          <li key={t} className="flex items-center gap-1.5">
-            <CheckCircle2 className="size-4 shrink-0" aria-hidden />
-            {t}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
