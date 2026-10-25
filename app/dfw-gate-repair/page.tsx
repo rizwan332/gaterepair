@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { CalendarDays, CheckCircle2, Phone, ShieldCheck, Star } from 'lucide-react'
+import { Phone, Star } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 import { media } from '@/content/media-manifest'
@@ -21,7 +21,8 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
  *
  * Revised 21 Oct 2026 to the client's ten-point brief: short first screen,
  * Call Now as the one primary action, a unique real photo per service, less
- * copy, trust (testimonials, before/after, warranty), the three advantages,
+ * copy, trust (testimonials; the before/after and warranty block was removed at
+ * the site owner's request, 26 Oct 2026), the three advantages,
  * DFW coverage, and nothing that pulls the visitor off the page. Service
  * and city items are deliberately NOT links here: on a paid page every
  * exit is a click paid for and lost. The header and footer still lead to the
@@ -38,8 +39,8 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
  * Enhanced Conversions). lib/page-type.ts reports these as "Ads: dfw-gate-repair".
  *
  * ── CLAIMS ──────────────────────────────────────────────────────────────────
- * Only confirmed facts from content/business.ts. Google rating and warranty
- * term render when confirmed; "On site today" stays off until confirmed.
+ * Only confirmed facts from content/business.ts. Google rating renders
+ * when confirmed; "On site today" stays off until confirmed.
  */
 
 export const metadata: Metadata = {
@@ -50,12 +51,6 @@ export const metadata: Metadata = {
   openGraph: openGraphFor('/dfw-gate-repair'),
   robots: HELD_BACK_ROBOTS,
 }
-
-/** Pairs whose own captions say which photo is before and which is after. */
-const BEFORE_AFTER = [
-  { project: 'swing-gate-circuit-board-southlake-tx', before: 0, after: 2, city: 'Southlake', label: 'Corroded control board replaced' },
-  { project: 'us-automatic-solar-refurbishment-fort-worth-tx', before: 0, after: 2, city: 'Fort Worth', label: 'US Automatic board refurbished, not replaced' },
-]
 
 const FAQS = [
   {
@@ -93,7 +88,6 @@ export default function DfwGateRepairLanding() {
   // Texas. A real DFW-area job photo, not stock and not generated.
   const hero = jobPhoto('liftmaster-la400-double-swing-installation-lake-kiowa-tx', 5) ?? media['gate-installation']?.[0]
   const rating = fact(business.rating)
-  const warranty = fact(business.warrantyTerm)
 
 
   return (
@@ -156,55 +150,6 @@ export default function DfwGateRepairLanding() {
         tone="tint"
         showCta={false}
       />
-
-      {/* ── Before & after: real jobs, captions are the client's own ────── */}
-      <section className="section bg-white">
-        <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950 sm:text-3xl">Before &amp; after</h2>
-          <ul className="grid gap-6 md:grid-cols-2">
-            {BEFORE_AFTER.map((job) => {
-              const before = jobPhoto(job.project, job.before)
-              const after = jobPhoto(job.project, job.after)
-              if (!before || !after) return null
-              return (
-                <li key={job.project} className="overflow-hidden rounded-[var(--radius-card)] border border-ink-100 bg-white">
-                  <div className="grid grid-cols-2 gap-px bg-ink-100">
-                    {[
-                      { img: before, tag: 'Before' },
-                      { img: after, tag: 'After' },
-                    ].map(({ img, tag }) => (
-                      <figure key={tag} className="relative aspect-[4/3] bg-ink-100">
-                        <ResponsiveImage image={img} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
-                        <figcaption
-                          className={`absolute left-2 top-2 rounded-md px-2 py-0.5 text-xs font-bold ${
-                            tag === 'After' ? 'bg-success-500 text-white' : 'bg-ink-950/80 text-white'
-                          }`}
-                        >
-                          {tag}
-                        </figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                  <p className="px-4 py-3 text-sm">
-                    <span className="font-semibold text-ink-950">{job.label}</span>
-                    <span className="text-ink-500"> · {job.city}, TX</span>
-                  </p>
-                </li>
-              )
-            })}
-          </ul>
-
-          {/* Warranty, stated exactly as the warranty page does. */}
-          <div className="mt-6 flex items-start gap-3 rounded-[var(--radius-card)] bg-success-500/[0.07] p-4 ring-1 ring-inset ring-success-500/20">
-            <ShieldCheck className="mt-0.5 size-6 shrink-0 text-success-600" aria-hidden />
-            <p className="text-[0.9375rem] leading-relaxed text-ink-800">
-              <span className="font-semibold text-ink-950">Written warranty on parts and workmanship</span>
-              {warranty ? ` (${warranty})` : ''}. If a part we fitted fails or our work needs putting right, we come back
-              at no charge.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* ── 3 & 9. Services: a unique real photo each, no exits ───────────── */}
       <section className="section bg-ink-50">
