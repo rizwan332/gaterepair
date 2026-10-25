@@ -274,9 +274,16 @@ export const testimonials: Testimonial[] = [
   },
 ]
 
-/** Only entries with a real video ID can render. */
+/** Shown first, in this order, as the site owner listed them (25 Oct 2026). */
+const LEAD_VIDEOS = ['cbs1JJyjCFM', 'G2bUoFgtN80', 'CJX4QQ4Mrbk', 'ftWhbFTdF98', 'fCJMtZzVVvE']
+const leadRank = (t: Testimonial) => {
+  const i = LEAD_VIDEOS.indexOf(t.youtubeId)
+  return i === -1 ? LEAD_VIDEOS.length : i
+}
+
+/** Only entries with a real video ID can render. Stable sort keeps the rest in array order. */
 export const publishedTestimonials: Testimonial[] = testimonialsConfirmed
-  ? testimonials.filter((t) => t.youtubeId)
+  ? testimonials.filter((t) => t.youtubeId).sort((a, b) => leadRank(a) - leadRank(b))
   : []
 
 /** Pick testimonials relevant to a brand, falling back to the first few. */

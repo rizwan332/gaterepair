@@ -87,20 +87,21 @@ export function TestimonialCard({
       <span className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_9_11/0.9)_0%,rgb(8_9_11/0.28)_58%,transparent_100%)]" />
 
       <span
-        className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gold-500 shadow-[var(--shadow-gold)] transition-transform duration-300 group-hover:scale-110 ${
-          featured ? 'size-16 sm:size-20' : 'size-14'
+        className={`absolute left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gold-500 shadow-[var(--shadow-gold)] transition-transform duration-300 group-hover:scale-110 ${
+          // Small cards sit the button high so it never runs into the title.
+          featured ? 'top-1/2 size-16 sm:size-20' : 'top-[34%] size-11'
         }`}
       >
         <Play
-          className={`ml-0.5 fill-ink-950 text-ink-950 ${featured ? 'size-7 sm:size-8' : 'size-6'}`}
+          className={`ml-0.5 fill-ink-950 text-ink-950 ${featured ? 'size-7 sm:size-8' : 'size-5'}`}
           aria-hidden
         />
       </span>
 
-      <span className="absolute inset-x-0 bottom-0 p-4 text-left sm:p-5">
+      <span className={`absolute inset-x-0 bottom-0 text-left ${featured ? 'p-4 sm:p-5' : 'p-3'}`}>
         <span
           className={`block font-display font-bold leading-tight text-white ${
-            featured ? 'text-lg sm:text-2xl' : 'text-base'
+            featured ? 'text-lg sm:text-2xl' : 'text-sm'
           }`}
         >
           {testimonial.title}
@@ -118,7 +119,7 @@ export function TestimonialCard({
               {testimonial.brand}
             </span>
           )}
-          {testimonial.jobType && <span>{testimonial.jobType}</span>}
+          {featured && testimonial.jobType && <span>{testimonial.jobType}</span>}
         </span>
       </span>
     </button>
