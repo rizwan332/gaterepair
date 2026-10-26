@@ -161,9 +161,9 @@ export function TestimonialCarousel({
           aria-label="Customer video testimonials"
           className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 sm:mx-0 sm:px-0"
         >
-          {rail.map((t) => (
+          {rail.map((t, i) => (
             <li key={t.id} className="w-[64vw] shrink-0 snap-start sm:w-[16rem] lg:w-[18rem]">
-              <TestimonialCard testimonial={t} />
+              <TestimonialCard testimonial={t} smallThumb={compact} eager={compact && i < 2} />
             </li>
           ))}
         </ul>

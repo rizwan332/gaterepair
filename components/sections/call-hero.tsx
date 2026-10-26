@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { CalendarDays, CheckCircle2, Phone } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
@@ -20,7 +22,7 @@ export function CallHero({
   estimateHref,
   headlineFontClass,
 }: {
-  /** Illustrated background, a static SVG. */
+  /** Illustrated background: a static SVG under /public, inlined at build time. */
   artSrc: string
   estimateHref: string
   /** next/font className for the headline face, loaded only on that page. */
@@ -36,8 +38,14 @@ export function CallHero({
   return (
     <section className="relative isolate overflow-hidden bg-ink-950">
       <div className="absolute inset-0 -z-10">
-        {/* eslint-disable-next-line @next/next/no-img-element -- static SVG, nothing for next/image to optimise */}
-        <img src={artSrc} alt="" fetchPriority="high" className="absolute inset-0 size-full object-cover object-[center_40%]" />
+        {/* Inlined, not an <img>: it paints with the HTML instead of waiting as
+            the page's Largest Contentful Paint (was ~1.6 s render delay on a
+            phone, 26 Oct 2026). The SVG's own `slice` makes it cover. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 [&>svg]:size-full"
+          dangerouslySetInnerHTML={{ __html: readFileSync(path.join(process.cwd(), 'public', artSrc), 'utf8') }}
+        />
         {/* Lighter at the top so the gate reads, dark under the text. */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.25)_0%,rgb(8_9_11/0.45)_40%,rgb(8_9_11/0.75)_75%,rgb(8_9_11/0.9)_100%)]" />
       </div>

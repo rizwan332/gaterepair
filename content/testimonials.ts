@@ -302,8 +302,10 @@ export function testimonialsForBrand(brandName: string, limit = 3): Testimonial[
  * a Short would show its own letterboxing inside an already-vertical card.
  * `oar2.jpg` is the original-aspect-ratio still, which is the full 9:16 frame.
  */
-export function thumbnailFor(youtubeId: string, isShort = false): string {
+export function thumbnailFor(youtubeId: string, isShort = false, small = false): string {
+  // `mqdefault` is 320x180 and already 16:9, so no baked-in bars; used on the
+  // small cards of the Ads landing page, where hqdefault was oversized.
   return isShort
     ? `https://i.ytimg.com/vi/${youtubeId}/oar2.jpg`
-    : `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`
+    : `https://i.ytimg.com/vi/${youtubeId}/${small ? 'mqdefault' : 'hqdefault'}.jpg`
 }

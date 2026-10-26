@@ -8,7 +8,7 @@ import { serviceJobPhoto } from '@/content/service-photos'
 import { publishedTestimonials } from '@/content/testimonials'
 import { services } from '@/content/services'
 import { tier1Cities } from '@/content/cities'
-import { openGraphFor, HELD_BACK_ROBOTS } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
 import { CallHero } from '@/components/sections/call-hero'
@@ -29,8 +29,11 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
  * full site for anyone who wants it. Brand logos DO link to their brand
  * pages, at the site owner's request (22 Oct 2026).
  *
- * ── WHY IT CANNOT HURT SEO ──────────────────────────────────────────────────
- * noindex, absent from the sitemap and linked from nowhere on the site.
+ * ── INDEXING ────────────────────────────────────────────────────────────────
+ * Indexable and in the sitemap since 26 Oct 2026, at the site owner's request
+ * (he wants a 100 Lighthouse SEO score). It was noindex before so it could not
+ * compete with the homepage; if Search Console shows the two swapping places
+ * for the same queries, that is the trade-off to revisit.
  *
  * ── TRACKING ────────────────────────────────────────────────────────────────
  * The site-wide listener records every tel:/sms: tap to /api/events and pushes
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
     'Professional gate repair across Dallas–Fort Worth. No service call fee, licensed and insured, 16+ years. Call or text for fast service.',
   alternates: { canonical: '/dfw-gate-repair' },
   openGraph: openGraphFor('/dfw-gate-repair'),
-  robots: HELD_BACK_ROBOTS,
+  robots: INDEXABLE_ROBOTS,
 }
 
 const FAQS = [
@@ -127,14 +130,14 @@ export default function DfwGateRepairLanding() {
           <ul className="grid grid-cols-3 items-center gap-6 sm:grid-cols-6">
             {(
               [
-                ['liftmaster', 'LiftMaster'],
-                ['us-automatic', 'US Automatic'],
-                ['faac', 'FAAC'],
-                ['viking', 'Viking'],
-                ['apollo', 'Nice Apollo'],
-                ['ramset', 'Ramset'],
+                ['liftmaster', 'LiftMaster', 420, 73],
+                ['us-automatic', 'US Automatic', 213, 120],
+                ['faac', 'FAAC', 420, 110],
+                ['viking', 'Viking', 194, 120],
+                ['apollo', 'Nice Apollo', 238, 120],
+                ['ramset', 'Ramset', 271, 120],
               ] as const
-            ).map(([slug, name]) => (
+            ).map(([slug, name, w, h]) => (
               <li key={slug} className="flex justify-center">
                 <Link
                   href={`/brands/${slug}`}
@@ -142,7 +145,7 @@ export default function DfwGateRepairLanding() {
                   className="rounded-md p-1 opacity-80 transition hover:opacity-100 focus-visible:opacity-100"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={`/logos/${slug}.webp`} alt={`${name} gate operators`} className="h-8 w-auto max-w-[7rem] object-contain sm:h-10 sm:max-w-[9rem]" loading="lazy" />
+                  <img src={`/logos/${slug}.webp`} alt={`${name} gate operators`} width={w} height={h} className="h-8 w-auto max-w-[7rem] object-contain sm:h-10 sm:max-w-[9rem]" loading="lazy" />
                 </Link>
               </li>
             ))}
