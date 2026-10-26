@@ -1,40 +1,30 @@
 import { CalendarDays, CheckCircle2, Phone } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
-import type { MediaImage } from '@/content/media-manifest'
 import { Button } from '@/components/ui/button'
-import { ResponsiveImage } from '@/components/ui/responsive-image'
 
 /**
- * The call-first hero from the client's mockup (22 Oct 2026), shared by the
- * homepage and the Google Ads landing page so the two can never drift apart.
+ * Hero for the Google Ads landing page (/dfw-gate-repair) ONLY.
  *
- * Sizes use clamp() against the viewport width rather than breakpoints, so the
- * headline fills the width the way the mockup does at every phone and tablet
- * size instead of jumping between three fixed sizes. The top of the photo is
- * left clear (the padding above the text scales with width) so the gate shows,
- * as in the mockup.
+ * It used to be shared with the homepage; the site owner asked on 26 Oct 2026
+ * that landing-page changes never reach the homepage, and the homepage went
+ * back to its original hero (components/sections/hero.tsx).
  *
- * The gold top lines, the "Gate Problems?" headline and the gold advantages
- * strip were removed at the site owner's request (25 Oct 2026), and on
- * 26 Oct the client cut the H1 to "Expert Automatic Gate Repair" alone and
- * asked for narrower, centred buttons. "We Repair Before We Replace" moved
- * further down the Ads landing page.
+ * Client requests built in (25-26 Oct 2026): one headline, "Expert Automatic
+ * Gate Repair", in a heavier face and centred; an illustrated dusk gate behind
+ * it with a dark overlay for readability; narrower, centred buttons with a
+ * small gap. "We Repair Before We Replace" sits further down the page.
  */
 export function CallHero({
-  image,
-  sizes = '100vw',
+  artSrc,
   estimateHref,
-  ads = false,
-  headlineFontClass = '',
+  headlineFontClass,
 }: {
-  image?: MediaImage
-  sizes?: string
+  /** Illustrated background, a static SVG. */
+  artSrc: string
   estimateHref: string
-  /** Ads landing page (client, 26 Oct 2026): centred heavier headline, darker photo, tighter buttons. */
-  ads?: boolean
-  /** next/font className for the ads headline face, loaded only on that page. */
-  headlineFontClass?: string
+  /** next/font className for the headline face, loaded only on that page. */
+  headlineFontClass: string
 }) {
   const noFee = fact(business.noServiceCallFee)
   const trustPoints: [string, string][] = [
@@ -45,28 +35,17 @@ export function CallHero({
 
   return (
     <section className="relative isolate overflow-hidden bg-ink-950">
-      {image && (
-        <div className="absolute inset-0 -z-10">
-          <ResponsiveImage image={image} alt="" priority fill sizes={sizes} className="object-cover object-top" />
-          {/* Lighter at the top so the gate reads, dark under the text. Darkened slightly 26 Oct 2026. */}
-          <div
-            className={`absolute inset-0 ${
-              ads
-                ? 'bg-[linear-gradient(180deg,rgb(8_9_11/0.5)_0%,rgb(8_9_11/0.66)_25%,rgb(8_9_11/0.84)_50%,rgb(8_9_11/0.94)_75%,rgb(8_9_11/0.97)_100%)]'
-                : 'bg-[linear-gradient(180deg,rgb(8_9_11/0.3)_0%,rgb(8_9_11/0.5)_22%,rgb(8_9_11/0.78)_45%,rgb(8_9_11/0.92)_70%,rgb(8_9_11/0.96)_100%)]'
-            }`}
-          />
-        </div>
-      )}
+      <div className="absolute inset-0 -z-10">
+        {/* eslint-disable-next-line @next/next/no-img-element -- static SVG, nothing for next/image to optimise */}
+        <img src={artSrc} alt="" fetchPriority="high" className="absolute inset-0 size-full object-cover object-[center_40%]" />
+        {/* Lighter at the top so the gate reads, dark under the text. */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.25)_0%,rgb(8_9_11/0.45)_40%,rgb(8_9_11/0.75)_75%,rgb(8_9_11/0.9)_100%)]" />
+      </div>
 
       <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(1.25rem,6vw,4rem)]">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           <h1
-            className={`text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.55)] ${
-              ads
-                ? `${headlineFontClass} text-center text-[clamp(1.7rem,7.6vw,3.6rem)] leading-[1.08]`
-                : 'font-display text-[clamp(1.75rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight'
-            }`}
+            className={`${headlineFontClass} text-center text-[clamp(1.7rem,7.6vw,3.6rem)] leading-[1.08] text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.55)]`}
           >
             Expert Automatic Gate Repair
           </h1>
@@ -83,7 +62,7 @@ export function CallHero({
             ))}
           </ul>
 
-          <div className={`mx-auto mt-[clamp(1rem,4vw,2.25rem)] flex w-[90%] max-w-md flex-col ${ads ? 'gap-2' : 'gap-[clamp(0.6rem,2vw,1rem)]'}`}>
+          <div className={`mx-auto mt-[clamp(1rem,4vw,2.25rem)] flex w-[90%] max-w-md flex-col gap-2`}>
             <Button
               href={business.phone.href}
               size="lg"

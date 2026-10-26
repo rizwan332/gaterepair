@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { Phone, Star } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
-import { media } from '@/content/media-manifest'
-import { jobPhoto, serviceJobPhoto } from '@/content/service-photos'
+import { serviceJobPhoto } from '@/content/service-photos'
 import { publishedTestimonials } from '@/content/testimonials'
 import { services } from '@/content/services'
 import { tier1Cities } from '@/content/cities'
@@ -89,15 +88,12 @@ function CallNow({ compact = false }: { compact?: boolean }) {
 }
 
 export default function DfwGateRepairLanding() {
-  // Background: the client's own double swing gate installation at Lake Kiowa,
-  // Texas. A real DFW-area job photo, not stock and not generated.
-  const hero = jobPhoto('liftmaster-la400-double-swing-installation-lake-kiowa-tx', 5) ?? media['gate-installation']?.[0]
   const rating = fact(business.rating)
 
 
   return (
     <>
-      <CallHero image={hero} estimateHref="#estimate" ads headlineFontClass={headline.className} />
+      <CallHero artSrc="/images/hero/gate-dusk.svg" estimateHref="#estimate" headlineFontClass={headline.className} />
 
       {/* ── 5. Trust: rating (when confirmed), customer videos ─────────── */}
       {rating && (
