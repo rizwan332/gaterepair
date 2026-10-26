@@ -152,7 +152,8 @@ export default function DfwGateRepairLanding() {
       {/* ── 3 & 9. Services: a unique real photo each, no exits ───────────── */}
       <section className="section bg-ink-50">
         <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950 sm:text-3xl">Our services</h2>
+          <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">Our services</h2>
+          <p className="mb-6 mt-1 font-display text-xl font-bold text-gold-700">We Repair Before We Replace.</p>
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-5">
             {services.map((s) => {
               const img = serviceJobPhoto(s.slug)

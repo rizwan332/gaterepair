@@ -16,9 +16,10 @@ import { ResponsiveImage } from '@/components/ui/responsive-image'
  * as in the mockup.
  *
  * The gold top lines, the "Gate Problems?" headline and the gold advantages
- * strip were removed at the site owner's request (25 Oct 2026). The
- * "Expert Automatic Gate Repair" lines are now the H1, so it still names the
- * service; the area is in the top strip, the title and the page body.
+ * strip were removed at the site owner's request (25 Oct 2026), and on
+ * 26 Oct the client cut the H1 to "Expert Automatic Gate Repair" alone and
+ * asked for narrower, centred buttons. "We Repair Before We Replace" moved
+ * further down the Ads landing page.
  */
 export function CallHero({
   image,
@@ -41,17 +42,15 @@ export function CallHero({
       {image && (
         <div className="absolute inset-0 -z-10">
           <ResponsiveImage image={image} alt="" priority fill sizes={sizes} className="object-cover object-top" />
-          {/* Clear at the top so the gate reads, dark under the text. */}
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.12)_0%,rgb(8_9_11/0.35)_22%,rgb(8_9_11/0.72)_45%,rgb(8_9_11/0.9)_70%,rgb(8_9_11/0.95)_100%)]" />
+          {/* Lighter at the top so the gate reads, dark under the text. Darkened slightly 26 Oct 2026. */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.3)_0%,rgb(8_9_11/0.5)_22%,rgb(8_9_11/0.78)_45%,rgb(8_9_11/0.92)_70%,rgb(8_9_11/0.96)_100%)]" />
         </div>
       )}
 
       <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(1.25rem,6vw,4rem)]">
         <div className="max-w-3xl">
-          <h1 className="font-display text-[clamp(1.35rem,5.75vw,2.9rem)] font-bold leading-[1.2] text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]">
-            Expert Automatic Gate Repair.
-            <span className="block">Fast, Reliable Service.</span>
-            <span className="block text-gold-400">We Repair Before We Replace.</span>
+          <h1 className="font-display text-[clamp(1.75rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.55)]">
+            Expert Automatic Gate Repair
           </h1>
 
           <ul className="mt-[clamp(0.9rem,3.6vw,2rem)] grid grid-cols-3 gap-[clamp(0.4rem,2vw,1.5rem)]">
@@ -66,22 +65,22 @@ export function CallHero({
             ))}
           </ul>
 
-          <div className="mt-[clamp(1rem,4vw,2.25rem)] flex flex-col gap-[clamp(0.6rem,2vw,1rem)]">
+          <div className="mx-auto mt-[clamp(1rem,4vw,2.25rem)] flex w-[90%] max-w-md flex-col gap-[clamp(0.6rem,2vw,1rem)]">
             <Button
               href={business.phone.href}
               size="lg"
-              className="h-[clamp(3.4rem,11vw,5.5rem)] w-full whitespace-nowrap px-3 text-[clamp(1rem,4.5vw,2rem)] font-bold uppercase tracking-wide tabular shadow-[0_10px_30px_-10px_rgb(245_179_42/0.7)]"
+              className="h-[clamp(3.25rem,10.5vw,4rem)] w-full whitespace-nowrap px-3 text-[clamp(0.95rem,4.1vw,1.35rem)] font-bold uppercase tracking-wide tabular shadow-[0_10px_30px_-10px_rgb(245_179_42/0.7)]"
             >
-              <Phone className="size-[clamp(1.4rem,5.5vw,2.4rem)]" aria-hidden />
+              <Phone className="size-[clamp(1.3rem,5vw,1.75rem)]" aria-hidden />
               Call Now — {business.phone.display}
             </Button>
             <Button
               href={estimateHref}
               variant="ghostDark"
               size="lg"
-              className="h-[clamp(3rem,10vw,5rem)] w-full text-[clamp(0.95rem,4.2vw,1.8rem)] font-bold uppercase tracking-wide"
+              className="h-[clamp(2.9rem,9.5vw,3.6rem)] w-full text-[clamp(0.9rem,3.9vw,1.25rem)] font-bold uppercase tracking-wide"
             >
-              <CalendarDays className="size-[clamp(1.25rem,5vw,2.2rem)]" aria-hidden />
+              <CalendarDays className="size-[clamp(1.2rem,4.6vw,1.6rem)]" aria-hidden />
               Get a Free Estimate
             </Button>
           </div>
