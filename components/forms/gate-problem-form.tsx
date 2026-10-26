@@ -111,7 +111,7 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
       })
       setSubmitted(true)
     } catch {
-      setServerError('We could not send that. Please call us — someone always answers.')
+      setServerError('We could not send that. Please call us. Someone always answers.')
     }
   }
 
@@ -119,10 +119,10 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
     return (
       <div className="rounded-[var(--radius-card)] border border-success-500/30 bg-success-500/5 p-8 text-center">
         <CheckCircle2 className="mx-auto mb-4 size-12 text-success-600" aria-hidden />
-        <h3 className="font-display text-2xl font-semibold text-ink-950">Got it — we&rsquo;ll call you.</h3>
+        <h3 className="font-display text-2xl font-semibold text-ink-950">Got it. We&rsquo;ll call you.</h3>
         <p className="mx-auto mt-3 max-w-md leading-relaxed text-ink-700">
           A technician will call you back on the number you gave us. If it&rsquo;s an emergency and
-          you&rsquo;d rather not wait, call {business.phone.display} &mdash; someone always answers.
+          you&rsquo;d rather not wait, call {business.phone.display}. Someone always answers.
         </p>
         <a
           href={business.phone.href}
@@ -164,7 +164,7 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
           label="Phone"
           error={errors.phone?.message}
           required
-          help="We'll call you back on this number — we don't sell your details to anyone."
+          help="We'll call you back on this number. We never sell your details."
         >
           <input {...register('phone')} type="tel" className={inputClass} autoComplete="tel" />
         </Field>
@@ -205,8 +205,8 @@ export function GateProblemForm({ sourcePage }: { sourcePage?: string }) {
         Or call{' '}
         <a href={business.phone.href} className="font-semibold text-ink-900 underline decoration-gold-400 underline-offset-2">
           {business.phone.display}
-        </a>{' '}
-        — someone always answers.
+        </a>
+        . Someone always answers.
       </p>
     </form>
   )

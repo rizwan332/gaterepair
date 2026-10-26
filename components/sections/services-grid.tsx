@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { services } from '@/content/services'
-import { media } from '@/content/media-manifest'
+import { serviceAltPhoto } from '@/content/service-photos'
 import { videosFor } from '@/content/video-manifest'
 import { ResponsiveImage } from '@/components/ui/responsive-image'
 import { Reveal } from '@/components/ui/reveal'
@@ -51,7 +51,9 @@ export function ServicesGrid() {
 
         <div className="grid gap-5 lg:grid-cols-2">
           {[primary, secondary].filter(Boolean).map((service, i) => {
-            const image = media[service.mediaCategory]?.[1] ?? media[service.mediaCategory]?.[0]
+            // One photo per service from content/service-photos.ts, so no two
+            // cards (and nothing in the phone tiles above) share a picture.
+            const image = serviceAltPhoto(service.slug)
             const hasVideo = videosFor(service.mediaCategory).length > 0
             return (
               <Reveal key={service.slug} delay={i * 0.06}>
@@ -100,7 +102,7 @@ export function ServicesGrid() {
 
         <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((service, i) => {
-            const image = media[service.mediaCategory]?.[0]
+            const image = serviceAltPhoto(service.slug)
             const hasVideo = videosFor(service.mediaCategory).length > 0
             return (
               <Reveal as="li" key={service.slug} delay={Math.min(i, 4) * 0.04}>

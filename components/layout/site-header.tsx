@@ -5,6 +5,7 @@ import { services } from '@/content/services'
 import { navBrands } from '@/content/brands'
 import { cities, tier1Cities } from '@/content/cities'
 import { blogIsLive } from '@/content/blog'
+import { TopStrip } from '@/components/layout/top-strip'
 import { logoFor, monogramFor } from '@/lib/brand-logos'
 import { Button } from '@/components/ui/button'
 import { MobileNav } from '@/components/layout/mobile-nav'
@@ -59,17 +60,7 @@ export function SiteHeader() {
           the phone number and CTA already force the xl breakpoint), and this
           strip was already saying the word "Emergency" on every page above the
           fold, so it is the right surface rather than a compromise. */}
-      <div className="bg-ink-900 text-white">
-        <div className="container-page flex h-9 items-center justify-between text-xs sm:text-[0.8125rem]">
-          <Link
-            href="/emergency"
-            className="font-medium underline-offset-4 hover:text-gold-400 hover:underline"
-          >
-            {business.availability}
-          </Link>
-          <p className="hidden text-ink-200 sm:block">{business.serviceArea.display}</p>
-        </div>
-      </div>
+      <TopStrip />
 
       <div className="container-page flex h-16 items-center justify-between gap-3 md:h-20">
         <Link href="/" className="shrink-0" aria-label={`${business.name} — home`}>

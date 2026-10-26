@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <!-- Illustrated dusk estate gate for the Ads landing page hero (26 Oct 2026).
+       An illustration, not a job photo. Composition is centred and narrow so a
+       phone's centre crop still shows both lit pillars. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070c1c"/>
+      <stop offset=".45" stop-color="#14224a"/>
+      <stop offset=".72" stop-color="#3a3560"/>
+      <stop offset=".86" stop-color="#a5583a"/>
+      <stop offset="1" stop-color="#e09a4c"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1712"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d342a"/>
+      <stop offset="1" stop-color="#121010"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e5141"/>
+      <stop offset=".35" stop-color="#c7b18d"/>
+      <stop offset=".6" stop-color="#a89273"/>
+      <stop offset="1" stop-color="#4a3f33"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f604c"/>
+      <stop offset="1" stop-color="#3a3128"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ffe2a0" stop-opacity=".95"/>
+      <stop offset=".25" stop-color="#ffc35a" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ff9a2a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pool">
+      <stop offset="0" stop-color="#ffc56a" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ffb04a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="window">
+      <stop offset="0" stop-color="#ffd27a"/>
+      <stop offset="1" stop-color="#e08a2a"/>
+    </radialGradient>
+    <pattern id="blocks" width="44" height="30" patternUnits="userSpaceOnUse">
+      <path d="M0 0H44M0 15H44M0 0V15M22 15V30" stroke="#2e261d" stroke-opacity=".45" stroke-width="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- stars -->
+  <g fill="#fff" fill-opacity=".7">
+    <circle cx="210" cy="80" r="1.6"/><circle cx="430" cy="140" r="1.2"/><circle cx="690" cy="60" r="1.5"/>
+    <circle cx="905" cy="120" r="1.1"/><circle cx="1120" cy="70" r="1.6"/><circle cx="1330" cy="150" r="1.2"/>
+    <circle cx="1490" cy="60" r="1.4"/><circle cx="560" cy="210" r="1"/><circle cx="1250" cy="230" r="1"/>
+  </g>
+
+  <!-- house behind the gate -->
+  <g>
+    <path d="M560 560V420L800 300L1040 420V560Z" fill="#141826"/>
+    <path d="M540 425L800 290L1060 425" stroke="#0b0e18" stroke-width="18" fill="none"/>
+    <rect x="610" y="450" width="70" height="80" rx="4" fill="url(#window)"/>
+    <rect x="920" y="450" width="70" height="80" rx="4" fill="url(#window)"/>
+    <rect x="765" y="400" width="70" height="60" rx="4" fill="url(#window)" opacity=".9"/>
+    <rect x="770" y="480" width="60" height="80" rx="3" fill="#2a1d12"/>
+  </g>
+
+  <!-- tree line silhouettes -->
+  <g fill="#060a12">
+    <path d="M0 600V430C40 400 70 360 120 380C160 330 230 340 260 390C300 350 360 360 390 410C420 380 470 400 480 450L500 600Z"/>
+    <path d="M1600 600V420C1560 390 1520 350 1470 375C1430 330 1360 335 1330 385C1290 350 1230 360 1200 410C1170 380 1120 400 1110 450L1090 600Z"/>
+  </g>
+
+  <!-- ground and driveway -->
+  <rect y="560" width="1600" height="340" fill="url(#ground)"/>
+  <path d="M640 560H960L1260 900H340Z" fill="url(#drive)"/>
+
+  <!-- low walls -->
+  <rect x="120" y="500" width="440" height="80" fill="url(#wall)"/>
+  <rect x="120" y="500" width="440" height="80" fill="url(#blocks)"/>
+  <rect x="110" y="490" width="460" height="14" fill="#8a7a62"/>
+  <rect x="1040" y="500" width="440" height="80" fill="url(#wall)"/>
+  <rect x="1040" y="500" width="440" height="80" fill="url(#blocks)"/>
+  <rect x="1030" y="490" width="460" height="14" fill="#8a7a62"/>
+
+  <!-- light pools on the ground -->
+  <ellipse cx="545" cy="640" rx="190" ry="45" fill="url(#pool)"/>
+  <ellipse cx="1055" cy="640" rx="190" ry="45" fill="url(#pool)"/>
+
+  <!-- pillars -->
+  <g>
+    <rect x="490" y="380" width="110" height="250" fill="url(#stone)"/>
+    <rect x="490" y="380" width="110" height="250" fill="url(#blocks)"/>
+    <rect x="478" y="368" width="134" height="20" fill="#d6c3a0"/>
+    <rect x="1000" y="380" width="110" height="250" fill="url(#stone)"/>
+    <rect x="1000" y="380" width="110" height="250" fill="url(#blocks)"/>
+    <rect x="988" y="368" width="134" height="20" fill="#d6c3a0"/>
+  </g>
+
+  <!-- lanterns and their glow -->
+  <circle cx="545" cy="320" r="150" fill="url(#glow)"/>
+  <circle cx="1055" cy="320" r="150" fill="url(#glow)"/>
+  <g>
+    <rect x="527" y="350" width="36" height="18" fill="#1a1a1a"/>
+    <path d="M521 295H569L563 350H527Z" fill="#ffd98a" stroke="#1a1a1a" stroke-width="6"/>
+    <path d="M515 295L545 270L575 295Z" fill="#1a1a1a"/>
+    <rect x="1037" y="350" width="36" height="18" fill="#1a1a1a"/>
+    <path d="M1031 295H1079L1073 350H1037Z" fill="#ffd98a" stroke="#1a1a1a" stroke-width="6"/>
+    <path d="M1025 295L1055 270L1085 295Z" fill="#1a1a1a"/>
+  </g>
+
+  <!-- arched double iron gate -->
+  <g stroke="#0d0d0f" fill="none" stroke-linecap="round">
+    <path d="M600 600H1000" stroke-width="10"/>
+    <path d="M600 560H1000" stroke-width="6"/>
+    <path d="M600 420Q800 330 1000 420" stroke-width="10"/>
+    <path d="M600 450Q800 365 1000 450" stroke-width="6"/>
+    <path d="M800 372V600" stroke-width="10"/>
+    <g stroke-width="6">
+      <path d="M622 411V600M644 402V600M666 394V600M688 387V600M710 381V600M732 377V600M754 374V600M776 372V600"/>
+      <path d="M824 372V600M846 374V600M868 377V600M890 381V600M912 387V600M934 394V600M956 402V600M978 411V600"/>
+    </g>
+    <!-- scroll detail -->
+    <g stroke-width="4">
+      <path d="M700 500c-20-30 20-40 30-15s-25 30-30 15"/>
+      <path d="M900 500c20-30-20-40-30-15s25 30 30 15"/>
+    </g>
+  </g>
+  <!-- finials -->
+  <g fill="#0d0d0f">
+    <path d="M622 411l-6-14h12zM644 402l-6-14h12zM666 394l-6-14h12zM688 387l-6-14h12zM710 381l-6-14h12zM732 377l-6-14h12zM754 374l-6-14h12zM776 372l-6-14h12z"/>
+    <path d="M824 372l-6-14h12zM846 374l-6-14h12zM868 377l-6-14h12zM890 381l-6-14h12zM912 387l-6-14h12zM934 394l-6-14h12zM956 402l-6-14h12zM978 411l-6-14h12z"/>
+  </g>
+  <!-- gate operator arm, inside of the right leaf -->
+  <g>
+    <rect x="1010" y="540" width="26" height="40" rx="4" fill="#202226"/>
+    <path d="M1010 556L900 548" stroke="#2b2e33" stroke-width="12" stroke-linecap="round"/>
+  </g>
+
+  <!-- warm rim light on the gate from the lanterns -->
+  <rect x="600" y="360" width="400" height="240" fill="#ffb347" opacity=".06"/>
+</svg>

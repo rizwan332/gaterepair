@@ -9,9 +9,9 @@ import { logoFor } from '@/lib/brand-logos'
  * Logos are the client's own, taken from Shield Gate Repair's existing
  * California site and normalised by scripts/process-logos.ts. Any brand
  * without a file falls back to a typographic wordmark rather than a gap or a
- * placeholder box. That covers US Automatic, which the CA site does not carry,
- * and the six brands added from the client's roster on 6 Aug 2026 (Apollo,
- * Mighty Mule, Ghost Controls, Nice, BFT, GTO).
+ * placeholder box. That covers brands added from the client's roster on
+ * 6 Aug 2026 (Mighty Mule, Ghost Controls, Nice, BFT, GTO). US Automatic and
+ * Apollo have logos since 22 Oct 2026.
  *
  * Shown in full colour. An earlier pass desaturated them at rest, which is a
  * common treatment and was wrong here: these are the proof that we service
@@ -24,8 +24,22 @@ import { logoFor } from '@/lib/brand-logos'
  */
 
 
+/**
+ * The site owner's call (22 Oct 2026): DoorKing and Eagle are left out of this
+ * row, and the row leads with the same six brands, in the same order, as the
+ * Google Ads landing page. Their brand pages still exist and stay linked from
+ * the Brands menu and the brands grid further down the homepage.
+ */
+const LEAD = ['liftmaster', 'us-automatic', 'faac', 'viking', 'apollo', 'ramset']
+const HIDDEN = new Set(['doorking', 'eagle'])
+
 export function BrandMarquee() {
-  const items = navBrands.map((b) => ({ ...b, logo: logoFor(b.slug) }))
+  const shown = navBrands.filter((b) => !HIDDEN.has(b.slug))
+  const ordered = [
+    ...LEAD.flatMap((slug) => shown.filter((b) => b.slug === slug)),
+    ...shown.filter((b) => !LEAD.includes(b.slug)),
+  ]
+  const items = ordered.map((b) => ({ ...b, logo: logoFor(b.slug) }))
   // Duplicated once so the track can translate a full 50% and loop seamlessly.
   const track = [...items, ...items]
 

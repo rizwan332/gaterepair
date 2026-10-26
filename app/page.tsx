@@ -13,6 +13,7 @@ import { reviewsConfirmed } from '@/content/reviews'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { publishedTestimonials } from '@/content/testimonials'
 import { ServicesGrid } from '@/components/sections/services-grid'
+import { ServiceTiles } from '@/components/sections/service-tiles'
 import { Process } from '@/components/sections/process'
 import { ServiceAreas } from '@/components/sections/service-areas'
 import { HomeFaq, homeFaqs } from '@/components/sections/home-faq'
@@ -137,6 +138,8 @@ export default function HomePage() {
       {/* Directly under the hero: the brand row is a credibility signal, and it
           is the fastest one on the page to read. */}
       <BrandMarquee />
+      {/* Phones only: one tap to each service, straight under the brands. */}
+      <ServiceTiles />
       {/* Video testimonials ARE the social proof here. The written-review
           section that used to follow rendered placeholder cards behind an
           "awaiting real review data" warning — the client has no Google reviews

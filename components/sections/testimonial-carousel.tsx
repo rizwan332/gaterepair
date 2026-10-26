@@ -27,6 +27,7 @@ export function TestimonialCarousel({
   intro,
   tone = 'tint',
   showCta = true,
+  compact = false,
 }: {
   items: Testimonial[]
   title?: string
@@ -34,6 +35,8 @@ export function TestimonialCarousel({
   intro?: string
   tone?: 'light' | 'tint' | 'dark'
   showCta?: boolean
+  /** Tight padding, and no arrows on phones (swipe), so the videos sit right under the heading. */
+  compact?: boolean
 }) {
   const railRef = useRef<HTMLUListElement>(null)
   const [atStart, setAtStart] = useState(true)
@@ -80,7 +83,7 @@ export function TestimonialCarousel({
 
   return (
     <section
-      className={`section ${
+      className={`${compact ? 'pb-4 pt-8 md:py-12' : 'section'} ${
         dark
           ? 'surface-dark'
           : tone === 'tint'
@@ -89,7 +92,7 @@ export function TestimonialCarousel({
       }`}
     >
       <div className="container-page">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
+        <div className={`${compact ? 'mb-4' : 'mb-6'} flex flex-wrap items-end justify-between gap-4`}>
           <div className="max-w-3xl">
             <p
               className={`mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider ${
@@ -100,7 +103,7 @@ export function TestimonialCarousel({
               {eyebrow}
             </p>
             <h2
-              className={`font-display text-3xl font-bold leading-tight sm:text-4xl ${
+              className={`font-display text-2xl font-bold leading-tight sm:text-3xl ${
                 dark ? 'text-white' : 'text-ink-950'
               }`}
             >
@@ -108,14 +111,14 @@ export function TestimonialCarousel({
             </h2>
             {intro && (
               <p
-                className={`mt-4 text-lg leading-relaxed ${dark ? 'text-ink-200' : 'text-ink-700'}`}
+                className={`mt-3 text-base leading-relaxed ${dark ? 'text-ink-200' : 'text-ink-700'}`}
               >
                 {intro}
               </p>
             )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className={`${compact ? 'hidden sm:flex' : 'flex'} items-center gap-2`}>
             <button
               type="button"
               onClick={() => scroll(-1)}
@@ -156,10 +159,10 @@ export function TestimonialCarousel({
           onScroll={sync}
           tabIndex={0}
           aria-label="Customer video testimonials"
-          className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 sm:mx-0 sm:px-0"
+          className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 sm:mx-0 sm:px-0"
         >
           {rail.map((t) => (
-            <li key={t.id} className="w-[78vw] shrink-0 snap-start sm:w-[20rem] lg:w-[24rem]">
+            <li key={t.id} className="w-[64vw] shrink-0 snap-start sm:w-[16rem] lg:w-[18rem]">
               <TestimonialCard testimonial={t} />
             </li>
           ))}
