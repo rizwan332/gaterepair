@@ -25,10 +25,16 @@ export function CallHero({
   image,
   sizes = '100vw',
   estimateHref,
+  ads = false,
+  headlineFontClass = '',
 }: {
   image?: MediaImage
   sizes?: string
   estimateHref: string
+  /** Ads landing page (client, 26 Oct 2026): centred heavier headline, darker photo, tighter buttons. */
+  ads?: boolean
+  /** next/font className for the ads headline face, loaded only on that page. */
+  headlineFontClass?: string
 }) {
   const noFee = fact(business.noServiceCallFee)
   const trustPoints: [string, string][] = [
@@ -43,13 +49,25 @@ export function CallHero({
         <div className="absolute inset-0 -z-10">
           <ResponsiveImage image={image} alt="" priority fill sizes={sizes} className="object-cover object-top" />
           {/* Lighter at the top so the gate reads, dark under the text. Darkened slightly 26 Oct 2026. */}
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_9_11/0.3)_0%,rgb(8_9_11/0.5)_22%,rgb(8_9_11/0.78)_45%,rgb(8_9_11/0.92)_70%,rgb(8_9_11/0.96)_100%)]" />
+          <div
+            className={`absolute inset-0 ${
+              ads
+                ? 'bg-[linear-gradient(180deg,rgb(8_9_11/0.5)_0%,rgb(8_9_11/0.66)_25%,rgb(8_9_11/0.84)_50%,rgb(8_9_11/0.94)_75%,rgb(8_9_11/0.97)_100%)]'
+                : 'bg-[linear-gradient(180deg,rgb(8_9_11/0.3)_0%,rgb(8_9_11/0.5)_22%,rgb(8_9_11/0.78)_45%,rgb(8_9_11/0.92)_70%,rgb(8_9_11/0.96)_100%)]'
+            }`}
+          />
         </div>
       )}
 
       <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(1.25rem,6vw,4rem)]">
         <div className="max-w-3xl">
-          <h1 className="font-display text-[clamp(1.75rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.55)]">
+          <h1
+            className={`text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.55)] ${
+              ads
+                ? `${headlineFontClass} text-center text-[clamp(1.7rem,7.6vw,3.6rem)] leading-[1.08]`
+                : 'font-display text-[clamp(1.75rem,8vw,3.5rem)] font-bold leading-[1.1] tracking-tight'
+            }`}
+          >
             Expert Automatic Gate Repair
           </h1>
 
@@ -65,7 +83,7 @@ export function CallHero({
             ))}
           </ul>
 
-          <div className="mx-auto mt-[clamp(1rem,4vw,2.25rem)] flex w-[90%] max-w-md flex-col gap-[clamp(0.6rem,2vw,1rem)]">
+          <div className={`mx-auto mt-[clamp(1rem,4vw,2.25rem)] flex w-[90%] max-w-md flex-col ${ads ? 'gap-2' : 'gap-[clamp(0.6rem,2vw,1rem)]'}`}>
             <Button
               href={business.phone.href}
               size="lg"

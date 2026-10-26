@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Archivo_Black } from 'next/font/google'
 import Link from 'next/link'
 import { Phone, Star } from 'lucide-react'
 import { business } from '@/content/business'
@@ -42,6 +43,10 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
  * Only confirmed facts from content/business.ts. Google rating renders
  * when confirmed; "On site today" stays off until confirmed.
  */
+
+// Heavier headline face for the Ads hero only (client, 26 Oct 2026). Loaded
+// here, not in the layout, so no other page downloads it.
+const headline = Archivo_Black({ subsets: ['latin'], weight: '400', display: 'swap' })
 
 export const metadata: Metadata = {
   title: { absolute: 'Gate Not Working? 24/7 Gate Repair in DFW | Call Now' },
@@ -92,7 +97,7 @@ export default function DfwGateRepairLanding() {
 
   return (
     <>
-      <CallHero image={hero} estimateHref="#estimate" />
+      <CallHero image={hero} estimateHref="#estimate" ads headlineFontClass={headline.className} />
 
       {/* ── 5. Trust: rating (when confirmed), customer videos ─────────── */}
       {rating && (
