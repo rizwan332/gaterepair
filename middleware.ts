@@ -103,7 +103,7 @@ const LIVE_SEGMENTS = new Set([
 ])
 
 /** Served as a real page: a static HTML Ads destination, not a WordPress leftover. */
-const KEEP_EXACT = new Set(['/samedaygaterepair', '/samedaygaterepair.html'])
+const KEEP_EXACT = new Set(['/samedaygaterepair', '/samedaygaterepair.html', '/dfw-gate-repair', '/dfw-gate-repair.html'])
 
 /** City pages are /gate-repair-<city>-tx and are all live. */
 const isCityPath = (path: string) => /^\/gate-repair-[a-z0-9-]+-tx$/.test(path)

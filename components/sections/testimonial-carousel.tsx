@@ -27,7 +27,6 @@ export function TestimonialCarousel({
   intro,
   tone = 'tint',
   showCta = true,
-  compact = false,
 }: {
   items: Testimonial[]
   title?: string
@@ -35,8 +34,6 @@ export function TestimonialCarousel({
   intro?: string
   tone?: 'light' | 'tint' | 'dark'
   showCta?: boolean
-  /** Tight padding, and no arrows on phones (swipe), so the videos sit right under the heading. */
-  compact?: boolean
 }) {
   const railRef = useRef<HTMLUListElement>(null)
   const [atStart, setAtStart] = useState(true)
@@ -83,7 +80,7 @@ export function TestimonialCarousel({
 
   return (
     <section
-      className={`${compact ? 'pb-4 pt-8 md:py-12' : 'section'} ${
+      className={`section ${
         dark
           ? 'surface-dark'
           : tone === 'tint'
@@ -92,7 +89,7 @@ export function TestimonialCarousel({
       }`}
     >
       <div className="container-page">
-        <div className={`${compact ? 'mb-4' : 'mb-6'} flex flex-wrap items-end justify-between gap-4`}>
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
             <p
               className={`mb-3 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider ${
@@ -118,7 +115,7 @@ export function TestimonialCarousel({
             )}
           </div>
 
-          <div className={`${compact ? 'hidden sm:flex' : 'flex'} items-center gap-2`}>
+          <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={() => scroll(-1)}

@@ -96,6 +96,8 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
   { path: '/emergency', priority: 0.95 },
   // Static HTML page in public/, served through the rewrite in netlify.toml.
   { path: '/samedaygaterepair', priority: 0.9 },
+  // Indexable since 26 Oct 2026 at the site owner's request.
+  { path: '/dfw-gate-repair', priority: 0.8 },
   { path: '/faq', priority: 0.85 },
   { path: '/warranty', priority: 0.7 },
   { path: '/about', priority: 0.7 },

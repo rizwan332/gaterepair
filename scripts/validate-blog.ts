@@ -24,7 +24,7 @@ import { media } from '../content/media-manifest'
 
 const STATIC = [
   '/', '/about', '/contact', '/emergency', '/faq', '/warranty', '/testimonials', '/projects', '/services',
-  '/brands', '/gate-problems', '/service-areas', '/repair-videos', '/privacy-policy', '/samedaygaterepair', '/blog',
+  '/brands', '/gate-problems', '/service-areas', '/repair-videos', '/privacy-policy', '/samedaygaterepair', '/dfw-gate-repair', '/blog',
 ]
 
 const routes = new Set<string>([
