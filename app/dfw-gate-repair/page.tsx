@@ -94,12 +94,35 @@ export default function DfwGateRepairLanding() {
     <>
       <CallHero image={hero} estimateHref="#estimate" />
 
-      {/* ── Brands: each logo opens its brand page ───────────────────────── */}
-      <section className="border-b border-ink-100 bg-white py-7">
+      {/* ── 5. Trust: rating (when confirmed), customer videos ─────────── */}
+      {rating && (
+        <section className="bg-white pt-10">
+          <div className="container-page flex items-center gap-3">
+            <span className="flex text-gold-500" aria-hidden>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-5 fill-current" />
+              ))}
+            </span>
+            <p className="font-semibold text-ink-900">
+              {rating.score} on Google from {rating.count} reviews
+            </p>
+          </div>
+        </section>
+      )}
+
+      <TestimonialCarousel
+        items={publishedTestimonials}
+        eyebrow="Real customer reviews"
+        title="See Why DFW Homeowners Trust Us"
+        tone="light"
+        showCta={false}
+        compact
+      />
+
+      {/* ── Brands, under the videos: each logo opens its brand page ────── */}
+      <section className="border-b border-ink-100 bg-white pb-7 pt-2">
         <div className="container-page">
-          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-wider text-ink-500">
-            We repair all major brands
-          </p>
+          <h2 className="mb-5 text-center font-display text-lg font-bold text-ink-950 sm:text-xl">All Major Gate Brands</h2>
           <ul className="grid grid-cols-3 items-center gap-6 sm:grid-cols-6">
             {(
               [
@@ -126,35 +149,10 @@ export default function DfwGateRepairLanding() {
         </div>
       </section>
 
-      {/* ── 5. Trust: rating (when confirmed), customer videos ─────────── */}
-      {rating && (
-        <section className="bg-white pt-10">
-          <div className="container-page flex items-center gap-3">
-            <span className="flex text-gold-500" aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-5 fill-current" />
-              ))}
-            </span>
-            <p className="font-semibold text-ink-900">
-              {rating.score} on Google from {rating.count} reviews
-            </p>
-          </div>
-        </section>
-      )}
-
-      <TestimonialCarousel
-        items={publishedTestimonials}
-        eyebrow="Real customers"
-        title="What our customers say"
-        intro="Filmed at their own gates across Dallas–Fort Worth."
-        tone="tint"
-        showCta={false}
-      />
-
       {/* ── 3 & 9. Services: a unique real photo each, no exits ───────────── */}
       <section className="section bg-ink-50">
         <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950 sm:text-3xl">What we repair</h2>
+          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950 sm:text-3xl">Our services</h2>
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-5">
             {services.map((s) => {
               const img = serviceJobPhoto(s.slug)

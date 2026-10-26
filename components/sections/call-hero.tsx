@@ -46,9 +46,9 @@ export function CallHero({
         </div>
       )}
 
-      <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(2.5rem,16vw,9rem)]">
+      <div className="container-page relative pb-[clamp(1.5rem,5vw,4rem)] pt-[clamp(1.25rem,6vw,4rem)]">
         <div className="max-w-3xl">
-          <h1 className="font-display text-[clamp(1.05rem,4.6vw,2.1rem)] font-semibold leading-[1.25] text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]">
+          <h1 className="font-display text-[clamp(1.35rem,5.75vw,2.9rem)] font-bold leading-[1.2] text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]">
             Expert Automatic Gate Repair.
             <span className="block">Fast, Reliable Service.</span>
             <span className="block text-gold-400">We Repair Before We Replace.</span>
@@ -56,8 +56,8 @@ export function CallHero({
 
           <ul className="mt-[clamp(0.9rem,3.6vw,2rem)] grid grid-cols-3 gap-[clamp(0.4rem,2vw,1.5rem)]">
             {trustPoints.map(([a, b]) => (
-              <li key={a} className="flex items-center gap-[clamp(0.35rem,1.6vw,0.9rem)] text-[clamp(0.74rem,3.05vw,1.3rem)] font-medium leading-tight text-white">
-                <CheckCircle2 className="size-[clamp(1.6rem,7vw,3.25rem)] shrink-0 text-success-400" strokeWidth={2.25} aria-hidden />
+              <li key={a} className="flex items-center gap-[clamp(0.35rem,1.6vw,0.9rem)] text-[clamp(0.8rem,3.3vw,1.4rem)] font-semibold leading-tight text-white">
+                <CheckCircle2 className="size-[clamp(1.3rem,5.4vw,3rem)] shrink-0 text-success-400" strokeWidth={2.25} aria-hidden />
                 <span>
                   <span className="block">{a}</span>
                   <span className="block">{b}</span>
@@ -86,7 +86,7 @@ export function CallHero({
             </Button>
           </div>
 
-          <p className="mt-[clamp(0.75rem,3vw,1.5rem)] text-center text-[clamp(0.8rem,3vw,1.2rem)] text-ink-200">
+          <p className="mt-[clamp(0.75rem,3vw,1.5rem)] text-center text-[clamp(0.85rem,3.3vw,1.3rem)] text-ink-100">
             Professional Gate Repair &bull; Residential &amp; Commercial
           </p>
         </div>
