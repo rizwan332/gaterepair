@@ -43,6 +43,8 @@ const live: string[] = [
   '/warranty',
   '/samedaygaterepair',
   '/samedaygaterepair.html',
+  '/dfw-gate-repair',
+  '/dfw-gate-repair.html',
   // The sitemap index and its sections. A nested `sitemap.xml` is one of the
   // WordPress crawl-trap shapes the 410 patterns catch, so our own must be
   // proven safe rather than assumed.

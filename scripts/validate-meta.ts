@@ -241,7 +241,7 @@ const noindexed = new Set(pages.filter((p) => p.noindex).map((p) => p.url))
 const builtRoutes = new Set(pages.map((p) => p.url))
 // Served from public/ via the netlify.toml rewrite, so it is a real URL with
 // no entry in the Next build output.
-const NOT_BUILT_BY_NEXT = new Set(['/samedaygaterepair'])
+const NOT_BUILT_BY_NEXT = new Set(['/samedaygaterepair', '/dfw-gate-repair'])
 
 let sitemapTotal = 0
 for (const section of SECTIONS) {

@@ -146,27 +146,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           Container GTM-MBBT87D8 fires GA4 (G-BFR37L657V) and Google Ads
           (AW-18000649811) itself. Nothing else here may load GA4.
-
-          EXCEPT on the Ads landing page (/dfw-gate-repair), where the container
-          waits for the first tap, key or scroll, or 4 s after load, whichever
-          comes first. Approved by the site owner 26 Oct 2026 for page speed:
-          the three Google tags were blocking the main thread for ~1.5 s on a
-          phone. A Call or Text tap made before the container is in is held
-          until GTM has processed it (components/analytics.tsx), so no
-          conversion is lost; only a visitor who leaves within 4 s without
-          touching anything goes uncounted in GA4.
         */}
         {business.gtmId && (
           <script
             id="gtm-loader"
             dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];var done=0;function load(){if(done)return;done=1;
-w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
-w.__loadGtm=load;var p=location.pathname;if(p!=='/dfw-gate-repair'&&p!=='/dfw-gate-repair/'){load();return;}
-w.__gtmDeferred=1;['pointerdown','keydown','scroll','touchstart'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true})});
-w.addEventListener('load',function(){setTimeout(load,4000)});
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${business.gtmId}');`,
             }}
           />

@@ -72,6 +72,26 @@
   status = 200
   force = true
 
+# ---------------------------------------------------------------------------
+# /dfw-gate-repair — Google Ads landing page, static HTML (26 Oct 2026)
+#
+# GENERATED into public/dfw-gate-repair.html by scripts/build-ads-landing.ts
+# on every build (npm "prebuild"), from the same content modules as the site.
+# Plain HTML for a top mobile PageSpeed score; served exactly like
+# /samedaygaterepair above.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/dfw-gate-repair"
+  to = "/dfw-gate-repair.html"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/dfw-gate-repair"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 # Google Ads destination: never let an intermediary serve a stale copy.
 [[headers]]
   for = "/samedaygaterepair"

@@ -38,32 +38,7 @@ import { captureAttribution, attributionParams, getAttribution, visitorId } from
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[]
-    /** Set by the loader in app/layout.tsx on pages that defer GTM. */
-    __gtmDeferred?: number
-    __loadGtm?: () => void
-    /** Defined by gtm.js once the container is running. */
-    google_tag_manager?: unknown
   }
-}
-
-/**
- * On a page that defers GTM, a Call or Text tap can come before the container
- * has loaded, and the dialler can freeze the page before gtm.js arrives, losing
- * the Ads conversion. So hold that one tap: load GTM, let it process the event
- * (eventCallback), then dial. eventTimeout and the backup timer cap the wait.
- */
-function holdUntilGtm(event: MouseEvent, href: string): Record<string, unknown> | null {
-  if (!window.__gtmDeferred || window.google_tag_manager || !window.__loadGtm) return null
-  event.preventDefault()
-  window.__loadGtm()
-  let gone = false
-  const go = () => {
-    if (gone) return
-    gone = true
-    window.location.href = href
-  }
-  window.setTimeout(go, 2000)
-  return { eventCallback: go, eventTimeout: 1500 }
 }
 
 /**
@@ -164,21 +139,19 @@ export function Analytics() {
        * matched back to a keyword.
        */
       if (href.startsWith('tel:')) {
-        recordEvent('call_click')
         pushEvent('call_click', {
           link_url: href,
           page_path: window.location.pathname,
           ...attributionParams(),
-          ...holdUntilGtm(event, href),
         })
+        recordEvent('call_click')
       } else if (href.startsWith('sms:')) {
-        recordEvent('sms_click')
         pushEvent('sms_click', {
           link_url: href,
           page_path: window.location.pathname,
           ...attributionParams(),
-          ...holdUntilGtm(event, href),
         })
+        recordEvent('sms_click')
       }
     }
 

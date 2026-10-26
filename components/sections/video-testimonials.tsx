@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Play, BadgeCheck, ArrowRight } from 'lucide-react'
 import { thumbnailFor, type Testimonial } from '@/content/testimonials'
@@ -26,15 +25,9 @@ import { thumbnailFor, type Testimonial } from '@/content/testimonials'
 export function TestimonialCard({
   testimonial,
   featured = false,
-  smallThumb = false,
-  eager = false,
 }: {
   testimonial: Testimonial
   featured?: boolean
-  /** Use YouTube's 320px still; for small cards (Ads landing page). */
-  smallThumb?: boolean
-  /** On screen at load (first cards on the Ads page): load now, high priority. */
-  eager?: boolean
 }) {
   const [playing, setPlaying] = useState(false)
 
@@ -79,22 +72,11 @@ export function TestimonialCard({
       aria-label={`Play video: ${testimonial.title}`}
       className={`group relative block ${aspect} w-full overflow-hidden rounded-[var(--radius-card)] bg-ink-950 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-lift)]`}
     >
-      {eager ? (
-        // On screen at load on the Ads page and its largest element, so it goes
-        // through the site's own optimiser: same origin, AVIF, sized to the card.
-        <Image
-          src={thumbnailFor(testimonial.youtubeId, testimonial.isShort, smallThumb)}
-          alt=""
-          fill
-          priority
-          sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 64vw"
-          className="object-cover opacity-85 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
-        />
-      ) : (
-      /* eslint-disable-next-line @next/next/no-img-element -- remote YouTube
-          thumbnail, lazy and below the fold; the plain file is fine here. */
+      {/* eslint-disable-next-line @next/next/no-img-element -- remote YouTube
+          thumbnail; next/image would need a remote pattern and buys nothing
+          here since the file is already correctly sized and CDN-cached. */}
       <img
-        src={thumbnailFor(testimonial.youtubeId, testimonial.isShort, smallThumb)}
+        src={thumbnailFor(testimonial.youtubeId, testimonial.isShort)}
         alt=""
         loading="lazy"
         decoding="async"
@@ -102,7 +84,6 @@ export function TestimonialCard({
         height={360}
         className="absolute inset-0 size-full object-cover opacity-85 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
       />
-      )}
       <span className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_9_11/0.9)_0%,rgb(8_9_11/0.28)_58%,transparent_100%)]" />
 
       <span
