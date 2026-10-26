@@ -115,7 +115,10 @@ export default function DfwGateRepairLanding() {
       )}
 
       <TestimonialCarousel
-        items={publishedTestimonials}
+        // Eight, not all 24: the owner's five first, then three. Every card is
+        // HTML plus page data, and on a phone that weight is what held back
+        // the first paint (26 Oct 2026).
+        items={publishedTestimonials.slice(0, 8)}
         eyebrow="Real customer reviews"
         title="See Why DFW Homeowners Trust Us"
         tone="light"
