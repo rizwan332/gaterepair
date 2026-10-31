@@ -431,6 +431,14 @@ export const tier1Cities: City[] = [
         q: 'My remote stopped working but the keypad still opens the gate. What is wrong?',
         a: 'Almost always the receiver or the remote itself rather than the operator. It is one of the quickest and least expensive repairs we do, and it does not require replacing anything mechanical.',
       },
+      {
+        q: 'Do you work on older Ramset and Viking operators in Richardson?',
+        a: 'Yes. Our documented Richardson jobs include a gearbox repair on a Ramset sliding gate operator and a full refurbishment of a Viking opener, both kept in service rather than replaced, plus a LiftMaster circuit board and battery replacement.',
+      },
+      {
+        q: 'Is it worth repairing an older gate opener, or should I replace it?',
+        a: 'It depends on the part that failed and whether parts are still available. On a sound operator a board, gearbox or battery repair is usually far cheaper than a new unit. We tell you which side of that line your opener is on before any work starts.',
+      },
     ],
   },
   {
@@ -463,6 +471,14 @@ export const tier1Cities: City[] = [
       {
         q: 'Our yard gate keeps jamming partway. Is the operator failing?',
         a: 'Check the track first. Slide gates in yard and industrial settings collect gravel and debris that binds the rollers, and the operator stalls trying to push through it. What looks like an operator fault is frequently a track that needs clearing and rollers that need replacing.',
+      },
+      {
+        q: 'Our exit gate no longer opens when a car pulls up to it. What has failed?',
+        a: 'Most often the vehicle loop: the wire cut into the pavement has been broken by a crack or by roadwork, or the loop detector has lost its setting. We test the loop and detector first, because that is a far smaller repair than the operator.',
+      },
+      {
+        q: 'Do you repair residential driveway gates in Carrollton too?',
+        a: 'Yes. As well as commercial and industrial entrances we repair residential swing and sliding driveway gates across Carrollton, including openers, motors, keypads and remotes.',
       },
     ],
   },
@@ -603,6 +619,14 @@ export const tier1Cities: City[] = [
       {
         q: 'Who is responsible for repairing an HOA community gate?',
         a: 'Typically the HOA or its management company rather than individual residents. We provide written, itemised quotes suitable for board approval, and we are happy to speak directly with a property manager.',
+      },
+      {
+        q: 'Our community gate stopped accepting keypad codes after a power cut. Does it need new hardware?',
+        a: 'Usually not. Lost programming after a power interruption is one of the most common access control faults on Allen community entrances, and the fix is normally re-programming the controller and replacing a tired backup battery so it holds its memory next time.',
+      },
+      {
+        q: 'Do you repair private driveway gates in Allen, or only HOA entrances?',
+        a: 'Both. Alongside community entrances we repair residential swing and sliding driveway gates across Allen, including openers, motors, keypads and remotes.',
       },
     ],
   },
@@ -2715,6 +2739,8 @@ const ENRICHED: Record<string, Partial<City>> = {
 
   westlake: {
     zips: ['76262'],
+    // Added 31 Oct 2026: the only priority city with no neighbourhoods listed.
+    neighborhoods: ['Vaquero', 'Glenwyck Farms', 'Terra Bella', 'Granada', 'Paigebrooke', 'Entrada'],
     landmarks: ['Circle T Ranch', 'Charles Schwab campus', 'Fidelity Investments campus', 'Westlake Academy'],
     majorRoads: ['SH 114', 'SH 170', 'Davis Boulevard', 'Solana Boulevard'],
     nearbyCities: ['trophy-club', 'southlake', 'roanoke', 'keller', 'grapevine', 'northlake'],

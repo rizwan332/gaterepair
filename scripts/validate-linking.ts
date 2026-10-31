@@ -20,6 +20,8 @@ import { services } from '../content/services'
 import { modelKey, modelPath, modelsForBrand } from '../content/models'
 import { indexableModelPages, isModelIndexable } from '../lib/model-quality'
 import { brandsForCity, modelsForCity, localFaults } from '../lib/city-links'
+import { brandCityCopy } from '../content/brand-city'
+import { brandCityPageFor, MIN_BRAND_CITY_JOBS } from '../lib/brand-city'
 
 const MIN_BRANDS_PER_CITY = 5
 const MIN_MODELS_PER_CITY = 3
@@ -79,6 +81,17 @@ for (const city of indexedCities) {
     if (!service || !serviceSlugs.has(service.slug))
       errors.push(`${city.name}: fault "${issue}" maps to a service that does not exist.`)
   }
+}
+
+// --- 4. every brand × city entry clears its proof gate ----------------------
+// A copy entry that fails the gate would otherwise just not build, silently.
+
+for (const key of Object.keys(brandCityCopy)) {
+  const [citySlug, brandSlug] = key.split('/')
+  if (!brandCityPageFor(citySlug, brandSlug))
+    errors.push(
+      `content/brand-city.ts "${key}" has copy but fails the gate: the city must be indexed and have ≥${MIN_BRAND_CITY_JOBS} verified ${brandSlug} jobs with photos.`,
+    )
 }
 
 // --- report -----------------------------------------------------------------

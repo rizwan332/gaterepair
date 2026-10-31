@@ -18,6 +18,7 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 // The cities we actually submit for indexing, not a fixed tier: as cities are
 // enriched and promoted out of `noindex`, the brand pages link them too.
 import { indexedCities } from '@/content/cities'
+import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
@@ -389,7 +390,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             {indexedCities.map((city) => (
               <li key={city.slug}>
                 <Link
-                  href={`/gate-repair-${city.slug}-tx`}
+                  // The brand × city page, where one has cleared the proof gate.
+                  href={brandCityPageFor(city.slug, brand.slug) ? brandCityPath({ city, brand }) : `/gate-repair-${city.slug}-tx`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                 >
                   {/* Plain city name: the hidden "{brand} gate repair in"

@@ -31,6 +31,9 @@ import { modelPath, modelKey } from '@/content/models'
 import { brandsForCity, localFaults } from '@/lib/city-links'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForCity, nearbyProjects } from '@/content/projects'
+import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
+import { indexableSymptomPages } from '@/lib/symptom-quality'
+import { symptomPath } from '@/content/symptoms'
 
 /**
  * City pages.
@@ -441,6 +444,14 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                     </span>
                   )}
                 </div>
+                {brandCityPageFor(city.slug, b.slug) && (
+                  <Link
+                    href={brandCityPath({ city, brand: b })}
+                    className="mt-2 inline-block text-sm font-semibold text-ink-900 underline decoration-gold-400 underline-offset-2 hover:text-gold-600"
+                  >
+                    {b.name} gate repair in {city.name} →
+                  </Link>
+                )}
                 {models.length > 0 && (
                   <ul className="mt-3.5 flex flex-wrap gap-1.5">
                     {models.map((m) => (
@@ -455,6 +466,29 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
                     ))}
                   </ul>
                 )}
+              </li>
+            ))}
+          </ul>
+
+          {/* City → symptom. Section 4 of the client's keyword list is
+              "<symptom> <city>"; the symptom pages own the fault and this
+              block carries the city half. Added 31 Oct 2026. */}
+          <h2 className="mb-3 mt-12 font-display text-2xl font-bold text-ink-950">
+            Common gate problems we fix in {city.name}
+          </h2>
+          <p className="prose-measure mb-7 leading-relaxed text-ink-700">
+            Find your gate&rsquo;s symptom for the likely causes, what you can safely check yourself, and
+            when it needs a technician.
+          </p>
+          <ul className="flex flex-wrap gap-2">
+            {indexableSymptomPages().map((s) => (
+              <li key={s.slug}>
+                <Link
+                  href={symptomPath(s)}
+                  className="inline-block rounded-lg border border-ink-200 bg-white px-3.5 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-gold-400 hover:text-ink-950"
+                >
+                  {s.label}
+                </Link>
               </li>
             ))}
           </ul>
