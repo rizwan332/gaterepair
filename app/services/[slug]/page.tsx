@@ -23,6 +23,7 @@ import { CaseStudies } from '@/components/sections/case-studies'
 import { projects, projectsForService } from '@/content/projects'
 import { modelPages, modelsForService, modelPath, modelKey } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
+import { recentFirst } from '@/content/recent-job-photos'
 import { symptomsForService, symptomPath } from '@/content/symptoms'
 import { isSymptomIndexable } from '@/lib/symptom-quality'
 
@@ -65,7 +66,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const depth = SERVICE_DEPTH[service.slug]
   const faqs = [...service.faqs, ...(depth?.extraFaqs ?? [])]
-  const images = media[service.mediaCategory] ?? []
+  const images = recentFirst(media[service.mediaCategory] ?? [])
   /**
    * Gate-type pages (sliding, swing) draw jobs by gate type, verified Texas
    * jobs first. A sliding-gate job is filed under what was repaired on it —

@@ -14,6 +14,9 @@ import { CaseStudies } from '@/components/sections/case-studies'
 import { JobVideos } from '@/components/sections/job-videos'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { media } from '@/content/media-manifest'
+import { isRecentJobPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { brandCityPages, brandCityPageFor, brandCityPath } from '@/lib/brand-city'
 
@@ -78,6 +81,7 @@ export default async function BrandCityPage({
   const cityPath = `/gate-repair-${city.slug}-tx`
 
   const lead = jobs[0].photoSet ? caseStudyPhotos[jobs[0].photoSet]?.[0] : undefined
+  const morePhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
   const models = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
@@ -191,6 +195,16 @@ export default async function BrandCityPage({
           </div>
         </div>
       </section>
+
+      {/* No city on these: the photos carry no location data. */}
+      {morePhotos.length > 0 && (
+        <PhotoGallery
+          tone="muted"
+          title={`More of our ${brand.name} work`}
+          intro={`Recent ${brand.name} jobs by our technicians, beyond the ${city.name} ${jobs.length === 1 ? 'job' : 'jobs'} above.`}
+          images={morePhotos}
+        />
+      )}
 
       <FaqAccordion faqs={copy.faqs} title={`${brand.name} gate repair in ${city.name}: questions`} />
 

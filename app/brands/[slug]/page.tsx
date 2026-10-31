@@ -19,6 +19,7 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 // enriched and promoted out of `noindex`, the brand pages link them too.
 import { indexedCities } from '@/content/cities'
 import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
+import { recentFirst } from '@/content/recent-job-photos'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
@@ -84,7 +85,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
   const depth = BRAND_DEPTH[brand.slug]
   const faqs = [...brand.faqs, ...(depth?.extraFaqs ?? [])]
-  const allImages = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
+  const allImages = recentFirst(brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : [])
   // Promote the designated lead image to the front so it becomes both the page
   // hero and the first gallery tile, without duplicating it.
   const images = brand.featuredImage
