@@ -4,8 +4,10 @@
  * The gate from BRAND-CITY-ARCHITECTURE.md §4, in code, so a content entry
  * alone cannot create a page:
  *  - the city page is already indexed;
- *  - at least two verified jobs on that brand in that city, each with its own
- *    photographs (the first-party proof the page exists to show);
+ *  - at least one verified job on that brand in that city, with its own
+ *    photographs (the first-party proof the page exists to show). Lowered
+ *    from two on 31 Oct 2026 at the client's request, for a pilot of the
+ *    pairs we have real work for;
  *  - copy written for the pair in content/brand-city.ts.
  *
  * shortcut: §4's measured-demand rule is not checked, because Search Console
@@ -22,7 +24,7 @@ import { brandCityCopy, type BrandCityCopy } from '../content/brand-city'
 
 export type BrandCityPage = { city: City; brand: Brand; jobs: Project[]; copy: BrandCityCopy }
 
-export const MIN_BRAND_CITY_JOBS = 2
+export const MIN_BRAND_CITY_JOBS = 1
 
 export const brandCityJobs = (city: City, brand: Brand) =>
   projects.filter(

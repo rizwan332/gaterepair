@@ -48,10 +48,16 @@ export async function generateMetadata({
   if (!page) return {}
   const { city, brand, jobs } = page
   const path = brandCityPath(page)
+  const jobsLabel = jobs.length === 1 ? 'a documented local job' : `${jobs.length} documented local jobs`
+  const titleTail = jobs.length === 1 ? 'Real Local Job' : `${jobs.length} Local Jobs`
+  const titles = [
+    `${brand.name} Gate Repair ${city.name}, TX | ${titleTail}`,
+    `${brand.name} Gate Repair ${city.name}, TX`,
+  ]
   return {
-    title: { absolute: `${brand.name} Gate Repair ${city.name}, TX | ${jobs.length} Local Jobs` },
+    title: { absolute: titles.find((t) => t.length <= 60) ?? titles[1] },
     description: fitDescription(
-      `${brand.name} gate opener repair in ${city.name}, TX. ${jobs.length} documented local jobs with photos: what failed, what we found and what it took to fix.`,
+      `${brand.name} gate opener repair in ${city.name}, TX. See ${jobsLabel} with photos: what failed, what we found and what it took to fix.`,
       ['Open 24/7.', `Call ${business.phone.display}.`],
     ),
     alternates: { canonical: path },
@@ -107,8 +113,8 @@ export default async function BrandCityPage({
         items={jobs}
         limit={jobs.length}
         eyebrow="Real jobs"
-        title={`${brand.name} repairs we have completed in ${city.name}`}
-        intro={`Every job here is a documented ${city.name} call-out on a ${brand.name} operator, with the photographs taken on the day.`}
+        title={`${brand.name} ${jobs.length === 1 ? 'repair' : 'repairs'} we have completed in ${city.name}`}
+        intro={`${jobs.length === 1 ? 'A' : 'Every job here is a'} documented ${city.name} call-out on a ${brand.name} operator, with the photographs taken on the day.`}
         tone="tint"
       />
 
@@ -147,7 +153,8 @@ export default async function BrandCityPage({
             {models.length > 0 && (
               <>
                 <h2 className="mb-4 font-display text-2xl font-bold text-ink-950">
-                  {brand.name} models from these {city.name} jobs
+                  {brand.name} {models.length === 1 ? 'model' : 'models'} from {jobs.length === 1 ? 'this' : 'these'}{' '}
+                  {city.name} {jobs.length === 1 ? 'job' : 'jobs'}
                 </h2>
                 <ul className="mb-8 flex flex-wrap gap-2">
                   {models.map((m) => (
