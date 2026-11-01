@@ -18,6 +18,8 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 // The cities we actually submit for indexing, not a fixed tier: as cities are
 // enriched and promoted out of `noindex`, the brand pages link them too.
 import { indexedCities } from '@/content/cities'
+import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
+import { recentFirst } from '@/content/recent-job-photos'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
@@ -33,7 +35,8 @@ export function generateStaticParams() {
 
 /** "LiftMaster Gate Repair & Opener Repair | Dallas–Fort Worth", shortened to fit. */
 function brandTitle(name: string) {
-  const display = name === 'DoorKing' ? 'DoorKing (DKS)' : name
+  // Apollo is now sold under Nice, and "Nice Apollo" is searched as one name.
+  const display = name === 'DoorKing' ? 'DoorKing (DKS)' : name === 'Apollo' ? 'Nice Apollo' : name
   const full = `${display} Gate Repair & Opener Repair | Dallas–Fort Worth`
   return full.length <= 60 ? full : `${display} Gate Repair & Opener Repair | DFW`
 }
@@ -83,7 +86,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
   const depth = BRAND_DEPTH[brand.slug]
   const faqs = [...brand.faqs, ...(depth?.extraFaqs ?? [])]
-  const allImages = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
+  const allImages = recentFirst(brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : [])
   // Promote the designated lead image to the front so it becomes both the page
   // hero and the first gallery tile, without duplicating it.
   const images = brand.featuredImage
@@ -226,6 +229,17 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                 </li>
               ))}
             </ul>
+            {/* The install/replacement half of the client's keyword list. */}
+            <p className="mt-6 text-[0.9375rem] leading-relaxed text-ink-700">
+              When the {brand.name} operator on your gate really is finished, we handle the gate motor replacement or gate
+              opener replacement, reusing the keypad, loops and safety devices where they are compatible.{' '}
+              <Link
+                href="/services/gate-installation"
+                className="font-medium text-ink-900 underline decoration-gold-400 underline-offset-2"
+              >
+                Gate opener installation and replacement →
+              </Link>
+            </p>
           </div>
         </div>
       </section>
@@ -389,7 +403,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             {indexedCities.map((city) => (
               <li key={city.slug}>
                 <Link
-                  href={`/gate-repair-${city.slug}-tx`}
+                  // The brand × city page, where one has cleared the proof gate.
+                  href={brandCityPageFor(city.slug, brand.slug) ? brandCityPath({ city, brand }) : `/gate-repair-${city.slug}-tx`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
                 >
                   {/* Plain city name: the hidden "{brand} gate repair in"

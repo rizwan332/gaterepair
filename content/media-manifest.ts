@@ -500,6 +500,50 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABwAgCdASoQAAwAA4BaJYwCdAYuHq2qml3WzuXAAPwfanb5QsSvUTcyV9m1EILGV/BDt58aeXO6BLVxbPajdZ2rIHsTnM41UNVS08wLWF/hZ0qhpjY1sO/wp4ze9waAAAA=",
       "alt": "A wide timber-clad sliding gate closed across a driveway, with the slide operator mounted on the pad to the right",
       "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-19",
+      "src": "/images/all-o-matic/all-o-matic-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAwAA4BaJQBOgBQW1zkUAAD+56GCt09mpxifypXz9imEweATzIfoYcPVxw7Lx3/prmaRFZWEJi/OgKHwvtIExH0JCkFgyKWAAA==",
+      "alt": "An All-O-Matic sliding gate operator on a raised steel pad, driving a cedar-panel sliding gate",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-20",
+      "src": "/images/all-o-matic/all-o-matic-20",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADwAwCdASoQABUAPu1oqk6ppiQiMAgBMB2JQBfnDTNV7krUiPiQXuNwAP7tsyH4oCkkcFAfZ3v9aTDaAQRAyp+szTd+tv9ij2edLy1G69SnLOd5uq412cbM99L3X1tKKTCjkWqARKG0Le4ChD7uO0IElpcIAA==",
+      "alt": "An All-O-Matic slide gate operator against a dark painted board fence, with the drive chain running along the gate",
+      "altWritten": true
+    },
+    {
+      "slug": "all-o-matic-21",
+      "src": "/images/all-o-matic/all-o-matic-21",
+      "widths": [
+        400
+      ],
+      "width": 768,
+      "height": 1024,
+      "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgC7MoADgCNWTYbr7axjNWTAAP6va/Hq/j6/dz+K2pEZxcxNz1YfLAygn8mZ1qZ2QFV1TwKSIegDvs5F0IZlCTflPnbbT/+kIS4aptTleAQzL31f3EEtF697CLalB1ZEjEq0AAA=",
+      "alt": "An All-O-Matic operator on a steel stand with its drive chain attached to a wooden sliding gate",
+      "altWritten": true
     }
   ],
   "automatic-gate-repair": [
@@ -600,6 +644,67 @@ export const media: Record<string, MediaImage[]> = {
       "height": 2688,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZgCdAEN22mcFYAA9HQ+oJJ30GyvYitlKw81ljkvmz9ZllXd2pb7DLcDl54g/7HxXZGjTWZQeM7OP8uOyqmANonoZAAA",
       "alt": "An automatic gate closing fully against its stop after adjustment",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-08",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-08",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAkAA4BaJYgCdAEOeYHUrQAA+6WHVVDAX9PXxPSUEpHPxxFxHYIm1GHZxNnt1Gl7BAPDdAXZl4aMeVvTV6AA",
+      "alt": "A cedar-panel sliding gate on a steel frame, with its slide operator at the end of the track",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-09",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-09",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoQAAkAA4BaJZQAAn1qobgAAP12iUjDIDmV36lpD853DK4gqo2W8Bi9JuFBKDOnEqVAvBGTQGxWOC1+gAA=",
+      "alt": "A black steel sliding gate across a wooded driveway, with the operator beside the post",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-10",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-10",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoQAAwAA4BaJZwAAY8LxyIAAP6pz+hVw2T3iQpRWSMThqvvfOcimD5hbryBEgkLomwVNs4Dypm8KEBEu0oQAA==",
+      "alt": "A galvanized steel sliding gate with spear pickets beside a wooden privacy fence",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-11",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-11",
+      "widths": [
+        400,
+        800
+      ],
+      "width": 1152,
+      "height": 2048,
+      "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoQABwAPu1iqU2ppaOiMAgBMB2JYwDE3agBNlpDLUl3KSrBAAD+cyqvx4J+vJH+9kdUvI0q12aVjTT7/8JjJiHlDFZ5dPolLUPIRaXMuO8XNvNiW7Tklrujr8qxs9BvGcezYrx+k61KWe3Y9xwsSbl1AgWfnlBfiR8ydMBQAAA=",
+      "alt": "A black steel sliding gate on its track at the edge of a tree-lined lot",
       "altWritten": true
     }
   ],
@@ -1042,6 +1147,38 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoQAAsAA4BaJQAAQAJrQnnYAP2l1WxKeqdbnKMOn4eh5u7uKANZIcjiK8KGQeDloZImLJw4i0w6ELgh758qz1+AAAA=",
       "alt": "An Eagle operator reassembled after a control board replacement",
       "altWritten": true
+    },
+    {
+      "slug": "eagle-06",
+      "src": "/images/eagle/eagle-06",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAwAA4BaJYgCdADzs0cBlAAA/kBOH2TGQTBiWRJNfsxe5ABQ/vULBeKAU1vZXiUDCODcBi8pLxU7I+6X4uii7IIqDS+RkYMbw6eiP5OuAAAA",
+      "alt": "An Eagle sliding gate operator at a gravel ranch entrance with a steel pipe sliding gate, service truck parked beyond",
+      "altWritten": true
+    },
+    {
+      "slug": "eagle-07",
+      "src": "/images/eagle/eagle-07",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdAB+OrW7b50gCaDnQAP3i/eRAzN9Nxhua9Rk4LjnbvTS2QbU1GWu1epN+4WrHqVQxKi/jq5kUMw/03XyLbSUMSxWJGqNbP7z+FAsmq+kg0JtSoPRUToomEHaJxpxobVn6xBX+AA==",
+      "alt": "An Eagle gate operator housing opened up with its control board exposed, beside a ranch pipe gate",
+      "altWritten": true
     }
   ],
   "electric-gate-repair": [
@@ -1135,6 +1272,86 @@ export const media: Record<string, MediaImage[]> = {
       "height": 683,
       "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAsAA4BaJZAC7AYubQjZXB4gAP7Q+c1tnypELD+5nW0g4JRDJubfUTwt4qNFgzrnybXUhb4sBgS3dzawmdHZhhb5qFfNit/6tVB11X14sPEVa9VSyzkQPHp0AAAA",
       "alt": "An electric gate operating correctly after an electrical fault was repaired",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-08",
+      "src": "/images/electric-gate-repair/electric-gate-repair-08",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdAywYYA067ewiUUEtF4nAJ2wA+2u6HSTSjyLaWsNNk/DejFbm7h4/JyvqOdqu3EQWRlPT8bCWtLOzKNzo58EIMqn2zyezZ+KHxHYdolm8D13ccDrWbdlfwhhv2/G/o7Krl/B8v5HjRbF1dldg8yQHHeryr+Xbxd1+5dfIKu4zVeUgAA==",
+      "alt": "An old gate operator opened up with two removed circuit boards laid on the grass during a board replacement",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-09",
+      "src": "/images/electric-gate-repair/electric-gate-repair-09",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAwAA4BaJQBYdh8nqiOjjaggAM4xejN50R5LeHi5yU3mG6ui+JvVTOfJqGSbHTlBrrOZ2eAHYdg1yYymOCSpMsR9IAUvrZaaBHpSTZeGAAAA",
+      "alt": "A gate control box opened at a swing gate post, with a replacement circuit board and a multimeter on the ground",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-10",
+      "src": "/images/electric-gate-repair/electric-gate-repair-10",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAwAA4BaJQBdgCPX1GbbfuPAAPR0OHy/dACJCNz6FQbojHKt28W1DWHHhLcDyjxrIJ/1IDHF5SX+QHrjjK4Wz1msY5jTNIDZ+MXE/kdlsSuYx0AAAA==",
+      "alt": "A technician at a solar-powered control box on a ranch pipe swing gate, with the solar panel mounted above",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-11",
+      "src": "/images/electric-gate-repair/electric-gate-repair-11",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAwAA4BaJaACdADbTFHGxwAA/e00QtwZjU5Iw4JtLy5sEF9yVYpakgPduFnGSN5+UdyXjcv1Ks4nejiDNBAA67fWipprVVM++AAA",
+      "alt": "A gate control box opened on a brick wall beside an iron swing gate, with the backup battery set on the ground",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-12",
+      "src": "/images/electric-gate-repair/electric-gate-repair-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwAwCdASoQABUAPu1iqk2ppaQiMAgBMB2JZQAAKUEsftclgq/QkADMflugmRR1xUsqEJeFJOCs6L3uOzpcLBDcm5NL6J1Dph7vdBT85+aECoFYrRNsqkonx6sb7++v+JLSt6Bg959kLu9HqL3+bH0LsBfImbcAAAA=",
+      "alt": "An ageing sliding gate operator stripped down to its frame and control board in the corner of a wood gate",
       "altWritten": true
     }
   ],
@@ -1297,6 +1514,38 @@ export const media: Record<string, MediaImage[]> = {
       "height": 2560,
       "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoQAAsAA4BaJQBOgCIcrfkDQIuvAAD+J68EYdmxAiRY2QSmUIafhhC0Wm7urkJDx3ZrA9ottNlOchRYk4u5k72jfb0taFD9+34ugAAA",
       "alt": "A technician's tool bag and multimeter beside an open gate operator housing",
+      "altWritten": true
+    },
+    {
+      "slug": "emergency-gate-repair-12",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoQAAkAA4BaJQBWAB6HPoKkAP75GG1d7WocPBqZCVG/8F9qvOFVe1kjrripGNlCT0g+aGdaTXtOEL6oY+bJoAAA",
+      "alt": "A night call-out: a work light on a tripod lighting a star-motif swing gate while the operator is repaired",
+      "altWritten": true
+    },
+    {
+      "slug": "emergency-gate-repair-13",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAwAA4BaJQAAXzgDuz22+zEcAP73wR8pvXlfU9+guluVT4XM/Y5pPfHid4ZPLPuZ+q38uE+e4tNzjx96h6epgVetsYMg0UHyz2hQGro8z3oAAAA=",
+      "alt": "A night repair at a stone gate pillar, with the operator open and tools spread under a portable work light",
       "altWritten": true
     }
   ],
@@ -1637,6 +1886,99 @@ export const media: Record<string, MediaImage[]> = {
       "height": 880,
       "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBdgCLwAhnrVDuvcAD2vka/oZsIAKzV24AsMQby7CjUpT5yzgt83k3EmBinYqBuKSyHmXyVjGqj1WGKtf19dNwAAA==",
       "alt": "A newly installed cantilever gate at a commercial yard entrance",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-18",
+      "src": "/images/gate-installation/gate-installation-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoQAAwAA4BaJZACdAYtVlIOwNzIAAD6n9wZOtbf0AWLfxrFd+Q3vBFTOCP83Pew9o/sbHQY9dVyo06Av9VGK3hQU9FQnIJ8O3ETZQYMYwgt8jzR8wAAAA==",
+      "alt": "A pair of black steel swing gates with operator arms, closed across a paver driveway in front of a tile-roofed house",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-19",
+      "src": "/images/gate-installation/gate-installation-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAgCdASoQAAwAA4BaJQBWAMXStn8HuZ/MJwAA/u8tbevT4G9fCC01L1Xx5AJfIa873NbrDaPZzV53XrkoU64d7djFDO32Sdsjrg8Tw3XToLcT/XKuY78AYAA=",
+      "alt": "Double spear-top steel swing gates with an operator arm on each leaf, between white brick pillars",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-20",
+      "src": "/images/gate-installation/gate-installation-20",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJYwC7ADhcPY5H1AA/vFtdmbBrErlCtvnWWMAZMgTGcPKOevs73z27/JsCmus/25ZNrVRY/D+jcnWEAA=",
+      "alt": "Double ranch swing gates with deer and vehicle cutout panels across a gravel drive",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-21",
+      "src": "/images/gate-installation/gate-installation-21",
+      "widths": [
+        400,
+        800
+      ],
+      "width": 1024,
+      "height": 768,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAwAA4BaJQBOgBt1Zb06/YAA/tulaGtxNpQBgiweOBBgnFfBEIfFbvf5pk/s7hAYzikr3w1rTE8O0GjjXFebZxbhKpPJgAA=",
+      "alt": "A black wood-picket swing gate with a white star, mid-installation with cables and tools on the drive",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-22",
+      "src": "/images/gate-installation/gate-installation-22",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZQAAV+Tut9k8PBY3ncWGAAD+A/USaTG8Gvav8I9KQkwL5bLvV8B7f6aitGhEqkHZgUKp/0k0cbJSMvb5F3u+mHBVy5IxncpfA4AA",
+      "alt": "A single arched black steel swing gate with an operator arm, in the drive between two houses",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-23",
+      "src": "/images/gate-installation/gate-installation-23",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoQAAwAA4BaJQBOgCIG1mOOOYNQAADiMhMQkYKNcpD9YuGppt5lhG+D23a/xyvJMGv/EJNCe9JBhIOlYyQAAA==",
+      "alt": "An arched steel-framed sliding gate with stained wood boards behind the pickets",
       "altWritten": true
     }
   ],
@@ -1996,6 +2338,182 @@ export const media: Record<string, MediaImage[]> = {
       "height": 3024,
       "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoQAAwAA4BaJbACsAEQ1sYCEdzwAP7pVCxYLrqEBrIDIETGdSzYJ7ptE+UTEW0DyRfe8NMbVeVs2V7oRvy+VOm1yf00b3W61v0Q7LqvpVuHRwjcNLYDR+XMMHkgJSZ4wAA=",
       "alt": "The upgraded LiftMaster arm fitted to the iron gate at dusk, with the original control box closed and still mounted on the same brick pier and conduit run",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-25",
+      "src": "/images/liftmaster/liftmaster-25",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAgCdASoQAAwAA4BaJaACdH8AFetBycDqTwAA/sHVc9k+YazHtmpSQDj/qUjlJt47PZp/14DosWkYH26lhy4As8nzfxqIgjrT4RposFlGDgAA",
+      "alt": "A LiftMaster solar-powered swing gate operator on a black iron driveway gate, with its control box and solar panel mounted on the gate post",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-26",
+      "src": "/images/liftmaster/liftmaster-26",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQDE2B4OXYKBxER3m7wA+pwuWHHAP8+mFgcXe3CKfiRaD5lDrfiRb0oZROG2P07fXiANQCaVMHMNJX0QKf/+xMdFEg9B7ardS9JA9k3wbKA3yY8w7978FQ9EAAAA",
+      "alt": "A LiftMaster swing gate operator and control box on a black steel gate post under large oak trees",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-27",
+      "src": "/images/liftmaster/liftmaster-27",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoQABUAPu1iqk2ppaQiMAgBMB2JZwCdACKdw+zBeSVtd926AADN6zzD/Qrj1frO+nv/6BNMPuAXv5B5YSssLoN+spOaJDUDvcCkoTtwJeRiush7GnvKwFOPG4vnueE5YfgAAA==",
+      "alt": "A LiftMaster sliding gate operator set into a weathered cedar privacy fence beside a concrete driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-28",
+      "src": "/images/liftmaster/liftmaster-28",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAwAA4BaJQBOgCHQPICJfAAA/idoA1IHST8kVdHOAT0Q5gRQnvgCWcAluQGgsqDSP7OYHTSRf2JwdUv7RBIZC4p8myE8UAA=",
+      "alt": "A new LiftMaster swing gate control box on a black steel post beside a cedar fence, with the operator arm laid out ready to fit",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-29",
+      "src": "/images/liftmaster/liftmaster-29",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAQCdASoQAAwAA4BaJQBdgBcORQemoAD9w9QGiS/VF082Q7vMohwFNIY63s1H6YJ+a6Q67Bij+P2DI4kv9GsHfQxbr7rKnSY65tHc6JBeBbPHdtNqC34YAAA=",
+      "alt": "A LiftMaster sliding gate operator being installed beside a white steel slide gate, with the old housing cover set aside on the grass",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-30",
+      "src": "/images/liftmaster/liftmaster-30",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdAB4Ds+egO0vWiQAAANtwYXj3E5xD5XeHRfgpIeq66iYBKVrdms+MQ6aE84O2FzMy0R8KqT0ttplp/3yc+fsNUXHfQJ/k5iT814NIxUjvDxLgxQ5V4/QAbsN+qEjbtlN12+hXe5apPAybV8CAAAA=",
+      "alt": "A LiftMaster slide gate operator during installation in a narrow side yard beside a tall cedar sliding gate",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-31",
+      "src": "/images/liftmaster/liftmaster-31",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAQCdASoQAAwAA4BaJQBOgA1RQ9CIAP6+aJvvEc3qXoFjkzzayGe2O/honBuazdFQH9bjzZdGS/TpiXW0Ic8rm1A2CprhxDqclrRCuA9oAA==",
+      "alt": "A LiftMaster sliding gate operator at the end of a stained wood sliding gate, next to a garden statue",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-32",
+      "src": "/images/liftmaster/liftmaster-32",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3024,
+      "height": 4032,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZgCsLwABy/37NOIW4kKCmvAA/vQijHRIGQYdEAvFf9+jhYEEHPgG5QBi5JiE2eioLRdxSjYnPRlydaGLCPySYoZ+6nz/1LIdOZlDULYUdljkvOEH9cFkvjpt42PAgAA=",
+      "alt": "A LiftMaster control box and swing arm on a dark wood driveway gate, with a small solar panel on a steel post",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-33",
+      "src": "/images/liftmaster/liftmaster-33",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAwAA4BaJZQC7ADHUiZ03Q+AAP6szJg0b2r7YQRQFyvvXh3zoep8HMh8GehuncToV2mv3oDrPy3DkHsIFDzctTSOehmzKTyyMUBTVPpFHgrMV86AtAAA",
+      "alt": "A LiftMaster slide operator being fitted behind a horizontal-board wood sliding gate, covers off and tools beside it",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-34",
+      "src": "/images/liftmaster/liftmaster-34",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAwAA4BaJZQCsAEPDIfGmilCQAD+W/+mgrPqttfDjm37lZFXYmbSeSF6bP34nRA2GrxcYHJj2+tMxe7+u177fGJxWbwobdpnVn2gcP2ygxoAAAA=",
+      "alt": "A LiftMaster sliding gate operator driving a tall black steel commercial slide gate with spear-top pickets",
+      "altWritten": true
+    },
+    {
+      "slug": "liftmaster-35",
+      "src": "/images/liftmaster/liftmaster-35",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwAQCdASoQAAwAA4BaJYwC7ABrZNMAAPa/xOkqyA1qiK30gq+Ct7ZKrOgS+IFGrY68dPmd/YCR3FPSADs7S0Zhbl5hOLQxGI4nJ/JMFPvMIcubKML8jV8QRw4RWiag57AAAA==",
+      "alt": "A technician replacing an old slide gate operator with a new LiftMaster unit beside a stained wood sliding gate",
       "altWritten": true
     }
   ],
@@ -2466,6 +2984,86 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAA4BaJYwCdAC0sywAAP6p+xTENPtcX2fbG+fQf2hSPYgd2UgDFVp1zp9AAVrNOl+fHH9CLuruGhABdUMq6ruGCKUh5SAH/ClyCUAgAA==",
       "alt": "A refinished wrought iron gate after weld repair and repainting",
       "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-11",
+      "src": "/images/iron-gate-repair/iron-gate-repair-11",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAkAA4BaJYwC7ACl+qCYuAD+6izg8W76NO3jxNFtBOx3aul8jCEv7iI+LjS5TMY4ijnKbOuNBJKDNHP0Lg38BslItl3pfQAAAA==",
+      "alt": "Ornate wrought iron double swing gates between stone-clad pillars, both leaves open with an operator at each post",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-12",
+      "src": "/images/iron-gate-repair/iron-gate-repair-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAkAA4BaJZQC7AEIlt+1XYAA3NjDHj331Z2tOANmdCK+NzsnAwRa0d5cgpLuoyqduXqyPdnldfLgIGhb/+WW7r3JgAAA",
+      "alt": "A black iron swing gate with scroll detailing and an operator arm, opening onto a driveway beside a brick house",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-13",
+      "src": "/images/iron-gate-repair/iron-gate-repair-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAwAA4BaJZACdADxAR+bkK0AAP7aLeTC4wMHwSp+c3oixNDvGL4+5EF1SrohW4wzXqiAtKCLgIsw6+jYAEKbNSVMWgc+K7K9+MmDQ+gkdGAA",
+      "alt": "A white ornamental iron swing gate with spear finials and a linear operator arm",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-14",
+      "src": "/images/iron-gate-repair/iron-gate-repair-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAwAA4BaJZQAArigeL2wgAD+CvLTL3865agLP2W97f7J5aOrR4lJySY2i9uZC9hEYDjbF8o5NbgqI6Y1QDzqXnKYrbFXe92iSGpjRacyeNkrHN+eQ3AA",
+      "alt": "A black iron swing gate with a diagonal-bar pattern, its operator arm and open control box on a brick pillar",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-15",
+      "src": "/images/iron-gate-repair/iron-gate-repair-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYwC7MjcAxQr+75h6JZd0YpW2mgAA/sl9lf5EXW5255jRaq1NMbiNiaTFhudqCRlxySgKlWky3ORBel4EWEscF44i3JqwHPGft34XLQ+N1vhM8y0gs5Dm17jEQxWmAAA=",
+      "alt": "A level held against a steel gate post during gate alignment work",
+      "altWritten": true
     }
   ],
   "us-automatic": [
@@ -2633,6 +3231,38 @@ export const media: Record<string, MediaImage[]> = {
       "height": 400,
       "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAsAA4BaJZQAArCDtpiGCAD+wk/MhqCRFtP3viATvv3rwXbl8pGCHdgpzZmTLsAIr4n9CMsqXYS+Hs9JPPakBA3+BAAA",
       "alt": "A Viking slide gate operator in a dark grey housing with the Viking name on the front, installed on a concrete pad against a timber fence",
+      "altWritten": true
+    },
+    {
+      "slug": "viking-07",
+      "src": "/images/viking/viking-07",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAwAA4BaJbACdAEKag821+AA/LT7bChwYxHUCA4ttaz6P1VNHZ16v0I7NAM18lUcLedupJbb1kiAoHyIP2/UTr2LPyAA",
+      "alt": "A horizontal cedar sliding gate with a Viking operator going in at the corner, tools laid out on the driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "viking-08",
+      "src": "/images/viking/viking-08",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADQAwCdASoQABUAPu1kqk4ppaQiMAgBMB2JYgC7AB6PPRZ6w4zXFAAA/mwbIg//kRDa57Nd0s/TyyCUw36tun+95HBq/lxxHMwXr6/HD+ThOo45Igg7bI1rgH67M/e+apsKqPkrsQhRdbKChD1ErpKIsM7Fy29dGYHZ19tq/cBmAAAA",
+      "alt": "A Viking sliding gate operator cover beside the old operator and control unit during a replacement, with a jack and tools on the ground",
       "altWritten": true
     }
   ]

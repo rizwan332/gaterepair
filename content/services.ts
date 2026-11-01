@@ -508,7 +508,7 @@ export const services: Service[] = [
     mediaCategory: 'gate-installation',
     navLabel: 'Installation',
     cardLine: 'New automatic gates and opener installation',
-    headline: 'Automatic Gate, Driveway Gate & Opener Installation in Dallas–Fort Worth',
+    headline: 'Automatic Gate Installation, Opener Installation & Replacement in Dallas–Fort Worth',
     intro:
       'A gate installed properly runs for twenty years. A gate installed badly becomes somebody\'s repeat repair ' +
       'call. The difference is almost entirely in the groundwork nobody sees.',

@@ -569,7 +569,7 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Driveway gate installation — slide or swing, and where it sits',
+        heading: 'Sliding gate installation or swing gate installation: choosing for the driveway',
         body: [
           'The first decision on a new driveway gate is the type. A swing gate needs clear, level ground across the full arc of each leaf, and on a driveway that slopes up from the street it can strike the pavement partway open. A sliding gate needs a straight run beside the opening at least as long as the gate itself, but it works on slopes and in tight frontages where a swing gate cannot.',
           'The second is the setback. A gate built right at the street means a car waiting for it to open sits in the road. Setting it back far enough for a vehicle to pull fully off the street is safer and is often what the city or HOA expects, so we check local requirements before anything is ordered.',
@@ -577,10 +577,24 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
         ],
       },
       {
-        heading: 'Gate opener installation on an existing gate',
+        heading: 'Gate opener and gate operator installation on an existing gate',
         body: [
           'Retrofitting an operator to a manual gate is often viable and considerably cheaper than a new gate, but it depends on three things: the gate\'s weight, the condition of its hinges and posts, and whether power can sensibly reach the location.',
           'A gate that does not swing freely by hand will not swing freely under power. Where the hinges or posts need work, doing that first is not an upsell — it is the difference between an installation that works and one that fails within a year.',
+        ],
+      },
+      {
+        heading: 'Gate motor replacement and gate opener replacement',
+        body: [
+          'Most of our installation work is not a new gate. It is a gate that is still sound with an opener that has reached the end of its life: a discontinued board nobody stocks, a gearbox worn past rebuilding, or an operator that was undersized from the day it was fitted. In that case the gate stays and the operator is replaced.',
+          'A replacement is specified the same way as a new installation: to the weight and length of the gate, and to how often it runs. It is also the moment to fix whatever killed the old unit. If the gate binds or the posts have moved, a new motor on the same gate fails the same way.',
+          'We reuse what still works, such as keypads, intercoms, loops and safety devices, where they are compatible with the new operator, and we tell you plainly when a repair is the better answer. Many motors we are asked to replace only need a capacitor, a board or a limit switch.',
+        ],
+      },
+      {
+        heading: 'Automatic gate replacement',
+        body: [
+          'Replacing the whole automatic gate makes sense when the gate itself has failed: frames corroded through, leaves repeatedly hit by vehicles, or a gate that was never built for its operator. The posts and footings are assessed first, because they often decide whether the new gate goes on the old foundations or needs new ones.',
         ],
       },
     ],
@@ -616,6 +630,10 @@ export const SERVICE_DEPTH: Record<string, ServiceDepth> = {
       {
         q: 'How long does an installation take?',
         a: 'A straightforward operator retrofit to a sound existing gate is often a day. A new gate with footings, trenching and access control is typically two to three days, plus curing time for concrete before the gate is hung.',
+      },
+      {
+        q: 'Do you replace gate motors and openers, or only install new gates?',
+        a: 'Both. Gate motor replacement and gate opener replacement on an existing gate are a large part of the work, and we install every major brand, including LiftMaster, Viking, DoorKing, Elite, US Automatic, FAAC and Nice Apollo. Before replacing anything we check whether the old unit can be repaired, because often it can.',
       },
     ],
   },
