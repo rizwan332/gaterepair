@@ -231,7 +231,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             </ul>
             {/* The install/replacement half of the client's keyword list. */}
             <p className="mt-6 text-[0.9375rem] leading-relaxed text-ink-700">
-              When a {brand.name} operator really is finished, we handle the gate motor replacement or gate
+              When the {brand.name} operator on your gate really is finished, we handle the gate motor replacement or gate
               opener replacement, reusing the keypad, loops and safety devices where they are compatible.{' '}
               <Link
                 href="/services/gate-installation"

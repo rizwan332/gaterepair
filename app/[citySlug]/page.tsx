@@ -430,7 +430,7 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
               swing gate installation, gate opener and gate operator installation on an existing gate, gate
               motor replacement, gate opener replacement and full automatic gate replacement.
               {city.gateProfile?.commonGateTypes.length
-                ? ` The gates we work on most in ${city.name} are ${new Intl.ListFormat('en-US').format(city.gateProfile.commonGateTypes.map((t) => t.toLowerCase()))}, and each is specified differently: weight, length, slope and how often it runs decide the operator.`
+                ? ` The gates we work on most in ${city.name} are ${new Intl.ListFormat('en-US').format(city.gateProfile.commonGateTypes.map((t) => t.replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())))}, and each is specified differently: weight, length, slope and how often it runs decide the operator.`
                 : ''}
             </p>
             <p>
