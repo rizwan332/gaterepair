@@ -21,7 +21,8 @@ import { modelKey, modelPath, modelsForBrand } from '../content/models'
 import { indexableModelPages, isModelIndexable } from '../lib/model-quality'
 import { brandsForCity, modelsForCity, localFaults } from '../lib/city-links'
 import { brandCityCopy } from '../content/brand-city'
-import { brandCityPageFor, MIN_BRAND_CITY_JOBS } from '../lib/brand-city'
+import { brandCityAreaCopy } from '../content/brand-city-areas'
+import { brandCityPages, brandCityPageFor, MIN_BRAND_CITY_JOBS } from '../lib/brand-city'
 
 const MIN_BRANDS_PER_CITY = 5
 const MIN_MODELS_PER_CITY = 3
@@ -93,6 +94,42 @@ for (const key of Object.keys(brandCityCopy)) {
       `content/brand-city.ts "${key}" has copy but fails the gate: the city must be indexed and have ≥${MIN_BRAND_CITY_JOBS} verified ${brandSlug} jobs with photos.`,
     )
 }
+for (const key of Object.keys(brandCityAreaCopy)) {
+  const [citySlug, brandSlug] = key.split('/')
+  if (!brandCityPageFor(citySlug, brandSlug))
+    errors.push(`content/brand-city-areas "${key}" has copy but fails the gate: the city must be indexed and list the brand in gateProfile.commonBrands.`)
+}
+
+// --- 5. no brand × city page repeats another page's prose -------------------
+// The thin/duplicate-content guard for the area pages: no 20-word run may be
+// shared between two brand × city pages, or with a city or brand page.
+
+const SHINGLE = 20
+const shingleOwners = new Map<string, Set<string>>()
+const addProse = (owner: string, text?: string) => {
+  const w = (text ?? '').toLowerCase().replace(/[^a-z0-9' ]+/g, ' ').split(/\s+/).filter(Boolean)
+  for (let i = 0; i + SHINGLE <= w.length; i++) {
+    const k = w.slice(i, i + SHINGLE).join(' ')
+    const set = shingleOwners.get(k) ?? new Set<string>()
+    set.add(owner)
+    shingleOwners.set(k, set)
+  }
+}
+for (const c of cities) {
+  addProse(`city ${c.slug}`, c.localAngle)
+  for (const f of c.faqs ?? []) addProse(`city ${c.slug}`, f.a)
+}
+for (const b of brands) {
+  addProse(`brand ${b.slug}`, b.intro)
+  addProse(`brand ${b.slug}`, b.whyDifferent)
+}
+for (const p of brandCityPages) {
+  const owner = `${p.city.slug}/${p.brand.slug}`
+  for (const t of [p.copy.description, p.copy.intro, ...p.copy.local, ...p.copy.faqs.map((f) => f.a)]) addProse(owner, t)
+}
+const sharedProse = [...shingleOwners.values()].filter((o) => o.size > 1 && [...o].some((x) => x.includes('/')))
+for (const o of new Set(sharedProse.map((x) => [...x].sort().join(' and '))))
+  errors.push(`brand × city prose repeated across pages: ${o}`)
 
 // --- report -----------------------------------------------------------------
 
@@ -102,6 +139,7 @@ const modelCityPairs = indexedCities.reduce((n, c) => n + modelsForCity(c).lengt
 console.log(
   `${indexedCities.length} indexed cities × ${brands.length} brands = ${brandCityPairs} brand+city relationships stated\n` +
     `${modelCityPairs} city → model links across those pages\n` +
+    `${brandCityPages.length} brand × city pages (${brandCityPages.filter((p) => p.jobs.length > 0).length} with a local job)\n` +
     `${indexableModelPages().length} indexed model pages, ${modelsLinkedFromCities.size} of them linked from a city page`,
 )
 

@@ -1,14 +1,16 @@
 /**
  * Brand × city pages: which ones exist, computed rather than declared.
  *
- * The gate from BRAND-CITY-ARCHITECTURE.md §4, in code, so a content entry
- * alone cannot create a page:
- *  - the city page is already indexed;
- *  - at least one verified job on that brand in that city, with its own
- *    photographs (the first-party proof the page exists to show). Lowered
- *    from two on 31 Oct 2026 at the client's request, for a pilot of the
- *    pairs we have real work for;
- *  - copy written for the pair in content/brand-city.ts.
+ * Two kinds, both needing written copy and an indexed city:
+ *  - proof pages (content/brand-city.ts): at least one verified job on that
+ *    brand in that city, with its own photographs. The gate from
+ *    BRAND-CITY-ARCHITECTURE.md §4, lowered from two jobs to one on 31 Oct 2026
+ *    at the client's request;
+ *  - area pages (content/brand-city-areas): the brand is one the city's
+ *    profile lists in `gateProfile.commonBrands`. Added 1 Nov 2026 at the
+ *    client's request for a page per relevant brand in every city. They cite
+ *    no local job; the route shows the nearest documented ones instead.
+ * Proof copy wins where a pair has both.
  *
  * shortcut: §4's measured-demand rule is not checked, because Search Console
  * is not connected yet. Once it is, check each page's 90-day impressions and
@@ -21,6 +23,7 @@ import { projects, type Project } from '../content/projects'
 import { brands, type Brand } from '../content/brands'
 import { indexedCities, type City } from '../content/cities'
 import { brandCityCopy, type BrandCityCopy } from '../content/brand-city'
+import { brandCityAreaCopy } from '../content/brand-city-areas'
 
 export type BrandCityPage = { city: City; brand: Brand; jobs: Project[]; copy: BrandCityCopy }
 
@@ -31,17 +34,27 @@ export const brandCityJobs = (city: City, brand: Brand) =>
     (p) => p.verified && p.photoSet && p.citySlug === city.slug && p.brand?.toLowerCase() === brand.name.toLowerCase(),
   )
 
-export const brandCityPages: BrandCityPage[] = Object.entries(brandCityCopy).flatMap(([key, copy]) => {
+/** The city profile names this brand as one used on its gates. */
+export const isRelevantBrand = (city: City, brand: Brand) =>
+  (city.gateProfile?.commonBrands ?? []).some((n) => n.toLowerCase() === brand.name.toLowerCase())
+
+const allCopy: Record<string, BrandCityCopy> = { ...brandCityAreaCopy, ...brandCityCopy }
+
+export const brandCityPages: BrandCityPage[] = Object.entries(allCopy).flatMap(([key, copy]) => {
   const [citySlug, brandSlug] = key.split('/')
   const city = indexedCities.find((c) => c.slug === citySlug)
   const brand = brands.find((b) => b.slug === brandSlug)
   if (!city || !brand) return []
   const jobs = brandCityJobs(city, brand)
-  return jobs.length >= MIN_BRAND_CITY_JOBS ? [{ city, brand, jobs, copy }] : []
+  const proven = key in brandCityCopy && jobs.length >= MIN_BRAND_CITY_JOBS
+  return proven || (key in brandCityAreaCopy && isRelevantBrand(city, brand)) ? [{ city, brand, jobs, copy }] : []
 })
 
 export const brandCityPath = (p: { city: { slug: string }; brand: { slug: string } }) =>
   `/gate-repair-${p.city.slug}-tx/${p.brand.slug}`
 
-export const brandCityPageFor = (citySlug: string, brandSlug: string) =>
-  brandCityPages.find((p) => p.city.slug === citySlug && p.brand.slug === brandSlug)
+const bySlug = new Map(brandCityPages.map((p) => [`${p.city.slug}/${p.brand.slug}`, p]))
+
+export const brandCityPageFor = (citySlug: string, brandSlug: string) => bySlug.get(`${citySlug}/${brandSlug}`)
+
+export const brandCityPagesForCity = (citySlug: string) => brandCityPages.filter((p) => p.city.slug === citySlug)
