@@ -706,6 +706,150 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoQABwAPu1iqU2ppaOiMAgBMB2JYwDE3agBNlpDLUl3KSrBAAD+cyqvx4J+vJH+9kdUvI0q12aVjTT7/8JjJiHlDFZ5dPolLUPIRaXMuO8XNvNiW7Tklrujr8qxs9BvGcezYrx+k61KWe3Y9xwsSbl1AgWfnlBfiR8ydMBQAAA=",
       "alt": "A black steel sliding gate on its track at the edge of a tree-lined lot",
       "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-12",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-12",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoQAAkAA4BaJQBdgB7Czso0iAD6kNKQu4EsAW86q3KzNLMT3+dwGEJ/uEIv/LYRptMKTBtOKW3nBfFqILbFUj3Md+AAAA==",
+      "alt": "A black steel sliding gate running along a brick house, with its operator and toolkit at the end of the track",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-13",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoQAAwAA4BaJZQCdADZVsgAAP7jiB5ypuQ8lnQ1qVcTBFf3PgLoIXMQN85f0T7DbnN9eqnvXNC0Il9g2d/ZAAAA",
+      "alt": "A technician kneeling at the operator of a tall dark wood-clad sliding gate",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-14",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoQAAwAA4BaJYwCdAEPArpBD/LwAAD+hcm3lesZ/SY9Z1Do3FygKTdIuCEv+DBLex79/bq4sWNJ9kUqmroAAA==",
+      "alt": "A sliding gate operator mounted behind a stained wood gate on a concrete driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-15",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoQAAwAA4BaJQBdgMXrx/X2ygAA/mbZ4wWfP7A7N8+Hs+j4xHZIs5vDqjxGKafMMXncscYiR5mQa8Jibe7kFY5x9WhuJv29O+kGATEhpiTIqtvHf/hPCAAA",
+      "alt": "A white aluminium sliding gate with its operator control box fixed to the post",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-16",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAgCdASoQAAwAA4BaJYwCdAYuvQ3e/ZMXsGAA/idik0ZHlUycx6d7O1eQYIkGeHgFaR+Xm5j7S7kG3m44T7K2eaNPykH6h8JbNGbVFXMlnAAA",
+      "alt": "A long cedar-clad sliding gate with its operator at the post end of the driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-17",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-17",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAwAA4BaJZgAAhSjolft4AD89J/wpXT/9SZhIM2pWQREPUkwUaSFoSKz8z5trM5KQLB0g+XX4nmBG50JrV+6ef7eHmxJ2DgAAA==",
+      "alt": "A pad-mounted sliding gate operator beside a white picket fence",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-18",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAkAA4BaJZAC7ADhaTOl+QsAAP7BfMszJ/iOe/358NWTN9bq0tv3uyNz8qQW9R4KbF3nAulF6NLqDtk0MyRDhsFI/gVuroIAAA==",
+      "alt": "A sliding gate operator set on its pad under an ornamental iron fence",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-19",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBbZAzEzdgP4F2svZIAA/r+8z+eSNyQecL/UBCJjbtdLQv13OIruY04P7tefQvpyBB2KfK2BJNSEN2dI9ZFEixekdiKZj0AwwEgf/aJu4UYVbStc3qGrC3zgAA==",
+      "alt": "A sliding gate operator with a blue cover beside a dark wood privacy gate",
+      "altWritten": true
+    },
+    {
+      "slug": "automatic-gate-repair-20",
+      "src": "/images/automatic-gate-repair/automatic-gate-repair-20",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoQAAkAA4BaJYgAAcx2TPIAAMomMYfuB6wvq7gowbYCfmfGbT1cJgSzr1msENz+TWtJZ5YhPKAAAA==",
+      "alt": "A horizontal-board wood sliding gate with its operator at the post",
+      "altWritten": true
     }
   ],
   "commercial-gate-repair": [
@@ -1353,6 +1497,118 @@ export const media: Record<string, MediaImage[]> = {
       "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwAwCdASoQABUAPu1iqk2ppaQiMAgBMB2JZQAAKUEsftclgq/QkADMflugmRR1xUsqEJeFJOCs6L3uOzpcLBDcm5NL6J1Dph7vdBT85+aECoFYrRNsqkonx6sb7++v+JLSt6Bg959kLu9HqL3+bH0LsBfImbcAAAA=",
       "alt": "An ageing sliding gate operator stripped down to its frame and control board in the corner of a wood gate",
       "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-13",
+      "src": "/images/electric-gate-repair/electric-gate-repair-13",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBOmUABL5Nu8JHIYLQAA/lT+wlzv/4YnFi8aQrWZA0xDJzQYzhXO0LYQdc5G4HxGK3I2/tYLfZQLL1eReTdTlik08v7mfgtHWhgrMCp2BOLGBeKzaE85odFPyCAA",
+      "alt": "An operator control box opened beside a wood fence, with tools laid out on the ground",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-14",
+      "src": "/images/electric-gate-repair/electric-gate-repair-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAwAA4BaJYgCw7Dp1BHlE2+AAP3weLpBpcfzTNpMwLnj8nkyOVxqFVzeFSKe+h39vvjjqt6P3bYsuuWwUuWLs0MBkbkvszwxrRLarwmWBC0GqTFNoQAA",
+      "alt": "A gate control box fixed to a block wall at a gravel driveway, with the toolbag beside it",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-15",
+      "src": "/images/electric-gate-repair/electric-gate-repair-15",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAwAA4BaJZACsADpEYmgH17AAP6/w4J7Sg69Npi1JJRuzXjdYGYGouxs/cCRJQGo8boOmlTnCbg7wBwTOqTGPy6Z9m3QQx9RRcGiTMBFBotCJTAAAA==",
+      "alt": "A swing gate operator and its open control panel during an electrical repair",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-16",
+      "src": "/images/electric-gate-repair/electric-gate-repair-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoQAAwAA4BaJZACdAD7gzjiSWGRgAD+x3vSWV5TQAmA3hiJgSqFkSYai7GZZxMRiuH51CiVZm36UBrJrdYHyYDrNC8tDZp68AF5PuPSUdB2Bmly24gAAA==",
+      "alt": "A technician working at the control box of an iron ranch-style swing gate",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-17",
+      "src": "/images/electric-gate-repair/electric-gate-repair-17",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAQCdASoQAAwAA4BaJQBOgA66uWgAAPKkKpso/j70DYOWumVdLWy1rgysmdY0ZAldix/6oO+6u/a/+bbkW89+KAPIi9GMPtrl4J+OdzULl0mVuZiSbd1QeAA=",
+      "alt": "A swing gate arm operator and its control box mounted on a brick wall",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-18",
+      "src": "/images/electric-gate-repair/electric-gate-repair-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwAgCdASoQAAwAA4BaJZACdH8BjALTSyAqZsIYAP1Tvp82dH5WLns82VwllBGH0vB68HUez0usu+KHQL/FrGojx8gtuIy9O8c4SvtFdkNkqYgbCTSLT/LkX8cGWNrQL1M4AAAA",
+      "alt": "A control box fixed to a steel ranch gate with a solar panel overhead",
+      "altWritten": true
+    },
+    {
+      "slug": "electric-gate-repair-19",
+      "src": "/images/electric-gate-repair/electric-gate-repair-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAwAA4BaJYgCdACh91x9gAD+v7qaBLdlk7c1zKPjSzGRV6aV6jf5fQPttYyxi6GWGPXk5kjvIg7aJtdtItYHizTqATzz3fS4AAAA",
+      "alt": "A gate operator removed for repair beside a wood gate, with tools and parts cases on the driveway",
+      "altWritten": true
     }
   ],
   "emergency-gate-repair": [
@@ -1546,6 +1802,22 @@ export const media: Record<string, MediaImage[]> = {
       "height": 3840,
       "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAwAA4BaJQAAXzgDuz22+zEcAP73wR8pvXlfU9+guluVT4XM/Y5pPfHid4ZPLPuZ+q38uE+e4tNzjx96h6epgVetsYMg0UHyz2hQGro8z3oAAAA=",
       "alt": "A night repair at a stone gate pillar, with the operator open and tools spread under a portable work light",
+      "altWritten": true
+    },
+    {
+      "slug": "emergency-gate-repair-14",
+      "src": "/images/emergency-gate-repair/emergency-gate-repair-14",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 4032,
+      "height": 3024,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoQAAwAA4BaJQBWAB6UTPEYSwAA/vea8t3RT8Psa97ZlGmHSa0BHjcLSww/cGbPaEORR2JfYATCKIVzOAA=",
+      "alt": "A star-motif iron swing gate lit by headlights during a night call-out",
       "altWritten": true
     }
   ],
@@ -1979,6 +2251,150 @@ export const media: Record<string, MediaImage[]> = {
       "height": 3840,
       "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoQAAwAA4BaJQBOgCIG1mOOOYNQAADiMhMQkYKNcpD9YuGppt5lhG+D23a/xyvJMGv/EJNCe9JBhIOlYyQAAA==",
       "alt": "An arched steel-framed sliding gate with stained wood boards behind the pickets",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-24",
+      "src": "/images/gate-installation/gate-installation-24",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdIDZBm8ei/JR+J94AAM3qQT5jP5yy5q7EsWNYaXJU6U0VB4St/PXfPv/0cJ4SDJq48VmNXkguDuvMxuCcry8X+8lucLVQXpBRM5lyLL0kzxmmQJRfNKjYXdC2E0AAAA==",
+      "alt": "A solar-powered swing gate operator on a black steel driveway gate beside a brick house",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-25",
+      "src": "/images/gate-installation/gate-installation-25",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAkAA4BaJQBOgBbhRPFAAAD+6jNiHHW/zm1gw3T+qYIoyXEniR3FZW3Wuch32SY12UZNF7fuEMGj6t1HrVfcSFXP60wAAAA=",
+      "alt": "Double iron swing gates closed across a paver driveway in front of a tile-roofed house",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-26",
+      "src": "/images/gate-installation/gate-installation-26",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoQAAkAA4BaJYgCdAEeftdgC43OAAD+6gGprEK/4DPQ8adt1WpcWcvmvsc9LAMkq75aEePuglAnqlqC1h3+cSa93HJ+FMB5E3w1T0p4rIAAAA==",
+      "alt": "An iron swing gate with a decorative emblem across a driveway, with a pickup parked beyond",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-27",
+      "src": "/images/gate-installation/gate-installation-27",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAkAA4BaJQBdgCGWBojfAAD+wYJ/NNSLPzTtpg4Y7r91WtpXC3jDICe4XUgHlUPhJRh5OaTsB5ogOvazi+FyXbBJihJYQAA=",
+      "alt": "Arched iron swing gates on a residential driveway with a solar panel on the post",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-28",
+      "src": "/images/gate-installation/gate-installation-28",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwAgCdASoQAAwAA4BaJZgCdH8AFcyFUJ621d6AAP1Tf7wzeoS02s5ymZBl8jXslrPPhZb7YX3wjfc0Jdwvy6rVcjBvU4M0ELV4X5ZOFGho+UT+pWI3+dQkB2fO8N0iECFAAA==",
+      "alt": "Double iron swing gates in front of a tile-roofed garage, viewed from the street",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-29",
+      "src": "/images/gate-installation/gate-installation-29",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoQAAwAA4BaJZgCdAEUiYis76VQAAD+TyVC61XJzkja77S7bDX8ozeHi3BMWBTS0JfD8OCRxCoX7GIHhZHBwvzpFaUdUhfXcMip8XxjrImndp4iDxG+czzcFtGAAA==",
+      "alt": "One leaf of a double iron swing gate opening across a paver driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-30",
+      "src": "/images/gate-installation/gate-installation-30",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoQAAwAA4BaJYwCdAEfBq7G6YmoAP7aLFDFU4U7yNORcl1yvPYeF1HPt5tbQmu/upthMvCnNETSMNTUqA4I+TIU/8QvLzyDBhF4X9sx7jp/aZ/gJ0Y9AAAA",
+      "alt": "A black steel swing gate with its arm operator fitted beside a brick garage",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-31",
+      "src": "/images/gate-installation/gate-installation-31",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3840,
+      "height": 5120,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdABshoFoReM5YAPNqdBXBFFjA33t8Ile1qQg6d/lHRwMJKDKWtnOstCpXOlCtRaNHvNZVFtCndNaNWXr5feD7cATCJH30QDuyrBtSJ4Rf/MrN90ghXAA=",
+      "alt": "A new linear swing gate actuator laid out ready for fitting beside the gate post",
+      "altWritten": true
+    },
+    {
+      "slug": "gate-installation-32",
+      "src": "/images/gate-installation/gate-installation-32",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAkAA4BaJYwCw7Dc67KPAAD+wEszk4V/heckXGUuQS+GzNvOt1reEwDtsRwS8mwET/dMNvA4uX38Nulzj/qfyyicLcgGdfRhjIAA",
+      "alt": "Double iron swing gates standing open on their arm operators between rendered pillars",
       "altWritten": true
     }
   ],
@@ -3063,6 +3479,150 @@ export const media: Record<string, MediaImage[]> = {
       "height": 5120,
       "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYwC7MjcAxQr+75h6JZd0YpW2mgAA/sl9lf5EXW5255jRaq1NMbiNiaTFhudqCRlxySgKlWky3ORBel4EWEscF44i3JqwHPGft34XLQ+N1vhM8y0gs5Dm17jEQxWmAAA=",
       "alt": "A level held against a steel gate post during gate alignment work",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-16",
+      "src": "/images/iron-gate-repair/iron-gate-repair-16",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAwAA4BaJYgC7ADQc4zcAAD+qgQbMDOmSgBO7vp8dmFF6OkpfdACzea8cOSkQ3f34sS+e1poKf8QkeWvmSQmqWa1etWfejgwUF0nHtfipln7smSmQAAA",
+      "alt": "Double ornamental iron swing gates between stone pillars, with the operator box at the base",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-17",
+      "src": "/images/iron-gate-repair/iron-gate-repair-17",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoQAAkAA4BaJYgCdAEP+k75MAAA/oHzEMcDWGRjjf7uKf+vNtSfunHSPSARQy89q1vYB/4AamahiAkLA4vbxjZ4AAA=",
+      "alt": "A black iron swing gate with patriotic bunting on the fence and its arm operator at the hinge",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-18",
+      "src": "/images/iron-gate-repair/iron-gate-repair-18",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoQAAwAA4BaJZQC7ADcnQjDgAD8i4+mMRu9ZKs0k9V4b9u0QWc9pdnatNFHkl43FMviht10tFUzB5D+TDwSDgjNAAA=",
+      "alt": "A technician checking a diagonal-pattern iron swing gate from inside the drive",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-19",
+      "src": "/images/iron-gate-repair/iron-gate-repair-19",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAwAA4BaJYwCdAERH+9zBHkgAM4/L7iHjmDiRC2TfIg0B+Fp2U3tvEC8N3hDsBF6MmMCvhbuPp0Nx9TcxwGuMgPjogTkddLEAA==",
+      "alt": "An iron estate gate beside a stone pillar with its control box mounted on the stonework",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-20",
+      "src": "/images/iron-gate-repair/iron-gate-repair-20",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoQAAwAA4BaJQBdgMXckV73/65eQAAA9FUc3c5DNrvmLvs0IOSvTG1VMS0qc5NJKE/+VXwpaIOJe6Xn9461ZJveDwFQWYsJtRNTp+ekOhiz80Z2MbntsCAA",
+      "alt": "Ornamental iron gates on stone pillars with tools at the base during a repair",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-21",
+      "src": "/images/iron-gate-repair/iron-gate-repair-21",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAkAA4BaJQBWABeZ0OisAAD+aqQdKvboyboMhzLXvNRFKxPmbfcPEVak/EjGsqgW5ryneBzK77kNqVeFn65aaR8tXUCmWhB2Ad1Qy7tkAA==",
+      "alt": "An iron swing gate with a horse emblem on a gravel ranch driveway",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-22",
+      "src": "/images/iron-gate-repair/iron-gate-repair-22",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAkAA4BaJYwCw7EfsOwmDOQAAP3a4xijCFzfJDsK/esFYgauQaLTbMv0OXKXPnexbPdvVifaRoPAAAA=",
+      "alt": "A black iron gate below patriotic bunting beside a brick house",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-23",
+      "src": "/images/iron-gate-repair/iron-gate-repair-23",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 5120,
+      "height": 3840,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAQCdASoQAAwAA4BaJQBWABPIfcxgAP7GBj55lUcfNn6VvyRmxJXUHZXS/F57Q80qHmDAAF9mmIInybOTd7iD1r1Q2BokOi5ZDGoQAAA=",
+      "alt": "A black ornamental iron swing gate beside a garage",
+      "altWritten": true
+    },
+    {
+      "slug": "iron-gate-repair-24",
+      "src": "/images/iron-gate-repair/iron-gate-repair-24",
+      "widths": [
+        400,
+        800,
+        1200,
+        1600,
+        2000
+      ],
+      "width": 3672,
+      "height": 2066,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAkAA4BaJYgCdAD2AiH4JgAA/uyajpBJLbhTBfVuhMT/Yrz8JSlrmac5RxeI78m3zOOSRlnz9mmD8aSs/i+OAyyKMRCnSfWnwBN5wAA=",
+      "alt": "An arched iron swing gate with its arm operator, viewed from the lawn side",
       "altWritten": true
     }
   ],
