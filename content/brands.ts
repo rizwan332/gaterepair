@@ -516,7 +516,7 @@ export const brands: Brand[] = [
     mediaCategory: null,
     contested: false,
     priority: 11,
-    headline: 'Apollo Gate Repair & Opener Service in Dallas–Fort Worth',
+    headline: 'Nice Apollo Gate Repair & Opener Service in Dallas–Fort Worth',
     intro:
       'Apollo builds the solar-capable swing and slide operators found on a great many Dallas–Fort Worth acreage ' +
       'properties, usually paired with a battery and a small panel. We repair them rather than replacing them.',

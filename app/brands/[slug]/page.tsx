@@ -35,7 +35,8 @@ export function generateStaticParams() {
 
 /** "LiftMaster Gate Repair & Opener Repair | Dallas–Fort Worth", shortened to fit. */
 function brandTitle(name: string) {
-  const display = name === 'DoorKing' ? 'DoorKing (DKS)' : name
+  // Apollo is now sold under Nice, and "Nice Apollo" is searched as one name.
+  const display = name === 'DoorKing' ? 'DoorKing (DKS)' : name === 'Apollo' ? 'Nice Apollo' : name
   const full = `${display} Gate Repair & Opener Repair | Dallas–Fort Worth`
   return full.length <= 60 ? full : `${display} Gate Repair & Opener Repair | DFW`
 }
@@ -228,6 +229,17 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                 </li>
               ))}
             </ul>
+            {/* The install/replacement half of the client's keyword list. */}
+            <p className="mt-6 text-[0.9375rem] leading-relaxed text-ink-700">
+              When a {brand.name} operator really is finished, we handle the gate motor replacement or gate
+              opener replacement, reusing the keypad, loops and safety devices where they are compatible.{' '}
+              <Link
+                href="/services/gate-installation"
+                className="font-medium text-ink-900 underline decoration-gold-400 underline-offset-2"
+              >
+                Gate opener installation and replacement →
+              </Link>
+            </p>
           </div>
         </div>
       </section>

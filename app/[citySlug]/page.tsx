@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { MapPin, Clock, Navigation } from 'lucide-react'
+import { MapPin, Clock, Navigation, ArrowRight } from 'lucide-react'
 import {
   cities,
   publishedCities,
@@ -395,8 +395,11 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
               names told a visitor with a sliding gate off its track nothing
               about which one was theirs. */}
           <p className="prose-measure mb-7 leading-relaxed text-ink-700">
-            Automatic and electric driveway gates, sliding and swing gates, gate openers and motors,
-            emergency call-outs, and commercial and HOA entrances across {city.name} and {city.county}.
+            We are an automatic gate repair company with technicians working across {city.name} and{' '}
+            {city.county}: electric and driveway gate repair, sliding and swing gates, gate opener and gate
+            motor repair, emergency call-outs, and commercial gate repair for HOA and business entrances. The
+            gate repair technician who diagnoses the fault carries the parts to fix most of them on the first
+            visit.
           </p>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
@@ -413,6 +416,38 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
               </li>
             ))}
           </ul>
+
+          {/* City → installation. The client's keyword list has a whole
+              install/replacement block that no city page carried. Built from
+              this city's own gate types and job count so it is not the same
+              paragraph twenty times. Added 1 Nov 2026. */}
+          <h2 className="mb-3 mt-12 font-display text-2xl font-bold text-ink-950">
+            Gate installation and replacement in {city.name}
+          </h2>
+          <div className="prose-measure space-y-4 leading-relaxed text-ink-700">
+            <p>
+              We also install and replace gates and operators in {city.name}: sliding gate installation,
+              swing gate installation, gate opener and gate operator installation on an existing gate, gate
+              motor replacement, gate opener replacement and full automatic gate replacement.
+              {city.gateProfile?.commonGateTypes.length
+                ? ` The gates we work on most in ${city.name} are ${new Intl.ListFormat('en-US').format(city.gateProfile.commonGateTypes.map((t) => t.toLowerCase()))}, and each is specified differently: weight, length, slope and how often it runs decide the operator.`
+                : ''}
+            </p>
+            <p>
+              Before quoting a replacement we check whether a repair will do, because a failed board,
+              capacitor or limit switch is far cheaper than a new motor.
+              {cityProjects.length > 0
+                ? ` The ${city.name} ${cityProjects.length === 1 ? 'job' : 'jobs'} above show${cityProjects.length === 1 ? 's' : ''} what that looks like in practice.`
+                : ''}
+            </p>
+          </div>
+          <Link
+            href="/services/gate-installation"
+            className="mt-5 inline-flex items-center gap-2 font-semibold text-ink-900 underline decoration-gold-400 underline-offset-4"
+          >
+            Automatic gate installation and replacement
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
 
           {/* City → brand → model, the spine of the internal linking system.
               One block rather than two lists: a visitor who knows their brand
