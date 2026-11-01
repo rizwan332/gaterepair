@@ -1,5 +1,6 @@
 /**
- * Recent job photographs, supplied by the client 31 Oct 2026 over WhatsApp.
+ * Recent job photographs, supplied by the client 31 Oct 2026 over WhatsApp
+ * (second batch processed 1 Nov 2026).
  *
  * They are newer than the WordPress-era library, which is mostly California
  * work (see content/alt-text.ts), so galleries show them first. WhatsApp
@@ -17,11 +18,11 @@ export const RECENT_JOB_PHOTOS = new Set([
   ...range('all-o-matic', 19, 21),
   ...range('viking', 7, 8),
   ...range('eagle', 6, 7),
-  ...range('gate-installation', 18, 23),
-  ...range('iron-gate-repair', 11, 15),
-  ...range('automatic-gate-repair', 8, 11),
-  ...range('electric-gate-repair', 8, 12),
-  ...range('emergency-gate-repair', 12, 13),
+  ...range('gate-installation', 18, 32),
+  ...range('iron-gate-repair', 11, 24),
+  ...range('automatic-gate-repair', 8, 20),
+  ...range('electric-gate-repair', 8, 19),
+  ...range('emergency-gate-repair', 12, 14),
 ])
 
 function range(category: string, from: number, to: number): string[] {

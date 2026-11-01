@@ -34,7 +34,7 @@ import { projectsForCity, nearbyProjects } from '@/content/projects'
 import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
 import { indexableSymptomPages } from '@/lib/symptom-quality'
 import { symptomPath } from '@/content/symptoms'
-import { recentFirst } from '@/content/recent-job-photos'
+import { isRecentJobPhoto } from '@/content/recent-job-photos'
 
 /**
  * City pages.
@@ -207,12 +207,16 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
    * The section heading says "our own jobs" and stops there. See
    * MEDIA-PROVENANCE.md.
    */
-  // Recent jobs first (31 Oct 2026): sliding, swing and install work.
-  const cityPhotos = recentFirst([
+  // Recent jobs only, and a different six per city (1 Nov 2026), so 200 city
+  // pages are not all showing the same gallery. Still "our work", never "here".
+  const photoPool = [
     ...(media['automatic-gate-repair'] ?? []),
     ...(media['iron-gate-repair'] ?? []),
     ...(media['gate-installation'] ?? []),
-  ]).slice(0, 6)
+    ...(media['electric-gate-repair'] ?? []),
+  ].filter(isRecentJobPhoto)
+  const photoStart = (cities.indexOf(city) * 6) % Math.max(photoPool.length, 1)
+  const cityPhotos = [...photoPool.slice(photoStart), ...photoPool.slice(0, photoStart)].slice(0, 6)
 
   return (
     <>
