@@ -17,5 +17,6 @@ import g5 from './group-5'
 import g6 from './group-6'
 import g7 from './group-7'
 import g8 from './group-8'
+import { priorityBrandCopy } from '../priority-city-copy'
 
-export const brandCityAreaCopy: Record<string, BrandCityCopy> = { ...g1, ...g2, ...g3, ...g4, ...g5, ...g6, ...g7, ...g8 }
+export const brandCityAreaCopy: Record<string, BrandCityCopy> = { ...g1, ...g2, ...g3, ...g4, ...g5, ...g6, ...g7, ...g8, ...priorityBrandCopy }

@@ -10,6 +10,11 @@ import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
+import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { publishedTestimonials } from '@/content/testimonials'
+import { media } from '@/content/media-manifest'
+import { isRecentJobPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { brandCityPagesForCity, brandCityPath } from '@/lib/brand-city'
 import { serviceCityPagesForCity, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
@@ -45,7 +50,14 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
   // Nearest documented jobs of this kind, each under its real city; any verified job if none match.
   const withPhotos = projects.filter((p) => p.verified && p.photoSet)
   const sameKind = withPhotos.filter((p) => p.service === service.project)
-  const jobs = nearestSpread(city.slug, sameKind.length > 0 ? sameKind : withPhotos, (p) => p.citySlug, 3, 80).map((x) => x.item)
+  const near = (list: typeof projects) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
+  const sameKindNear = near(sameKind)
+  const jobs = sameKindNear.length > 0 ? sameKindNear : near(withPhotos)
+  const photos = (dfw ? (media[dfw.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  const testimonials = [
+    ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
+    ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
+  ]
   const otherServices = serviceCityPagesForCity(city.slug).filter((p) => p.service.slug !== service.slug)
   const brandPages = brandCityPagesForCity(city.slug)
 
@@ -80,7 +92,9 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
       {dfw && dfw.symptoms.length > 0 && (
         <section className="section bg-ink-50">
           <div className="container-page">
-            <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">Signs you need {service.name.toLowerCase()}</h2>
+            <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">
+              {service.slug.endsWith('-installation') ? `When it is time for ${service.name.toLowerCase()}` : `Signs you need ${service.name.toLowerCase()}`}
+            </h2>
             <ul className="grid gap-4 sm:grid-cols-2">
               {dfw.symptoms.slice(0, 6).map((s) => (
                 <li key={s.seeing} className="rounded-[var(--radius-card)] border border-ink-100 bg-white p-5">
@@ -96,6 +110,25 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
             </p>
           </div>
         </section>
+      )}
+
+      {/* No city on these: the photos carry no location data. */}
+      {photos.length > 0 && (
+        <PhotoGallery
+          tone="muted"
+          title={`Our recent ${service.name.toLowerCase()} work`}
+          intro="Photos from our technicians' recent jobs across Dallas–Fort Worth."
+          images={photos}
+        />
+      )}
+
+      {testimonials.length > 0 && (
+        <TestimonialCarousel
+          items={testimonials}
+          title="What our customers say"
+          intro={`Customers across Dallas–Fort Worth, filmed at their own gates. We bring the same team to ${city.name}.`}
+          tone="tint"
+        />
       )}
 
       {city.neighborhoods && city.neighborhoods.length > 0 && (

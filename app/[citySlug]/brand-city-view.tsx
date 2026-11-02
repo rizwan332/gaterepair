@@ -8,7 +8,7 @@ import { jobVideosForCity } from '@/content/job-videos'
 import { modelByKey, modelPath, modelsForBrand } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { nearestSpread } from '@/content/city-coordinates'
-import { projectsForBrand } from '@/content/projects'
+import { projects, projectsForBrand } from '@/content/projects'
 import { indexedCities } from '@/content/cities'
 import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
@@ -16,6 +16,8 @@ import { JobVideos } from '@/components/sections/job-videos'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentJobPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
@@ -72,12 +74,15 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
   const morePhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
   const lead = jobs[0]?.photoSet ? caseStudyPhotos[jobs[0].photoSet]?.[0] : undefined
   // Area pages have no local job: show the nearest documented ones on this brand, each under its real city.
-  const nearJobs =
-    jobs.length > 0
-      ? []
-      : nearestSpread(city.slug, projectsForBrand(brand.name).filter((p) => p.verified && p.photoSet), (p) => p.citySlug, 3, 80).map(
-          (x) => x.item,
-        )
+  const near = (list: typeof jobs) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
+  const nearBrandJobs = jobs.length > 0 ? [] : near(projectsForBrand(brand.name).filter((p) => p.verified && p.photoSet))
+  // No documented job on this brand nearby: show the nearest jobs of any brand, titled as such.
+  const nearAnyJobs = jobs.length > 0 || nearBrandJobs.length > 0 ? [] : near(projects.filter((p) => p.verified && p.photoSet))
+  const nearJobs = nearBrandJobs.length > 0 ? nearBrandJobs : nearAnyJobs
+  // Same city first, then this brand, then everyone else.
+  const rank = (t: (typeof publishedTestimonials)[number]) =>
+    t.city?.toLowerCase() === city.name.toLowerCase() ? 0 : t.brand?.toLowerCase() === brand.name.toLowerCase() ? 1 : 2
+  const testimonials = [...publishedTestimonials].sort((a, b) => rank(a) - rank(b))
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
   const jobModels = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
@@ -130,8 +135,12 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
             items={nearJobs}
             limit={nearJobs.length}
             eyebrow="Real jobs nearby"
-            title={`Our nearest documented ${brand.name} jobs to ${city.name}`}
-            intro={`${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`}
+            title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs to ${city.name}` : `Our nearest documented jobs to ${city.name}`}
+            intro={
+              nearBrandJobs.length > 0
+                ? `${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`
+                : `Gate operator work our technicians have documented in nearby cities, each shown under the city it was in.`
+            }
             tone="tint"
           />
         )
@@ -230,6 +239,15 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
               : `Recent ${brand.name} work by our technicians across Dallas–Fort Worth.`
           }
           images={morePhotos}
+        />
+      )}
+
+      {testimonials.length > 0 && (
+        <TestimonialCarousel
+          items={testimonials}
+          title={`What our customers say about their gate repairs`}
+          intro={`Customers across Dallas–Fort Worth, filmed at their own gates, ${brand.name} owners first where we have them. We bring the same team to ${city.name}.`}
+          tone="tint"
         />
       )}
 

@@ -34,9 +34,16 @@ export const brandCityJobs = (city: City, brand: Brand) =>
     (p) => p.verified && p.photoSet && p.citySlug === city.slug && p.brand?.toLowerCase() === brand.name.toLowerCase(),
   )
 
-/** The city profile names this brand as one used on its gates. */
+/** The client's 20 priority cities. Each gets a page for every brand in PRIORITY_BRANDS (2 Nov 2026). */
+export const PRIORITY_CITIES = new Set(
+  'dallas plano frisco southlake mckinney prosper highland-park university-park westlake colleyville keller flower-mound coppell allen grapevine fort-worth argyle celina richardson carrollton'.split(' '),
+)
+const PRIORITY_BRANDS = new Set(['liftmaster', 'viking', 'doorking', 'faac', 'elite', 'us-automatic', 'apollo', 'ramset'])
+
+/** The city profile names this brand as one used on its gates, or the client asked for it in a priority city. */
 export const isRelevantBrand = (city: City, brand: Brand) =>
-  (city.gateProfile?.commonBrands ?? []).some((n) => n.toLowerCase() === brand.name.toLowerCase())
+  (city.gateProfile?.commonBrands ?? []).some((n) => n.toLowerCase() === brand.name.toLowerCase()) ||
+  (PRIORITY_CITIES.has(city.slug) && PRIORITY_BRANDS.has(brand.slug))
 
 const allCopy: Record<string, BrandCityCopy> = { ...brandCityAreaCopy, ...brandCityCopy }
 

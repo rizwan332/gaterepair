@@ -6,6 +6,8 @@
  * other page (scripts/validate-linking.ts checks it).
  */
 
+import { priorityServiceCopy } from './priority-city-copy'
+
 export type ServiceCityCopy = {
   description: string
   intro: string
@@ -13,7 +15,7 @@ export type ServiceCityCopy = {
   faqs: { q: string; a: string }[]
 }
 
-export const serviceCityCopy: Record<string, ServiceCityCopy> = {
+const planoCopy: Record<string, ServiceCityCopy> = {
   'plano/automatic-gate-repair': {
     description: 'Automatic gate repair in Plano, TX for slide, swing and HOA entrance gates in West Plano, Willow Bend and Legacy. Open 24/7. Call Shield Gate Repair.',
     intro:
@@ -314,3 +316,5 @@ export const serviceCityCopy: Record<string, ServiceCityCopy> = {
     ],
   },
 }
+
+export const serviceCityCopy: Record<string, ServiceCityCopy> = { ...planoCopy, ...priorityServiceCopy }
