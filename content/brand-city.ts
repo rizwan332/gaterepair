@@ -11,6 +11,8 @@
  */
 
 export type BrandCityCopy = {
+  /** Meta description; the job-count line in the route is the fallback. */
+  description?: string
   /** Hero line under the H1. */
   intro: string
   /** What is different about this brand in this city, from the jobs. */
