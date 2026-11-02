@@ -8,6 +8,8 @@ import { projects } from '@/content/projects'
 import { nearestSpread } from '@/content/city-coordinates'
 import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
+import { JobVideos } from '@/components/sections/job-videos'
+import { jobVideos } from '@/content/job-videos'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
@@ -53,7 +55,12 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
   const near = (list: typeof projects) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
   const sameKindNear = near(sameKind)
   const jobs = sameKindNear.length > 0 ? sameKindNear : near(withPhotos)
-  const photos = (dfw ? (media[dfw.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  // Nearest job clips of this kind, else the nearest of any, each under its real city.
+  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
+  const sameKindVideos = nearVideos(jobVideos.filter((v) => v.service === service.project))
+  const videos = sameKindVideos.length > 0 ? sameKindVideos : nearVideos(jobVideos)
+  const servicePhotos = (dfw ? (media[dfw.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  const photos = servicePhotos.length >= 3 ? servicePhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto).slice(0, 6)
   const testimonials = [
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
@@ -89,6 +96,12 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
         />
       )}
 
+      <JobVideos
+        items={videos.map((v) => v.item)}
+        title={`Gate jobs near ${city.name} on video`}
+        intro={`Filmed on our own jobs, each marked with its city: ${[...new Set(videos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
+      />
+
       {dfw && dfw.symptoms.length > 0 && (
         <section className="section bg-ink-50">
           <div className="container-page">
@@ -116,7 +129,7 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
       {photos.length > 0 && (
         <PhotoGallery
           tone="muted"
-          title={`Our recent ${service.name.toLowerCase()} work`}
+          title={servicePhotos.length >= 3 ? `Our recent ${service.name.toLowerCase()} work` : 'Our recent gate repair work'}
           intro="Photos from our technicians' recent jobs across Dallas–Fort Worth."
           images={photos}
         />

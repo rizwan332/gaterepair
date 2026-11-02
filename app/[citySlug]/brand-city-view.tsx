@@ -4,7 +4,7 @@ import { MapPin, ArrowRight } from 'lucide-react'
 import { openGraphFor, fitDescription, INDEXABLE_ROBOTS } from '@/lib/seo'
 import { business } from '@/content/business'
 import { caseStudyPhotos } from '@/content/case-study-media'
-import { jobVideosForCity } from '@/content/job-videos'
+import { jobVideos, jobVideosForCity } from '@/content/job-videos'
 import { modelByKey, modelPath, modelsForBrand } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { nearestSpread } from '@/content/city-coordinates'
@@ -71,7 +71,9 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
   const path = brandCityPath(page)
   const cityPath = `/gate-repair-${city.slug}-tx`
 
-  const morePhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  const brandPhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  // Too few of this brand: our general recent repair photos instead, titled as such.
+  const morePhotos = brandPhotos.length >= 3 ? brandPhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto).slice(0, 6)
   const lead = jobs[0]?.photoSet ? caseStudyPhotos[jobs[0].photoSet]?.[0] : undefined
   // Area pages have no local job: show the nearest documented ones on this brand, each under its real city.
   const near = (list: typeof jobs) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
@@ -84,6 +86,10 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
     t.city?.toLowerCase() === city.name.toLowerCase() ? 0 : t.brand?.toLowerCase() === brand.name.toLowerCase() ? 1 : 2
   const testimonials = [...publishedTestimonials].sort((a, b) => rank(a) - rank(b))
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
+  // None filmed here on this brand: the nearest clips on this brand, else the nearest of any, each under its real city.
+  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
+  const nearBrandVideos = videos.length > 0 ? [] : nearVideos(jobVideos.filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase()))
+  const nearbyVideos = videos.length > 0 ? [] : nearBrandVideos.length > 0 ? nearBrandVideos : nearVideos(jobVideos)
   const jobModels = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
     .filter((m) => m !== undefined)
@@ -146,11 +152,17 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
         )
       )}
 
-      {videos.length > 0 && (
+      {videos.length > 0 ? (
         <JobVideos
           items={videos}
           title={`${brand.name} jobs in ${city.name} on video`}
           intro={`Filmed on site in ${city.name}, each linked to its full write-up.`}
+        />
+      ) : (
+        <JobVideos
+          items={nearbyVideos.map((v) => v.item)}
+          title={nearBrandVideos.length > 0 ? `${brand.name} jobs near ${city.name} on video` : `Gate repairs near ${city.name} on video`}
+          intro={`Filmed on our own jobs nearby, each marked with its city: ${[...new Set(nearbyVideos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
         />
       )}
 
@@ -232,9 +244,11 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
       {morePhotos.length > 0 && (
         <PhotoGallery
           tone="muted"
-          title={`More of our ${brand.name} work`}
+          title={brandPhotos.length >= 3 ? `More of our ${brand.name} work` : 'More of our recent gate repair work'}
           intro={
-            jobs.length > 0
+            brandPhotos.length < 3
+              ? 'Recent gate operator jobs by our technicians across Dallas–Fort Worth.'
+              : jobs.length > 0
               ? `Recent ${brand.name} jobs by our technicians, beyond the ${city.name} ${jobs.length === 1 ? 'job' : 'jobs'} above.`
               : `Recent ${brand.name} work by our technicians across Dallas–Fort Worth.`
           }
@@ -245,8 +259,8 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
       {testimonials.length > 0 && (
         <TestimonialCarousel
           items={testimonials}
-          title={`What our customers say about their gate repairs`}
-          intro={`Customers across Dallas–Fort Worth, filmed at their own gates, ${brand.name} owners first where we have them. We bring the same team to ${city.name}.`}
+          title="What our customers say"
+          intro={`Customers across Dallas–Fort Worth, filmed at their own gates${testimonials.some((t) => rank(t) < 2) ? `, ${brand.name} owners and ${city.name} customers first` : ''}. We bring the same team to ${city.name}.`}
           tone="tint"
         />
       )}
