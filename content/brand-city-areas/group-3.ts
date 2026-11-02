@@ -13,6 +13,66 @@ const copy: Record<string, BrandCityCopy> = {
       { q: 'Can a Plano HOA keep its LiftMaster operator and only replace the call box?', a: 'Often yes. Many Plano community call boxes stopped working when the HOA moved its phone service to VoIP, because older units expect an analogue line. That is an entry system problem, not a LiftMaster problem. A cellular module or a new entry panel can be wired to the existing operator, provided the operator itself tests healthy.' },
     ],
   },
+  'plano/viking': {
+    description: 'Viking gate operator repair in Plano, TX: DC boards, batteries, limits and drive wear on heavy slide and swing gates at estates and HOAs. Call Shield.',
+    intro: 'Viking gate repair in Plano for the DC slide and swing operators fitted to heavier gates on Plano estate lots and community entrances. We test the battery and the gate before condemning the operator.',
+    local: [
+      'Viking operators in Plano tend to sit on the biggest gates in a neighborhood: tall iron slide gates at the larger West Plano homes and the community entrances where a lighter operator was not enough. Because they run on DC with a battery, a Viking that has grown slow or stops partway is often telling us about its batteries after a few Texas summers, not about its motor. We load test the batteries and check the charger output first.',
+      'The other Plano pattern is the gate, not the operator. A heavy leaf on a post that has moved in the clay, or a slide gate on worn wheels, makes a Viking work far harder than it should, and the controller reports that as an obstruction or an overload. We put the gate right by hand first, then reset the limits and force settings on the Viking so it runs cleanly again.',
+    ],
+    faqs: [
+      { q: 'My Viking gate in Plano lost its limits after a power cut. Can that be fixed on site?', a: 'Yes. Some older Viking slide units forget their limit positions after a total loss of power, including a flat battery. We relearn the open and close positions, check the batteries so it does not happen again at the next storm, and confirm the reversing sensors still work.' },
+      { q: 'Is a Viking operator worth repairing rather than replacing?', a: 'Usually. Viking units are built for heavy use, and the faults we see most in Plano, batteries, boards and limit drift, are repairable. Gearbox wear on a very busy gate is the main case where we would talk about replacement.' },
+    ],
+  },
+  'plano/faac': {
+    description: 'FAAC gate repair in Plano, TX: hydraulic swing operators, seal kits, fluid, pump pressure and 455 D boards on estate gates. We repair hydraulics. Call Shield.',
+    intro: 'FAAC gate repair in Plano for the hydraulic swing and in-ground operators found on some of the city\'s formal estate entrances. Hydraulics need different diagnosis from chain drives, and we work on them.',
+    local: [
+      'FAAC hydraulic operators are less common in Plano than chain and DC units, but where they are fitted, often on paired iron swing gates in the older estate streets, owners are frequently told they cannot be repaired. In most cases they can. A FAAC that moves slowly, stops short or will not hold the gate closed usually needs fluid, a seal kit, a pressure adjustment or a release valve service, all of which we carry out on site.',
+      'In-ground FAAC units such as the 770 sit in a box beneath the hinge, and in Plano the risk is water. Heavy spring rain on clay soil drains slowly, and a foundation box that floods will damage the operator in time. When we service an in-ground FAAC we clear the box drain and check for water ingress, as well as the operator itself.',
+    ],
+    faqs: [
+      { q: 'My FAAC swing gate is leaking oil. Does it need a new operator?', a: 'Not usually. An oil leak on a FAAC hydraulic arm generally means worn seals, which is a standard repair. We replace the seals, refill and bleed the system, and set the pressure so the gate closes with the right force.' },
+      { q: 'Why does my FAAC gate run slower in winter?', a: 'Hydraulic fluid thickens in cold weather, so a FAAC can slow down on the rare cold Plano mornings. If it stays slow in mild weather, low fluid or a pressure fault is more likely, and we can check both.' },
+    ],
+  },
+  'plano/us-automatic': {
+    description: 'US Automatic gate repair in Plano, TX: Patriot and Ranger operators, 12V batteries, solar panels, AC chargers and board surge damage. Call Shield.',
+    intro: 'US Automatic gate repair in Plano for Patriot and Ranger battery operators, whether charged by solar panel or by a plug-in charger. We find out whether the fault is in the battery and charging side or in the operator.',
+    local: [
+      'US Automatic operators turn up in Plano on driveway gates where running mains power to the gate was awkward, such as long drives and gates set back behind landscaping, so many of them are solar charged. Plano\'s mature trees are the usual problem: a panel that had full sun when it was fitted can be shaded by a grown canopy ten years later, and the battery slowly falls behind until the gate stalls. We measure the panel output and battery under load before blaming the operator.',
+      'On the AC-charged installs the charger, its low-voltage cable and the battery are what fail, and Texas heat shortens battery life on both types. Spring thunderstorms are the other Plano risk, since a surge can reach the control board along the charge wire or keypad lead. We check each part on its own so the repair covers only what actually failed.',
+    ],
+    faqs: [
+      { q: 'My US Automatic gate opens slowly in the evening but fine at midday. What is wrong?', a: 'That is the usual sign of a solar charging system not keeping up, often a shaded or dirty panel or a battery near the end of its life. We test both and, if shade from trees is the cause, look at moving or adding panel capacity.' },
+      { q: 'Can you replace just the battery on a US Automatic operator?', a: 'Yes, and on many Plano installs that is the whole repair. We fit the correct battery, confirm the charging system is putting enough back in, and test the gate under full travel.' },
+    ],
+  },
+  'plano/apollo': {
+    description: 'Nice Apollo gate repair in Plano, TX: 1550 and 1650 swing operators, solar charging, batteries, receivers and limits on residential gates. Call Shield.',
+    intro: 'Nice Apollo gate repair in Plano for the low-voltage swing and slide operators, usually on a battery with a small solar panel. Most Apollo faults are power faults, so we measure the charging system before anything else.',
+    local: [
+      'Apollo operators, now part of Nice, are found in Plano mostly on lighter residential swing gates and on side and rear gates where a full mains-powered operator was more than the job needed. Their low power draw makes them a good fit for solar, and in Plano the weak points are the same as with any solar gate: battery age, panels shaded by trees or roofs, and corroded low-voltage connections in the control box after years of humidity and storms.',
+      'The actuator arms on Apollo swing operators take the full load of the leaf, so we check the arm, its mounting brackets and the gate hinges on every call. A gate whose hinges have stiffened or whose post has shifted in the clay will make an Apollo stall and reverse, which looks like a control fault but is mechanical.',
+    ],
+    faqs: [
+      { q: 'Is Apollo the same brand as Nice?', a: 'Apollo gate operators are now made under the Nice brand, so you may see either name on the unit or the remote. We repair both the older Apollo-branded operators and the current Nice Apollo models.' },
+      { q: 'My Apollo gate opener beeps and will not move. What does that mean?', a: 'On many Apollo boards a warning beep means low battery voltage. We test the battery under load and the solar panel output, which together are the most common cause of that symptom.' },
+    ],
+  },
+  'plano/ramset': {
+    description: 'Ramset gate operator repair in Plano, TX: RAM 1000 and RAM 100 slide and swing units, chains, limits, boards on busy HOA and apartment gates. Call us.',
+    intro: 'Ramset gate repair in Plano for the slide, swing and overhead operators made by Ramset Automatic Gate Systems, including the RAM 100 and RAM 1000. We repair them rather than defaulting to replacement.',
+    local: [
+      'Ramset operators in Plano are often on multi-family and light commercial gates, such as apartment entrances and small business lots along the main corridors, where the gate cycles far more often than a home driveway. That duty cycle is what wears a Ramset: chains and sprockets stretch, limit switches fail, and relays on the control board burn out sooner. We replace the failed part and check the other wear items, since they are usually at a similar point.',
+      'Overheating is the other Plano issue. A Ramset in full afternoon sun on a busy entrance, driving a gate that drags, can trip its thermal cutout and stop until it cools. We look for the drag, a worn track wheel or a binding hinge, and check that the operator is rated for the gate and its traffic before suggesting any upgrade.',
+    ],
+    faqs: [
+      { q: 'Our Ramset gate stops working in the afternoon and recovers later. Why?', a: 'That pattern usually means the motor is tripping its thermal protection. Heat plus extra load from a dragging gate is the common cause. Fixing the gate hardware often fixes the cutout without touching the operator.' },
+      { q: 'Are parts still available for older Ramset operators?', a: 'For most models, yes. Ramset still supports its main lines, and many wear parts such as chains, sprockets and limit switches are standard. If a specific part is no longer made, we will tell you before work starts.' },
+    ],
+  },
   'plano/elite': {
     description: 'Elite gate operator repair in Plano, TX. SL3000UL, CSW200UL and older Elite units in Willow Bend and Prestonwood: capacitors, boards, limits. Call us.',
     intro: 'Elite gate repair in Plano for the AC slide and swing operators on Willow Bend, Prestonwood and Deerfield frontages. Capacitors, boards and limit switches are the usual parts, and all three can be replaced without changing the operator.',

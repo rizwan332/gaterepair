@@ -23,6 +23,8 @@ import { brandsForCity, modelsForCity, localFaults } from '../lib/city-links'
 import { brandCityCopy } from '../content/brand-city'
 import { brandCityAreaCopy } from '../content/brand-city-areas'
 import { brandCityPages, brandCityPageFor, MIN_BRAND_CITY_JOBS } from '../lib/brand-city'
+import { serviceCityPages } from '../lib/service-city'
+import { serviceCityCopy } from '../content/service-city'
 
 const MIN_BRANDS_PER_CITY = 5
 const MIN_MODELS_PER_CITY = 3
@@ -127,6 +129,13 @@ for (const p of brandCityPages) {
   const owner = `${p.city.slug}/${p.brand.slug}`
   for (const t of [p.copy.description, p.copy.intro, ...p.copy.local, ...p.copy.faqs.map((f) => f.a)]) addProse(owner, t)
 }
+for (const p of serviceCityPages) {
+  const owner = `${p.city.slug}/${p.service.slug}`
+  for (const t of [p.copy.description, p.copy.intro, ...p.copy.local, ...p.copy.faqs.map((f) => f.a)]) addProse(owner, t)
+}
+for (const key of Object.keys(serviceCityCopy))
+  if (!serviceCityPages.some((p) => `${p.city.slug}/${p.service.slug}` === key))
+    errors.push(`content/service-city.ts "${key}" has copy but no page: unknown service or city not indexed.`)
 const sharedProse = [...shingleOwners.values()].filter((o) => o.size > 1 && [...o].some((x) => x.includes('/')))
 for (const o of new Set(sharedProse.map((x) => [...x].sort().join(' and '))))
   errors.push(`brand × city prose repeated across pages: ${o}`)
@@ -140,6 +149,7 @@ console.log(
   `${indexedCities.length} indexed cities × ${brands.length} brands = ${brandCityPairs} brand+city relationships stated\n` +
     `${modelCityPairs} city → model links across those pages\n` +
     `${brandCityPages.length} brand × city pages (${brandCityPages.filter((p) => p.jobs.length > 0).length} with a local job)\n` +
+    `${serviceCityPages.length} service × city pages\n` +
     `${indexableModelPages().length} indexed model pages, ${modelsLinkedFromCities.size} of them linked from a city page`,
 )
 

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, ArrowRight } from 'lucide-react'
 import { openGraphFor, fitDescription, INDEXABLE_ROBOTS } from '@/lib/seo'
@@ -20,37 +19,19 @@ import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { media } from '@/content/media-manifest'
 import { isRecentJobPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPages, brandCityPageFor, brandCityPath, brandCityPagesForCity } from '@/lib/brand-city'
+import { brandCityPageFor, brandCityPath, brandCityPagesForCity, type BrandCityPage } from '@/lib/brand-city'
+import { serviceCityPagesForCity, serviceCityPath } from '@/lib/service-city'
 
 /**
- * Brand × city pages, e.g. /gate-repair-dallas-tx/liftmaster.
+ * Brand × city pages, e.g. /liftmaster-gate-repair-plano-tx.
  *
- * Nested under the city page because that is the relationship being stated
- * (BRAND-CITY-ARCHITECTURE.md §4). Which pairs exist is decided by the proof
- * gate in lib/brand-city.ts, never by this route.
+ * Served by the [citySlug] route, since Next allows one dynamic segment per
+ * level. Which pairs exist is decided by the gate in lib/brand-city.ts.
  */
 
 const BASE = business.url.replace(/\/$/, '')
 
-export const dynamicParams = false
-
-export function generateStaticParams() {
-  return brandCityPages.map((p) => ({ citySlug: `gate-repair-${p.city.slug}-tx`, brandSlug: p.brand.slug }))
-}
-
-async function pageFor(params: Promise<{ citySlug: string; brandSlug: string }>) {
-  const { citySlug, brandSlug } = await params
-  const m = /^gate-repair-(.+)-tx$/.exec(citySlug)
-  return m ? brandCityPageFor(m[1], brandSlug) : undefined
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ citySlug: string; brandSlug: string }>
-}): Promise<Metadata> {
-  const page = await pageFor(params)
-  if (!page) return {}
+export function brandCityMetadata(page: BrandCityPage): Metadata {
   const { city, brand, jobs, copy } = page
   const path = brandCityPath(page)
   if (jobs.length === 0) {
@@ -83,13 +64,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function BrandCityPage({
-  params,
-}: {
-  params: Promise<{ citySlug: string; brandSlug: string }>
-}) {
-  const page = await pageFor(params)
-  if (!page) notFound()
+export function BrandCityView({ page }: { page: BrandCityPage }) {
   const { city, brand, jobs, copy } = page
   const path = brandCityPath(page)
   const cityPath = `/gate-repair-${city.slug}-tx`
@@ -286,6 +261,17 @@ export default async function BrandCityPage({
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
                 >
                   {p.brand.name} gate repair in {city.name}
+                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                </Link>
+              </li>
+            ))}
+            {serviceCityPagesForCity(city.slug).map((p) => (
+              <li key={p.service.slug}>
+                <Link
+                  href={serviceCityPath(p)}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+                >
+                  {p.service.name} in {city.name}
                   <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                 </Link>
               </li>

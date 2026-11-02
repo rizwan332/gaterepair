@@ -191,7 +191,8 @@ export const tier1Cities: City[] = [
     gateProfile: {
       dominant: 'Established 1990s–2000s gated communities in West Plano alongside newer HOA-managed entrances around Legacy',
       commonGateTypes: ['Slide gate', 'Wrought iron swing', 'HOA community entrance'],
-      commonBrands: ['LiftMaster', 'Elite', 'All-O-Matic', 'DoorKing'],
+      // Viking to Ramset added 2 Nov 2026: the client asked for a Plano page on each.
+      commonBrands: ['LiftMaster', 'Elite', 'All-O-Matic', 'DoorKing', 'Viking', 'FAAC', 'US Automatic', 'Apollo', 'Ramset'],
       commonIssues: ['Control board failure on ageing operators', 'Telephone entry system faults', 'Limit switch drift', 'Photo-eye misalignment'],
     },
     localAngle:

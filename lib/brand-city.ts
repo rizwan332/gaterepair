@@ -50,11 +50,19 @@ export const brandCityPages: BrandCityPage[] = Object.entries(allCopy).flatMap((
   return proven || (key in brandCityAreaCopy && isRelevantBrand(city, brand)) ? [{ city, brand, jobs, copy }] : []
 })
 
+// URL words per brand where the slug alone is not what people search ("nice apollo gate repair").
+const URL_BRAND: Record<string, string> = { apollo: 'nice-apollo' }
+
+/** Flat, e.g. /liftmaster-gate-repair-plano-tx, the client's URL scheme (2 Nov 2026). The old nested URLs 301 here. */
 export const brandCityPath = (p: { city: { slug: string }; brand: { slug: string } }) =>
-  `/gate-repair-${p.city.slug}-tx/${p.brand.slug}`
+  `/${URL_BRAND[p.brand.slug] ?? p.brand.slug}-gate-repair-${p.city.slug}-tx`
 
 const bySlug = new Map(brandCityPages.map((p) => [`${p.city.slug}/${p.brand.slug}`, p]))
+const bySegment = new Map(brandCityPages.map((p) => [brandCityPath(p).slice(1), p]))
 
 export const brandCityPageFor = (citySlug: string, brandSlug: string) => bySlug.get(`${citySlug}/${brandSlug}`)
+
+/** The page for a top-level URL segment such as `liftmaster-gate-repair-plano-tx`. */
+export const brandCityPageForSegment = (segment: string) => bySegment.get(segment)
 
 export const brandCityPagesForCity = (citySlug: string) => brandCityPages.filter((p) => p.city.slug === citySlug)
