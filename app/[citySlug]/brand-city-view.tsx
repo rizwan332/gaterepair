@@ -19,7 +19,7 @@ import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
-import { isRecentJobPhoto } from '@/content/recent-job-photos'
+import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { brandCityPageFor, brandCityPath, brandCityPagesForCity, type BrandCityPage } from '@/lib/brand-city'
 import { serviceCityPagesForCity, serviceCityPath } from '@/lib/service-city'
@@ -71,9 +71,9 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
   const path = brandCityPath(page)
   const cityPath = `/gate-repair-${city.slug}-tx`
 
-  const brandPhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  const brandPhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentOperatorPhoto).slice(0, 6)
   // Too few of this brand: our general recent repair photos instead, titled as such.
-  const morePhotos = brandPhotos.length >= 3 ? brandPhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto).slice(0, 6)
+  const morePhotos = brandPhotos.length >= 3 ? brandPhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentOperatorPhoto).slice(0, 6)
   const lead = jobs[0]?.photoSet ? caseStudyPhotos[jobs[0].photoSet]?.[0] : undefined
   // Area pages have no local job: show the nearest documented ones on this brand, each under its real city.
   const near = (list: typeof jobs) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
