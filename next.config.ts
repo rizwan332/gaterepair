@@ -72,6 +72,11 @@ const nextConfig: NextConfig = {
        * either way.
        */
       { source: '/cities/:city-gate-repair', destination: '/gate-repair-:city-tx', permanent: true },
+      // Brand × city pages moved from /gate-repair-plano-tx/liftmaster to the
+      // flat /liftmaster-gate-repair-plano-tx on 2 Nov 2026. Apollo's URL says
+      // "nice-apollo" (lib/brand-city.ts), so it goes first.
+      { source: '/gate-repair-:city-tx/apollo', destination: '/nice-apollo-gate-repair-:city-tx', permanent: true },
+      { source: '/gate-repair-:city-tx/:brand', destination: '/:brand-gate-repair-:city-tx', permanent: true },
       { source: '/cities', destination: '/service-areas', permanent: true },
 
       ...brands.map((b) => ({

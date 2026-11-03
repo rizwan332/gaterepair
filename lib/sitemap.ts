@@ -14,6 +14,7 @@ import { publishedPosts, postPath } from '../content/blog'
 import { modelPath } from '../content/models'
 import { assetUrl } from './cdn'
 import { brandCityPages, brandCityPath } from './brand-city'
+import { serviceCityPages, serviceCityPath } from './service-city'
 
 /**
  * The sitemap, split by section behind an index at /sitemap.xml.
@@ -215,6 +216,11 @@ export const SECTIONS: SitemapSection[] = [
       // Brand × city pages that clear the proof gate in lib/brand-city.ts.
       ...brandCityPages.map((p) => ({
         url: `${BASE}${brandCityPath(p)}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      })),
+      ...serviceCityPages.map((p) => ({
+        url: `${BASE}${serviceCityPath(p)}`,
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       })),

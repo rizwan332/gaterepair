@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, ArrowRight } from 'lucide-react'
 import { openGraphFor, fitDescription, INDEXABLE_ROBOTS } from '@/lib/seo'
 import { business } from '@/content/business'
 import { caseStudyPhotos } from '@/content/case-study-media'
-import { jobVideosForCity } from '@/content/job-videos'
+import { jobVideos, jobVideosForCity } from '@/content/job-videos'
 import { modelByKey, modelPath, modelsForBrand } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { nearestSpread } from '@/content/city-coordinates'
-import { projectsForBrand } from '@/content/projects'
+import { projects, projectsForBrand } from '@/content/projects'
 import { indexedCities } from '@/content/cities'
 import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
@@ -17,40 +16,24 @@ import { JobVideos } from '@/components/sections/job-videos'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
+import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
+import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentJobPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPages, brandCityPageFor, brandCityPath, brandCityPagesForCity } from '@/lib/brand-city'
+import { brandCityPageFor, brandCityPath, brandCityPagesForCity, type BrandCityPage } from '@/lib/brand-city'
+import { serviceCityPagesForCity, serviceCityPath } from '@/lib/service-city'
 
 /**
- * Brand × city pages, e.g. /gate-repair-dallas-tx/liftmaster.
+ * Brand × city pages, e.g. /liftmaster-gate-repair-plano-tx.
  *
- * Nested under the city page because that is the relationship being stated
- * (BRAND-CITY-ARCHITECTURE.md §4). Which pairs exist is decided by the proof
- * gate in lib/brand-city.ts, never by this route.
+ * Served by the [citySlug] route, since Next allows one dynamic segment per
+ * level. Which pairs exist is decided by the gate in lib/brand-city.ts.
  */
 
 const BASE = business.url.replace(/\/$/, '')
 
-export const dynamicParams = false
-
-export function generateStaticParams() {
-  return brandCityPages.map((p) => ({ citySlug: `gate-repair-${p.city.slug}-tx`, brandSlug: p.brand.slug }))
-}
-
-async function pageFor(params: Promise<{ citySlug: string; brandSlug: string }>) {
-  const { citySlug, brandSlug } = await params
-  const m = /^gate-repair-(.+)-tx$/.exec(citySlug)
-  return m ? brandCityPageFor(m[1], brandSlug) : undefined
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ citySlug: string; brandSlug: string }>
-}): Promise<Metadata> {
-  const page = await pageFor(params)
-  if (!page) return {}
+export function brandCityMetadata(page: BrandCityPage): Metadata {
   const { city, brand, jobs, copy } = page
   const path = brandCityPath(page)
   if (jobs.length === 0) {
@@ -83,27 +66,30 @@ export async function generateMetadata({
   }
 }
 
-export default async function BrandCityPage({
-  params,
-}: {
-  params: Promise<{ citySlug: string; brandSlug: string }>
-}) {
-  const page = await pageFor(params)
-  if (!page) notFound()
+export function BrandCityView({ page }: { page: BrandCityPage }) {
   const { city, brand, jobs, copy } = page
   const path = brandCityPath(page)
   const cityPath = `/gate-repair-${city.slug}-tx`
 
-  const morePhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  const brandPhotos = (brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
+  // Too few of this brand: our general recent repair photos instead, titled as such.
+  const morePhotos = brandPhotos.length >= 3 ? brandPhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto).slice(0, 6)
   const lead = jobs[0]?.photoSet ? caseStudyPhotos[jobs[0].photoSet]?.[0] : undefined
   // Area pages have no local job: show the nearest documented ones on this brand, each under its real city.
-  const nearJobs =
-    jobs.length > 0
-      ? []
-      : nearestSpread(city.slug, projectsForBrand(brand.name).filter((p) => p.verified && p.photoSet), (p) => p.citySlug, 3, 80).map(
-          (x) => x.item,
-        )
+  const near = (list: typeof jobs) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
+  const nearBrandJobs = jobs.length > 0 ? [] : near(projectsForBrand(brand.name).filter((p) => p.verified && p.photoSet))
+  // No documented job on this brand nearby: show the nearest jobs of any brand, titled as such.
+  const nearAnyJobs = jobs.length > 0 || nearBrandJobs.length > 0 ? [] : near(projects.filter((p) => p.verified && p.photoSet))
+  const nearJobs = nearBrandJobs.length > 0 ? nearBrandJobs : nearAnyJobs
+  // Same city first, then this brand, then everyone else.
+  const rank = (t: (typeof publishedTestimonials)[number]) =>
+    t.city?.toLowerCase() === city.name.toLowerCase() ? 0 : t.brand?.toLowerCase() === brand.name.toLowerCase() ? 1 : 2
+  const testimonials = [...publishedTestimonials].sort((a, b) => rank(a) - rank(b))
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
+  // None filmed here on this brand: the nearest clips on this brand, else the nearest of any, each under its real city.
+  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
+  const nearBrandVideos = videos.length > 0 ? [] : nearVideos(jobVideos.filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase()))
+  const nearbyVideos = videos.length > 0 ? [] : nearBrandVideos.length > 0 ? nearBrandVideos : nearVideos(jobVideos)
   const jobModels = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
     .filter((m) => m !== undefined)
@@ -155,18 +141,28 @@ export default async function BrandCityPage({
             items={nearJobs}
             limit={nearJobs.length}
             eyebrow="Real jobs nearby"
-            title={`Our nearest documented ${brand.name} jobs to ${city.name}`}
-            intro={`${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`}
+            title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs to ${city.name}` : `Our nearest documented jobs to ${city.name}`}
+            intro={
+              nearBrandJobs.length > 0
+                ? `${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`
+                : `Gate operator work our technicians have documented in nearby cities, each shown under the city it was in.`
+            }
             tone="tint"
           />
         )
       )}
 
-      {videos.length > 0 && (
+      {videos.length > 0 ? (
         <JobVideos
           items={videos}
           title={`${brand.name} jobs in ${city.name} on video`}
           intro={`Filmed on site in ${city.name}, each linked to its full write-up.`}
+        />
+      ) : (
+        <JobVideos
+          items={nearbyVideos.map((v) => v.item)}
+          title={nearBrandVideos.length > 0 ? `${brand.name} jobs near ${city.name} on video` : `Gate repairs near ${city.name} on video`}
+          intro={`Filmed on our own jobs nearby, each marked with its city: ${[...new Set(nearbyVideos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
         />
       )}
 
@@ -248,13 +244,24 @@ export default async function BrandCityPage({
       {morePhotos.length > 0 && (
         <PhotoGallery
           tone="muted"
-          title={`More of our ${brand.name} work`}
+          title={brandPhotos.length >= 3 ? `More of our ${brand.name} work` : 'More of our recent gate repair work'}
           intro={
-            jobs.length > 0
+            brandPhotos.length < 3
+              ? 'Recent gate operator jobs by our technicians across Dallas–Fort Worth.'
+              : jobs.length > 0
               ? `Recent ${brand.name} jobs by our technicians, beyond the ${city.name} ${jobs.length === 1 ? 'job' : 'jobs'} above.`
               : `Recent ${brand.name} work by our technicians across Dallas–Fort Worth.`
           }
           images={morePhotos}
+        />
+      )}
+
+      {testimonials.length > 0 && (
+        <TestimonialCarousel
+          items={testimonials}
+          title="What our customers say"
+          intro={`Customers across Dallas–Fort Worth, filmed at their own gates${testimonials.some((t) => rank(t) < 2) ? `, ${brand.name} owners and ${city.name} customers first` : ''}. We bring the same team to ${city.name}.`}
+          tone="tint"
         />
       )}
 
@@ -286,6 +293,17 @@ export default async function BrandCityPage({
                   className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
                 >
                   {p.brand.name} gate repair in {city.name}
+                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                </Link>
+              </li>
+            ))}
+            {serviceCityPagesForCity(city.slug).map((p) => (
+              <li key={p.service.slug}>
+                <Link
+                  href={serviceCityPath(p)}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+                >
+                  {p.service.name} in {city.name}
                   <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
                 </Link>
               </li>

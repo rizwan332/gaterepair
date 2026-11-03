@@ -31,7 +31,10 @@ import { modelPath, modelKey } from '@/content/models'
 import { brandsForCity, localFaults } from '@/lib/city-links'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForCity, nearbyProjects } from '@/content/projects'
-import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
+import { brandCityPageFor, brandCityPath, brandCityPages, brandCityPageForSegment } from '@/lib/brand-city'
+import { serviceCityPages, serviceCityPath, serviceCityPageForSegment, serviceCityPagesForCity } from '@/lib/service-city'
+import { BrandCityView, brandCityMetadata } from './brand-city-view'
+import { ServiceCityView, serviceCityMetadata } from './service-city-view'
 import { indexableSymptomPages } from '@/lib/symptom-quality'
 import { symptomPath } from '@/content/symptoms'
 import { isRecentJobPhoto } from '@/content/recent-job-photos'
@@ -42,6 +45,9 @@ import { isRecentJobPhoto } from '@/content/recent-job-photos'
  * Next.js cannot express a partial dynamic segment like `gate-repair-[city]-tx`,
  * so the whole segment is dynamic and the prefix/suffix are validated here.
  * Static routes (/services, /pricing …) take precedence over this catch-all.
+ * The same segment also serves the flat brand × city and service × city URLs
+ * (/liftmaster-gate-repair-plano-tx, /sliding-gate-repair-plano-tx), since
+ * Next allows one dynamic segment per level.
  *
  * On depth: the benchmark from the competitor audit is Metro's Plano page —
  * ~3,000 words at roughly 5% genuinely local content, with no neighborhoods,
@@ -63,7 +69,11 @@ export function generateStaticParams() {
   // Only cities with real localised content get a page — see
   // content/cities.ts -> publishedCities. The rest stay linked from
   // /service-areas until the client's technician interview fills them in.
-  return publishedCities.map((c) => ({ citySlug: `${PREFIX}${c.slug}${SUFFIX}` }))
+  return [
+    ...publishedCities.map((c) => ({ citySlug: `${PREFIX}${c.slug}${SUFFIX}` })),
+    ...brandCityPages.map((p) => ({ citySlug: brandCityPath(p).slice(1) })),
+    ...serviceCityPages.map((p) => ({ citySlug: serviceCityPath(p).slice(1) })),
+  ]
 }
 
 export async function generateMetadata({
@@ -72,6 +82,10 @@ export async function generateMetadata({
   params: Promise<{ citySlug: string }>
 }): Promise<Metadata> {
   const { citySlug } = await params
+  const brandPage = brandCityPageForSegment(citySlug)
+  if (brandPage) return brandCityMetadata(brandPage)
+  const servicePage = serviceCityPageForSegment(citySlug)
+  if (servicePage) return serviceCityMetadata(servicePage)
   const slug = citySlugFrom(citySlug)
   const city = slug ? cityBySlug(slug) : null
   if (!city || !publishedCities.includes(city)) return {}
@@ -153,6 +167,10 @@ export async function generateMetadata({
 
 export default async function CityPage({ params }: { params: Promise<{ citySlug: string }> }) {
   const { citySlug } = await params
+  const brandPage = brandCityPageForSegment(citySlug)
+  if (brandPage) return <BrandCityView page={brandPage} />
+  const servicePage = serviceCityPageForSegment(citySlug)
+  if (servicePage) return <ServiceCityView page={servicePage} />
   const slug = citySlugFrom(citySlug)
   const city = slug ? cityBySlug(slug) : null
   if (!city || !publishedCities.includes(city)) notFound()
@@ -420,6 +438,21 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
               </li>
             ))}
           </ul>
+          {serviceCityPagesForCity(city.slug).length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-2.5">
+              {serviceCityPagesForCity(city.slug).map((p) => (
+                <li key={p.service.slug}>
+                  <Link
+                    href={serviceCityPath(p)}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+                  >
+                    {p.service.name} in {city.name}
+                    <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {/* City → installation. The client's keyword list has a whole
               install/replacement block that no city page carried. Built from
