@@ -2,7 +2,8 @@ import type { BlogPost } from '../types'
 
 export const repairOrReplaceGateOpener: BlogPost = {
   slug: 'repair-or-replace-gate-opener',
-  status: 'review',
+  status: 'published',
+  publishedAt: '2026-11-03',
   category: 'buying-guides',
   title: 'Repair or Replace a Gate Opener? How to Decide | DFW',
   h1: 'Repair or Replace Your Gate Opener? How to Decide',
@@ -121,8 +122,4 @@ export const repairOrReplaceGateOpener: BlogPost = {
     symptoms: ['gate-motor-not-working', 'gate-circuit-board-not-working', 'gate-wont-open', 'gate-battery-keeps-dying'],
     brands: ['liftmaster', 'us-automatic', 'viking', 'all-o-matic'],
   },
-  reviewNotes: [
-    'Technician to confirm the guidance matches how we quote repair vs replace',
-    'Add one real job where a repair replaced a replacement quote, with a photo',
-  ],
 }

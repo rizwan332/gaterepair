@@ -2,11 +2,39 @@ import type { BlogBlock, BlogCategory, BlogPost } from './types'
 import { repairOrReplaceGateOpener } from './posts/repair-or-replace-gate-opener'
 import { hoaGateMaintenanceChecklist } from './posts/hoa-gate-maintenance-checklist'
 import { swingVsSlidingGateOpener } from './posts/swing-vs-sliding-gate-opener'
+import { slidingGateMotorRunsGateWontMove } from './posts/sliding-gate-motor-runs-gate-wont-move'
+import { howToManuallyOpenAutomaticGate } from './posts/how-to-manually-open-automatic-gate'
+import { gateRemoteRangeShort } from './posts/gate-remote-range-short'
+import { protectAutomaticGateIceStorm } from './posts/protect-automatic-gate-ice-storm'
+import { gateOpenerBatteryBackup } from './posts/gate-opener-battery-backup'
+import { automaticGateSafetyKidsPets } from './posts/automatic-gate-safety-kids-pets'
+import { residentialGateOpenerMaintenance } from './posts/residential-gate-opener-maintenance'
+import { wroughtIronGateRustRepair } from './posts/wrought-iron-gate-rust-repair'
+import { gateAccessControlOptions } from './posts/gate-access-control-options'
+import { solarGateOpenerWinter } from './posts/solar-gate-opener-winter'
+import { gateRepairMisdiagnosis } from './posts/gate-repair-misdiagnosis'
+import { highTrafficGateOperator } from './posts/high-traffic-gate-operator'
 
 export type { BlogPost, BlogBlock, BlogCategory } from './types'
 
 /** Every post, in any status. Add new posts here. */
-export const allPosts: BlogPost[] = [repairOrReplaceGateOpener, hoaGateMaintenanceChecklist, swingVsSlidingGateOpener]
+export const allPosts: BlogPost[] = [
+  repairOrReplaceGateOpener,
+  hoaGateMaintenanceChecklist,
+  swingVsSlidingGateOpener,
+  slidingGateMotorRunsGateWontMove,
+  howToManuallyOpenAutomaticGate,
+  gateRemoteRangeShort,
+  protectAutomaticGateIceStorm,
+  gateOpenerBatteryBackup,
+  automaticGateSafetyKidsPets,
+  residentialGateOpenerMaintenance,
+  wroughtIronGateRustRepair,
+  gateAccessControlOptions,
+  solarGateOpenerWinter,
+  gateRepairMisdiagnosis,
+  highTrafficGateOperator,
+]
 
 export const CATEGORY_LABEL: Record<BlogCategory, string> = {
   costs: 'Costs & pricing',
@@ -25,14 +53,21 @@ export const blogPreview = process.env.BLOG_PREVIEW === '1'
 
 export const isPublished = (p: BlogPost) => p.status === 'published'
 
-/** Published posts, newest first. What the live site lists and indexes. */
+/** Today in Dallas, YYYY-MM-DD, at build time. */
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
+
+/**
+ * Published posts whose date has come, newest first. What the live site lists
+ * and indexes. A post dated ahead appears on the first build on or after its
+ * date; netlify/functions/daily-rebuild.mts triggers that build each morning.
+ */
 export const publishedPosts: BlogPost[] = allPosts
-  .filter(isPublished)
+  .filter((p) => isPublished(p) && (p.publishedAt ?? '') <= today)
   .sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''))
 
 /** What this build renders: published only, plus drafts when previewing. */
 export const visiblePosts: BlogPost[] = blogPreview
-  ? [...publishedPosts, ...allPosts.filter((p) => !isPublished(p))]
+  ? [...publishedPosts, ...allPosts.filter((p) => !publishedPosts.includes(p))]
   : publishedPosts
 
 export const postBySlug = (slug: string) => visiblePosts.find((p) => p.slug === slug)
