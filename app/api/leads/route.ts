@@ -124,6 +124,7 @@ export async function POST(request: Request) {
           referrer: lead.referrer,
           utmSource: lead.utmSource,
           utmMedium: lead.utmMedium,
+          userAgent: visitor.userAgent,
         })
         const page = identifyPage(lead.sourcePage ?? '/')
         await EventModel.create({

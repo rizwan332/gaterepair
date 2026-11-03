@@ -3,7 +3,13 @@ import { EventModel } from '../models/Event'
 import { LeadModel } from '../models/Lead'
 import { SOURCE_LABEL, SOURCE_GROUP, classifyLead, type LeadSource, type SourceGroup } from './lead-source'
 import { PAGE_TYPE_LABEL, type PageType } from './page-type'
-import type { VisitorGeo } from './visitor-context'
+import { cloudProvider, type VisitorGeo } from './visitor-context'
+
+/** A direct visit from a cloud server's IP is named after that network, e.g. "AWS server". */
+const originLabel = (source: LeadSource, label: string, ip?: string) => {
+  const cloud = source === 'direct' ? cloudProvider(ip) : undefined
+  return cloud ? `${cloud} server` : label
+}
 
 /**
  * The reports behind /admin.
@@ -364,7 +370,7 @@ function toRecent(r: Record<string, unknown>): RecentLead {
     at: r.firstAt as Date,
     lastAt: r.lastAt as Date,
     source,
-    sourceLabel: SOURCE_LABEL[source] ?? source,
+    sourceLabel: originLabel(source, SOURCE_LABEL[source] ?? source, r.ip as string | undefined),
     group: SOURCE_GROUP[source] ?? 'direct',
     basis: (r.sourceBasis as string) ?? 'none',
     pagePath: (r.pagePath as string) ?? '/',
@@ -480,6 +486,7 @@ function toFormLead(r: Record<string, unknown>): FormLead {
     referrer: r.referrer as string | undefined,
     utmSource: r.utmSource as string | undefined,
     utmMedium: r.utmMedium as string | undefined,
+    userAgent: r.userAgent as string | undefined,
   })
   return {
     id: String(r._id),
@@ -499,7 +506,7 @@ function toFormLead(r: Record<string, unknown>): FormLead {
     utmMedium: r.utmMedium as string | undefined,
     utmCampaign: r.utmCampaign as string | undefined,
     source: classification.source,
-    sourceLabel: classification.label,
+    sourceLabel: originLabel(classification.source, classification.label, r.ip as string | undefined),
     group: classification.group,
     ip: r.ip as string | undefined,
     geo: r.geo as VisitorGeo | undefined,

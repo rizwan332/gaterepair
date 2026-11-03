@@ -12,6 +12,8 @@
     "assets": "tsx scripts/process-assets.ts",
     "assets:alt": "tsx scripts/sync-alt-text.ts",
     "assets:video": "tsx scripts/process-videos.ts",
+    "update:cloud-ips": "tsx scripts/update-cloud-ips.ts",
+    "validate:lead-source": "tsx scripts/validate-lead-source.ts",
     "validate:cities": "tsx scripts/validate-cities.ts",
     "validate:meta": "tsx scripts/validate-meta.ts",
     "validate:models": "tsx scripts/validate-models.ts",

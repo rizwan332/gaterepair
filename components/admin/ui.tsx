@@ -79,7 +79,7 @@ export const GROUP_LABEL: Record<string, string> = {
   social: 'Social',
   ai: 'AI assistant',
   referral: 'Referral',
-  direct: 'Direct / unknown',
+  direct: 'Direct',
 }
 
 export const GROUP_STYLE: Record<string, string> = {

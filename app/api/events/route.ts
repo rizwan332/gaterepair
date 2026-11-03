@@ -116,6 +116,7 @@ export async function POST(request: Request) {
     referrer: data.referrer,
     utmSource: data.utmSource,
     utmMedium: data.utmMedium,
+    userAgent: request.headers.get('user-agent') ?? undefined,
   })
 
   const page = identifyPage(data.pagePath ?? '/')

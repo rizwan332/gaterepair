@@ -26,6 +26,8 @@
  * has to say so, and the IP is shown only inside the authenticated dashboard.
  */
 
+import { CLOUD_PROVIDERS, CLOUD_RANGES } from './cloud-ips'
+
 export type VisitorGeo = {
   city?: string
   region?: string
@@ -147,6 +149,27 @@ function parseUserAgent(ua: string): Pick<VisitorContext, 'device' | 'browser' |
             : undefined
 
   return { device, browser, os }
+}
+
+/**
+ * The cloud provider an IPv4 address belongs to, if any, so the dashboard can
+ * say "AWS server" instead of "Direct" for a visit from a rented server.
+ * Binary search over lib/cloud-ips.ts.
+ */
+export function cloudProvider(ip?: string): string | undefined {
+  const m = ip?.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+  if (!m) return undefined
+  const n = ((+m[1] * 256 + +m[2]) * 256 + +m[3]) * 256 + +m[4]
+  let lo = 0
+  let hi = CLOUD_RANGES.length - 1
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1
+    const [start, end, provider] = CLOUD_RANGES[mid]
+    if (n < start) hi = mid - 1
+    else if (n > end) lo = mid + 1
+    else return CLOUD_PROVIDERS[provider]
+  }
+  return undefined
 }
 
 export function visitorContext(request: Request, browserTimezone?: string): VisitorContext {
