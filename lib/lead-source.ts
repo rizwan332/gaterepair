@@ -279,8 +279,9 @@ export function classifyLead(input: AttributionInput): Classification {
   }
 
   // 3. Referrer.
+  // Our own pages (a later visit after storage was cleared) are not a source.
   const h = host(input.referrer)
-  if (h) {
+  if (h && !/(^|\.)shieldgaterepair\.com$|\.netlify\.app$/.test(h)) {
     const matches = REFERRER_MAP.filter(([fragment]) => h.includes(fragment))
     if (matches.length > 0) {
       // Longest fragment wins so gemini.google.com beats google.

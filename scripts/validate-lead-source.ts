@@ -13,6 +13,8 @@ const cases: [Parameters<typeof classifyLead>[0], string, string][] = [
   [{ userAgent: SAFARI }, 'direct', 'none'],
   [{ userAgent: IG, params: { gclid: 'x' } }, 'google-ads', 'click-id'],
   [{ userAgent: FB, referrer: 'https://www.google.com/' }, 'google-organic', 'referrer'],
+  [{ referrer: 'https://www.yelp.com/biz/shield' }, 'referral', 'referrer'],
+  [{ referrer: 'https://shieldgaterepair.com/contact' }, 'direct', 'none'],
 ]
 let failed = 0
 for (const [input, source, basis] of cases) {
