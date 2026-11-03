@@ -31,6 +31,9 @@ function range(category: string, from: number, to: number): string[] {
 
 export const isRecentJobPhoto = (image: MediaImage) => RECENT_JOB_PHOTOS.has(image.slug)
 
+/** Recent photo whose alt text shows a gate operator, so it reads as automatic-gate work. */
+export const isRecentOperatorPhoto = (image: MediaImage) => isRecentJobPhoto(image) && /operator/i.test(image.alt)
+
 /** Same images, recent jobs first, otherwise in their original order. */
 export const recentFirst = (images: MediaImage[]) => [
   ...images.filter(isRecentJobPhoto),

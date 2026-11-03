@@ -16,7 +16,7 @@ import { PhotoGallery } from '@/components/sections/photo-gallery'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
-import { isRecentJobPhoto } from '@/content/recent-job-photos'
+import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { brandCityPagesForCity, brandCityPath } from '@/lib/brand-city'
 import { serviceCityPagesForCity, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
@@ -59,8 +59,11 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
   const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
   const sameKindVideos = nearVideos(jobVideos.filter((v) => v.service === service.project))
   const videos = sameKindVideos.length > 0 ? sameKindVideos : nearVideos(jobVideos)
-  const servicePhotos = (dfw ? (media[dfw.mediaCategory] ?? []) : []).filter(isRecentJobPhoto).slice(0, 6)
-  const photos = servicePhotos.length >= 3 ? servicePhotos : (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto).slice(0, 6)
+  // Automatic gates only, and on sliding/swing pages only that gate type (read from the alt text).
+  const kind = /sliding|swing/i.exec(service.name)?.[0].toLowerCase()
+  const fits = (i: (typeof media)[string][number]) => isRecentOperatorPhoto(i) && (!kind || i.alt.toLowerCase().includes(kind))
+  const servicePhotos = (dfw ? (media[dfw.mediaCategory] ?? []) : []).filter(fits).slice(0, 6)
+  const photos = servicePhotos.length >= 3 ? servicePhotos : (media['automatic-gate-repair'] ?? []).filter(fits).slice(0, 6)
   const testimonials = [
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
@@ -129,7 +132,7 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
       {photos.length > 0 && (
         <PhotoGallery
           tone="muted"
-          title={servicePhotos.length >= 3 ? `Our recent ${service.name.toLowerCase()} work` : 'Our recent gate repair work'}
+          title={servicePhotos.length >= 3 ? `Our recent ${service.name.toLowerCase()} work` : `Our recent ${kind ? `${kind} ` : ''}gate repair work`}
           intro="Photos from our technicians' recent jobs across Dallas–Fort Worth."
           images={photos}
         />
