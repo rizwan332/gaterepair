@@ -143,6 +143,25 @@ export default async function WatchPage({ params }: { params: Promise<{ slug: st
               What this video shows
             </h2>
             <p className="prose-measure text-lg leading-relaxed text-ink-800">{video.description}</p>
+            {/* The job's own record, so each watch page says something its siblings do not. */}
+            {caseStudy &&
+              (
+                [
+                  ['The fault', caseStudy.problem],
+                  ['How it was diagnosed', caseStudy.diagnosis],
+                  ['The fix', caseStudy.solution],
+                ] as const
+              ).map(([heading, items]) => (
+                <div key={heading} className="mt-8">
+                  <h3 className="mb-3 font-display text-xl font-bold text-ink-950">{heading}</h3>
+                  <ul className="prose-measure list-disc space-y-2 pl-5 leading-relaxed text-ink-800">
+                    {items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            {caseStudy && <p className="prose-measure mt-8 leading-relaxed text-ink-800">{caseStudy.takeaway}</p>}
           </div>
 
           <aside className="space-y-3">
