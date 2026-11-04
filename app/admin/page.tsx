@@ -341,7 +341,7 @@ async function Overview({ range, tz, leadsHref }: { range: ReturnType<typeof ran
         <AlertTriangle className="mt-0.5 size-5 shrink-0 text-ink-400" aria-hidden />
         <p>
           <strong className="text-ink-900">A call or text click shows intent, not a connected conversation.</strong> It
-          doesn&rsquo;t prove anyone answered. Leads marked &ldquo;Direct / unknown&rdquo; are genuinely unknown, mostly
+          doesn&rsquo;t prove anyone answered. Leads marked &ldquo;Direct&rdquo; arrived with no link data at all, mostly
           people who saw a post or an ad and typed the address later. Locations come from the IP address and can be
           off at the city level, especially on mobile networks and VPNs.
         </p>

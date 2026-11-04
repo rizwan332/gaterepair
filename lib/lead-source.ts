@@ -17,8 +17,11 @@
  *                   is there, absent whenever a link went out untagged.
  *   3. REFERRER   — works for ordinary web-to-web traffic, and is how AI
  *                   assistants are identified. Unreliable from apps.
+ *   4. IN-APP     — the user agent of Facebook, Instagram, TikTok, LinkedIn
+ *                   and Pinterest's built-in browsers names the app, which
+ *                   recovers app taps that sent no referrer.
  *
- * Anything with none of the three is `direct`, and a meaningful share of that
+ * Anything with none of these is `direct`, and a meaningful share of that
  * is people who saw a social post and typed the address later. That is not a
  * bug to be fixed in code — see `unattributable` below.
  *
@@ -91,7 +94,7 @@ export const SOURCE_LABEL: Record<LeadSource, string> = {
   copilot: 'Copilot',
   'ai-other': 'Other AI',
   referral: 'Referral',
-  direct: 'Direct / untracked',
+  direct: 'Direct visit',
 }
 
 /**
@@ -191,14 +194,28 @@ export type AttributionInput = {
   /** utm_source, if it was captured separately. */
   utmSource?: string
   utmMedium?: string
+  /** The visitor's user agent; an in-app browser names the app it is inside. */
+  userAgent?: string
 }
+
+/**
+ * In-app browsers, which name their app in the user agent even when they send
+ * no referrer: a visit from one means a link was tapped inside that app.
+ */
+const IN_APP: [RegExp, LeadSource][] = [
+  [/Instagram/, 'instagram'],
+  [/FBAN|FBAV|FB_IAB|FBIOS/, 'facebook'],
+  [/BytedanceWebview|musical_ly|TikTok/i, 'tiktok'],
+  [/LinkedInApp/, 'linkedin'],
+  [/Pinterest/, 'pinterest'],
+]
 
 export type Classification = {
   source: LeadSource
   group: SourceGroup
   label: string
   /** Which of the three signals decided it — useful when a number looks wrong. */
-  basis: 'click-id' | 'utm' | 'referrer' | 'none'
+  basis: 'click-id' | 'utm' | 'referrer' | 'app' | 'none'
   /**
    * True when we genuinely do not know. Reported honestly on the dashboard
    * rather than being quietly folded into "direct" as though it were a real
@@ -262,8 +279,9 @@ export function classifyLead(input: AttributionInput): Classification {
   }
 
   // 3. Referrer.
+  // Our own pages (a later visit after storage was cleared) are not a source.
   const h = host(input.referrer)
-  if (h) {
+  if (h && !/(^|\.)shieldgaterepair\.com$|\.netlify\.app$/.test(h)) {
     const matches = REFERRER_MAP.filter(([fragment]) => h.includes(fragment))
     if (matches.length > 0) {
       // Longest fragment wins so gemini.google.com beats google.
@@ -272,6 +290,10 @@ export function classifyLead(input: AttributionInput): Classification {
     }
     return decorate('referral', 'referrer')
   }
+
+  // 4. In-app browser. Instagram is checked first: its user agent also says FBAV.
+  const app = IN_APP.find(([re]) => input.userAgent && re.test(input.userAgent))
+  if (app) return decorate(app[1], 'app')
 
   return decorate('direct', 'none')
 }

@@ -2,7 +2,8 @@ import type { BlogPost } from '../types'
 
 export const swingVsSlidingGateOpener: BlogPost = {
   slug: 'swing-vs-sliding-gate-opener',
-  status: 'review',
+  status: 'published',
+  publishedAt: '2026-11-03',
   category: 'buying-guides',
   title: 'Swing vs Sliding Gate Openers: Which Fits Your Driveway?',
   h1: 'Swing vs Sliding Gate Openers: Which Fits Your Driveway?',
@@ -112,8 +113,4 @@ export const swingVsSlidingGateOpener: BlogPost = {
     symptoms: ['sliding-gate-off-track', 'gate-sagging-or-dragging', 'gate-battery-keeps-dying', 'swing-gate-stuck'],
     brands: ['liftmaster', 'us-automatic', 'viking', 'all-o-matic'],
   },
-  reviewNotes: [
-    'Technician to confirm the recommendations and which operators we usually fit for each type',
-    'Add photos of one real swing and one real sliding installation or repair',
-  ],
 }

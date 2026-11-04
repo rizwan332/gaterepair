@@ -3,7 +3,24 @@ import { EventModel } from '../models/Event'
 import { LeadModel } from '../models/Lead'
 import { SOURCE_LABEL, SOURCE_GROUP, classifyLead, type LeadSource, type SourceGroup } from './lead-source'
 import { PAGE_TYPE_LABEL, type PageType } from './page-type'
-import type { VisitorGeo } from './visitor-context'
+import { cloudProvider, type VisitorGeo } from './visitor-context'
+
+/**
+ * The most specific name for where a visit came from: the referring website
+ * ("yelp.com") or tagged source for a referral, the network ("AWS server") for
+ * a direct visit from a cloud server's IP, otherwise the source's own label.
+ */
+const originLabel = (source: LeadSource, label: string, r: Record<string, unknown>) => {
+  if (source === 'referral') {
+    try {
+      return new URL(r.referrer as string).hostname.replace(/^www\./, '')
+    } catch {
+      return (r.utmSource as string | undefined) ?? label
+    }
+  }
+  const cloud = source === 'direct' ? cloudProvider(r.ip as string | undefined) : undefined
+  return cloud ? `${cloud} server` : label
+}
 
 /**
  * The reports behind /admin.
@@ -83,6 +100,8 @@ const dedupePipeline = (range: DateRange, filters: LeadFilters = {}) => [
       pageSubject: { $first: '$pageSubject' },
       landingPage: { $first: '$landingPage' },
       utmCampaign: { $first: '$utmCampaign' },
+      utmSource: { $first: '$utmSource' },
+      referrer: { $first: '$referrer' },
       gclid: { $first: '$gclid' },
       ip: { $first: '$ip' },
       geo: { $first: '$geo' },
@@ -364,7 +383,7 @@ function toRecent(r: Record<string, unknown>): RecentLead {
     at: r.firstAt as Date,
     lastAt: r.lastAt as Date,
     source,
-    sourceLabel: SOURCE_LABEL[source] ?? source,
+    sourceLabel: originLabel(source, SOURCE_LABEL[source] ?? source, r),
     group: SOURCE_GROUP[source] ?? 'direct',
     basis: (r.sourceBasis as string) ?? 'none',
     pagePath: (r.pagePath as string) ?? '/',
@@ -480,6 +499,7 @@ function toFormLead(r: Record<string, unknown>): FormLead {
     referrer: r.referrer as string | undefined,
     utmSource: r.utmSource as string | undefined,
     utmMedium: r.utmMedium as string | undefined,
+    userAgent: r.userAgent as string | undefined,
   })
   return {
     id: String(r._id),
@@ -499,7 +519,7 @@ function toFormLead(r: Record<string, unknown>): FormLead {
     utmMedium: r.utmMedium as string | undefined,
     utmCampaign: r.utmCampaign as string | undefined,
     source: classification.source,
-    sourceLabel: classification.label,
+    sourceLabel: originLabel(classification.source, classification.label, r),
     group: classification.group,
     ip: r.ip as string | undefined,
     geo: r.geo as VisitorGeo | undefined,

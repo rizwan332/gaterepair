@@ -2,7 +2,8 @@ import type { BlogPost } from '../types'
 
 export const hoaGateMaintenanceChecklist: BlogPost = {
   slug: 'hoa-gate-maintenance-checklist',
-  status: 'review',
+  status: 'published',
+  publishedAt: '2026-11-03',
   category: 'hoa-commercial',
   title: 'HOA Gate Maintenance Checklist for DFW Communities',
   h1: 'HOA Gate Maintenance Checklist for Dallas–Fort Worth Communities',
@@ -123,8 +124,4 @@ export const hoaGateMaintenanceChecklist: BlogPost = {
     symptoms: ['gate-loop-detector-not-working', 'gate-photo-eye-not-working', 'gate-keypad-not-working', 'gate-reverses-when-closing'],
     brands: ['doorking', 'hysecurity', 'liftmaster', 'viking'],
   },
-  reviewNotes: [
-    'Client to confirm whether we offer HOA service agreements, and the terms (visit frequency, response time)',
-    'Add a photo from a real HOA or apartment entrance job',
-  ],
 }
