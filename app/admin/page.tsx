@@ -26,6 +26,7 @@ import type { SourceGroup } from '@/lib/lead-source'
 import { isValidTimeZone } from '@/lib/visitor-context'
 import { TimezoneSync, ADMIN_TZ_COOKIE } from '@/components/admin/timezone-sync'
 import { StatusSelect } from '@/components/admin/status-select'
+import { SearchTab } from '@/components/admin/search-tab'
 import {
   ActionChips,
   BarList,
@@ -127,7 +128,7 @@ export default async function AdminDashboard({ searchParams }: Props) {
 
   const days = Math.min(Math.max(Number(params.days) || 30, 1), 365)
   const range = rangeForDays(days, tz)
-  const tab = params.tab === 'forms' ? 'forms' : params.tab === 'leads' ? 'leads' : 'overview'
+  const tab = params.tab === 'forms' ? 'forms' : params.tab === 'leads' ? 'leads' : params.tab === 'search' ? 'search' : 'overview'
   const page = Math.max(1, Math.floor(Number(params.p) || 1))
 
   /** Builds a dashboard URL from the current state with some keys changed. */
@@ -216,11 +217,15 @@ export default async function AdminDashboard({ searchParams }: Props) {
           <TabLink href={href({ tab: 'forms', p: '1' })} active={tab === 'forms'} count={statusCounts.all} badge={statusCounts.new}>
             Form submissions
           </TabLink>
+          <TabLink href={href({ tab: 'search', p: '1' })} active={tab === 'search'}>
+            Search Console
+          </TabLink>
         </nav>
 
         {tab === 'overview' && <Overview range={range} tz={tz} leadsHref={href({ tab: 'leads', p: '1' })} />}
         {tab === 'leads' && <LeadsTab range={range} tz={tz} page={page} params={params} href={href} />}
         {tab === 'forms' && <FormsTab range={range} tz={tz} page={page} params={params} href={href} counts={statusCounts} />}
+        {tab === 'search' && <SearchTab tz={tz} />}
       </div>
     </main>
   )
