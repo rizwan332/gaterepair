@@ -2,7 +2,11 @@
  * Normalises manufacturer brand logos into public/logos/.
  *
  * Source files are the client's own — taken from Shield Gate Repair's existing
- * California site, which is their asset library, not a third party's. They
+ * California site, which is their asset library, not a third party's. The five
+ * added 10 Nov 2026 (Mighty Mule, Ghost Controls, Nice, BFT, GTO) are the
+ * manufacturers' own published artwork instead, because the client's library
+ * has nothing for them. Two needed preparing by hand before they could be
+ * normalised, and that is recorded in client-assets/logos/README.md. They
  * arrive as 400x229 JPEG/PNG with white backgrounds and wildly different
  * amounts of padding baked in, which is why a raw drop-in looks wrong: a
  * wordmark that fills its canvas renders visually twice the size of one that
@@ -45,7 +49,7 @@ async function main() {
 
   let files: string[]
   try {
-    files = (await fs.readdir(SOURCE)).filter((f) => /\.(png|jpe?g|webp)$/i.test(f))
+    files = (await fs.readdir(SOURCE)).filter((f) => /\.(png|jpe?g|webp|svg)$/i.test(f))
   } catch {
     console.log('No client-assets/logos directory — nothing to do.')
     return
@@ -56,7 +60,9 @@ async function main() {
 
     // Trim the flat border the source canvas carries. Threshold is generous
     // because these are JPEG-compressed whites, not pure #fff.
-    const trimmed = await sharp(path.join(SOURCE, file))
+    // density only applies to SVG input; raster sources ignore it. 300 DPI
+    // rasterises the smallest vector here well above the 120px export height.
+    const trimmed = await sharp(path.join(SOURCE, file), { density: 300 })
       .flatten({ background: '#ffffff' })
       .trim({ background: '#ffffff', threshold: 12 })
       .toBuffer()
