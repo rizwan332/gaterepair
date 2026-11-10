@@ -19,13 +19,13 @@ import { LazyVideo } from '@/components/ui/lazy-video'
 // enriched and promoted out of `noindex`, the brand pages link them too.
 import { indexedCities } from '@/content/cities'
 import { brandCityPageFor, brandCityPath } from '@/lib/brand-city'
-import { recentFirst } from '@/content/recent-job-photos'
+import { recentFirst, isRecentJobPhoto } from '@/content/recent-job-photos'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
 import { testimonialsForBrand } from '@/content/testimonials'
 import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { JobVideos } from '@/components/sections/job-videos'
-import { jobVideosForBrand } from '@/content/job-videos'
+import { jobVideos, jobVideosForBrand } from '@/content/job-videos'
 import { modelsForBrand, modelMatching, modelPath, modelKey } from '@/content/models'
 import type { ModelPage } from '@/content/models/types'
 
@@ -96,6 +96,33 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       ]
     : allImages
   const brandVideos = brand.mediaCategory ? videosFor(brand.mediaCategory) : []
+
+  /**
+   * Eight brands have no photography, no clips and no case study of their own:
+   * Linear, HySecurity, Apollo, Mighty Mule, Ghost Controls, Nice, BFT and GTO.
+   * Their pages were text over a flat dark hero with no gallery and no video
+   * section at all, which reads as a company with nothing to show.
+   *
+   * Our general gate-repair photos and clips fill them, titled as general work
+   * rather than as that brand's. That is the same call brand-city-view.tsx
+   * already makes and for the same reason: someone else's operator presented as
+   * a BFT job is a lie, but a real DFW job honestly labelled is still evidence.
+   */
+  const hasOwnPhotos = images.length > 0
+  const generalPhotos = (media['automatic-gate-repair'] ?? []).filter(isRecentJobPhoto)
+  // Rotated by the brand's position so the eight do not all lead with the same
+  // photograph — a repeated hero across eight pages reads as a template.
+  const offset = generalPhotos.length > 0 ? brands.findIndex((b) => b.slug === brand.slug) % generalPhotos.length : 0
+  const galleryImages = hasOwnPhotos
+    ? images
+    : [...generalPhotos.slice(offset), ...generalPhotos.slice(0, offset)]
+
+  const ownClips = jobVideosForBrand(brand.name)
+  const clips = ownClips.length > 0 ? ownClips : jobVideos.slice(0, 6)
+
+  const testimonials = testimonialsForBrand(brand.name, Number.MAX_SAFE_INTEGER)
+  // Only claim brand-first ordering when a testimonial on this brand exists.
+  const hasBrandTestimonial = testimonials.some((t) => t.brand?.toLowerCase() === brand.name.toLowerCase())
   const brandProjects = projectsForBrand(brand.name)
   const brandLandingPages = landingPagesForBrand(brand.slug)
 
@@ -118,7 +145,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         eyebrow={brand.contested ? 'Brands we service' : 'Specialist repair'}
         title={brand.headline}
         intro={brand.intro}
-        image={images[0]}
+        image={galleryImages[0]}
       />
 
       {/* The proof goes immediately after the claim. On the uncontested brands
@@ -244,12 +271,16 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      {images.length > 0 && (
+      {galleryImages.length > 0 && (
         <PhotoGallery
           tone="muted"
-          title={`Real ${brand.name} repairs we've completed`}
-          intro="Every photo below is a Shield technician on an actual job. No stock imagery."
-          images={images}
+          title={hasOwnPhotos ? `Real ${brand.name} repairs we've completed` : 'Real gate repairs we have completed'}
+          intro={
+            hasOwnPhotos
+              ? 'Every photo below is a Shield technician on an actual job. No stock imagery.'
+              : 'Recent gate operator jobs by our technicians across Dallas–Fort Worth. Every photo is an actual job. No stock imagery.'
+          }
+          images={galleryImages}
         />
       )}
 
@@ -349,15 +380,19 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
           than a three-card sample. */}
       {/* The client's own footage of jobs on this manufacturer's equipment. */}
       <JobVideos
-        items={jobVideosForBrand(brand.name)}
-        title={`${brand.name} repairs on video`}
-        intro={`Real ${brand.name} jobs filmed on site, each linked to its full write-up.`}
+        items={clips}
+        title={ownClips.length > 0 ? `${brand.name} repairs on video` : 'Gate repairs on video'}
+        intro={
+          ownClips.length > 0
+            ? `Real ${brand.name} jobs filmed on site, each linked to its full write-up.`
+            : 'Real Dallas–Fort Worth jobs filmed on site, each linked to its full write-up.'
+        }
         tone="tint"
       />
 
       <TestimonialCarousel
-        items={testimonialsForBrand(brand.name, Number.MAX_SAFE_INTEGER)}
-        intro={`Real Shield Gate Repair customers describing the job in their own words, ${brand.name} jobs first.`}
+        items={testimonials}
+        intro={`Real Shield Gate Repair customers describing the job in their own words${hasBrandTestimonial ? `, ${brand.name} jobs first` : ''}.`}
         tone="tint"
       />
 
