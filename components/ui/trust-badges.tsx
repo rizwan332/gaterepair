@@ -1,9 +1,16 @@
-import { BadgeCheck, CalendarCheck, Clock, Building2 } from 'lucide-react'
+import { BadgeCheck, BadgeDollarSign, CalendarCheck, Clock, Building2 } from 'lucide-react'
 import { business } from '@/content/business'
 import { fact } from '@/lib/business'
 
 /**
- * The four trust badges from the client's brief (6 Aug 2026).
+ * The trust badges from the client's brief (6 Aug 2026), plus the no-service-
+ * call-fee claim from his 20 Oct 2026 landing-page brief.
+ *
+ * That claim was confirmed on 21 Oct and then rendered in exactly one place —
+ * scripts/build-ads-landing.ts, the Google Ads page. The organic site never
+ * said it, which meant the strongest differentiator the client has was shown
+ * only to traffic he pays for. It is guarded by `fact()` like the rest, so
+ * clearing the confirmation removes it everywhere.
  *
  * One component because they appear on every page. They were previously
  * duplicated in three places — the homepage hero, the contact page and the
@@ -32,7 +39,10 @@ export function TrustBadges({
 }) {
   const years = fact(business.yearsInBusiness)
 
+  const noFee = fact(business.noServiceCallFee)
+
   const badges = [
+    ...(noFee ? [{ icon: BadgeDollarSign, label: noFee }] : []),
     { icon: BadgeCheck, label: 'Licensed & Insured' },
     { icon: CalendarCheck, label: years ? `${years}+ Years Experience` : 'Experienced Technicians' },
     { icon: Clock, label: 'Open 24/7' },

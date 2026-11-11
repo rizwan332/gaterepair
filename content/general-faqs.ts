@@ -9,6 +9,23 @@
  * means none is competing for the featured-snippet surface these produce.
  */
 
+import { business } from '@/content/business'
+import { fact } from '@/lib/business'
+
+/**
+ * The no-service-call-fee answer, built from the fact rather than typed.
+ *
+ * The client confirmed "No service call fee" on 21 Oct 2026 (landing-page
+ * brief, item 6) and it then appeared only on the Google Ads page. This FAQ
+ * still hedged — "ask when you call and we will tell you plainly" — which is
+ * the right answer when nothing is confirmed and the wrong one once something
+ * is. Reading the fact means the page cannot keep claiming it if the
+ * confirmation is ever withdrawn.
+ */
+const callOutFeeAnswer = fact(business.noServiceCallFee)
+  ? 'No. There is no service call fee — you are not charged for the visit itself, and nothing is added to the bill for turning up. We tell you what the repair will cost before we start it, and we will not discover a fee for you after the work is done.'
+  : 'Ask when you call and we will tell you plainly before anyone is dispatched — including whether the diagnostic is waived if you go ahead with the repair. What we will not do is discover a fee for you after the work is done.'
+
 export type FaqCategory = {
   slug: string
   label: string
@@ -33,8 +50,8 @@ export const GENERAL_FAQ_CATEGORIES: FaqCategory[] = [
         a: 'It depends where you are in the Metroplex. Rather than advertise a single number that sounds good and is not achievable everywhere, we give you a real arrival window when you call — based on where the nearest technician actually is — and a message when they are on the way. We run 24 hours a day, seven days a week.',
       },
       {
-        q: 'Do you charge to come out and look?',
-        a: 'Ask when you call and we will tell you plainly before anyone is dispatched — including whether the diagnostic is waived if you go ahead with the repair. What we will not do is discover a fee for you after the work is done.',
+        q: 'Do you charge a service call fee to come out and look?',
+        a: callOutFeeAnswer,
       },
       {
         q: 'Will you quote over the phone?',
