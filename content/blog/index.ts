@@ -77,6 +77,19 @@ export const postPath = (p: Pick<BlogPost, 'slug'>) => `/blog/${p.slug}`
 /** The nav and footer link appear only once there is something to read. */
 export const blogIsLive = publishedPosts.length > 0
 
+/**
+ * Published guides that name this symptom, newest first.
+ *
+ * The link ran one way only: a post lists its `related.symptoms`, but nothing
+ * asked the question from the symptom's side, so the symptom pages — measured
+ * on 11 Nov 2026 the best-performing non-city pages on the site per impression
+ * — linked out to services and to each other and never to the long-form guide
+ * that answers the same question in depth. This closes it from the data that
+ * was already there; no post needs editing.
+ */
+export const postsForSymptom = (symptomSlug: string) =>
+  visiblePosts.filter((p) => (p.related.symptoms ?? []).includes(symptomSlug))
+
 /** Plain text of a post, for word counts and reading time. */
 export function postText(p: BlogPost): string {
   const strip = (s: string) => s.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')

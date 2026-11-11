@@ -117,7 +117,17 @@ export function SiteHeader() {
           <NavDropdown
             label="Services"
             href="/services"
-            items={services.map((s) => ({ label: s.navLabel, href: `/services/${s.slug}` }))}
+            items={[
+              ...services.map((s) => ({ label: s.navLabel, href: `/services/${s.slug}` })),
+              /* /gate-problems appeared in the mobile drawer and the footer but in
+                 no desktop navigation at all — and measured in Search Console on
+                 11 Nov 2026, its symptom pages are the best-performing
+                 non-city pages on the site per impression (gate-wont-close at
+                 position 9.8, gate-reverses-when-closing at 6.7). It goes inside
+                 Services rather than beside it because a seventh top-level item
+                 wraps the bar, as the note above the nav records. */
+              { label: 'All gate problems', href: '/gate-problems' },
+            ]}
           />
           <NavDropdown label="Brands" href="/brands" items={brandItems} wide />
           <NavDropdown

@@ -27,6 +27,7 @@ import { ClosingCTA } from '@/components/sections/closing-cta'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForService, projectsForBrand } from '@/content/projects'
+import { postsForSymptom, postPath, readingMinutes } from '@/content/blog'
 
 /**
  * Renderer for every symptom page (/gate-problems/<slug>).
@@ -127,6 +128,8 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
     .map((slug) => symptomBySlug(slug))
     .filter((s): s is SymptomPage => Boolean(s))
     .filter(isSymptomIndexable)
+
+  const guides = postsForSymptom(page.slug)
 
   const relatedModels = (page.relatedModels ?? []).map(modelByKey).filter(Boolean)
   const relatedBrands = (page.relatedBrands ?? []).map(brandBySlug).filter(Boolean)
@@ -489,6 +492,33 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
                         aria-hidden
                       />
                       <span>{s.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {guides.length > 0 && (
+            <div>
+              <h2 className="font-display text-xl font-semibold text-ink-950">Guides that go deeper</h2>
+              <ul className="mt-4 space-y-2.5">
+                {guides.map((g) => (
+                  <li key={g.slug}>
+                    <Link
+                      href={postPath(g)}
+                      className="group inline-flex items-start gap-2 text-ink-700 hover:text-ink-950"
+                    >
+                      <ArrowRight
+                        className="mt-1 size-4 shrink-0 text-gold-500 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden
+                      />
+                      <span>
+                        {g.title}{' '}
+                        <span className="whitespace-nowrap text-sm text-ink-500">
+                          {readingMinutes(g)} min read
+                        </span>
+                      </span>
                     </Link>
                   </li>
                 ))}
