@@ -108,10 +108,32 @@ export const getSearchReport = unstable_cache(
   { revalidate: SIX_HOURS },
 )
 
-export type CityIndexStatus = { path: string; indexed: boolean; state: string; lastCrawl?: string }
+export type CityIndexStatus = {
+  path: string
+  indexed: boolean
+  state: string
+  lastCrawl?: string
+  /**
+   * The URL Google treats as canonical, where it differs from ours.
+   *
+   * Carried because "Duplicate, Google chose different canonical than user" is
+   * useless without knowing which URL it picked — that one fact says whether
+   * the fix is a canonical tag or the page's own content. Only set when the two
+   * disagree, so the dashboard shows nothing for the pages that are fine.
+   */
+  googleCanonical?: string
+}
 
 type Inspection = {
-  inspectionResult?: { indexStatusResult?: { verdict?: string; coverageState?: string; lastCrawlTime?: string } }
+  inspectionResult?: {
+    indexStatusResult?: {
+      verdict?: string
+      coverageState?: string
+      lastCrawlTime?: string
+      googleCanonical?: string
+      userCanonical?: string
+    }
+  }
 }
 
 /** One inspection per priority city. Cached because Google allows 2,000 a day. */
@@ -127,7 +149,14 @@ export const getCityIndexStatus = unstable_cache(
           token,
         )
         const s = r.inspectionResult?.indexStatusResult
-        return { path, indexed: s?.verdict === 'PASS', state: s?.coverageState ?? 'Unknown', lastCrawl: s?.lastCrawlTime }
+        return {
+          path,
+          indexed: s?.verdict === 'PASS',
+          state: s?.coverageState ?? 'Unknown',
+          lastCrawl: s?.lastCrawlTime,
+          googleCanonical:
+            s?.googleCanonical && s.googleCanonical !== s.userCanonical ? s.googleCanonical : undefined,
+        }
       }),
     )
   },

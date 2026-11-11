@@ -146,6 +146,25 @@ for (const [title, urls] of byTitle) {
   if (urls.length > 1) errors.push(`Duplicate title on ${urls.join(' and ')}: "${title}"`)
 }
 
+/**
+ * Duplicate descriptions, added 11 Nov 2026.
+ *
+ * Google reported /gate-repair-keller-tx as "Duplicate, Google chose different
+ * canonical than user" while that page carried a correct self-referencing
+ * canonical. The cause was the snippet: the city description template differed
+ * only by city and county, so all ~30 Tarrant County pages shipped the same
+ * sentence. A canonical cannot override a page that reads like another one.
+ */
+const byDescription = new Map<string, string[]>()
+for (const page of pages.filter((p) => !p.noindex)) {
+  if (!page.description) continue
+  byDescription.set(page.description, [...(byDescription.get(page.description) ?? []), page.url])
+}
+for (const [description, urls] of byDescription) {
+  if (urls.length > 1)
+    errors.push(`Duplicate description on ${urls.join(' and ')}: "${description}"`)
+}
+
 // --- 3. canonicals ----------------------------------------------------------
 
 for (const page of pages) {

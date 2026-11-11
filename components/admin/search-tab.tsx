@@ -105,7 +105,18 @@ export async function SearchTab({ tz }: { tz: string }) {
 
       <Panel title="Priority city pages in Google" subtitle={cities ? `${cities.filter((c) => c.indexed).length} of ${cities.length} indexed` : undefined}>
         {cities ? (
-          <Table head={['Page', 'Status', 'Last crawled']} rows={cities.map((c) => [c.path, c.state, c.lastCrawl?.slice(0, 10) ?? 'Never'])} />
+          <Table
+            head={['Page', 'Status', 'Last crawled', 'Google picked instead']}
+            rows={cities.map((c) => [
+              c.path,
+              c.state,
+              c.lastCrawl?.slice(0, 10) ?? 'Never',
+              // Only filled when Google disagrees with our canonical. Without it,
+              // a "Duplicate, Google chose different canonical" row says nothing
+              // actionable — see CityIndexStatus in lib/search-console.ts.
+              c.googleCanonical?.replace(/^https?:\/\/[^/]+/, '') || '—',
+            ])}
+          />
         ) : (
           <p className="text-sm text-ink-500">Google did not return the index check. Reload in a few minutes.</p>
         )}
