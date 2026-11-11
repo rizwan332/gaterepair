@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS } from '@/lib/seo'
+import { openGraphFor, INDEXABLE_ROBOTS, HELD_BACK_ROBOTS, DESCRIPTION_MAX } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MapPin, Clock, Navigation, ArrowRight } from 'lucide-react'
@@ -96,32 +96,44 @@ export async function generateMetadata({
    * The snippet budget is ~160 characters and the inputs vary by 20 — "Boyd,
    * Wise County" against "North Richland Hills, Tarrant County" — so a single
    * fixed template either overflows on the long cities or wastes the budget on
-   * the short ones. Writing one and eyeballing it is what produced the previous
-   * range of 114 to 126.
-   *
-   * So: build the sentence that always fits, then spend whatever is left on the
-   * operator brands we actually see in that city, dropping one at a time until
-   * it fits. The brands come from `gateProfile`, which is real technician-
-   * interview data — a city we have not enriched has none, and names none.
+   * the short ones. Build the richest sentence that fits instead, dropping
+   * detail from the end until it does.
    */
-  const LIMIT = 158
-  // "opener" and "automatic gate" are the two modifiers people add to "gate
-  // repair" most, so the snippet names both. The shorter head is the fallback
-  // for the long city + county pairs, so no city overruns the budget.
-  const tail = `. Open 24/7. Call ${business.phone.display}.`
-  const heads = [
-    `Gate stuck or opener dead in ${city.name}? Same-day automatic gate repair across ${city.county}`,
-    `Gate stuck, stalled or dead in ${city.name}? Same-day gate repair across ${city.county}`,
-  ]
-  const head = heads.find((h) => `${h}. Residential and commercial${tail.slice(1)}`.length <= LIMIT) ?? heads[1]
-  let description = `${head}. Residential and commercial${tail.slice(1)}`
-  for (let n = (city.gateProfile?.commonBrands.length ?? 0); n > 0; n--) {
-    const candidate = `${head} — we fix ${city.gateProfile!.commonBrands.slice(0, n).join(', ')}${tail}`
-    if (candidate.length <= LIMIT) {
-      description = candidate
-      break
-    }
-  }
+  const tail = ` Open 24/7. Call ${business.phone.display}.`
+  const head = `Gate stuck or opener dead in ${city.name}?`
+  /**
+   * The place detail is what makes each of these 200 snippets its own.
+   *
+   * The previous version differed only by city and county, so every one of the
+   * ~30 Tarrant County pages carried the same sentence. Google flagged
+   * /gate-repair-keller-tx as "Duplicate, Google chose different canonical than
+   * user" on 8 Oct 2026 — a self-referencing canonical does not help when the
+   * title and description are a template with the place name swapped.
+   *
+   * Neighborhoods and roads are real data from content/cities.ts: all 200
+   * indexed cities have roads, 182 have neighborhoods. Richest form first,
+   * county-only as the floor, so nothing is invented for a thin city.
+   */
+  const nb = city.neighborhoods ?? []
+  const road = city.majorRoads?.[0]
+  const wheres = [
+    nb.length >= 2 && road ? `${nb[0]}, ${nb[1]} and off ${road}` : null,
+    nb.length >= 2 ? `${nb[0]} and ${nb[1]}` : null,
+    nb.length >= 1 && road ? `${nb[0]} and off ${road}` : null,
+    nb.length >= 1 ? nb[0] : null,
+    road ? `${city.county}, off ${road}` : null,
+    city.county,
+  ].filter(Boolean) as string[]
+  const brands = city.gateProfile?.commonBrands ?? []
+  // Place detail outranks brand names, so brands are dropped first when the
+  // budget runs out. Last candidate is county-only with no brands and always fits.
+  const candidates = wheres.flatMap((where) =>
+    [2, 1, 0].map((n) => {
+      const fix = n > 0 && brands.length > 0 ? ` We fix ${brands.slice(0, n).join(' and ')}.` : ''
+      return `${head} Same-day gate repair in ${where}.${fix}${tail}`
+    })
+  )
+  const description = candidates.find((c) => c.length <= DESCRIPTION_MAX) ?? candidates[candidates.length - 1]
 
   return {
     /**
@@ -146,9 +158,7 @@ export async function generateMetadata({
     title: { absolute: cityTitle(city.name) },
     // Opens on the problem, not the service. Someone searching this is standing
     // at a gate that will not move, and the snippet that names their situation
-    // back to them is the one they click. The previous version opened
-    // "Automatic gate repair in {city}, {county}." and ran 114–126 characters,
-    // spending none of the remaining budget.
+    // back to them is the one they click.
     description,
     alternates: { canonical: `/${PREFIX}${city.slug}${SUFFIX}` },
     openGraph: openGraphFor(`/${PREFIX}${city.slug}${SUFFIX}`),
