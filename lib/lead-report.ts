@@ -3,12 +3,20 @@ import { EventModel } from '../models/Event'
 import { LeadModel } from '../models/Lead'
 import { SOURCE_LABEL, SOURCE_GROUP, classifyLead, type LeadSource, type SourceGroup } from './lead-source'
 import { PAGE_TYPE_LABEL, type PageType } from './page-type'
-import { cloudProvider, type VisitorGeo } from './visitor-context'
+import { type VisitorGeo } from './visitor-context'
 
 /**
  * The most specific name for where a visit came from: the referring website
- * ("yelp.com") or tagged source for a referral, the network ("AWS server") for
- * a direct visit from a cloud server's IP, otherwise the source's own label.
+ * ("yelp.com") or tagged source for a referral, otherwise the source's own
+ * label.
+ *
+ * A direct visit used to be relabelled with the cloud network its IP belonged
+ * to — "AWS server" instead of "Direct". Removed 12 Nov 2026 at the client's
+ * request: on the live dashboard it was firing on visits whose geo was a real
+ * Texas city on a real phone, so it read as an accusation rather than a fact,
+ * and "Direct" is the answer the question actually wants. The IP is still shown
+ * in its own column for anyone who wants to check. lib/cloud-ips.ts and
+ * scripts/update-cloud-ips.ts went with it — this was their only caller.
  */
 const originLabel = (source: LeadSource, label: string, r: Record<string, unknown>) => {
   if (source === 'referral') {
@@ -18,8 +26,7 @@ const originLabel = (source: LeadSource, label: string, r: Record<string, unknow
       return (r.utmSource as string | undefined) ?? label
     }
   }
-  const cloud = source === 'direct' ? cloudProvider(r.ip as string | undefined) : undefined
-  return cloud ? `${cloud} server` : label
+  return label
 }
 
 /**
