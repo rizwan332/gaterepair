@@ -436,9 +436,14 @@ function LeadTable({ rows, tz }: { rows: Awaited<ReturnType<typeof getLeadsPage>
               <td className="px-4 py-3">
                 <div className="flex flex-col items-start gap-1">
                   <GroupPill group={r.group} />
-                  <span className="text-ink-800" title={`Identified by: ${r.basis}`}>
-                    {r.sourceLabel}
-                  </span>
+                  {/* A direct visit has no origin to name, so the pill already
+                      says everything — "Direct" over "Direct visit" is the same
+                      word twice. The CSV export still carries the full label. */}
+                  {r.group !== 'direct' && (
+                    <span className="text-ink-800" title={`Identified by: ${r.basis}`}>
+                      {r.sourceLabel}
+                    </span>
+                  )}
                   {r.campaign && <span className="text-xs text-ink-500">{r.campaign}</span>}
                 </div>
               </td>
@@ -573,7 +578,7 @@ async function FormsTab({
                 <Field label="Source">
                   <span className="flex flex-col items-start gap-1">
                     <GroupPill group={lead.group} />
-                    <span className="text-ink-800">{lead.sourceLabel}</span>
+                    {lead.group !== 'direct' && <span className="text-ink-800">{lead.sourceLabel}</span>}
                   </span>
                 </Field>
                 <Field label="Campaign">
