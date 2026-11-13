@@ -28,7 +28,7 @@ import { JobVideos } from '@/components/sections/job-videos'
 import { jobVideos, jobVideosForBrand } from '@/content/job-videos'
 import { modelsForBrand, modelMatching, modelPath, modelKey } from '@/content/models'
 import type { ModelPage } from '@/content/models/types'
-import { pickHero } from '@/lib/hero-image'
+import { pickHero, imageBySlug } from '@/lib/hero-image'
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -120,7 +120,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
   // The hero is NOT simply the first gallery tile; see lib/hero-image.ts.
   // `featuredImage` still leads the gallery, and wins the hero when landscape.
-  const heroImage = pickHero(galleryImages)
+  const heroImage =
+    (brand.heroImage ? imageBySlug(brand.heroImage) : undefined) ?? pickHero(galleryImages)
 
   const ownClips = jobVideosForBrand(brand.name)
   const clips = ownClips.length > 0 ? ownClips : jobVideos.slice(0, 6)
