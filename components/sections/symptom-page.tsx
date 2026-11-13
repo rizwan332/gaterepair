@@ -28,6 +28,10 @@ import { GateProblemForm } from '@/components/forms/gate-problem-form'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { projectsForService, projectsForBrand } from '@/content/projects'
 import { postsForSymptom, postPath, readingMinutes } from '@/content/blog'
+import { symptomMedia } from '@/content/symptoms/media'
+import { ResponsiveImage } from '@/components/ui/responsive-image'
+import { LazyVideo } from '@/components/ui/lazy-video'
+import { PhotoGallery } from '@/components/sections/photo-gallery'
 
 /**
  * Renderer for every symptom page (/gate-problems/<slug>).
@@ -116,6 +120,9 @@ function CallButtons({ label, tone }: { label: string; tone: 'dark' | 'light' })
 }
 
 export function SymptomPageView({ page }: { page: SymptomPage }) {
+  // Photographs and video of this specific fault. Symptom pages shipped
+  // text-only; see content/symptoms/media.ts.
+  const { hero: heroPhoto, gallery: galleryPhotos, videos: symptomVideos } = symptomMedia(page.slug)
   const path = symptomPath(page)
   const urgency = URGENCY[page.urgency]
   const UrgencyIcon = urgency.icon
@@ -168,6 +175,16 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="surface-dark relative isolate overflow-hidden">
+        {heroPhoto && (
+          <div className="absolute inset-0 -z-10">
+            <ResponsiveImage image={heroPhoto} alt="" priority fill sizes="100vw" className="object-cover" />
+            {/* Matches PageHero: white display type over 0.82 clears AA. */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-ink-950/82 via-ink-950/64 to-ink-950/28"
+              aria-hidden
+            />
+          </div>
+        )}
         <div className="container-page relative py-10 md:py-14">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex flex-wrap items-center gap-1 text-sm text-ink-300">
@@ -557,6 +574,35 @@ export function SymptomPageView({ page }: { page: SymptomPage }) {
           </div>
         )}
       </section>
+
+      {/* ── Watch this fault being fixed ─────────────────────────────────── */}
+      {symptomVideos.length > 0 && (
+        <section className="section bg-white">
+          <div className="container-page">
+            <h2 className="mb-2 font-display text-2xl font-semibold text-ink-950 sm:text-3xl">
+              Watch this fault being fixed
+            </h2>
+            <p className="mb-8 max-w-2xl text-ink-700">
+              Filmed on our own call-outs. Nothing staged, and no stock footage.
+            </p>
+            <div className="grid gap-5 md:grid-cols-2">
+              {symptomVideos.map((video) => (
+                <LazyVideo key={video.slug} video={video} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── What it looks like ───────────────────────────────────────────── */}
+      {galleryPhotos.length > 0 && (
+        <PhotoGallery
+          images={galleryPhotos}
+          title={`${page.label} — what it looks like`}
+          intro="Photographs from our own jobs, so you can compare them with your gate."
+          tone="muted"
+        />
+      )}
 
       {/* ── Proof that we fix this ───────────────────────────────────────── */}
       {relatedProjects.length > 0 && (
