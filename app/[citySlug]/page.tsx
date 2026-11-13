@@ -38,6 +38,7 @@ import { ServiceCityView, serviceCityMetadata } from './service-city-view'
 import { indexableSymptomPages } from '@/lib/symptom-quality'
 import { symptomPath } from '@/content/symptoms'
 import { isRecentJobPhoto } from '@/content/recent-job-photos'
+import { imageBySlug } from '@/lib/hero-image'
 
 /**
  * City pages.
@@ -204,7 +205,7 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
   ]
 
-  const heroImage = media['automatic-gate-repair']?.[2] ?? media['gate-installation']?.[0]
+  const heroImage = imageBySlug('automatic-gate-repair-09') ?? media['gate-installation']?.[0]
   // Curated neighbours where we have them; otherwise the city's genuine county
   // peers. Every page ends up with real internal links either way — that was
   // the point of the client's "internal linking" deliverable.

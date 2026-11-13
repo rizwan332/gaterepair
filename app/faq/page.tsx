@@ -8,8 +8,8 @@ import { brands } from '@/content/brands'
 import { BRAND_DEPTH } from '@/content/brand-depth'
 import { PageHero } from '@/components/sections/page-hero'
 import { ClosingCTA } from '@/components/sections/closing-cta'
-import { media } from '@/content/media-manifest'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { imageBySlug } from '@/lib/hero-image'
 
 export const metadata: Metadata = {
   // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
@@ -77,7 +77,7 @@ export default function FaqPage() {
         eyebrow="Answers"
         title={`${uniqueFaqs.length} Straight Answers About Gate Repair`}
         intro="Most of what people want to know before calling a gate company is whether they are about to be sold something they do not need. These are the honest answers, including the ones that cost us work."
-        image={media['automatic-gate-repair']?.[0]}
+        image={imageBySlug('automatic-gate-repair-12')}
       />
 
       {/* Anchor index. On a page this long, a jump list is the difference

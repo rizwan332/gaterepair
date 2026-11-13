@@ -4,8 +4,8 @@ import { services } from '@/content/services'
 import { PageHero } from '@/components/sections/page-hero'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { ClosingCTA } from '@/components/sections/closing-cta'
-import { media } from '@/content/media-manifest'
 import { breadcrumbSchema } from '@/lib/schema'
+import { imageBySlug } from '@/lib/hero-image'
 
 export const metadata: Metadata = {
   // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Everything We Fix"
         intro={`${services.length} services across residential driveways, commercial entrances, HOA communities and industrial yards — all backed by photographs of real jobs rather than stock imagery.`}
-        image={media['iron-gate-repair']?.[0]}
+        image={imageBySlug('iron-gate-repair-05')}
       />
       <ServicesGrid />
       <ClosingCTA />

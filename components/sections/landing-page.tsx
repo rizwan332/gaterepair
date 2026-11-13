@@ -20,6 +20,7 @@ import { TrustBadges } from '@/components/ui/trust-badges'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { modelsForBrand, modelPath } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
+import { pickHero } from '@/lib/hero-image'
 
 /**
  * Renderer for every Google Ads landing page.
@@ -65,7 +66,7 @@ export function LandingPage({ slug }: { slug: string }) {
   const brand = brandBySlug(page.brandSlug)
   const years = fact(business.yearsInBusiness)
   const images = page.mediaCategory ? (media[page.mediaCategory] ?? []) : []
-  const hero = images[0]
+  const hero = pickHero(images)
   const testimonials = brand
     ? testimonialsForBrand(brand.name, Number.MAX_SAFE_INTEGER)
     : publishedTestimonials
