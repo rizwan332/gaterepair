@@ -466,8 +466,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQDImCLBT07R4laftdQAAP6vo7feZUlnChuJpTmpdbxLCM3Yk5oGpm4GFY7+0DaLY8TBBYwYxVnYAbSQIaC8okVd/7tyGW3VxWcm5HWEpnHWgRo4A1SlFXok28evUAA=",
       "alt": "A technician kneeling at a gate operator base, welding the mounting frame in place during installation",
       "altWritten": true
@@ -1000,8 +1000,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQC7ABIvzPh3Lu78AAD33fqxh1tbM0geBBHf0cPjk56+oKZBYU0x1Y6aMr2yujtppI/OAIpR3okTO/osMaGALqEhLNW9AFf+X4LckFj6CSHCMABwfEBS7WK3e2ny+vctFGDfAAA=",
       "alt": "The gate frame propped against a warehouse wall with a forklift alongside during the repair",
       "altWritten": true
@@ -1016,8 +1016,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZwAAW+L6o0ymZQAA/u9jHmoAiYIKfR2ok0L5UPp/HlqXP7QKUCNilqOpzlnvZYq7zMwU28ug3qjzjGHA8nlvwLyfXORwAAA=",
       "alt": "A low view along the repaired gate showing the picket infill and the track it runs on",
       "altWritten": true
@@ -1032,8 +1032,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAwCdASoQABUAPu1iqU2ppaQiMAgBMB2JZwDKABk4DnBqkpBjRLyIAPwrWn/no2n4m7nnGDlNbKlk0lHGoJjH5Zp5fDsN5TdL4igDcp3kCXvYYE1DNLJKaMtNJiRxgv8wvju5TWcVpCLGcZ/SKA5YFwyrKKAA",
       "alt": "A heavy steel gate post with its mounting bracket, viewed from below against the sky",
       "altWritten": true
@@ -1080,8 +1080,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgC2yBc9nZ0MbGNMoPsSxwAA/t1OkNUPwVwQgpQUClkRfYw28WezdEVIx3vBmZxRrpSibqZEM0w/k0sROyk06pIW8wsbDIz3pDjw/rvuqpdU+mmXmE3YUK6MFTElcmT5jdK9qAbSatqte1fBFAga1ErEKEKw5B49dr/1BXHD9fr2/f/5EU5T8vO5/NDwjVrC6FZkqQAAAA==",
       "alt": "A replacement heavy-duty steel post fixed to the wall at the end of the gate run",
       "altWritten": true
@@ -1096,8 +1096,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 4032,
-      "height": 3024,
+      "width": 3024,
+      "height": 4032,
       "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZwAATHmK9eIHRxrjTAAA31s6v2tsrcnLNbyD/82NPwkGnmeec5wj5lpEFsoZx2CsMQi3cdFG05E66s42B/EbdGDSo9NXUcClJWzhQAA=",
       "alt": "A long view down the repaired steel picket gate standing closed and square on its track, with the office building and yard beyond",
       "altWritten": true
@@ -1216,8 +1216,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdACBXRGaWI9oiIgSgagAA8T/4mGTgb1YwTLGUwnzGh580/11LJiVG//y3YTwmEm/h3lyKuNi6XBqLlIbk8HQbzxrxUinUiHx5Y6CyXpD9OA2/PM2+yhGT2l2gHbMKs638IkF2yRUDvFUqwQQURmgAAA==",
       "alt": "An Elite gate operator in a grey housing with the Elite name on the front, installed beside an ornamental iron gate and white fence",
       "altWritten": true
@@ -2606,8 +2606,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JZAC+SCHhH4vLPi+wy1MFyAD2uBDN58iYuk0RAJsOZ4x7pT81STWdMRobTO2ya9rDrvbHw0FrZh2wmVsDRwDrBy9N7JN4feZhnyDAta6ae0/wCmTgxbNU2rhg84Y2/NS1DRo5GTf++kDLVBp/d+ZesvMYxO3X/Z3N+f1IAAA=",
       "alt": "A LiftMaster gate operator enclosure standing open beside the gate, showing the control board and wiring loom inside",
       "altWritten": true
@@ -2622,8 +2622,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZgAAW8ur2ONUEpKnUoAA/tlnRoAFxLoSDwdVsB3fkgqtZhWyh27gesDbaeKyvP4IsBfbrzpMhqvPZmJFJCMfnaaztDfsG6GY30bJBa2lA/F1ajSEqmwx2R7SZneV+KVG5cX0e90xX2DCNSzFUIVu8aMrAAAA",
       "alt": "Close view of a LiftMaster control board with its terminal blocks, programming buttons and two-digit diagnostic display",
       "altWritten": true
@@ -2670,8 +2670,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBjegs1xNBM4Bby1vKwA+v5Y5uWsYtgfkQC611Oi3O3GARj3Ns3kOLDUWDHTLK9DIipcpS7QGq+CSMkUrUeC//hpGP26cXRVx1fqOz7dtoLAN4RJ/RKZ8hNlnkhG2C18oAAA",
       "alt": "Close view of the opened LiftMaster control enclosure showing the circuit board, wiring loom and battery compartment, with the operator arm attached to the gate frame behind it",
       "altWritten": true
@@ -2686,8 +2686,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYwCw8aglABE/Umd0XjX45lkTgAD+PXw9BEtwGbNA1vjlODL1w8ntqoRN7seciPF+OP1rakC3PtYRJUCjcnkFRpArjdOub2Zh16/cF8jvQrz+0S74LGNXgRtByARVnqqqOZzgqqnm+S3vwAA=",
       "alt": "The LiftMaster operator arm and its closed control enclosure mounted on the iron gate after the replacement board was fitted",
       "altWritten": true
@@ -3026,8 +3026,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JaACdAB+NmlkqWz4Ief7SY8AA/swVmum1n8/mj+p9Y7GAula0zCNcMUrI6S6qsgEd6ulzuyXcrPrRmsBR0tJ2fTvwKW9IY2EAX1xV+sReT3Fn/OjSDxrkM1l36zBsMuCuPqcZmUoG3dj/5b4AAA==",
       "alt": "A Ramset slide gate operator and its control enclosure at the end of the gate run, beside the open gate",
       "altWritten": true
@@ -3042,8 +3042,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAACQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBdgAaSp2WzLm/IAAN2XcBaqqTr/OjWnw+ZeyXFmu4DtfWWUIJ4fYTC1LccIFz7kU4sQ+6q5na5yypIFWJaRujJfmGmiRjxj0YSh6tiSuUzoIo/tAPXDFiocMIAA",
       "alt": "The gate held clear of its track during the repair, with the operator and toolbox on the driveway behind",
       "altWritten": true
@@ -3172,8 +3172,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQAB8oi73laKSJBynXdEOgAD+6/yIGfgzzltQj/7XaKRmV/6nemSdeRcIfZ2tGT1BtPFNajPjf9wNt8j6l7LYJEFi0arZpJjn1c3mqEJ2iMfOiWaGlqlZyjFpmwm/fqd5Vlrj2rKyyJc9R03b0NXCcn/XQ+p7NA7+8XAA",
       "alt": "A DoorKing operator and its drive linkage connected to the lower rail of an iron swing gate leaf",
       "altWritten": true
@@ -3653,8 +3653,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYwCdACGqX4OYsetdgAD+eTqzCgibU0U4OKjvAijX1AwETyu4jcVi506jw+AMsulZiLGq60IgPagcxeDhUT+DBFG/G3BOnCotzg/eFRoORPjK7XV5UATnGrC/ZtJsSJ29aYrWChUb8AAA",
       "alt": "A gate operator in a black weatherproof enclosure mounted on the post of a metal ranch gate, with the drive arm connected to the gate frame",
       "altWritten": true
@@ -3685,8 +3685,8 @@ export const media: Record<string, MediaImage[]> = {
         1600,
         2000
       ],
-      "width": 5712,
-      "height": 4284,
+      "width": 4284,
+      "height": 5712,
       "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQBdg7wAOiu63xokhHbfQB4AA/h6qTohjY9fz7XT9YWpPCm6tiY3Fn14o5TINh1fC5tICpJ687Gq/kujiTA/aB3id8MQvFC7MScI4flGcYMEx2Vmv9Kja/BxEKhu31p2WjEv7+Sh0LKAAAAA=",
       "alt": "An opened gate control enclosure showing the battery, charge wiring and control board, with a multimeter resting on top during electrical testing",
       "altWritten": true
