@@ -149,6 +149,24 @@ async function walk(dir: string): Promise<string[]> {
 
 type Candidate = { file: string; width: number; height: number; bytes: number }
 
+/**
+ * Dimensions as the EXPORTED file will be, not as the source header reads.
+ *
+ * The pipeline below calls .rotate(), which honours the EXIF orientation flag,
+ * so a phone photo tagged "rotate 90" comes out portrait. metadata() reports
+ * the pre-rotation header, and the manifest was recording that — 16 of 219
+ * images claimed landscape and shipped portrait, which fed a wrong
+ * aspect-ratio box to ResponsiveImage (layout shift) and put portrait
+ * photographs behind three brand heroes, where a wide banner crops to the
+ * middle band and the operator is never seen. Found 13 Nov 2026.
+ *
+ * Orientation 5-8 are the four that involve a quarter turn.
+ */
+const orientedSize = (meta: { width?: number; height?: number; orientation?: number }) =>
+  (meta.orientation ?? 1) >= 5
+    ? { width: meta.height!, height: meta.width! }
+    : { width: meta.width!, height: meta.height! }
+
 async function main() {
   console.log('Scanning', SOURCE)
   const files = await walk(SOURCE)
@@ -208,7 +226,7 @@ async function main() {
       try {
         const [meta, stat] = await Promise.all([sharp(file).metadata(), fs.stat(file)])
         if (meta.width && meta.height) {
-          candidates.push({ file, width: meta.width, height: meta.height, bytes: stat.size })
+          candidates.push({ file, ...orientedSize(meta), bytes: stat.size })
         }
       } catch {
         // Optimizer plugins left some truncated files behind; ignore them.

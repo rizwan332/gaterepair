@@ -94,7 +94,7 @@ export const brands: Brand[] = [
   {
     slug: 'all-o-matic',
     // Client picked this as the All-O-Matic front image, 6 Aug 2026.
-    featuredImage: 'all-o-matic-15',
+    featuredImage: 'all-o-matic-19',
     legacyPath: '/all-o-matic-gate-motor-repair/',
     name: 'All-O-Matic',
     mediaCategory: 'all-o-matic',
@@ -179,6 +179,7 @@ export const brands: Brand[] = [
   },
   {
     slug: 'liftmaster',
+    featuredImage: 'liftmaster-34',
     legacyPath: '/liftmaster-gate-motor-repair/',
     name: 'LiftMaster',
     mediaCategory: 'liftmaster',
@@ -266,7 +267,7 @@ export const brands: Brand[] = [
   {
     slug: 'viking',
     // Client picked this as the Viking front image, 6 Aug 2026.
-    featuredImage: 'viking-06',
+    featuredImage: 'viking-07',
     legacyPath: '/viking-gate-motor-repair/',
     name: 'Viking',
     mediaCategory: 'viking',
@@ -447,6 +448,7 @@ export const brands: Brand[] = [
     // Added at the client's explicit request, 3 Aug 2026. No legacy WordPress
     // page existed for this brand, so there is no 301 to preserve.
     slug: 'us-automatic',
+    featuredImage: 'us-automatic-05',
     legacyPath: '/us-automatic-gate-motor-repair/',
     name: 'US Automatic',
     // Client supplied five photographs on 4 Aug 2026 — ranch and acreage
