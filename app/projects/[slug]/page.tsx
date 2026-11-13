@@ -19,6 +19,7 @@ import { Reveal } from '@/components/ui/reveal'
 import { business } from '@/content/business'
 import { breadcrumbSchema, serviceSchema } from '@/lib/schema'
 import { fitDescription, openGraphFor } from '@/lib/seo'
+import { pickHero } from '@/lib/hero-image'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -118,7 +119,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         eyebrow="Case study"
         title={project.title}
         intro={project.summary}
-        image={images[0]}
+        image={pickHero(images)}
         meta={[
           project.brand,
           project.propertyType,

@@ -93,7 +93,10 @@ export const brands: Brand[] = [
   },
   {
     slug: 'all-o-matic',
-    // Client picked this as the All-O-Matic front image, 6 Aug 2026.
+    // Hero/front image. Measured 13 Nov 2026: PageHero crops to the middle
+    // band and darkens the left ~35%, so a photo whose branded unit sits
+    // low or far left shows the visitor an anonymous fence. These are the
+    // shots whose operator still reads after that crop. Client's 6 Aug 2026 pick was all-o-matic-15.
     featuredImage: 'all-o-matic-19',
     legacyPath: '/all-o-matic-gate-motor-repair/',
     name: 'All-O-Matic',
@@ -179,7 +182,11 @@ export const brands: Brand[] = [
   },
   {
     slug: 'liftmaster',
-    featuredImage: 'liftmaster-34',
+    // Hero/front image. Measured 13 Nov 2026: PageHero crops to the middle
+    // band and darkens the left ~35%, so a photo whose branded unit sits
+    // low or far left shows the visitor an anonymous fence. These are the
+    // shots whose operator still reads after that crop. liftmaster-34 showed an unbranded black gate.
+    featuredImage: 'liftmaster-28',
     legacyPath: '/liftmaster-gate-motor-repair/',
     name: 'LiftMaster',
     mediaCategory: 'liftmaster',
@@ -226,7 +233,11 @@ export const brands: Brand[] = [
     // Client-supplied 4 Aug 2026: the only Elite photo where the manufacturer
     // name is legible on the housing. Leads the page because matching the badge
     // on your own gate is exactly what a visitor arrives here to do.
-    featuredImage: 'elite-09',
+    // Hero/front image. Measured 13 Nov 2026: PageHero crops to the middle
+    // band and darkens the left ~35%, so a photo whose branded unit sits
+    // low or far left shows the visitor an anonymous fence. These are the
+    // shots whose operator still reads after that crop. elite-09 is portrait, and the 1024px elite-08 is the widest Elite landscape there is.
+    featuredImage: 'elite-08',
     legacyPath: '/elite-gate-motor-repair/',
     name: 'Elite',
     mediaCategory: 'elite',
@@ -266,8 +277,11 @@ export const brands: Brand[] = [
   },
   {
     slug: 'viking',
-    // Client picked this as the Viking front image, 6 Aug 2026.
-    featuredImage: 'viking-07',
+    // Hero/front image. Measured 13 Nov 2026: PageHero crops to the middle
+    // band and darkens the left ~35%, so a photo whose branded unit sits
+    // low or far left shows the visitor an anonymous fence. These are the
+    // shots whose operator still reads after that crop. Client's 6 Aug 2026 pick was viking-06; viking-07 put the unit in the dark corner.
+    featuredImage: 'viking-02',
     legacyPath: '/viking-gate-motor-repair/',
     name: 'Viking',
     mediaCategory: 'viking',
@@ -336,7 +350,11 @@ export const brands: Brand[] = [
     slug: 'doorking',
     // Client-supplied 6 Aug 2026; he picked the front image himself.
     mediaCategory: 'doorking',
-    featuredImage: 'doorking-01',
+    // Hero/front image. Measured 13 Nov 2026: PageHero crops to the middle
+    // band and darkens the left ~35%, so a photo whose branded unit sits
+    // low or far left shows the visitor an anonymous fence. These are the
+    // shots whose operator still reads after that crop. Client's 6 Aug 2026 pick was doorking-01, which is portrait. Still the weakest hero on the site: no DoorKing badge is legible in any photo we hold.
+    featuredImage: 'doorking-03',
     legacyPath: '/doorking-gate-repair/',
     name: 'DoorKing',
     contested: false,

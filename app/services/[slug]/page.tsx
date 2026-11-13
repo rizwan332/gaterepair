@@ -26,6 +26,7 @@ import { isModelIndexable } from '@/lib/model-quality'
 import { recentFirst } from '@/content/recent-job-photos'
 import { symptomsForService, symptomPath } from '@/content/symptoms'
 import { isSymptomIndexable } from '@/lib/symptom-quality'
+import { pickHero } from '@/lib/hero-image'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -100,7 +101,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <PageHero eyebrow="Service" title={service.headline} intro={service.intro} image={images[0]} />
+      <PageHero eyebrow="Service" title={service.headline} intro={service.intro} image={pickHero(images)} />
 
       {/* Symptom table. No competitor in DFW publishes one, and it maps directly
           onto how people actually search — "gate hums but won't move" rather

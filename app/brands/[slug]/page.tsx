@@ -28,6 +28,7 @@ import { JobVideos } from '@/components/sections/job-videos'
 import { jobVideos, jobVideosForBrand } from '@/content/job-videos'
 import { modelsForBrand, modelMatching, modelPath, modelKey } from '@/content/models'
 import type { ModelPage } from '@/content/models/types'
+import { pickHero } from '@/lib/hero-image'
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -117,28 +118,9 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
     ? images
     : [...generalPhotos.slice(offset), ...generalPhotos.slice(0, offset)]
 
-  /**
-   * The hero photograph, which is NOT simply the first gallery tile.
-   *
-   * PageHero renders the image full-bleed behind the headline with
-   * `object-cover` and no object-position, so a wide banner keeps only the
-   * middle band of its source. A portrait photograph therefore loses the
-   * operator entirely — measured 13 Nov 2026, All-O-Matic, Elite and DoorKing
-   * all led with a portrait shot whose branded unit sat in the lower third, so
-   * three brand pages showed an anonymous stretch of fence. A 540px-wide source
-   * stretched across a full-bleed hero is the other half of the problem.
-   *
-   * So the hero takes the first genuinely landscape, high-resolution image and
-   * the gallery keeps its own order. `featuredImage` still leads the gallery.
-   */
-  const landscape = galleryImages.filter((i) => i.width / i.height >= 1.3)
-  const heroImage =
-    landscape.find((i) => i.width >= 1200) ??
-    // No image clears the resolution bar, so take the widest rather than the
-    // first: Elite's only landscape photographs are 600px and 1024px, and the
-    // 600 was leading purely because it sorts first.
-    [...landscape].sort((a, b) => b.width - a.width)[0] ??
-    galleryImages[0]
+  // The hero is NOT simply the first gallery tile; see lib/hero-image.ts.
+  // `featuredImage` still leads the gallery, and wins the hero when landscape.
+  const heroImage = pickHero(galleryImages)
 
   const ownClips = jobVideosForBrand(brand.name)
   const clips = ownClips.length > 0 ? ownClips : jobVideos.slice(0, 6)

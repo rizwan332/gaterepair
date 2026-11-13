@@ -3,9 +3,9 @@ import { openGraphFor } from '@/lib/seo'
 import { PageHero } from '@/components/sections/page-hero'
 import { BrandsGrid } from '@/components/sections/brands-grid'
 import { ClosingCTA } from '@/components/sections/closing-cta'
-import { media } from '@/content/media-manifest'
 import { brands } from '@/content/brands'
 import { breadcrumbSchema } from '@/lib/schema'
+import { imageBySlug } from '@/lib/hero-image'
 
 export const metadata: Metadata = {
   // `absolute` — the layout's ' | Shield Gate Repair' template pushed this
@@ -28,7 +28,7 @@ export default function BrandsPage() {
         eyebrow="Brands"
         title="Gate Operator Brands We Repair"
         intro="The operator brands we service, with real repair photography and video for most of them. If you have been told your operator can only be replaced, it is worth a second opinion."
-        image={media['liftmaster']?.[0]}
+        image={imageBySlug('liftmaster-28')}
       />
       <BrandsGrid />
       <ClosingCTA />

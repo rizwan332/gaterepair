@@ -37,6 +37,7 @@ import { TestimonialCarousel } from '@/components/sections/testimonial-carousel'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { GateProblemForm } from '@/components/forms/gate-problem-form'
+import { pickHero } from '@/lib/hero-image'
 
 /**
  * Renderer for every model page (/brands/<brand>/<model>-repair).
@@ -130,7 +131,7 @@ export function ModelPageView({ page }: { page: ModelPage }) {
   const modelImages = (page.imageSlugs ?? []).map(imageBySlug).filter((i): i is MediaImage => Boolean(i))
   const brandImages = brand.mediaCategory ? (media[brand.mediaCategory] ?? []) : []
   const featured = brand.featuredImage ? brandImages.find((i) => i.slug === brand.featuredImage) : undefined
-  const heroImage = modelImages[0] ?? featured ?? brandImages[0]
+  const heroImage = pickHero(modelImages) ?? featured ?? pickHero(brandImages)
 
   const modelVideos = (page.videoSlugs ?? [])
     .map((slug) => videos.find((v) => v.slug === slug))
