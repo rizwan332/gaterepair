@@ -25,6 +25,18 @@ export type Brand = {
    * their own gate.
    */
   featuredImage?: string
+  /**
+   * Photograph for the page hero, when it should differ from `featuredImage`.
+   *
+   * The hero crops to the middle band and darkens the left, so it answers a
+   * different question to the gallery: a visitor landing here wants to see the
+   * operator itself, close enough to match the badge on their own gate. The
+   * client asked for exactly this on 13 Nov 2026 — "there is no clear picture
+   * for the motor, there is a picture for the gate". Set this to the clearest
+   * shot of the unit; portrait is fine, because it is named rather than
+   * selected by shape.
+   */
+  heroImage?: string
   /** Competitive position — drives build priority, not page copy. */
   contested: boolean
   priority: number
@@ -187,6 +199,9 @@ export const brands: Brand[] = [
     // low or far left shows the visitor an anonymous fence. These are the
     // shots whose operator still reads after that crop. liftmaster-34 showed an unbranded black gate.
     featuredImage: 'liftmaster-28',
+    // The operator fills the frame and the Chamberlain LiftMaster badge is
+    // legible at hero scale.
+    heroImage: 'liftmaster-09',
     legacyPath: '/liftmaster-gate-motor-repair/',
     name: 'LiftMaster',
     mediaCategory: 'liftmaster',
@@ -467,6 +482,9 @@ export const brands: Brand[] = [
     // page existed for this brand, so there is no 301 to preserve.
     slug: 'us-automatic',
     featuredImage: 'us-automatic-05',
+    // Portrait, but the hero's middle band lands squarely on the operator
+    // and its ram arm — the only US Automatic photo where the unit reads.
+    heroImage: 'us-automatic-02',
     legacyPath: '/us-automatic-gate-motor-repair/',
     name: 'US Automatic',
     // Client supplied five photographs on 4 Aug 2026 — ranch and acreage
