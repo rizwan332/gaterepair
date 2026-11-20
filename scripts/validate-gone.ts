@@ -35,6 +35,7 @@ const live: string[] = [
   '/emergency',
   '/faq',
   '/privacy-policy',
+  '/terms',
   '/projects',
   '/repair-videos',
   '/service-areas',

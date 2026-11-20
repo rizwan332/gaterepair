@@ -85,6 +85,27 @@ export function organizationSchema(): Json {
         closes: business.hours.close,
       },
     ],
+    // `telephone` above states the number; this states what it is FOR and that
+    // it is answered at any hour. Knowledge panels and AI answer engines read
+    // contactPoint when deciding whether a local provider can actually be
+    // reached, which for an emergency trade is the claim that matters. Only
+    // facts already published on the site. Audit 21 Nov 2026.
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: business.phone.display,
+        email: business.email,
+        areaServed: 'US-TX',
+        availableLanguage: 'English',
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: business.hours.open,
+          closes: business.hours.close,
+        },
+      },
+    ],
   }
 
   // Profiles the business controls, so search engines can join them to this
