@@ -21,6 +21,10 @@ const trim = (p: string) => p.replace(/\/$/, '')
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Next sends `X-Powered-By: Next.js` on every response, which tells a
+  // scanner which framework and therefore which CVE list to try. Nothing reads
+  // it. Audit 21 Nov 2026.
+  poweredByHeader: false,
   /**
    * Trailing slashes are handled in middleware.ts, not by Next.
    *
@@ -56,6 +60,49 @@ const nextConfig: NextConfig = {
     deviceSizes: [400, 640, 828, 1080, 1200, 1600, 1920],
     imageSizes: [64, 96, 128, 256, 384],
   },
+  /**
+   * Security headers (audit 21 Nov 2026).
+   *
+   * Here rather than in netlify.toml because that file's own history is a
+   * record of rules that looked right and did nothing: request order puts the
+   * Next runtime ahead of Netlify's engine, and the header rules proven live
+   * there are on static files in public/, not on runtime HTML. `headers()`
+   * runs inside the runtime, so it reaches every page response.
+   *
+   * Deliberately NOT set here, because each needs a verification step this
+   * change cannot include:
+   *
+   *  - Content-Security-Policy. GTM (GTM-MBBT87D8) injects tags at runtime, so
+   *    the real origin list is whatever the container holds, not what the HTML
+   *    shows. A policy written from the page source would silently break
+   *    conversion tracking. It needs a Report-Only rollout with a collector
+   *    first.
+   *  - Strict-Transport-Security with includeSubDomains/preload. Netlify
+   *    already sends max-age=31536000. Adding preload is close to
+   *    irreversible, and includeSubDomains would force HTTPS on every
+   *    subdomain of the apex, which has to be confirmed before it is asserted.
+   */
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          // We frame GTM's noscript iframe; nothing needs to frame us.
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          // Full referrer same-origin (analytics keeps working), origin only
+          // cross-origin, nothing downgrading to HTTP.
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          // No code on the site calls navigator.geolocation, mediaDevices,
+          // share or clipboard, so nothing loses a capability here.
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+          },
+        ],
+      },
+    ]
+  },
+
   async redirects() {
     return [
       /**

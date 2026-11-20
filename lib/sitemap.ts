@@ -105,6 +105,7 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
   { path: '/about', priority: 0.7 },
   { path: '/contact', priority: 0.8 },
   { path: '/privacy-policy', priority: 0.3 },
+  { path: '/terms', priority: 0.3 },
 ]
 
 export const SECTIONS: SitemapSection[] = [
