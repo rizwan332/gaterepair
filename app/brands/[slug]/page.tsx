@@ -441,21 +441,46 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             {brand.name} repair across Dallas&ndash;Fort Worth
           </h2>
           <ul className="flex flex-wrap gap-2.5">
-            {indexedCities.map((city) => (
-              <li key={city.slug}>
-                <Link
-                  // The brand × city page, where one has cleared the proof gate.
-                  href={brandCityPageFor(city.slug, brand.slug) ? brandCityPath({ city, brand }) : `/gate-repair-${city.slug}-tx`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
-                >
-                  {/* Plain city name: the hidden "{brand} gate repair in"
-                      prefix that used to sit here was removed 7 Oct 2026 —
-                      see the equivalent block on the service pages. */}
-                  {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
+            {/*
+              The main metro only, not all ~200 indexed cities.
+
+              This block was linking every brand page to ~200 brand × city
+              children, which told Google those children answer "<brand> gate
+              repair" as well as this page does — and it started picking them.
+              Measured 20 Nov 2026: /brands/liftmaster fell from position 10.8
+              in October to 32.8, while /liftmaster-gate-repair-arlington-tx
+              ranked 1.0 on a single impression.
+
+              Nothing is orphaned by the cut. Every brand × city page is linked
+              from its own city page, which carries all 17 of that town's
+              brand and service pages, and /service-areas lists the rest.
+            */}
+            {indexedCities
+              .filter((city) => city.tier === 1)
+              .map((city) => (
+                <li key={city.slug}>
+                  <Link
+                    // The brand × city page, where one has cleared the proof gate.
+                    href={brandCityPageFor(city.slug, brand.slug) ? brandCityPath({ city, brand }) : `/gate-repair-${city.slug}-tx`}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-300 hover:text-ink-950"
+                  >
+                    {/* Plain city name: the hidden "{brand} gate repair in"
+                        prefix that used to sit here was removed 7 Oct 2026 —
+                        see the equivalent block on the service pages. */}
+                    {city.name}
+                    <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+                  </Link>
+                </li>
+              ))}
+            <li>
+              <Link
+                href="/service-areas"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-ink-300 bg-ink-100 px-4 py-2 text-sm font-semibold text-ink-900 transition-colors hover:border-ink-400"
+              >
+                Every town we cover
+                <ArrowRight className="size-3.5 text-ink-500" aria-hidden />
+              </Link>
+            </li>
           </ul>
         </div>
       </section>

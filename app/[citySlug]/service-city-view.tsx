@@ -7,9 +7,7 @@ import { services } from '@/content/services'
 import { projects } from '@/content/projects'
 import { nearestSpread } from '@/content/city-coordinates'
 import { PageHero } from '@/components/sections/page-hero'
-import { CaseStudies } from '@/components/sections/case-studies'
-import { JobVideos } from '@/components/sections/job-videos'
-import { jobVideos } from '@/content/job-videos'
+import { NearbyProof } from '@/components/sections/nearby-proof'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
@@ -55,10 +53,6 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
   const near = (list: typeof projects) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
   const sameKindNear = near(sameKind)
   const jobs = sameKindNear.length > 0 ? sameKindNear : near(withPhotos)
-  // Nearest job clips of this kind, else the nearest of any, each under its real city.
-  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
-  const sameKindVideos = nearVideos(jobVideos.filter((v) => v.service === service.project))
-  const videos = sameKindVideos.length > 0 ? sameKindVideos : nearVideos(jobVideos)
   // Automatic gates only, and on sliding/swing pages only that gate type (read from the alt text).
   const kind = /sliding|swing/i.exec(service.name)?.[0].toLowerCase()
   const fits = (i: (typeof media)[string][number]) => isRecentOperatorPhoto(i) && (!kind || i.alt.toLowerCase().includes(kind))
@@ -88,22 +82,13 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
         </div>
       </section>
 
-      {jobs.length > 0 && (
-        <CaseStudies
-          items={jobs}
-          limit={jobs.length}
-          eyebrow="Real jobs nearby"
-          title={`Our nearest documented jobs to ${city.name}`}
-          intro="Work our technicians have documented, each shown under the city it was in."
-          tone="tint"
-        />
-      )}
-
-      <JobVideos
-        items={videos.map((v) => v.item)}
-        title={`Gate jobs near ${city.name} on video`}
-        intro={`Filmed on our own jobs, each marked with its city: ${[...new Set(videos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
-      />
+      {/*
+        Linked, not reprinted. Every one of these pages borrowed its case study
+        and video blocks from the nearest documented job, so the same prose was
+        rendering on all 322 of them and on the service page above. See
+        NearbyProof.
+      */}
+      <NearbyProof title="Our nearest documented jobs" items={jobs} cityName={city.name} />
 
       {dfw && dfw.symptoms.length > 0 && (
         <section className="section bg-ink-50">

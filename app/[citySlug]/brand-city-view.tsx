@@ -4,7 +4,7 @@ import { MapPin, ArrowRight } from 'lucide-react'
 import { openGraphFor, fitDescription, INDEXABLE_ROBOTS } from '@/lib/seo'
 import { business } from '@/content/business'
 import { caseStudyPhotos } from '@/content/case-study-media'
-import { jobVideos, jobVideosForCity } from '@/content/job-videos'
+import { jobVideosForCity } from '@/content/job-videos'
 import { modelByKey, modelPath, modelsForBrand } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { nearestSpread } from '@/content/city-coordinates'
@@ -13,6 +13,7 @@ import { indexedCities } from '@/content/cities'
 import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { JobVideos } from '@/components/sections/job-videos'
+import { NearbyProof } from '@/components/sections/nearby-proof'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
@@ -85,11 +86,9 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
   const rank = (t: (typeof publishedTestimonials)[number]) =>
     t.city?.toLowerCase() === city.name.toLowerCase() ? 0 : t.brand?.toLowerCase() === brand.name.toLowerCase() ? 1 : 2
   const testimonials = [...publishedTestimonials].sort((a, b) => rank(a) - rank(b))
+  // Only clips actually filmed in this city. Borrowed clips used to fill the gap,
+  // which put the same video block on every city page of this brand.
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
-  // None filmed here on this brand: the nearest clips on this brand, else the nearest of any, each under its real city.
-  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
-  const nearBrandVideos = videos.length > 0 ? [] : nearVideos(jobVideos.filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase()))
-  const nearbyVideos = videos.length > 0 ? [] : nearBrandVideos.length > 0 ? nearBrandVideos : nearVideos(jobVideos)
   const jobModels = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
     .filter((m) => m !== undefined)
@@ -136,33 +135,20 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
           tone="tint"
         />
       ) : (
-        nearJobs.length > 0 && (
-          <CaseStudies
-            items={nearJobs}
-            limit={nearJobs.length}
-            eyebrow="Real jobs nearby"
-            title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs to ${city.name}` : `Our nearest documented jobs to ${city.name}`}
-            intro={
-              nearBrandJobs.length > 0
-                ? `${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`
-                : `Gate operator work our technicians have documented in nearby cities, each shown under the city it was in.`
-            }
-            tone="tint"
-          />
-        )
+        // Linked, not reprinted: the same borrowed case study was rendering in
+        // full on nearly every city page of this brand. See NearbyProof.
+        <NearbyProof
+          title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs` : 'Our nearest documented jobs'}
+          items={nearJobs}
+          cityName={city.name}
+        />
       )}
 
-      {videos.length > 0 ? (
+      {videos.length > 0 && (
         <JobVideos
           items={videos}
           title={`${brand.name} jobs in ${city.name} on video`}
           intro={`Filmed on site in ${city.name}, each linked to its full write-up.`}
-        />
-      ) : (
-        <JobVideos
-          items={nearbyVideos.map((v) => v.item)}
-          title={nearBrandVideos.length > 0 ? `${brand.name} jobs near ${city.name} on video` : `Gate repairs near ${city.name} on video`}
-          intro={`Filmed on our own jobs nearby, each marked with its city: ${[...new Set(nearbyVideos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
         />
       )}
 
