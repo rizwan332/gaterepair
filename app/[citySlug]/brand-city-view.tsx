@@ -4,7 +4,7 @@ import { MapPin, ArrowRight } from 'lucide-react'
 import { openGraphFor, fitDescription, INDEXABLE_ROBOTS } from '@/lib/seo'
 import { business } from '@/content/business'
 import { caseStudyPhotos } from '@/content/case-study-media'
-import { jobVideos, jobVideosForCity } from '@/content/job-videos'
+import { jobVideosForCity } from '@/content/job-videos'
 import { modelByKey, modelPath, modelsForBrand } from '@/content/models'
 import { isModelIndexable } from '@/lib/model-quality'
 import { nearestSpread } from '@/content/city-coordinates'
@@ -13,6 +13,7 @@ import { indexedCities } from '@/content/cities'
 import { PageHero } from '@/components/sections/page-hero'
 import { CaseStudies } from '@/components/sections/case-studies'
 import { JobVideos } from '@/components/sections/job-videos'
+import { NearbyProof } from '@/components/sections/nearby-proof'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
@@ -21,8 +22,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPageFor, brandCityPath, brandCityPagesForCity, type BrandCityPage } from '@/lib/brand-city'
-import { serviceCityPagesForCity, serviceCityPath } from '@/lib/service-city'
+import { brandCityPageFor, brandCityPath, type BrandCityPage } from '@/lib/brand-city'
 
 /**
  * Brand × city pages, e.g. /liftmaster-gate-repair-plano-tx.
@@ -85,16 +85,13 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
   const rank = (t: (typeof publishedTestimonials)[number]) =>
     t.city?.toLowerCase() === city.name.toLowerCase() ? 0 : t.brand?.toLowerCase() === brand.name.toLowerCase() ? 1 : 2
   const testimonials = [...publishedTestimonials].sort((a, b) => rank(a) - rank(b))
+  // Only clips actually filmed in this city. Borrowed clips used to fill the gap,
+  // which put the same video block on every city page of this brand.
   const videos = jobVideosForCity(city.slug).filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase())
-  // None filmed here on this brand: the nearest clips on this brand, else the nearest of any, each under its real city.
-  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
-  const nearBrandVideos = videos.length > 0 ? [] : nearVideos(jobVideos.filter((v) => v.brand?.toLowerCase() === brand.name.toLowerCase()))
-  const nearbyVideos = videos.length > 0 ? [] : nearBrandVideos.length > 0 ? nearBrandVideos : nearVideos(jobVideos)
   const jobModels = [...new Set(jobs.map((j) => j.modelKey).filter(Boolean) as string[])]
     .map(modelByKey)
     .filter((m) => m !== undefined)
   const models = jobModels.length > 0 ? jobModels : modelsForBrand(brand.slug).filter(isModelIndexable).slice(0, 8)
-  const otherBrandsHere = brandCityPagesForCity(city.slug).filter((p) => p.brand.slug !== brand.slug)
   const nearbySameBrand = (city.nearbyCities ?? []).map((s) => brandCityPageFor(s, brand.slug)).filter((p) => p !== undefined)
   // Other indexed cities where we have documented jobs on this brand.
   const otherCities = indexedCities.filter(
@@ -136,33 +133,20 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
           tone="tint"
         />
       ) : (
-        nearJobs.length > 0 && (
-          <CaseStudies
-            items={nearJobs}
-            limit={nearJobs.length}
-            eyebrow="Real jobs nearby"
-            title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs to ${city.name}` : `Our nearest documented jobs to ${city.name}`}
-            intro={
-              nearBrandJobs.length > 0
-                ? `${brand.name} work our technicians have documented in nearby cities, each shown under the city it was in.`
-                : `Gate operator work our technicians have documented in nearby cities, each shown under the city it was in.`
-            }
-            tone="tint"
-          />
-        )
+        // Linked, not reprinted: the same borrowed case study was rendering in
+        // full on nearly every city page of this brand. See NearbyProof.
+        <NearbyProof
+          title={nearBrandJobs.length > 0 ? `Our nearest documented ${brand.name} jobs` : 'Our nearest documented jobs'}
+          items={nearJobs}
+          cityName={city.name}
+        />
       )}
 
-      {videos.length > 0 ? (
+      {videos.length > 0 && (
         <JobVideos
           items={videos}
           title={`${brand.name} jobs in ${city.name} on video`}
           intro={`Filmed on site in ${city.name}, each linked to its full write-up.`}
-        />
-      ) : (
-        <JobVideos
-          items={nearbyVideos.map((v) => v.item)}
-          title={nearBrandVideos.length > 0 ? `${brand.name} jobs near ${city.name} on video` : `Gate repairs near ${city.name} on video`}
-          intro={`Filmed on our own jobs nearby, each marked with its city: ${[...new Set(nearbyVideos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
         />
       )}
 
@@ -286,28 +270,22 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
                 <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
               </Link>
             </li>
-            {otherBrandsHere.map((p) => (
-              <li key={p.brand.slug}>
-                <Link
-                  href={brandCityPath(p)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
-                >
-                  {p.brand.name} gate repair in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
-            {serviceCityPagesForCity(city.slug).map((p) => (
-              <li key={p.service.slug}>
-                <Link
-                  href={serviceCityPath(p)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
-                >
-                  {p.service.name} in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
+            {/*
+              Up to the city hub, not sideways. This list used to carry every
+              other brand in the city and all 15 of its service pages - about 33
+              equal links on each of 380 pages, which tells Google the 34 are
+              interchangeable answers. The city page links all of them, so the
+              one link above reaches the same places in two clicks.
+            */}
+            <li>
+              <Link
+                href={`/brands/${brand.slug}`}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+              >
+                {brand.name} gate repair across Dallas&ndash;Fort Worth
+                <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            </li>
           </ul>
           {nearbySameBrand.length > 0 && (
             <>

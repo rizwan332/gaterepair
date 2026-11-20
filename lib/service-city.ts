@@ -48,3 +48,33 @@ const bySegment = new Map(serviceCityPages.map((p) => [serviceCityPath(p).slice(
 export const serviceCityPageForSegment = (segment: string) => bySegment.get(segment)
 
 export const serviceCityPagesForCity = (citySlug: string) => serviceCityPages.filter((p) => p.city.slug === citySlug)
+
+/**
+ * Two families are the same search as a page we already have, so they point
+ * their signals at it instead of bidding against it. Both the `<title>` and
+ * the sitemap read this, so a page that defers is also left out of the sitemap.
+ *
+ * - "automatic gate repair <city>" is not narrower than "gate repair <city>";
+ *   in this trade it is the same search, and the city page answers it. Through
+ *   November these 20 pages ranked on 148 queries, beat their own city page on
+ *   11, and earned 99 impressions and no clicks on the 40 queries no city page
+ *   reached.
+ * - "gate motor repair" and "gate opener repair" are the same job, and
+ *   cityServices above gives both the same `service` and the same `project`.
+ *   Gate opener has 2.3x the reach (616 impressions against 263), so it keeps
+ *   the page.
+ *
+ * The other 13 name a gate type, an audience or installation, and answer for
+ * themselves. A target that does not exist for this city is left alone.
+ */
+const DEFERS_TO: Record<string, (citySlug: string) => string> = {
+  'automatic-gate-repair': (citySlug) => `/gate-repair-${citySlug}-tx`,
+  'gate-motor-repair': (citySlug) =>
+    serviceCityPagesForCity(citySlug).some((p) => p.service.slug === 'gate-opener-repair')
+      ? `/gate-opener-repair-${citySlug}-tx`
+      : '',
+}
+
+/** The page this one wants credited, which is itself unless it defers. */
+export const serviceCityCanonical = (p: ServiceCityPage) =>
+  DEFERS_TO[p.service.slug]?.(p.city.slug) || serviceCityPath(p)

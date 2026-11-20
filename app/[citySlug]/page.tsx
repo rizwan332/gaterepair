@@ -673,10 +673,19 @@ export default async function CityPage({ params }: { params: Promise<{ citySlug:
   )
 }
 
-/** The `<title>`, longest form that fits Google's ~60-character budget. */
+/**
+ * The `<title>`, longest form that fits Google's ~60-character budget.
+ *
+ * "Automatic Gate Repair <city>, TX" used to lead here, which is the exact
+ * title /automatic-gate-repair-<city>-tx carries. Two of our own URLs claimed
+ * one phrase, so Google picked between them and kept changing its mind:
+ * /gate-repair-plano-tx held 4.3 for "commercial gate repair plano" through
+ * October, then the combo page took the query at 23.5 and three others at 45.
+ * The city page owns "gate repair <city>"; the combo pages own their own
+ * service wording.
+ */
 function cityTitle(name: string): string {
   const forms = [
-    `Automatic Gate Repair ${name}, TX | Same-Day 24/7`,
     `Gate Repair ${name}, TX | Automatic Gates, 24/7`,
     `Gate Repair ${name}, TX | Same-Day 24/7`,
   ]

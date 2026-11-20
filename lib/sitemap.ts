@@ -14,7 +14,7 @@ import { publishedPosts, postPath } from '../content/blog'
 import { modelPath } from '../content/models'
 import { assetUrl } from './cdn'
 import { brandCityPages, brandCityPath } from './brand-city'
-import { serviceCityPages, serviceCityPath } from './service-city'
+import { serviceCityCanonical, serviceCityPages, serviceCityPath } from './service-city'
 
 /**
  * The sitemap, split by section behind an index at /sitemap.xml.
@@ -219,11 +219,15 @@ export const SECTIONS: SitemapSection[] = [
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       })),
-      ...serviceCityPages.map((p) => ({
-        url: `${BASE}${serviceCityPath(p)}`,
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
-      })),
+      // Only the ones that answer for themselves: a page whose canonical points
+      // at another page has no business being submitted as its own URL.
+      ...serviceCityPages
+        .filter((p) => serviceCityCanonical(p) === serviceCityPath(p))
+        .map((p) => ({
+          url: `${BASE}${serviceCityPath(p)}`,
+          changeFrequency: 'monthly' as const,
+          priority: 0.8,
+        })),
     ],
   },
   {

@@ -7,9 +7,7 @@ import { services } from '@/content/services'
 import { projects } from '@/content/projects'
 import { nearestSpread } from '@/content/city-coordinates'
 import { PageHero } from '@/components/sections/page-hero'
-import { CaseStudies } from '@/components/sections/case-studies'
-import { JobVideos } from '@/components/sections/job-videos'
-import { jobVideos } from '@/content/job-videos'
+import { NearbyProof } from '@/components/sections/nearby-proof'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
 import { ClosingCTA } from '@/components/sections/closing-cta'
 import { PhotoGallery } from '@/components/sections/photo-gallery'
@@ -18,8 +16,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPagesForCity, brandCityPath } from '@/lib/brand-city'
-import { serviceCityPagesForCity, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
+import { serviceCityCanonical, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
 
 /**
  * Service × city pages, e.g. /sliding-gate-repair-plano-tx. Served by the
@@ -30,13 +27,15 @@ const BASE = business.url.replace(/\/$/, '')
 
 export function serviceCityMetadata(page: ServiceCityPage): Metadata {
   const { city, service, copy } = page
-  const path = serviceCityPath(page)
+  // og:url follows the canonical, so a share of a deferring page is credited to
+  // the page we want ranked (scripts/validate-meta.ts enforces the match).
+  const canonical = serviceCityCanonical(page)
   const t = [`${service.name} ${city.name}, TX | Shield Gate Repair`, `${service.name} ${city.name}, TX`]
   return {
     title: { absolute: t.find((x) => x.length <= 60) ?? t[1] },
     description: copy.description,
-    alternates: { canonical: path },
-    openGraph: openGraphFor(path),
+    alternates: { canonical },
+    openGraph: openGraphFor(canonical),
     robots: INDEXABLE_ROBOTS,
   }
 }
@@ -55,10 +54,6 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
   const near = (list: typeof projects) => nearestSpread(city.slug, list, (p) => p.citySlug, 3, 80).map((x) => x.item)
   const sameKindNear = near(sameKind)
   const jobs = sameKindNear.length > 0 ? sameKindNear : near(withPhotos)
-  // Nearest job clips of this kind, else the nearest of any, each under its real city.
-  const nearVideos = (list: typeof jobVideos) => nearestSpread(city.slug, list, (v) => v.citySlug, 3, 80)
-  const sameKindVideos = nearVideos(jobVideos.filter((v) => v.service === service.project))
-  const videos = sameKindVideos.length > 0 ? sameKindVideos : nearVideos(jobVideos)
   // Automatic gates only, and on sliding/swing pages only that gate type (read from the alt text).
   const kind = /sliding|swing/i.exec(service.name)?.[0].toLowerCase()
   const fits = (i: (typeof media)[string][number]) => isRecentOperatorPhoto(i) && (!kind || i.alt.toLowerCase().includes(kind))
@@ -68,8 +63,6 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
   ]
-  const otherServices = serviceCityPagesForCity(city.slug).filter((p) => p.service.slug !== service.slug)
-  const brandPages = brandCityPagesForCity(city.slug)
 
   return (
     <>
@@ -88,22 +81,13 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
         </div>
       </section>
 
-      {jobs.length > 0 && (
-        <CaseStudies
-          items={jobs}
-          limit={jobs.length}
-          eyebrow="Real jobs nearby"
-          title={`Our nearest documented jobs to ${city.name}`}
-          intro="Work our technicians have documented, each shown under the city it was in."
-          tone="tint"
-        />
-      )}
-
-      <JobVideos
-        items={videos.map((v) => v.item)}
-        title={`Gate jobs near ${city.name} on video`}
-        intro={`Filmed on our own jobs, each marked with its city: ${[...new Set(videos.map((v) => `${v.item.city?.replace(/, Texas$/, '')}${v.miles > 0 ? ` (${v.miles} mi)` : ''}`))].join(', ')}.`}
-      />
+      {/*
+        Linked, not reprinted. Every one of these pages borrowed its case study
+        and video blocks from the nearest documented job, so the same prose was
+        rendering on all 322 of them and on the service page above. See
+        NearbyProof.
+      */}
+      <NearbyProof title="Our nearest documented jobs" items={jobs} cityName={city.name} />
 
       {dfw && dfw.symptoms.length > 0 && (
         <section className="section bg-ink-50">
@@ -169,7 +153,18 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
 
       <section className="section bg-white">
         <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">More gate services in {city.name}</h2>
+          {/*
+            Up to the city hub, not sideways. This block used to chip out to the
+            other 14 services and every brand in the city - about 33 equal links
+            on each of 300 pages, which says to Google that all 34 answer the
+            same question. The city page already links every one of them, so
+            nothing here is orphaned.
+          */}
+          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">Every gate service in {city.name}</h2>
+          <p className="mb-5 max-w-prose text-ink-700">
+            {service.name.toLowerCase()} is one of the jobs we do in {city.name}. The city page lists the rest, with the
+            brands and openers we carry parts for.
+          </p>
           <ul className="flex flex-wrap gap-2.5">
             <li>
               <Link href={cityPath} className={chip}>
@@ -177,30 +172,13 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
                 <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
               </Link>
             </li>
-            {otherServices.map((p) => (
-              <li key={p.service.slug}>
-                <Link href={serviceCityPath(p)} className={chip}>
-                  {p.service.name} in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link href={`/services/${service.service}`} className={chip}>
+                {service.name} across Dallas&ndash;Fort Worth
+                <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            </li>
           </ul>
-          {brandPages.length > 0 && (
-            <>
-              <h3 className="mb-4 mt-8 font-display text-lg font-bold text-ink-950">Gate opener brands we repair in {city.name}</h3>
-              <ul className="flex flex-wrap gap-2.5">
-                {brandPages.map((p) => (
-                  <li key={p.brand.slug}>
-                    <Link href={brandCityPath(p)} className={chip}>
-                      {p.brand.name} gate repair in {city.name}
-                      <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
         </div>
       </section>
 
