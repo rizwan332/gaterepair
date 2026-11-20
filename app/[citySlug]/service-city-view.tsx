@@ -16,8 +16,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPagesForCity, brandCityPath } from '@/lib/brand-city'
-import { serviceCityPagesForCity, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
+import { serviceCityCanonical, serviceCityPath, type ServiceCityPage } from '@/lib/service-city'
 
 /**
  * Service × city pages, e.g. /sliding-gate-repair-plano-tx. Served by the
@@ -28,13 +27,15 @@ const BASE = business.url.replace(/\/$/, '')
 
 export function serviceCityMetadata(page: ServiceCityPage): Metadata {
   const { city, service, copy } = page
-  const path = serviceCityPath(page)
+  // og:url follows the canonical, so a share of a deferring page is credited to
+  // the page we want ranked (scripts/validate-meta.ts enforces the match).
+  const canonical = serviceCityCanonical(page)
   const t = [`${service.name} ${city.name}, TX | Shield Gate Repair`, `${service.name} ${city.name}, TX`]
   return {
     title: { absolute: t.find((x) => x.length <= 60) ?? t[1] },
     description: copy.description,
-    alternates: { canonical: path },
-    openGraph: openGraphFor(path),
+    alternates: { canonical },
+    openGraph: openGraphFor(canonical),
     robots: INDEXABLE_ROBOTS,
   }
 }
@@ -62,8 +63,6 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() === city.name.toLowerCase()),
     ...publishedTestimonials.filter((t) => t.city?.toLowerCase() !== city.name.toLowerCase()),
   ]
-  const otherServices = serviceCityPagesForCity(city.slug).filter((p) => p.service.slug !== service.slug)
-  const brandPages = brandCityPagesForCity(city.slug)
 
   return (
     <>
@@ -154,7 +153,18 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
 
       <section className="section bg-white">
         <div className="container-page">
-          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">More gate services in {city.name}</h2>
+          {/*
+            Up to the city hub, not sideways. This block used to chip out to the
+            other 14 services and every brand in the city - about 33 equal links
+            on each of 300 pages, which says to Google that all 34 answer the
+            same question. The city page already links every one of them, so
+            nothing here is orphaned.
+          */}
+          <h2 className="mb-6 font-display text-2xl font-bold text-ink-950">Every gate service in {city.name}</h2>
+          <p className="mb-5 max-w-prose text-ink-700">
+            {service.name.toLowerCase()} is one of the jobs we do in {city.name}. The city page lists the rest, with the
+            brands and openers we carry parts for.
+          </p>
           <ul className="flex flex-wrap gap-2.5">
             <li>
               <Link href={cityPath} className={chip}>
@@ -162,30 +172,13 @@ export function ServiceCityView({ page }: { page: ServiceCityPage }) {
                 <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
               </Link>
             </li>
-            {otherServices.map((p) => (
-              <li key={p.service.slug}>
-                <Link href={serviceCityPath(p)} className={chip}>
-                  {p.service.name} in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link href={`/services/${service.service}`} className={chip}>
+                {service.name} across Dallas&ndash;Fort Worth
+                <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            </li>
           </ul>
-          {brandPages.length > 0 && (
-            <>
-              <h3 className="mb-4 mt-8 font-display text-lg font-bold text-ink-950">Gate opener brands we repair in {city.name}</h3>
-              <ul className="flex flex-wrap gap-2.5">
-                {brandPages.map((p) => (
-                  <li key={p.brand.slug}>
-                    <Link href={brandCityPath(p)} className={chip}>
-                      {p.brand.name} gate repair in {city.name}
-                      <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
         </div>
       </section>
 

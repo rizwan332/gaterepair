@@ -22,8 +22,7 @@ import { publishedTestimonials } from '@/content/testimonials'
 import { media } from '@/content/media-manifest'
 import { isRecentOperatorPhoto } from '@/content/recent-job-photos'
 import { faqSchema, breadcrumbSchema } from '@/lib/schema'
-import { brandCityPageFor, brandCityPath, brandCityPagesForCity, type BrandCityPage } from '@/lib/brand-city'
-import { serviceCityPagesForCity, serviceCityPath } from '@/lib/service-city'
+import { brandCityPageFor, brandCityPath, type BrandCityPage } from '@/lib/brand-city'
 
 /**
  * Brand × city pages, e.g. /liftmaster-gate-repair-plano-tx.
@@ -93,7 +92,6 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
     .map(modelByKey)
     .filter((m) => m !== undefined)
   const models = jobModels.length > 0 ? jobModels : modelsForBrand(brand.slug).filter(isModelIndexable).slice(0, 8)
-  const otherBrandsHere = brandCityPagesForCity(city.slug).filter((p) => p.brand.slug !== brand.slug)
   const nearbySameBrand = (city.nearbyCities ?? []).map((s) => brandCityPageFor(s, brand.slug)).filter((p) => p !== undefined)
   // Other indexed cities where we have documented jobs on this brand.
   const otherCities = indexedCities.filter(
@@ -272,28 +270,22 @@ export function BrandCityView({ page }: { page: BrandCityPage }) {
                 <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
               </Link>
             </li>
-            {otherBrandsHere.map((p) => (
-              <li key={p.brand.slug}>
-                <Link
-                  href={brandCityPath(p)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
-                >
-                  {p.brand.name} gate repair in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
-            {serviceCityPagesForCity(city.slug).map((p) => (
-              <li key={p.service.slug}>
-                <Link
-                  href={serviceCityPath(p)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
-                >
-                  {p.service.name} in {city.name}
-                  <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
-                </Link>
-              </li>
-            ))}
+            {/*
+              Up to the city hub, not sideways. This list used to carry every
+              other brand in the city and all 15 of its service pages - about 33
+              equal links on each of 380 pages, which tells Google the 34 are
+              interchangeable answers. The city page links all of them, so the
+              one link above reaches the same places in two clicks.
+            */}
+            <li>
+              <Link
+                href={`/brands/${brand.slug}`}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-800 hover:border-ink-300 hover:text-ink-950"
+              >
+                {brand.name} gate repair across Dallas&ndash;Fort Worth
+                <ArrowRight className="size-3.5 text-ink-400" aria-hidden />
+              </Link>
+            </li>
           </ul>
           {nearbySameBrand.length > 0 && (
             <>
